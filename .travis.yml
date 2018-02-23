@@ -1,0 +1,27 @@
+language: node_js
+
+node_js:
+  - "stable"
+
+before_install:
+  # Install GitBook
+  - npm install gitbook-cli -g
+  - npm install svgexport -g
+  - gitbook fetch 3.2.3
+
+install:
+  # Install GitBook dependencies
+  - echo "install gitbook dependencies..."
+  - gitbook install
+
+script:
+  - echo "build blog..."
+  - gitbook build
+
+after_success:
+  - echo "success"
+
+# whitelist
+branches:
+  only:
+    - master
