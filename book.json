@@ -1,5 +1,11 @@
 {
     "plugins": [
-        "gist"
-    ]
+        "gist",
+        "sitemap"
+    ],
+    "pluginsConfig": {
+        "sitemap": {
+            "hostname": "https://blog.yuanbin.me/"
+        }
+    }
 }
