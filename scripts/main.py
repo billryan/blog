@@ -5,8 +5,10 @@ import os
 import argparse
 from datetime import datetime
 
-from migrate import migrate
-from util import par_dir
+import frontmatter
+
+from migrate import migrate, YamlContent
+from util import par_dir, mkdir_p
 from summary import gen_summary
 
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
@@ -30,13 +32,27 @@ if __name__ == '__main__':
     print('Called with arguments: {}'.format(args))
 
     ROOTDIR = par_dir(BASEDIR)
+    POSTSDIR = os.path.join(ROOTDIR, 'posts')
     if args.migrate:
-        posts_dir = os.path.join(ROOTDIR, 'posts')
-        migrate(args.migrate, posts_dir)
+        migrate(args.migrate, POSTSDIR)
 
     if args.fix_summary:
-        posts_dir = os.path.join(ROOTDIR, 'posts')
-        summary = gen_summary(posts_dir)
+        summary = gen_summary(POSTSDIR)
         summary_fn = os.path.join(ROOTDIR, 'SUMMARY.md')
         with open(summary_fn, 'w', encoding='utf-8') as f:
             f.write(summary)
+
+    if args.new:
+        title = args.new
+        created = curr_time()
+        metadata = {'created': created, 'title': title}
+        content = '# ' + title
+        yaml_content = YamlContent(metadata, content)
+        pardir = created[:7]  # 取年月 2018-02 为父文件夹
+        post_dir = os.path.join(POSTSDIR, pardir)
+        post_fn = os.path.join(post_dir, created + '.md')
+        mkdir_p(post_dir)
+        post_md = frontmatter.dumps(yaml_content, allow_unicode=True)
+        with open(post_fn, 'w', encoding='utf-8') as f:
+            print('create post file {}...'.format(post_fn))
+            f.write(post_md)
