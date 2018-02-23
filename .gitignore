@@ -1,0 +1,6 @@
+.python-version
+__pycache__/
+.vscode
+
+_book/
+node_modules/
