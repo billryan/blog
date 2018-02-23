@@ -9,7 +9,7 @@ import frontmatter
 
 from migrate import migrate, YamlContent
 from util import par_dir, mkdir_p
-from summary import gen_summary
+from summary import gen_summary, update_summary
 
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -36,12 +36,6 @@ if __name__ == '__main__':
     if args.migrate:
         migrate(args.migrate, POSTSDIR)
 
-    if args.fix_summary:
-        summary = gen_summary(POSTSDIR)
-        summary_fn = os.path.join(ROOTDIR, 'SUMMARY.md')
-        with open(summary_fn, 'w', encoding='utf-8') as f:
-            f.write(summary)
-
     if args.new:
         title = args.new
         created = curr_time()
@@ -56,3 +50,8 @@ if __name__ == '__main__':
         with open(post_fn, 'w', encoding='utf-8') as f:
             print('create post file {}...'.format(post_fn))
             f.write(post_md)
+        # update summary
+        update_summary(ROOTDIR)
+
+    if args.fix_summary:
+        update_summary(ROOTDIR)

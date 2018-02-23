@@ -48,6 +48,13 @@ def gen_summary(posts):
     return '\n'.join([HEADER, ABOUT, summary_posts, TAGS, '\n'])
 
 
+def update_summary(rootdir):
+    postdir = os.path.join(rootdir, 'posts')
+    summary = gen_summary(postdir)
+    summary_fn = os.path.join(rootdir, 'SUMMARY.md')
+    with open(summary_fn, 'w', encoding='utf-8') as f:
+        f.write(summary)
+
 HEADER = '# Summary\n'
 ABOUT = _gen_md_list_item('About', 'README.md')
 TAGS = _gen_md_list_item('Tags', 'tags.md')
