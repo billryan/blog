@@ -21,6 +21,22 @@ script:
 after_success:
   - echo "success"
 
+before_deploy:
+  # Set up git user name and tag this commit
+  #- git config --local user.name "YOUR GIT USER NAME"
+  #- git config --local user.email "YOUR GIT USER EMAIL"
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+  - tar czvf blog.tar.gz _book/
+
+deploy:
+  provider: releases
+  api_key:
+    secure: QU4B9CIPUdelYJKnS72SUjOY/9/w9+m536RX8Ex4PsKYMJHEIW7rkbP16ZAvMDoqiQkfPwpQSE8tFOBxMmkgGIgWY86o0xr022ak0iGICFCkjedEfNkKBENjOA8JoMlCx+QRyGcRJKuHBAy8WQU+PKykJDzJzadGNs0ud/+P75k=
+  file: blog.tar.gz
+  skip_cleanup: true
+  on:
+    repo: billryan/blog
+
 # whitelist
 branches:
   only:
