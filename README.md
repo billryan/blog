@@ -1,5 +1,7 @@
 # About
 
+[![Build Status](https://travis-ci.org/billryan/blog.svg?branch=master)](https://travis-ci.org/billryan/blog)
+
 Yet another blog based on GitBook. 新的 blog 将专注于知识沉淀，不想再浪费时间折腾主题，博客引擎等与知识加工无关的因素。
 新 blog 文章 URL 结构和原 blog 有较大差别，故原 blog 结构仍然保留一段时间。
 
