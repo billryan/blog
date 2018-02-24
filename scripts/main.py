@@ -8,10 +8,17 @@ from datetime import datetime
 import frontmatter
 
 from migrate import migrate, YamlContent
+from githubclient import GithubClient
 from util import par_dir, mkdir_p
 from summary import gen_summary, update_summary
 
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
+# GitHub related
+OWNER = 'billryan'
+REPO = 'blog'
+BRANCH = 'master'
+COMMENT_PREFIX = 'comment'
+COMMENT_BODY = '评论专用 issue'
 
 
 def curr_time():
@@ -28,6 +35,8 @@ if __name__ == '__main__':
                         help='migrate old posts(hexo)')
     parser.add_argument('--fix-summary', dest='fix_summary',
                         help='render new summary from posts.')
+    parser.add_argument('--setup-comment', dest='setup_comment',
+                        help='setup comment for blog')
     args = parser.parse_args()
     print('Called with arguments: {}'.format(args))
 
@@ -40,6 +49,18 @@ if __name__ == '__main__':
         title = args.new
         created = curr_time()
         metadata = {'created': created, 'title': title}
+        if args.setup_comment:
+            label_ = COMMENT_PREFIX + '_' + created
+            gh_client = GithubClient(REPO)
+            gh_client.create_label(label_)
+            source_md = '[{title}](../blob/{branch}/posts/{created}.md)'.format(
+                title=title, branch=BRANCH, created=created
+            )
+            body = source_md + ' ' + COMMENT_BODY
+            labels = [COMMENT_PREFIX, label_]
+            issue = gh_client.create_issue(title, body, labels)
+            print('created issue with title: {}, id: {}'.format(issue.title, issue.number))
+            metadata = {'created': created, 'title': title, 'issue_id': issue.number}
         content = '# ' + title
         yaml_content = YamlContent(metadata, content)
         pardir = created[:7]  # 取年月 2018-02 为父文件夹
