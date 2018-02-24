@@ -58,7 +58,8 @@ if __name__ == '__main__':
             )
             body = source_md + ' ' + COMMENT_BODY
             labels = [COMMENT_PREFIX, label_]
-            issue = gh_client.create_issue(title, body, labels)
+            issue_title = '[{}] {}'.format(COMMENT_PREFIX, title)
+            issue = gh_client.create_issue(issue_title, body, labels)
             print('created issue with title: {}, id: {}'.format(issue.title, issue.number))
             metadata = {'created': created, 'title': title, 'issue_id': issue.number}
         content = '# ' + title
