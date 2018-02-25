@@ -1,6 +1,6 @@
 {
     "title": "Quality Matter",
-    "author": " 东海一叶",
+    "author": "东海一叶",
     "description": "Blog",
     "plugins": [
         "algolia@1.0.7",
