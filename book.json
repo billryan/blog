@@ -4,6 +4,7 @@
     "description": "Blog",
     "plugins": [
         "algolia@1.0.7",
+        "ga",
         "ghcomment",
         "gist",
         "sitemap",
@@ -15,6 +16,9 @@
             "applicationID": "JR5AN1IRYS",
             "publicKey": "a400faf3b8075c5354366b0508f4fed9",
             "freeAccount": "true"
+        },
+        "ga": {
+            "token": "UA-32317667-4"
         },
         "ghcomment": {
             "owner": "billryan",
