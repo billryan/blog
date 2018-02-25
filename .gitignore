@@ -3,6 +3,7 @@
 .python-version
 __pycache__/
 .vscode
+.DS_Store
 
 _book/
 node_modules/
