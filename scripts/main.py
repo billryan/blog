@@ -48,13 +48,14 @@ if __name__ == '__main__':
     if args.new:
         title = args.new
         created = curr_time()
+        pardir = created[:7]  # 取年月 2018-02 为父文件夹
         metadata = {'created': created, 'title': title}
         if args.setup_comment:
             label_ = COMMENT_PREFIX + '_' + created
             gh_client = GithubClient(REPO)
             gh_client.create_label(label_)
-            source_md = '[{title}](../blob/{branch}/posts/{created}.md)'.format(
-                title=title, branch=BRANCH, created=created
+            source_md = '[{title}](../blob/{branch}/posts/{pardir}/{created}.md)'.format(
+                title=title, branch=BRANCH, pardir=pardir, created=created
             )
             body = source_md + ' ' + COMMENT_BODY
             labels = [COMMENT_PREFIX, label_]
@@ -64,7 +65,6 @@ if __name__ == '__main__':
             metadata = {'created': created, 'title': title, 'issue_id': issue.number}
         content = '# ' + title
         yaml_content = YamlContent(metadata, content)
-        pardir = created[:7]  # 取年月 2018-02 为父文件夹
         post_dir = os.path.join(POSTSDIR, pardir)
         post_fn = os.path.join(post_dir, created + '.md')
         mkdir_p(post_dir)
