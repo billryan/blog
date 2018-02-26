@@ -6,7 +6,6 @@
         "algolia@1.0.7",
         "disqus",
         "ga",
-        "ghcomment",
         "gist",
         "sitemap",
         "tags"
@@ -23,10 +22,6 @@
         },
         "ga": {
             "token": "UA-32317667-4"
-        },
-        "ghcomment": {
-            "owner": "billryan",
-            "repo": "blog"
         },
         "sitemap": {
             "hostname": "https://blog.yuanbin.me/"
