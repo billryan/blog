@@ -4,6 +4,7 @@
     "description": "Blog",
     "plugins": [
         "algolia@1.0.7",
+        "disqus",
         "ga",
         "ghcomment",
         "gist",
@@ -16,6 +17,9 @@
             "applicationID": "JR5AN1IRYS",
             "publicKey": "a400faf3b8075c5354366b0508f4fed9",
             "freeAccount": "true"
+        },
+        "disqus": {
+            "shortName": "billryan"
         },
         "ga": {
             "token": "UA-32317667-4"
