@@ -1,0 +1,2366 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Akka Notes 4 - Request and Response · Quality Matter</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="东海一叶">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-algolia/plugin-algolia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-disqus/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tags/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2015-08-26_13-26-24.html" />
+    
+    
+    <link rel="prev" href="2015-08-27_15-57-59.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    About
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../2018-02/README.md">
+            
+                <span>
+            
+                    
+                    2018-02
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../2018-02/2018-02-28_23-48-31.html">
+            
+                <a href="../2018-02/2018-02-28_23-48-31.html">
+            
+                    
+                    Scala 多环境配置管理——使用 Typesafe Config
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../2018-02/2018-02-24_16-30-16.html">
+            
+                <a href="../2018-02/2018-02-24_16-30-16.html">
+            
+                    
+                    Python 多环境配置类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../2018-02/2018-02-23_23-19-29.html">
+            
+                <a href="../2018-02/2018-02-23_23-19-29.html">
+            
+                    
+                    博客写作工作流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../2018-02/2018-02-23_20-44-30.html">
+            
+                <a href="../2018-02/2018-02-23_20-44-30.html">
+            
+                    
+                    如何做一场好的技术分享
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../2016-11/README.md">
+            
+                <span>
+            
+                    
+                    2016-11
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../2016-11/2016-11-07_10-48-42.html">
+            
+                <a href="../2016-11/2016-11-07_10-48-42.html">
+            
+                    
+                    GitBook 插件介绍及定制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../2016-10/README.md">
+            
+                <span>
+            
+                    
+                    2016-10
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../2016-10/2016-10-09_21-48-24.html">
+            
+                <a href="../2016-10/2016-10-09_21-48-24.html">
+            
+                    
+                    使用 GitBook 制作高质量电子书
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../2016-09/README.md">
+            
+                <span>
+            
+                    
+                    2016-09
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../2016-09/2016-09-18_22-55-14.html">
+            
+                <a href="../2016-09/2016-09-18_22-55-14.html">
+            
+                    
+                    自制 GitBook 插件之 gitbook-plugin-tags
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../2016-08/README.md">
+            
+                <span>
+            
+                    
+                    2016-08
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../2016-08/2016-08-19_07-30-10.html">
+            
+                <a href="../2016-08/2016-08-19_07-30-10.html">
+            
+                    
+                    Gitbook 网页版中文字型优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../2016-07/README.md">
+            
+                <span>
+            
+                    
+                    2016-07
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../2016-07/2016-07-31_18-17-05.html">
+            
+                <a href="../2016-07/2016-07-31_18-17-05.html">
+            
+                    
+                    enable HTTPS for hexo blog with dokku
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../2016-07/2016-07-10_20-34-03.html">
+            
+                <a href="../2016-07/2016-07-10_20-34-03.html">
+            
+                    
+                    家用服务器之 HTTP/2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../2016-07/2016-07-10_17-19-49.html">
+            
+                <a href="../2016-07/2016-07-10_17-19-49.html">
+            
+                    
+                    Let's Encrypt for Archlinux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../2016-07/2016-07-10_16-38-19.html">
+            
+                <a href="../2016-07/2016-07-10_16-38-19.html">
+            
+                    
+                    家用服务器之 Squid 分流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../2016-07/2016-07-10_10-19-55.html">
+            
+                <a href="../2016-07/2016-07-10_10-19-55.html">
+            
+                    
+                    Transparent routing for home server in China
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../2016-07/2016-07-09_15-08-41.html">
+            
+                <a href="../2016-07/2016-07-09_15-08-41.html">
+            
+                    
+                    家用服务器之无线路由器(AP)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../2016-07/2016-07-08_22-25-28.html">
+            
+                <a href="../2016-07/2016-07-08_22-25-28.html">
+            
+                    
+                    家用服务器之 DDNS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../2016-07/2016-07-03_22-10-13.html">
+            
+                <a href="../2016-07/2016-07-03_22-10-13.html">
+            
+                    
+                    Play with 新创云 X32-N2808
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../2016-01/README.md">
+            
+                <span>
+            
+                    
+                    2016-01
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../2016-01/2016-01-15_15-10-28.html">
+            
+                <a href="../2016-01/2016-01-15_15-10-28.html">
+            
+                    
+                    Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../2015-11/README.md">
+            
+                <span>
+            
+                    
+                    2015-11
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../2015-11/2015-11-26_20-10-26.html">
+            
+                <a href="../2015-11/2015-11-26_20-10-26.html">
+            
+                    
+                    在 Linux/OS X 下优雅地写论文(TeX)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../2015-11/2015-11-22_20-57-57.html">
+            
+                <a href="../2015-11/2015-11-22_20-57-57.html">
+            
+                    
+                    镇江一瞥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../2015-11/2015-11-18_13-52-51.html">
+            
+                <a href="../2015-11/2015-11-18_13-52-51.html">
+            
+                    
+                    WBAN Traffic Source Model - WBAN 应用层业务模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../2015-11/2015-11-09_19-22-58.html">
+            
+                <a href="../2015-11/2015-11-09_19-22-58.html">
+            
+                    
+                    三行小诗
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../2015-09/README.md">
+            
+                <span>
+            
+                    
+                    2015-09
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../2015-09/2015-09-04_10-44-40.html">
+            
+                <a href="../2015-09/2015-09-04_10-44-40.html">
+            
+                    
+                    数组和指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="README.md">
+            
+                <span>
+            
+                    
+                    2015-08
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="2015-08-27_15-57-59.html">
+            
+                <a href="2015-08-27_15-57-59.html">
+            
+                    
+                    一个简洁优雅的 XeLaTeX 简历模板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.11.2" data-path="2015-08-27_09-47-30.html">
+            
+                <a href="2015-08-27_09-47-30.html">
+            
+                    
+                    Akka Notes 4 - Request and Response
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="2015-08-26_13-26-24.html">
+            
+                <a href="2015-08-26_13-26-24.html">
+            
+                    
+                    Akka Notes 3 - Logging and Testing Actors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="2015-08-26_09-24-56.html">
+            
+                <a href="2015-08-26_09-24-56.html">
+            
+                    
+                    Akka Notes 1 - Introducing Actors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="2015-08-25_13-55-02.html">
+            
+                <a href="2015-08-25_13-55-02.html">
+            
+                    
+                    Akka Notes 2 - Actor Messaging
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="2015-08-04_17-29-01.html">
+            
+                <a href="2015-08-04_17-29-01.html">
+            
+                    
+                    Scala 和 Java 的混合编译指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../2015-07/README.md">
+            
+                <span>
+            
+                    
+                    2015-07
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../2015-07/2015-07-19_16-26-10.html">
+            
+                <a href="../2015-07/2015-07-19_16-26-10.html">
+            
+                    
+                    Deploy Hadoop cluster with Vagrant and Ambari
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../2015-07/2015-07-17_22-22-00.html">
+            
+                <a href="../2015-07/2015-07-17_22-22-00.html">
+            
+                    
+                    Windows 系统下的开发环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../2015-07/2015-07-12_10-59-18.html">
+            
+                <a href="../2015-07/2015-07-12_10-59-18.html">
+            
+                    
+                    A bit of Functional Programming
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../2015-06/README.md">
+            
+                <span>
+            
+                    
+                    2015-06
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../2015-06/2015-06-05_22-54-43.html">
+            
+                <a href="../2015-06/2015-06-05_22-54-43.html">
+            
+                    
+                    Filter RSS contents
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../2015-04/README.md">
+            
+                <span>
+            
+                    
+                    2015-04
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../2015-04/2015-04-01_16-19-45.html">
+            
+                <a href="../2015-04/2015-04-01_16-19-45.html">
+            
+                    
+                    一道阿里的抛硬币选择题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../2015-03/README.md">
+            
+                <span>
+            
+                    
+                    2015-03
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="../2015-03/2015-03-26_14-11-01.html">
+            
+                <a href="../2015-03/2015-03-26_14-11-01.html">
+            
+                    
+                    一道fork题引发的思考
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="../2015-03/2015-03-24_13-39-59.html">
+            
+                <a href="../2015-03/2015-03-24_13-39-59.html">
+            
+                    
+                    TCP协议浅析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.3" data-path="../2015-03/2015-03-19_08-45-55.html">
+            
+                <a href="../2015-03/2015-03-19_08-45-55.html">
+            
+                    
+                    编程语言的版本选择
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../2015-01/README.md">
+            
+                <span>
+            
+                    
+                    2015-01
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="../2015-01/2015-01-06_11-53-30.html">
+            
+                <a href="../2015-01/2015-01-06_11-53-30.html">
+            
+                    
+                    科研有方读书笔记之如何做科研
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../2014-11/README.md">
+            
+                <span>
+            
+                    
+                    2014-11
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../2014-11/2014-11-30_18-36-00.html">
+            
+                <a href="../2014-11/2014-11-30_18-36-00.html">
+            
+                    
+                    python for data analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="../2014-11/2014-11-30_16-00-56.html">
+            
+                <a href="../2014-11/2014-11-30_16-00-56.html">
+            
+                    
+                    Cubieboard2/树莓派之swap交换文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.3" data-path="../2014-11/2014-11-29_17-19-56.html">
+            
+                <a href="../2014-11/2014-11-29_17-19-56.html">
+            
+                    
+                    家用服务器之自建 DNS 服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.4" data-path="../2014-11/2014-11-29_11-04-04.html">
+            
+                <a href="../2014-11/2014-11-29_11-04-04.html">
+            
+                    
+                    Pycon2014 美国视频合辑下载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.5" data-path="../2014-11/2014-11-11_18-22-50.html">
+            
+                <a href="../2014-11/2014-11-11_18-22-50.html">
+            
+                    
+                    家用服务器之 UPnP/DLNA 媒体服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.6" data-path="../2014-11/2014-11-09_09-12-11.html">
+            
+                <a href="../2014-11/2014-11-09_09-12-11.html">
+            
+                    
+                    家用服务器之 BT(PT) 下载机
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.7" data-path="../2014-11/2014-11-08_19-26-58.html">
+            
+                <a href="../2014-11/2014-11-08_19-26-58.html">
+            
+                    
+                    Cubieboard2/树莓派之Archlinux网络配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.8" data-path="../2014-11/2014-11-07_17-21-14.html">
+            
+                <a href="../2014-11/2014-11-07_17-21-14.html">
+            
+                    
+                    Cubieboard2/树莓派之Archlinux系统配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.9" data-path="../2014-11/2014-11-06_15-56-23.html">
+            
+                <a href="../2014-11/2014-11-06_15-56-23.html">
+            
+                    
+                    Cubieboard2之Archlinux安装指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.10" data-path="../2014-11/2014-11-06_09-57-44.html">
+            
+                <a href="../2014-11/2014-11-06_09-57-44.html">
+            
+                    
+                    Introduction to Programming-计算机编程导论
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="../2014-10/README.md">
+            
+                <span>
+            
+                    
+                    2014-10
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.18.1" data-path="../2014-10/2014-10-13_09-23-28.html">
+            
+                <a href="../2014-10/2014-10-13_09-23-28.html">
+            
+                    
+                    digitalocean VPS 把玩
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="../2014-09/README.md">
+            
+                <span>
+            
+                    
+                    2014-09
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.19.1" data-path="../2014-09/2014-09-19_23-53-51.html">
+            
+                <a href="../2014-09/2014-09-19_23-53-51.html">
+            
+                    
+                    高校实验室环境下的服务器部署小议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19.2" data-path="../2014-09/2014-09-16_19-50-22.html">
+            
+                <a href="../2014-09/2014-09-16_19-50-22.html">
+            
+                    
+                    科研有方读书笔记之做科研的准备工作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../2014-08/README.md">
+            
+                <span>
+            
+                    
+                    2014-08
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.1" data-path="../2014-08/2014-08-15_21-56-57.html">
+            
+                <a href="../2014-08/2014-08-15_21-56-57.html">
+            
+                    
+                    第十八届校园歌手大赛-陈小熊特辑
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="../2014-06/README.md">
+            
+                <span>
+            
+                    
+                    2014-06
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.21.1" data-path="../2014-06/2014-06-13_21-53-44.html">
+            
+                <a href="../2014-06/2014-06-13_21-53-44.html">
+            
+                    
+                    栀子花开
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.2" data-path="../2014-06/2014-06-05_15-33-04.html">
+            
+                <a href="../2014-06/2014-06-05_15-33-04.html">
+            
+                    
+                    Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="../2014-05/README.md">
+            
+                <span>
+            
+                    
+                    2014-05
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.22.1" data-path="../2014-05/2014-05-24_14-37-25.html">
+            
+                <a href="../2014-05/2014-05-24_14-37-25.html">
+            
+                    
+                    烟雨空濛游西湖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.2" data-path="../2014-05/2014-05-16_21-56-49.html">
+            
+                <a href="../2014-05/2014-05-16_21-56-49.html">
+            
+                    
+                    Victor 9500羽毛球拍试用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.3" data-path="../2014-05/2014-05-16_20-47-22.html">
+            
+                <a href="../2014-05/2014-05-16_20-47-22.html">
+            
+                    
+                    deepin-screenshot把玩小记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.4" data-path="../2014-05/2014-05-16_17-24-43.html">
+            
+                <a href="../2014-05/2014-05-16_17-24-43.html">
+            
+                    
+                    英文Locale下使用Fcitx中文输入法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22.5" data-path="../2014-05/2014-05-02_11-24-57.html">
+            
+                <a href="../2014-05/2014-05-02_11-24-57.html">
+            
+                    
+                    Hexo多Repo部署——使用Github和GitCafe同时托管博客
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="../2014-02/README.md">
+            
+                <span>
+            
+                    
+                    2014-02
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.23.1" data-path="../2014-02/2014-02-09_15-38-35.html">
+            
+                <a href="../2014-02/2014-02-09_15-38-35.html">
+            
+                    
+                    树莓派把玩之OS和硬件选型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23.2" data-path="../2014-02/2014-02-09_13-52-08.html">
+            
+                <a href="../2014-02/2014-02-09_13-52-08.html">
+            
+                    
+                    Compile r8101 driver modules for Linux-3.10
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="../2013-12/README.md">
+            
+                <span>
+            
+                    
+                    2013-12
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.24.1" data-path="../2013-12/2013-12-13_21-56-43.html">
+            
+                <a href="../2013-12/2013-12-13_21-56-43.html">
+            
+                    
+                    resources of statistical learning - 统计学习资料小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24.2" data-path="../2013-12/2013-12-01_11-55-03.html">
+            
+                <a href="../2013-12/2013-12-01_11-55-03.html">
+            
+                    
+                    交大生活进行时之beginning
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" data-path="../2013-10/README.md">
+            
+                <span>
+            
+                    
+                    2013-10
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.25.1" data-path="../2013-10/2013-10-21_08-22-28.html">
+            
+                <a href="../2013-10/2013-10-21_08-22-28.html">
+            
+                    
+                    OPNET学习笔记之入门指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.2" data-path="../2013-10/2013-10-10_21-48-40.html">
+            
+                <a href="../2013-10/2013-10-10_21-48-40.html">
+            
+                    
+                    Excerpts of How to Read a Paper
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.3" data-path="../2013-10/2013-10-05_22-17-30.html">
+            
+                <a href="../2013-10/2013-10-05_22-17-30.html">
+            
+                    
+                    OPNET学习笔记之安装指南 (Win7 & XP)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.4" data-path="../2013-10/2013-10-05_09-39-12.html">
+            
+                <a href="../2013-10/2013-10-05_09-39-12.html">
+            
+                    
+                    Install OPNET14.5 on Windows OS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" data-path="../2013-09/README.md">
+            
+                <span>
+            
+                    
+                    2013-09
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.26.1" data-path="../2013-09/2013-09-03_09-12-03.html">
+            
+                <a href="../2013-09/2013-09-03_09-12-03.html">
+            
+                    
+                    使用exiftool 和digikam 管理数码照片
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" data-path="../2013-08/README.md">
+            
+                <span>
+            
+                    
+                    2013-08
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.27.1" data-path="../2013-08/2013-08-28_21-30-43.html">
+            
+                <a href="../2013-08/2013-08-28_21-30-43.html">
+            
+                    
+                    本科毕设之RapidIO技术小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.2" data-path="../2013-08/2013-08-28_15-31-20.html">
+            
+                <a href="../2013-08/2013-08-28_15-31-20.html">
+            
+                    
+                    MOOC之Coursera初体验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.3" data-path="../2013-08/2013-08-19_10-56-30.html">
+            
+                <a href="../2013-08/2013-08-19_10-56-30.html">
+            
+                    
+                    上海交大校外代理初体验
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27.4" data-path="../2013-08/2013-08-08_19-17-16.html">
+            
+                <a href="../2013-08/2013-08-08_19-17-16.html">
+            
+                    
+                    OPNET14.5 Win7/XP下安装小记
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" data-path="../2013-07/README.md">
+            
+                <span>
+            
+                    
+                    2013-07
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.28.1" data-path="../2013-07/2013-07-13_23-50-20.html">
+            
+                <a href="../2013-07/2013-07-13_23-50-20.html">
+            
+                    
+                    3G无线上网卡分享网络之 Arch Linux与Win7篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29" data-path="../2013-06/README.md">
+            
+                <span>
+            
+                    
+                    2013-06
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.29.1" data-path="../2013-06/2013-06-11_23-15-43.html">
+            
+                <a href="../2013-06/2013-06-11_23-15-43.html">
+            
+                    
+                    骑行：西电——西工大
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.29.2" data-path="../2013-06/2013-06-09_19-24-09.html">
+            
+                <a href="../2013-06/2013-06-09_19-24-09.html">
+            
+                    
+                    小米2 HDR小试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.30" data-path="../2013-05/README.md">
+            
+                <span>
+            
+                    
+                    2013-05
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.30.1" data-path="../2013-05/2013-05-04_14-46-53.html">
+            
+                <a href="../2013-05/2013-05-04_14-46-53.html">
+            
+                    
+                    add cc license to your blog with Hexo
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31" data-path="../2013-04/README.md">
+            
+                <span>
+            
+                    
+                    2013-04
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.31.1" data-path="../2013-04/2013-04-19_11-00-03.html">
+            
+                <a href="../2013-04/2013-04-19_11-00-03.html">
+            
+                    
+                    上海交大12年电院电子工程系研究生自主招生小记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.2" data-path="../2013-04/2013-04-06_16-46-13.html">
+            
+                <a href="../2013-04/2013-04-06_16-46-13.html">
+            
+                    
+                    819-FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.3" data-path="../2013-04/2013-04-06_16-44-00.html">
+            
+                <a href="../2013-04/2013-04-06_16-44-00.html">
+            
+                    
+                    个人考研复习小结——踏实筑梦，水到渠成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.4" data-path="../2013-04/2013-04-06_16-41-32.html">
+            
+                <a href="../2013-04/2013-04-06_16-41-32.html">
+            
+                    
+                    819-outline
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.5" data-path="../2013-04/2013-04-06_16-35-36.html">
+            
+                <a href="../2013-04/2013-04-06_16-35-36.html">
+            
+                    
+                    819专业课参考书目及资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.31.6" data-path="../2013-04/2013-04-06_16-10-58.html">
+            
+                <a href="../2013-04/2013-04-06_16-10-58.html">
+            
+                    
+                    819专业课简介及适用专业
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32" data-path="../2013-02/README.md">
+            
+                <span>
+            
+                    
+                    2013-02
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.32.1" data-path="../2013-02/2013-02-13_19-44-11.html">
+            
+                <a href="../2013-02/2013-02-13_19-44-11.html">
+            
+                    
+                    用Kindle看漫画
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32.2" data-path="../2013-02/2013-02-13_15-53-03.html">
+            
+                <a href="../2013-02/2013-02-13_15-53-03.html">
+            
+                    
+                    migrate from octopress to hexo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.32.3" data-path="../2013-02/2013-02-03_18-54-00.html">
+            
+                <a href="../2013-02/2013-02-03_18-54-00.html">
+            
+                    
+                    Use kmail with a proxy-给kmail加上代理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33" data-path="../2013-01/README.md">
+            
+                <span>
+            
+                    
+                    2013-01
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.33.1" data-path="../2013-01/2013-01-31_23-07-00.html">
+            
+                <a href="../2013-01/2013-01-31_23-07-00.html">
+            
+                    
+                    goldendict下优质词典简介及安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33.2" data-path="../2013-01/2013-01-21_17-41-00.html">
+            
+                <a href="../2013-01/2013-01-21_17-41-00.html">
+            
+                    
+                    Linux使用一周年记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33.3" data-path="../2013-01/2013-01-19_21-12-00.html">
+            
+                <a href="../2013-01/2013-01-19_21-12-00.html">
+            
+                    
+                    课程设计小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33.4" data-path="../2013-01/2013-01-11_19-42-00.html">
+            
+                <a href="../2013-01/2013-01-11_19-42-00.html">
+            
+                    
+                    终点,下一个起点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.33.5" data-path="../2013-01/2013-01-09_10-22-00.html">
+            
+                <a href="../2013-01/2013-01-09_10-22-00.html">
+            
+                    
+                    start blogging with octopress
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.34" data-path="../2012-07/README.md">
+            
+                <span>
+            
+                    
+                    2012-07
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.34.1" data-path="../2012-07/2012-07-09_15-41-00.html">
+            
+                <a href="../2012-07/2012-07-09_15-41-00.html">
+            
+                    
+                    Chase My Dream
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.35" data-path="../2012-04/README.md">
+            
+                <span>
+            
+                    
+                    2012-04
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.35.1" data-path="../2012-04/2012-04-01_22-44-47.html">
+            
+                <a href="../2012-04/2012-04-01_22-44-47.html">
+            
+                    
+                    书画之记忆by人渣
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36" data-path="../2012-01/README.md">
+            
+                <span>
+            
+                    
+                    2012-01
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.36.1" data-path="../2012-01/2012-01-24_15-28-00.html">
+            
+                <a href="../2012-01/2012-01-24_15-28-00.html">
+            
+                    
+                    武汉「七日游」流水帐之交通&下厨&华科篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.36.2" data-path="../2012-01/2012-01-11_11-45-00.html">
+            
+                <a href="../2012-01/2012-01-11_11-45-00.html">
+            
+                    
+                    ASCII码之大小写那些事儿
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.37" data-path="../2010-12/README.md">
+            
+                <span>
+            
+                    
+                    2010-12
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.37.1" data-path="../2010-12/2010-12-13_23-50-20.html">
+            
+                <a href="../2010-12/2010-12-13_23-50-20.html">
+            
+                    
+                    电子制作之处女作-西电动态校徽
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.38" data-path="../../tags.md">
+            
+                <span>
+            
+                    
+                    Tags
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Akka Notes 4 - Request and Response</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="akka-notes-4---request-and-response">Akka Notes 4 - Request and Response</h1>
+<p>&#x8BE5;&#x7CFB;&#x5217;&#x8BD1;&#x81EA; <a href="http://rerun.me/" target="_blank">Rerun.me</a>, &#x5E76;&#x5728;&#x539F;&#x4F5C;&#x8005;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6709;&#x6240;&#x6539;&#x52A8;&#x3002;&#x672C;&#x7BC7;&#x4E3A;&#x8BE5;&#x7CFB;&#x5217;&#x7684;&#x7B2C;&#x56DB;&#x7BC7;&#x2014;&#x2014;Actor &#x7684;&#x6D88;&#x606F;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x3002;</p>
+<p>&#x524D;&#x6587; <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html" target="_blank">Akka Notes 2 - Actor Messaging</a> &#x4E2D;&#x5DF2;&#x7ECF;&#x5BF9; Actor &#x7684;&#x6D88;&#x606F;&#x673A;&#x5236;&#x505A;&#x4E86;&#x7B80;&#x4ECB;&#xFF0C;&#x5728;&#x90A3;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E00;&#x6761; fire-n-forget &#x6D88;&#x606F;&#x662F;&#x5982;&#x4F55;&#x53D1;&#x9001;&#x7684;&#x3002;(&#x5373;&#x6211;&#x4EEC;&#x5411; Actor &#x53D1;&#x9001;&#x4E00;&#x6761;&#x6D88;&#x606F;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x671F;&#x671B;&#x5F97;&#x5230;&#x5B83;&#x7684;&#x56DE;&#x5E94;)</p>
+<p>&#x4ECE;&#x6280;&#x672F;&#x89D2;&#x5EA6;&#x8003;&#x8651;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x7ED9; Actor &#x603B;&#x662F;&#x671F;&#x671B;&#x6709;&#x526F;&#x4F5C;&#x7528;&#x53D1;&#x751F;&#x7684;&#xFF0C;&#x4ECE;&#x8BBE;&#x8BA1;&#x4E0A;&#x4FBF;&#x662F;&#x5982;&#x6B64;&#x3002;&#x76EE;&#x6807; Actor &#x9664;&#x4E86;&#x4E0D;&#x4F5C;&#x56DE;&#x5E94;&#x4E4B;&#x5916;&#x8FD8;&#x53EF;&#x4EE5;&#x5BF9;&#x6D88;&#x606F;&#x505A;&#x5982;&#x4E0B;&#x4E8B;&#x60C5;&#xFF1A;</p>
+<ol>
+<li>&#x8FD4;&#x56DE;&#x4E00;&#x6761;&#x56DE;&#x590D;&#x7ED9;&#x53D1;&#x9001;&#x8005;(&#x5728;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;TeacherActor &#x56DE;&#x5E94;&#x4E00;&#x6761;&#x540D;&#x8A00;&#x7ED9; StudentActor)</li>
+<li>&#x7ED9;&#x5176;&#x4ED6;&#x6709;&#x53EF;&#x80FD;&#x6210;&#x4E3A;&#x76EE;&#x6807;&#x53D7;&#x4F17;&#x7684; Actor &#x8F6C;&#x53D1;&#x4E00;&#x6761;&#x56DE;&#x5E94;&#xFF0C;&#x8FD9;&#x4E2A; Actor &#x53CD;&#x8FC7;&#x6765;&#x4F1A;&#x56DE;&#x5E94;/&#x8F6C;&#x53D1;&#x800C;&#x4EA7;&#x751F;&#x526F;&#x4F5C;&#x7528;&#x3002;Routers &#x548C; Supervisors &#x5C31;&#x662F;&#x8FD9;&#x4E00;&#x7C7B;&#x4F8B;&#x5B50;&#x3002;&#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x5BF9;&#x8FD9;&#x4E24;&#x7C7B;&#x8FDB;&#x884C;&#x8BE6;&#x89E3;&#x3002;</li>
+</ol>
+<h2 id="&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;">&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;</h2>
+<p>&#x5728;&#x672C;&#x6587;&#x4E2D;&#x6211;&#x4EEC;&#x5C06;&#x96C6;&#x4E2D;&#x5728;&#x4E0A;&#x8FF0;&#x7B2C;&#x4E00;&#x70B9;&#xFF1A;&#x8BF7;&#x6C42;&#x4E0E;&#x54CD;&#x5E94; &#x6574;&#x4E2A;&#x5468;&#x671F;&#x3002;&#x4E00;&#x56FE;&#x80DC;&#x5343;&#x8A00;&#xFF0C;&#x4E0A;&#x56FE;&#xFF01;</p>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_RequestReponse.png-q75" alt="RequestReponse"></p>
+<!--more-->
+<p>&#x8FD9;&#x5F20;&#x56FE;&#x4F20;&#x8FBE;&#x4E86;&#x6211;&#x4EEC;&#x5C06;&#x8981;&#x8FBE;&#x6210;&#x7684;&#x76EE;&#x6807;&#xFF0C;&#x7B80;&#x5355;&#x8D77;&#x89C1;&#xFF0C;&#x8FD9;&#x5F20;&#x56FE;&#x5E76;&#x4E0D;&#x5C55;&#x793A; ActorSystem, Dispatcher &#x6216;&#x8005; Mailboxes.</p>
+<ol>
+<li><code>DriverApp</code> &#x53D1;&#x9001;&#x4E00;&#x6761; <code>InitSignal</code> &#x6D88;&#x606F;&#x7ED9; <code>StudentActor</code></li>
+<li><code>StudentActor</code> &#x5BF9; <code>InitSignal</code> &#x6D88;&#x606F;&#x4F5C;&#x51FA;&#x56DE;&#x5E94;&#x5E76;&#x53D1;&#x9001;&#x4E00;&#x6761; <code>QuoteRequest</code> &#x6D88;&#x606F;&#x7ED9; <code>TeacherActor</code></li>
+<li>&#x548C;&#x6211;&#x4EEC;&#x7B2C;&#x4E00;&#x6B21;&#x8BA8;&#x8BBA;&#x7684;&#x4E00;&#x6837;&#xFF0C;<code>TeacherActor</code> &#x5219;&#x56DE;&#x5E94;&#x4E00;&#x6761; <code>QuoteResponse</code></li>
+<li><code>StudentActor</code> &#x8BB0;&#x5F55; <code>QuoteResponse</code> &#x5230; console/logger</li>
+</ol>
+<p>&#x6211;&#x4EEC;&#x63A5;&#x4E0B;&#x6765;&#x5199;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x6765;&#x9A8C;&#x8BC1;&#x5B83;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x5BF9;&#x4EE5;&#x4E0A;&#x56DB;&#x70B9;&#x9010;&#x4E00;&#x5256;&#x6790;&#x3002;</p>
+<h3 id="1-driverapp-&#x53D1;&#x9001;-initsignal">1. DriverApp &#x53D1;&#x9001; InitSignal</h3>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_DriverApp.png-q75" alt="DriverApp"></p>
+<p>&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x89C1;&#xFF0C;&#x4F60;&#x53EF;&#x80FD;&#x731C;&#x5230;&#x8FD9;&#x4E2A; DriverApp &#x53EF;&#x80FD;&#x8981;&#x5E72;&#x4EC0;&#x4E48;&#x4E86;&#xFF0C;&#x5B83;&#x505A;&#x4E86;&#x5982;&#x4E0B;&#x56DB;&#x4EF6;&#x4E8B;&#xFF1A;</p>
+<ol>
+<li>&#x521D;&#x59CB;&#x5316; ActorSystem</li>
+</ol>
+<pre><code class="lang-scala"><span class="hljs-comment">//Initialize the ActorSystem</span>
+  <span class="hljs-keyword">val</span> system = <span class="hljs-type">ActorSystem</span>(<span class="hljs-string">&quot;UniversityMessageSystem&quot;</span>)
+</code></pre>
+<ol>
+<li>&#x521B;&#x5EFA; TeacherActor</li>
+</ol>
+<pre><code class="lang-scala"><span class="hljs-comment">//create the teacher actor</span>
+  <span class="hljs-keyword">val</span> teacherRef = system.actorOf(<span class="hljs-type">Props</span>[<span class="hljs-type">TeacherActor</span>], <span class="hljs-string">&quot;teacherActor&quot;</span>)
+</code></pre>
+<ol>
+<li>&#x521B;&#x5EFA; StudentActor</li>
+</ol>
+<pre><code class="lang-scala"><span class="hljs-comment">//create the Student Actor - pass the teacher actorref as a constructor parameter to StudentActor</span>
+  <span class="hljs-keyword">val</span> studentRef = system.actorOf(<span class="hljs-type">Props</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">StudentActor</span>(teacherRef)), <span class="hljs-string">&quot;studentActor&quot;</span>)
+</code></pre>
+<p>&#x4F60;&#x53EF;&#x80FD;&#x6CE8;&#x610F;&#x5230;&#x6211;&#x5C06; TeacherActor &#x7684; ActorRef &#x4F5C;&#x4E3A;&#x6784;&#x9020;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x4E86; StudentActor, &#x8FD9;&#x6837; StudentActor &#x5C31;&#x80FD;&#x4F7F;&#x7528; ActorRef &#x53D1;&#x9001;&#x6D88;&#x606F;&#x7ED9; TeacherActor &#x4E86;&#x3002;&#x5F53;&#x7136;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x8FBE;&#x5230;&#x540C;&#x6837;&#x7684;&#x6548;&#x679C;(&#x6BD4;&#x5982;&#x901A;&#x8FC7; Props)&#x3002;&#x4F46;&#x662F;&#x901A;&#x8FC7;&#x6784;&#x9020;&#x53C2;&#x6570;&#x7684;&#x65B9;&#x5F0F;&#x5728;&#x6211;&#x4EEC;&#x540E;&#x7EED;&#x4F7F;&#x7528; Supervisors &#x548C; Routers &#x65F6;&#x5C06;&#x4F1A;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x3002;&#x5F88;&#x5FEB;&#x6211;&#x4EEC;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x5B50; Actor &#x4E5F;&#x80FD;&#x505A;&#x5230;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x5728;&#x8FD9;&#x4ECE;&#x540D;&#x5B57;&#x4E0A;&#x542C;&#x8D77;&#x6765;&#x4E0D;&#x592A;&#x9002;&#x5408;&#x2014;&#x2014; &#x4F7F;&#x7528; Student &#x6765;&#x751F;&#x6210; Teacher &#x542C;&#x8D77;&#x6765;&#x786E;&#x5B9E;&#x4E0D;&#x592A;&#x597D;&#x3002;</p>
+<ol>
+<li>DriverApp &#x53D1;&#x9001; InitSignal &#x7ED9; StudentActor</li>
+</ol>
+<p>DriverApp &#x53D1;&#x9001; InitSignal &#x7ED9; StudentActor &#x540E; StudentActor &#x5C31;&#x80FD;&#x53D1;&#x9001;&#x4E00;&#x6761; QuoteRequest &#x7ED9; TeacherActor &#x4E86;&#x3002;</p>
+<pre><code class="lang-scala"><span class="hljs-comment">//send a message to the Student Actor</span>
+  studentRef ! <span class="hljs-type">InitSignal</span>
+</code></pre>
+<p>&#x8FD9;&#x5C31;&#x662F; DriverClass &#x7684;&#x6838;&#x5FC3;&#x4E86;&#xFF0C;Thread.sleep &#x548C; ActorSystem.shutdown &#x53EA;&#x662F;&#x7528;&#x6765;&#x7B49;&#x5F85;&#x6570;&#x79D2;&#x4EE5;&#x4F7F;&#x5F97;&#x6D88;&#x606F;&#x5728;&#x6700;&#x7EC8;&#x5173;&#x95ED; ActorSystem &#x4E4B;&#x524D;&#x53D1;&#x9001;&#x5B8C;&#x6BD5;&#x3002;</p>
+<p>DriverApp.scala &#x7A0B;&#x5E8F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> me.yuanbin.akkanotes.requestresponse
+
+<span class="hljs-keyword">import</span> akka.actor.<span class="hljs-type">ActorSystem</span>
+<span class="hljs-keyword">import</span> akka.actor.<span class="hljs-type">Props</span>
+<span class="hljs-keyword">import</span> me.yuanbin.akkanotes.actormsg.<span class="hljs-type">StudentActor</span>
+<span class="hljs-keyword">import</span> me.yuanbin.akkanotes.actormsg.<span class="hljs-type">TeacherActor</span>
+<span class="hljs-keyword">import</span> me.yuanbin.akkanotes.protocols.<span class="hljs-type">StudentProtocol</span>._
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">DriverApp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">App</span> </span>{
+  <span class="hljs-comment">//Initialize the ActorSystem</span>
+  <span class="hljs-keyword">val</span> system = <span class="hljs-type">ActorSystem</span>(<span class="hljs-string">&quot;UniversityMessageSystem&quot;</span>)
+
+  <span class="hljs-comment">//create the teacher actor</span>
+  <span class="hljs-keyword">val</span> teacherRef = system.actorOf(<span class="hljs-type">Props</span>[<span class="hljs-type">TeacherActor</span>], <span class="hljs-string">&quot;teacherActor&quot;</span>)
+
+  <span class="hljs-comment">//create the Student Actor - pass the teacher actorref as a constructor parameter to StudentActor</span>
+  <span class="hljs-keyword">val</span> studentRef = system.actorOf(<span class="hljs-type">Props</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">StudentActor</span>(teacherRef)), <span class="hljs-string">&quot;studentActor&quot;</span>)
+
+  <span class="hljs-comment">//send a message to the Student Actor</span>
+  studentRef ! <span class="hljs-type">InitSignal</span>
+
+  <span class="hljs-comment">//Let&apos;s wait for a couple of seconds before we shut down the system</span>
+  <span class="hljs-type">Thread</span>.sleep(<span class="hljs-number">2000</span>)
+
+  <span class="hljs-comment">//Shut down the ActorSystem.</span>
+  system.shutdown()
+}
+</code></pre>
+<h3 id="studentactor-&#x54CD;&#x5E94;-initsignal-&#x5E76;&#x53D1;&#x9001;-quoterequest-&#x6D88;&#x606F;&#x7ED9;-teacheractor">StudentActor &#x54CD;&#x5E94; InitSignal &#x5E76;&#x53D1;&#x9001; QuoteRequest &#x6D88;&#x606F;&#x7ED9; TeacherActor</h3>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_StudentTeacher23.png-q75" alt="StudentTeacher23"></p>
+<pre><code class="lang-scala"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StudentActor</span> (<span class="hljs-params">teacherActorRef:<span class="hljs-type">ActorRef</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">Actor</span> <span class="hljs-keyword">with</span> <span class="hljs-title">ActorLogging</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">receive</span> </span>= {
+    <span class="hljs-comment">/*
+     * This InitSignal is received from the DriverApp. 
+     * On receipt, the Student sends a message to the Teacher actor. 
+     * The teacher actor on receipt of the QuoteRequest responds with a QuoteResponse 
+     */</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-type">InitSignal</span>=&gt; {
+      teacherActorRef ! <span class="hljs-type">QuoteRequest</span>
+    }
+    ...
+</code></pre>
+<h3 id="teacheractor-&#x56DE;&#x5E94;&#x4E00;&#x6761;-quoteresponse">TeacherActor &#x56DE;&#x5E94;&#x4E00;&#x6761; QuoteResponse</h3>
+<p>&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x548C;&#x6211;&#x4EEC;&#x5728; <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html" target="_blank">Akka Notes 2 - Actor Messaging</a> &#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x51E0;&#x4E4E;&#x4E00;&#x6837;&#x3002;TeacherActor &#x5728;&#x63A5;&#x6536; QuoteRequest &#x6D88;&#x606F;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x6761; QuoteResponse.</p>
+<p>TeacherActor &#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> me.yuanbin.akkanotes.actormsg
+
+<span class="hljs-keyword">import</span> akka.actor.{<span class="hljs-type">Actor</span>, <span class="hljs-type">ActorLogging</span>}
+<span class="hljs-keyword">import</span> me.yuanbin.akkanotes.protocols.<span class="hljs-type">StudentProtocol</span>._
+<span class="hljs-keyword">import</span> me.yuanbin.akkanotes.protocols.<span class="hljs-type">TeacherProtocol</span>._
+<span class="hljs-keyword">import</span> scala.util.<span class="hljs-type">Random</span>
+
+<span class="hljs-comment">/*
+ * The Philosophy Teacher
+ *
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TeacherActor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Actor</span> <span class="hljs-keyword">with</span> <span class="hljs-title">ActorLogging</span> </span>{
+  <span class="hljs-keyword">val</span> quotes = <span class="hljs-type">List</span>(
+    <span class="hljs-string">&quot;Moderation is for cowards&quot;</span>,
+    <span class="hljs-string">&quot;Anything worth doing is worth overdoing&quot;</span>,
+    <span class="hljs-string">&quot;The trouble is you think you have time&quot;</span>,
+    <span class="hljs-string">&quot;You never gonna know if you never even try&quot;</span>)
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">receive</span> </span>= {
+    <span class="hljs-keyword">case</span> <span class="hljs-type">QuoteRequest</span> =&gt; {
+      <span class="hljs-comment">//Get a random Quote from the list and construct a response</span>
+      <span class="hljs-keyword">val</span> quoteResponse = <span class="hljs-type">QuoteResponse</span>(quotes(<span class="hljs-type">Random</span>.nextInt(quotes.size)))
+
+      log.info (<span class="hljs-string">&quot;QuoteRequest received. Sending response to Student&quot;</span>)
+      <span class="hljs-comment">//respond back to the Student who is the original sender of QuoteRequest</span>
+      sender ! quoteResponse
+    }
+  }
+}
+</code></pre>
+<h3 id="studentactor-&#x63A5;&#x6536;&#x6765;&#x81EA;-teacheractor-&#x7684;-quoteresponse-&#x5E76;&#x8BB0;&#x5F55;&#x5230;-consolelogger">StudentActor &#x63A5;&#x6536;&#x6765;&#x81EA; TeacherActor &#x7684; QuoteResponse &#x5E76;&#x8BB0;&#x5F55;&#x5230; console/logger</h3>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_StudentLog.png-q75" alt="StudentLog"></p>
+<p>StudentActor &#x7684;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> me.yuanbin.akkanotes.actormsg
+
+<span class="hljs-keyword">import</span> akka.actor.{<span class="hljs-type">Actor</span>, <span class="hljs-type">ActorLogging</span>, <span class="hljs-type">ActorRef</span>}
+<span class="hljs-keyword">import</span> me.yuanbin.akkanotes.protocols.<span class="hljs-type">StudentProtocol</span>._
+<span class="hljs-keyword">import</span> me.yuanbin.akkanotes.protocols.<span class="hljs-type">TeacherProtocol</span>._
+
+<span class="hljs-comment">/*
+ * The Student Actor class. 
+ * 
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StudentActor</span> (<span class="hljs-params">teacherActorRef:<span class="hljs-type">ActorRef</span></span>) <span class="hljs-keyword">extends</span> <span class="hljs-title">Actor</span> <span class="hljs-keyword">with</span> <span class="hljs-title">ActorLogging</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">receive</span> </span>= {
+    <span class="hljs-comment">/*
+     * This InitSignal is received from the DriverApp. 
+     * On receipt, the Student sends a message to the Teacher actor. 
+     * The teacher actor on receipt of the QuoteRequest responds with a QuoteResponse 
+     */</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-type">InitSignal</span>=&gt; {
+      teacherActorRef ! <span class="hljs-type">QuoteRequest</span>
+    }
+
+    <span class="hljs-comment">/*
+     * The Student simply logs the quote received from the TeacherActor
+     * 
+     */</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-type">QuoteResponse</span>(quoteString) =&gt; {
+      log.info(<span class="hljs-string">&quot;Received QuoteResponse from Teacher&quot;</span>)
+      log.info(<span class="hljs-string">s&quot;Printing from Student Actor <span class="hljs-subst">$quoteString</span>&quot;</span>)
+    }
+  }
+}
+</code></pre>
+<h2 id="&#x6D4B;&#x8BD5;">&#x6D4B;&#x8BD5;</h2>
+<p>Now, our testcase would simulate the DriverApp. Since, the StudentActor just logs the message and we won&apos;t be able to assert on the QuoteResponse itself, we&apos;ll just assert the presence of the log message in the EventStream (just like we talked last time)</p>
+<p>&#x6211;&#x4EEC;&#x7684;&#x6D4B;&#x8BD5;&#x5E94;&#x8BE5;&#x53BB;&#x9A71;&#x52A8; DriverApp, &#x56E0;&#x4E3A; StudentActor &#x4EC5;&#x4EC5;&#x53EA;&#x662F;&#x8BB0;&#x5F55;&#x4E86;&#x6D88;&#x606F;&#x5E76;&#x4E14;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x80FD;&#x5BF9; QuoteResponse &#x672C;&#x8EAB;&#x8FDB;&#x884C;&#x65AD;&#x8A00;&#xFF0C;&#x6211;&#x4EEC;&#x4EC5;&#x5BF9; EventStream &#x4E2D;&#x65E5;&#x5FD7;&#x6D88;&#x606F;&#x51FA;&#x73B0;&#x7684;&#x5730;&#x65B9;&#x8FDB;&#x884C;&#x65AD;&#x8A00;(&#x6B63;&#x5982;&#x6211;&#x4EEC;&#x5728; <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Logging-and-Testing-Actors.html" target="_blank">Akka Notes 3 - Logging and Testing Actors</a>) &#x4E2D;&#x6240;&#x63D0;&#x5230;&#x7684;&#x3002;</p>
+<h2 id="&#x6E90;&#x7801;">&#x6E90;&#x7801;</h2>
+<p>&#x6E90;&#x7801;&#x53EF;&#x4EE5;&#x4ECE; <a href="https://github.com/billryan/akka_notes/tree/master/akka_messaging_request_response" target="_blank">akka_notes/akka_messaging_request_response</a> &#x627E;&#x5230;&#x3002;</p>
+<p>&#x8FD0;&#x884C;&#x65B9;&#x5F0F;&#xFF0C;&#x786E;&#x4FDD;&#x7CFB;&#x7EDF;&#x88C5;&#x597D; sbt 0.13.8.</p>
+<pre><code>cd akka_notes/akka_messaging_request_response
+sbt run
+sbt test
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+    
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+
+    
+    <div class="powered-by-algolia">
+        powered by <a href="https://algolia.com" target="_blank"><img src="../../gitbook/gitbook-plugin-algolia/algolia-logo.jpg" /></a>
+    </div>
+    
+
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2015-08-27_15-57-59.html" class="navigation navigation-prev " aria-label="Previous page: 一个简洁优雅的 XeLaTeX 简历模板">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="2015-08-26_13-26-24.html" class="navigation navigation-next " aria-label="Next page: Akka Notes 3 - Logging and Testing Actors">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"created":"2015-08-27_09-47-30","title":"Akka Notes 4 - Request and Response","level":"1.11.2","depth":2,"next":{"title":"Akka Notes 3 - Logging and Testing Actors","level":"1.11.3","depth":2,"path":"posts/2015-08/2015-08-26_13-26-24.md","ref":"posts/2015-08/2015-08-26_13-26-24.md","articles":[]},"previous":{"title":"一个简洁优雅的 XeLaTeX 简历模板","level":"1.11.1","depth":2,"path":"posts/2015-08/2015-08-27_15-57-59.md","ref":"posts/2015-08/2015-08-27_15-57-59.md","articles":[]},"dir":"ltr"},"config":{"plugins":["algolia@1.0.7","disqus","ga","gist","sitemap","tags"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"disqus":{"useIdentifier":false,"shortName":"billryan"},"gist":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"algolia":{"freeAccount":"true","index":"blog","applicationID":"JR5AN1IRYS","publicKey":"a400faf3b8075c5354366b0508f4fed9"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sitemap":{"hostname":"https://blog.yuanbin.me/"},"tags":{"placement":"top"},"ga":{"configuration":"auto","token":"UA-32317667-4"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"东海一叶","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Quality Matter","gitbook":"*","description":"Blog"},"file":{"path":"posts/2015-08/2015-08-27_09-47-30.md","mtime":"2018-02-28T16:17:56.089Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-28T16:19:26.776Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-algolia/search-algolia.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.16.1/URI.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-disqus/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.4/gist-embed.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-gist/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

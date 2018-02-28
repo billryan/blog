@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Quality Matters">
+    <title>上海交大校外代理初体验 - Quality Matters</title>
+    <meta name="author" content="Yuan Bin">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="上海交大校外代理初体验">
+<meta property="og:url" content="http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html">
+<meta property="og:site_name" content="Quality Matters">
+<meta property="og:description" content="最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/inproxy-sjtu.png">
+<meta property="og:updated_time" content="2015-11-26T08:29:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="上海交大校外代理初体验">
+<meta name="twitter:description" content="最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的">
+<meta name="twitter:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/inproxy-sjtu.png">
+<meta name="twitter:creator" content="@billryan_yb">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://blog.yuanbin.me/assets/images/bill.png"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32317667-4']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Quality Matters</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/bill.png" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Yuan Bin</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Quality Matters <br/> <a href="http://www.yuanbin.me">http://www.yuanbin.me</a></p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/billryan" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">Github</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://twitter.com/billryan_yb" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://www.instagram.com/bin.yuan" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-instagram"></i>
+                        <span class="sidebar-button-desc">Instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="mailto:yuanbin2014@gmail.com" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            上海交大校外代理初体验
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2013-08-19T10:56:30+08:00">
+	
+		    Aug 19, 2013
+    	
+    </time>
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的论文也不可能会交待较多的细节。如果要结合OPNET来分析网络性能什么的显然是不知从何下手，于是乎习惯性的Google了一番，找到了一篇博士论文，正准备下载的时候… 乖乖，现在已经不是校园网了哟，立马向西电的基友求助，短信刚发出去就想到了个令人激动的消息——隐约记得交大网络信息中心是提供校外访问的代理服务器的，那么？Google一下立马找到了<a href="http://www.lib.sjtu.edu.cn/list.do?articleType_id=45&amp;type=63" target="_blank" rel="external">这个链接</a>，网页中提供了局域网和ADSL下的使用方法，都是针对IE的。说白了就是提供了代理服务器的地址和端口号，如果只是在浏览器中使用的话SwitchySharp/Foxyproxy插件新增个代理就好了，试了下速度很理想！</p>
+<h2 id="代理服务器"><a href="#代理服务器" class="headerlink" title="代理服务器"></a>代理服务器</h2><p>代理服务器名：inproxy.sjtu.edu.cn<br>端口号：8000 OR 80  </p>
+<p>连通后会让输入jAccount帐号密码，这个新生已经可以申请了，perfect!</p>
+<h3 id="全局代理"><a href="#全局代理" class="headerlink" title="全局代理"></a>全局代理</h3><p>虽然大部分情况在浏览器中使用代理就足够了，但有时其他应用程序也许也需要代理访问，这个时候就稍微有点麻烦喽。<br>如果想要全局代理的话则需要模拟http认证，Windows下似乎有p-roxycap比较方便，Linux下暂时还没看到类似的软件，之前也没怎么需要用非浏览器应用中使用代理，这方面了解不太多。舍友yqt用Python写了个DXTL的全局代理，于是乎便借过来用了下，还不错，效果就是下边这个样子：<br><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/inproxy-sjtu.png" alt="sjtu-inroxy"><br>需要使用时只需在Terminal下运行<code>python sjtu-inproxy.py</code>即可，很方便。<br><a id="more"></a><br>上代码==&gt;<br><figure class="highlight python"><figcaption><span>sjtu-inproxy</span><a href="http://billryan.me/downloads/sjtu-inproxy.py" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></div><div class="line"><span class="comment"># Filename: sjtu-inproxy.py</span></div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line">    *major code is retrieved and modified from webvpn_proxy_via_stunnel.py by</div><div class="line">    yqt.  </div><div class="line">    http://script-holic.appspot.com/2013/04/22/SPDY%20proxy%E2%86%92HTTP%E4%BB%A3%E7%90%86/%E5%85%A8%E5%B1%80%E4%BB%A3%E7%90%86</div><div class="line">'''</div><div class="line"></div><div class="line"><span class="keyword">from</span> BaseHTTPServer <span class="keyword">import</span> BaseHTTPRequestHandler, HTTPServer</div><div class="line"><span class="keyword">from</span> httplib <span class="keyword">import</span> HTTPResponse</div><div class="line"><span class="keyword">from</span> SocketServer <span class="keyword">import</span> ThreadingMixIn</div><div class="line"><span class="keyword">import</span> socket, os, select</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="keyword">import</span> base64</div><div class="line"></div><div class="line"><span class="comment"># Minimize Memory Usage</span></div><div class="line">threading.stack_size(<span class="number">128</span>*<span class="number">1024</span>)</div><div class="line"></div><div class="line">BufferSize = <span class="number">8192</span></div><div class="line"></div><div class="line"><span class="comment"># local proxy</span></div><div class="line">local_proxy_host = <span class="string">''</span> <span class="comment"># bind all network types</span></div><div class="line">local_proxy_port = <span class="number">8090</span></div><div class="line"></div><div class="line"><span class="comment"># proxy host</span></div><div class="line">proxy_host = <span class="string">'inproxy.sjtu.edu.cn'</span></div><div class="line">proxy_port = <span class="number">80</span></div><div class="line">proxy_user = <span class="string">'your jAccount user name'</span></div><div class="line">proxy_pass = <span class="string">'your jAccount user secret'</span></div><div class="line"></div><div class="line">auth = proxy_user + <span class="string">':'</span> + proxy_pass</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Handler</span><span class="params">(BaseHTTPRequestHandler)</span>:</span></div><div class="line">    remote = <span class="keyword">None</span></div><div class="line">    </div><div class="line">    <span class="comment"># Ignore Connection Failure</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">handle</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            BaseHTTPRequestHandler.handle(self)</div><div class="line">        <span class="keyword">except</span> socket.error: <span class="keyword">pass</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">finish</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            BaseHTTPRequestHandler.finish(self)</div><div class="line">        <span class="keyword">except</span> socket.error: <span class="keyword">pass</span></div><div class="line">    </div><div class="line">    <span class="comment"># CONNECT Data Transfer</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transfer</span><span class="params">(self, a, b)</span>:</span></div><div class="line">        fdset = [a, b]</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            r,w,e = select.select(fdset, [], [])</div><div class="line">            <span class="keyword">if</span> a <span class="keyword">in</span> r:</div><div class="line">                data = a.recv(BufferSize)</div><div class="line">                <span class="keyword">if</span> <span class="keyword">not</span> data: <span class="keyword">break</span></div><div class="line">                b.sendall(data)</div><div class="line">            <span class="keyword">if</span> b <span class="keyword">in</span> r:</div><div class="line">                data = b.recv(BufferSize)</div><div class="line">                <span class="keyword">if</span> <span class="keyword">not</span> data: <span class="keyword">break</span></div><div class="line">                a.sendall(data)</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">proxy</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.remote <span class="keyword">is</span> <span class="keyword">None</span> <span class="keyword">or</span> self.lastHost != self.headers[<span class="string">'Host'</span>]:</div><div class="line">            self.remote = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line">            self.remote.connect((proxy_host, proxy_port))</div><div class="line">        self.remote.sendall(self.requestline.encode(<span class="string">'ascii'</span>) + <span class="string">b'\r\n'</span>)</div><div class="line">        <span class="comment"># Add auth inf.</span></div><div class="line">        self.headers[<span class="string">'Proxy-Authorization'</span>] = <span class="string">'Basic %s'</span> % base64.b64encode(auth)</div><div class="line">        <span class="comment">#self.remote.sendall('Proxy-Authorization: Basic %s\r\n' % base64.b64encode(auth))</span></div><div class="line">        headerstr = str(self.headers).replace(<span class="string">'\r\n'</span>, <span class="string">'\n'</span>).replace(<span class="string">'\n'</span>, <span class="string">'\r\n'</span>)</div><div class="line">        self.remote.sendall(headerstr.encode(<span class="string">'ascii'</span>) + <span class="string">b"\r\n"</span>)</div><div class="line">        <span class="comment"># Send Post data</span></div><div class="line">        <span class="keyword">if</span> self.command == <span class="string">'POST'</span>:</div><div class="line">            self.remote.sendall(self.rfile.read(int(self.headers[<span class="string">'Content-Length'</span>])))</div><div class="line">        response = HTTPResponse(self.remote, method=self.command)</div><div class="line">        response.begin()</div><div class="line">        </div><div class="line">        <span class="comment"># Reply to the browser</span></div><div class="line">        status = <span class="string">'HTTP/1.1 '</span> + str(response.status) + <span class="string">' '</span> + response.reason</div><div class="line">        self.wfile.write(status.encode(<span class="string">'ascii'</span>) + <span class="string">b'\r\n'</span>)</div><div class="line">        hlist = []</div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> response.msg.headers: <span class="comment"># Fixed multiple values of a same name</span></div><div class="line">            <span class="keyword">if</span> <span class="string">'TRANSFER-ENCODING'</span> <span class="keyword">not</span> <span class="keyword">in</span> line.upper():</div><div class="line">                hlist.append(line)</div><div class="line">        self.wfile.write(<span class="string">''</span>.join(hlist) + <span class="string">b'\r\n'</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> self.command == <span class="string">'CONNECT'</span> <span class="keyword">and</span> response.status == <span class="number">200</span>:</div><div class="line">            <span class="keyword">return</span> self.transfer(self.remote, self.connection)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">                response_data = response.read(BufferSize)</div><div class="line">                <span class="keyword">if</span> <span class="keyword">not</span> response_data: <span class="keyword">break</span></div><div class="line">                self.wfile.write(response_data)</div><div class="line">    </div><div class="line">    do_POST = do_GET = do_CONNECT = proxy</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadingHTTPServer</span><span class="params">(ThreadingMixIn, HTTPServer)</span>:</span> </div><div class="line">    <span class="comment">#address_family = socket.AF_INET6 # IPV6</span></div><div class="line">    address_family = socket.AF_INET <span class="comment"># IPV4</span></div><div class="line"></div><div class="line">server_address = (local_proxy_host, local_proxy_port)</div><div class="line">server = ThreadingHTTPServer(server_address, Handler)</div><div class="line"></div><div class="line">print(<span class="string">'Proxy over &#123;&#125;:&#123;&#125;\nPlease set your browser\'s or PAC\'s proxy to &#123;&#125;'</span>.format(proxy_host, proxy_port, server_address))</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    server.serve_forever()</div><div class="line"><span class="keyword">except</span>:</div><div class="line">    os._exit(<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/SJTU/">SJTU</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2013/08/mooc之coursera初体验.html"  data-tooltip="MOOC之Coursera初体验">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2013/08/opnet145-win7xp下安装小记.html" data-tooltip="OPNET14.5 Win7/XP下安装小记">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 Yuan Bin. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2013/08/mooc之coursera初体验.html"  data-tooltip="MOOC之Coursera初体验">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2013/08/opnet145-win7xp下安装小记.html" data-tooltip="OPNET14.5 Win7/XP下安装小记">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html">
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/bill.png" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Yuan Bin</h4>
+        
+            <div id="about-card-bio"><p>Quality Matters <br/> <a href="http://www.yuanbin.me">http://www.yuanbin.me</a></p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Developer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                China, Shanghai
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    autofocus="autofocus"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2010/12/dian-zi-zhi-zuo-zhi-chu-nu-zuo-xi-dian-dong-tai-xiao-hui.html">
+                            <h3 class="media-heading">电子制作之处女作-西电动态校徽</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 13, 2010
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2012/01/ASCII码之大小写那些事儿.html">
+                            <h3 class="media-heading">ASCII码之大小写那些事儿</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jan 11, 2012
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>原帖发在<a href="http://xdlinux.info/bbs/thread-1244-1-1.html">开源社区论坛</a>上，感觉还有点意思，于是乎就搬到这儿来了咯～本帖探讨ASCII码编码中英文字母大小写编码的相关问题，不需要读者具有计算机编码方面的专业知识，当然咯，为了更好地参与讨论，一点点计算机编码的基本常识还是要有的。<br>不知ASCII码为何物的请先移步<a href="http://en.wikipedia.org/wiki/ASCII">维基百科</a>  </p>
+<h3 id="故事的起源"><a href="#故事的起源" class="headerlink" title="故事的起源"></a>故事的起源</h3><p>Long long ago, 也就是上个学期微机原理课的时候，班上一MM问了老师这么一个问题——“ASCII码中大写字母A的十六进制代码是41，而小写字母的十六进制代码是61，中间不是只能编码20个字符么，那剩下的那6个大写字母跑哪去了呀？” 只见此时老师笑而不语(显然是男老师…)，底下一小撮明白真相的群众疾呼:“那个41和61是十六进制呀！”   </p>
+<p>MM思维敏捷，很快又出现了新的问题:“41H和61H之间可以编码32个字符呀，那为什么小写字母不紧跟着大写字母编码呢？大小写字母连在一起多和谐呀~” 说时迟，那时快，老师答曰:“这个问题…我得先请示一下Google”。听MM刚才那么一说，52个大小写字母顿时哼起了:“让我们 握着手 手牵手 一起走到时间的尽头…” 但在得到美国国家标准化委员会的确切答复后，大A和小a只能率领50个兄弟姐妹以头跄地曰:“千杀的委员会！滥用手中的职权割断我们大写家族和小写家族之间的脐带！小心我叫老母亲来收拾你们！” 在这里我想为标准化委员会说几句话，人家帮你割断脐带是为了让小写家族得到新生呀！！欲知后事如何，且听下段分析。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2012/01/武汉七日游.html">
+                            <h3 class="media-heading">武汉「七日游」流水帐之交通&amp;amp;下厨&amp;amp;华科篇</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jan 24, 2012
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>右眼已经差不多好了，趁着脑海里还残留些记忆，是时候把寒假期间的流水帐记一下了<em> 自西安南下至今也没见过太阳公公，更别说他儿子老母了… 从1月13号上午11点到武昌到19号早上离开武汉差不多整整7天吧，7天里每天都下雨，只有在第2天和第6天的时候出去逛了下</em> 来武汉的目的主要还是为了了却08年的心愿——看看真实的华科到底是么样子_ OK,流水帐正式开始</p>
+<h2 id="交通篇"><a href="#交通篇" class="headerlink" title="交通篇"></a>交通篇</h2><p>武汉的公交的恶劣情况早有耳闻，百闻不如一见，13号上午11点坐公交时我彻底震惊了，一个小女孩不要命似的保护着两个座位，由此可知武汉公交的座位是有好珍贵。</p>
+<p>在公交上坐了差不多半个小时我就受不了了，胃酸都快吐出来了，估计是一个上午一点东西都没吃的恶果，原以为12号晚上在橙色心情美美地吃了一顿就不用再吃了，但是…坑爹的K896，丫的进入武汉市内的时候就变蜗牛了，慢慢地爬了半个小时才到站，于是乎又多饿了半个小时(12号走的过于匆忙，一点吃的东西也没买)，到公交上呕吐也很正常啦，于是乎果断下车换了Taxi，跑了半个多小时才到目的地（也就是我舅舅家啦，武汉分为三大块-武昌、汉口、汉阳，我舅舅家住在武昌的最东边差不多），武汉是有好大_</p>
+<p>14号和舅舅舅母一起出去买了点东西，倒了趟公交，每辆公交上似乎都是那么挤，我上车后过了两站就被挤到里边去了，别说肉饼，我都快被挤成肉酱了！过了差不多2个小时终于下车了！！！那个时候我还在感概，武汉这么大，公交这么挤，还让人活不，要是我住在这种地方我一年都不想出来一次，东西通通网购，后来仔细看了下武汉市地图，我才发现原来武汉并没有想像中的那么大嘛，不过也不愧对“千湖之省”的称号，丫的水陆面积比目测接近1：2，长江+东湖+汉江至少占四分之一的面积，所以咧，武汉的道路似乎没有一条是直的，完全无方向可言，不知道北方的朋友到了武汉之后会不会比较容易迷路。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                94 posts found
+            </p>
+        </div>
+    </div>
+</div>
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/jquery.fancybox.js"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js"></script>
+<script src="/assets/js/tranquilpeak.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://blog.yuanbin.me/posts/2013/08/vpn-sjtu.html';
+                 
+                    this.page.identifier = 'posts/2013/08/vpn-sjtu.html';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'billryan';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('JR5AN1IRYS', 'a400faf3b8075c5354366b0508f4fed9');
+        var algoliaIndex = algoliaClient.initIndex('blog');
+    </script>
+
+    </body>
+</html>

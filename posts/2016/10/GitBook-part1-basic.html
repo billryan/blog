@@ -1,0 +1,629 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Quality Matters">
+    <title>使用 GitBook 制作高质量电子书 - Quality Matters</title>
+    <meta name="author" content="Yuan Bin">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="作为知识型工作者，时常会遇到的一个问题是如何将自己所做的工作精心汇总并便利地展示给广大读者。从阅读、传播和互动的角度来看，制作一个专业的网站可能是较为理想的方案，但实际操作起来可能会因为各种各样的技术问题而让人望而却步。GitBook 的出现算是解决了用户的绝大部分痛点。与 GitHub Pages 仅作为静态页面展示平台不同，GitBook 在文本编辑、多人协作、互动和电子书最终输出形式等方面的">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="使用 GitBook 制作高质量电子书">
+<meta property="og:url" content="http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">
+<meta property="og:site_name" content="Quality Matters">
+<meta property="og:description" content="作为知识型工作者，时常会遇到的一个问题是如何将自己所做的工作精心汇总并便利地展示给广大读者。从阅读、传播和互动的角度来看，制作一个专业的网站可能是较为理想的方案，但实际操作起来可能会因为各种各样的技术问题而让人望而却步。GitBook 的出现算是解决了用户的绝大部分痛点。与 GitHub Pages 仅作为静态页面展示平台不同，GitBook 在文本编辑、多人协作、互动和电子书最终输出形式等方面的">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part1-site.png">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part1-editor.png">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part1-template.png">
+<meta property="og:updated_time" content="2016-10-23T06:21:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 GitBook 制作高质量电子书">
+<meta name="twitter:description" content="作为知识型工作者，时常会遇到的一个问题是如何将自己所做的工作精心汇总并便利地展示给广大读者。从阅读、传播和互动的角度来看，制作一个专业的网站可能是较为理想的方案，但实际操作起来可能会因为各种各样的技术问题而让人望而却步。GitBook 的出现算是解决了用户的绝大部分痛点。与 GitHub Pages 仅作为静态页面展示平台不同，GitBook 在文本编辑、多人协作、互动和电子书最终输出形式等方面的">
+<meta name="twitter:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part1-site.png">
+<meta name="twitter:creator" content="@billryan_yb">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://blog.yuanbin.me/assets/images/bill.png"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32317667-4']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Quality Matters</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/bill.png" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Yuan Bin</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Quality Matters <br/> <a href="http://www.yuanbin.me">http://www.yuanbin.me</a></p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/billryan" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">Github</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://twitter.com/billryan_yb" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://www.instagram.com/bin.yuan" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-instagram"></i>
+                        <span class="sidebar-button-desc">Instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="mailto:yuanbin2014@gmail.com" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            使用 GitBook 制作高质量电子书
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2016-10-09T21:48:24+08:00">
+	
+		    Oct 09, 2016
+    	
+    </time>
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>作为知识型工作者，时常会遇到的一个问题是如何将自己所做的工作精心汇总并便利地展示给广大读者。从阅读、传播和互动的角度来看，制作一个专业的网站可能是较为理想的方案，但实际操作起来可能会因为各种各样的技术问题而让人望而却步。<a href="https://www.gitbook.com" target="_blank" rel="external">GitBook</a> 的出现算是解决了用户的绝大部分痛点。与 GitHub Pages 仅作为静态页面展示平台不同，GitBook 在文本编辑、多人协作、互动和电子书最终输出形式等方面的支持非常完善，基本上涵盖了现代出版物的整个生命周期，接下来的篇幅将详述这几个环节并介绍一些自己的实践经验。GitBook 的官方文档见 <a href="https://toolchain.gitbook.com/" target="_blank" rel="external">GitBook Toolchain Documentation</a></p>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part1-site.png" alt="GitBook website"></p>
+<h3 id="客户端或-Web"><a href="#客户端或-Web" class="headerlink" title="客户端或 Web"></a>客户端或 Web</h3><p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part1-editor.png" alt="GitBook editor"></p>
+<p>相比于 GitHub Pages 高门槛的写作方式，GitBook 在这方面则显得亲民的多（和 Word Office 之类的软件易用程度相当），由于是基于 Node.js 的应用，其不仅提供跨平台的图形化写作软件，同时也提供了 Web 版在线编辑，两者在功能上无异。虽然 GitBook 同时支持 Markdown 和 AsciiDoc, 但可以明显感受到其对 Markdown 格式的偏爱，不熟悉 Markdown 的朋友们也不用担心，GitBook 的工具栏中提供了各种常用格式的快捷方式。Markdown 相比 LaTeX 来说要简单地多，需要记的格式最多也只有十来种，基本上是那种一看就会用的极简格式，详细的格式支持和使用见 <a href="https://toolchain.gitbook.com/syntax/markdown.html" target="_blank" rel="external">Markdown</a></p>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part1-template.png" alt="GitBook template"></p>
+<p>在 GitBook 网站新建电子书时可从默认的三种模板 (书籍或手册/API 文档/知识库 FAQ) 选择一个，官方虽然只提供了三种模板，但由于 GitBook 的可定制性极强，已经有不少第三方的模板可选了。除新建外你也可以从已有的 docs/odt/html/GitHub 等地方导入，从第三方导入的格式往往和 GitBook 家的稍微有那么点不一样，可能需要微调。</p>
+<h3 id="绑定-GitHub-repo"><a href="#绑定-GitHub-repo" class="headerlink" title="绑定 GitHub repo"></a>绑定 GitHub repo</h3><p>除了使用客户端和 Web 编辑文本这种简易模式外，你也可以挑战一下 Hard 模式如通过绑定 GitHub repo 推送更新，需要注意的是绑定到 GitHub repo 后当前电子书不可再从客户端或者 Web 上更新，这大概是 git 的锅了吧 :( 使用 GitHub 绑定的电子书在添加新文件时容易忘记更新目录文件 <code>SUMMARY.md</code>，在此特意提醒下。</p>
+<a id="more"></a>
+<h3 id="多人协作"><a href="#多人协作" class="headerlink" title="多人协作"></a>多人协作</h3><p>使用客户端或者 Web 时可通过在 GitBook 网站的 Settings 中添加 Collaborators, 对于绑定 GitHub  repo 的来说协作方式和普通项目无异，插件 <a href="https://github.com/rtCamp/gitbook-plugin-edit-link" target="_blank" rel="external">edit-link</a> 可以在每个页面生成指向 GitHub repo 相应文件的链接，十分方便！</p>
+<h3 id="评论互动"><a href="#评论互动" class="headerlink" title="评论互动"></a>评论互动</h3><p>GitBook 如今已对托管在其网站中的所有电子书提供按段落评论功能，除了原生的评论系统，你还可以使用 disqus 提供较为通用的第三方评论服务。</p>
+<h3 id="多格式输出"><a href="#多格式输出" class="headerlink" title="多格式输出"></a>多格式输出</h3><p>托管在 GitBook 上的电子书，除了最为常见的网页输出外，其默认还提供了 ePub, MOBI 和 PDF 输出，这些格式基本上覆盖了常见的各种阅读设备，读者能自行选择其最为喜爱的格式进行阅读。</p>
+<h3 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h3><p>与天朝的一些服务不一样，国外服务器的域名绑定比较简单，这个和 GitHub Pages 中的 CNAME 功能一致，但是 GitBook 更为称赞的一点则是其借助 Let’s Encrypt 实现了对自定义域名同样免费的 HTTPS 功能。</p>
+<h3 id="功能增强"><a href="#功能增强" class="headerlink" title="功能增强"></a>功能增强</h3><p>除了 GitBook 官方支持的功能之外，读者还可以通过第三方插件对其功能进行定制和增强，如在页面中启用 LaTeX 展示漂亮的公式，为每篇文章增加 tag 和根据标题层次自动生成目录等。这些增强阅读体验的定制化操作将在 GitBook 系列文章的第二篇中展开，第三篇将介绍一些自己给 GitBook 编写插件的经验，敬请期待。瞄~ :)</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/gitbook/">gitbook</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2016/11/GitBook-part2-plugin.html"  data-tooltip="GitBook 插件介绍及定制">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2016/09/gitbook-plugin-tags.html" data-tooltip="自制 GitBook 插件之 gitbook-plugin-tags">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 Yuan Bin. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2016/11/GitBook-part2-plugin.html"  data-tooltip="GitBook 插件介绍及定制">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2016/09/gitbook-plugin-tags.html" data-tooltip="自制 GitBook 插件之 gitbook-plugin-tags">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/bill.png" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Yuan Bin</h4>
+        
+            <div id="about-card-bio"><p>Quality Matters <br/> <a href="http://www.yuanbin.me">http://www.yuanbin.me</a></p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Developer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                China, Shanghai
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    autofocus="autofocus"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2010/12/dian-zi-zhi-zuo-zhi-chu-nu-zuo-xi-dian-dong-tai-xiao-hui.html">
+                            <h3 class="media-heading">电子制作之处女作-西电动态校徽</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 13, 2010
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2012/01/ASCII码之大小写那些事儿.html">
+                            <h3 class="media-heading">ASCII码之大小写那些事儿</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jan 11, 2012
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>原帖发在<a href="http://xdlinux.info/bbs/thread-1244-1-1.html">开源社区论坛</a>上，感觉还有点意思，于是乎就搬到这儿来了咯～本帖探讨ASCII码编码中英文字母大小写编码的相关问题，不需要读者具有计算机编码方面的专业知识，当然咯，为了更好地参与讨论，一点点计算机编码的基本常识还是要有的。<br>不知ASCII码为何物的请先移步<a href="http://en.wikipedia.org/wiki/ASCII">维基百科</a>  </p>
+<h3 id="故事的起源"><a href="#故事的起源" class="headerlink" title="故事的起源"></a>故事的起源</h3><p>Long long ago, 也就是上个学期微机原理课的时候，班上一MM问了老师这么一个问题——“ASCII码中大写字母A的十六进制代码是41，而小写字母的十六进制代码是61，中间不是只能编码20个字符么，那剩下的那6个大写字母跑哪去了呀？” 只见此时老师笑而不语(显然是男老师…)，底下一小撮明白真相的群众疾呼:“那个41和61是十六进制呀！”   </p>
+<p>MM思维敏捷，很快又出现了新的问题:“41H和61H之间可以编码32个字符呀，那为什么小写字母不紧跟着大写字母编码呢？大小写字母连在一起多和谐呀~” 说时迟，那时快，老师答曰:“这个问题…我得先请示一下Google”。听MM刚才那么一说，52个大小写字母顿时哼起了:“让我们 握着手 手牵手 一起走到时间的尽头…” 但在得到美国国家标准化委员会的确切答复后，大A和小a只能率领50个兄弟姐妹以头跄地曰:“千杀的委员会！滥用手中的职权割断我们大写家族和小写家族之间的脐带！小心我叫老母亲来收拾你们！” 在这里我想为标准化委员会说几句话，人家帮你割断脐带是为了让小写家族得到新生呀！！欲知后事如何，且听下段分析。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2012/01/武汉七日游.html">
+                            <h3 class="media-heading">武汉「七日游」流水帐之交通&amp;amp;下厨&amp;amp;华科篇</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jan 24, 2012
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>右眼已经差不多好了，趁着脑海里还残留些记忆，是时候把寒假期间的流水帐记一下了<em> 自西安南下至今也没见过太阳公公，更别说他儿子老母了… 从1月13号上午11点到武昌到19号早上离开武汉差不多整整7天吧，7天里每天都下雨，只有在第2天和第6天的时候出去逛了下</em> 来武汉的目的主要还是为了了却08年的心愿——看看真实的华科到底是么样子_ OK,流水帐正式开始</p>
+<h2 id="交通篇"><a href="#交通篇" class="headerlink" title="交通篇"></a>交通篇</h2><p>武汉的公交的恶劣情况早有耳闻，百闻不如一见，13号上午11点坐公交时我彻底震惊了，一个小女孩不要命似的保护着两个座位，由此可知武汉公交的座位是有好珍贵。</p>
+<p>在公交上坐了差不多半个小时我就受不了了，胃酸都快吐出来了，估计是一个上午一点东西都没吃的恶果，原以为12号晚上在橙色心情美美地吃了一顿就不用再吃了，但是…坑爹的K896，丫的进入武汉市内的时候就变蜗牛了，慢慢地爬了半个小时才到站，于是乎又多饿了半个小时(12号走的过于匆忙，一点吃的东西也没买)，到公交上呕吐也很正常啦，于是乎果断下车换了Taxi，跑了半个多小时才到目的地（也就是我舅舅家啦，武汉分为三大块-武昌、汉口、汉阳，我舅舅家住在武昌的最东边差不多），武汉是有好大_</p>
+<p>14号和舅舅舅母一起出去买了点东西，倒了趟公交，每辆公交上似乎都是那么挤，我上车后过了两站就被挤到里边去了，别说肉饼，我都快被挤成肉酱了！过了差不多2个小时终于下车了！！！那个时候我还在感概，武汉这么大，公交这么挤，还让人活不，要是我住在这种地方我一年都不想出来一次，东西通通网购，后来仔细看了下武汉市地图，我才发现原来武汉并没有想像中的那么大嘛，不过也不愧对“千湖之省”的称号，丫的水陆面积比目测接近1：2，长江+东湖+汉江至少占四分之一的面积，所以咧，武汉的道路似乎没有一条是直的，完全无方向可言，不知道北方的朋友到了武汉之后会不会比较容易迷路。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                94 posts found
+            </p>
+        </div>
+    </div>
+</div>
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/jquery.fancybox.js"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js"></script>
+<script src="/assets/js/tranquilpeak.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html';
+                 
+                    this.page.identifier = 'posts/2016/10/GitBook-part1-basic.html';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'billryan';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('JR5AN1IRYS', 'a400faf3b8075c5354366b0508f4fed9');
+        var algoliaIndex = algoliaClient.initIndex('blog');
+    </script>
+
+    </body>
+</html>

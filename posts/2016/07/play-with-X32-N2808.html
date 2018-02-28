@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Quality Matters">
+    <title>Play with 新创云 X32-N2808 - Quality Matters</title>
+    <meta name="author" content="Yuan Bin">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Play with 新创云 X32-N2808">
+<meta property="og:url" content="http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html">
+<meta property="og:site_name" content="Quality Matters">
+<meta property="og:description" content="之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-1.jpeg-q75">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-2.jpeg-q75">
+<meta property="og:updated_time" content="2016-07-10T13:03:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Play with 新创云 X32-N2808">
+<meta name="twitter:description" content="之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时">
+<meta name="twitter:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-1.jpeg-q75">
+<meta name="twitter:creator" content="@billryan_yb">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://blog.yuanbin.me/assets/images/bill.png"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32317667-4']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Quality Matters</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/bill.png" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Yuan Bin</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Quality Matters <br/> <a href="http://www.yuanbin.me">http://www.yuanbin.me</a></p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/billryan" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">Github</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://twitter.com/billryan_yb" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://www.instagram.com/bin.yuan" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-instagram"></i>
+                        <span class="sidebar-button-desc">Instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="mailto:yuanbin2014@gmail.com" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Play with 新创云 X32-N2808
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2016-07-03T22:10:13+08:00">
+	
+		    Jul 03, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/技术/">技术</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 <a href="https://nghttp2.org/" target="_blank" rel="external">Nghttp2</a> 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。</p>
+<h2 id="X32-N2808-硬件概述"><a href="#X32-N2808-硬件概述" class="headerlink" title="X32-N2808 硬件概述"></a>X32-N2808 硬件概述</h2><p>依稀记得在 SHLUG 邮件列表中有人提到过新创云的低功耗板子，前一阵子趁京东 618 大促搜了下新创云，发现 X32-N2808 这款移动端半价促销(不到400即可拿下)，无内存无硬盘，虽然也写明无 WiFi, 但实际上卖家发货时还是带了一块 PCI-E 无线网卡及蓝牙芯片，无线网卡是 Atheros 家的，实测对 Linux 支持很好，用于自建热点很方便。简单问了下客服，内存条是可以使用笔记本内存条的，但是得使用低压版 1.35v 的，也就是说没有必要买新创云自家昂贵的内存条以及 SSD 等，由于不确定自己的笔记本内存条是否可用，低压版 1.35v 的内存条没有一起下单。</p>
+<p>拿到板子后立马把后盖拆了下来，内部做工还算不错，接口及组件列表如下：</p>
+<ul>
+<li>CPU 为赛扬双核 N2808</li>
+<li>内存条仅有一个插槽，LPDDR3，也就是说这里和客服说的有出入，以 1.5V(LPDDR3) 为准</li>
+<li>一个 PCI-E 的无线网卡，卖家送的 Atheros 网卡</li>
+<li>一个 msata，可以扩展 SSD 用，SSD 暂时太贵了，没买</li>
+<li>一个 SATA II，我买了一块 1 T 西数笔记本硬盘，板子预留了空间，拧上螺丝即用</li>
+<li>两个 HDMI 高清接口</li>
+<li>两个 USB 3.0</li>
+<li>四个 USB 2.0</li>
+<li>一个千兆以太网卡，作为网络路由器和媒体服务器非常不错</li>
+<li>音频接口</li>
+</ul>
+<p>所以总的来讲接口还是非常丰富的，和一台普通的台式机没差多少。整机功耗实测 6 W 左右，名副其实的低功耗 X86 服务器。<br>自己加内存条和硬盘后的谍照如下。</p>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-1.jpeg-q75" alt="板子内部接口"><br><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-2.jpeg-q75" alt="2.5英寸笔记本硬盘"></p>
+<a id="more"></a>
+<h3 id="BIOS-设置"><a href="#BIOS-设置" class="headerlink" title="BIOS 设置"></a>BIOS 设置</h3><p>X23-N2808 的默认 BIOS 设置很多特性都是关闭的，比如 ACPI, 启动项的 Legacy USB 支持等，为了避免安装 Linux 系统时和 UEFI 肉搏，建议支持 Legacy USB 启动。</p>
+<h2 id="安装-Archlinux"><a href="#安装-Archlinux" class="headerlink" title="安装 Archlinux"></a>安装 Archlinux</h2><p>Archlinux 发行版的软件包更新虽然非常快，但作为家用服务器操作系统还是有不少优势的，比如丰富的第三方 AUR 和较新的软件包，默认没有 GUI，极简哲学。室友问我为何不选择相对更稳定的 Ubuntu Server，对于我来说，除了以上优势外，那就是我对 Archlinux 比较熟悉，配置各项服务来那是轻车熟路。systemd 写起 service 来也深得我心——简洁，清晰。</p>
+<p>对于 ARM 板子来说，安装 Archlinux 那是易如反掌，按照 <a href="https://archlinuxarm.org" target="_blank" rel="external">https://archlinuxarm.org</a> 上的操作 dd 写入 sd 卡即可，非常简单。对于 X86 板子来说则需要按照 <a href="https://wiki.archlinux.org/index.php/Beginners%27_guide" target="_blank" rel="external">Beginners’ guide</a> 安装。也可以参考下 <a href="https://bigeagle.me/2014/06/archlinux-install-for-beginners/" target="_blank" rel="external">给妹子看的 Arch Linux 桌面日常安装</a>，不过这里是作为家用服务器用途，所以图形界面 X 是不必要的，简述下步骤如下：</p>
+<ol>
+<li>将 Archlinux 的 ISO 安装镜像 dd 到优盘制作启动优盘</li>
+<li>开机后启动项引导选择刚制作好的 Archlinux 启动优盘</li>
+<li>给硬盘分区，我之前想使用 LVM 作为逻辑卷管理，但启动失败，弃用 LVM 后顺利安装</li>
+<li>格式化文件系统后可以使用 discard,noatime 等挂载提升性能，并写入到 fstab 中</li>
+<li>安装基本系统 <code>pacstrap -i /mnt base base-devel vim zsh</code></li>
+<li><code>arch-chroot</code>, 将 USTC 或者 tuna 的源放在前面对大陆的朋友有好处</li>
+<li>启用 <code>en_US.UTF-8</code> 和 <code>zh_CN.UTF-8</code> locale</li>
+<li>因为我这里采用有线方式联网，所以不必安装 <code>wpa_supplicant dialog</code> 等，家用服务器用途还是建议以有线方式接入</li>
+<li>安装 <code>grub</code> 引导器，这里有坑，后面细说</li>
+<li>添加新用户及启用 <code>archlinuxcn</code> 和安装<code>yaourt</code></li>
+</ol>
+<p>为了更好的使用 <code>pacman</code> 和 <code>yaourt</code>, 你可以在新建普通用户之后安装 <code>packer</code>, 这样在安装软件时可不必再加上 <code>sudo</code>, 也不必区别对待 <code>pacman</code> 和 <code>yaourt</code>.</p>
+<h3 id="重启时系统无法正常关机"><a href="#重启时系统无法正常关机" class="headerlink" title="重启时系统无法正常关机"></a>重启时系统无法正常关机</h3><p>在关机或者重启时系统会显示</p>
+<blockquote>
+<p><strong>watchdog did not stop!</strong></p>
+</blockquote>
+<p>并且系统几分钟内都无法正常关机。解决办法是在 grub 配置文件(<code>/etc/default/grub</code>)中设置 <code>GRUB_CMDLINE_LINUX=&quot;reboot=bios&quot;</code>.  更新 grub.cfg - <code>grub-mkconfig -o /boot/grub/grub.cfg</code>. 详见 <a href="http://unix.stackexchange.com/questions/249654/message-at-shutdown-watchdog-did-not-stop" target="_blank" rel="external">acpi - message at shutdown: watchdog did not stop! - Unix &amp; Linux Stack Exchange</a></p>
+<h3 id="dmesg-显示-usb-xxx-device-descriptor-read-64-error"><a href="#dmesg-显示-usb-xxx-device-descriptor-read-64-error" class="headerlink" title="dmesg 显示 usb xxx device descriptor read/64, error"></a>dmesg 显示 usb xxx device descriptor read/64, error</h3><p>对于这个板子倒是无关紧要，试过插入不同 USB 接口时 <code>dmesg</code> 显示的错误信息与后面6个接口无关。如果有关系的话可参考<br><a href="https://www.guyrutenberg.com/2008/06/26/usb-1-4-device-descriptor-read64-error-71/" target="_blank" rel="external">usb 1-4: device descriptor read/64, error -71 | Guy Rutenberg</a></p>
+<h3 id="启动时忽略硬盘挂载错误"><a href="#启动时忽略硬盘挂载错误" class="headerlink" title="启动时忽略硬盘挂载错误"></a>启动时忽略硬盘挂载错误</h3><p>作为家用服务器，你很可能会给它增添一块硬盘作为数据存储中心，这块硬盘在你测试时也许就不接入服务器了，在这种情况下我们需要改动 <code>/etc/fstab</code> 的挂载参数忽略这种错误，否则系统可能无法正常启动。以我为例；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># /dev/sdb1</div><div class="line">UUID=bf5aae46-d95a-461d-b9f3-544db87b6696       /xxxx     ext4            rw,noatime,discard,data=ordered,nofail,x-systemd.device-timeout=1 0 2</div></pre></td></tr></table></figure></p>
+<p>细节可参看 <a href="https://wiki.archlinux.org/index.php/fstab#Automount_with_systemd" target="_blank" rel="external">fstab - ArchWiki</a></p>
+<h3 id="使用-linux-lts"><a href="#使用-linux-lts" class="headerlink" title="使用 linux-lts"></a>使用 linux-lts</h3><p>众所周知，Arch 的哲学之一就是尽量与上游保持一致，kernel 的更新也是非常频繁，所以为了稳定性考虑还是建议安装使用 <code>linux-lts</code>.</p>
+<h3 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">useradd -m -g users -G wheel -s /bin/zsh neo</div></pre></td></tr></table></figure>
+<p>将用户 neo 加入附加组 <code>wheel</code> 中，启用 <code>sudo</code> 特权。</p>
+<p>运行 <code>visudo</code> 将用户 <code>neo</code> 加入免密使用 <code>sudo</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">## Uncomment to allow members of group wheel to execute any command</div><div class="line">%wheel ALL=(ALL) ALL</div></pre></td></tr></table></figure></p>
+<p>password-free for user neo:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Defaults:neo !authenticate</div></pre></td></tr></table></figure></p>
+<h3 id="oh-my-zsh"><a href="#oh-my-zsh" class="headerlink" title="oh-my-zsh"></a>oh-my-zsh</h3><p>安装完 <code>zsh</code> 之后怎能没有扩展？<code>oh-my-zsh</code> 是非常不错的选择。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">packer -S oh-my-zsh-git</div><div class="line">cp /usr/share/oh-my-zsh/zshrc ~/.zshrc</div></pre></td></tr></table></figure>
+<h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">packer -S openssh</div></pre></td></tr></table></figure>
+<p>由于默认不提供 ssh 接入，作为服务器使用这个还是必不可少的。<br>生成密钥可参考 <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="external">Generating a new SSH key</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</div></pre></td></tr></table></figure>
+<h3 id="优化-ssh-连接-tmux-mosh"><a href="#优化-ssh-连接-tmux-mosh" class="headerlink" title="优化 ssh 连接 - tmux + mosh"></a>优化 ssh 连接 - tmux + mosh</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">packer -S mosh tmux</div></pre></td></tr></table></figure>
+<p>tmux 可用于同时 hold 多个 terminal, 断线重连只需 <code>tmux a</code>, 谁用谁知道。<br>mosh 则可用于 UDP 接入，在移动环境或者网络环境较差时非常管用。</p>
+<p>基本系统及软件已经安装完毕，后续我将自己配置无线热点、无痛科学上网和媒体服务器等过程详述在博客中。</p>
+<ul>
+<li><a href="../../2016/07/DDNS-for-home-server.html">家用服务器之 DDNS</a></li>
+<li><a href="../../2016/07/Access-Points-for-home-server.html">家用服务器之无线路由器(AP)</a></li>
+<li><a href="../../2014/11/cubieboard2-dns-server.html">家用服务器之自建 DNS 服务器</a></li>
+<li><a href="../../2016/07/Transparent-routing-for-home-server-in-China.html">Transparent routing for home server in China</a></li>
+<li><a href="../../2016/07/Squid-for-home-server.html">家用服务器之 Squid 分流</a></li>
+<li><a href="../../2016/07/HTTP-2-proxy-for-home-server.html">家用服务器之 HTTP/2</a></li>
+<li><a href="../../2014/11/archlinux-bt-download.html">家用服务器之 BT(PT) 下载机</a></li>
+<li><a href="../../2014/11/archlinux-minidlna.html">家用服务器之 UPnP/DLNA 媒体服务</a></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/homeserver/">homeserver</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2016/07/DDNS-for-home-server.html"  data-tooltip="家用服务器之 DDNS">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2016/01/compile-haproxy-1-6-x-with-resolving-IPv6.html" data-tooltip="Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 Yuan Bin. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2016/07/DDNS-for-home-server.html"  data-tooltip="家用服务器之 DDNS">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2016/01/compile-haproxy-1-6-x-with-resolving-IPv6.html" data-tooltip="Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html">
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/bill.png" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Yuan Bin</h4>
+        
+            <div id="about-card-bio"><p>Quality Matters <br/> <a href="http://www.yuanbin.me">http://www.yuanbin.me</a></p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Developer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                China, Shanghai
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    autofocus="autofocus"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2010/12/dian-zi-zhi-zuo-zhi-chu-nu-zuo-xi-dian-dong-tai-xiao-hui.html">
+                            <h3 class="media-heading">电子制作之处女作-西电动态校徽</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 13, 2010
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2012/01/ASCII码之大小写那些事儿.html">
+                            <h3 class="media-heading">ASCII码之大小写那些事儿</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jan 11, 2012
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>原帖发在<a href="http://xdlinux.info/bbs/thread-1244-1-1.html">开源社区论坛</a>上，感觉还有点意思，于是乎就搬到这儿来了咯～本帖探讨ASCII码编码中英文字母大小写编码的相关问题，不需要读者具有计算机编码方面的专业知识，当然咯，为了更好地参与讨论，一点点计算机编码的基本常识还是要有的。<br>不知ASCII码为何物的请先移步<a href="http://en.wikipedia.org/wiki/ASCII">维基百科</a>  </p>
+<h3 id="故事的起源"><a href="#故事的起源" class="headerlink" title="故事的起源"></a>故事的起源</h3><p>Long long ago, 也就是上个学期微机原理课的时候，班上一MM问了老师这么一个问题——“ASCII码中大写字母A的十六进制代码是41，而小写字母的十六进制代码是61，中间不是只能编码20个字符么，那剩下的那6个大写字母跑哪去了呀？” 只见此时老师笑而不语(显然是男老师…)，底下一小撮明白真相的群众疾呼:“那个41和61是十六进制呀！”   </p>
+<p>MM思维敏捷，很快又出现了新的问题:“41H和61H之间可以编码32个字符呀，那为什么小写字母不紧跟着大写字母编码呢？大小写字母连在一起多和谐呀~” 说时迟，那时快，老师答曰:“这个问题…我得先请示一下Google”。听MM刚才那么一说，52个大小写字母顿时哼起了:“让我们 握着手 手牵手 一起走到时间的尽头…” 但在得到美国国家标准化委员会的确切答复后，大A和小a只能率领50个兄弟姐妹以头跄地曰:“千杀的委员会！滥用手中的职权割断我们大写家族和小写家族之间的脐带！小心我叫老母亲来收拾你们！” 在这里我想为标准化委员会说几句话，人家帮你割断脐带是为了让小写家族得到新生呀！！欲知后事如何，且听下段分析。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2012/01/武汉七日游.html">
+                            <h3 class="media-heading">武汉「七日游」流水帐之交通&amp;amp;下厨&amp;amp;华科篇</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jan 24, 2012
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>右眼已经差不多好了，趁着脑海里还残留些记忆，是时候把寒假期间的流水帐记一下了<em> 自西安南下至今也没见过太阳公公，更别说他儿子老母了… 从1月13号上午11点到武昌到19号早上离开武汉差不多整整7天吧，7天里每天都下雨，只有在第2天和第6天的时候出去逛了下</em> 来武汉的目的主要还是为了了却08年的心愿——看看真实的华科到底是么样子_ OK,流水帐正式开始</p>
+<h2 id="交通篇"><a href="#交通篇" class="headerlink" title="交通篇"></a>交通篇</h2><p>武汉的公交的恶劣情况早有耳闻，百闻不如一见，13号上午11点坐公交时我彻底震惊了，一个小女孩不要命似的保护着两个座位，由此可知武汉公交的座位是有好珍贵。</p>
+<p>在公交上坐了差不多半个小时我就受不了了，胃酸都快吐出来了，估计是一个上午一点东西都没吃的恶果，原以为12号晚上在橙色心情美美地吃了一顿就不用再吃了，但是…坑爹的K896，丫的进入武汉市内的时候就变蜗牛了，慢慢地爬了半个小时才到站，于是乎又多饿了半个小时(12号走的过于匆忙，一点吃的东西也没买)，到公交上呕吐也很正常啦，于是乎果断下车换了Taxi，跑了半个多小时才到目的地（也就是我舅舅家啦，武汉分为三大块-武昌、汉口、汉阳，我舅舅家住在武昌的最东边差不多），武汉是有好大_</p>
+<p>14号和舅舅舅母一起出去买了点东西，倒了趟公交，每辆公交上似乎都是那么挤，我上车后过了两站就被挤到里边去了，别说肉饼，我都快被挤成肉酱了！过了差不多2个小时终于下车了！！！那个时候我还在感概，武汉这么大，公交这么挤，还让人活不，要是我住在这种地方我一年都不想出来一次，东西通通网购，后来仔细看了下武汉市地图，我才发现原来武汉并没有想像中的那么大嘛，不过也不愧对“千湖之省”的称号，丫的水陆面积比目测接近1：2，长江+东湖+汉江至少占四分之一的面积，所以咧，武汉的道路似乎没有一条是直的，完全无方向可言，不知道北方的朋友到了武汉之后会不会比较容易迷路。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                94 posts found
+            </p>
+        </div>
+    </div>
+</div>
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/jquery.fancybox.js"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js"></script>
+<script src="/assets/js/tranquilpeak.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://blog.yuanbin.me/posts/2016/07/play-with-X32-N2808.html';
+                 
+                    this.page.identifier = 'posts/2016/07/play-with-X32-N2808.html';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'billryan';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('JR5AN1IRYS', 'a400faf3b8075c5354366b0508f4fed9');
+        var algoliaIndex = algoliaClient.initIndex('blog');
+    </script>
+
+    </body>
+</html>

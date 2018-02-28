@@ -1,0 +1,688 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Quality Matters">
+    <title>一个简洁优雅的 XeLaTeX 简历模板 - Quality Matters</title>
+    <meta name="author" content="Yuan Bin">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&amp;gt; 干货 | 一个简洁优雅的 XeLaTeX 简历模板。这两只『科研媛』的科研热情令我佩服不已，小S 的科研主要集中在自然语言处理方面，公众号的内容有满满的科研和技术干货，也有吃喝玩乐等放松文章。废话少说，要关注的请加girl">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="一个简洁优雅的 XeLaTeX 简历模板">
+<meta property="og:url" content="http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html">
+<meta property="og:site_name" content="Quality Matters">
+<meta property="og:description" content="初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&amp;gt; 干货 | 一个简洁优雅的 XeLaTeX 简历模板。这两只『科研媛』的科研热情令我佩服不已，小S 的科研主要集中在自然语言处理方面，公众号的内容有满满的科研和技术干货，也有吃喝玩乐等放松文章。废话少说，要关注的请加girl">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/qrcode_girlswhocode.png-400px">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/resume.png-q75">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/resume-zh_CN.png-q75">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/fancy_cv.png-q75">
+<meta property="og:updated_time" content="2015-11-26T06:04:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个简洁优雅的 XeLaTeX 简历模板">
+<meta name="twitter:description" content="初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&amp;gt; 干货 | 一个简洁优雅的 XeLaTeX 简历模板。这两只『科研媛』的科研热情令我佩服不已，小S 的科研主要集中在自然语言处理方面，公众号的内容有满满的科研和技术干货，也有吃喝玩乐等放松文章。废话少说，要关注的请加girl">
+<meta name="twitter:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/qrcode_girlswhocode.png-400px">
+<meta name="twitter:creator" content="@billryan_yb">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://blog.yuanbin.me/assets/images/bill.png"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32317667-4']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Quality Matters</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/bill.png" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Yuan Bin</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Quality Matters <br/> <a href="http://www.yuanbin.me">http://www.yuanbin.me</a></p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/billryan" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">Github</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://twitter.com/billryan_yb" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://www.instagram.com/bin.yuan" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-instagram"></i>
+                        <span class="sidebar-button-desc">Instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="mailto:yuanbin2014@gmail.com" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            一个简洁优雅的 XeLaTeX 简历模板
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2015-08-27T15:57:59+08:00">
+	
+		    Aug 27, 2015
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/技术/">技术</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&gt; <a href="http://mp.weixin.qq.com/s?__biz=MzAwMjM3MTc5OA==&amp;mid=212258865&amp;idx=1&amp;sn=8ee6ccd56d86778e48207cedbb5fbfad&amp;3rd=MzA3MDU4NTYzMw==&amp;scene=6#rd" target="_blank" rel="external">干货 | 一个简洁优雅的 XeLaTeX 简历模板</a>。这两只『科研媛』的科研热情令我佩服不已，小S 的科研主要集中在自然语言处理方面，公众号的内容有满满的科研和技术干货，也有吃喝玩乐等放松文章。废话少说，要关注的请加<strong>girlswhocode</strong>或者狂扫以下二维码。</p>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/qrcode_girlswhocode.png-400px" alt="girlswhocode"></p>
+<p>微信公众号传播能力虽然不错，但是发表在公众号上的文章就别想轻易被搜索引擎索引了，网址链接也是又长又丑… 这对信息的传播其实是非常不利的。所以就在自己博客上也贴一份咯~ 广告到此为止，下面开始正文。<br><a id="more"></a></p>
+<p>每年的9月10月是求职的高峰季，除了简历上充实的干货之外，一份美美的简历自然是能助你一臂之力的啦。今天要介绍的是用 LaTeX 制作的高逼格简历。</p>
+<p>LaTeX 的简历模板其实是有不少的，坊间流传较广的有 <code>moderncv</code>, 这货使用起来比较简单，样式改起来也很方便，但是不太适合作为一页纸简历模板，因为空白太多了。传统的 <code>resume</code> 宏包虽然适合用作一页纸简历，但是定制起来比较麻烦，需要懂不少 \TeX 语法。看过不少模板，老是觉得有什么地方不满意(处女座改变世界…)，思来想去俺就自己从 ShareLaTeX 网站上找了个极简教程学了下，鼓捣出了一个还算优雅的简历模板出来。接下来介绍模板使用细节和定制说明，最后整理一些常用的 LaTeX 模板网站。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>该简历模板使用 XeLaTeX 编译，无痛支持中文，开箱即用(几乎不需要懂 LaTeX 语法)，除了本地编译外也可使用 Sharelatex <strong>在线编译</strong>，无需在本机安装 TeX 发行版。</p>
+<p>主要的功能如下：</p>
+<ul>
+<li>极其容易定制和扩展。</li>
+<li>完善的 Unicode 字体支持，因为用的是 XeLaTeX 嘛</li>
+<li>完美的简体中文支持，默认使用 adobefonts 的四套简体中文字型，其他字型可自行添加。</li>
+<li>支持图标字体 FontAwesome 4.3.0</li>
+</ul>
+<h3 id="中英文排版样例"><a href="#中英文排版样例" class="headerlink" title="中英文排版样例"></a>中英文排版样例</h3><p>首先来一个英文的版式。</p>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/resume.png-q75" alt="English resume"><br>​<br>中文版的行距相对英文要大一点，否则会给人很挤的感觉，这些行间距的调整其实挺费纠结的，得根据字型大小等反复调整。</p>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/resume-zh_CN.png-q75" alt="中文简历模板"></p>
+<p>原图地址见 <a href="https://github.com/billryan/resume/blob/zh_CN/resume-en_US-zh_CN.png" target="_blank" rel="external">https://github.com/billryan/resume/blob/zh_CN/resume-en_US-zh_CN.png</a></p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="ShareLaTeX-在线编译"><a href="#ShareLaTeX-在线编译" class="headerlink" title="ShareLaTeX 在线编译"></a>ShareLaTeX 在线编译</h3><p>感谢万能的『云计算』，LaTeX 编译也可以放到云端了！使用这种方法无需在本机安装诸如 CTeX/TeXlive/MacTeX 等发行版，网站上还能有历史版本记录，十分方便！最简单的方法，浏览器中打开 <a href="https://www.sharelatex.com/templates/556b27cf0d23e5a8117053d9" target="_blank" rel="external">模板链接</a>, 按需更改自己的名字和联系方式等。<br>在线预览时需要注意 ShareLaTeX 自带的 PDF 阅读器对中文支持不太好(可能会显示乱码)，这时选择使用 native 阅读器即可。</p>
+<p>中文模板的文件为 <code>resume-zh_CN.tex</code>, 英文模板的文件为 <code>resume.tex</code>.</p>
+<h3 id="使用较新的-TeX-发行版在本地计算机编译"><a href="#使用较新的-TeX-发行版在本地计算机编译" class="headerlink" title="使用较新的 TeX 发行版在本地计算机编译"></a>使用较新的 TeX 发行版在本地计算机编译</h3><p>除了在线编译外，该模板当然也支持传统的本地编译，从 <a href="https://github.com/billryan/resume/tree/zh_CN" target="_blank" rel="external">https://github.com/billryan/resume/tree/zh_CN</a> 上克隆下来使用 XeLaTeX 编译即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xelatex resume.tex % 编译英文简历</div><div class="line">xelatex resume-zh_CN.tex % 编译中文简历</div></pre></td></tr></table></figure>
+<h3 id="中英文双语支持"><a href="#中英文双语支持" class="headerlink" title="中英文双语支持"></a>中英文双语支持</h3><p>LaTeX 的中文支持一直是不少 TeX 新手心中的梦魇，该简历模板最大的特色就是『无痛』支持中英文双语，『无痛』的含义是指开箱即用——在线或者克隆到本地后只需要更改自己的信息即可，不需要自己设置中文字体支持等操作。</p>
+<p>对 Git 不了解或使用不方便的朋友可单独下载压缩包，解压即用。下载地址见 <a href="https://github.com/billryan/resume/archive/zh_CN.zip" target="_blank" rel="external">GitHub 官网</a>, <a href="http://7rf9g9.com1.z0.glb.clouddn.com/doc/zh_CN.zip" target="_blank" rel="external">大陆镜像加速</a></p>
+<p>对 Git 比较了解的朋友可选择克隆后切换到<code>zh_CN</code>分支，<code>zh_CN</code> 是<code>master</code>分支的超集，即<code>zh_CN</code>包含<code>master</code>分支所有的文件。<br>需要注意的是<code>zh_CN</code>分支包含 Adobe 的宋楷黑仿四套中文字体，体积较大(40 MB+)，如果只需要英文简历的可单独克隆<code>master</code>分支。</p>
+<p>中文使用UTF-8编码，对于大多数 Windows 用户来说，只要使用的不是太老的 CTeX 发行版，WinEdt 的中文支持也是毫无压力的。<br>编译时务必使用 XeLaTeX，其他编译方式会报错，因为依赖了 \XeTeX 的一些东西。</p>
+<h3 id="中英文切换"><a href="#中英文切换" class="headerlink" title="中英文切换"></a>中英文切换</h3><p>英文模板范例见 <a href="https://github.com/billryan/resume/blob/zh_CN/resume.tex" target="_blank" rel="external">https://github.com/billryan/resume/blob/zh_CN/resume.tex</a><br>中文模板范例见 <a href="https://github.com/billryan/resume/blob/zh_CN/resume-zh_CN.tex" target="_blank" rel="external">https://github.com/billryan/resume/blob/zh_CN/resume-zh_CN.tex</a></p>
+<p>中文模板与英文模板的区别仅有两行——使用中文时仅需反注释以下两行，模板中已默认启用，第一次编译时耗时相对较长(引入了外部中文字型)，耐心等待下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\usepackage&#123;zh_CN-Adobefonts_external&#125; % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)</div><div class="line">%\usepackage&#123;zh_CN-Adobefonts_internal&#125; % Simplified Chinese Support using system fonts</div><div class="line">\usepackage&#123;linespacing_fix&#125; % disable extra space before next section</div></pre></td></tr></table></figure>
+<p>对于高级用户：如果系统已确定安装有 Adobe 的四套中文字型，在文档的开始处使用包<code>zh_CN-Adobefonts_internal</code>，这样第一次编译时也会很快。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>参考文献的引用采用 bib + bst 的方式管理，bib 中存放 BibTeX 格式的引用文本，bst 用于控制 bib 文件的展示形式，默认为 IEEEtran. 编译方式可选如下：</p>
+<ol>
+<li>OSX/Linux 用户 <code>latexmk -pdf -pvc -silent myresume-zh_CN.tex</code> latexmkrc 配置文件可参考我的 <a href="https://github.com/billryan/dotfiles/blob/master/latex/latexmkrc" target="_blank" rel="external">dotfiles/latexmkrc</a></li>
+<li>Windows 用户可使用 WinEdt 中的 TeXify 选项编译(未测试)</li>
+</ol>
+<p>除了以上两种编译方式，你还可以使用传统的编译方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">xelatex myresume-zh_CN</div><div class="line">bibtex myresume-zh_CN</div><div class="line">xelatex myresume-zh_CN</div><div class="line">xelatex myresume-zh_CN</div></pre></td></tr></table></figure>
+<p>范例文档中默认Reference 另起一页，想留在当前页的可注释掉<code>\newpage</code></p>
+<h3 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h3><p>普通用户直接使用模板中的宏即可，具体排版使用可直接参考范例 tex 文档，已经十分简洁了。<br>想自己添加新的宏的可以先看看 <a href="https://www.sharelatex.com/blog/2011/03/27/how-to-write-a-latex-class-file-and-design-your-own-cv.html" target="_blank" rel="external">How to write a LaTeX class file and design your own CV (Part 1) - ShareLaTeX</a> 和 <a href="https://www.sharelatex.com/blog/2013/06/28/how-to-write-a-latex-class-file-and-design-your-own-cv.html" target="_blank" rel="external">How to write a LaTeX class file and design your own CV (Part 2) - ShareLaTeX</a> 了解下该模板的简单背景。</p>
+<ul>
+<li><code>\name</code>: 姓名</li>
+<li><code>\contactInfo</code>: 联系信息, 需要三项信息，分别是{邮箱}{手机号}{个人主页}</li>
+<li><code>\basicContactInfo</code>: 简要的联系信息, 需要 项信息, 分别是{邮箱}{手机号}, 没有个人主页的用这个</li>
+<li><code>\section</code>: 用于分节, 如教育背景, 实习/项目经历等</li>
+<li><code>\subsection</code>: 用于小节标题, 无日期选项</li>
+<li><code>\datedsubsection</code>: 用于小节标题, 简历中使用最广，第二项为时间区间，自动右对齐</li>
+<li><code>\itemize</code>: 清单列表，简历中应用最广</li>
+<li><code>\enumerate</code>: 枚举列表，数字标号</li>
+</ul>
+<h3 id="FontAwesome"><a href="#FontAwesome" class="headerlink" title="FontAwesome"></a>FontAwesome</h3><p>首先在 <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank" rel="external">Font Awesome Icons</a> 上选中自己想使用的图标(暂不支持 alias)，然后在 <a href="https://github.com/billryan/resume/blob/zh_CN/fontawesome.sty" target="_blank" rel="external">fontawesome.sty</a> 中找到相应的宏, 将其作为普通文本一样使用。<br>如果不需要使用 FontAwesome 字体的把那些宏去掉即可。<br>其他的可以自行参考相应 cls 和 tex 文件。</p>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p><a href="http://opensource.org/licenses/MIT" target="_blank" rel="external">The MIT License (MIT)</a></p>
+<p>Copyrighted fonts are not subjected to this License.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>LaTeX 的中文支持除了在系统配置文件内指定外还可以在当前项目内指定，这种方式适合大范围分发，正是这个模板中采用的方式，缺点就是大部分中文字型都是有版权的，使用上需要注意。在制作这个模板的过程中还发现合理使用 LaTeX 现代宏包能大大减轻后期维护和升级的工作，需要使用的命令更少更清晰。</p>
+<p>这个模板看似复杂，其实使用上极其省心，想在我这个模板的基础上改动样式的可以看相应的 cls 文件和详细说明，只是简单使用的话直接在范例文档的基础上改改即可。<br>总的来说这个模板适合找工作用，而且是偏技术型的一页纸简历。</p>
+<p>项目主页 <a href="https://github.com/billryan/resume" target="_blank" rel="external">https://github.com/billryan/resume</a> 祝大家玩的开心 :)</p>
+<h2 id="相关资源小结"><a href="#相关资源小结" class="headerlink" title="相关资源小结"></a>相关资源小结</h2><p>除了本文介绍的模板外，你还可以到其他模板网站上找自己喜欢的样式，也可以自己学点基本的 LaTeX 语法定制一个，下面对这些可能用到的资源做点小结。</p>
+<ol>
+<li><a href="https://www.sharelatex.com/" target="_blank" rel="external">ShareLaTeX, the Online LaTeX Editor</a> - LaTeX 在线编辑器，左边是类似 Sublime Text 的编辑界面，右边是相应的 PDF 编译输出。无需本地安装 TeX 发行版，非常好用！另外他们家提供的文档质量也非常的高，可以当做教材使。</li>
+<li><a href="https://www.sharelatex.com/templates" target="_blank" rel="external">LaTeX Templates - ShareLaTeX</a> - ShareLaTeX 提供的 LaTeX 模板，Presentation, Resume, CV, Books 等应有尽有，选中自己喜欢的模板后即可基于模板定制自己的内容，多快好省地作出自己的成果。</li>
+<li><a href="https://www.overleaf.com/" target="_blank" rel="external">Overleaf</a> - 和 ShareLaTeX 类似的 TeX 在线编辑器，也有很多模板可以用。</li>
+<li><a href="http://www.latextemplates.com/" target="_blank" rel="external">LaTeX Templates</a> - 比较老的 LaTeX 模板网站了，模板质量比较高，需要下载到本地编译。</li>
+<li>LaTeX 中文方面的教程精品的不多，刘海洋老师的《LaTeX 入门》 算是精品中的精品！</li>
+</ol>
+<p>以简历为例，ShareLaTeX 的 <a href="https://www.sharelatex.com/templates/cv-or-resume" target="_blank" rel="external">CV or Resume</a> 提供了不少模板可供选择，有看起来很 fancy 的模板，比如下面这个。</p>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/fancy_cv.png-q75" alt="Fance CV"></p>
+<p>其他的模板就等着你的慧眼去发现啦。</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/LaTeX/">LaTeX</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2015/09/array-and-pointer.html"  data-tooltip="数组和指针">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2015/08/Akka-Notes-Request-and-Response.html" data-tooltip="Akka Notes 4 - Request and Response">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 Yuan Bin. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2015/09/array-and-pointer.html"  data-tooltip="数组和指针">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2015/08/Akka-Notes-Request-and-Response.html" data-tooltip="Akka Notes 4 - Request and Response">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html">
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/bill.png" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Yuan Bin</h4>
+        
+            <div id="about-card-bio"><p>Quality Matters <br/> <a href="http://www.yuanbin.me">http://www.yuanbin.me</a></p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Developer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                China, Shanghai
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    autofocus="autofocus"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2010/12/dian-zi-zhi-zuo-zhi-chu-nu-zuo-xi-dian-dong-tai-xiao-hui.html">
+                            <h3 class="media-heading">电子制作之处女作-西电动态校徽</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 13, 2010
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2012/01/ASCII码之大小写那些事儿.html">
+                            <h3 class="media-heading">ASCII码之大小写那些事儿</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jan 11, 2012
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>原帖发在<a href="http://xdlinux.info/bbs/thread-1244-1-1.html">开源社区论坛</a>上，感觉还有点意思，于是乎就搬到这儿来了咯～本帖探讨ASCII码编码中英文字母大小写编码的相关问题，不需要读者具有计算机编码方面的专业知识，当然咯，为了更好地参与讨论，一点点计算机编码的基本常识还是要有的。<br>不知ASCII码为何物的请先移步<a href="http://en.wikipedia.org/wiki/ASCII">维基百科</a>  </p>
+<h3 id="故事的起源"><a href="#故事的起源" class="headerlink" title="故事的起源"></a>故事的起源</h3><p>Long long ago, 也就是上个学期微机原理课的时候，班上一MM问了老师这么一个问题——“ASCII码中大写字母A的十六进制代码是41，而小写字母的十六进制代码是61，中间不是只能编码20个字符么，那剩下的那6个大写字母跑哪去了呀？” 只见此时老师笑而不语(显然是男老师…)，底下一小撮明白真相的群众疾呼:“那个41和61是十六进制呀！”   </p>
+<p>MM思维敏捷，很快又出现了新的问题:“41H和61H之间可以编码32个字符呀，那为什么小写字母不紧跟着大写字母编码呢？大小写字母连在一起多和谐呀~” 说时迟，那时快，老师答曰:“这个问题…我得先请示一下Google”。听MM刚才那么一说，52个大小写字母顿时哼起了:“让我们 握着手 手牵手 一起走到时间的尽头…” 但在得到美国国家标准化委员会的确切答复后，大A和小a只能率领50个兄弟姐妹以头跄地曰:“千杀的委员会！滥用手中的职权割断我们大写家族和小写家族之间的脐带！小心我叫老母亲来收拾你们！” 在这里我想为标准化委员会说几句话，人家帮你割断脐带是为了让小写家族得到新生呀！！欲知后事如何，且听下段分析。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2012/01/武汉七日游.html">
+                            <h3 class="media-heading">武汉「七日游」流水帐之交通&amp;amp;下厨&amp;amp;华科篇</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jan 24, 2012
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>右眼已经差不多好了，趁着脑海里还残留些记忆，是时候把寒假期间的流水帐记一下了<em> 自西安南下至今也没见过太阳公公，更别说他儿子老母了… 从1月13号上午11点到武昌到19号早上离开武汉差不多整整7天吧，7天里每天都下雨，只有在第2天和第6天的时候出去逛了下</em> 来武汉的目的主要还是为了了却08年的心愿——看看真实的华科到底是么样子_ OK,流水帐正式开始</p>
+<h2 id="交通篇"><a href="#交通篇" class="headerlink" title="交通篇"></a>交通篇</h2><p>武汉的公交的恶劣情况早有耳闻，百闻不如一见，13号上午11点坐公交时我彻底震惊了，一个小女孩不要命似的保护着两个座位，由此可知武汉公交的座位是有好珍贵。</p>
+<p>在公交上坐了差不多半个小时我就受不了了，胃酸都快吐出来了，估计是一个上午一点东西都没吃的恶果，原以为12号晚上在橙色心情美美地吃了一顿就不用再吃了，但是…坑爹的K896，丫的进入武汉市内的时候就变蜗牛了，慢慢地爬了半个小时才到站，于是乎又多饿了半个小时(12号走的过于匆忙，一点吃的东西也没买)，到公交上呕吐也很正常啦，于是乎果断下车换了Taxi，跑了半个多小时才到目的地（也就是我舅舅家啦，武汉分为三大块-武昌、汉口、汉阳，我舅舅家住在武昌的最东边差不多），武汉是有好大_</p>
+<p>14号和舅舅舅母一起出去买了点东西，倒了趟公交，每辆公交上似乎都是那么挤，我上车后过了两站就被挤到里边去了，别说肉饼，我都快被挤成肉酱了！过了差不多2个小时终于下车了！！！那个时候我还在感概，武汉这么大，公交这么挤，还让人活不，要是我住在这种地方我一年都不想出来一次，东西通通网购，后来仔细看了下武汉市地图，我才发现原来武汉并没有想像中的那么大嘛，不过也不愧对“千湖之省”的称号，丫的水陆面积比目测接近1：2，长江+东湖+汉江至少占四分之一的面积，所以咧，武汉的道路似乎没有一条是直的，完全无方向可言，不知道北方的朋友到了武汉之后会不会比较容易迷路。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                94 posts found
+            </p>
+        </div>
+    </div>
+</div>
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/jquery.fancybox.js"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js"></script>
+<script src="/assets/js/tranquilpeak.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html';
+                 
+                    this.page.identifier = 'posts/2015/08/An-elegant-XeLaTeX-resume-template.html';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'billryan';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('JR5AN1IRYS', 'a400faf3b8075c5354366b0508f4fed9');
+        var algoliaIndex = algoliaClient.initIndex('blog');
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,671 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Quality Matters">
+    <title>Scala 和 Java 的混合编译指南 - Quality Matters</title>
+    <meta name="author" content="Yuan Bin">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。全文的基础如下：
+
+图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 Scala Cookbook, 先行谢过。">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Scala 和 Java 的混合编译指南">
+<meta property="og:url" content="http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html">
+<meta property="og:site_name" content="Quality Matters">
+<meta property="og:description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。全文的基础如下：
+
+图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 Scala Cookbook, 先行谢过。">
+<meta property="og:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/joint-compilation-of-scala-and-java.png-q75">
+<meta property="og:updated_time" content="2015-11-26T06:47:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Scala 和 Java 的混合编译指南">
+<meta name="twitter:description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。全文的基础如下：
+
+图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 Scala Cookbook, 先行谢过。">
+<meta name="twitter:image" content="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/joint-compilation-of-scala-and-java.png-q75">
+<meta name="twitter:creator" content="@billryan_yb">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://blog.yuanbin.me/assets/images/bill.png"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css">
+    <link rel="stylesheet" href="/assets/css/tranquilpeak.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32317667-4']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <div class="header-title">
+        <a class="header-title-link" href="/ ">Quality Matters</a>
+    </div>
+    
+        
+            <a  class="header-right-icon open-algolia-search"
+                href="#search">
+        
+        
+            <i class="fa fa-lg fa-search"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="4">
+    <div class="sidebar-container">
+        
+            <div class="sidebar-profile">
+                <a href="/#about">
+                    <img class="sidebar-profile-picture" src="/assets/images/bill.png" alt="Author&#39;s picture"/>
+                </a>
+                <h4 class="sidebar-profile-name">Yuan Bin</h4>
+                
+                    <h5 class="sidebar-profile-bio"><p>Quality Matters <br/> <a href="http://www.yuanbin.me">http://www.yuanbin.me</a></p>
+</h5>
+                
+            </div>
+        
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/ "
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                        <span class="sidebar-button-desc">Home</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-categories"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                        <span class="sidebar-button-desc">Categories</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-tags"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                        <span class="sidebar-button-desc">Tags</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/all-archives"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                        <span class="sidebar-button-desc">Archives</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link open-algolia-search"
+                             href="#search"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+                        <span class="sidebar-button-desc">Search</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#about"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                        <span class="sidebar-button-desc">About</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://github.com/billryan" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                        <span class="sidebar-button-desc">Github</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://twitter.com/billryan_yb" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                        <span class="sidebar-button-desc">Twitter</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="https://www.instagram.com/bin.yuan" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-instagram"></i>
+                        <span class="sidebar-button-desc">Instagram</span>
+                    </a>
+            </li>
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link " href="mailto:yuanbin2014@gmail.com" target="_blank">
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                        <span class="sidebar-button-desc">Mail</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+            <ul class="sidebar-buttons">
+            
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="/atom.xml"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                        <span class="sidebar-button-desc">RSS</span>
+                    </a>
+            </li>
+            
+        </ul>
+        
+    </div>
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Scala 和 Java 的混合编译指南
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2015-08-04T17:29:01+08:00">
+	
+		    Aug 04, 2015
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/技术/">技术</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。<br>全文的基础如下：</p>
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/joint-compilation-of-scala-and-java.png-q75" alt="Java 和 Scala 混合编译流程"></p>
+<p>图片来源：<a href="http://www.slideshare.net/javatwo2011/java-app-scala" target="_blank" rel="external">如何在 Java App 中導入 Scala</a>，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 <em>Scala Cookbook</em>, 先行谢过。</p>
+<a id="more"></a>
+<h2 id="在-Scala-中使用-Java-sbt"><a href="#在-Scala-中使用-Java-sbt" class="headerlink" title="在 Scala 中使用 Java - sbt"></a>在 Scala 中使用 Java - sbt</h2><p>Scala 下的构建工具首推 <a href="http://www.scala-sbt.org/" target="_blank" rel="external">sbt</a>, sbt 可以简化软件构建和依赖管理过程，同时还可以使用 Scala 语言定制复杂的 task. </p>
+<h3 id="目录结构-Directory-Structure"><a href="#目录结构-Directory-Structure" class="headerlink" title="目录结构(Directory Structure)"></a>目录结构(Directory Structure)</h3><p>受 Java 平台的 <a href="https://maven.apache.org/" target="_blank" rel="external">Maven</a> 影响，sbt 使用的目录结构和 Maven 类似，一个基本的 sbt 目录结构如下所述：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">sbtProject</div><div class="line">├── build.sbt</div><div class="line">├── lib &lt;unmanaged dependencies jars&gt;</div><div class="line">├── project</div><div class="line">│   └── Build.scala (optional)</div><div class="line">├── src</div><div class="line">│   ├── main</div><div class="line">│   │   ├── java &lt;main Java sources&gt;</div><div class="line">│   │   ├── resources &lt;files to include in main jar here&gt;</div><div class="line">│   │   └── scala &lt;main Scala sources&gt;</div><div class="line">│   └── test</div><div class="line">│       ├── java &lt;test Java sources&gt;</div><div class="line">│       ├── resources &lt;files to include in test jar here&gt;</div><div class="line">│       └── scala &lt;test Scala sources&gt;</div><div class="line">└── target &lt;compiled classes, packaged jars, managed files, caches, and documentation&gt;</div></pre></td></tr></table></figure>
+<p>目录结构的初始化可以通过 Giter8 或者自定义 shell 脚本完成，以下是一个简易的目录生成脚本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line"></div><div class="line">mkdir -p src/&#123;main,<span class="built_in">test</span>&#125;/&#123;java,resources,scala&#125;</div><div class="line">mkdir lib project target</div><div class="line">touch project/Build.scala</div><div class="line"></div><div class="line"><span class="comment"># create an initial build.sbt file</span></div><div class="line">cat &lt;&lt;EOF &gt; build.sbt</div><div class="line">name := <span class="string">"sbtProject"</span></div><div class="line"></div><div class="line">version := <span class="string">"1.0"</span></div><div class="line"></div><div class="line">scalaVersion := <span class="string">"2.10.5"</span></div><div class="line">EOF</div></pre></td></tr></table></figure>
+<h3 id="构建控制"><a href="#构建控制" class="headerlink" title="构建控制"></a>构建控制</h3><p>构建过程由项目目录下的<code>build.sbt</code>和子目录<code>project</code>下的<code>*.scala</code> 共同控制。</p>
+<h3 id="依赖库管理"><a href="#依赖库管理" class="headerlink" title="依赖库管理"></a>依赖库管理</h3><p>依赖的库可通过 Unmanaged 和 Managed 两种方式添加，Unmanaged dependencies 通常放置于当前项目目录下的子目录<code>lib</code>, sbt 会将其作为 classpath.</p>
+<p>另一种常见的方式为 Managed dependencies, 底层使用 Apache Ivy 作为库的依赖管理。添加依赖库在 sbt 中十分简单，最简洁的方式可以在<code>build.sbt</code> 中添加一行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">libraryDependencies += groupID % artifactID % revision</div></pre></td></tr></table></figure>
+<p>对于多个依赖，自然可以写多行<code>libraryDependencies</code>, 也可使用<code>Seq</code>合并多行。</p>
+<h3 id="实战1-使用-Java-源码进行联合编译"><a href="#实战1-使用-Java-源码进行联合编译" class="headerlink" title="实战1 - 使用 Java 源码进行联合编译"></a>实战1 - 使用 Java 源码进行联合编译</h3><p>首先我们使用 Java 新建一 Employee 类，然后在 Scala 中调用之，目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">sbtTest</div><div class="line">├── build.sbt</div><div class="line">├── lib</div><div class="line">├── project</div><div class="line">│   └── Build.scala</div><div class="line">├── src</div><div class="line">│   ├── main</div><div class="line">│   │   ├── java</div><div class="line">│   │   │   └── me</div><div class="line">│   │   │       └── yuanbin</div><div class="line">│   │   │           └── java</div><div class="line">│   │   │               └── Employee.java</div><div class="line">│   │   ├── resources</div><div class="line">│   │   └── scala</div><div class="line">│   │       └── me</div><div class="line">│   │           └── yuanbin</div><div class="line">│   │               └── testproject</div><div class="line">│   │                   └── Hello.scala</div><div class="line">│   └── test</div><div class="line">│       ├── java</div><div class="line">│       ├── resources</div><div class="line">│       └── scala</div><div class="line">└── target</div></pre></td></tr></table></figure>
+<p>我们在 Java 中新建 Employee 类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> me.yuanbin.java;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(String n)</span> </span>&#123;</div><div class="line">        name = n;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Scala 中使用 Java 中创建的类：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> me.yuanbin.testproject</div><div class="line"></div><div class="line"><span class="keyword">import</span> me.yuanbin.java._</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">Hello</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]) &#123;</div><div class="line">    <span class="keyword">val</span> p = <span class="keyword">new</span> <span class="type">Employee</span>(<span class="string">"Bill Ryan"</span>)</div><div class="line">    println(<span class="string">"Hello from "</span> + p.getName())</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在项目的基目录下运行<code>sbt run</code>应该就能看的<code>Hello from Bill Ryan</code>字样了。如果想深入了解 sbt 中编译 Java 代码的话，其官网链接值得关注 - <a href="http://www.scala-sbt.org/0.13/docs/Java-Sources.html" target="_blank" rel="external">sbt Reference Manual — Java Sources</a></p>
+<h3 id="实战2-使用-Java-生成的-jar-包-Unmanaged-dependencies"><a href="#实战2-使用-Java-生成的-jar-包-Unmanaged-dependencies" class="headerlink" title="实战2 - 使用 Java 生成的 jar 包(Unmanaged dependencies)"></a>实战2 - 使用 Java 生成的 jar 包(Unmanaged dependencies)</h3><p>源码和目录结构同实战1，不过为了说明问题可在生成 jar 包后删除 Java 部分的源码和 class 文件。</p>
+<p><strong>Note: Java 经验不足的建议看看打包相关知识，<a href="https://newcircle.com/bookshelf/java_fundamentals_tutorial/packaging" target="_blank" rel="external">Java Fundamentals Tutorial: Packaging</a> 不错。</strong></p>
+<ol>
+<li>进入 Java 源码目录下, <code>cd src/main/java</code> (打包依赖于目录结构, 否则生成的 jar 包无法正常使用)</li>
+<li>编译生成<code>.class</code>类文件，<code>javac javac me/yuanbin/java/Employee.java</code></li>
+<li>由<code>.class</code> 生成 jar 包，<code>jar cvf Employee.jar me/yuanbin/java/Employee.class</code></li>
+<li>将生成的 jar 包放入项目的<code>lib</code> 目录下供 sbt 添加至 classpath, <code>mv Employee.jar lib/</code></li>
+</ol>
+<p>在项目基目录下运行<code>sbt run</code>应该同样能看到<code>Hello from Bill Ryan</code> 字样。</p>
+<h3 id="实战3-使用Maven-Repository-Library"><a href="#实战3-使用Maven-Repository-Library" class="headerlink" title="实战3 - 使用Maven Repository Library"></a>实战3 - 使用Maven Repository Library</h3><p>本小节参考自 <a href="http://alvinalexander.com/scala/simple-scala-akka-actor-examples-hello-world-actors" target="_blank" rel="external">Simple Scala Akka Actor examples (Hello, world examples) | alvinalexander.com</a></p>
+<p>在 sbt 中使用 Maven 仓库非常简单，将 Maven 的groupId, artifactId, 和 version 域更改为 sbt libraryDependencies 字符串即可。以 Akka Actor 为例，相应的 Maven 依赖写法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;dependency&gt;</div><div class="line">	&lt;groupId&gt;com.typesafe.akka&lt;/groupId&gt;</div><div class="line">	&lt;artifactId&gt;akka-actor_2.10&lt;/artifactId&gt;</div><div class="line">	&lt;version&gt;2.3.12&lt;/version&gt;</div><div class="line">&lt;/dependency&gt;</div></pre></td></tr></table></figure>
+<p>转化为 sbt 的 libraryDependencies 如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">libraryDependencies += &quot;com.typesafe.akka&quot; % &quot;akka-actor_2.10&quot; % &quot;2.3.12&quot;</div></pre></td></tr></table></figure>
+<p>将以上一行加入至项目根目录的<code>build.sbt</code>下，添加 scala 源码，<code>vim src/main/scala/Hello.scala</code></p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> akka.actor.<span class="type">Actor</span></div><div class="line"><span class="keyword">import</span> akka.actor.<span class="type">ActorSystem</span></div><div class="line"><span class="keyword">import</span> akka.actor.<span class="type">Props</span></div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloActor</span> <span class="keyword">extends</span> <span class="title">Actor</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">receive</span> </span>= &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">"hello"</span> =&gt; println(<span class="string">"hello back at you"</span>)</div><div class="line">    <span class="keyword">case</span> _       =&gt; println(<span class="string">"huh?"</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">object</span> <span class="title">Main</span> <span class="keyword">extends</span> <span class="title">App</span> </span>&#123;</div><div class="line">  <span class="keyword">val</span> system = <span class="type">ActorSystem</span>(<span class="string">"HelloSystem"</span>)</div><div class="line">  <span class="comment">// default Actor constructor</span></div><div class="line">  <span class="keyword">val</span> helloActor = system.actorOf(<span class="type">Props</span>[<span class="type">HelloActor</span>], name = <span class="string">"helloactor"</span>)</div><div class="line">  helloActor ! <span class="string">"hello"</span></div><div class="line">  helloActor ! <span class="string">"buenos dias"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在项目基目录下运行<code>sbt run</code>, 终端下应该会显示<code>hello ...</code> 等字样。</p>
+<p>使用 sbt 的三种常见的 Scala/Java 混合编译方法就介绍到这了。</p>
+<h3 id="部署单一可执行的-jar-文件"><a href="#部署单一可执行的-jar-文件" class="headerlink" title="部署单一可执行的 jar 文件"></a>部署单一可执行的 jar 文件</h3><p>使用<code>sbt package</code>的确可以生成 jar 包，但是问题来了，怎样执行这些 jar 包呢？这些 jar 包由 sbt 创建，自然是可以在 scala 解释器中运行，但是想让 Java 也能执行这个 jar 包就得废些功夫了，原因在于 sbt 生成的 jar 包中包含一些 Scala 特有的东西，而这些东西则包含在<em>scala-library.jar</em> 这个 jar 包中。所以我们可以总结出如下三种方法运行 sbt 生成的 jar 包。</p>
+<ol>
+<li>将需要的 jar 包分发至 classpath 并用 scala 执行。这种方法需要在执行系统上安装有 Scala. </li>
+<li>将 jar 包及 Scala 的核心库分发至 classpath, 使用 java 执行。这种方法只需要在执行系统上安装 Java.</li>
+<li>使用 sbt 插件如 sbt-assembly 构建生成单一完整的 jar 包供 Java 执行，这样一来就不需要 Scala 的核心库了。</li>
+</ol>
+<p>sbt 的使用可参考官方文档，另外 <a href="https://github.com/CSUG/real_world_scala/blob/master/02_sbt.markdown" target="_blank" rel="external">CSUG/real_world_scala</a> 也可参考看看别人的实践。</p>
+<h2 id="在-Java-中使用-Scala-Maven"><a href="#在-Java-中使用-Scala-Maven" class="headerlink" title="在 Java 中使用 Scala - Maven"></a>在 Java 中使用 Scala - Maven</h2><p>Scala 中如何使用 Java 的部分已梳理完毕，这里就 Java 中如何编译 Scala 做些记录。</p>
+<p>这一部分可参考如下两大链接：</p>
+<ul>
+<li><a href="http://docs.scala-lang.org/tutorials/scala-with-maven.html" target="_blank" rel="external">Scala with Maven - Scala Documentation</a></li>
+<li><a href="https://github.com/davidB/scala-maven-plugin" target="_blank" rel="external">davidB/scala-maven-plugin</a></li>
+</ul>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2015/08/Akka-Notes-Actor-Messaging.html"  data-tooltip="Akka Notes 2 - Actor Messaging">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2015/07/Deploy-Hadoop-cluster-with-Vagrant-and-Ambari.html" data-tooltip="Deploy Hadoop cluster with Vagrant and Ambari">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 Yuan Bin. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2015/08/Akka-Notes-Actor-Messaging.html"  data-tooltip="Akka Notes 2 - Actor Messaging">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/posts/2015/07/Deploy-Hadoop-cluster-with-Vagrant-and-Ambari.html" data-tooltip="Deploy Hadoop cluster with Vagrant and Ambari">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html">
+                <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="/assets/images/bill.png" alt="Author&#39;s picture"/>
+        
+            <h4 id="about-card-name">Yuan Bin</h4>
+        
+            <div id="about-card-bio"><p>Quality Matters <br/> <a href="http://www.yuanbin.me">http://www.yuanbin.me</a></p>
+</div>
+        
+        
+            <div id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Software Developer</p>
+
+            </div>
+        
+        
+            <div id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                China, Shanghai
+            </div>
+        
+    </div>
+</div>
+
+        <div id="algolia-search-modal" class="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="close-button"><i class="fa fa-close"></i></span>
+            <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+                <span class="searchby-algolia-text text-color-light text-small">by</span>
+                <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+            </a>
+            <i class="search-icon fa fa-search"></i>
+            <form id="algolia-search-form">
+                <input type="text" id="algolia-search-input" name="search"
+                    class="form-control input--large search-input" placeholder="Search "
+                    autofocus="autofocus"/>
+            </form>
+        </div>
+        <div class="modal-body">
+            <div class="no-result text-color-light text-center">no post found</div>
+            <div class="results">
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2010/12/dian-zi-zhi-zuo-zhi-chu-nu-zuo-xi-dian-dong-tai-xiao-hui.html">
+                            <h3 class="media-heading">电子制作之处女作-西电动态校徽</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Dec 13, 2010
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2012/01/ASCII码之大小写那些事儿.html">
+                            <h3 class="media-heading">ASCII码之大小写那些事儿</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jan 11, 2012
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>原帖发在<a href="http://xdlinux.info/bbs/thread-1244-1-1.html">开源社区论坛</a>上，感觉还有点意思，于是乎就搬到这儿来了咯～本帖探讨ASCII码编码中英文字母大小写编码的相关问题，不需要读者具有计算机编码方面的专业知识，当然咯，为了更好地参与讨论，一点点计算机编码的基本常识还是要有的。<br>不知ASCII码为何物的请先移步<a href="http://en.wikipedia.org/wiki/ASCII">维基百科</a>  </p>
+<h3 id="故事的起源"><a href="#故事的起源" class="headerlink" title="故事的起源"></a>故事的起源</h3><p>Long long ago, 也就是上个学期微机原理课的时候，班上一MM问了老师这么一个问题——“ASCII码中大写字母A的十六进制代码是41，而小写字母的十六进制代码是61，中间不是只能编码20个字符么，那剩下的那6个大写字母跑哪去了呀？” 只见此时老师笑而不语(显然是男老师…)，底下一小撮明白真相的群众疾呼:“那个41和61是十六进制呀！”   </p>
+<p>MM思维敏捷，很快又出现了新的问题:“41H和61H之间可以编码32个字符呀，那为什么小写字母不紧跟着大写字母编码呢？大小写字母连在一起多和谐呀~” 说时迟，那时快，老师答曰:“这个问题…我得先请示一下Google”。听MM刚才那么一说，52个大小写字母顿时哼起了:“让我们 握着手 手牵手 一起走到时间的尽头…” 但在得到美国国家标准化委员会的确切答复后，大A和小a只能率领50个兄弟姐妹以头跄地曰:“千杀的委员会！滥用手中的职权割断我们大写家族和小写家族之间的脐带！小心我叫老母亲来收拾你们！” 在这里我想为标准化委员会说几句话，人家帮你割断脐带是为了让小写家族得到新生呀！！欲知后事如何，且听下段分析。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
+                        <a class="link-unstyled" href="http://blog.yuanbin.me/posts/2012/01/武汉七日游.html">
+                            <h3 class="media-heading">武汉「七日游」流水帐之交通&amp;amp;下厨&amp;amp;华科篇</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    Jan 24, 2012
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"><p>右眼已经差不多好了，趁着脑海里还残留些记忆，是时候把寒假期间的流水帐记一下了<em> 自西安南下至今也没见过太阳公公，更别说他儿子老母了… 从1月13号上午11点到武昌到19号早上离开武汉差不多整整7天吧，7天里每天都下雨，只有在第2天和第6天的时候出去逛了下</em> 来武汉的目的主要还是为了了却08年的心愿——看看真实的华科到底是么样子_ OK,流水帐正式开始</p>
+<h2 id="交通篇"><a href="#交通篇" class="headerlink" title="交通篇"></a>交通篇</h2><p>武汉的公交的恶劣情况早有耳闻，百闻不如一见，13号上午11点坐公交时我彻底震惊了，一个小女孩不要命似的保护着两个座位，由此可知武汉公交的座位是有好珍贵。</p>
+<p>在公交上坐了差不多半个小时我就受不了了，胃酸都快吐出来了，估计是一个上午一点东西都没吃的恶果，原以为12号晚上在橙色心情美美地吃了一顿就不用再吃了，但是…坑爹的K896，丫的进入武汉市内的时候就变蜗牛了，慢慢地爬了半个小时才到站，于是乎又多饿了半个小时(12号走的过于匆忙，一点吃的东西也没买)，到公交上呕吐也很正常啦，于是乎果断下车换了Taxi，跑了半个多小时才到目的地（也就是我舅舅家啦，武汉分为三大块-武昌、汉口、汉阳，我舅舅家住在武昌的最东边差不多），武汉是有好大_</p>
+<p>14号和舅舅舅母一起出去买了点东西，倒了趟公交，每辆公交上似乎都是那么挤，我上车后过了两站就被挤到里边去了，别说肉饼，我都快被挤成肉酱了！过了差不多2个小时终于下车了！！！那个时候我还在感概，武汉这么大，公交这么挤，还让人活不，要是我住在这种地方我一年都不想出来一次，东西通通网购，后来仔细看了下武汉市地图，我才发现原来武汉并没有想像中的那么大嘛，不过也不愧对“千湖之省”的称号，丫的水陆面积比目测接近1：2，长江+东湖+汉江至少占四分之一的面积，所以咧，武汉的道路似乎没有一条是直的，完全无方向可言，不知道北方的朋友到了武汉之后会不会比较容易迷路。<br></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            <p class="results-count text-medium"
+                data-message-zero="no post found"
+                data-message-one="1 post found"
+                data-message-other="{n} posts found">
+                94 posts found
+            </p>
+        </div>
+    </div>
+</div>
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+        <!--SCRIPTS-->
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/jquery.fancybox.js"></script>
+<script src="/assets/js/jquery.fancybox-thumbs.js"></script>
+<script src="/assets/js/tranquilpeak.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html';
+                 
+                    this.page.identifier = 'posts/2015/08/Joint-Compilation-of-Scala-and-Java.html';
+                 
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'billryan';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment-with-locales.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script>
+        var algoliaClient = algoliasearch('JR5AN1IRYS', 'a400faf3b8075c5354366b0508f4fed9');
+        var algoliaIndex = algoliaClient.initIndex('blog');
+    </script>
+
+    </body>
+</html>
