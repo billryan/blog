@@ -2,6 +2,7 @@
     "title": "Quality Matter",
     "author": "东海一叶",
     "description": "Blog",
+    "language": "zh",
     "plugins": [
         "algolia@1.0.7",
         "disqus",
