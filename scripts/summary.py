@@ -45,7 +45,7 @@ def _gen_summary_posts(posts):
 
 def gen_summary(posts):
     summary_posts = _gen_summary_posts(posts)
-    return '\n'.join([HEADER, ABOUT, summary_posts, TAGS, '\n'])
+    return '\n'.join([HEADER, ABOUT, RESUME, summary_posts, TAGS, '\n'])
 
 
 def update_summary(rootdir):
@@ -56,5 +56,6 @@ def update_summary(rootdir):
         f.write(summary)
 
 HEADER = '# Summary\n'
-ABOUT = _gen_md_list_item('About', 'README.md')
+ABOUT = _gen_md_list_item('关于我', 'README.md')
+RESUME = _gen_md_list_item('简历', 'resume.md')
 TAGS = _gen_md_list_item('Tags', 'tags.md')
