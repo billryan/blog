@@ -2,6 +2,8 @@
 
 * [关于我](README.md)
 * [简历](resume.md)
+* [2018-06](posts/2018-06/README.md)
+    * [HAProxy 进阶使用技巧](posts/2018-06/2018-06-30_21-26-14.md)
 * [2018-04](posts/2018-04/README.md)
     * [Hue hive metastore 显示时间差的问题](posts/2018-04/2018-04-20_17-24-14.md)
     * [Hive show create table 显示空白行的问题](posts/2018-04/2018-04-02_16-35-55.md)
