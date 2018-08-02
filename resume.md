@@ -20,7 +20,7 @@
 - Spark 机器学习开发(Scala/Python)
 - 推荐系统(Spark/Redis/矩阵分解/UserCF/ItemCF/Tag based)
 - Web 开发(Java/Spring Boot)
-- Hbase
+- HBase
 
 ### IBM
 
