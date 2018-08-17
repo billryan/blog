@@ -15,11 +15,6 @@ before_install:
   - curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz -o bin/hugo.tar.gz
   - tar xzvvf bin/hugo.tar.gz -C ./bin
 
-install:
-  # Install GitBook dependencies
-  - echo "install gitbook dependencies..."
-  - gitbook install
-
 script:
   - "./bin/hugo"
 
