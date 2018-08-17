@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Akka Notes 2 - Actor Messaging - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Akka Notes 2 - Actor Messaging 该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
+今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
+回顾『学生-老师』的例子 我们考虑由应用 StudentSimulatorApp 单独给 TeacherActor 发送消息的情形，这里你可以认为主程序就是 StudentSimulatorApp.
+从以上这张流程图我们可以得知：
+ 『学生』首先初始化一个叫做 ActorSystem 的东西 然后它使用 ActorSystem 来创建一个叫做 ActorRef 的东西，并将 QuoteRequest 消息发送给 ActorRef(TeacherActor 的代理) ActorRef 将消息传送至Message Dispatcher 进行分发 Dispatcher 将消息压入目标 Actor 的 MailBox 队列 Dispatcher 将 MailBox 送入到某个线程去执行(后续章节介绍更多细节) MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher 的 receive 方法处理。  下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。
+
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Akka Notes 2 - Actor Messaging" />
+<meta property="og:description" content="Akka Notes 2 - Actor Messaging
+
+该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
+
+今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
+
+回顾『学生-老师』的例子
+
+我们考虑由应用 StudentSimulatorApp 单独给 TeacherActor 发送消息的情形，这里你可以认为主程序就是 StudentSimulatorApp.
+
+
+
+从以上这张流程图我们可以得知：
+
+
+『学生』首先初始化一个叫做 ActorSystem 的东西
+然后它使用 ActorSystem 来创建一个叫做 ActorRef 的东西，并将 QuoteRequest 消息发送给 ActorRef(TeacherActor 的代理)
+ActorRef 将消息传送至Message Dispatcher 进行分发
+Dispatcher 将消息压入目标 Actor 的 MailBox 队列
+Dispatcher 将 MailBox 送入到某个线程去执行(后续章节介绍更多细节)
+MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher 的 receive 方法处理。
+
+
+下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/" />
+
+
+
+<meta property="article:published_time" content="2015-08-25T13:55:02&#43;08:00"/>
+
+<meta property="article:modified_time" content="2015-08-25T13:55:02&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Akka Notes 2 - Actor Messaging">
+<meta itemprop="description" content="Akka Notes 2 - Actor Messaging
+
+该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
+
+今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
+
+回顾『学生-老师』的例子
+
+我们考虑由应用 StudentSimulatorApp 单独给 TeacherActor 发送消息的情形，这里你可以认为主程序就是 StudentSimulatorApp.
+
+
+
+从以上这张流程图我们可以得知：
+
+
+『学生』首先初始化一个叫做 ActorSystem 的东西
+然后它使用 ActorSystem 来创建一个叫做 ActorRef 的东西，并将 QuoteRequest 消息发送给 ActorRef(TeacherActor 的代理)
+ActorRef 将消息传送至Message Dispatcher 进行分发
+Dispatcher 将消息压入目标 Actor 的 MailBox 队列
+Dispatcher 将 MailBox 送入到某个线程去执行(后续章节介绍更多细节)
+MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher 的 receive 方法处理。
+
+
+下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。
+
+">
+
+
+<meta itemprop="datePublished" content="2015-08-25T13:55:02&#43;08:00" />
+<meta itemprop="dateModified" content="2015-08-25T13:55:02&#43;08:00" />
+<meta itemprop="wordCount" content="1985">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Akka Notes 2 - Actor Messaging"/>
+<meta name="twitter:description" content="Akka Notes 2 - Actor Messaging
+
+该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
+
+今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
+
+回顾『学生-老师』的例子
+
+我们考虑由应用 StudentSimulatorApp 单独给 TeacherActor 发送消息的情形，这里你可以认为主程序就是 StudentSimulatorApp.
+
+
+
+从以上这张流程图我们可以得知：
+
+
+『学生』首先初始化一个叫做 ActorSystem 的东西
+然后它使用 ActorSystem 来创建一个叫做 ActorRef 的东西，并将 QuoteRequest 消息发送给 ActorRef(TeacherActor 的代理)
+ActorRef 将消息传送至Message Dispatcher 进行分发
+Dispatcher 将消息压入目标 Actor 的 MailBox 队列
+Dispatcher 将 MailBox 送入到某个线程去执行(后续章节介绍更多细节)
+MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher 的 receive 方法处理。
+
+
+下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Akka Notes 2 - Actor Messaging</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-08-25 </span>
+        
+        <span class="more-meta"> 约 1985 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#akka-notes-2-actor-messaging">Akka Notes 2 - Actor Messaging</a>
+<ul>
+<li><a href="#回顾-学生-老师-的例子">回顾『学生-老师』的例子</a></li>
+<li><a href="#studentsimulatorapp-程序"><code>StudentSimulatorApp</code> 程序</a>
+<ul>
+<li><a href="#1-创建-actorsystem">1. 创建 <code>ActorSystem</code></a></li>
+<li><a href="#2-创建指向-teacheractor-的代理">2. 创建指向 TeacherActor 的代理</a></li>
+<li><a href="#3-向代理发送-quoterequest">3. 向代理发送 QuoteRequest</a></li>
+</ul></li>
+<li><a href="#消息">消息</a>
+<ul>
+<li><a href="#studentprotocol"><code>StudentProtocol</code></a></li>
+<li><a href="#teacherprotocol"><code>TeacherProtocol</code></a></li>
+</ul></li>
+<li><a href="#dispatcher-和-mailbox">Dispatcher 和 Mailbox</a>
+<ul>
+<li><a href="#mailbox">MailBox</a></li>
+<li><a href="#dispatcher">Dispatcher</a></li>
+</ul></li>
+<li><a href="#teacher-actor">Teacher Actor</a>
+<ul>
+<li><a href="#teacheractor-scala"><code>TeacherActor.scala</code></a></li>
+</ul></li>
+<li><a href="#源码">源码</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="akka-notes-2-actor-messaging">Akka Notes 2 - Actor Messaging</h1>
+
+<p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。</p>
+
+<p>今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html">学生-老师</a> 作为范例。</p>
+
+<h2 id="回顾-学生-老师-的例子">回顾『学生-老师』的例子</h2>
+
+<p>我们考虑由应用 <code>StudentSimulatorApp</code> 单独给 <code>TeacherActor</code> 发送消息的情形，这里你可以认为主程序就是 <code>StudentSimulatorApp</code>.</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_TeacherRequestFlowSimulatedApp.png-q75" alt="TeacherRequestFlowSimulatedApp" /></p>
+
+<p>从以上这张流程图我们可以得知：</p>
+
+<ol>
+<li>『学生』首先初始化一个叫做 <code>ActorSystem</code> 的东西</li>
+<li>然后它使用 <code>ActorSystem</code> 来创建一个叫做 <code>ActorRef</code> 的东西，并将 <code>QuoteRequest</code> 消息发送给 <code>ActorRef</code>(<code>TeacherActor</code> 的代理)</li>
+<li><code>ActorRef</code> 将消息传送至<code>Message Dispatcher</code> 进行分发</li>
+<li><code>Dispatcher</code> 将消息压入目标 Actor 的 <code>MailBox</code> 队列</li>
+<li><code>Dispatcher</code> 将 <code>MailBox</code> 送入到某个线程去执行(后续章节介绍更多细节)</li>
+<li><code>MailBox</code> 抛出一个<code>message</code> 并最终将其委托给真正的 <code>Actor</code> - Teacher 的 receive 方法处理。</li>
+</ol>
+
+<p>下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。</p>
+
+<p></p>
+
+<h2 id="studentsimulatorapp-程序"><code>StudentSimulatorApp</code> 程序</h2>
+
+<p>我们使用<code>StudentSimulatorApp</code> 程序启动 JVM 并初始化 <code>ActorSystem</code>.</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_StudentSimulatorApp.png-q75" alt="StudentSimulatorApp" /></p>
+
+<p>从图中我们可以发现，<code>StudentSimulatorApp</code> 主要完成以下三个步骤：</p>
+
+<ol>
+<li>创建 <code>ActorSystem</code></li>
+<li>使用 <code>ActorSystem</code> 创建指向 Teacher Actor 的代理(ActorRef)</li>
+<li>向 Teacher 的代理发送 <code>QuoteRequest</code> 消息</li>
+</ol>
+
+<p>以下对这三点逐一剖析。</p>
+
+<h3 id="1-创建-actorsystem">1. 创建 <code>ActorSystem</code></h3>
+
+<p><a href="http://doc.akka.io/api/akka/2.3.12/index.html#akka.actor.ActorSystem">ActorSystem</a> 是通往 Actor 世界的入口，你可以通过 <code>ActorSystems</code> 创建或者停止 <code>Actors</code>, 甚至停止整个 Actor 环境。</p>
+
+<p>从另一方面来讲，Actors 是层级化的并且对于所有的 Actors 来讲，ActorSystem 和 <code>java.lang.Object</code> 或 <code>scala.Any</code> 是类似的, 也就是说这是所有 Actors 的祖先。当你使用 ActorSystem 的 actorOf 方法创建 Actor 时，你创建的 Actor 总是在 ActorSystem 之下。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_ActorSystemActorCreation-q75.png" alt="ActorSystemActorCreation" /></p>
+
+<p>初始化 ActorSystem 的语句看起来像是如下这个样子：</p>
+
+<pre><code class="language-scala">val system = ActorSystem(&quot;UniversityMessageSystem&quot;)
+</code></pre>
+
+<p><code>UniversityMessageSystem</code> 仅仅只是 ActorSystem 的一个名字。</p>
+
+<h3 id="2-创建指向-teacheractor-的代理">2. 创建指向 TeacherActor 的代理</h3>
+
+<p>创建指向 TeacherActor 的代理的代码片段如下：</p>
+
+<pre><code class="language-scala">val teacherActorRef:ActorRef = actorSystem.actorOf(Props[TeacherActor])
+</code></pre>
+
+<p><code>actorOf</code> 是 ActorSystem 中创建 Actor 的方法。但是正如你所见，它并不返回我们需要的 TeacherActor, 而是返回一个类型为 ActorRef 的东西。
+ActorRef 扮演的角色类似实际 Actors 的一个代理，客户端并不与 Actor 直接通信。这正是 Actor 模型的处理方式：避免直接访问 TeacherActor 中任意自定义或者私有方法及变量。
+再复述一遍，你只能将消息发送给 ActorRef, 它最终会到达实际的 Actor. 你永远都不能与 Actor 直接通信，如果你找到了某种方法做到了，其他人会恨你到死的。:-(</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_ActorRef.png-q75" alt="ActorRef" /></p>
+
+<h3 id="3-向代理发送-quoterequest">3. 向代理发送 QuoteRequest</h3>
+
+<p>这同样只需一行即可完成，你可以告诉 QuoteRequest 消息发送给 ActorRef. Actor 中的 <code>tell</code> 方法实际上是 <code>!</code>. (实际上也有<code>tell</code> 方法，简略起见这里使用 <code>!</code>)</p>
+
+<pre><code class="language-scala">//send a message to the Teacher Actor
+teacherActorRef ! QuoteRequest
+</code></pre>
+
+<p>好了！这就是<code>StudentSimulatorApp</code> 的核心机制了。<code>StudentSimulatorApp.scala</code> 的源码如下：</p>
+
+<pre><code class="language-scala">package me.yuanbin.akkanotes.actormsg
+
+import akka.actor.ActorSystem
+import akka.actor.Props
+import me.yuanbin.akkanotes.protocols.StudentProtocol._
+
+/**
+ * Let's have the student as a simple App now instead of an Actor for the first part.
+ *
+ */
+object StudentSimulatorApp extends App {
+  //Initialize the ActorSystem
+  val actorSystem = ActorSystem(&quot;UniversityMessageSystem&quot;)
+
+  //construct the Teacher Actor Ref
+  val teacherActorRef = actorSystem.actorOf(Props[TeacherActor])
+
+  //send a message to the Teacher Actor
+  teacherActorRef ! QuoteRequest
+
+  //Let's wait for a couple of seconds before we shut down the system
+  Thread.sleep(2000)
+
+  //Shut down the ActorSystem.
+  actorSystem.shutdown()
+}
+</code></pre>
+
+<p>在代码的结尾处，你需要关闭 ActorSystem, 否则 JVM 将会一直运行。主线程睡眠一小会以使得 TeacherActor 可以完成它的任务。当然你也可以使用一些测试类而不使主线程睡眠。</p>
+
+<h2 id="消息">消息</h2>
+
+<p>我们在之前将 QuoteRequest 发送给了 ActorRef, 但是我们却根本没见着消息类！细思极恐！
+为了便于组织，我们通常将消息封装为 scala 中的 <code>object</code>.</p>
+
+<p><code>QuoteRequest</code> 是 Student 发往 TeacherActor 的请求。TeacherActor 随后则回应一个 <code>QuoteResponse</code>.</p>
+
+<h3 id="studentprotocol"><code>StudentProtocol</code></h3>
+
+<pre><code class="language-scala">package me.yuanbin.akkanotes.protocols
+
+object StudentProtocol {
+  /*
+   * The Student sends this message to request for a Quotation
+   *
+   */
+  case class QuoteRequest()
+}
+</code></pre>
+
+<h3 id="teacherprotocol"><code>TeacherProtocol</code></h3>
+
+<pre><code class="language-scala">package me.yuanbin.akkanotes.protocols
+
+object TeacherProtocol {
+  /*
+   * The TeacherActor responds back to the Student with this message object
+   * The actual quote string is wrapped inside the response.
+   *
+   */
+  case class QuoteResponse(quoteString:String)
+}
+</code></pre>
+
+<h2 id="dispatcher-和-mailbox">Dispatcher 和 Mailbox</h2>
+
+<p>ActorRef 将 message handling 的功能委托给 Dispatcher, 深入分析发现，当我们创建 ActorSystem 和 ActorRef 时，相应的 Dispatcher 和 Mailbox 也同时也创建。下面让我们看看他们到底是什么。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_MessageDispatcherMailbox-q75.png" alt="MessageDispatcherMailbox" /></p>
+
+<h3 id="mailbox">MailBox</h3>
+
+<p>每个 Actor 都有一个 Mailbox(有一个特殊例子), 以我们的比喻为例，每个 Teacher 都有一个 mailbox. Teacher 需要检查邮箱并且处理其中的消息。在 Actor 的世界中，使用另一种方法——mailbox 在得到机会后使用 Actor 完成这项工作。mailbox 有一个 queue 以 FIFO 的形式来存储和处理消息，这和我们通常的信箱有点区别，我们通常的信箱通常是最近的信件放在最上面。</p>
+
+<h3 id="dispatcher">Dispatcher</h3>
+
+<p>分发器的实现比较精妙，咋一看，Dispatcher 仅仅只是从 ActorRef 中获取消息并将其传送至 Mailbox. 但实际上在其背后却大有玄机：
+分发器封装了 <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html">ExecutorService</a> (ForkJoinPool or ThreadPoolExecutor), 它依赖 ExecutorService <strong>执行 MailBox 程序。</strong></p>
+
+<p>Akka 中 <a href="https://github.com/akka/akka/blob/master/akka-actor/src/main/scala/akka/dispatch/Dispatcher.scala#L114">Dispatcher</a> 相关的程序如下：</p>
+
+<pre><code class="language-scala">protected[akka] override def registerForExecution(mbox: Mailbox, ...): Boolean = {  
+  ...
+  try {
+      executorService execute mbox
+      true
+  }
+  ...
+}
+</code></pre>
+
+<p>我们已经知道 MailBox 将所有 messages 保存在 Queue 中，由于需要 Executor 运行 Mailbox, 所以 MailBox 需要以线程的形式存在。Bingo! 这正是 MailBox 的声明和构造方式！</p>
+
+<p><a href="https://github.com/akka/akka/blob/master/akka-actor/src/main/scala/akka/dispatch/Mailbox.scala#L56">Mailbox</a> 的签名如下：</p>
+
+<pre><code class="language-scala">private[akka] abstract class Mailbox(val messageQueue: MessageQueue)
+  extends ForkJoinTask[Unit] with SystemMessageQueue with Runnable
+</code></pre>
+
+<h2 id="teacher-actor">Teacher Actor</h2>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_TeacherActor.png-q75" alt="TeacherActor" /></p>
+
+<p>当 <code>MailBox</code> 启动了 run 方法时，将会从 message queue 中移除 message 并将其传输给 Actor 进行处理。当你把消息告诉给了 ActorRef 时，最终被调用的方法是目标 Actor 的 receive 方法。
+TeacherActor 是一个比较原始的类，它有一组 quotes 并且由 receive 方法 handle 这些消息。</p>
+
+<h3 id="teacheractor-scala"><code>TeacherActor.scala</code></h3>
+
+<pre><code class="language-scala">package me.yuanbin.akkanotes.actormsg
+
+import akka.actor.Actor
+import me.yuanbin.akkanotes.protocols.StudentProtocol._
+import me.yuanbin.akkanotes.protocols.TeacherProtocol._
+import scala.util.Random
+
+/**
+ * Your Teacher Actor class.
+ *
+ * The class could use refinement by way of
+ * using ActorLogging which uses the EventBus of the Actor framework
+ * instead of the plain old System out
+ *
+ */
+
+class TeacherActor extends Actor {
+  val quotes = List(
+    &quot;Moderation is for cowards&quot;,
+    &quot;Anything worth doing is worth overdoing&quot;,
+    &quot;The trouble is you think you have time&quot;,
+    &quot;You never gonna know if you never even try&quot;)
+
+  def receive = {
+    case QuoteRequest =&gt; {
+      //Get a random Quote from the list and construct a response
+      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
+      println()
+      println(quoteResponse)
+    }
+  }
+}
+</code></pre>
+
+<p>TeacherActor 的 receive 方法通过模式匹配最终仅匹配一个消息——QuoteRequest (实际上我们应该为 default case 匹配，但这里有别的原因)</p>
+
+<p>receive 方法做了如下事情：</p>
+
+<ol>
+<li>模式匹配：<code>QuoteRequest</code></li>
+<li>从静态的 quotes list 中随机挑选一条 quote</li>
+<li>构建 <code>QuoteResponse</code></li>
+<li>将 <code>QuoteResponse</code> 打印到终端</li>
+</ol>
+
+<h2 id="源码">源码</h2>
+
+<p>源码可以从 <a href="https://github.com/billryan/akka_notes/tree/master/akka_messaging">akka_notes/akka_messaging</a> 找到。</p>
+
+<p>运行方式，确保系统装好 sbt 0.13.8.</p>
+
+<pre><code>cd akka_notes/akka_messaging
+sbt run
+</code></pre>
+
+<p>稍等片刻即可看到 TeacherActor 的输出。</p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-08-25</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2015-08/2015-08-26_09-24-56/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Akka Notes 1 - Introducing Actors</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2015-08/2015-08-04_17-29-01/">
+            <span class="next-text nav-default">Scala 和 Java 的混合编译指南</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Akka Notes 2 - Actor Messaging',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

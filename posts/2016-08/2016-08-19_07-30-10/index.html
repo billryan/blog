@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Gitbook 网页版中文字型优化 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Gitbook 网页版中文字型优化 Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallba" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2016-08/2016-08-19_07-30-10/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Gitbook 网页版中文字型优化" />
+<meta property="og:description" content="Gitbook 网页版中文字型优化 Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallba" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2016-08/2016-08-19_07-30-10/" />
+
+
+
+<meta property="article:published_time" content="2016-08-19T07:30:10&#43;08:00"/>
+
+<meta property="article:modified_time" content="2016-08-19T07:30:10&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Gitbook 网页版中文字型优化">
+<meta itemprop="description" content="Gitbook 网页版中文字型优化 Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallba">
+
+
+<meta itemprop="datePublished" content="2016-08-19T07:30:10&#43;08:00" />
+<meta itemprop="dateModified" content="2016-08-19T07:30:10&#43;08:00" />
+<meta itemprop="wordCount" content="324">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Gitbook 网页版中文字型优化"/>
+<meta name="twitter:description" content="Gitbook 网页版中文字型优化 Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallba"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Gitbook 网页版中文字型优化</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2016-08-19 </span>
+        
+        <span class="more-meta"> 约 324 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#gitbook-网页版中文字型优化">Gitbook 网页版中文字型优化</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="gitbook-网页版中文字型优化">Gitbook 网页版中文字型优化</h1>
+
+<p>Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS <del>对中文并不太友好</del>首先匹配英文字体族，fallback 至sans-serif 字体族，这在中英文和简繁并用时会有一些小小的问题。好在 Gitbook 提供了自定义 website/ebook 等 CSS 的方法 ==&gt; <a href="https://help.gitbook.com/content/how-can-i-include-css.html">How can I include custom CSS? · GitBook</a></p>
+
+<p>这里我们主要关注网页版的阅读体验，所以在 <code>styles</code> 目录下新建 <code>website.css</code> 即可，默认的主题 <a href="https://github.com/GitbookIO/theme-default">GitbookIO/theme-default</a> 关于 <code>font-family</code> 的设置为</p>
+
+<pre><code>font-family: @font-family-base;
+@font-family-sans: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+@font-family-base: @font-family-sans;
+</code></pre>
+
+<p>为了能在 <code>website.css</code> 中覆盖默认样式，我们需要使用更高的权重，这里我使用了 <code>.book</code> 和 <code>.book-summary .book-body</code> 三个类提升权重。具体可参考:
+- <a href="https://github.com/billryan/algorithm-exercise/blob/master/zh-hans/styles/website.css">简体中文</a>
+- <a href="https://github.com/billryan/algorithm-exercise/blob/master/zh-tw/styles/website.css">繁體中文</a>
+- <a href="https://github.com/billryan/algorithm-exercise/blob/master/en/styles/website.css">English</a></p>
+
+<p>以简体中文的样式为例，使用了简体字型在前，繁体在后的方式适配。</p>
+
+<pre><code>.book .book-summary, .book .book-body  {
+    font-family: &quot;Microsoft YaHei UI&quot;, &quot;Microsoft Yahei&quot;, &quot;PingFang SC&quot;, &quot;Lantinghei SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;WenQuanYi Micro Hei&quot;, &quot;WenQuanYi Zen Hei&quot;, &quot;Noto Sans CJK SC&quot;, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, &quot;PingFang TC&quot;, &quot;Lantinghei TC&quot;, &quot;Noto Sans CJK TC&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}
+</code></pre>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2016-08-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2016-09/2016-09-18_22-55-14/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">自制 GitBook 插件之 gitbook-plugin-tags</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2016-07/2016-07-31_18-17-05/">
+            <span class="next-text nav-default">enable HTTPS for hexo blog with dokku</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Gitbook 网页版中文字型优化',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

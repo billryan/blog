@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>家用服务器之自建 DNS 服务器 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="家用服务器之自建 DNS 服务器 之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。
+ 在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。
+ 前不久某国开始清理未备案的域名使用教育网IP。
+ 某高科技部门的大招之一：专业投毒污染三十年。  好了，针对以上问题我们使用两招就好了——ChinaDNS &#43; ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。 " />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="家用服务器之自建 DNS 服务器" />
+<meta property="og:description" content="家用服务器之自建 DNS 服务器
+
+之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。
+
+
+在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。
+前不久某国开始清理未备案的域名使用教育网IP。
+某高科技部门的大招之一：专业投毒污染三十年。
+
+
+好了，针对以上问题我们使用两招就好了——ChinaDNS &#43; ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/" />
+
+
+
+<meta property="article:published_time" content="2014-11-29T17:19:56&#43;08:00"/>
+
+<meta property="article:modified_time" content="2014-11-29T17:19:56&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="家用服务器之自建 DNS 服务器">
+<meta itemprop="description" content="家用服务器之自建 DNS 服务器
+
+之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。
+
+
+在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。
+前不久某国开始清理未备案的域名使用教育网IP。
+某高科技部门的大招之一：专业投毒污染三十年。
+
+
+好了，针对以上问题我们使用两招就好了——ChinaDNS &#43; ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
+">
+
+
+<meta itemprop="datePublished" content="2014-11-29T17:19:56&#43;08:00" />
+<meta itemprop="dateModified" content="2014-11-29T17:19:56&#43;08:00" />
+<meta itemprop="wordCount" content="1023">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="家用服务器之自建 DNS 服务器"/>
+<meta name="twitter:description" content="家用服务器之自建 DNS 服务器
+
+之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。
+
+
+在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。
+前不久某国开始清理未备案的域名使用教育网IP。
+某高科技部门的大招之一：专业投毒污染三十年。
+
+
+好了，针对以上问题我们使用两招就好了——ChinaDNS &#43; ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">家用服务器之自建 DNS 服务器</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-11-29 </span>
+        
+        <span class="more-meta"> 约 1023 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#家用服务器之自建-dns-服务器">家用服务器之自建 DNS 服务器</a>
+<ul>
+<li><a href="#chinadns-正确-解析国外域名">ChinaDNS - <strong>正确</strong>解析国外域名</a>
+<ul>
+<li><a href="#加速国内网站-dns-查询">加速国内网站 DNS 查询</a></li>
+</ul></li>
+<li><a href="#unbound-dnsmasq-缓存域名解析结果"><del>Unbound</del>dnsmasq - 缓存域名解析结果</a>
+<ul>
+<li><a href="#相关参考">相关参考</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="家用服务器之自建-dns-服务器">家用服务器之自建 DNS 服务器</h1>
+
+<p>之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。</p>
+
+<ol>
+<li>在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。<br /></li>
+<li>前不久某国开始清理未备案的域名使用教育网IP。<br /></li>
+<li>某高科技部门的大招之一：专业投毒污染三十年。</li>
+</ol>
+
+<p>好了，针对以上问题我们使用两招就好了——ChinaDNS + ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
+</p>
+
+<h2 id="chinadns-正确-解析国外域名">ChinaDNS - <strong>正确</strong>解析国外域名</h2>
+
+<p><a href="https://github.com/shadowsocks/ChinaDNS">ChinaDNS</a> 主要作为<strong>正确</strong>地解析国外域名用，基本原理是同时向国内国外 DNS 发起请求，过滤掉国内 DNS 返回的污染结果。 ChinaDNS 暂时在 AUR 中，故通过如下命令安装：</p>
+
+<pre><code>packer -S chinadns
+</code></pre>
+
+<p>鉴于国外 DNS Server 可选较少，较具代表性的有 OpenDNS 和 Google 两家，所以我们可以将国外 IP 固定，故新建文件 <code>chinadns-local@.service</code>.</p>
+
+<pre><code>cp /usr/lib/systemd/system/chinadns@.service /etc/systemd/system/chinadns-local@.service
+</code></pre>
+
+<p>将其中的行 <code>ExecStart</code> 换为：</p>
+
+<pre><code class="language-bash">ExecStart=/usr/bin/chinadns -s %i,8.8.8.8,208.67.222.222:443 -m -p 5353 -y 0.3 -d -c /etc/chnroute.txt
+</code></pre>
+
+<p>默认监听 5353 端口，使用114/阿里/DNSPod DNS(114.114.114.<sup>114</sup>&frasl;<sub>223</sub>.5.5.<sup>5</sup>&frasl;<sub>119</sub>.29.29.29) 作为国内 DNS Server, 8.8.8.8 对国内 CDN 更为友好，所以放在 OpenDNS 前面。</p>
+
+<pre><code class="language-bash"># sudo systemctl start chinadns-local@114.114.114.114
+# sudo systemctl enable chinadns-local@114.114.114.114
+</code></pre>
+
+<p>与之前熟知的 <code>dig</code> 不同，Arch 的 wiki 中建议使用 <code>ldns</code>(已在 Arch 的 base 中安装)的 <code>drill</code> 作为 DNS 查询诊断工具。</p>
+
+<pre><code>drill -p 5353 dropbox.com @127.0.0.1
+</code></pre>
+
+<p>若显示结果为</p>
+
+<pre><code>;; ANSWER SECTION:
+dropbox.com.    49      IN      A       108.160.172.206
+dropbox.com.    49      IN      A       108.160.172.238
+</code></pre>
+
+<p>则说明 <code>chinadns</code> 正常运行。能达到同样功能的还有 DNSCrypt, 但是相比 ChinaDNS 解析时间较长，且未能充分利用国内 CDN, 所以建议主要使用 ChinaDNS.</p>
+
+<h3 id="加速国内网站-dns-查询">加速国内网站 DNS 查询</h3>
+
+<p>ChinaDNS 的重度使用者可能会发现</p>
+
+<pre><code>local_ns_initparse: Message too long
+</code></pre>
+
+<p>类似 log, 此时 DNS 解析会出现问题，网络彻底瘫痪，所以我们可以采用 @felixonmars 维护的 china-list 分流和加速. 使用其中的 <code>install.sh</code> 即可，我添加了每天凌晨自动更新 list 并重启 dnsmasq 的 service 及 timer. 见 <a href="https://gist.github.com/billryan/718af2a3500bdf93a30e225d1e7dd725#file-dnsmasq-china-list-service">dnsmasq-china-list.service</a> 和 <a href="https://gist.github.com/billryan/718af2a3500bdf93a30e225d1e7dd725#file-dnsmasq-china-list-timer">dnsmasq-china-list.timer</a></p>
+
+<h2 id="unbound-dnsmasq-缓存域名解析结果"><del>Unbound</del>dnsmasq - 缓存域名解析结果</h2>
+
+<p>每次查询同样的域名也同时向多个上游 DNS Server 发起请求的话则会引发较大的域名解析时延，为了减少重复查找浪费解析时间，我们还需要一个能提供缓存功能的前端 DNS，常用的有 dnsmasq 和 unbound, 由于 <code>dnsmasq</code> 已经在 AP 中作为 DHCP Server 使用，<del>未尽量减少对 AP service 的影响，这里选用了另一款同样简单好用的 <a href="https://www.unbound.net/">Unbound</a>.</del> 已使用 dnsmasq 替代，dnsmasq 默认读取 hosts 文件，更为省心一些。
+Arch 下通过 <code>sudo pacman -S unbound</code> 安装，安装完之后可以把 <code>/etc/unbound/uncound.conf.example</code> 拷贝到 <code>/etc/unbounc/uncound.conf</code>, Arch 的 wiki 上有 <a href="https://wiki.archlinux.org/index.php/Unbound">Unbound</a> 的详细配置介绍，仔细看看就好了。我的配置文件见 <a href="https://gist.github.com/billryan/d8a087aafb32339e21c9#file-unbound-conf">unbound.conf</a>。</p>
+
+<p>dnsmasq 的配置较为简单 ==&gt; <a href="https://gist.github.com/billryan/718af2a3500bdf93a30e225d1e7dd725#file-dnsmasq-conf">dnsmasq.conf</a>, 指定 ChinaDNS 为上游就好了，对于家用服务器，你使用的很可能是 DHCP 分配 IP, 显然我们并不需要 ISP 提供的 DNS，所以不让其更新 <code>resolv.conf</code> 就好了。</p>
+
+<pre><code>echo &quot;nohook resolv.conf&quot; &gt;&gt; /etc/dhcpcd.conf
+</code></pre>
+
+<p>最终 <code>/etc/resolv.conf</code> 的内容应该如下：</p>
+
+<pre><code># Generated by resolvconf
+nameserver 127.0.0.1
+</code></pre>
+
+<p>至此你应该能获得一个比较纯净的 DNS 解析结果了，然而要想达到更为方便地科学上网，我们还需要 <code>ss-redir</code> 和 <code>ss-rules</code> 这两个工具。</p>
+
+<h3 id="相关参考">相关参考</h3>
+
+<ol>
+<li><a href="https://wiki.archlinux.org/index.php/dnsmasq">dnsmasq - ArchWiki</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Unbound">Unbound - ArchWiki</a></li>
+<li><a href="https://www.unbound.net/documentation/unbound.conf.html">Unbound documentation</a><br /></li>
+<li><a href="https://calomel.org/unbound_dns.html">Unbound DNS Server Tutorial @ Calomel.org</a></li>
+</ol>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-11-29</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2014-11/2014-11-30_16-00-56/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cubieboard2/树莓派之swap交换文件</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2014-11/2014-11-29_11-04-04/">
+            <span class="next-text nav-default">Pycon2014 美国视频合辑下载</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '家用服务器之自建 DNS 服务器',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

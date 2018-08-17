@@ -1,5 +1,0 @@
-PyGithub==1.36
-PyJWT==1.5.3
-python-frontmatter==0.4.2
-PyYAML==3.12
-six==1.11.0

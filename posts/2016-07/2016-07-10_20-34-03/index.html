@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>家用服务器之 HTTP/2 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="家用服务器之 HTTP/2 之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&amp;rsquo;s Encrypt, 方便好使，生成方法可参考 Let&amp;rsquo;s Encrypt for Archlinux.
+nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我的 nghttpx 配置文件如下： {% gist id=&amp;ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&amp;rdquo;,file=&amp;ldquo;nghttpx.conf&amp;rdquo; %}{% endgist %}
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="家用服务器之 HTTP/2" />
+<meta property="og:description" content="家用服务器之 HTTP/2
+
+之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&rsquo;s Encrypt, 方便好使，生成方法可参考 Let&rsquo;s Encrypt for Archlinux.
+
+nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我的 nghttpx 配置文件如下：
+
+{% gist id=&ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&rdquo;,file=&ldquo;nghttpx.conf&rdquo; %}{% endgist %}" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/" />
+
+
+
+<meta property="article:published_time" content="2016-07-10T20:34:03&#43;08:00"/>
+
+<meta property="article:modified_time" content="2016-07-10T20:34:03&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="家用服务器之 HTTP/2">
+<meta itemprop="description" content="家用服务器之 HTTP/2
+
+之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&rsquo;s Encrypt, 方便好使，生成方法可参考 Let&rsquo;s Encrypt for Archlinux.
+
+nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我的 nghttpx 配置文件如下：
+
+{% gist id=&ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&rdquo;,file=&ldquo;nghttpx.conf&rdquo; %}{% endgist %}">
+
+
+<meta itemprop="datePublished" content="2016-07-10T20:34:03&#43;08:00" />
+<meta itemprop="dateModified" content="2016-07-10T20:34:03&#43;08:00" />
+<meta itemprop="wordCount" content="418">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="家用服务器之 HTTP/2"/>
+<meta name="twitter:description" content="家用服务器之 HTTP/2
+
+之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&rsquo;s Encrypt, 方便好使，生成方法可参考 Let&rsquo;s Encrypt for Archlinux.
+
+nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我的 nghttpx 配置文件如下：
+
+{% gist id=&ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&rdquo;,file=&ldquo;nghttpx.conf&rdquo; %}{% endgist %}"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">家用服务器之 HTTP/2</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2016-07-10 </span>
+        
+        <span class="more-meta"> 约 418 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#家用服务器之-http-2">家用服务器之 HTTP/2</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="家用服务器之-http-2">家用服务器之 HTTP/2</h1>
+
+<p>之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 <a href="https://wzyboy.im/post/1052.html">使用 nghttpx 搭建 HTTP/2 代理</a> 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&rsquo;s Encrypt, 方便好使，生成方法可参考 <a href="../../2016/07/Let-s-Encrypt-for-Archlinux.html">Let&rsquo;s Encrypt for Archlinux</a>.</p>
+
+<p>nghttp2 已经进入 extra 仓库，使用 <code>packer -S nghttp2</code> 即可安装。我的 nghttpx 配置文件如下：
+
+{% gist id=&ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&rdquo;,file=&ldquo;nghttpx.conf&rdquo; %}{% endgist %}</p>
+
+<ul>
+<li>前端接受 HTTP/2 请求，并监听 11111 端口</li>
+<li>后端与 Squid 对接，Squid 的配置可参考 <a href="../../2016/07/Squid-for-home-server.html">家用服务器之 Squid 分流</a></li>
+<li>private-key 等证书使用 Let&rsquo;s Encrypt 生成，免去了申请商业证书的麻烦</li>
+<li>workers 根据你的 CPU 核数设定</li>
+<li>add-x-forwarded-for=yes 设定 forwarded-for 参数，让 Squid 能获取到客户端的真实 IP，便于 Squid 层面的鉴权</li>
+<li>accesslog-file 便于分析不明 IP</li>
+</ul>
+
+<p>对比过不使用 nghttp2 的代理情况，HTTP 1.1 的代理分分钟被不明 IP 访问，使用 nghttp2 后几乎没有再遇到骚扰。Chrome/Firefox 对 HTTP/2 的支持应该是毫无压力，Chrome 下 SwitchOmega 插件甚是好用。至此，HTTP proxy 层面已经十分完善，nghttp2 作为前端接入，Squid 作为分流、鉴权和缓存，polipo 提供 socks5 转 HTTP, ss 提供 socks5, HAProxy 提供高可用和负载均衡。</p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2016-07-10</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2016-07/2016-07-31_18-17-05/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">enable HTTPS for hexo blog with dokku</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2016-07/2016-07-10_17-19-49/">
+            <span class="next-text nav-default">Let&#39;s Encrypt for Archlinux</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '家用服务器之 HTTP\/2',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

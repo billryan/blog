@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>课程设计小结 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="课程设计小结 不知不觉又忙了一个星期，周一老师把课程设计的要求简单地说了一下，然后就是两天之后提交方案并且做Presentation，这个算是比以前大作业要求严格的地方了，答辩时老师偶尔也会提几个问，呵呵，这可难为了一些酱油党喽～～不知自己是不是比较「走运」，我在介绍自己组的方案时老师竟然没有提问，估计是我讲的太快了，中间几乎没有停顿，老师也没能抓住机会提问
+课程设计是全班做一个题目，是纯硬件的题，有点像电赛。先软件仿真，然后搭实际电路调试。大意是运用两块LM324运放和若干电容电阻什么的设计一个200Hz, 峰峰值为0.1V的正弦波和周期为1ms, 幅值为2v的三角波信号; 接下来则是将前边产生的两种信号和信号源产生的50Hz的正弦波按一定比例相加; 随后设计电路从相加后的信号中提取200Hz的正弦波，输出必须达到10V以上; 最后则是将三角波信号与提取出的200Hz正弦波通过比较器得到最终输出。整个电路做下来差不多是将模电中的运放应用部分复习了一遍，只不过这次除了理论部分还有实践部分。理论部分把课本上的一些电路排列组合一下即可，说起来倒是挺简单的，本人不才，前后花了差不多3天时间才把设计方案基本确定下来，放在Multisim下跑了一下，波形还能接受。这两天动手搭实际电路时又做了些bug fix, 下午正式收工，只等着周一到学校实验室微调和验收了。
+很喜欢「课程设计」这种形式，边学边用，这才是工科生最应该掌握的。自己还算比较喜欢做硬件，大约从初二起开始接触一些电子方面的东西，当时可以说得上是对这些玩意儿上瘾了，那时为了个电路琢磨到凌晨三四点也还精神亢奋，不过上了大学后反而有所荒废，想想还是有点痛心的。噗&amp;hellip;其实做硬件很麻烦地说，偶尔也会觉得枯燥，硬件复用的成本比起软件来复用的成本高太多太多，而且业余玩玩也还是比较烧钱的。东拉西扯了这么多，下边吐槽一下这次「课程设计」。学校和老师该改进的地方实在是太多太多了
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2013-01/2013-01-19_21-12-00/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="课程设计小结" />
+<meta property="og:description" content="课程设计小结
+
+不知不觉又忙了一个星期，周一老师把课程设计的要求简单地说了一下，然后就是两天之后提交方案并且做Presentation，这个算是比以前大作业要求严格的地方了，答辩时老师偶尔也会提几个问，呵呵，这可难为了一些酱油党喽～～不知自己是不是比较「走运」，我在介绍自己组的方案时老师竟然没有提问，估计是我讲的太快了，中间几乎没有停顿，老师也没能抓住机会提问
+
+课程设计是全班做一个题目，是纯硬件的题，有点像电赛。先软件仿真，然后搭实际电路调试。大意是运用两块LM324运放和若干电容电阻什么的设计一个200Hz, 峰峰值为0.1V的正弦波和周期为1ms, 幅值为2v的三角波信号; 接下来则是将前边产生的两种信号和信号源产生的50Hz的正弦波按一定比例相加; 随后设计电路从相加后的信号中提取200Hz的正弦波，输出必须达到10V以上; 最后则是将三角波信号与提取出的200Hz正弦波通过比较器得到最终输出。整个电路做下来差不多是将模电中的运放应用部分复习了一遍，只不过这次除了理论部分还有实践部分。理论部分把课本上的一些电路排列组合一下即可，说起来倒是挺简单的，本人不才，前后花了差不多3天时间才把设计方案基本确定下来，放在Multisim下跑了一下，波形还能接受。这两天动手搭实际电路时又做了些bug fix, 下午正式收工，只等着周一到学校实验室微调和验收了。
+
+很喜欢「课程设计」这种形式，边学边用，这才是工科生最应该掌握的。自己还算比较喜欢做硬件，大约从初二起开始接触一些电子方面的东西，当时可以说得上是对这些玩意儿上瘾了，那时为了个电路琢磨到凌晨三四点也还精神亢奋，不过上了大学后反而有所荒废，想想还是有点痛心的。噗&hellip;其实做硬件很麻烦地说，偶尔也会觉得枯燥，硬件复用的成本比起软件来复用的成本高太多太多，而且业余玩玩也还是比较烧钱的。东拉西扯了这么多，下边吐槽一下这次「课程设计」。学校和老师该改进的地方实在是太多太多了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2013-01/2013-01-19_21-12-00/" />
+
+
+
+<meta property="article:published_time" content="2013-01-19T21:12:00&#43;08:00"/>
+
+<meta property="article:modified_time" content="2013-01-19T21:12:00&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="课程设计小结">
+<meta itemprop="description" content="课程设计小结
+
+不知不觉又忙了一个星期，周一老师把课程设计的要求简单地说了一下，然后就是两天之后提交方案并且做Presentation，这个算是比以前大作业要求严格的地方了，答辩时老师偶尔也会提几个问，呵呵，这可难为了一些酱油党喽～～不知自己是不是比较「走运」，我在介绍自己组的方案时老师竟然没有提问，估计是我讲的太快了，中间几乎没有停顿，老师也没能抓住机会提问
+
+课程设计是全班做一个题目，是纯硬件的题，有点像电赛。先软件仿真，然后搭实际电路调试。大意是运用两块LM324运放和若干电容电阻什么的设计一个200Hz, 峰峰值为0.1V的正弦波和周期为1ms, 幅值为2v的三角波信号; 接下来则是将前边产生的两种信号和信号源产生的50Hz的正弦波按一定比例相加; 随后设计电路从相加后的信号中提取200Hz的正弦波，输出必须达到10V以上; 最后则是将三角波信号与提取出的200Hz正弦波通过比较器得到最终输出。整个电路做下来差不多是将模电中的运放应用部分复习了一遍，只不过这次除了理论部分还有实践部分。理论部分把课本上的一些电路排列组合一下即可，说起来倒是挺简单的，本人不才，前后花了差不多3天时间才把设计方案基本确定下来，放在Multisim下跑了一下，波形还能接受。这两天动手搭实际电路时又做了些bug fix, 下午正式收工，只等着周一到学校实验室微调和验收了。
+
+很喜欢「课程设计」这种形式，边学边用，这才是工科生最应该掌握的。自己还算比较喜欢做硬件，大约从初二起开始接触一些电子方面的东西，当时可以说得上是对这些玩意儿上瘾了，那时为了个电路琢磨到凌晨三四点也还精神亢奋，不过上了大学后反而有所荒废，想想还是有点痛心的。噗&hellip;其实做硬件很麻烦地说，偶尔也会觉得枯燥，硬件复用的成本比起软件来复用的成本高太多太多，而且业余玩玩也还是比较烧钱的。东拉西扯了这么多，下边吐槽一下这次「课程设计」。学校和老师该改进的地方实在是太多太多了">
+
+
+<meta itemprop="datePublished" content="2013-01-19T21:12:00&#43;08:00" />
+<meta itemprop="dateModified" content="2013-01-19T21:12:00&#43;08:00" />
+<meta itemprop="wordCount" content="2318">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="课程设计小结"/>
+<meta name="twitter:description" content="课程设计小结
+
+不知不觉又忙了一个星期，周一老师把课程设计的要求简单地说了一下，然后就是两天之后提交方案并且做Presentation，这个算是比以前大作业要求严格的地方了，答辩时老师偶尔也会提几个问，呵呵，这可难为了一些酱油党喽～～不知自己是不是比较「走运」，我在介绍自己组的方案时老师竟然没有提问，估计是我讲的太快了，中间几乎没有停顿，老师也没能抓住机会提问
+
+课程设计是全班做一个题目，是纯硬件的题，有点像电赛。先软件仿真，然后搭实际电路调试。大意是运用两块LM324运放和若干电容电阻什么的设计一个200Hz, 峰峰值为0.1V的正弦波和周期为1ms, 幅值为2v的三角波信号; 接下来则是将前边产生的两种信号和信号源产生的50Hz的正弦波按一定比例相加; 随后设计电路从相加后的信号中提取200Hz的正弦波，输出必须达到10V以上; 最后则是将三角波信号与提取出的200Hz正弦波通过比较器得到最终输出。整个电路做下来差不多是将模电中的运放应用部分复习了一遍，只不过这次除了理论部分还有实践部分。理论部分把课本上的一些电路排列组合一下即可，说起来倒是挺简单的，本人不才，前后花了差不多3天时间才把设计方案基本确定下来，放在Multisim下跑了一下，波形还能接受。这两天动手搭实际电路时又做了些bug fix, 下午正式收工，只等着周一到学校实验室微调和验收了。
+
+很喜欢「课程设计」这种形式，边学边用，这才是工科生最应该掌握的。自己还算比较喜欢做硬件，大约从初二起开始接触一些电子方面的东西，当时可以说得上是对这些玩意儿上瘾了，那时为了个电路琢磨到凌晨三四点也还精神亢奋，不过上了大学后反而有所荒废，想想还是有点痛心的。噗&hellip;其实做硬件很麻烦地说，偶尔也会觉得枯燥，硬件复用的成本比起软件来复用的成本高太多太多，而且业余玩玩也还是比较烧钱的。东拉西扯了这么多，下边吐槽一下这次「课程设计」。学校和老师该改进的地方实在是太多太多了"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">课程设计小结</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-01-19 </span>
+        
+        <span class="more-meta"> 约 2318 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#课程设计小结">课程设计小结</a>
+<ul>
+<li>
+<ul>
+<li><a href="#multisim使用小结">Multisim使用小结</a></li>
+<li><a href="#电路原理图-实际电路">电路原理图-&gt;实际电路</a></li>
+<li><a href="#小组协作">小组协作</a></li>
+<li><a href="#各模块设计方案">各模块设计方案</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="课程设计小结">课程设计小结</h1>
+
+<p>不知不觉又忙了一个星期，周一老师把课程设计的要求简单地说了一下，然后就是两天之后提交方案并且做Presentation，这个算是比以前大作业要求严格的地方了，答辩时老师偶尔也会提几个问，呵呵，这可难为了一些酱油党喽～～不知自己是不是比较「走运」，我在介绍自己组的方案时老师竟然没有提问，估计是我讲的太快了，中间几乎没有停顿，老师也没能抓住机会提问</p>
+
+<p>课程设计是全班做一个题目，是纯硬件的题，有点像电赛。先软件仿真，然后搭实际电路调试。大意是运用两块LM324运放和若干电容电阻什么的设计一个200Hz, 峰峰值为0.1V的正弦波和周期为1ms, 幅值为2v的三角波信号; 接下来则是将前边产生的两种信号和信号源产生的50Hz的正弦波按一定比例相加; 随后设计电路从相加后的信号中提取200Hz的正弦波，输出必须达到10V以上; 最后则是将三角波信号与提取出的200Hz正弦波通过比较器得到最终输出。整个电路做下来差不多是将模电中的运放应用部分复习了一遍，只不过这次除了理论部分还有实践部分。理论部分把课本上的一些电路排列组合一下即可，说起来倒是挺简单的，本人不才，前后花了差不多3天时间才把设计方案基本确定下来，放在Multisim下跑了一下，波形还能接受。这两天动手搭实际电路时又做了些bug fix, 下午正式收工，只等着周一到学校实验室微调和验收了。<br />
+
+很喜欢「课程设计」这种形式，边学边用，这才是工科生最应该掌握的。自己还算比较喜欢做硬件，大约从初二起开始接触一些电子方面的东西，当时可以说得上是对这些玩意儿上瘾了，那时为了个电路琢磨到凌晨三四点也还精神亢奋，不过上了大学后反而有所荒废，想想还是有点痛心的。噗&hellip;其实做硬件很麻烦地说，偶尔也会觉得枯燥，硬件复用的成本比起软件来复用的成本高太多太多，而且业余玩玩也还是比较烧钱的。东拉西扯了这么多，下边吐槽一下这次「课程设计」。学校和老师该改进的地方实在是太多太多了</p>
+
+<p>周一的课正常时间应该是早上8点半开始，但是老师其实是差不多9点才到的，一群学生在那等了差不多半个小时老师才开始讲课程设计的要求，要知道30minitus*100(班上100多人)可相当于50个小时呀！！四年了，很少发现学校和老师对这种实践性质的课程用心去做的，师为人表——学校和老师这副德行，有时想想不觉脊背发凉。而当我发现早上在那等了差不多半个小时后却发现老师仅仅只是放几页PPT练了一下基本要求，这种类似于「告示」的要求发个邮件不就解决问题了？！真TM落后的教育理念！！我们需要的老师不是播音员，而是能启迪思维，传播智慧的老师呀！！当然，把这个责任全归到老师身上是不对的，学校负责这些课程的「领导」们不想改，老师们也没有动力。</p>
+
+<p>如果我是这次课程设计的老师，我会作出如下改进：</p>
+
+<ol>
+<li>选出几个课题让学生们自行选择，而不是全班一个题目<br /></li>
+<li>提交设计方案和答辩的时间延长一天。一天半的时间能做出完整的方案对于绝大多数人来说难度偏大，要知道模电课本已经差不多两年多没碰过了。<br /></li>
+<li>考虑到这次要做实际电路，我会给出一些电子设计的基本常识方面的资料以供参考，毕竟还是有很多人的电子设计经验几乎为0，比如在设计方案中可能会出现像7.9K电阻这种市场上买不到的元器件；或者是将1K滑变和几欧姆的电阻串联来分压这种实际中很不靠谱的电路<br /></li>
+<li>提供两套方案供学生选择，比如将面包板换成电路板让学生自行焊接。面包板在小型电路上确实是有优势的，但是电路规模稍微一大面包板就是一个累赘了，索性我们组跟老师申请换成了自己焊接电路板，用不了两天基本就把实际电路搞定了。而一些还在用老师给定的面包板的同学们貌似很少有做好的，一大把一大把时间就这样浪费在这种脱离「课程设计」初衷的低级电路插接上实在是不值。</li>
+<li>学生在实验室调试电路时老师应该多在实验室走动走动，而不是坐在自己的办公室里休息！</li>
+</ol>
+
+<h3 id="multisim使用小结">Multisim使用小结</h3>
+
+<p>大概搜了一下，发现无Linux版本，只能到虚拟机或者Win7下跑了，转到校内BT搜了一下Multisim，竟然发现有专门供本校学生使用的正版可用，没有多想就把它down下来了。但是后来悲催地发现这货不向后兼容，Multisim 12生成的文件的没法保存为供10使用的文件，这个我觉得Multisim未免有点「牛氓」了一点。教育版貌似不带原理图打印功能，Student version则有最大元器件数目限制<br />
+另外一点就是Multisim在使用Spectrum analyzer的时候仿真的速度会相当相当慢，仿真进行0.1s在实际中可能已经过了好几分钟了。个人估计这是由于FFT需要计算很多点数据的原因。如果没有使用Spectrum时仿真速度仍然过慢时，可通过调节菜单栏中的<code>Simulate</code>-&gt;<code>Interactive simulation settings</code>-&gt;<code>Initial conditions:Set to zero</code>, <code>Maximum time step</code>可适当调大一点，比如0.1s, <code>Set initial time step</code>的Initial time step也可调大一点，比如0.01s</p>
+
+<h3 id="电路原理图-实际电路">电路原理图-&gt;实际电路</h3>
+
+<p>确定好电路图的元器件位置后在实际焊接时就按照电路图的位置来焊，不必为了节约空间而另外安排元器件位置，否则后边调试时不方便查问题。有多个节点的位置适当多留一个空点，便于多元件汇集于一点。</p>
+
+<h3 id="小组协作">小组协作</h3>
+
+<p>这次课程设计是三人一组，免不了要互相传传资料什么的，U盘和网上互传文件都是非常dirty的工作，类似于Dropbox的同步方案不错，建立一个公共文件夹，三人都拥有读写权限. Sounds good, right? Unfortunately, not everyone in China mainland can access the dropbox normally. So&hellip;前些时间发现墙内的<a href="http://www.jianguoyun.com">坚果云</a>能完全满足我的要求，可谓是真正的全平台覆盖(Linux对于我来说当然少不了)，使用起来也比较方便, 而且还可以做简易的版本控制(其实就是加了个时间戳)</p>
+
+<h3 id="各模块设计方案">各模块设计方案</h3>
+
+<p><a href="/downloads/curriculum_design_draft.pdf">Here is a draft document</a></p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2013-01-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2013-01/2013-01-21_17-41-00/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Linux使用一周年记</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2013-01/2013-01-11_19-42-00/">
+            <span class="next-text nav-default">终点,下一个起点</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '课程设计小结',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

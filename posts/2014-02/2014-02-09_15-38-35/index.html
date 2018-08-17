@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>树莓派把玩之OS和硬件选型 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="树莓派把玩之OS和硬件选型 最开始听说树莓派(Raspberry PI)是在西电开源社区的邮件列表中，那时只知道这是个可以装Linux的微型电脑" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2014-02/2014-02-09_15-38-35/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="树莓派把玩之OS和硬件选型" />
+<meta property="og:description" content="树莓派把玩之OS和硬件选型 最开始听说树莓派(Raspberry PI)是在西电开源社区的邮件列表中，那时只知道这是个可以装Linux的微型电脑" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2014-02/2014-02-09_15-38-35/" />
+
+
+
+<meta property="article:published_time" content="2014-02-09T15:38:35&#43;08:00"/>
+
+<meta property="article:modified_time" content="2014-02-09T15:38:35&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="树莓派把玩之OS和硬件选型">
+<meta itemprop="description" content="树莓派把玩之OS和硬件选型 最开始听说树莓派(Raspberry PI)是在西电开源社区的邮件列表中，那时只知道这是个可以装Linux的微型电脑">
+
+
+<meta itemprop="datePublished" content="2014-02-09T15:38:35&#43;08:00" />
+<meta itemprop="dateModified" content="2014-02-09T15:38:35&#43;08:00" />
+<meta itemprop="wordCount" content="1164">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="树莓派把玩之OS和硬件选型"/>
+<meta name="twitter:description" content="树莓派把玩之OS和硬件选型 最开始听说树莓派(Raspberry PI)是在西电开源社区的邮件列表中，那时只知道这是个可以装Linux的微型电脑"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">树莓派把玩之OS和硬件选型</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-02-09 </span>
+        
+        <span class="more-meta"> 约 1164 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#树莓派把玩之os和硬件选型">树莓派把玩之OS和硬件选型</a>
+<ul>
+<li><a href="#硬件选型">硬件选型</a></li>
+<li><a href="#os选型">OS选型</a></li>
+<li><a href="#service">Service</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="树莓派把玩之os和硬件选型">树莓派把玩之OS和硬件选型</h1>
+
+<p>最开始听说树莓派(Raspberry PI)是在西电开源社区的邮件列表中，那时只知道这是个可以装Linux的微型电脑，功耗非常低。一次在学校里的timo咖啡厅小聚时phil拿来了树莓派，看到实物后手就痒痒了，真是如信用卡般大小的ARM板！正逢当时实验室的网络异常地不给力，别说Google了，就连百度首页打开都要卡好一阵。于是乎就想到了用树莓派在寝室搭个代理，顺便还能给师兄们提供些福利。</p>
+
+<h2 id="硬件选型">硬件选型</h2>
+
+<p>和树莓派类似的ARM板其实还是有不少的，国内的Cubieboard, 国外的BeagleBone都是不错的选择：</p>
+
+<ul>
+<li>接口扩展性/性能——Cubieboard和BeagleBone完胜树莓派，Cubieboard的sata接口和自带的红外很有吸引力<br /></li>
+<li>开源硬件?——这三者能称得上开源硬件的恐怕就只有BeagleBone了<br /></li>
+<li>社区支持？——树莓派和BeagleBone都有不错的社区氛围，玩的人多，遇到问题相对好解决一些。<br /></li>
+<li>价钱？——树莓派最便宜，其他两者稍贵一点，一分钱一分货嘛！<br /></li>
+</ul>
+
+<p>综上，如果不差那点钱(其实也就几十块钱)的话建议选择BeagleBone或者Cubieboard，可玩性和性能更好。唔&hellip; 当时自己的补助一直没发就没舍得买BeagleBone Black了，第一次玩ARM板经验还是不足呀。</p>
+
+<h2 id="os选型">OS选型</h2>
+
+<p>能在树莓派上安装的操作系统如今已是越来越多，<a href="http://www.raspberrypi.org/downloads">Downloads | Raspberry Pi</a>里包含了近7个OS, 常见的有Raspbian(基于Debian定制)，还有用于媒体中心的RaspMBC等发行版，当然还有大Arch！由于自己对Arch最为熟悉，果断选了Arch上手，完善的wiki和AUR里的众多软件真是Archer的福利！Raspbian默认安装lxde桌面环境，而且光img文件就是800M+，而Arch只有200M不到，默认无图形界面，真是太适合树莓派了！实测Archlinux在树莓派上刚开机占用内存50M不到:) 真是和谐！</p>
+
+<p>用<code>dd</code>把img文件烧进SD卡后即可使用，ssh进去后就和平时在PC上使用Arch无异了，除了GUI&hellip;</p>
+
+<h2 id="service">Service</h2>
+
+<p>低功耗(10W不到)的树莓派放在寝室当然不会有什么罪恶感，一个月的电费也没几块不是。计划在树莓派上要跑的服务有：</p>
+
+<ol>
+<li>无线AP——当无线路由器用，AUR中的create_ap  <strong>Done</strong><br /></li>
+<li>Squid代理——提供寝室网络&amp;校外同学下载交大学术/PT资源<br /></li>
+<li>G.o.a.g^en.t代%理——学术用途&hellip;  <strong>Done</strong><br /></li>
+<li>FTP——vsftp<br /></li>
+<li>媒体中心——minidlna<br /></li>
+<li>VPN<br /></li>
+<li>外接红外模块以供手机远程控制寝室空调<br /></li>
+<li>BT下载机——transmission-cli<br /></li>
+<li>Coursera/edx 视频课件下载中心——Python脚本<br /></li>
+<li>文件共享——samba<br /></li>
+<li>云同步中心——seafile<br /></li>
+<li>网站测试</li>
+<li>&hellip;</li>
+</ol>
+
+<p>后期就每一个服务的折腾过程分开详述^_^</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-02-09</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2014-05/2014-05-02_11-24-57/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Hexo多Repo部署——使用Github和GitCafe同时托管博客</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2014-02/2014-02-09_13-52-08/">
+            <span class="next-text nav-default">Compile r8101 driver modules for Linux-3.10</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '树莓派把玩之OS和硬件选型',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

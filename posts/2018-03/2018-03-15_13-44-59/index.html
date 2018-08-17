@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Python 网页爬虫入门——信息抓取 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Python 网页爬虫入门——信息抓取 之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2018-03/2018-03-15_13-44-59/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Python 网页爬虫入门——信息抓取" />
+<meta property="og:description" content="Python 网页爬虫入门——信息抓取 之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2018-03/2018-03-15_13-44-59/" />
+
+
+
+<meta property="article:published_time" content="2018-03-15T13:44:59&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-03-15T13:44:59&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Python 网页爬虫入门——信息抓取">
+<meta itemprop="description" content="Python 网页爬虫入门——信息抓取 之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什">
+
+
+<meta itemprop="datePublished" content="2018-03-15T13:44:59&#43;08:00" />
+<meta itemprop="dateModified" content="2018-03-15T13:44:59&#43;08:00" />
+<meta itemprop="wordCount" content="1760">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Python 网页爬虫入门——信息抓取"/>
+<meta name="twitter:description" content="Python 网页爬虫入门——信息抓取 之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Python 网页爬虫入门——信息抓取</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-03-15 </span>
+        
+        <span class="more-meta"> 约 1760 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#python-网页爬虫入门-信息抓取">Python 网页爬虫入门——信息抓取</a>
+<ul>
+<li><a href="#网页爬虫基础知识">网页爬虫基础知识</a></li>
+<li><a href="#网页信息抽取-pyquery">网页信息抽取 - PyQuery</a></li>
+<li><a href="#动态网页信息抽取">动态网页信息抽取</a></li>
+<li><a href="#静态网页代码实战">静态网页代码实战</a></li>
+<li><a href="#动态网页代码实战">动态网页代码实战</a></li>
+<li><a href="#番外篇-使用-anyproxy-分析没有网站的移动端应用">番外篇 - 使用 AnyProxy 分析没有网站的移动端应用</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="python-网页爬虫入门-信息抓取">Python 网页爬虫入门——信息抓取</h1>
+
+<p>之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什么样的工具，我们最终都需要对抓取的网页做进一步的结构化处理以获取我们需要的信息，这一篇博客主要介绍基于 Python 的轻量级网页抓取及信息抽取工具。以代码实战分析为主，原理介绍为辅。</p>
+
+<h2 id="网页爬虫基础知识">网页爬虫基础知识</h2>
+
+<p>在学习网页爬虫之前，我们需要了解网页的组成及浏览器渲染过程，了解浏览器渲染过程有助于我们使用浏览器自带的开发者工具高效定位到我们需要的元素。
+现代网页结构还是由三剑客 HTML + CSS + JavaScript 组成，HTML 构成我们常常看到的文字等主体内容，CSS 则负责对主体内容进行排版及美化，JS(JavaScript) 主要用于和用户交互，具备动态改变网页内容及样式的能力，所以 JS 在现代网页中的使用也是越来越广泛。从以上三剑客扮演的不同角色我们可以看出如果我们要抓取的网页信息都在原始 HTML 中(也俗称静态网页)，后期的信息抽取工作是最轻松的。然而现在越来越多的网站反爬虫措施逐步升级，很多关键信息都需要使用 JS 动态生成，这个时候我们往往需要借助浏览器的帮助。
+网页基础部分不再赘述，左耳朵耗子博客上的 <a href="https://coolshell.cn/articles/9666.html">浏览器的渲染原理简介</a> 对浏览器的工作过程介绍的非常好。</p>
+
+<h2 id="网页信息抽取-pyquery">网页信息抽取 - PyQuery</h2>
+
+<p>对于静态网页，我倾向于使用 <a href="https://pythonhosted.org/pyquery/">pyquery</a> 来对网页进行解析抽取，依赖于 lxml 解析 HTML, 速度非常快，而且 PyQuery 使用起来和 jQuery 的语法特别相似，抽取指定 id/class 等可以说是得心应手，基本不需要依赖正则表达式进行抽取，与 XPath 查询相比显得简单多了。PyCon Taiwan 2017 有一个很好的介绍 - <a href="https://tw.pycon.org/2017/en-us/events/talk/326506774788046936/">比美麗的湯更美麗：pyquery</a>, 相应的 <a href="https://www.youtube.com/watch?v=ldf7N7N3OI4">YouTuBe 视频</a>, 这段视频详细介绍了 PyQuery 和其他同类工具的优劣及与其他框架结合使用的经验。</p>
+
+<h2 id="动态网页信息抽取">动态网页信息抽取</h2>
+
+<p>对于动态网页，我们需要结合 JS 引擎动态生成所需内容，这里我们可以使用 Selenium 浏览器自动化测试框架打开一个浏览器供程序操作 - <a href="http://selenium-python.readthedocs.io/">Selenium with Python</a> 对于反爬限制较为严格的网站可以试试 Gecko(Firefox)</p>
+
+<h2 id="静态网页代码实战">静态网页代码实战</h2>
+
+<p>这里我们以 Lintcode 为例(仅作为技术交流用途&hellip;)，爬虫的目的是抓取题目标题、描述、标签和难度等信息并转写为 markdown.
+源网页地址：<a href="http://www.lintcode.com/en/proble/palindrome-number/">http://www.lintcode.com/en/proble/palindrome-number/</a>
+完整代码可参考 <a href="https://github.com/billryan/algorithm-exercise/blob/master/scripts/lintcode.py">https://github.com/billryan/algorithm-exercise/blob/master/scripts/lintcode.py</a></p>
+
+<ol>
+<li>使用 PyQuery/requests 打开链接</li>
+</ol>
+
+<p>对于不需要登录即可打开的网页，我们可以直接在 PyQuery 中打开，如果需要其他登录信息，我们还可以借助 requests 模拟登录，将最终获取的网页原始文件传给 pq 即可。对于部分登录需要图形验证码的网站，我们还可以借助百度提供的个人免费 OCR API 进行破解。</p>
+
+<pre><code class="language-python">from pyquery import PyQuery as pq
+
+
+class Lintcode(object):
+
+    def __init__(self):
+        self.driver = None
+
+    def open_url(self, url):
+        self.url = url
+        print('open URL: {}'.format(url))
+        self.driver = pq(url=url)
+</code></pre>
+
+<ol>
+<li>获取网页标题</li>
+</ol>
+
+<p>网页标题通常在 title 全局属性中，在 pq 中调用 <code>title</code> 即可得</p>
+
+<pre><code class="language-python">    def get_title(self):
+        print('get title...')
+        title = self.driver('title').text()
+        return title
+</code></pre>
+
+<ol>
+<li>获取题目描述</li>
+</ol>
+
+<p>从 Chrome 『查看元素』可知 Lintcode 中的题目描述由 description id 下的前两个 <code>m-t-lg</code> 类组成。这里我们可以使用 jQuery 中 <code>.classname:nth-child(n)</code> 语法获取。</p>
+
+<pre><code class="language-python">    def get_description(self):
+        print('get description...')
+        desc_pq = self.driver('#description')
+        desc_html = desc_pq('.m-t-lg:nth-child(1)').html()
+        example_html = desc_pq('.m-t-lg:nth-child(2)').html()
+        return desc_html + example_html
+</code></pre>
+
+<ol>
+<li>获取题目难度</li>
+</ol>
+
+<p>从 Chrome 『查看元素』可知题目难度信息隐藏于一 CSS 类的属性 <code>data-original-title</code> 中，故可使用 <code>.attr()</code> 获取。</p>
+
+<pre><code class="language-python">    def get_difficulty(self):
+        print('get difficulty...')
+        progress_bar = self.driver('.progress-bar')
+        original_title = progress_bar.attr('data-original-title')
+        splits = original_title.strip().split(' ')
+        difficulty = splits[1]
+        ac_rate = splits[-1]
+        return difficulty
+</code></pre>
+
+<ol>
+<li>获取题目标签信息</li>
+</ol>
+
+<p>题目标签信息在 tags id 的 CSS 类 <code>tags</code> 的 <code>a</code> 标签属性列表的文本中，我们可对其进行迭代获取之。</p>
+
+<pre><code class="language-python">    def get_tags(self):
+        print('get tags...')
+        tags = []
+        for i in self.driver('#tags.tags a'):
+            tags.append(i.text)
+        return tags
+</code></pre>
+
+<h2 id="动态网页代码实战">动态网页代码实战</h2>
+
+<p>动态网页中我们可以使用浏览器生成 JS 内容进而进行信息抽取。这里我们以 Leetcode 为例(仅作为技术交流用途&hellip;)，爬虫的目的同 Lintcode.
+源网页地址：<a href="https://leetcode.com/problems/palindrome-number/">https://leetcode.com/problems/palindrome-number/</a>
+完整代码可参考 <a href="https://github.com/billryan/algorithm-exercise/blob/master/scripts/leetcode.py">https://github.com/billryan/algorithm-exercise/blob/master/scripts/leetcode.py</a></p>
+
+<ol>
+<li>使用 webdriver 打开</li>
+</ol>
+
+<p>使用 headless 的 Chrome webdriver 打开，同时禁用 GPU 渲染，使用 Chrome 打开后才能获得 JS 动态生成的文本，由于 Selenium 自带的信息抽取方法凑合够用，这里使用 webdriver 自带的方法进行演示，同时便于和 PyQuery 的使用方法进行对比。</p>
+
+<pre><code class="language-python">from selenium import webdriver
+
+
+class Leetcode(object):
+
+    def __init__(self):
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
+        self.driver = webdriver.Chrome(chrome_options=chrome_options)
+
+    def open_url(self, url):
+        self.url = url
+        print('open URL: {}'.format(url))
+        self.driver.get(url)
+</code></pre>
+
+<ol>
+<li>获取题目描述</li>
+</ol>
+
+<p>Leetcode 的题目描述在 CSS 类 <code>question-description</code> 中，这里我们可以通过调用 <code>find_element_by_class_name</code>, 返回 HTML 时可使用 <code>get_attribute('innerHTML')</code></p>
+
+<pre><code class="language-python">    def get_description(self):
+        print('get description...')
+        elem = self.driver.find_element_by_class_name('question-description')
+        return elem.get_attribute('innerHTML')
+</code></pre>
+
+<p>其它如获取标题等方法不再赘述，参考完整版代码。</p>
+
+<h2 id="番外篇-使用-anyproxy-分析没有网站的移动端应用">番外篇 - 使用 AnyProxy 分析没有网站的移动端应用</h2>
+
+<p>除了通常的网页抓取外，有些应用可能只有移动端而并没有网页端，这个时候我们就需要借助网络代理对 HTTP/HTTPS 请求进行拦截分析，能完成这一需求的有 Windows 下的 fiddle, Mac 下的 <a href="https://www.charlesproxy.com/">Charles</a>(需要付费) 除了这些特定平台的代理诊断工具外，我们还可以使用阿里开源的 node 应用 <a href="http://anyproxy.io/cn/">AnyProxy</a>, HTTPS 中间人拦截使用也非常方便。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-03-15</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2018-03/2018-03-19_11-17-37/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Spark 开发之环境准备</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2018-02/2018-02-28_23-48-31/">
+            <span class="next-text nav-default">Scala/Java 多环境配置管理——使用 Typesafe Config</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Python 网页爬虫入门——信息抓取',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

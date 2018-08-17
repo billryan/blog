@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>GitBook 插件介绍及定制 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="GitBook 插件介绍及定制 在 使用 GitBook 制作高质量电子书 一文中我简要描述了 GitBook 的基本功能和使用，适用于 GitBook 的所有插件均可以从 Plugins for GitBook 中找到，下文将介绍一些适用于 GitBook" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2016-11/2016-11-07_10-48-42/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="GitBook 插件介绍及定制" />
+<meta property="og:description" content="GitBook 插件介绍及定制 在 使用 GitBook 制作高质量电子书 一文中我简要描述了 GitBook 的基本功能和使用，适用于 GitBook 的所有插件均可以从 Plugins for GitBook 中找到，下文将介绍一些适用于 GitBook" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2016-11/2016-11-07_10-48-42/" />
+
+
+
+<meta property="article:published_time" content="2016-11-07T10:48:42&#43;08:00"/>
+
+<meta property="article:modified_time" content="2016-11-07T10:48:42&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="GitBook 插件介绍及定制">
+<meta itemprop="description" content="GitBook 插件介绍及定制 在 使用 GitBook 制作高质量电子书 一文中我简要描述了 GitBook 的基本功能和使用，适用于 GitBook 的所有插件均可以从 Plugins for GitBook 中找到，下文将介绍一些适用于 GitBook">
+
+
+<meta itemprop="datePublished" content="2016-11-07T10:48:42&#43;08:00" />
+<meta itemprop="dateModified" content="2016-11-07T10:48:42&#43;08:00" />
+<meta itemprop="wordCount" content="1627">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GitBook 插件介绍及定制"/>
+<meta name="twitter:description" content="GitBook 插件介绍及定制 在 使用 GitBook 制作高质量电子书 一文中我简要描述了 GitBook 的基本功能和使用，适用于 GitBook 的所有插件均可以从 Plugins for GitBook 中找到，下文将介绍一些适用于 GitBook"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">GitBook 插件介绍及定制</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2016-11-07 </span>
+        
+        <span class="more-meta"> 约 1627 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#gitbook-插件介绍及定制">GitBook 插件介绍及定制</a>
+<ul>
+<li><a href="#新增插件及配置">新增插件及配置</a>
+<ul>
+<li><a href="#评论">评论</a></li>
+<li><a href="#协作编辑">协作编辑</a></li>
+<li><a href="#搜索">搜索</a></li>
+<li><a href="#latex-公式显示">LaTeX 公式显示</a></li>
+<li><a href="#访问统计及-sitemap">访问统计及 sitemap</a></li>
+<li><a href="#订阅更新">订阅更新</a></li>
+<li><a href="#目录及标签-分类">目录及标签/分类</a></li>
+<li><a href="#插件项目主页">插件项目主页</a></li>
+</ul></li>
+<li><a href="#进阶定制">进阶定制</a>
+<ul>
+<li><a href="#字体字型">字体字型</a></li>
+<li><a href="#自定义-pdf-mobi-epub-输出">自定义 PDF/mobi/ePub 输出</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="gitbook-插件介绍及定制">GitBook 插件介绍及定制</h1>
+
+<p>在 <a href="https://blog.yuanbin.me/posts/2016/10/GitBook-part1-basic.html">使用 GitBook 制作高质量电子书</a> 一文中我简要描述了 GitBook 的基本功能和使用，适用于 GitBook 的所有插件均可以从 <a href="https://plugins.gitbook.com/">Plugins for GitBook</a> 中找到，下文将介绍一些适用于 GitBook 的实用插件及定制化操作，插件的编写将在随后一篇文章中详细介绍。</p>
+
+<h2 id="新增插件及配置">新增插件及配置</h2>
+
+<p>GitBook 中的插件及配置保存在电子书根目录下的 <code>book.json</code>, 以 <a href="https://github.com/billryan/algorithm-exercise/blob/master/book.json">algorithm-exercise/book.json</a> 为例，</p>
+
+<pre><code>{
+    &quot;plugins&quot;: [
+        &quot;disqus&quot;,
+        &quot;ga&quot;,
+        ...
+        &quot;algolia&quot;
+    ],
+    &quot;pluginsConfig&quot;: {
+        &quot;disqus&quot;: {
+            &quot;shortName&quot;: &quot;algorithm4bill&quot;
+        },
+        &quot;ga&quot;: {
+            &quot;token&quot;: &quot;UA-32317667-7&quot;
+        },
+        ...
+        &quot;algolia&quot;: {
+            &quot;index&quot;: &quot;algorithm&quot;,
+            &quot;applicationID&quot;: &quot;9YBMOZR89J&quot;,
+            &quot;publicKey&quot;: &quot;5860a3e55ee72831917b1b9e2a4649ca&quot;,
+            &quot;freeAccount&quot;: &quot;true&quot;
+        }
+    }
+}
+</code></pre>
+
+<p><code>plugins</code> 中是插件的名字，<code>pluginsConfig</code> 中则是针对插件的一些个性化设置。</p>
+
+<h3 id="评论">评论</h3>
+
+<p>在 GitBook v3 之后官方新增了行内评论功能，默认开启，较 disqus 这种根据 URL 整页进行评论的插件整合更为紧密，缺点是暂时不支持富文本如图片，同时多行评论的可读性比较差。较为通用的评论插件有 disqus, 导出和迁移都比较方便。</p>
+
+<h3 id="协作编辑">协作编辑</h3>
+
+<p>目前 GitBook 原生支持多作者共同编辑，但如果借助 GitHub 托管，则可以利用其 Pull Request 大大地降低协作的门槛，edit-link 插件非常好使，只是读者可能不那么容易发现&hellip;</p>
+
+<h3 id="搜索">搜索</h3>
+
+<p>默认的搜索功能聊胜于无，目前较为推荐的第三方搜索插件为 algolia，免费额度足够用了，使用 algolia 后默认的搜索插件即被替换。和 algolia 类似的有 Swiftype, 使用上较为简单，但目前不再提供免费账户故不推荐。</p>
+
+<h3 id="latex-公式显示">LaTeX 公式显示</h3>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part2-latex.jpg" alt="latex" /></p>
+
+<p>官方提供了 KaTeX 和 MathJax 两个可以书写 LaTeX 的插件，实测下来推荐 KaTeX, 网页上的渲染速度完爆 MathJax, 在 PDF 中的显示效果也堪称完美，缺点是对一些复杂的 LaTeX 公式支持不好，生成的 mobi 格式中多行复杂公式可读性很差。上图为 KaTeX 在 PDF/Website/ePub 上的显示效果。</p>
+
+<h3 id="访问统计及-sitemap">访问统计及 sitemap</h3>
+
+<p>网站访问统计较为常见的有 Google Analytics. 对搜索引擎较为友好的可以考虑添加 sitemap, 官方的插件目前对多国语言支持有点问题，我修改过的插件名为 sitemap2.</p>
+
+<h3 id="订阅更新">订阅更新</h3>
+
+<p>官方提供的 subscribe 暂时只支持更新事件，并没有如 RSS 之类针对文章的更新，rss 插件虽然有针对文章的更新，但实际使用下来发现无法获取文章全文，针对这个问题我写了一个 feed 插件，支持 RSS 2.0 和 Atom, 使用上较 rss 插件也要简单，欢迎试用~</p>
+
+<h3 id="目录及标签-分类">目录及标签/分类</h3>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part2-etoc-tags.png" alt="etoc-tags" /></p>
+
+<p>GitBook 的目录插件数不胜数，但自己用下来发现没有一款自己满意的，于是在中秋假期写了一个 etoc 根据文章层级在大标题后小标题前根据标题层次自动生成目录，可以自定义目录层次深度和对单页禁用。
+电子书除了分章节外有时也可能需要诸如分类/标签功能，tags 插件和 etoc 一样也是在中秋假期落地生根的。</p>
+
+<h3 id="插件项目主页">插件项目主页</h3>
+
+<p>为便于读者查找以上所提插件的主页和配置，简要总结如下。</p>
+
+<ul>
+<li>评论 - <a href="https://github.com/GitbookIO/plugin-disqus">GitbookIO/plugin-disqus</a></li>
+<li>GitHub 协作编辑 - <a href="https://github.com/rtCamp/gitbook-plugin-edit-link">rtCamp/gitbook-plugin-edit-link</a></li>
+<li>搜索 - <a href="https://github.com/GitbookIO/plugin-algolia">GitbookIO/plugin-algolia</a></li>
+<li>公式 - <a href="https://github.com/GitbookIO/plugin-katex">GitbookIO/plugin-katex</a>, <a href="https://github.com/GitbookIO/plugin-mathjax">GitbookIO/plugin-mathjax</a></li>
+<li>统计 - <a href="https://github.com/GitbookIO/plugin-ga">GitbookIO/plugin-ga</a></li>
+<li>网站地图 - <a href="https://github.com/GitbookIO/plugin-sitemap">GitbookIO/plugin-sitemap</a></li>
+<li>网站地图多国语言修复版 - <a href="https://www.npmjs.com/package/gitbook-plugin-sitemap2">gitbook-plugin-sitemap2</a></li>
+<li>订阅更新 - <a href="https://github.com/billryan/gitbook-plugin-feed">billryan/gitbook-plugin-feed</a>, <a href="https://github.com/denysdovhan/gitbook-plugin-rss">denysdovhan/gitbook-plugin-rss</a></li>
+<li>页内目录生成 - <a href="https://github.com/billryan/gitbook-plugin-etoc">billryan/gitbook-plugin-etoc</a></li>
+<li>分类/标签 - <a href="https://github.com/billryan/gitbook-plugin-tags">billryan/gitbook-plugin-tags</a></li>
+</ul>
+
+<h2 id="进阶定制">进阶定制</h2>
+
+<p>除了使用插件丰富 GitBook 的功能外，如果使用 GitHub 托管电子书源码，你还可以借助 GitHub 提供的 webhook 进一步扩展，如借助 slack 将 git commit 和评论等一并整合，disqus 整合进 slack 我用了 Zapier 提供的服务。</p>
+
+<h3 id="字体字型">字体字型</h3>
+
+<p>针对中文字型的复杂性，我在 Web 中对简体和繁体进行了区分，具体细节则是可以在 styles 目录下新建一名为 <code>website.css</code> 的文件，根据 GitBook 中 CSS 的优先级和特化特性，以简体中文为例，</p>
+
+<pre><code class="language-css">.book .book-summary, .book .book-body  {
+    font-family: &quot;Microsoft YaHei UI&quot;, &quot;Microsoft Yahei&quot;, &quot;PingFang SC&quot;, &quot;Lantinghei SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;WenQuanYi Micro Hei&quot;, &quot;WenQuanYi Zen Hei&quot;, &quot;Noto Sans CJK SC&quot;, &quot;Microsoft JhengHei UI&quot;, &quot;Microsoft JhengHei&quot;, &quot;PingFang TC&quot;, &quot;Lantinghei TC&quot;, &quot;Noto Sans CJK TC&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+}
+</code></pre>
+
+<p>优化繁体中文的显示时可将繁体字型置于简体前即可，以上这些字型基本上涵盖了 Windows/Mac/Linux/iOS 等主流平台的最佳中文显示。</p>
+
+<h3 id="自定义-pdf-mobi-epub-输出">自定义 PDF/mobi/ePub 输出</h3>
+
+<p>曾几何时，GitBook 官方提供的 PDF/mobi/ePub 文件输出效果惨不忍睹，由于自己的电子书源码托管于 GitHub, 借助于免费的 travis, 你可以自定义编译脚本输出这些电子书，经过一番摸索，发现思源黑体非常适合简体及繁体中文显示，生成的 PDF 质量堪称完美，唯一的缺点就是生成的 PDF 文件体积略大，编译脚本见 <a href="https://github.com/billryan/algorithm-exercise/blob/master/.travis.yml">https://github.com/billryan/algorithm-exercise/blob/master/.travis.yml</a> 由于 travis 编译好的文件仅短暂存于第三方服务器中，因此还需要借助 Amazon s3/七牛/GitHub 托管静态资源，七牛比较方便大陆用户下载，加速效果明显。借助 GitHub 托管静态资源有些小的 trick, 用过 git 的人都知道用它托管二进制文件的苦，不久之后整个 repo 就会变得硕大无比，我在算法笔记的电子书中早期也犯过同样的错误，现在采用的方式为另建 GitHub 小号克隆后新建 deploy 分支专门用于发布编译好的 PDF/mobi/ePub, 原地更新不产生历史 commit, 进而解决了 repo 占用空间迅速变大的困扰。</p>
+
+<p>除了使用 travis 在每次 git push 外你也可以考虑使用我打包好的 <a href="https://github.com/billryan/docker-gitbook">billryan/docker-gitbook</a> 自行编译测试。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2016-11-07</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2018-02/2018-02-23_20-44-30/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">如何做一场好的技术分享</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2016-10/2016-10-09_21-48-24/">
+            <span class="next-text nav-default">使用 GitBook 制作高质量电子书</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'GitBook 插件介绍及定制',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

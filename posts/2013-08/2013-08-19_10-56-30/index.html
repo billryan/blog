@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>上海交大校外代理初体验 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="上海交大校外代理初体验 最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的论文也不可能会交待较多的细节。如果要结合OPNET来分析网络性能什么的显然是不知从何下手，于是乎习惯性的Google了一番，找到了一篇博士论文，正准备下载的时候&amp;hellip; 乖乖，现在已经不是校园网了哟，立马向西电的基友求助，短信刚发出去就想到了个令人激动的消息——隐约记得交大网络信息中心是提供校外访问的代理服务器的，那么？Google一下立马找到了这个链接，网页中提供了局域网和ADSL下的使用方法，都是针对IE的。说白了就是提供了代理服务器的地址和端口号，如果只是在浏览器中使用的话SwitchySharp/Foxyproxy插件新增个代理就好了，试了下速度很理想！
+代理服务器 代理服务器名：inproxy.sjtu.edu.cn
+端口号：8000 OR 80
+连通后会让输入jAccount帐号密码，这个新生已经可以申请了，perfect!
+全局代理 虽然大部分情况在浏览器中使用代理就足够了，但有时其他应用程序也许也需要代理访问，这个时候就稍微有点麻烦喽。 如果想要全局代理的话则需要模拟http认证，Windows下似乎有p-roxycap比较方便，Linux下暂时还没看到类似的软件，之前也没怎么需要用非浏览器应用中使用代理，这方面了解不太多。舍友yqt用Python写了个DXTL的全局代理，于是乎便借过来用了下，还不错，效果就是下边这个样子：
+需要使用时只需在Terminal下运行python sjtu-inproxy.py即可，很方便。
+上代码==&amp;gt;
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2013-08/2013-08-19_10-56-30/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="上海交大校外代理初体验" />
+<meta property="og:description" content="上海交大校外代理初体验
+
+最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的论文也不可能会交待较多的细节。如果要结合OPNET来分析网络性能什么的显然是不知从何下手，于是乎习惯性的Google了一番，找到了一篇博士论文，正准备下载的时候&hellip; 乖乖，现在已经不是校园网了哟，立马向西电的基友求助，短信刚发出去就想到了个令人激动的消息——隐约记得交大网络信息中心是提供校外访问的代理服务器的，那么？Google一下立马找到了这个链接，网页中提供了局域网和ADSL下的使用方法，都是针对IE的。说白了就是提供了代理服务器的地址和端口号，如果只是在浏览器中使用的话SwitchySharp/Foxyproxy插件新增个代理就好了，试了下速度很理想！
+
+代理服务器
+
+代理服务器名：inproxy.sjtu.edu.cn
+端口号：8000 OR 80
+
+连通后会让输入jAccount帐号密码，这个新生已经可以申请了，perfect!
+
+全局代理
+
+虽然大部分情况在浏览器中使用代理就足够了，但有时其他应用程序也许也需要代理访问，这个时候就稍微有点麻烦喽。
+如果想要全局代理的话则需要模拟http认证，Windows下似乎有p-roxycap比较方便，Linux下暂时还没看到类似的软件，之前也没怎么需要用非浏览器应用中使用代理，这方面了解不太多。舍友yqt用Python写了个DXTL的全局代理，于是乎便借过来用了下，还不错，效果就是下边这个样子：
+
+需要使用时只需在Terminal下运行python sjtu-inproxy.py即可，很方便。
+
+上代码==&gt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2013-08/2013-08-19_10-56-30/" />
+
+
+
+<meta property="article:published_time" content="2013-08-19T10:56:30&#43;08:00"/>
+
+<meta property="article:modified_time" content="2013-08-19T10:56:30&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="上海交大校外代理初体验">
+<meta itemprop="description" content="上海交大校外代理初体验
+
+最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的论文也不可能会交待较多的细节。如果要结合OPNET来分析网络性能什么的显然是不知从何下手，于是乎习惯性的Google了一番，找到了一篇博士论文，正准备下载的时候&hellip; 乖乖，现在已经不是校园网了哟，立马向西电的基友求助，短信刚发出去就想到了个令人激动的消息——隐约记得交大网络信息中心是提供校外访问的代理服务器的，那么？Google一下立马找到了这个链接，网页中提供了局域网和ADSL下的使用方法，都是针对IE的。说白了就是提供了代理服务器的地址和端口号，如果只是在浏览器中使用的话SwitchySharp/Foxyproxy插件新增个代理就好了，试了下速度很理想！
+
+代理服务器
+
+代理服务器名：inproxy.sjtu.edu.cn
+端口号：8000 OR 80
+
+连通后会让输入jAccount帐号密码，这个新生已经可以申请了，perfect!
+
+全局代理
+
+虽然大部分情况在浏览器中使用代理就足够了，但有时其他应用程序也许也需要代理访问，这个时候就稍微有点麻烦喽。
+如果想要全局代理的话则需要模拟http认证，Windows下似乎有p-roxycap比较方便，Linux下暂时还没看到类似的软件，之前也没怎么需要用非浏览器应用中使用代理，这方面了解不太多。舍友yqt用Python写了个DXTL的全局代理，于是乎便借过来用了下，还不错，效果就是下边这个样子：
+
+需要使用时只需在Terminal下运行python sjtu-inproxy.py即可，很方便。
+
+上代码==&gt;">
+
+
+<meta itemprop="datePublished" content="2013-08-19T10:56:30&#43;08:00" />
+<meta itemprop="dateModified" content="2013-08-19T10:56:30&#43;08:00" />
+<meta itemprop="wordCount" content="1099">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="上海交大校外代理初体验"/>
+<meta name="twitter:description" content="上海交大校外代理初体验
+
+最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的论文也不可能会交待较多的细节。如果要结合OPNET来分析网络性能什么的显然是不知从何下手，于是乎习惯性的Google了一番，找到了一篇博士论文，正准备下载的时候&hellip; 乖乖，现在已经不是校园网了哟，立马向西电的基友求助，短信刚发出去就想到了个令人激动的消息——隐约记得交大网络信息中心是提供校外访问的代理服务器的，那么？Google一下立马找到了这个链接，网页中提供了局域网和ADSL下的使用方法，都是针对IE的。说白了就是提供了代理服务器的地址和端口号，如果只是在浏览器中使用的话SwitchySharp/Foxyproxy插件新增个代理就好了，试了下速度很理想！
+
+代理服务器
+
+代理服务器名：inproxy.sjtu.edu.cn
+端口号：8000 OR 80
+
+连通后会让输入jAccount帐号密码，这个新生已经可以申请了，perfect!
+
+全局代理
+
+虽然大部分情况在浏览器中使用代理就足够了，但有时其他应用程序也许也需要代理访问，这个时候就稍微有点麻烦喽。
+如果想要全局代理的话则需要模拟http认证，Windows下似乎有p-roxycap比较方便，Linux下暂时还没看到类似的软件，之前也没怎么需要用非浏览器应用中使用代理，这方面了解不太多。舍友yqt用Python写了个DXTL的全局代理，于是乎便借过来用了下，还不错，效果就是下边这个样子：
+
+需要使用时只需在Terminal下运行python sjtu-inproxy.py即可，很方便。
+
+上代码==&gt;"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">上海交大校外代理初体验</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-08-19 </span>
+        
+        <span class="more-meta"> 约 1099 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#上海交大校外代理初体验">上海交大校外代理初体验</a>
+<ul>
+<li><a href="#代理服务器">代理服务器</a>
+<ul>
+<li><a href="#全局代理">全局代理</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="上海交大校外代理初体验">上海交大校外代理初体验</h1>
+
+<p>最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的论文也不可能会交待较多的细节。如果要结合OPNET来分析网络性能什么的显然是不知从何下手，于是乎习惯性的Google了一番，找到了一篇博士论文，正准备下载的时候&hellip; 乖乖，现在已经不是校园网了哟，立马向西电的基友求助，短信刚发出去就想到了个令人激动的消息——隐约记得交大网络信息中心是提供校外访问的代理服务器的，那么？Google一下立马找到了<a href="http://www.lib.sjtu.edu.cn/list.do?articleType_id=45&amp;type=63">这个链接</a>，网页中提供了局域网和ADSL下的使用方法，都是针对IE的。说白了就是提供了代理服务器的地址和端口号，如果只是在浏览器中使用的话SwitchySharp/Foxyproxy插件新增个代理就好了，试了下速度很理想！</p>
+
+<h2 id="代理服务器">代理服务器</h2>
+
+<p>代理服务器名：inproxy.sjtu.edu.cn<br />
+端口号：8000 OR 80</p>
+
+<p>连通后会让输入jAccount帐号密码，这个新生已经可以申请了，perfect!</p>
+
+<h3 id="全局代理">全局代理</h3>
+
+<p>虽然大部分情况在浏览器中使用代理就足够了，但有时其他应用程序也许也需要代理访问，这个时候就稍微有点麻烦喽。
+如果想要全局代理的话则需要模拟http认证，Windows下似乎有p-roxycap比较方便，Linux下暂时还没看到类似的软件，之前也没怎么需要用非浏览器应用中使用代理，这方面了解不太多。舍友yqt用Python写了个DXTL的全局代理，于是乎便借过来用了下，还不错，效果就是下边这个样子：<br />
+<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/inproxy-sjtu.png" alt="sjtu-inroxy" /><br />
+需要使用时只需在Terminal下运行<code>python sjtu-inproxy.py</code>即可，很方便。<br />
+
+上代码==&gt;</p>
+
+<pre><code class="language-python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+# Filename: sjtu-inproxy.py
+
+'''
+    *major code is retrieved and modified from webvpn_proxy_via_stunnel.py by
+    yqt.  
+    http://script-holic.appspot.com/2013/04/22/SPDY%20proxy%E2%86%92HTTP%E4%BB%A3%E7%90%86/%E5%85%A8%E5%B1%80%E4%BB%A3%E7%90%86
+'''
+
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+from httplib import HTTPResponse
+from SocketServer import ThreadingMixIn
+import socket, os, select
+import threading
+import base64
+
+# Minimize Memory Usage
+threading.stack_size(128*1024)
+
+BufferSize = 8192
+
+# local proxy
+local_proxy_host = '' # bind all network types
+local_proxy_port = 8090
+
+# proxy host
+proxy_host = 'inproxy.sjtu.edu.cn'
+proxy_port = 80
+proxy_user = 'your jAccount user name'
+proxy_pass = 'your jAccount user secret'
+
+auth = proxy_user + ':' + proxy_pass
+
+class Handler(BaseHTTPRequestHandler):
+    remote = None
+    
+    # Ignore Connection Failure
+    def handle(self):
+        try:
+            BaseHTTPRequestHandler.handle(self)
+        except socket.error: pass
+    def finish(self):
+        try:
+            BaseHTTPRequestHandler.finish(self)
+        except socket.error: pass
+    
+    # CONNECT Data Transfer
+    def transfer(self, a, b):
+        fdset = [a, b]
+        while True:
+            r,w,e = select.select(fdset, [], [])
+            if a in r:
+                data = a.recv(BufferSize)
+                if not data: break
+                b.sendall(data)
+            if b in r:
+                data = b.recv(BufferSize)
+                if not data: break
+                a.sendall(data)
+    
+    def proxy(self):
+        if self.remote is None or self.lastHost != self.headers['Host']:
+            self.remote = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.remote.connect((proxy_host, proxy_port))
+        self.remote.sendall(self.requestline.encode('ascii') + b'\r\n')
+        # Add auth inf.
+        self.headers['Proxy-Authorization'] = 'Basic %s' % base64.b64encode(auth)
+        #self.remote.sendall('Proxy-Authorization: Basic %s\r\n' % base64.b64encode(auth))
+        headerstr = str(self.headers).replace('\r\n', '\n').replace('\n', '\r\n')
+        self.remote.sendall(headerstr.encode('ascii') + b&quot;\r\n&quot;)
+        # Send Post data
+        if self.command == 'POST':
+            self.remote.sendall(self.rfile.read(int(self.headers['Content-Length'])))
+        response = HTTPResponse(self.remote, method=self.command)
+        response.begin()
+        
+        # Reply to the browser
+        status = 'HTTP/1.1 ' + str(response.status) + ' ' + response.reason
+        self.wfile.write(status.encode('ascii') + b'\r\n')
+        hlist = []
+        for line in response.msg.headers: # Fixed multiple values of a same name
+            if 'TRANSFER-ENCODING' not in line.upper():
+                hlist.append(line)
+        self.wfile.write(''.join(hlist) + b'\r\n')
+        
+        if self.command == 'CONNECT' and response.status == 200:
+            return self.transfer(self.remote, self.connection)
+        else:
+            while True:
+                response_data = response.read(BufferSize)
+                if not response_data: break
+                self.wfile.write(response_data)
+    
+    do_POST = do_GET = do_CONNECT = proxy
+
+class ThreadingHTTPServer(ThreadingMixIn, HTTPServer): 
+    #address_family = socket.AF_INET6 # IPV6
+    address_family = socket.AF_INET # IPV4
+
+server_address = (local_proxy_host, local_proxy_port)
+server = ThreadingHTTPServer(server_address, Handler)
+
+print('Proxy over {}:{}\nPlease set your browser\'s or PAC\'s proxy to {}'.format(proxy_host, proxy_port, server_address))
+try:
+    server.serve_forever()
+except:
+    os._exit(1)
+</code></pre>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2013-08-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2013-08/2013-08-28_15-31-20/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">MOOC之Coursera初体验</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2013-08/2013-08-08_19-17-16/">
+            <span class="next-text nav-default">OPNET14.5 Win7/XP下安装小记</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '上海交大校外代理初体验',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

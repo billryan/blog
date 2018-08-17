@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cubieboard2/树莓派之Archlinux网络配置 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Cubieboard2/树莓派之Archlinux网络配置 前文1和2分别就Cubieboard2双卡版的Archlinux系统安装及简单配置" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Cubieboard2/树莓派之Archlinux网络配置" />
+<meta property="og:description" content="Cubieboard2/树莓派之Archlinux网络配置 前文1和2分别就Cubieboard2双卡版的Archlinux系统安装及简单配置" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/" />
+
+
+
+<meta property="article:published_time" content="2014-11-08T19:26:58&#43;08:00"/>
+
+<meta property="article:modified_time" content="2014-11-08T19:26:58&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Cubieboard2/树莓派之Archlinux网络配置">
+<meta itemprop="description" content="Cubieboard2/树莓派之Archlinux网络配置 前文1和2分别就Cubieboard2双卡版的Archlinux系统安装及简单配置">
+
+
+<meta itemprop="datePublished" content="2014-11-08T19:26:58&#43;08:00" />
+<meta itemprop="dateModified" content="2014-11-08T19:26:58&#43;08:00" />
+<meta itemprop="wordCount" content="2818">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cubieboard2/树莓派之Archlinux网络配置"/>
+<meta name="twitter:description" content="Cubieboard2/树莓派之Archlinux网络配置 前文1和2分别就Cubieboard2双卡版的Archlinux系统安装及简单配置"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cubieboard2/树莓派之Archlinux网络配置</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-11-08 </span>
+        
+        <span class="more-meta"> 约 2818 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#cubieboard2-树莓派之archlinux网络配置">Cubieboard2/树莓派之Archlinux网络配置</a></li>
+<li><a href="#有线网络">有线网络</a>
+<ul>
+<li><a href="#dhcp方式">dhcp方式</a></li>
+<li><a href="#静态ip">静态IP</a>
+<ul>
+<li><a href="#mac地址克隆">MAC地址克隆</a></li>
+<li><a href="#获取ipv6地址">获取IPV6地址</a></li>
+<li><a href="#启用静态ip">启用静态IP</a></li>
+</ul></li>
+<li><a href="#for-ipv6-autoconfiguration">For IPv6 autoconfiguration</a></li>
+<li><a href="#for-ipv6-static-address-configuration">For IPv6 static address configuration</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="cubieboard2-树莓派之archlinux网络配置">Cubieboard2/树莓派之Archlinux网络配置</h1>
+
+<p>前文<a href="http://blog.billryan.me/posts/2014/11/Cubieboard2-Archlinux-install.html">1</a>和<a href="http://blog.billryan.me/posts/2014/11/cubieboard2-arch-config.html">2</a>分别就Cubieboard2双卡版的Archlinux系统安装及简单配置做了详细说明，这里就Cubieboard2/树莓派的网络配置做一些说明。</p>
+
+<p>Archlinuxarm安装好之后默认是通过<code>systemd-network</code>服务进行联网的。<del>如果是从比较老的arch系统镜像安装的话则是通过<code>netctl</code>进行管理的。我对新的<code>systemd-network</code>联网方式不熟，实际使用下来感觉没有<code>netctl</code>好使，稍微看了下<code>systemd-network</code>对于网络环境较为复杂的服务器环境有优势，但是那些特性在基于Cubieboard/树莓派的家用服务器则不太可能用的上，所以这里以<code>netctl</code>进行说明。</del></p>
+
+<p>建议使用<code>systemd-network</code>配置网络！文件<code>/etc/systemd/network/eth0.network</code>内容如下：</p>
+
+<pre><code>[Match]
+Name=eth0
+
+[Network]
+DNS=127.0.0.1
+DNS=223.5.5.5
+Address=219.228.12x.xx/24
+Gateway=219.228.12x.xxx
+
+DNS=2001:470:20::2
+Address=2001:da8:8000:xxxx::5b21/64
+Gateway=2001:da8:8000:xxxx::1
+</code></pre>
+
+<h1 id="有线网络">有线网络</h1>
+
+<h2 id="dhcp方式">dhcp方式</h2>
+
+<p>如果确定你的板子一直用dhcp方式联网的话，那么本文对你作用不大，你可以选择看看 <a href="http://blog.billryan.me/tags/cubieboard/">Tag: cubieboard</a> 其他文章，或者，猛戳浏览器右上角/左上角的叉叉图标&hellip;</p>
+
+<p>如果你的板子所处网络环境较为复杂，建议使用<code>netctl</code>替代<code>systemd-network</code>管理网络。步骤如下：</p>
+
+<ol>
+<li>禁止<code>systemd-networkd</code>开机启动：<code>sudo systemctl disable systemd-networkd</code><br /></li>
+<li>拷贝<code>netctl</code>的<code>dhcp</code>配置文件：<code>sudo cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/</code><br /></li>
+<li>适当修改文件<code>ethernet-dhcp</code>中的网络接口名，确定是否和当前需要dhcp的网络接口名一致。<br /></li>
+<li>以太网口接入网线时启动<code>dhcp</code>服务，拔出网线时关闭相应网络接口：<code>sudo systemctl enable netctl-ifplugd@eth0</code>，<code>eth0</code>为你的网卡名。</li>
+</ol>
+
+<h2 id="静态ip">静态IP</h2>
+
+<p>这种联网方式相对较为复杂，往往还有些其它问题需要解决。</p>
+
+<h3 id="mac地址克隆">MAC地址克隆</h3>
+
+<p>以我交为例，研究生寝室每人一个端口，根据网卡的MAC绑定相应的静态IP(是全球可路由的噢～)。虽然可以通过<a href="http://nimo.sjtu.edu.cn">SJTU-NIMO!学生宿舍网络信息系统</a>在线申请MAC地址更换，但平白无故给网管添麻烦也挺损RP的 :( Arch的<a href="https://wiki.archlinux.org/index.php/MAC_address_spoofing">wiki</a>上总结了若干种MAC地址欺骗的方法，这里我以<a href="https://wiki.archlinux.org/index.php/MAC_address_spoofing#Method_2:_systemd-udevd">systemd-udevd</a>方法进行说明。树莓派可以在<code>/boot/configxxx</code>中配置，不必使用这种复杂的方式。</p>
+
+<ol>
+<li>创建<code>udevd</code>规则文件：<code>sudo vim /etc/udev/rules.d/75-net-fix-mac.rules</code><br /></li>
+<li>在文件<code>75-net-fix-mac.rules</code>中写入一行
+<code>
+ACTION==&quot;add&quot;, SUBSYSTEM==&quot;net&quot;, ATTR{address}==&quot;02:03:09:82:4c:xx&quot;, RUN+=&quot;/usr/bin/ip link set dev %k address c8:0a:a9:1c:87:xx&quot;
+</code>
+其中<code>02:03:09:82:4c:xx</code>为之前系统读到的MAC地址，<code>c8:0a:a9:1c:87:xx</code>则是你需要更改到的MAC地址。好了，下次开机时<code>udev</code>即可读到这条配置文件。</li>
+</ol>
+
+<h3 id="获取ipv6地址">获取IPV6地址</h3>
+
+<p>目前大多数高校已支持IPV4/IPV6双栈运行，而且通过IPV6接入网络可以免流量，「免流量」对于大多数高校还是很有吸引力的！不过我交不对学生收取网络费用，嘛，流量是个什么玩意儿？≖‿≖✧</p>
+
+<p>树莓派的<code>/boot/cmdline.txt</code>中有开启IPV6协议栈的选项，开启即可。Cubieboard2的Archlinux则默认开启，不必做多余配置。通过<code>sudo dhcpcd eth0</code>可以获取到临时的IPV6地址，如<code>2001:da8:8000:xxxx::xxxx/128</code>，记下这个地址。需要注意的是这里通过<code>DHCPv6</code>获取到的IPV6子网掩码为128位，没关系，设置静态IP时改为64即可～</p>
+
+<h3 id="启用静态ip">启用静态IP</h3>
+
+<ol>
+<li>拷贝<code>netctl</code>的<code>static</code>配置文件：<code>sudo cp /etc/netctl/examples/ethernet-static /etc/netctl/</code><br /></li>
+<li>适当修改文件<code>ethernet-static</code>中的网络接口名，确定是否和当前需要dhcp的网络接口名一致。<br /></li>
+<li>修改静态IP配置，以我的Cubieboard2为例：
+```
+Description=&lsquo;A basic static ethernet connection&rsquo;
+Interface=eth0
+Connection=ethernet
+IP=static
+Address=(&lsquo;219.228.xxx.<sup>60</sup>&frasl;<sub>24</sub>&rsquo;)
+#Routes=(&lsquo;192.168.0.0/24 via 192.168.1.2&rsquo;)
+Gateway=&lsquo;219.228.xxx.254&rsquo;
+DNS=(&lsquo;202.120.2.101&rsquo;)</li>
+</ol>
+
+<h2 id="for-ipv6-autoconfiguration">For IPv6 autoconfiguration</h2>
+
+<p>#IP6=stateless</p>
+
+<h2 id="for-ipv6-static-address-configuration">For IPv6 static address configuration</h2>
+
+<p>IP6=static
+#Address6=(&lsquo;1234:5678:9abc:def::<sup>1</sup>&frasl;<sub>64</sub>&rsquo; &lsquo;1234:3456::<sup>123</sup>&frasl;<sub>96</sub>&rsquo;)
+Address6=(&lsquo;2001:da8:8000:xxxx::671f/64&rsquo;)
+#Routes6=(&lsquo;abcd::1234&rsquo;)
+#Gateway6=&lsquo;1234:0:123::abcd&rsquo;
+Gateway6=&lsquo;2001:da8:8000:xxxx::1&rsquo;</p>
+
+<pre><code>其中的`xxx`根据实际IP更改。
+
+以太网口接入网线时启动静态IP，拔出网线时关闭相应网络接口：`sudo systemctl enable netctl-ifplugd@eth0`，`eth0`为你的网卡名。 
+
+细心的你可能注意到了，假如目录`/etc/netctl`下存在多份配置文件如何破？对网络接口`eth0`启用`netctl-ifplugd`服务时，`netctl`会读取目录`/etc/netctl`的所有可用配置文件并尝试依次启动，直至成功为止。所以说刚开始配置系统时可以同时启用`dhcp`和`static`以便调试，系统网络配置好之后即可将不需要的配置文件删除以加快开机时的联网速度。
+
+以上均为针对以太网的联网方法，主要用到了`netctl-ifplugd`实现插拔网线的网络自动配置。如果你觉得我说的不够清楚，那么Arch的wiki是你的好去处-[Network configuration - Wired(有线网络)](https://wiki.archlinux.org/index.php/Network_configuration)。
+
+接下来就无线网络连接做一些简要说明。
+
+# 无线网络  
+
+鉴于Cubieboard2/树莓派只提供最基本的硬件板，其他配件如电源、无线网卡等需要自己选购。对于无线网卡的选型，**建议选择Ralink家的芯片，千万不要去买Realtek的网卡。**究其原因则是由于Realtek的无线网卡对Linux极其不友好，在较新的Linux内核下驱动不了是常有的事。大量使用Ralink家芯片的厂商不多，我所知的像Comfast有大量基于Ralink的无线网卡出售，在某萌猫旗舰店上买时注意300Mb的通常是Realtek的芯片，150Mb的多为Ralink，各位看官买的时候务必擦亮你雪亮的眼睛！
+
+首先安装进行无线网络连接所需的软件包，`yaourt -S wpa_actiond wpa_supplicant dialog`，安装好之后即可启用自动联网功能-`sudo systemctl enable netctl-auto@wlan0`
+
+## 非IEEE 802.1x加密(即常见的WPA/WPA2等家用路由器上的加密方式)  
+
+首先使用`sudo wifi-menu`查看当前能搜索到的热点，输入密码后即在目录`/etc/netctl`下生成相应配置文件。下次启动时系统会从目录`/etc/netctl`读取可用的无线网络配置文件进行无线网络连接。
+
+## IEEE 802.1x/EAP  
+
+在学校这种场所，以我交为例，SSID为`SJTU`的热点部署在校园的每个角落，如实验室、体育馆、教室和图书馆等都有`SJTU`带来的电磁波。如果仍然使用`wifi-menu`的方式去联网，会发现无法连接。这是因为学校这种场所提供的是IEEE 802.1x加密方式，这里我们只能手动复制一份适用于IEEE 802.1x环境下的配置文件了。
+
+添加配置文件，`sudo vim /etc/netctl/wlan0-sjtu`，下面贴出我在交大用的配置文件：  
+</code></pre>
+
+<p>Description=&lsquo;A wireless connection using a custom network block configuration&rsquo;
+Interface=wlan0
+Connection=wireless
+Security=wpa-configsection
+IP=dhcp
+WPAConfigSection=(
+    &lsquo;ssid=&ldquo;SJTU&rdquo;&rsquo;
+    &lsquo;key_mgmt=WPA-EAP IEEE8021X&rsquo;
+    &lsquo;eap=PEAP&rsquo;
+    &lsquo;identity=&ldquo;username&rdquo;&rsquo;
+    &lsquo;password=&ldquo;password&rdquo;&rsquo;
+)
+``<code>
+将</code>wlan0<code>替换为你的无线网卡名，</code>username<code>和</code>password<code>分别替换为你的jaccount帐号密码。启动</code>netctl-auto<code>服务即可完成自动联网-</code>sudo systemctl start netctl-auto@wlan0`</p>
+
+<p>关于Archlinux下无线网络的联网可参考 <a href="https://wiki.archlinux.org/index.php/Wireless_network_configuration">Wireless network configuration</a> 和 <a href="https://wiki.archlinux.org/index.php/Netctl">netctl</a></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-11-08</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2014-11/2014-11-09_09-12-11/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">家用服务器之 BT(PT) 下载机</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2014-11/2014-11-07_17-21-14/">
+            <span class="next-text nav-default">Cubieboard2/树莓派之Archlinux系统配置</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Cubieboard2\/树莓派之Archlinux网络配置',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

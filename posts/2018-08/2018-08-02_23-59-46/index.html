@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>基于大数据平台的客户画像系统设计 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="基于大数据平台的客户画像系统设计" />
+<meta property="og:description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/" />
+
+
+
+<meta property="article:published_time" content="2018-08-02T23:59:46&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-08-02T23:59:46&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="基于大数据平台的客户画像系统设计">
+<meta itemprop="description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行">
+
+
+<meta itemprop="datePublished" content="2018-08-02T23:59:46&#43;08:00" />
+<meta itemprop="dateModified" content="2018-08-02T23:59:46&#43;08:00" />
+<meta itemprop="wordCount" content="1004">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基于大数据平台的客户画像系统设计"/>
+<meta name="twitter:description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">基于大数据平台的客户画像系统设计</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-08-02 </span>
+        
+        <span class="more-meta"> 约 1004 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#基于大数据平台的客户画像系统设计">基于大数据平台的客户画像系统设计</a>
+<ul>
+<li><a href="#系统架构及数据流">系统架构及数据流</a></li>
+<li><a href="#数据模型映射">数据模型映射</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="基于大数据平台的客户画像系统设计">基于大数据平台的客户画像系统设计</h1>
+
+<p>客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推荐或者营销。基础的客户画像系统有如下几种需求：</p>
+
+<ol>
+<li>输入用户 id, 输出用户相应的画像标签</li>
+<li>输入用户 id，相应标签和指定时间区间，输出对应标签值在这段时间内的变化情况</li>
+<li>输入多个标签值，输出满足指定标签值的一组用户(精准推荐或营销用)</li>
+<li>输出的标签最好能和业务数据进行关联</li>
+</ol>
+
+<p>这四个需求虽然都可以通过 HBase 实现，但是对于需求3这种搜索的场景，用 HBase 来实现则往往需要 scan 全表，而且范围查询也不易实现。我们可以选用 ES(ElasticSearch) 来作为搜索过滤。对于需求4，常用的数据仓库有 Hive, 我们可以通过外表的形式关联 HBase, 也可以定期从 HBase 导入至 Hive.</p>
+
+<h2 id="系统架构及数据流">系统架构及数据流</h2>
+
+<ul>
+<li>源数据层：数据源可以是关系型数据库，实时行为日志，Hive 仓库或者从 HBase 加工过的标签数据。</li>
+<li>计算引擎层：使用 Spark 作为中间的计算引擎和不同的数据源接口可以省掉繁琐的数据驱动整合工作，同时借助 dataframe API 可以高效的进行异构数据源关联分析和处理。</li>
+<li>数据分发层：使用 HBase 作为主存储，ES 通过 HBase 的 coprocessor 机制同步更新，往 ES 写可以通过批量写减少网络 IO。Hive 通过外表则不必做专门的数据同步操作，但是这种方法效率往往不高。</li>
+<li>数据对外使用层：通过 REST API 查询 HBase 和 ES 获取所需标签/用户 id</li>
+</ul>
+
+<pre><code>                                                  +------------+
+                                                  |            |
+                              +-----------------&gt; |  REST API  |
+                              |                   |            |
+                              |                   +------+-----+
+                              |                          ^
+                              |                          |
+                              |                          |
++--------+               +----+----+                +----+----+
+|        |    external   |         |  coprocessor   |         |
+|  Hive  | &lt;-------------+  HBase  +--------------&gt; |    ES   |
+|        |               |         |                |         |
++--------+               +----+----+                +---------+
+                              ^
+                              |
+                +-------------+-------------+
+                |                           |
+                |  Spark / Spark Streaming  |
+                |                           |
+                +-------------+-------------+
+                              ^
+                              |
+         +--------------------+------------------+
+         |                                       |
+         |  Hive, SQLServer, MySQL, HBase, HDFS  |
+         |                                       |
+         +---------------------------------------+
+</code></pre>
+
+<p>Spark 写 HBase 可以用 <a href="https://github.com/hortonworks-spark/shc">hortonworks-spark/shc</a></p>
+
+<p>其中 HBase 写 ES 和 Hive 建外表的细节另外写两篇博文做深度一点的解析，这里不再赘述。</p>
+
+<h2 id="数据模型映射">数据模型映射</h2>
+
+<p>我们知道 HBase 主要是通过 rowkey 来实现快速查询，对于典型的用户画像场景，用户 id 往往必不可少。但 rowkey 在 HBase 中的存储为字节数组，且为了更好发挥 HBase 分布式存储的效率，我们需要防止用户 id 过于集中造成热点，这里我们可以尝试将 int 型数据映射到 00000000~FFFFFFFF 内，然后反转字符串即可完美适配 HBase 对 rowkey 设计的要求。</p>
+
+<p>对于 HBase 往 ES 的数据同步，我们主要利用了 HBase coprocessor 绑定更新/删除事件进而对 ES 同步。这里一个比较棘手的问题是 HBase 的内容都是以字节数组存储的，比较理想的方案是同步到 ES 时保留类型信息以便范围查询。这里我采取的方案是通过 Spark dataframe 取出类型信息，在写入 HBase 时列的最后一个字节用于类型标记，如 <code>i -&gt; integer</code>, <code>d -&gt; double</code>, <code>s -&gt; string</code>. 这样就完美的解决了类型的转化问题了，还能自适应匹配。</p>
+
+<p>HBase 中的 rowkey 可以映射为 ES 中的 docid, 列名 <code>cf:tag_namespace.tag_name</code> 可以映射为 ES 中的 JSON 嵌套结构。</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-08-02</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/posts/2018-06/2018-06-30_21-26-14/">
+            <span class="next-text nav-default">HAProxy 进阶使用技巧</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '基于大数据平台的客户画像系统设计',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

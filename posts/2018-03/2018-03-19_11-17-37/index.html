@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Spark 开发之环境准备 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Spark 开发之环境准备 JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2018-03/2018-03-19_11-17-37/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Spark 开发之环境准备" />
+<meta property="og:description" content="Spark 开发之环境准备 JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2018-03/2018-03-19_11-17-37/" />
+
+
+
+<meta property="article:published_time" content="2018-03-19T11:17:37&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-03-19T11:17:37&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Spark 开发之环境准备">
+<meta itemprop="description" content="Spark 开发之环境准备 JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala">
+
+
+<meta itemprop="datePublished" content="2018-03-19T11:17:37&#43;08:00" />
+<meta itemprop="dateModified" content="2018-03-19T11:17:37&#43;08:00" />
+<meta itemprop="wordCount" content="636">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spark 开发之环境准备"/>
+<meta name="twitter:description" content="Spark 开发之环境准备 JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Spark 开发之环境准备</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-03-19 </span>
+        
+        <span class="more-meta"> 约 636 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#spark-开发之环境准备">Spark 开发之环境准备</a>
+<ul>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#pyspark">PySpark</a></li>
+<li><a href="#scala">Scala</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="spark-开发之环境准备">Spark 开发之环境准备</h1>
+
+<p>JVM 是必须的，所以需要 Java(JDK 1.8+), 想写 Python 的还需要 Python(2.7.x/3.x).</p>
+
+<p>快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 <a href="https://github.com/spark-notebook/spark-notebook">spark-notebook/spark-notebook</a> 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala 的特性。</p>
+
+<p>对于 Spark 的安装，去官方页面下载选中的编译好压缩包即可，解压即用。其中 1.x(1.6.3) 在一些老的集群中还在大量使用，但基本不再有新的功能加入。2.x(2018 年 2 月底 2.3.0 引入了大量新的 feature) 开发非常活跃，API 的便利性和性能都有较大提升，推荐使用。基于 Spark 的开发模式往往比较重，如果使用 IDE 的话推荐使用 IntelliJ IDEA 进行开发，安装好 Scala 和 Python 插件。</p>
+
+<h2 id="windows">Windows</h2>
+
+<p>Windows 下使用 Spark 需要做的准备工作稍微多一点点，设置 Spark 环境 <code>SPARK_HOME</code> 为 Spark 解压目录 <code>D:\spark\spark-1.6.3-bin-hadoop2.6</code>. 尽管 Spark 在本地运行并不需要完整的 Hadoop 环境，但还是间接依赖了一些 Hadoop 提供的文件操作工具，故在 Windows 下需要一些 POSIX 的文件权限操作，因此我们需要 <code>winutils.exe</code>. 作者在 <a href="https://github.com/steveloughran/winutils">steveloughran/winutils</a> 上放出了预编译好的二进制版本，按需选择即可。需要注意的是 <code>winutils.exe</code> 需要置于 <code>HADOOP_HOME</code> 的 <code>bin</code> 目录下，我们可以新建 <code>D:\hadoop</code> 作为 <code>HADOOP_HOME</code> 变量。变量设置好后需要判断这两个环境变量是否生效。</p>
+
+<h2 id="pyspark">PySpark</h2>
+
+<p>使用 PySpark 时最重要的环境变量是 <code>PYTHONPATH</code> 和 <code>spark-submit</code> 提交时 <code>--py-files</code> Python 及其依赖的打包注意事项。</p>
+
+<pre><code>#!/usr/bin/env bash
+
+set -e
+
+export SPARK_HOME=${SPARK_HOME:=&quot;/usr/hdp/2.6.1.0-129&quot;}
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.9-src.zip:$SPARK_HOME/python/lib/pyspark.zip:$PYTHONPATH
+export SPARK_MASTER=${SPARK_MASTER:=&quot;local[*]&quot;}
+
+
+spark-submit \
+    --master \
+    ${SPARK_MASTER} \
+    --deploy-mode \
+    client \
+    --name \
+    PySpark \
+    --verbose \
+    main.py $@
+</code></pre>
+
+<h2 id="scala">Scala</h2>
+
+<p>使用 Scala 来开发 Spark 程序是最为 native 的方式，也没有性能惩罚，是我个人最喜欢的方式。考虑到我们通常并不将 Spark 的核心包打包至最终的 jar 包提交，我们可以在 <code>build.sbt</code> 中指定 Spark 相关依赖为 <code>provided</code>, 完整的 <code>build.sbt</code> 见下文。</p>
+
+<pre><code>name := &quot;scala-ml-text&quot;
+
+organization := &quot;com.yintech&quot;
+
+version := &quot;1.0&quot;
+
+scalaVersion := &quot;2.10.7&quot;
+
+val sparkVersion = &quot;1.6.3&quot;
+
+lazy val sparkDependencies = Seq(
+  &quot;org.apache.spark&quot; %% &quot;spark-core&quot; % sparkVersion,
+  &quot;org.apache.spark&quot; %% &quot;spark-mllib&quot; % sparkVersion,
+  &quot;org.apache.spark&quot; %% &quot;spark-hive&quot; % sparkVersion
+)
+
+libraryDependencies ++= Seq(
+  &quot;log4j&quot; % &quot;log4j&quot; % &quot;1.2.17&quot;,
+  &quot;org.slf4j&quot; % &quot;slf4j-log4j12&quot; % &quot;1.7.10&quot;,
+  &quot;com.typesafe&quot; % &quot;config&quot; % &quot;1.2.1&quot;,
+  &quot;com.databricks&quot; % &quot;spark-csv_2.10&quot; % &quot;1.5.0&quot;
+)
+
+libraryDependencies ++= sparkDependencies.map(_ % &quot;provided&quot;)
+
+assemblyMergeStrategy in assembly := {
+  case PathList(&quot;META-INF&quot;, xs @ _*) =&gt; MergeStrategy.discard
+  case x =&gt; MergeStrategy.first
+}
+</code></pre>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-03-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2018-03/2018-03-28_23-50-56/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">身份证解析的那些小事</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2018-03/2018-03-15_13-44-59/">
+            <span class="next-text nav-default">Python 网页爬虫入门——信息抓取</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Spark 开发之环境准备',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

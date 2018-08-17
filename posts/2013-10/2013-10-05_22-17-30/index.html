@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>OPNET学习笔记之安装指南 (Win7 &amp; XP) - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="OPNET学习笔记之安装指南 (Win7 &amp;amp; XP) 在前文已经就OPNET14.5在Windows下的安装做了简要说明，这篇blog就OPNET 14.5安装方" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2013-10/2013-10-05_22-17-30/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="OPNET学习笔记之安装指南 (Win7 &amp; XP)" />
+<meta property="og:description" content="OPNET学习笔记之安装指南 (Win7 &amp; XP) 在前文已经就OPNET14.5在Windows下的安装做了简要说明，这篇blog就OPNET 14.5安装方" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2013-10/2013-10-05_22-17-30/" />
+
+
+
+<meta property="article:published_time" content="2013-10-05T22:17:30&#43;08:00"/>
+
+<meta property="article:modified_time" content="2013-10-05T22:17:30&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="OPNET学习笔记之安装指南 (Win7 &amp; XP)">
+<meta itemprop="description" content="OPNET学习笔记之安装指南 (Win7 &amp; XP) 在前文已经就OPNET14.5在Windows下的安装做了简要说明，这篇blog就OPNET 14.5安装方">
+
+
+<meta itemprop="datePublished" content="2013-10-05T22:17:30&#43;08:00" />
+<meta itemprop="dateModified" content="2013-10-05T22:17:30&#43;08:00" />
+<meta itemprop="wordCount" content="1271">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OPNET学习笔记之安装指南 (Win7 &amp; XP)"/>
+<meta name="twitter:description" content="OPNET学习笔记之安装指南 (Win7 &amp; XP) 在前文已经就OPNET14.5在Windows下的安装做了简要说明，这篇blog就OPNET 14.5安装方"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">OPNET学习笔记之安装指南 (Win7 &amp; XP)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-10-05 </span>
+        
+        <span class="more-meta"> 约 1271 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#opnet学习笔记之安装指南-win7-xp">OPNET学习笔记之安装指南 (Win7 &amp; XP)</a>
+<ul>
+<li><a href="#fuction-definition">fuction definition</a>
+<ul>
+<li><a href="#opnet-install">opnet_install()</a></li>
+<li><a href="#setx-install">setx_install()</a></li>
+<li><a href="#opnet-configure-path-vs2008-and-opnet-configure-path-vs2010">opnet_configure_path_vs2008() and opnet_configure_path_vs2010()</a></li>
+<li><a href="#opnet-crack">opnet_crack()</a></li>
+</ul></li>
+<li><a href="#verification">verification</a></li>
+<li><a href="#troubleshoot">Troubleshoot</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="opnet学习笔记之安装指南-win7-xp">OPNET学习笔记之安装指南 (Win7 &amp; XP)</h1>
+
+<p>在<a href="http://126.am/uGltr3">前文</a>已经就OPNET14.5在Windows下的安装做了简要说明，这篇blog就OPNET 14.5安装方面做了更为详细的介绍，对于XP和win7/vista应该都是有效的。下边是安装的流程图解及其代码表示，额&hellip; 其实用普通话就OK的，代码的表示方式纯属个人自娱自乐。<br />
+由于OPNET底层大量采用VC进行编译，所以如VC6, VC++ 2008, VS2008 或者 VS2010等必选其一啦。当然OPNET Modeler也是可以在Linux/*nix下跑的，大致看了下这方面的资料不多，就没去折腾了，有熟悉的朋友可以补充下，谢谢！  另外OPNET还提供了<a href="http://www.opnet.com/university_program/itguru_academic_edition/">OPNET IT Guru Academic Edition</a>，这个我了解也不多，就不在这胡写了。<br />
+<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/opnet_install.jpg" alt="安装流程图" /></p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+void opnet_install();
+void setx_install();
+void opnet_configure_path();
+void opnet_configure_path_vs2008();
+void opnet_configure_path_vs2010();
+void opnet_crack();
+
+if (1 == Win_XP &amp;&amp; VC++ 6.0)  
+    opnet_install();  
+else if (Win_XP) 
+{
+    setx_install();
+    opnet_configure_path();
+    opnet_install();
+    opnet_crack();
+}
+else if (Win7)
+{
+    opnet_configure_path();
+    opnet_install();
+    opnet_crack();
+}
+
+void opnet_configure_path()
+{
+    if (1 == (Win_XP || Win_7) &amp;&amp; (VS2008 || VC++ 2008)) 
+        opnet_configure_path_vs2008();
+    else if (1 == (Win_XP || Win_7) &amp;&amp; VS2010) 
+        opnet_configure_path_vs2010();
+
+    printf(&quot;Restart your computer to take effect PATH settings.\n&quot;)
+}
+</code></pre>
+
+<h2 id="fuction-definition">fuction definition</h2>
+
+<h3 id="opnet-install">opnet_install()</h3>
+
+<ol>
+<li>切换至OPNET的安装包文件夹<br /></li>
+<li>以自大至小的顺序安装各安装包，也就是说：<br /></li>
+<li>最先安装主程序 &ndash; modeler_145A_PL1_7116_win.exe<br /></li>
+<li>然后安装OPNET相关文档 &ndash; modeler_docs_28-Jan-2008_win.exe<br /></li>
+<li>最后安装OPNET库文件 &ndash; models_145A_PL1_27Feb08_win.exe  将modeler库选上。<br /></li>
+<li>自己在安装时截的<a href="https://dl.dropboxusercontent.com/u/54487077/blog/OPNET%2014.5%20installation%20guide.pdf">图文教程</a><br /></li>
+</ol>
+
+<h3 id="setx-install">setx_install()</h3>
+
+<p>用于设置环境变量（仅XP系统需要，Win7已自带），但这个工具设置PATH后重启后才有效，故下边设置好环境变量后还需重启计算机才有效。你可以从<a href="http://db.tt/nTfoGgtB">这里</a>下载到M$提供的setx工具，官网上下载实在是麻烦至极。</p>
+
+<h3 id="opnet-configure-path-vs2008-and-opnet-configure-path-vs2010">opnet_configure_path_vs2008() and opnet_configure_path_vs2010()</h3>
+
+<p>这两个批处理算是整个安装过程中最为核心的部分了，<strong>将繁琐恼人的环境变量设置部分进行自动化批处理</strong>，从此再也不用担心OPNET安装时环境变量设不对了！！！<br />
+1. <a href="https://dl.dropboxusercontent.com/u/54487077/blog/opnet-vs2008.bat">opnet_configure_path_vs2008.bat</a><br />
+2. <a href="https://dl.dropboxusercontent.com/u/54487077/blog/opnet-vs2010.bat">opnet_configure_path_vs2010.bat</a><br />
+需要注意的是在运行批处理时使用当前用户即可，win7下不必右键使用管理员权限，原则上不用用户登录时环境变量是不一样的。</p>
+
+<h3 id="opnet-crack">opnet_crack()</h3>
+
+<ol>
+<li>将文件 OPNET.Modeler.11.5.License.MakerFFS.exe 拷贝到 <code>your_opnet_install_location\14.5.A\sys\pc_intel_win32\bin</code><br /></li>
+<li>双击之，再次启动OPNET Modeler 14.5时你应该能看到1000+ 的license 许可，仅用于education purpose&hellip;<br /></li>
+</ol>
+
+<h2 id="verification">verification</h2>
+
+<p>验证下仿真是否正常，File-&gt;open-&gt;到OPNET安装文件夹下找个Modeler的tutorial跑一跑，正常的话就没啥问题了。</p>
+
+<h2 id="troubleshoot">Troubleshoot</h2>
+
+<p>Win7系统下多分区的情况（如有C, D两个分区），注册时虽然提示在C盘已生成相应License, 但实际运行OPNET时弹出的License Manager却提示License无效，经仔细查明发现在Win7多分区情况下，License Manager会自动在非系统盘分区中指定license 文件，即使将C盘中生成好的license文件覆盖D盘中的license也无效，指定文件只读时也无解，更改D盘的驱动器号为B, E等均无效&hellip;  想着OPNET14.5毕竟是Win7前的玩意儿，试着将<code>C:\OPNET\14.5.A\sys\pc_intel_win32\bin</code>中的modeler.exe改为以xp sp3的兼容模式来运行，尼玛就解决问题了！！右键-&gt;兼容性-&gt;勾上XP SP3</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li><a href="http://db.tt/7YdSKESL">OPNET-configure-VC-PATH</a>——VC6 2003 2005 2008<br /></li>
+<li><a href="http://db.tt/R9vulOHp">How to install OPNET Modeler 14.5 on Windows 7</a><br /></li>
+<li><a href="http://blog.sina.com.cn/s/blog_6c73f6ef0100xdyf.html">Opnet仿真环境安装配置-图文安装指南</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2013-10-05</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2013-10/2013-10-10_21-48-40/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Excerpts of _How to Read a Paper_</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2013-10/2013-10-05_09-39-12/">
+            <span class="next-text nav-default">Install OPNET14.5 on Windows OS</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'OPNET学习笔记之安装指南 (Win7 \x26 XP)',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

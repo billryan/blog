@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>OPNET学习笔记之入门指南 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="OPNET学习笔记之入门指南 从接触OPNET以来大约也有3个月了，断断续续学了点皮毛，这里把自己折腾的成果陆续整理在这，也算是自己的一个学习" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2013-10/2013-10-21_08-22-28/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="OPNET学习笔记之入门指南" />
+<meta property="og:description" content="OPNET学习笔记之入门指南 从接触OPNET以来大约也有3个月了，断断续续学了点皮毛，这里把自己折腾的成果陆续整理在这，也算是自己的一个学习" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2013-10/2013-10-21_08-22-28/" />
+
+
+
+<meta property="article:published_time" content="2013-10-21T08:22:28&#43;08:00"/>
+
+<meta property="article:modified_time" content="2013-10-21T08:22:28&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="OPNET学习笔记之入门指南">
+<meta itemprop="description" content="OPNET学习笔记之入门指南 从接触OPNET以来大约也有3个月了，断断续续学了点皮毛，这里把自己折腾的成果陆续整理在这，也算是自己的一个学习">
+
+
+<meta itemprop="datePublished" content="2013-10-21T08:22:28&#43;08:00" />
+<meta itemprop="dateModified" content="2013-10-21T08:22:28&#43;08:00" />
+<meta itemprop="wordCount" content="1101">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OPNET学习笔记之入门指南"/>
+<meta name="twitter:description" content="OPNET学习笔记之入门指南 从接触OPNET以来大约也有3个月了，断断续续学了点皮毛，这里把自己折腾的成果陆续整理在这，也算是自己的一个学习"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">OPNET学习笔记之入门指南</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-10-21 </span>
+        
+        <span class="more-meta"> 约 1101 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#opnet学习笔记之入门指南">OPNET学习笔记之入门指南</a>
+<ul>
+<li><a href="#opnet安装">OPNET安装</a></li>
+<li><a href="#入门资料">入门资料</a></li>
+<li><a href="#书籍推荐">书籍推荐</a></li>
+<li><a href="#待续">待续&hellip;</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="opnet学习笔记之入门指南">OPNET学习笔记之入门指南</h1>
+
+<p>从接触OPNET以来大约也有3个月了，断断续续学了点皮毛，这里把自己折腾的成果陆续整理在这，也算是自己的一个学习笔记吧。</p>
+
+<h2 id="opnet安装">OPNET安装</h2>
+
+<p>在<a href="http://billryan.me/blog/2013/10/install-opnet-145-on-windows.html">Opnet学习笔记之安装指南 (win7 &amp; Xp)</a>一文中我已对OPNET安装部分做了详细总结，这里不再赘述。</p>
+
+<h2 id="入门资料">入门资料</h2>
+
+<p>刚开始接触时确实比较头大，软件自带的Tutorials虽然又大又全，但让新手也不知从何下手。大部分书籍基本都是照着Tutorials翻译过来的，对新手来说学习曲线也还是稍微有点抖了。这里给出个人的入门建议(喂！你自己不也是新手么&hellip;)</p>
+
+<ol>
+<li>安装好OPNET 之后，打开Modeler的<code>help-&gt;tutorial</code>, 找到Modeler的Tutorial，没记错的话有四个，先跑上两个熟悉下仿真平台<br /></li>
+<li><a href="https://dl.dropboxusercontent.com/u/54487077/blog/I-ntro%20Modeler%20Lecture%2014.5.pdf">Introduction-to-Modeler 14.5 &ndash; 官方出品</a>，整理地非常好！偶然发现的，用了好几个代理才down下来。底部有confidential字样，07年的文档，严格来说算是侵权了&hellip; 不过实在是不忍心让这么好的资料埋没了，总之各位注意吧。<br /></li>
+<li><a href="https://dl.dropboxusercontent.com/u/54487077/blog/I-ntro%20Modeler%20Labs14.5.pdf">Introduction-to-Modeler 14.5 Labs &ndash; 官方出品</a>，和上边的Modeler介绍结合着用，估计把这两个文档吃透OPNET的基本使用应该就会比较熟练了。<br /></li>
+<li><a href="https://dl.dropboxusercontent.com/u/54487077/blog/Development%20of%20laboratory%20exercises%20based%20on%20OPNET%20Modeler.pdf">Development of laboratory exercises based on OPNET Modeler</a>, 一堆练习，当练练手不错！<br /></li>
+</ol>
+
+<p>下边推荐点书籍，不过这方面资料也不多，我在周强写的<a href="https://dl.dropboxusercontent.com/u/54487077/blog/OPNET%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97.doc">OPNET学习入门指南</a>的基础上整理一部分。</p>
+
+<h2 id="书籍推荐">书籍推荐</h2>
+
+<p>关于OPNET方面的中文书籍还真不是很多，即使有大多也是从OPNET的文档里翻译过来的Tutorial。值得看看的有如下几本(以上海交大的图书馆馆藏为例)：</p>
+
+<ol>
+<li>《OPNET网络仿真》-陈敏-清华大学出版社-2004 | 讲解比较详细，感觉就像是Tutorial的翻译，和软件文档中的Tutorial配合着看最好。| 索书号：TP393.09/98 图书馆有电子资源可供全文阅读。| 有文字版电子书。<br /></li>
+<li>《OPNET Modeler网络建模与仿真》-李馨-西安电子科技大学出版社-2006 | 第七章 核心函数介绍 不错，写得比较好，对常用的核心函数做了详细的介绍，而且也对其作了归类，适合对OPNET入门之后再去看看，第七章当手册用不错。 | 索书号：TP393.01/9<br /></li>
+<li>《OPNET通信仿真开发手册》-孟晨-国防工业出版社-2005 | OPNET编程入门方面介绍很好，开头的例子不错，后边进程模型部分介绍forced state 和unforced state时讲解深入！分析透彻！对其各个状态都做了非常好的说明和可能导致的后果。 | 索书号：TN914-<sup>39</sup>&frasl;<sub>3</sub><br /></li>
+<li>当然OPNET学习的最好资料还是OPNET自带的英文帮助Tutorial，上面有各种例子，并且有分类好的最全的核心函数。<br /></li>
+</ol>
+
+<h2 id="待续">待续&hellip;</h2>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2013-10-21</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2013-12/2013-12-01_11-55-03/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">交大生活进行时之beginning</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2013-10/2013-10-10_21-48-40/">
+            <span class="next-text nav-default">Excerpts of _How to Read a Paper_</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'OPNET学习笔记之入门指南',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>OPNET14.5 Win7/XP下安装小记 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="OPNET14.5 Win7/XP下安装小记 导师几个星期前就发来邮件让熟悉网络仿真软件了，只是自己前一个月基本都在到处转悠，加之网络不便，也耽搁了许久，这个月可以好好学习研究一番了。 第一次听说OPNET的时候似乎离现在已经很久远了，只记得那时对面7、8号楼还住着大四。值得一提的是7号楼当时是男女混住的^_^，哈哈，挺羡慕的吧！估计是当年的男女比例比较惊人，只不过男生住的是最南边那一排寝室，这段美好的过去估计只能写入西电的史册了&amp;hellip; 这样算来，当时的我才大一。毕业之际，好网上到处都可以看到卖书的帖子，于是乎随便联系了一个7号楼的学长就去那淘书了，买回来差不多一堆书，OPNET就在其中，估摸着有半米多高，三年过后，发现能用的上的没几本呀！！连现在要用的OPNET都被我当废纸卖掉了&amp;hellip; 当初怎么也没想到研究生要用这玩意儿。所以嘛，旧书买下一年要用的就足够了啦，买多了真是浪费体力=_=! 喂喂！偏题了！
+网络仿真软件 就我所知道的，常用的网络仿真/模拟软件要么是NS2 (NS3正在活跃开发中), 要么就是OPNET, 前者是自由软件，后者是商业软件。它们二者之间在使用上的区别可见NS2和OPNET的讨论，在仿真层次上的详细区别可见OPNET Modeler and NS-2: Comparing the Accuracy of Network Simulators for Packet-Level Analysis using a Network Testbed，让我自己来选的话当然是NS2咯，优先自由软件么，OPNET14.5 Modeler在Linux下不能用，这是硬伤呀！用了近两年的Arch Linux后，我发现我越来越离不开它了，切换到MS Windows下感觉麻烦死了。问了下师兄，实验室里导师和师兄们都是用的OPNET14.5，合群一点自然是要用OPNET的。相对比较好的整合方案就是在Arch下用vbox/kvm虚拟个XP了，内存8G还是比较够使的，只是这样不符合如今节能环保的大趋势么
+Win7/XP下安装OPNET14.5 OPNET软件安装本身其实没啥好扯的，下载得到的3个软件包从大到小安装。关键在于OPNET是采用VC&#43;&#43;进行编译的，相关的环境变量和编译器什么的配置起来就值得一提了。OPNET14.5是一款比较老的软件了，XP下先装VC6.0，OPNET14.5编译时所需的用户变量也就配置好了，所以说如果你还在用上古时代的XP系统，VC6.0是再好不过的搭档了。当然，现在大多数人的电脑里估计已经换成了Win7/Win8了，装个VC6.0还是比较费劲的。所以喽，当然得另辟蹊径。
+
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2013-08/2013-08-08_19-17-16/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="OPNET14.5 Win7/XP下安装小记" />
+<meta property="og:description" content="OPNET14.5 Win7/XP下安装小记
+
+导师几个星期前就发来邮件让熟悉网络仿真软件了，只是自己前一个月基本都在到处转悠，加之网络不便，也耽搁了许久，这个月可以好好学习研究一番了。
+第一次听说OPNET的时候似乎离现在已经很久远了，只记得那时对面7、8号楼还住着大四。值得一提的是7号楼当时是男女混住的^_^，哈哈，挺羡慕的吧！估计是当年的男女比例比较惊人，只不过男生住的是最南边那一排寝室，这段美好的过去估计只能写入西电的史册了&hellip;
+这样算来，当时的我才大一。毕业之际，好网上到处都可以看到卖书的帖子，于是乎随便联系了一个7号楼的学长就去那淘书了，买回来差不多一堆书，OPNET就在其中，估摸着有半米多高，三年过后，发现能用的上的没几本呀！！连现在要用的OPNET都被我当废纸卖掉了&hellip; 当初怎么也没想到研究生要用这玩意儿。所以嘛，旧书买下一年要用的就足够了啦，买多了真是浪费体力=_=! 喂喂！偏题了！
+
+网络仿真软件
+
+就我所知道的，常用的网络仿真/模拟软件要么是NS2 (NS3正在活跃开发中), 要么就是OPNET, 前者是自由软件，后者是商业软件。它们二者之间在使用上的区别可见NS2和OPNET的讨论，在仿真层次上的详细区别可见OPNET Modeler and NS-2: Comparing the Accuracy of Network Simulators for Packet-Level Analysis using a Network Testbed，让我自己来选的话当然是NS2咯，优先自由软件么，OPNET14.5 Modeler在Linux下不能用，这是硬伤呀！用了近两年的Arch Linux后，我发现我越来越离不开它了，切换到MS Windows下感觉麻烦死了。问了下师兄，实验室里导师和师兄们都是用的OPNET14.5，合群一点自然是要用OPNET的。相对比较好的整合方案就是在Arch下用vbox/kvm虚拟个XP了，内存8G还是比较够使的，只是这样不符合如今节能环保的大趋势么
+
+Win7/XP下安装OPNET14.5
+
+OPNET软件安装本身其实没啥好扯的，下载得到的3个软件包从大到小安装。关键在于OPNET是采用VC&#43;&#43;进行编译的，相关的环境变量和编译器什么的配置起来就值得一提了。OPNET14.5是一款比较老的软件了，XP下先装VC6.0，OPNET14.5编译时所需的用户变量也就配置好了，所以说如果你还在用上古时代的XP系统，VC6.0是再好不过的搭档了。当然，现在大多数人的电脑里估计已经换成了Win7/Win8了，装个VC6.0还是比较费劲的。所以喽，当然得另辟蹊径。
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2013-08/2013-08-08_19-17-16/" />
+
+
+
+<meta property="article:published_time" content="2013-08-08T19:17:16&#43;08:00"/>
+
+<meta property="article:modified_time" content="2013-08-08T19:17:16&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="OPNET14.5 Win7/XP下安装小记">
+<meta itemprop="description" content="OPNET14.5 Win7/XP下安装小记
+
+导师几个星期前就发来邮件让熟悉网络仿真软件了，只是自己前一个月基本都在到处转悠，加之网络不便，也耽搁了许久，这个月可以好好学习研究一番了。
+第一次听说OPNET的时候似乎离现在已经很久远了，只记得那时对面7、8号楼还住着大四。值得一提的是7号楼当时是男女混住的^_^，哈哈，挺羡慕的吧！估计是当年的男女比例比较惊人，只不过男生住的是最南边那一排寝室，这段美好的过去估计只能写入西电的史册了&hellip;
+这样算来，当时的我才大一。毕业之际，好网上到处都可以看到卖书的帖子，于是乎随便联系了一个7号楼的学长就去那淘书了，买回来差不多一堆书，OPNET就在其中，估摸着有半米多高，三年过后，发现能用的上的没几本呀！！连现在要用的OPNET都被我当废纸卖掉了&hellip; 当初怎么也没想到研究生要用这玩意儿。所以嘛，旧书买下一年要用的就足够了啦，买多了真是浪费体力=_=! 喂喂！偏题了！
+
+网络仿真软件
+
+就我所知道的，常用的网络仿真/模拟软件要么是NS2 (NS3正在活跃开发中), 要么就是OPNET, 前者是自由软件，后者是商业软件。它们二者之间在使用上的区别可见NS2和OPNET的讨论，在仿真层次上的详细区别可见OPNET Modeler and NS-2: Comparing the Accuracy of Network Simulators for Packet-Level Analysis using a Network Testbed，让我自己来选的话当然是NS2咯，优先自由软件么，OPNET14.5 Modeler在Linux下不能用，这是硬伤呀！用了近两年的Arch Linux后，我发现我越来越离不开它了，切换到MS Windows下感觉麻烦死了。问了下师兄，实验室里导师和师兄们都是用的OPNET14.5，合群一点自然是要用OPNET的。相对比较好的整合方案就是在Arch下用vbox/kvm虚拟个XP了，内存8G还是比较够使的，只是这样不符合如今节能环保的大趋势么
+
+Win7/XP下安装OPNET14.5
+
+OPNET软件安装本身其实没啥好扯的，下载得到的3个软件包从大到小安装。关键在于OPNET是采用VC&#43;&#43;进行编译的，相关的环境变量和编译器什么的配置起来就值得一提了。OPNET14.5是一款比较老的软件了，XP下先装VC6.0，OPNET14.5编译时所需的用户变量也就配置好了，所以说如果你还在用上古时代的XP系统，VC6.0是再好不过的搭档了。当然，现在大多数人的电脑里估计已经换成了Win7/Win8了，装个VC6.0还是比较费劲的。所以喽，当然得另辟蹊径。
+
+">
+
+
+<meta itemprop="datePublished" content="2013-08-08T19:17:16&#43;08:00" />
+<meta itemprop="dateModified" content="2013-08-08T19:17:16&#43;08:00" />
+<meta itemprop="wordCount" content="2176">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OPNET14.5 Win7/XP下安装小记"/>
+<meta name="twitter:description" content="OPNET14.5 Win7/XP下安装小记
+
+导师几个星期前就发来邮件让熟悉网络仿真软件了，只是自己前一个月基本都在到处转悠，加之网络不便，也耽搁了许久，这个月可以好好学习研究一番了。
+第一次听说OPNET的时候似乎离现在已经很久远了，只记得那时对面7、8号楼还住着大四。值得一提的是7号楼当时是男女混住的^_^，哈哈，挺羡慕的吧！估计是当年的男女比例比较惊人，只不过男生住的是最南边那一排寝室，这段美好的过去估计只能写入西电的史册了&hellip;
+这样算来，当时的我才大一。毕业之际，好网上到处都可以看到卖书的帖子，于是乎随便联系了一个7号楼的学长就去那淘书了，买回来差不多一堆书，OPNET就在其中，估摸着有半米多高，三年过后，发现能用的上的没几本呀！！连现在要用的OPNET都被我当废纸卖掉了&hellip; 当初怎么也没想到研究生要用这玩意儿。所以嘛，旧书买下一年要用的就足够了啦，买多了真是浪费体力=_=! 喂喂！偏题了！
+
+网络仿真软件
+
+就我所知道的，常用的网络仿真/模拟软件要么是NS2 (NS3正在活跃开发中), 要么就是OPNET, 前者是自由软件，后者是商业软件。它们二者之间在使用上的区别可见NS2和OPNET的讨论，在仿真层次上的详细区别可见OPNET Modeler and NS-2: Comparing the Accuracy of Network Simulators for Packet-Level Analysis using a Network Testbed，让我自己来选的话当然是NS2咯，优先自由软件么，OPNET14.5 Modeler在Linux下不能用，这是硬伤呀！用了近两年的Arch Linux后，我发现我越来越离不开它了，切换到MS Windows下感觉麻烦死了。问了下师兄，实验室里导师和师兄们都是用的OPNET14.5，合群一点自然是要用OPNET的。相对比较好的整合方案就是在Arch下用vbox/kvm虚拟个XP了，内存8G还是比较够使的，只是这样不符合如今节能环保的大趋势么
+
+Win7/XP下安装OPNET14.5
+
+OPNET软件安装本身其实没啥好扯的，下载得到的3个软件包从大到小安装。关键在于OPNET是采用VC&#43;&#43;进行编译的，相关的环境变量和编译器什么的配置起来就值得一提了。OPNET14.5是一款比较老的软件了，XP下先装VC6.0，OPNET14.5编译时所需的用户变量也就配置好了，所以说如果你还在用上古时代的XP系统，VC6.0是再好不过的搭档了。当然，现在大多数人的电脑里估计已经换成了Win7/Win8了，装个VC6.0还是比较费劲的。所以喽，当然得另辟蹊径。
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">OPNET14.5 Win7/XP下安装小记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2013-08-08 </span>
+        
+        <span class="more-meta"> 约 2176 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#opnet14-5-win7-xp下安装小记">OPNET14.5 Win7/XP下安装小记</a>
+<ul>
+<li><a href="#网络仿真软件">网络仿真软件</a></li>
+<li><a href="#win7-xp下安装opnet14-5">Win7/XP下安装OPNET14.5</a>
+<ul>
+<li><a href="#win7下vs2008-opnet14-5">Win7下VS2008+OPNET14.5</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="opnet14-5-win7-xp下安装小记">OPNET14.5 Win7/XP下安装小记</h1>
+
+<p>导师几个星期前就发来邮件让熟悉网络仿真软件了，只是自己前一个月基本都在到处转悠，加之网络不便，也耽搁了许久，这个月可以好好学习研究一番了。
+第一次听说OPNET的时候似乎离现在已经很久远了，只记得那时对面7、8号楼还住着大四。值得一提的是7号楼当时是男女混住的^_^，哈哈，挺羡慕的吧！估计是当年的男女比例比较惊人，只不过男生住的是最南边那一排寝室，这段美好的过去估计只能写入西电的史册了&hellip;
+这样算来，当时的我才大一。毕业之际，好网上到处都可以看到卖书的帖子，于是乎随便联系了一个7号楼的学长就去那淘书了，买回来差不多一堆书，OPNET就在其中，估摸着有半米多高，三年过后，发现能用的上的没几本呀！！连现在要用的OPNET都被我当废纸卖掉了&hellip; 当初怎么也没想到研究生要用这玩意儿。所以嘛，旧书买下一年要用的就足够了啦，买多了真是浪费体力=_=! 喂喂！偏题了！</p>
+
+<h2 id="网络仿真软件">网络仿真软件</h2>
+
+<p>就我所知道的，常用的网络仿真/模拟软件要么是<a href="http://en.wikipedia.org/wiki/Ns_(simulator)">NS2</a> (NS3正在活跃开发中), 要么就是OPNET, 前者是自由软件，后者是商业软件。它们二者之间在使用上的区别可见<a href="http://www.360doc.com/content/11/0103/15/1520315_83619061.shtml">NS2和OPNET的讨论</a>，在仿真层次上的详细区别可见<a href="http://db.tt/61l7RxNR">OPNET Modeler and NS-2: Comparing the Accuracy of Network Simulators for Packet-Level Analysis using a Network Testbed</a>，让我自己来选的话当然是NS2咯，优先自由软件么，OPNET14.5 Modeler在Linux下不能用，这是硬伤呀！用了近两年的Arch Linux后，我发现我越来越离不开它了，切换到MS Windows下感觉麻烦死了。问了下师兄，实验室里导师和师兄们都是用的OPNET14.5，合群一点自然是要用OPNET的。相对比较好的整合方案就是在Arch下用vbox/kvm虚拟个XP了，内存8G还是比较够使的，只是这样不符合如今节能环保的大趋势么</p>
+
+<h2 id="win7-xp下安装opnet14-5">Win7/XP下安装OPNET14.5</h2>
+
+<p>OPNET软件安装本身其实没啥好扯的，下载得到的3个软件包从大到小安装。关键在于OPNET是采用VC++进行编译的，相关的环境变量和编译器什么的配置起来就值得一提了。OPNET14.5是一款比较老的软件了，XP下先装VC6.0，OPNET14.5编译时所需的用户变量也就配置好了，所以说如果你还在用上古时代的XP系统，VC6.0是再好不过的搭档了。当然，现在大多数人的电脑里估计已经换成了Win7/Win8了，装个VC6.0还是比较费劲的。所以喽，当然得另辟蹊径。</p>
+
+<p></p>
+
+<h3 id="win7下vs2008-opnet14-5">Win7下VS2008+OPNET14.5</h3>
+
+<p>对于高校学生来说，Dreamspark上一般有免费的正版软件提供，有个edu的邮箱即可下载。找VS2008，我开始下的是VS2012，装好后设置了下用户变量，安装OPNE后提示库版本过高。转头立马奔向VC++2008 Express去了，又是一番痛苦繁琐的各种注册配置，终于修成正果&hellip; 按照OPNET Modeler <code>help-&gt;tutorial</code>中提供的例子编译通过，无不良反应。安装VC Express版本时还需要个微软帐号以注册，虽然是免费的，但个人对M$这种浪费用户时间的行为投以强烈的鄙视！所以说嘛，有个edu的邮箱或是学校本身提供正版授权的话直接奔专业版去吧。安装好VS2008(这里只需VC部分)后比较繁琐的用户变量设置部分就来了，我当然希望几条命令或者是一个批处理搞定就好，后头重装时我可不想用鼠标点来点去的做苦力活。在这之前需要MS 官方提供的setx命令行工具，信得过我的可以在<a href="http://db.tt/nTfoGgtB">这里</a>下载，当然你也可以选择到微软官方下载，一系列正版验证在那里等着你咧，真JB繁琐。有了命令行工具，剩下的就只剩用户变量设置喽，批处理脚本<a href="http://db.tt/XAxZ2e6F">在此</a>，双击即可。<br />
+迫不及待想看脚本庐山真面目的请目光下移：</p>
+
+<pre><code>PATH=%PATH%;C:\Program Files\Resource Kit\
+@echo off
+echo &quot;set the environment of OPNET with VC++2008...&quot;
+set 
+setx DevEnvDir &quot;C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE&quot;
+
+setx Framework35Version &quot;v3.5&quot;
+
+setx FrameworkDir &quot;C:\WINDOWS\Microsoft.NET\Framework&quot;
+
+setx FrameworkVersion &quot;v2.0.50727&quot;
+
+setx INCLUDE &quot;C:\Program Files\Microsoft Visual Studio 9.0\VC\INCLUDE;C:\Program Files\Microsoft SDKs\Windows\v6.0A\include;&quot;
+
+setx LIB &quot;C:\Program Files\Microsoft Visual Studio 9.0\VC\LIB;C:\Program Files\Microsoft SDKs\Windows\v6.0A\lib;&quot;
+
+setx LIBPATH &quot;C:\WINDOWS\Microsoft.NET\Framework\v3.5;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft Visual Studio 9.0\VC\LIB;&quot;
+
+setx Path &quot;C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE;C:\Program Files\Microsoft Visual Studio 9.0\VC\BIN;C:\Program Files\Microsoft Visual Studio 9.0\Common7\Tools;C:\WINDOWS\Microsoft.NET\Framework\v3.5;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;C:\Program Files\Microsoft Visual Studio 9.0\VC\VCPackages;C:\Program Files\Microsoft SDKs\Windows\v6.0A\bin;&quot;
+
+setx VCINSTALLDIR &quot;C:\Program Files\Microsoft Visual Studio 9.0\VC&quot;
+
+setx VS90COMNTOOLS &quot;C:\Program Files\Microsoft Visual Studio 9.0\Common7\Tools\&quot;
+
+setx VSINSTALLDIR &quot;C:\Program Files\Microsoft Visual Studio 9.0&quot;
+
+setx WindowsSdkDir &quot;C:\Program Files\Microsoft SDKs\Windows\v6.0A\&quot;
+
+echo &quot;Congratulations! environment set succesful.&quot;
+pause
+</code></pre>
+
+<p>如果你需要在XP下使用VC2008进行编译，方法同上，不过也许在仿真时会出现「无法找到msvcr90.dll」等相关字样，不用急，解决方法如下：<br />
+先复制opnet安装目录\14.5.A\sys\pc_intel_win32\bin\manifest_NET2008目录下面文件到opnet安装目录\14.5.A\sys\pc_intel_win32\bin\目录下面，再到opnet安装目录\14.5.A\sys\pc_intel_win32\bin\目录下面执行如下四条命令：</p>
+
+<pre><code>Mt.exe -manifest op_runsim.exe.manifest -outputresource:op_runsim.exe;1
+Mt.exe -manifest op_runsim_opt.exe.manifest -outputresource:op_runsim_opt.exe;1
+Mt.exe -manifest op_runsim_mtdev.exe.manifest -outputresource:op_runsim_mtdev.exe;1
+Mt.exe -manifest op_runsim_dev.exe.manifest -outputresource:op_runsim_dev.exe;1
+</code></pre>
+
+<p>不用一个一个输啦，不怕看错还怕输错呀，打开命令行窗口一把粘贴进去，Enter一敲，KO<br />
+以上解决办法引自<a href="http://ihacklog.com/post/opnet-14-5-vs2008-win7-trouble-and-the-solution.html">opnet 14.5 + VS2008 + win7＝麻烦</a>。</p>
+
+<p>最后献上OPNET资料若干用以回馈广大观众朋友们听我唠嗑：</p>
+
+<ul>
+<li><a href="http://pan.baidu.com/s/1gdtcV8R">OPNET 14.5 下载链接</a><br /></li>
+<li><a href="http://db.tt/7YdSKESL">OPNET配置VC环境变量</a>——这个很强大，对VC6 2003 2005 2008的设置方法都有整理<br /></li>
+<li><a href="http://db.tt/R9vulOHp">How to install OPNET Modeler 14.5 on Windows 7</a>——Win7下使用VS2010作为编译<br /></li>
+<li><a href="http://db.tt/pdVBkh7r">OPNET常见错误</a>——网友自己的整理总结<br /></li>
+<li>陈敏的OPNET网络仿真——作者使用的OPNET版本比较老了，有时在你自己的软件上找不到书上说的东西也不用大惊小怪的，仅作参考，最有用最权威的入门教程当属软件自带的<code>help-&gt;tutorial</code></li>
+</ul>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2013-08-08</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2013-08/2013-08-19_10-56-30/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">上海交大校外代理初体验</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2013-07/2013-07-13_23-50-20/">
+            <span class="next-text nav-default">3G无线上网卡分享网络之 Arch Linux与Win7篇</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'OPNET14.5 Win7\/XP下安装小记',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

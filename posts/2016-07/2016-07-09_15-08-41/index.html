@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>家用服务器之无线路由器(AP) - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="家用服务器之无线路由器(AP) 之前玩 Raspberry PI/Cubieboard 时写过类似的合辑，这次入 X32-N2808 X86服务器后准备写一个类似的合辑，相比会更新不少内容。 对普通玩家来说，商" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2016-07/2016-07-09_15-08-41/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="家用服务器之无线路由器(AP)" />
+<meta property="og:description" content="家用服务器之无线路由器(AP) 之前玩 Raspberry PI/Cubieboard 时写过类似的合辑，这次入 X32-N2808 X86服务器后准备写一个类似的合辑，相比会更新不少内容。 对普通玩家来说，商" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2016-07/2016-07-09_15-08-41/" />
+
+
+
+<meta property="article:published_time" content="2016-07-09T15:08:41&#43;08:00"/>
+
+<meta property="article:modified_time" content="2016-07-09T15:08:41&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="家用服务器之无线路由器(AP)">
+<meta itemprop="description" content="家用服务器之无线路由器(AP) 之前玩 Raspberry PI/Cubieboard 时写过类似的合辑，这次入 X32-N2808 X86服务器后准备写一个类似的合辑，相比会更新不少内容。 对普通玩家来说，商">
+
+
+<meta itemprop="datePublished" content="2016-07-09T15:08:41&#43;08:00" />
+<meta itemprop="dateModified" content="2016-07-09T15:08:41&#43;08:00" />
+<meta itemprop="wordCount" content="971">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="家用服务器之无线路由器(AP)"/>
+<meta name="twitter:description" content="家用服务器之无线路由器(AP) 之前玩 Raspberry PI/Cubieboard 时写过类似的合辑，这次入 X32-N2808 X86服务器后准备写一个类似的合辑，相比会更新不少内容。 对普通玩家来说，商"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">家用服务器之无线路由器(AP)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2016-07-09 </span>
+        
+        <span class="more-meta"> 约 971 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#家用服务器之无线路由器-ap">家用服务器之无线路由器(AP)</a>
+<ul>
+<li>
+<ul>
+<li><a href="#2-4g-频段优化的一点点补充">2.4G 频段优化的一点点补充</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="家用服务器之无线路由器-ap">家用服务器之无线路由器(AP)</h1>
+
+<p>之前玩 Raspberry PI/Cubieboard 时写过类似的合辑，这次入 X32-N2808 X86服务器后准备写一个类似的合辑，相比会更新不少内容。
+对普通玩家来说，商用无线路由器的性能显然更好，但基于某些原因如想使用原生 IPv6 和透明科学上网等需求，就不得不自建热点了。</p>
+
+<p>入 X32-N2808 时，卖家免费送了一个 Atheros QCWB335 无线蓝牙二合一卡，Linux 下驱动支持良好，可直接使用 hostapd 自建热点。如果是买的树莓派/cubieboard 之类的 ARM 板，则建议买一块 ralink 芯片的无线网卡，实测 RT5730 和 CF-WU770N 不错，RT5730 我买过两家，信诺真品店的做工感觉更好一点，加上运费十来块钱。</p>
+
+<p>硬件都有了，这时只差软件了，善于自己动手的 Archer 早已经给我们准备好了 <code>create_ap</code> 这个软件包 :) 使用 <code>packer -S create_ap haveged</code> 安装。<del>如果提示无 arm 架构，在编译包的 ARCH 中加入 armv6h(树莓派)或者 armv7h(Cubieboard2)</del> <code>create_ap</code> 已经入 community, 无需使用 AUR 安装。装好之后会在 <code>/usr/lib/systemd/system</code> 下生成一个<code>create_ap.service</code>的文件，修改你想要的SSID名称和密码。以我的为例：</p>
+
+<pre><code>ExecStart=/usr/bin/create_ap --ieee80211n -g 192.168.18.1 -c 3 --no-dns --dhcp-dns 192.168.18.1 wlp2s0 enp1s0 geek ilovegeek
+</code></pre>
+
+<ul>
+<li>其中 &ndash;ieee80211n 为启用 IEEE 802.11 n，尽可能提高网络带宽</li>
+<li>-g 192.168.18.1 为无线网关地址，一般不需要改</li>
+<li>-c 3 2.4G 频段下使用第三频道，WiFi 密集情况下有一定优化效果</li>
+<li>&ndash;no-dns &ndash;dhcp-dns 192.168.18.1 不使用 dnsmasq 提供的 DNS 解析服务，因为我想基于 unbound 提供 DNS 解析服务，尽可能减少对热点服务的干扰，一般不需要加入</li>
+<li>wlan0/wlp2s0 为服务器的无线网卡名</li>
+<li>eth0/enp1s0 为共享网络的网卡名，典型的为有线接入方式，所以就是 eth0/enp1s0 喽</li>
+<li>geek 就是 SSID 啦，也就是你在搜索无线信号时所看到的 AP 名称(俗称WiFi)</li>
+<li>最后的 ilovegeek 猜猜就知道是密码啦</li>
+</ul>
+
+<p>嗯，Arch 下设置无线路由器就是这么简单！一段bash脚本把 hostapd, dhcp, 内核转发等全部搞定了！接下来说下如何对AP做进一步优化。</p>
+
+<h3 id="2-4g-频段优化的一点点补充">2.4G 频段优化的一点点补充</h3>
+
+<p>一般情况下其它的 AP(2.4G频段)会设置在 1/6/11 三个信道，2.4G 的 WiFi 也就这三个频道能做到完全不重叠——也就是说使用1和6两个频道的AP相互间几乎没有干扰咯，<code>create_ap</code>默认使用1频道，事实情况往往是无论你设置在1, 6 还是11频道，干扰都不小，那这时你为何不剑走偏锋把频道设置在3, 9等其他频道哩？虽然这些频道和1/6都有部分重叠带宽——也就是说会存在干扰，但总的干扰可能会比用1/6/11三个频道来的少。唔&hellip; 实践是检验真理的唯一标准，建议实际测试一下。</p>
+
+<p>测试稳定后启用开机自启动 WiFi 服务-<code>sudo systemctl enable create_ap</code>
+自建 AP 后下一步就可以尝试透明科学上网了，无痛使用 Google 及畅游 YouTube~</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2016-07-09</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2016-07/2016-07-10_10-19-55/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Transparent routing for home server in China</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2016-07/2016-07-08_22-25-28/">
+            <span class="next-text nav-default">家用服务器之 DDNS</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '家用服务器之无线路由器(AP)',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

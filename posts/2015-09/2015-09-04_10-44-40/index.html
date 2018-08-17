@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>数组和指针 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="数组和指针 先从指针说起。
+指针 const 以下两种形式等价。
+const int *a; int const *a;  a是一个指向const int型的指针，a所指向的内存单元不可改写，所以(*a)&#43;&#43;是不允许的，但a可以改写，所以a&#43;&#43;是允许的。
+int * const a;  a是一个指向int型的const指针，*a是可以改写的，但a不允许改写。
+int const * const a;  a是一个指向const int型的const指针，因此*a和a都不允许改写。
+
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2015-09/2015-09-04_10-44-40/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="数组和指针" />
+<meta property="og:description" content="数组和指针
+
+先从指针说起。
+
+指针
+
+const
+
+以下两种形式等价。
+
+const int *a;
+int const *a;
+
+
+a是一个指向const int型的指针，a所指向的内存单元不可改写，所以(*a)&#43;&#43;是不允许的，但a可以改写，所以a&#43;&#43;是允许的。
+
+int * const a;
+
+
+a是一个指向int型的const指针，*a是可以改写的，但a不允许改写。
+
+int const * const a;
+
+
+a是一个指向const int型的const指针，因此*a和a都不允许改写。
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2015-09/2015-09-04_10-44-40/" />
+
+
+
+<meta property="article:published_time" content="2015-09-04T10:44:40&#43;08:00"/>
+
+<meta property="article:modified_time" content="2015-09-04T10:44:40&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="数组和指针">
+<meta itemprop="description" content="数组和指针
+
+先从指针说起。
+
+指针
+
+const
+
+以下两种形式等价。
+
+const int *a;
+int const *a;
+
+
+a是一个指向const int型的指针，a所指向的内存单元不可改写，所以(*a)&#43;&#43;是不允许的，但a可以改写，所以a&#43;&#43;是允许的。
+
+int * const a;
+
+
+a是一个指向int型的const指针，*a是可以改写的，但a不允许改写。
+
+int const * const a;
+
+
+a是一个指向const int型的const指针，因此*a和a都不允许改写。
+
+">
+
+
+<meta itemprop="datePublished" content="2015-09-04T10:44:40&#43;08:00" />
+<meta itemprop="dateModified" content="2015-09-04T10:44:40&#43;08:00" />
+<meta itemprop="wordCount" content="1455">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="数组和指针"/>
+<meta name="twitter:description" content="数组和指针
+
+先从指针说起。
+
+指针
+
+const
+
+以下两种形式等价。
+
+const int *a;
+int const *a;
+
+
+a是一个指向const int型的指针，a所指向的内存单元不可改写，所以(*a)&#43;&#43;是不允许的，但a可以改写，所以a&#43;&#43;是允许的。
+
+int * const a;
+
+
+a是一个指向int型的const指针，*a是可以改写的，但a不允许改写。
+
+int const * const a;
+
+
+a是一个指向const int型的const指针，因此*a和a都不允许改写。
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">数组和指针</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-09-04 </span>
+        
+        <span class="more-meta"> 约 1455 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#数组和指针">数组和指针</a>
+<ul>
+<li><a href="#指针">指针</a>
+<ul>
+<li><a href="#const">const</a></li>
+<li><a href="#指向数组的指针和多维数组">指向数组的指针和多维数组</a></li>
+<li><a href="#数组和指针的关系">数组和指针的关系</a></li>
+<li><a href="#多维数组">多维数组</a></li>
+<li><a href="#指针数组">指针数组</a></li>
+</ul></li>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="数组和指针">数组和指针</h1>
+
+<p>先从指针说起。</p>
+
+<h2 id="指针">指针</h2>
+
+<h3 id="const">const</h3>
+
+<p>以下两种形式等价。</p>
+
+<pre><code class="language-c">const int *a;
+int const *a;
+</code></pre>
+
+<p>a是一个指向const int型的指针，a所指向的内存单元不可改写，所以(*a)++是不允许的，但a可以改写，所以a++是允许的。</p>
+
+<pre><code class="language-c">int * const a;
+</code></pre>
+
+<p>a是一个指向int型的const指针，*a是可以改写的，但a不允许改写。</p>
+
+<pre><code class="language-c">int const * const a;
+</code></pre>
+
+<p>a是一个指向const int型的const指针，因此*a和a都不允许改写。</p>
+
+<p></p>
+
+<h3 id="指向数组的指针和多维数组">指向数组的指针和多维数组</h3>
+
+<p>指针除了可以指向指针外还可以指向符合数据类型，下面写个小程序验证下数组指针和数组名等纠结的名词。</p>
+
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+	int a[4] = {1, 2, 3, 4};
+	int *p1 = a;
+	int *p2 = &amp;a[0];
+	//int *p3 = &amp;a; // compile error: type 'int *' with an rvalue of type 'int (*)[4]'
+	int (*p4)[4] = &amp;a; // OK
+	//int (*p5)[4] = a; // compile error: type 'int (*)[4]' with an lvalue of type 'int [4]'
+
+	cout &lt;&lt; &quot;Address of a[0]: &quot; &lt;&lt; &amp;a[0] &lt;&lt; endl;
+	cout &lt;&lt; &quot;Address of a:    &quot; &lt;&lt; &amp;a &lt;&lt; endl;
+	cout &lt;&lt; &quot;Value of a:      &quot; &lt;&lt; a &lt;&lt; endl;
+	cout &lt;&lt; &quot;Value of p1:     &quot; &lt;&lt; p1 &lt;&lt; endl;
+	cout &lt;&lt; &quot;Value of p2:     &quot; &lt;&lt; p2 &lt;&lt; endl;
+	
+	return 0;
+}
+</code></pre>
+
+<p>编译运行后能发现每一行的输出都是一样的，说明如下的一些事实：</p>
+
+<ol>
+<li><code>&amp;a[0]</code>, <code>&amp;a</code>, <code>a</code> 三者的值都一样，都是数组第一个元素的值。</li>
+<li><code>int *p1 = a;</code> 说明数组名<code>a</code>可以作为右值使用，其值为数组首元素的值。</li>
+<li><code>int *p2 = &amp;a[0]</code> 取数组首元素的地址，比较好理解。</li>
+<li><code>int *p3 = &amp;a;</code> 这一句不太好懂，大多数人只知道数组名作为右值表示数组首元素的地址，但如果对数组名取地址会怎么样呢？从编译错误中我们可以看出<code>&amp;a</code> 的类型是<code>int (*)[4]</code>, 即<strong>数组指针</strong>！也就是说<code>&amp;a</code> 和作为右值的<code>a</code>的值虽然一样，但是类型却完全不一样！</li>
+<li><code>int (*p4)[4] = &amp;a;</code> 定义的是数组指针，即指向数组的指针。<code>[]</code>比<code>*</code> 优先级更高，所以需要<code>(*p4)</code>, 表明<code>p4</code> 是一个指针。以上定义等价于首先定义一个大小为4的一维数组，随后定义新的指针类型。<code>typedef int t[10]; t *a;</code></li>
+<li><code>int (*p5)[4] = a;</code> 再次表明数组名本身是左值，但是只能作为常量，作为右值使用时类型为<code>int []</code></li>
+</ol>
+
+<p>由于数组的所有元素在内存中均是连续字节存放，数组名作为数组的标识符，表示的是一组元素，故不能将数组作为右值直接读出，也不能作为左值直接赋值，故 C/C++ 中对数组名有特殊规定：</p>
+
+<ol>
+<li>作为sizeof的操作数，数组名代表数组对象本身。故使用<code>sizeof(a)</code> 表示的是整个数组占用的大小。</li>
+<li>作为取地址运算符&amp;的操作数，数组名代表数组对象本身。因为这一点才可以执行<code>&amp;a</code>.</li>
+<li>作为字符串字面量用于初始化一个数组。</li>
+<li>其他情形被转化为<strong>数组首元素</strong>的指针类型表达式(右值)。</li>
+</ol>
+
+<h3 id="数组和指针的关系">数组和指针的关系</h3>
+
+<pre><code>int a[10] &lt;==&gt; int * const a;
+int b[3][4] &lt;==&gt; int (* const b)[4];
+int c[3][4][5] &lt;==&gt; int (* const c)[4][5]
+</code></pre>
+
+<p>从中可以看出数组名是一个常量指针，且有<code>a[2] == *(a + 2)</code>, <code>a[3]</code> 的地址和<code>a + 3 * sizeof(int)</code> 的值等价。
+数组名做右值时转换成指向首元素的指针，但做左值仍然表示整个数组的存储空间，而不是首元素的存储空间。</p>
+
+<h3 id="多维数组">多维数组</h3>
+
+<p>多维数组通过递归都可以看作是二维数组，二维数组在 C/C++ 中按行存储。多维数组的数组名字，在表达式中自动转换为数组首元素地址值，但这个首元素实际上是去除数组下标第一维之后的数组剩余部分。</p>
+
+<p>{% raw %}</p>
+
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+int main(int argc, char *argv[])
+{
+	char a[4][3][2] = {{{'a', 'b'}, {'c', 'd'}, {'e', 'f'}},
+			   {{'g', 'h'}, {'i', 'j'}, {'k', 'l'}},
+			   {{'m', 'n'}, {'o', 'p'}, {'q', 'r'}},
+			   {{'s', 't'}, {'u', 'v'}, {'w', 'x'}}};
+
+	char (*pa)[2] = &amp;a[1][0];
+	char (*ppa)[3][2] = &amp;a[1];
+	char (*ppb)[3][2] = a;
+
+	cout &lt;&lt; &quot;pa: &quot; &lt;&lt; pa[5][1] &lt;&lt; endl; // pa: r
+	cout &lt;&lt; &quot;ppa: &quot; &lt;&lt; ppa[1][2][1] &lt;&lt; endl; // ppa: r
+	cout &lt;&lt; &quot;ppb: &quot; &lt;&lt; ppb[1][1][1] &lt;&lt; endl; // ppb: j
+
+	return 0;
+}
+</code></pre>
+
+<p>{% endraw %}</p>
+
+<p>使用数组指针的优势在于可对指针变量自增，而数组名是常量指针，无法更改。</p>
+
+<h3 id="指针数组">指针数组</h3>
+
+<p>数组中的元素也可以为复合类型，比如指针。</p>
+
+<pre><code class="language-c">int *a[10];
+int **pa = &amp;a[0];
+</code></pre>
+
+<p>表示以上数组由10个<code>int *</code>指针构成，pa 指向a 的首元素。函数原型<code>int main(int argc, char *argv[])</code> 中<code>argv</code>是一个指向指针的指针，并不是指针数组。原型中的<code>char *argv[]</code> 和 <code>char **argv</code> 等价，之所以写成这样是表示<code>argv</code>不是指向单个指针而是指向一个指针数组的首元素。</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li>《高质量程序设计指南》第七章</li>
+<li>Linux C 一站式编程</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E7%BB%84">数组 - 维基百科</a></li>
+</ul>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-09-04</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2015-11/2015-11-09_19-22-58/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">三行小诗</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2015-08/2015-08-27_15-57-59/">
+            <span class="next-text nav-default">一个简洁优雅的 XeLaTeX 简历模板</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '数组和指针',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

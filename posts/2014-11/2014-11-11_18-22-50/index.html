@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>家用服务器之 UPnP/DLNA 媒体服务 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="家用服务器之 UPnP/DLNA 媒体服务 在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2014-11/2014-11-11_18-22-50/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="家用服务器之 UPnP/DLNA 媒体服务" />
+<meta property="og:description" content="家用服务器之 UPnP/DLNA 媒体服务 在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2014-11/2014-11-11_18-22-50/" />
+
+
+
+<meta property="article:published_time" content="2014-11-11T18:22:50&#43;08:00"/>
+
+<meta property="article:modified_time" content="2014-11-11T18:22:50&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="家用服务器之 UPnP/DLNA 媒体服务">
+<meta itemprop="description" content="家用服务器之 UPnP/DLNA 媒体服务 在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机">
+
+
+<meta itemprop="datePublished" content="2014-11-11T18:22:50&#43;08:00" />
+<meta itemprop="dateModified" content="2014-11-11T18:22:50&#43;08:00" />
+<meta itemprop="wordCount" content="660">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="家用服务器之 UPnP/DLNA 媒体服务"/>
+<meta name="twitter:description" content="家用服务器之 UPnP/DLNA 媒体服务 在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">家用服务器之 UPnP/DLNA 媒体服务</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-11-11 </span>
+        
+        <span class="more-meta"> 约 660 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#家用服务器之-upnp-dlna-媒体服务">家用服务器之 UPnP/DLNA 媒体服务</a>
+<ul>
+<li><a href="#upnp-dlna-server">UPnP/DLNA Server</a></li>
+<li><a href="#upnp-dlna-client">UPnP/DLNA Client</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="家用服务器之-upnp-dlna-媒体服务">家用服务器之 UPnP/DLNA 媒体服务</h1>
+
+<p>在上文 <a href="../../2014/11/archlinux-bt-download.html">家用服务器之BT(PT)下载机</a> 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机上欣赏那些下好的视频音乐呢？一处下载，四处观看！ ≖‿≖✧ 这可是巨大的商机啊！！</p>
+
+<p>做消费电子的巨头显然不会错失这种良机的，这不 <a href="http://en.wikipedia.org/wiki/Digital_Living_Network_Alliance">Digital Living Network Alliance(DLNA)</a> 就出现了，如果不深究细节的话知道 DLNA 媒体服务器可以将媒体文件(图像、声音和视频)以流的形式在局域网内播放就够了。其中 <a href="http://sourceforge.net/projects/minidlna/">ReadyMedia(MiniDLNA)</a> 是 UPnP/DLNA 服务器端的开源实现，果断就选它了。</p>
+
+<h2 id="upnp-dlna-server">UPnP/DLNA Server</h2>
+
+<p>首先到Arch的Wiki看看关于 <a href="https://wiki.archlinux.org/index.php/Minidlna">MiniDLNA</a> 的介绍，简单点来说就是以下几个步骤:
+1. 到官方源安装 minidlna：<code>packer -S minidlna</code>
+2. 修改默认配置文件：<code>sudo vim /etc/minidlna.conf</code>，这个按照 Arch 的 wiki 来修改就好了，wiki 上注释很详细，需要说明的地方如下：</p>
+
+<pre><code>...
+#network_interface=eth0 # 监听的网络接口，默认绑定所有接口，如只想被连入自建AP的客户端看到就填写`wlan0`
+media_dir=/datacenter/media # 指定媒体文件目录，可以通过软链接的方式将其他目录链到该媒体文件目录下。
+friendly_name=DLNA Server for bill # DLNA服务器的名字，无所谓
+#presentation_url=http://www.mylan/index.php #保持默认就好了，无所谓
+...
+</code></pre>
+
+<p>通过 8200 端口可以查看 minidlna 的索引状态，其实就是一页非常丑的HTML页面&hellip;</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/minidlna.png-q75" alt="网页查看MiniDLNA 状态" /></p>
+
+<h2 id="upnp-dlna-client">UPnP/DLNA Client</h2>
+
+<p>可选的客户端非常多，力荐 <a href="https://kodi.tv/">Kodi</a>, 不仅跨平台，而且插件等功能十分丰富，界面也很漂亮。大概长这么个样子：
+<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/kodi_demo.png-q75" alt="DLNA/UPNP-kodi" /></p>
+
+<p>不过目前还只能在局域网内通过网络播放视频，那如何在广域网(外网)在线播放哩？简单的方法就是利用 HTTP 传输，nginx/webfsd 等都可以做到，webfs 相对来说简单些，在浏览器内拿到 URL 之后可使用其他支持网络地址的播放器播放，如 mplayer</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-11-11</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2014-11/2014-11-29_11-04-04/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Pycon2014 美国视频合辑下载</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2014-11/2014-11-09_09-12-11/">
+            <span class="next-text nav-default">家用服务器之 BT(PT) 下载机</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '家用服务器之 UPnP\/DLNA 媒体服务',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

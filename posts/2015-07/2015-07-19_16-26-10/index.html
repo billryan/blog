@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Deploy Hadoop cluster with Vagrant and Ambari - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Deploy Hadoop cluster with Vagrant and Ambari 近期开始接触 Hadoop/Spark 相关的东西，部署单个节点很简单，但是要弄成集群就有点伤脑筋了，且不说集群本身的部署，光那数不清的『大数据』名词就能让人眼花缭乱，建议初次接触『大数据』的看看董飞的 后Hadoop时代的大数据架构 压压惊。
+不少教程都是教你先下 Hadoop, Spark 等然后再挨个配 hostname 等，为了你的生命着想，这里采用的是 Ambari - 一种快速批量部署 Hadoop 平台的管理软件。与自己手动安装不同，Ambari 通常需要配合一些公司发布的 Hadoop 发行版进行安装，官网上默认的是 Hortonworks 公司提供的发行版。与 Hortonworks 类似，IBM 也提供了类似的发行版，称为 BigInsights, 官方安装视频可见 Getting started with the IBM Open Platform with Apache Hadoop - YouTube, 本文根据以上视频结合 Vagrant 在本机部署 Hadoop 集群测试环境。
+Prerequisite  Virtualbox - 提供虚拟机环境 Vagrant - 使用配置文件批量管理虚拟机，再也不用在 Virtualbox 中图形安装了 一个好用的 Terminal - iTerm2/OSX, Terminator/Linux, Babun/Windows tmux - 终端复用，无需新开标签或者窗口，更好地使用 Terminal 良好的外网访问环境，某些网络环境下建议加代理或者 VPN  
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2015-07/2015-07-19_16-26-10/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Deploy Hadoop cluster with Vagrant and Ambari" />
+<meta property="og:description" content="Deploy Hadoop cluster with Vagrant and Ambari
+
+近期开始接触 Hadoop/Spark 相关的东西，部署单个节点很简单，但是要弄成集群就有点伤脑筋了，且不说集群本身的部署，光那数不清的『大数据』名词就能让人眼花缭乱，建议初次接触『大数据』的看看董飞的 后Hadoop时代的大数据架构 压压惊。
+
+不少教程都是教你先下 Hadoop, Spark 等然后再挨个配 hostname 等，为了你的生命着想，这里采用的是 Ambari - 一种快速批量部署 Hadoop 平台的管理软件。与自己手动安装不同，Ambari 通常需要配合一些公司发布的 Hadoop 发行版进行安装，官网上默认的是 Hortonworks 公司提供的发行版。与 Hortonworks 类似，IBM 也提供了类似的发行版，称为 BigInsights, 官方安装视频可见 Getting started with the IBM Open Platform with Apache Hadoop - YouTube, 本文根据以上视频结合 Vagrant 在本机部署 Hadoop 集群测试环境。
+
+Prerequisite
+
+
+Virtualbox - 提供虚拟机环境
+Vagrant - 使用配置文件批量管理虚拟机，再也不用在 Virtualbox 中图形安装了
+一个好用的 Terminal - iTerm2/OSX, Terminator/Linux, Babun/Windows
+tmux - 终端复用，无需新开标签或者窗口，更好地使用 Terminal
+良好的外网访问环境，某些网络环境下建议加代理或者 VPN
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2015-07/2015-07-19_16-26-10/" />
+
+
+
+<meta property="article:published_time" content="2015-07-19T16:26:10&#43;08:00"/>
+
+<meta property="article:modified_time" content="2015-07-19T16:26:10&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Deploy Hadoop cluster with Vagrant and Ambari">
+<meta itemprop="description" content="Deploy Hadoop cluster with Vagrant and Ambari
+
+近期开始接触 Hadoop/Spark 相关的东西，部署单个节点很简单，但是要弄成集群就有点伤脑筋了，且不说集群本身的部署，光那数不清的『大数据』名词就能让人眼花缭乱，建议初次接触『大数据』的看看董飞的 后Hadoop时代的大数据架构 压压惊。
+
+不少教程都是教你先下 Hadoop, Spark 等然后再挨个配 hostname 等，为了你的生命着想，这里采用的是 Ambari - 一种快速批量部署 Hadoop 平台的管理软件。与自己手动安装不同，Ambari 通常需要配合一些公司发布的 Hadoop 发行版进行安装，官网上默认的是 Hortonworks 公司提供的发行版。与 Hortonworks 类似，IBM 也提供了类似的发行版，称为 BigInsights, 官方安装视频可见 Getting started with the IBM Open Platform with Apache Hadoop - YouTube, 本文根据以上视频结合 Vagrant 在本机部署 Hadoop 集群测试环境。
+
+Prerequisite
+
+
+Virtualbox - 提供虚拟机环境
+Vagrant - 使用配置文件批量管理虚拟机，再也不用在 Virtualbox 中图形安装了
+一个好用的 Terminal - iTerm2/OSX, Terminator/Linux, Babun/Windows
+tmux - 终端复用，无需新开标签或者窗口，更好地使用 Terminal
+良好的外网访问环境，某些网络环境下建议加代理或者 VPN
+
+
+">
+
+
+<meta itemprop="datePublished" content="2015-07-19T16:26:10&#43;08:00" />
+<meta itemprop="dateModified" content="2015-07-19T16:26:10&#43;08:00" />
+<meta itemprop="wordCount" content="764">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Deploy Hadoop cluster with Vagrant and Ambari"/>
+<meta name="twitter:description" content="Deploy Hadoop cluster with Vagrant and Ambari
+
+近期开始接触 Hadoop/Spark 相关的东西，部署单个节点很简单，但是要弄成集群就有点伤脑筋了，且不说集群本身的部署，光那数不清的『大数据』名词就能让人眼花缭乱，建议初次接触『大数据』的看看董飞的 后Hadoop时代的大数据架构 压压惊。
+
+不少教程都是教你先下 Hadoop, Spark 等然后再挨个配 hostname 等，为了你的生命着想，这里采用的是 Ambari - 一种快速批量部署 Hadoop 平台的管理软件。与自己手动安装不同，Ambari 通常需要配合一些公司发布的 Hadoop 发行版进行安装，官网上默认的是 Hortonworks 公司提供的发行版。与 Hortonworks 类似，IBM 也提供了类似的发行版，称为 BigInsights, 官方安装视频可见 Getting started with the IBM Open Platform with Apache Hadoop - YouTube, 本文根据以上视频结合 Vagrant 在本机部署 Hadoop 集群测试环境。
+
+Prerequisite
+
+
+Virtualbox - 提供虚拟机环境
+Vagrant - 使用配置文件批量管理虚拟机，再也不用在 Virtualbox 中图形安装了
+一个好用的 Terminal - iTerm2/OSX, Terminator/Linux, Babun/Windows
+tmux - 终端复用，无需新开标签或者窗口，更好地使用 Terminal
+良好的外网访问环境，某些网络环境下建议加代理或者 VPN
+
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Deploy Hadoop cluster with Vagrant and Ambari</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-07-19 </span>
+        
+        <span class="more-meta"> 约 764 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#deploy-hadoop-cluster-with-vagrant-and-ambari">Deploy Hadoop cluster with Vagrant and Ambari</a>
+<ul>
+<li><a href="#prerequisite">Prerequisite</a></li>
+<li><a href="#部署实战">部署实战</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="deploy-hadoop-cluster-with-vagrant-and-ambari">Deploy Hadoop cluster with Vagrant and Ambari</h1>
+
+<p>近期开始接触 Hadoop/Spark 相关的东西，部署单个节点很简单，但是要弄成集群就有点伤脑筋了，且不说集群本身的部署，光那数不清的『大数据』名词就能让人眼花缭乱，建议初次接触『大数据』的看看董飞的 <a href="http://zhuanlan.zhihu.com/donglaoshi/19962491">后Hadoop时代的大数据架构</a> 压压惊。</p>
+
+<p>不少教程都是教你先下 Hadoop, Spark 等然后再挨个配 hostname 等，为了你的生命着想，这里采用的是 <a href="https://ambari.apache.org/">Ambari</a> - 一种快速批量部署 Hadoop 平台的管理软件。与自己手动安装不同，Ambari 通常需要配合一些公司发布的 Hadoop 发行版进行安装，官网上默认的是 <a href="http://hortonworks.com/">Hortonworks</a> 公司提供的发行版。与 Hortonworks 类似，IBM 也提供了类似的发行版，称为 <a href="http://www-01.ibm.com/software/data/infosphere/hadoop/enterprise.html">BigInsights</a>, 官方安装视频可见 <a href="https://www.youtube.com/watch?v=l54JqN06Zvk">Getting started with the IBM Open Platform with Apache Hadoop - YouTube</a>, 本文根据以上视频结合 Vagrant 在本机部署 Hadoop 集群测试环境。</p>
+
+<h2 id="prerequisite">Prerequisite</h2>
+
+<ul>
+<li>Virtualbox - 提供虚拟机环境</li>
+<li>Vagrant - 使用配置文件批量管理虚拟机，再也不用在 Virtualbox 中图形安装了</li>
+<li>一个好用的 Terminal - iTerm2/OSX, Terminator/Linux, Babun/Windows</li>
+<li>tmux - 终端复用，无需新开标签或者窗口，更好地使用 Terminal</li>
+<li>良好的外网访问环境，某些网络环境下建议加代理或者 VPN</li>
+</ul>
+
+<p></p>
+
+<h2 id="部署实战">部署实战</h2>
+
+<p>最开始试过在 ESXi 上直接提供虚机，实测下来并不方便，因为 Vagrant 对免费 ESXi 的支持很有限(体现在第三方 vbox 等)，而对 Virtualbox 的支持很好。有关 ESXi 的部署可参考 <a href="http://blog.yuanbin.me/posts/2014/09/server-for-lab.html">高校实验室环境下的服务器部署小议</a>。
+在 ESXi 虚拟机上安装一个 Ubuntu Server 14.04, 作为集群的宿主机，然后在 Ubuntu Server 基础上安装 Virtualbox + Vagrant. 看似是不错的方案，但是实践下来发现在 ESXi 的基础上再虚拟64 bit 的虚机是存在问题的，在 ESXi 5.x 基础上可以更改配置文件 enable 嵌套虚拟化，但是实测发现启动Virtualbox 后 CPU 占用率极高，遂弃疗&hellip; 总结来说就是在 ESXi 虚拟化的基础上再进行虚拟化是有不少坑的。想进行部署实战的推荐裸机上装 Virtualbox (测试) 或者直接上虚机实战。</p>
+
+<p>虚机间互相拷贝 public key 时使用<code>ssh-copy-id</code> 较为方便，接下来照着视频来操作就好了。</p>
+
+<p>如果只是想试用 Spark 的话装官网上编译好的二进制包即可，解压即用。</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=l54JqN06Zvk">Getting started with the IBM Open Platform with Apache Hadoop - YouTube</a></li>
+<li>SSH key - <a href="https://help.github.com/articles/generating-ssh-keys/">Generating SSH keys - User Documentation</a></li>
+<li>doc - <a href="http://www-01.ibm.com/support/knowledgecenter/SSPT3X_4.0.0/com.ibm.swg.im.infosphere.biginsights.install.doc/doc/bi_install_iop_biginsights.html?lang=en">IBM Knowledge Center</a></li>
+<li><a href="https://github.com/vangj/vagrant-hadoop-2.4.1-spark-1.0.1/blob/master/Vagrantfile">vagrant-hadoop-2.4.1-spark-1.0.1/Vagrantfile</a></li>
+</ul>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-07-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2015-08/2015-08-04_17-29-01/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Scala 和 Java 的混合编译指南</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2015-07/2015-07-17_22-22-00/">
+            <span class="next-text nav-default">Windows 系统下的开发环境搭建</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Deploy Hadoop cluster with Vagrant and Ambari',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

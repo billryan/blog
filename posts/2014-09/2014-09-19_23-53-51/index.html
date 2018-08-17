@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>高校实验室环境下的服务器部署小议 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="高校实验室环境下的服务器部署小议 在理工科的一些科研团队实验室中，一般或多或少都会有那么几台服务器。此文主要就高校实验室环境下的服务器及应用部" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2014-09/2014-09-19_23-53-51/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="高校实验室环境下的服务器部署小议" />
+<meta property="og:description" content="高校实验室环境下的服务器部署小议 在理工科的一些科研团队实验室中，一般或多或少都会有那么几台服务器。此文主要就高校实验室环境下的服务器及应用部" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2014-09/2014-09-19_23-53-51/" />
+
+
+
+<meta property="article:published_time" content="2014-09-19T23:53:51&#43;08:00"/>
+
+<meta property="article:modified_time" content="2014-09-19T23:53:51&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="高校实验室环境下的服务器部署小议">
+<meta itemprop="description" content="高校实验室环境下的服务器部署小议 在理工科的一些科研团队实验室中，一般或多或少都会有那么几台服务器。此文主要就高校实验室环境下的服务器及应用部">
+
+
+<meta itemprop="datePublished" content="2014-09-19T23:53:51&#43;08:00" />
+<meta itemprop="dateModified" content="2014-09-19T23:53:51&#43;08:00" />
+<meta itemprop="wordCount" content="2854">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="高校实验室环境下的服务器部署小议"/>
+<meta name="twitter:description" content="高校实验室环境下的服务器部署小议 在理工科的一些科研团队实验室中，一般或多或少都会有那么几台服务器。此文主要就高校实验室环境下的服务器及应用部"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">高校实验室环境下的服务器部署小议</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-09-19 </span>
+        
+        <span class="more-meta"> 约 2854 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#高校实验室环境下的服务器部署小议">高校实验室环境下的服务器部署小议</a>
+<ul>
+<li>
+<ul>
+<li><a href="#硬件选型">硬件选型</a></li>
+<li><a href="#服务器底层虚拟化系统">服务器底层虚拟化系统</a></li>
+<li><a href="#虚拟机添加及使用方式">虚拟机添加及使用方式</a></li>
+<li><a href="#服务器部署实例">服务器部署实例</a>
+<ul>
+<li><a href="#一些有意思的服务及应用">一些有意思的服务及应用</a></li>
+</ul></li>
+<li><a href="#网络拓扑及外网访问">网络拓扑及外网访问</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="高校实验室环境下的服务器部署小议">高校实验室环境下的服务器部署小议</h1>
+
+<p>在理工科的一些科研团队实验室中，一般或多或少都会有那么几台服务器。此文主要就高校实验室环境下的服务器及应用部署做些简要的经验介绍。</p>
+
+<h3 id="硬件选型">硬件选型</h3>
+
+<p>诸如内存/CPU/硬盘等选型在高校里似乎并不那么重要，一般这种东西最后都被作为『固定资产』处理，老师们自己并不需要掏一分钱&hellip; 买来之后往往也是由底下的学生代劳搭建各项服务。硬件选型总的来说还是得看需求，高性能计算？——GPU加速为王道。</p>
+
+<h3 id="服务器底层虚拟化系统">服务器底层虚拟化系统</h3>
+
+<p>对于高校实验室这种环境，服务器承担的角色往往是多样化的，不同的软件及需求往往需要在不同的操作系统下开发测试，这个时候虚拟化技术就派上用场了。底层使用虚拟化技术将服务器硬件资源虚拟化，在虚拟化之上可以灵活根据开发需求分配相应资源。</p>
+
+<p>想必不少人都用过盗版的VMware桌面虚拟化软件，对软件开发有点敬畏的人可能会选择使用开源的Virtualbox作为桌面虚拟化软件。用过的人都知道虚拟化带来的便利，比如我的主机是Linux，但是偶尔要打开一些只能在Win下用的软件，双系统的方案未尝不可，但是切换麻烦啊，这个时候在虚拟机里边装个Windows就比较方便了。其实除了桌面虚拟化，服务器上也是可以用虚拟化方案的，而且技术更为成熟。其中做的比较好的就是VMware了，目前最新版本是5.5，可以到<a href="https://my.vmware.com/cn/web/vmware/details?productId=353&amp;downloadGroup=ESXI55U2">这里</a>下载，由于文件比较多，一般选择如下两个软件：</p>
+
+<ol>
+<li>VMvisor——用于实现服务器虚拟化的底层操作系统，对应官网上的『ESXi 5.5 Update 2 ISO image (Includes VMware Tools)』<br /></li>
+<li>viclient——用于更方便的管理虚拟机，如在虚拟机之上安装不同操作系统及配置资源，对应官网上的『VMware vSphere Client 5.5 Update 2』<br />
+具体安装说明可见<a href="https://pubs.vmware.com/vsphere-55/topic/com.vmware.ICbase/PDF/vsphere-esxi-vcenter-server-55-installation-setup-guide.pdf">ESXi安装教程</a>的『Download and Burn the ESXi Installer ISO Image to a CD or DVD』小节。我一般倾向于使用U盘安装，安装过程可参考<a href="http://www.2cto.com/os/201201/117743.html">VMware ESXi 5安装图文教程</a><br /></li>
+</ol>
+
+<p>安装前最好确认下是否兼容相应的服务器硬件，比如Dell的就在官方给出了他们修改过的镜像<a href="http://www.dell.com/support/home/us/en/19/Drivers/DriversDetails?driverId=5YC4T">VMware ESXi 5.5 Image Driver Details | Dell US</a></p>
+
+<h3 id="虚拟机添加及使用方式">虚拟机添加及使用方式</h3>
+
+<p>底层虚拟化操作系统(ESXi)安装好之后，使用viclient即可非常方便的增加不同的操作系统，这个步骤和桌面虚拟化安装新的操作系统是一样一样的。底下的一张图很好的展示了ESXi主机、虚拟机和viclient三者之间的关系。<br />
+<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/esxi.png-q75" alt="ESXi-viclient-Server" /></p>
+
+<p>你可以将上层的虚拟机系统看成是完全独立的操作系统，使用方式均可通过『远程桌面连接-适用于Windows的RDP』、『VNC-适用于Linux下图形接入』和『SSH-适用于Linux，较为通用』。这样就不必为服务器单独配一个显示器了，计算全部交给服务器，使用的时候在本机远程连接进去就好，相当于只用了本机的显示器，大家同时使用互不干扰，——『云计算』是也。</p>
+
+<p>实验室环境下的服务器操作系统部署及安装到这里就讲完了，具体细节就得请各位亲自操刀了咯。接下来就自己目前主要使用的一台服务器做一些简单的实例分享。</p>
+
+<h3 id="服务器部署实例">服务器部署实例</h3>
+
+<p>以我目前主要维护的一台服务器为例，服务器配置：4核8线程、64G内存和4T机械硬盘，服务器型号是Dell的T620 塔式服务器。其上安装的系统及用途如下：</p>
+
+<ul>
+<li>底层虚拟化系统：ESXi 5.5(未使用包含Dell驱动的image，也许是有些硬件没使用到，目前还没发现问题)，license为发邮件索取的，一般的服务器硬件资源使用应该不会超过他们的限制。<br /></li>
+<li>Windows XP SP3 32bit：某些古老或者特殊的行业软件只能跑在这种系统上，装一个还是挺有用的。<br /></li>
+<li>Windows Server 2008：主要给其他人跑Matlab用，文件的交互可采用网络邻居或者同步软件。<br /></li>
+<li>Debian：主力服务器，适合部署追求稳定的服务。<br /></li>
+<li>Arch Linux：接入服务器(ssh入口)，适合部署和测试一些较新的服务。<br /></li>
+<li>Ubuntu：不少人喜欢用这个发行版，部分服务在这上面部署起来方便点，我只在交叉编译Linux内核时用过一次&hellip;<br /></li>
+<li>CentOS：说实话，这个我几乎没用过。据说也是比较稳定的，缺点是包太老，而且需要自己维护，加入EPEL源会好一点。<br /></li>
+</ul>
+
+<p>如果不需要特别限制的话，CPU资源尽量分配到最大，比如以上服务器最多能提供8核就分配8个vCPU。内存大小看情况，10G/20G/30G随意分配。</p>
+
+<h4 id="一些有意思的服务及应用">一些有意思的服务及应用</h4>
+
+<ol>
+<li>接入实验室内部的VPN：softEther VPN部署起来方便一点，一个软件即实现了L2TP/IPSEC, PPTP, OPENVPN等VPN协议，但是需要注意禁掉一些UDP连接的端口，我发现softEther VPN使用UDP与筑波大学(该软件的作者即为筑波大学的)的几台服务器进行通信，不确定是不是使用了其客户端进行配置后所导致的。digitalocean上有一篇教你如何部署这款软件的文章-<a href="https://www.digitalocean.com/community/tutorials/how-to-setup-a-multi-protocol-vpn-server-using-softether">How to Setup a Multi-Protocol VPN Server Using SoftEther</a><br /></li>
+<li><a href="http://seafile.com/home/">Seafile</a> 全平台私有云同步软件，有WebDAV接口，这个在iPad上太方便了，有了这个我基本就没用过iTunes同步了。使用Seafile进行各系统下的文件同步，同时可采用群组区分和使用内部wiki。Seafile自带的wiki功能可与文件进行整合，比如分享一些内部常用的资料及教程什么的很有用。虽然我非常提倡公开共享一些有用的资源，但是不见得有些老师有这种想法。如果是公开的分享放在实验室内部服务器上就不合适了，一方面是安全问题，一方面是会给实验室的网络及服务器占用过多资源。<br /></li>
+<li>科学上网组件，用于正常地进行科研工作和技术学习。详情见我之前整理过的<a href="https://github.com/sjtug/kxsw">sjtug/kxsw</a>，这里不过多展开，具体原因你懂的&hellip;<br /></li>
+</ol>
+
+<p>其他服务及应用可自行开发脑洞&hellip;</p>
+
+<p>开通这些服务往往需要将内网某一服务器的特殊端口映射至外网，这个一般需要拿到网关路由器/交换机的管理员权限，大多数实验室的路由器都是用的初始密码，不是初始密码的话可以问问楼层的网管。</p>
+
+<h3 id="网络拓扑及外网访问">网络拓扑及外网访问</h3>
+
+<p>ESXi可以认为给上层虚拟机提供了一个二层的虚拟交换机，虚拟机与局域网其他计算机在同一子网下。利用这一特点及在虚拟机服务器上搭建的VPN，我们就可以通过从外网无障碍远程访问局域网内部计算机了。实验室IP往往还有另一大用处——在外出差或者在家也可以利用学校的网络资源，如一些PT/BT资源和学术数据库资源等。</p>
+
+<p>要实现实验室局域网的外网访问一般有三种方式：</p>
+
+<ol>
+<li>路由器上通过端口映射(虚拟服务器)将内部服务器端口映射至外网。端口开的多话有安全隐患，建议只映射部分常用端口。<br /></li>
+<li>通过VPN接入内部局域网，只需要在路由器上将相应VPN协议的端口映射出去即可。通过VPN接入后即相当于已处于实验室内部局域网，不需要再在路由器上开放过多的端口，较为安全。<br /></li>
+<li>如果不能拿到路由器/交换机上的管理员权限，在交大可通过WiFi获得10.x.x.x的内网IP，这个在交大内部是可以路由的，也就是说可以通过这个IP进入实验室内网。由于服务器底层采用VMware ESXi做了一层虚拟化之后，再在USB口上插入无线网卡系统是无法识别的，这个时候就需要在ESXi上启用DirectPath I/O了，即可将某一USB网卡直连至相应虚拟机系统下。</li>
+</ol>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-09-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2014-10/2014-10-13_09-23-28/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">digitalocean VPS 把玩</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2014-09/2014-09-16_19-50-22/">
+            <span class="next-text nav-default">科研有方读书笔记之做科研的准备工作</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '高校实验室环境下的服务器部署小议',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

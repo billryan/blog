@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>一个简洁优雅的 XeLaTeX 简历模板 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="一个简洁优雅的 XeLaTeX 简历模板 初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&amp;gt; 干货 | 一个简洁优雅的 XeLaTeX 简历模板。这两只『科研媛』的科研热情令我佩服不已，小S 的科研主要集中在自然语言处理方面，公众号的内容有满满的科研和技术干货，也有吃喝玩乐等放松文章。废话少说，要关注的请加girlswhocode或者狂扫以下二维码。
+微信公众号传播能力虽然不错，但是发表在公众号上的文章就别想轻易被搜索引擎索引了，网址链接也是又长又丑&amp;hellip; 这对信息的传播其实是非常不利的。所以就在自己博客上也贴一份咯~ 广告到此为止，下面开始正文。 " />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2015-08/2015-08-27_15-57-59/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="一个简洁优雅的 XeLaTeX 简历模板" />
+<meta property="og:description" content="一个简洁优雅的 XeLaTeX 简历模板
+
+初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&gt; 干货 | 一个简洁优雅的 XeLaTeX 简历模板。这两只『科研媛』的科研热情令我佩服不已，小S 的科研主要集中在自然语言处理方面，公众号的内容有满满的科研和技术干货，也有吃喝玩乐等放松文章。废话少说，要关注的请加girlswhocode或者狂扫以下二维码。
+
+
+
+微信公众号传播能力虽然不错，但是发表在公众号上的文章就别想轻易被搜索引擎索引了，网址链接也是又长又丑&hellip; 这对信息的传播其实是非常不利的。所以就在自己博客上也贴一份咯~ 广告到此为止，下面开始正文。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2015-08/2015-08-27_15-57-59/" />
+
+
+
+<meta property="article:published_time" content="2015-08-27T15:57:59&#43;08:00"/>
+
+<meta property="article:modified_time" content="2015-08-27T15:57:59&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="一个简洁优雅的 XeLaTeX 简历模板">
+<meta itemprop="description" content="一个简洁优雅的 XeLaTeX 简历模板
+
+初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&gt; 干货 | 一个简洁优雅的 XeLaTeX 简历模板。这两只『科研媛』的科研热情令我佩服不已，小S 的科研主要集中在自然语言处理方面，公众号的内容有满满的科研和技术干货，也有吃喝玩乐等放松文章。废话少说，要关注的请加girlswhocode或者狂扫以下二维码。
+
+
+
+微信公众号传播能力虽然不错，但是发表在公众号上的文章就别想轻易被搜索引擎索引了，网址链接也是又长又丑&hellip; 这对信息的传播其实是非常不利的。所以就在自己博客上也贴一份咯~ 广告到此为止，下面开始正文。
+">
+
+
+<meta itemprop="datePublished" content="2015-08-27T15:57:59&#43;08:00" />
+<meta itemprop="dateModified" content="2015-08-27T15:57:59&#43;08:00" />
+<meta itemprop="wordCount" content="2796">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一个简洁优雅的 XeLaTeX 简历模板"/>
+<meta name="twitter:description" content="一个简洁优雅的 XeLaTeX 简历模板
+
+初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&gt; 干货 | 一个简洁优雅的 XeLaTeX 简历模板。这两只『科研媛』的科研热情令我佩服不已，小S 的科研主要集中在自然语言处理方面，公众号的内容有满满的科研和技术干货，也有吃喝玩乐等放松文章。废话少说，要关注的请加girlswhocode或者狂扫以下二维码。
+
+
+
+微信公众号传播能力虽然不错，但是发表在公众号上的文章就别想轻易被搜索引擎索引了，网址链接也是又长又丑&hellip; 这对信息的传播其实是非常不利的。所以就在自己博客上也贴一份咯~ 广告到此为止，下面开始正文。
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">一个简洁优雅的 XeLaTeX 简历模板</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-08-27 </span>
+        
+        <span class="more-meta"> 约 2796 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#一个简洁优雅的-xelatex-简历模板">一个简洁优雅的 XeLaTeX 简历模板</a>
+<ul>
+<li><a href="#简介">简介</a>
+<ul>
+<li><a href="#中英文排版样例">中英文排版样例</a></li>
+</ul></li>
+<li><a href="#使用方法">使用方法</a>
+<ul>
+<li><a href="#sharelatex-在线编译">ShareLaTeX 在线编译</a></li>
+<li><a href="#使用较新的-tex-发行版在本地计算机编译">使用较新的 TeX 发行版在本地计算机编译</a></li>
+<li><a href="#中英文双语支持">中英文双语支持</a></li>
+<li><a href="#中英文切换">中英文切换</a></li>
+<li><a href="#参考文献">参考文献</a></li>
+<li><a href="#宏">宏</a></li>
+<li><a href="#fontawesome">FontAwesome</a></li>
+</ul></li>
+<li><a href="#license">License</a></li>
+<li><a href="#总结">总结</a></li>
+<li><a href="#相关资源小结">相关资源小结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="一个简洁优雅的-xelatex-简历模板">一个简洁优雅的 XeLaTeX 简历模板</h1>
+
+<p>初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&gt; <a href="http://mp.weixin.qq.com/s?__biz=MzAwMjM3MTc5OA==&amp;mid=212258865&amp;idx=1&amp;sn=8ee6ccd56d86778e48207cedbb5fbfad&amp;3rd=MzA3MDU4NTYzMw==&amp;scene=6#rd">干货 | 一个简洁优雅的 XeLaTeX 简历模板</a>。这两只『科研媛』的科研热情令我佩服不已，小S 的科研主要集中在自然语言处理方面，公众号的内容有满满的科研和技术干货，也有吃喝玩乐等放松文章。废话少说，要关注的请加<strong>girlswhocode</strong>或者狂扫以下二维码。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/qrcode_girlswhocode.png-400px" alt="girlswhocode" /></p>
+
+<p>微信公众号传播能力虽然不错，但是发表在公众号上的文章就别想轻易被搜索引擎索引了，网址链接也是又长又丑&hellip; 这对信息的传播其实是非常不利的。所以就在自己博客上也贴一份咯~ 广告到此为止，下面开始正文。
+</p>
+
+<p>每年的9月10月是求职的高峰季，除了简历上充实的干货之外，一份美美的简历自然是能助你一臂之力的啦。今天要介绍的是用 LaTeX 制作的高逼格简历。</p>
+
+<p>LaTeX 的简历模板其实是有不少的，坊间流传较广的有 <code>moderncv</code>, 这货使用起来比较简单，样式改起来也很方便，但是不太适合作为一页纸简历模板，因为空白太多了。传统的 <code>resume</code> 宏包虽然适合用作一页纸简历，但是定制起来比较麻烦，需要懂不少 \TeX 语法。看过不少模板，老是觉得有什么地方不满意(处女座改变世界&hellip;)，思来想去俺就自己从 ShareLaTeX 网站上找了个极简教程学了下，鼓捣出了一个还算优雅的简历模板出来。接下来介绍模板使用细节和定制说明，最后整理一些常用的 LaTeX 模板网站。</p>
+
+<h2 id="简介">简介</h2>
+
+<p>该简历模板使用 XeLaTeX 编译，无痛支持中文，开箱即用(几乎不需要懂 LaTeX 语法)，除了本地编译外也可使用 Sharelatex <strong>在线编译</strong>，无需在本机安装 TeX 发行版。</p>
+
+<p>主要的功能如下：</p>
+
+<ul>
+<li>极其容易定制和扩展。</li>
+<li>完善的 Unicode 字体支持，因为用的是 XeLaTeX 嘛</li>
+<li>完美的简体中文支持，默认使用 adobefonts 的四套简体中文字型，其他字型可自行添加。</li>
+<li>支持图标字体 FontAwesome 4.3.0</li>
+</ul>
+
+<h3 id="中英文排版样例">中英文排版样例</h3>
+
+<p>首先来一个英文的版式。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/resume.png-q75" alt="English resume" />
+​
+中文版的行距相对英文要大一点，否则会给人很挤的感觉，这些行间距的调整其实挺费纠结的，得根据字型大小等反复调整。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/resume-zh_CN.png-q75" alt="中文简历模板" /></p>
+
+<p>原图地址见 <a href="https://github.com/billryan/resume/blob/zh_CN/resume-en_US-zh_CN.png">https://github.com/billryan/resume/blob/zh_CN/resume-en_US-zh_CN.png</a></p>
+
+<h2 id="使用方法">使用方法</h2>
+
+<h3 id="sharelatex-在线编译">ShareLaTeX 在线编译</h3>
+
+<p>感谢万能的『云计算』，LaTeX 编译也可以放到云端了！使用这种方法无需在本机安装诸如 CTeX/TeXlive/MacTeX 等发行版，网站上还能有历史版本记录，十分方便！最简单的方法，浏览器中打开 <a href="https://www.sharelatex.com/templates/556b27cf0d23e5a8117053d9">模板链接</a>, 按需更改自己的名字和联系方式等。
+在线预览时需要注意 ShareLaTeX 自带的 PDF 阅读器对中文支持不太好(可能会显示乱码)，这时选择使用 native 阅读器即可。</p>
+
+<p>中文模板的文件为 <code>resume-zh_CN.tex</code>, 英文模板的文件为 <code>resume.tex</code>.</p>
+
+<h3 id="使用较新的-tex-发行版在本地计算机编译">使用较新的 TeX 发行版在本地计算机编译</h3>
+
+<p>除了在线编译外，该模板当然也支持传统的本地编译，从 <a href="https://github.com/billryan/resume/tree/zh_CN">https://github.com/billryan/resume/tree/zh_CN</a> 上克隆下来使用 XeLaTeX 编译即可。</p>
+
+<pre><code>xelatex resume.tex % 编译英文简历
+xelatex resume-zh_CN.tex % 编译中文简历
+</code></pre>
+
+<h3 id="中英文双语支持">中英文双语支持</h3>
+
+<p>LaTeX 的中文支持一直是不少 TeX 新手心中的梦魇，该简历模板最大的特色就是『无痛』支持中英文双语，『无痛』的含义是指开箱即用——在线或者克隆到本地后只需要更改自己的信息即可，不需要自己设置中文字体支持等操作。</p>
+
+<p>对 Git 不了解或使用不方便的朋友可单独下载压缩包，解压即用。下载地址见 <a href="https://github.com/billryan/resume/archive/zh_CN.zip">GitHub 官网</a>, <a href="http://7rf9g9.com1.z0.glb.clouddn.com/doc/zh_CN.zip">大陆镜像加速</a></p>
+
+<p>对 Git 比较了解的朋友可选择克隆后切换到<code>zh_CN</code>分支，<code>zh_CN</code> 是<code>master</code>分支的超集，即<code>zh_CN</code>包含<code>master</code>分支所有的文件。
+需要注意的是<code>zh_CN</code>分支包含 Adobe 的宋楷黑仿四套中文字体，体积较大(40 MB+)，如果只需要英文简历的可单独克隆<code>master</code>分支。</p>
+
+<p>中文使用UTF-8编码，对于大多数 Windows 用户来说，只要使用的不是太老的 CTeX 发行版，WinEdt 的中文支持也是毫无压力的。
+编译时务必使用 XeLaTeX，其他编译方式会报错，因为依赖了 \XeTeX 的一些东西。</p>
+
+<h3 id="中英文切换">中英文切换</h3>
+
+<p>英文模板范例见 <a href="https://github.com/billryan/resume/blob/zh_CN/resume.tex">https://github.com/billryan/resume/blob/zh_CN/resume.tex</a>
+中文模板范例见 <a href="https://github.com/billryan/resume/blob/zh_CN/resume-zh_CN.tex">https://github.com/billryan/resume/blob/zh_CN/resume-zh_CN.tex</a></p>
+
+<p>中文模板与英文模板的区别仅有两行——使用中文时仅需反注释以下两行，模板中已默认启用，第一次编译时耗时相对较长(引入了外部中文字型)，耐心等待下。</p>
+
+<pre><code>\usepackage{zh_CN-Adobefonts_external} % Simplified Chinese Support using external fonts (./fonts/zh_CN-Adobe/)
+%\usepackage{zh_CN-Adobefonts_internal} % Simplified Chinese Support using system fonts
+\usepackage{linespacing_fix} % disable extra space before next section
+</code></pre>
+
+<p>对于高级用户：如果系统已确定安装有 Adobe 的四套中文字型，在文档的开始处使用包<code>zh_CN-Adobefonts_internal</code>，这样第一次编译时也会很快。</p>
+
+<h3 id="参考文献">参考文献</h3>
+
+<p>参考文献的引用采用 bib + bst 的方式管理，bib 中存放 BibTeX 格式的引用文本，bst 用于控制 bib 文件的展示形式，默认为 IEEEtran. 编译方式可选如下：</p>
+
+<ol>
+<li>OSX/Linux 用户 <code>latexmk -pdf -pvc -silent myresume-zh_CN.tex</code> latexmkrc 配置文件可参考我的 <a href="https://github.com/billryan/dotfiles/blob/master/latex/latexmkrc">dotfiles/latexmkrc</a></li>
+<li>Windows 用户可使用 WinEdt 中的 TeXify 选项编译(未测试)</li>
+</ol>
+
+<p>除了以上两种编译方式，你还可以使用传统的编译方式：</p>
+
+<pre><code class="language-shell">xelatex myresume-zh_CN
+bibtex myresume-zh_CN
+xelatex myresume-zh_CN
+xelatex myresume-zh_CN
+</code></pre>
+
+<p>范例文档中默认Reference 另起一页，想留在当前页的可注释掉<code>\newpage</code></p>
+
+<h3 id="宏">宏</h3>
+
+<p>普通用户直接使用模板中的宏即可，具体排版使用可直接参考范例 tex 文档，已经十分简洁了。
+想自己添加新的宏的可以先看看 <a href="https://www.sharelatex.com/blog/2011/03/27/how-to-write-a-latex-class-file-and-design-your-own-cv.html">How to write a LaTeX class file and design your own CV (Part 1) - ShareLaTeX</a> 和 <a href="https://www.sharelatex.com/blog/2013/06/28/how-to-write-a-latex-class-file-and-design-your-own-cv.html">How to write a LaTeX class file and design your own CV (Part 2) - ShareLaTeX</a> 了解下该模板的简单背景。</p>
+
+<ul>
+<li><code>\name</code>: 姓名</li>
+<li><code>\contactInfo</code>: 联系信息, 需要三项信息，分别是{邮箱}{手机号}{个人主页}</li>
+<li><code>\basicContactInfo</code>: 简要的联系信息, 需要 项信息, 分别是{邮箱}{手机号}, 没有个人主页的用这个</li>
+<li><code>\section</code>: 用于分节, 如教育背景, 实习/项目经历等</li>
+<li><code>\subsection</code>: 用于小节标题, 无日期选项</li>
+<li><code>\datedsubsection</code>: 用于小节标题, 简历中使用最广，第二项为时间区间，自动右对齐</li>
+<li><code>\itemize</code>: 清单列表，简历中应用最广</li>
+<li><code>\enumerate</code>: 枚举列表，数字标号</li>
+</ul>
+
+<h3 id="fontawesome">FontAwesome</h3>
+
+<p>首先在 <a href="http://fortawesome.github.io/Font-Awesome/icons/">Font Awesome Icons</a> 上选中自己想使用的图标(暂不支持 alias)，然后在 <a href="https://github.com/billryan/resume/blob/zh_CN/fontawesome.sty">fontawesome.sty</a> 中找到相应的宏, 将其作为普通文本一样使用。
+如果不需要使用 FontAwesome 字体的把那些宏去掉即可。
+其他的可以自行参考相应 cls 和 tex 文件。</p>
+
+<h2 id="license">License</h2>
+
+<p><a href="http://opensource.org/licenses/MIT">The MIT License (MIT)</a></p>
+
+<p>Copyrighted fonts are not subjected to this License.</p>
+
+<h2 id="总结">总结</h2>
+
+<p>LaTeX 的中文支持除了在系统配置文件内指定外还可以在当前项目内指定，这种方式适合大范围分发，正是这个模板中采用的方式，缺点就是大部分中文字型都是有版权的，使用上需要注意。在制作这个模板的过程中还发现合理使用 LaTeX 现代宏包能大大减轻后期维护和升级的工作，需要使用的命令更少更清晰。</p>
+
+<p>这个模板看似复杂，其实使用上极其省心，想在我这个模板的基础上改动样式的可以看相应的 cls 文件和详细说明，只是简单使用的话直接在范例文档的基础上改改即可。
+总的来说这个模板适合找工作用，而且是偏技术型的一页纸简历。</p>
+
+<p>项目主页 <a href="https://github.com/billryan/resume">https://github.com/billryan/resume</a> 祝大家玩的开心 :)</p>
+
+<h2 id="相关资源小结">相关资源小结</h2>
+
+<p>除了本文介绍的模板外，你还可以到其他模板网站上找自己喜欢的样式，也可以自己学点基本的 LaTeX 语法定制一个，下面对这些可能用到的资源做点小结。</p>
+
+<ol>
+<li><a href="https://www.sharelatex.com/">ShareLaTeX, the Online LaTeX Editor</a> - LaTeX 在线编辑器，左边是类似 Sublime Text 的编辑界面，右边是相应的 PDF 编译输出。无需本地安装 TeX 发行版，非常好用！另外他们家提供的文档质量也非常的高，可以当做教材使。</li>
+<li><a href="https://www.sharelatex.com/templates">LaTeX Templates - ShareLaTeX</a> - ShareLaTeX 提供的 LaTeX 模板，Presentation, Resume, CV, Books 等应有尽有，选中自己喜欢的模板后即可基于模板定制自己的内容，多快好省地作出自己的成果。</li>
+<li><a href="https://www.overleaf.com/">Overleaf</a> - 和 ShareLaTeX 类似的 TeX 在线编辑器，也有很多模板可以用。</li>
+<li><a href="http://www.latextemplates.com/">LaTeX Templates</a> - 比较老的 LaTeX 模板网站了，模板质量比较高，需要下载到本地编译。</li>
+<li>LaTeX 中文方面的教程精品的不多，刘海洋老师的《LaTeX 入门》 算是精品中的精品！</li>
+</ol>
+
+<p>以简历为例，ShareLaTeX 的 <a href="https://www.sharelatex.com/templates/cv-or-resume">CV or Resume</a> 提供了不少模板可供选择，有看起来很 fancy 的模板，比如下面这个。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/fancy_cv.png-q75" alt="Fance CV" /></p>
+
+<p>其他的模板就等着你的慧眼去发现啦。</p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-08-27</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2015-09/2015-09-04_10-44-40/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">数组和指针</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2015-08/2015-08-27_09-47-30/">
+            <span class="next-text nav-default">Akka Notes 4 - Request and Response</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: '一个简洁优雅的 XeLaTeX 简历模板',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

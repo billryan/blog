@@ -1,0 +1,1607 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 东海一叶</title>
+    <link>https://blog.yuanbin.me/post/</link>
+    <description>Recent content in Posts on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 02 Aug 2018 23:59:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>基于大数据平台的客户画像系统设计</title>
+      <link>https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/</link>
+      <pubDate>Thu, 02 Aug 2018 23:59:46 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/</guid>
+      <description>基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行</description>
+    </item>
+    
+    <item>
+      <title>HAProxy 进阶使用技巧</title>
+      <link>https://blog.yuanbin.me/posts/2018-06/2018-06-30_21-26-14/</link>
+      <pubDate>Sat, 30 Jun 2018 21:26:14 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-06/2018-06-30_21-26-14/</guid>
+      <description>HAProxy 进阶使用技巧 本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中</description>
+    </item>
+    
+    <item>
+      <title>Hue hive metastore 显示时间差的问题</title>
+      <link>https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/</link>
+      <pubDate>Fri, 20 Apr 2018 17:24:14 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/</guid>
+      <description>Hue hive metastore 显示时间差的问题 Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我</description>
+    </item>
+    
+    <item>
+      <title>Hive show create table 显示空白行的问题</title>
+      <link>https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/</link>
+      <pubDate>Mon, 02 Apr 2018 16:35:55 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/</guid>
+      <description>Hive show create table 显示空白行的问题 对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免</description>
+    </item>
+    
+    <item>
+      <title>身份证解析的那些小事</title>
+      <link>https://blog.yuanbin.me/posts/2018-03/2018-03-28_23-50-56/</link>
+      <pubDate>Wed, 28 Mar 2018 23:50:56 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-28_23-50-56/</guid>
+      <description>身份证解析的那些小事 说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。</description>
+    </item>
+    
+    <item>
+      <title>Spark 开发之环境准备</title>
+      <link>https://blog.yuanbin.me/posts/2018-03/2018-03-19_11-17-37/</link>
+      <pubDate>Mon, 19 Mar 2018 11:17:37 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-19_11-17-37/</guid>
+      <description>Spark 开发之环境准备 JVM 是必须的，所以需要 Java(JDK 1.8+), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala</description>
+    </item>
+    
+    <item>
+      <title>Python 网页爬虫入门——信息抓取</title>
+      <link>https://blog.yuanbin.me/posts/2018-03/2018-03-15_13-44-59/</link>
+      <pubDate>Thu, 15 Mar 2018 13:44:59 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-15_13-44-59/</guid>
+      <description>Python 网页爬虫入门——信息抓取 之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什</description>
+    </item>
+    
+    <item>
+      <title>Scala/Java 多环境配置管理——使用 Typesafe Config</title>
+      <link>https://blog.yuanbin.me/posts/2018-02/2018-02-28_23-48-31/</link>
+      <pubDate>Wed, 28 Feb 2018 23:48:31 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-28_23-48-31/</guid>
+      <description>Scala/Java 多环境配置管理——使用 Typesafe Config 在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，S</description>
+    </item>
+    
+    <item>
+      <title>Python 多环境配置管理</title>
+      <link>https://blog.yuanbin.me/posts/2018-02/2018-02-24_16-30-16/</link>
+      <pubDate>Sat, 24 Feb 2018 16:30:16 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-24_16-30-16/</guid>
+      <description>Python 多环境配置管理 实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态</description>
+    </item>
+    
+    <item>
+      <title>博客写作工作流</title>
+      <link>https://blog.yuanbin.me/posts/2018-02/2018-02-23_23-19-29/</link>
+      <pubDate>Fri, 23 Feb 2018 23:19:29 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-23_23-19-29/</guid>
+      <description>博客写作工作流 博客陆陆续续也写了有七八年了，早年在51空间、QQ 空间、人人网、点点网上写过一些矫情的文字，后来接触了比较 geek 的 GitHub Pages 方式，折腾过</description>
+    </item>
+    
+    <item>
+      <title>如何做一场好的技术分享</title>
+      <link>https://blog.yuanbin.me/posts/2018-02/2018-02-23_20-44-30/</link>
+      <pubDate>Fri, 23 Feb 2018 20:44:30 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-23_20-44-30/</guid>
+      <description>如何做一场好的技术分享 在做技术分享时，一场好的技术分享不仅能提高听众吸收新知识的效率，还能锻炼自己的演讲逻辑能力。团队内部的每周技术分享会进</description>
+    </item>
+    
+    <item>
+      <title>GitBook 插件介绍及定制</title>
+      <link>https://blog.yuanbin.me/posts/2016-11/2016-11-07_10-48-42/</link>
+      <pubDate>Mon, 07 Nov 2016 10:48:42 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-11/2016-11-07_10-48-42/</guid>
+      <description>GitBook 插件介绍及定制 在 使用 GitBook 制作高质量电子书 一文中我简要描述了 GitBook 的基本功能和使用，适用于 GitBook 的所有插件均可以从 Plugins for GitBook 中找到，下文将介绍一些适用于 GitBook</description>
+    </item>
+    
+    <item>
+      <title>使用 GitBook 制作高质量电子书</title>
+      <link>https://blog.yuanbin.me/posts/2016-10/2016-10-09_21-48-24/</link>
+      <pubDate>Sun, 09 Oct 2016 21:48:24 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-10/2016-10-09_21-48-24/</guid>
+      <description>&lt;h1 id=&#34;使用-gitbook-制作高质量电子书&#34;&gt;使用 GitBook 制作高质量电子书&lt;/h1&gt;
+
+&lt;p&gt;作为知识型工作者，时常会遇到的一个问题是如何将自己所做的工作精心汇总并便利地展示给广大读者。从阅读、传播和互动的角度来看，制作一个专业的网站可能是较为理想的方案，但实际操作起来可能会因为各种各样的技术问题而让人望而却步。&lt;a href=&#34;https://www.gitbook.com&#34;&gt;GitBook&lt;/a&gt; 的出现算是解决了用户的绝大部分痛点。与 GitHub Pages 仅作为静态页面展示平台不同，GitBook 在文本编辑、多人协作、互动和电子书最终输出形式等方面的支持非常完善，基本上涵盖了现代出版物的整个生命周期，接下来的篇幅将详述这几个环节并介绍一些自己的实践经验。GitBook 的官方文档见 &lt;a href=&#34;https://toolchain.gitbook.com/&#34;&gt;GitBook Toolchain Documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part1-site.png&#34; alt=&#34;GitBook website&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;客户端或-web&#34;&gt;客户端或 Web&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part1-editor.png&#34; alt=&#34;GitBook editor&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;相比于 GitHub Pages 高门槛的写作方式，GitBook 在这方面则显得亲民的多（和 Word Office 之类的软件易用程度相当），由于是基于 Node.js 的应用，其不仅提供跨平台的图形化写作软件，同时也提供了 Web 版在线编辑，两者在功能上无异。虽然 GitBook 同时支持 Markdown 和 AsciiDoc, 但可以明显感受到其对 Markdown 格式的偏爱，不熟悉 Markdown 的朋友们也不用担心，GitBook 的工具栏中提供了各种常用格式的快捷方式。Markdown 相比 LaTeX 来说要简单地多，需要记的格式最多也只有十来种，基本上是那种一看就会用的极简格式，详细的格式支持和使用见 &lt;a href=&#34;https://toolchain.gitbook.com/syntax/markdown.html&#34;&gt;Markdown&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/gitbook-part1-template.png&#34; alt=&#34;GitBook template&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在 GitBook 网站新建电子书时可从默认的三种模板 (书籍或手册/API 文档/知识库 FAQ) 选择一个，官方虽然只提供了三种模板，但由于 GitBook 的可定制性极强，已经有不少第三方的模板可选了。除新建外你也可以从已有的 docs/odt/html/GitHub 等地方导入，从第三方导入的格式往往和 GitBook 家的稍微有那么点不一样，可能需要微调。&lt;/p&gt;
+
+&lt;h3 id=&#34;绑定-github-repo&#34;&gt;绑定 GitHub repo&lt;/h3&gt;
+
+&lt;p&gt;除了使用客户端和 Web 编辑文本这种简易模式外，你也可以挑战一下 Hard 模式如通过绑定 GitHub repo 推送更新，需要注意的是绑定到 GitHub repo 后当前电子书不可再从客户端或者 Web 上更新，这大概是 git 的锅了吧 :( 使用 GitHub 绑定的电子书在添加新文件时容易忘记更新目录文件 &lt;code&gt;SUMMARY.md&lt;/code&gt;，在此特意提醒下。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>自制 GitBook 插件之 gitbook-plugin-tags</title>
+      <link>https://blog.yuanbin.me/posts/2016-09/2016-09-18_22-55-14/</link>
+      <pubDate>Sun, 18 Sep 2016 22:55:14 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-09/2016-09-18_22-55-14/</guid>
+      <description>自制 GitBook 插件之 gitbook-plugin-tags 最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下</description>
+    </item>
+    
+    <item>
+      <title>Gitbook 网页版中文字型优化</title>
+      <link>https://blog.yuanbin.me/posts/2016-08/2016-08-19_07-30-10/</link>
+      <pubDate>Fri, 19 Aug 2016 07:30:10 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-08/2016-08-19_07-30-10/</guid>
+      <description>Gitbook 网页版中文字型优化 Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallba</description>
+    </item>
+    
+    <item>
+      <title>enable HTTPS for hexo blog with dokku</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-31_18-17-05/</link>
+      <pubDate>Sun, 31 Jul 2016 18:17:05 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-31_18-17-05/</guid>
+      <description>enable HTTPS for hexo blog with dokku 博客托管在 GitHub 的话，默认的 *.github.io 是启用 HTTPS 的，但如果是自定义域名的话就没这么方便了。如今虽然有 Letsencrypt 这种工具，但 GitHub Pages 这种高度依赖 CDN 服务的产</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之 HTTP/2</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/</link>
+      <pubDate>Sun, 10 Jul 2016 20:34:03 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/</guid>
+      <description>&lt;h1 id=&#34;家用服务器之-http-2&#34;&gt;家用服务器之 HTTP/2&lt;/h1&gt;
+
+&lt;p&gt;之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 &lt;a href=&#34;https://wzyboy.im/post/1052.html&#34;&gt;使用 nghttpx 搭建 HTTP/2 代理&lt;/a&gt; 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&amp;rsquo;s Encrypt, 方便好使，生成方法可参考 &lt;a href=&#34;../../2016/07/Let-s-Encrypt-for-Archlinux.html&#34;&gt;Let&amp;rsquo;s Encrypt for Archlinux&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;nghttp2 已经进入 extra 仓库，使用 &lt;code&gt;packer -S nghttp2&lt;/code&gt; 即可安装。我的 nghttpx 配置文件如下：
+
+{% gist id=&amp;ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&amp;rdquo;,file=&amp;ldquo;nghttpx.conf&amp;rdquo; %}{% endgist %}&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Encrypt for Archlinux</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_17-19-49/</link>
+      <pubDate>Sun, 10 Jul 2016 17:19:49 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_17-19-49/</guid>
+      <description>Let&amp;rsquo;s Encrypt for Archlinux Let&amp;rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之 Squid 分流</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_16-38-19/</link>
+      <pubDate>Sun, 10 Jul 2016 16:38:19 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_16-38-19/</guid>
+      <description>&lt;h1 id=&#34;家用服务器之-squid-分流&#34;&gt;家用服务器之 Squid 分流&lt;/h1&gt;
+
+&lt;p&gt;由于大家都知道的原因，大多数 ISP 的国外带宽往往不太理想，据说这个可以用 kcp 突破，我暂时没有国外带宽的困扰，有兴趣的可以去研究下。这篇博文提供的方法是使用 Squid 进行分流，国内直连，国外走父级代理，配合 polipo 和 ChinaDNS 效果拔群。&lt;/p&gt;
+
+&lt;p&gt;由于 Squid 的父级代理暂不支持 socks5, 故还需要配合 polipo 将 socks5 转换为 HTTP proxy 使用。在 Arch 下通过 &lt;code&gt;packer -S squid polipo&lt;/code&gt; 即可安装，接下来结合我的配置文件进行分析。&lt;/p&gt;
+
+&lt;p&gt;由于 polipo 和 Squid 都具有缓存功能，考虑到 Squid 在用户鉴权上更为强大，作为 HTTP 前端接入比较合适，因此需要禁用 polipo 的缓存功能。&lt;/p&gt;
+
+&lt;h2 id=&#34;socks5-to-http-polipo&#34;&gt;socks5 to HTTP - polipo&lt;/h2&gt;
+
+&lt;p&gt;polipo 的配置(&lt;code&gt;/etc/polipo/config&lt;/code&gt;)如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Transparent routing for home server in China</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_10-19-55/</link>
+      <pubDate>Sun, 10 Jul 2016 10:19:55 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_10-19-55/</guid>
+      <description>Transparent routing for home server in China Since this post is sensitive in China, I will roll it with English instead.
+ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with ChinaDNS and can resolv the external websites correctly. You can see a file including China IP in /etc/chnroute.txt. This file is very important for ss-rules. In Access Points for home server, we have built a AP and can assign the clients with DHCP and Unbound DNS Server backend.</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之无线路由器(AP)</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-09_15-08-41/</link>
+      <pubDate>Sat, 09 Jul 2016 15:08:41 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-09_15-08-41/</guid>
+      <description>家用服务器之无线路由器(AP) 之前玩 Raspberry PI/Cubieboard 时写过类似的合辑，这次入 X32-N2808 X86服务器后准备写一个类似的合辑，相比会更新不少内容。 对普通玩家来说，商</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之 DDNS</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-08_22-25-28/</link>
+      <pubDate>Fri, 08 Jul 2016 22:25:28 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-08_22-25-28/</guid>
+      <description>&lt;h1 id=&#34;家用服务器之-ddns&#34;&gt;家用服务器之 DDNS&lt;/h1&gt;
+
+&lt;p&gt;自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
+来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。&lt;/p&gt;
+
+&lt;h2 id=&#34;人工投诉索要公网-ip&#34;&gt;人工投诉索要公网 IP&lt;/h2&gt;
+
+&lt;p&gt;某个周末的下午试着给联通打了个投诉电话说转人工宽带服务，说明要公网地址，客服问了下账户信息就答复说24小时内处理好并回电，约摸两个小时后有个工程师就来电说已经处理好，请重启路由器。重启路由器后发现联通诚不欺我，全程下来十分顺畅，原以为要说一堆理由并且还有可能不给开通公网地址，没想到联通这么爽快，赞！&lt;/p&gt;
+
+&lt;h3 id=&#34;光猫用户&#34;&gt;光猫用户&lt;/h3&gt;
+
+&lt;p&gt;需要注意的是使用了光猫的客户，即使申请获得公网地址，这个地址也只存在于光猫的 WAN 口，内网服务器还是无法发挥作用，所以还需要先破解光猫获得超级用户权限以设置 DMZ 和端口映射等。以中兴的 F607 联通版为例，浏览器中输入 &lt;a href=&#34;http://192.168.1.1/cu.html&#34;&gt;http://192.168.1.1/cu.html&lt;/a&gt;, 用户名密码可能为如下组合：
+- CUAdmin/CUAdmin
+- admin/admin
+- unicomadmin/adminunicom&lt;/p&gt;
+
+&lt;h3 id=&#34;网络拓扑&#34;&gt;网络拓扑&lt;/h3&gt;
+
+&lt;p&gt;一般情况下服务器网络入口使用防火墙还是很有必要的，获取光猫超级用户权限后虽然可以设置端口映射，但是受制于光猫的有线网口数和硬件布局，使用起来多少有些不便。考虑到连接光猫的至少有一台无线路由器，所以可以在光猫中固定这台无线路由器 WAN 口的 IP，并对其 DMZ, 这样你的路由器就相当于外接广域网了，后面对路由器下的服务器做端口映射就比较方便了。端口映射在有些路由器固件中也称为虚拟服务器，不同路由器的称呼不太一样。&lt;/p&gt;
+
+&lt;h2 id=&#34;ddns&#34;&gt;DDNS&lt;/h2&gt;
+
+&lt;p&gt;有了公网 IP 还只是对外服务的第一步，ISP 给你分配公网 IP，并不代表你每次重新拨号获得的 IP 不变，所以你还需要 DDNS 来动态获知这一 IP，典型的 DDNS 服务提供商有花生壳，但是这货并不太稳定，某些固件在路由器界面开启 DDNS 后还会引发路由器工作异常。&lt;/p&gt;
+
+&lt;h3 id=&#34;dnspod-ddns&#34;&gt;DNSPod DDNS&lt;/h3&gt;
+
+&lt;p&gt;有自己域名的基本都知道这家 DNSPod，提供的 API 十分丰富，服务也是比较稳定的。下面是我参考了 &lt;a href=&#34;https://github.com/leeyiw/dnspod_ddns/blob/master/dnspod_ddns.py&#34;&gt;leeyiw/dnspod_ddns&lt;/a&gt; 和 &lt;a href=&#34;https://gist.github.com/chuangbo/833369&#34;&gt;Python dynamic DNSPod DNS Script&lt;/a&gt; 改进的 &lt;a href=&#34;https://gist.github.com/billryan/239778f0821937939c8c140bdddd6840&#34;&gt;DNSPod DDNS Python Script&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Play with 新创云 X32-N2808</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-03_22-10-13/</link>
+      <pubDate>Sun, 03 Jul 2016 22:10:13 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-03_22-10-13/</guid>
+      <description>&lt;h1 id=&#34;play-with-新创云-x32-n2808&#34;&gt;Play with 新创云 X32-N2808&lt;/h1&gt;
+
+&lt;p&gt;之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 &lt;a href=&#34;https://nghttp2.org/&#34;&gt;Nghttp2&lt;/a&gt; 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。&lt;/p&gt;
+
+&lt;h2 id=&#34;x32-n2808-硬件概述&#34;&gt;X32-N2808 硬件概述&lt;/h2&gt;
+
+&lt;p&gt;依稀记得在 SHLUG 邮件列表中有人提到过新创云的低功耗板子，前一阵子趁京东 618 大促搜了下新创云，发现 X32-N2808 这款移动端半价促销(不到400即可拿下)，无内存无硬盘，虽然也写明无 WiFi, 但实际上卖家发货时还是带了一块 PCI-E 无线网卡及蓝牙芯片，无线网卡是 Atheros 家的，实测对 Linux 支持很好，用于自建热点很方便。简单问了下客服，内存条是可以使用笔记本内存条的，但是得使用低压版 1.35v 的，也就是说没有必要买新创云自家昂贵的内存条以及 SSD 等，由于不确定自己的笔记本内存条是否可用，低压版 1.35v 的内存条没有一起下单。&lt;/p&gt;
+
+&lt;p&gt;拿到板子后立马把后盖拆了下来，内部做工还算不错，接口及组件列表如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CPU 为赛扬双核 N2808&lt;/li&gt;
+&lt;li&gt;内存条仅有一个插槽，LPDDR3，也就是说这里和客服说的有出入，以 1.5V(LPDDR3) 为准&lt;/li&gt;
+&lt;li&gt;一个 PCI-E 的无线网卡，卖家送的 Atheros 网卡&lt;/li&gt;
+&lt;li&gt;一个 msata，可以扩展 SSD 用，SSD 暂时太贵了，没买&lt;/li&gt;
+&lt;li&gt;一个 SATA II，我买了一块 1 T 西数笔记本硬盘，板子预留了空间，拧上螺丝即用&lt;/li&gt;
+&lt;li&gt;两个 HDMI 高清接口&lt;/li&gt;
+&lt;li&gt;两个 USB 3.0&lt;/li&gt;
+&lt;li&gt;四个 USB 2.0&lt;/li&gt;
+&lt;li&gt;一个千兆以太网卡，作为网络路由器和媒体服务器非常不错&lt;/li&gt;
+&lt;li&gt;音频接口&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;所以总的来讲接口还是非常丰富的，和一台普通的台式机没差多少。整机功耗实测 6 W 左右，名副其实的低功耗 X86 服务器。
+自己加内存条和硬盘后的谍照如下。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-1.jpeg-q75&#34; alt=&#34;板子内部接口&#34; /&gt;
+&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-2.jpeg-q75&#34; alt=&#34;2.5英寸笔记本硬盘&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x</title>
+      <link>https://blog.yuanbin.me/posts/2016-01/2016-01-15_15-10-28/</link>
+      <pubDate>Fri, 15 Jan 2016 15:10:28 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-01/2016-01-15_15-10-28/</guid>
+      <description>Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x 缘由 之前一直在 Archlinux 下部署整套 黑魔法服务，各种工具安装起来很方便，即使源里头没有，AUR 中一般也有其他人提供的 PKGBUILD, 根据</description>
+    </item>
+    
+    <item>
+      <title>在 Linux/OS X 下优雅地写论文(TeX)</title>
+      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-26_20-10-26/</link>
+      <pubDate>Thu, 26 Nov 2015 20:10:26 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-26_20-10-26/</guid>
+      <description>&lt;h1 id=&#34;在-linux-os-x-下优雅地写论文-tex&#34;&gt;在 Linux/OS X 下优雅地写论文(TeX)&lt;/h1&gt;
+
+&lt;p&gt;本科毕业设计就是用 LaTeX 写的，那时还只是第一次接触 TeX 这么强大的排版引擎。几年过去了自己对 LaTeX 也算是轻车熟路，最近遇到比较集中的问题自然是 &lt;a href=&#34;https://github.com/weijianwen/SJTUThesis&#34;&gt;硕士论文模板&lt;/a&gt; 啦。GitHub 上作者对一些细节并没有做详细的描述，这对于 TeX 新手来说造成了不少的困扰，比如这种东西怎么这么难用云云&amp;hellip;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>镇江一瞥</title>
+      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-22_20-57-57/</link>
+      <pubDate>Sun, 22 Nov 2015 20:57:57 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-22_20-57-57/</guid>
+      <description>&lt;h1 id=&#34;镇江一瞥&#34;&gt;镇江一瞥&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;撑着油纸伞，独自&lt;br /&gt;
+彷徨在悠长、悠长&lt;br /&gt;
+又寂寥的雨巷&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;九月秋高气爽，可那时忙着找人生中第一份工作，出游的计划便暂时搁置。一场秋雨一场寒，被11月的这么几场雨这么一搅合出去游玩的兴致也不算很高，不过在 Martin 和茄子的带动下，一场说走就走的旅行即刻开启。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>WBAN Traffic Source Model - WBAN 应用层业务模型</title>
+      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-18_13-52-51/</link>
+      <pubDate>Wed, 18 Nov 2015 13:52:51 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-18_13-52-51/</guid>
+      <description>&lt;h1 id=&#34;wban-traffic-source-model-wban-应用层业务模型&#34;&gt;WBAN Traffic Source Model - WBAN 应用层业务模型&lt;/h1&gt;
+
+&lt;p&gt;在 &lt;a href=&#34;http://blog.yuanbin.me/posts/2014/06/architecture-of-ieee-802156-simulation-based-on-opnet145.html&#34;&gt;Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5&lt;/a&gt; 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。&lt;/p&gt;
+
+&lt;p&gt;这层模型中主要负责根据用户设定的包产生间隔分布函数向 MAC 层传送不同优先级的包。WBAN 中的业务共有8种不同用户优先级，不同用户优先级对应的业务类型如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_traffic_up8.png&#34; alt=&#34;WBAN-User Priority Mapping&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>三行小诗</title>
+      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-09_19-22-58/</link>
+      <pubDate>Mon, 09 Nov 2015 19:22:58 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-09_19-22-58/</guid>
+      <description>&lt;h1 id=&#34;三行小诗&#34;&gt;三行小诗&lt;/h1&gt;
+
+&lt;p&gt;之前本科准备考研没有找过工作，读研后对学术这条路也算是死心了，当然这不是指学术无用，而是不想再浪费时间做无意义的『学术』。11月中旬把三方交给心仪公司后总算是不用每天紧绷着神经准备赶场面试了，找工作的面试经历对学生步入社会挺有磨练的价值的。你的职业发展方向、个人兴趣和对不同公司的权衡都能在找工作这段经历中很好的体现出来。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数组和指针</title>
+      <link>https://blog.yuanbin.me/posts/2015-09/2015-09-04_10-44-40/</link>
+      <pubDate>Fri, 04 Sep 2015 10:44:40 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-09/2015-09-04_10-44-40/</guid>
+      <description>&lt;h1 id=&#34;数组和指针&#34;&gt;数组和指针&lt;/h1&gt;
+
+&lt;p&gt;先从指针说起。&lt;/p&gt;
+
+&lt;h2 id=&#34;指针&#34;&gt;指针&lt;/h2&gt;
+
+&lt;h3 id=&#34;const&#34;&gt;const&lt;/h3&gt;
+
+&lt;p&gt;以下两种形式等价。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;const int *a;
+int const *a;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;a是一个指向const int型的指针，a所指向的内存单元不可改写，所以(*a)++是不允许的，但a可以改写，所以a++是允许的。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int * const a;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;a是一个指向int型的const指针，*a是可以改写的，但a不允许改写。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int const * const a;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;a是一个指向const int型的const指针，因此*a和a都不允许改写。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>一个简洁优雅的 XeLaTeX 简历模板</title>
+      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-27_15-57-59/</link>
+      <pubDate>Thu, 27 Aug 2015 15:57:59 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-27_15-57-59/</guid>
+      <description>&lt;h1 id=&#34;一个简洁优雅的-xelatex-简历模板&#34;&gt;一个简洁优雅的 XeLaTeX 简历模板&lt;/h1&gt;
+
+&lt;p&gt;初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&amp;gt; &lt;a href=&#34;http://mp.weixin.qq.com/s?__biz=MzAwMjM3MTc5OA==&amp;amp;mid=212258865&amp;amp;idx=1&amp;amp;sn=8ee6ccd56d86778e48207cedbb5fbfad&amp;amp;3rd=MzA3MDU4NTYzMw==&amp;amp;scene=6#rd&#34;&gt;干货 | 一个简洁优雅的 XeLaTeX 简历模板&lt;/a&gt;。这两只『科研媛』的科研热情令我佩服不已，小S 的科研主要集中在自然语言处理方面，公众号的内容有满满的科研和技术干货，也有吃喝玩乐等放松文章。废话少说，要关注的请加&lt;strong&gt;girlswhocode&lt;/strong&gt;或者狂扫以下二维码。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/qrcode_girlswhocode.png-400px&#34; alt=&#34;girlswhocode&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;微信公众号传播能力虽然不错，但是发表在公众号上的文章就别想轻易被搜索引擎索引了，网址链接也是又长又丑&amp;hellip; 这对信息的传播其实是非常不利的。所以就在自己博客上也贴一份咯~ 广告到此为止，下面开始正文。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Akka Notes 4 - Request and Response</title>
+      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-27_09-47-30/</link>
+      <pubDate>Thu, 27 Aug 2015 09:47:30 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-27_09-47-30/</guid>
+      <description>&lt;h1 id=&#34;akka-notes-4-request-and-response&#34;&gt;Akka Notes 4 - Request and Response&lt;/h1&gt;
+
+&lt;p&gt;该系列译自 &lt;a href=&#34;http://rerun.me/&#34;&gt;Rerun.me&lt;/a&gt;, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。&lt;/p&gt;
+
+&lt;p&gt;前文 &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html&#34;&gt;Akka Notes 2 - Actor Messaging&lt;/a&gt; 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)&lt;/p&gt;
+
+&lt;p&gt;从技术角度考虑，我们发送消息给 Actor 总是期望有副作用发生的，从设计上便是如此。目标 Actor 除了不作回应之外还可以对消息做如下事情：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;返回一条回复给发送者(在我们的例子中，TeacherActor 回应一条名言给 StudentActor)&lt;/li&gt;
+&lt;li&gt;给其他有可能成为目标受众的 Actor 转发一条回应，这个 Actor 反过来会回应/转发而产生副作用。Routers 和 Supervisors 就是这一类例子。之后我们对这两类进行详解。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;请求和响应&#34;&gt;请求和响应&lt;/h2&gt;
+
+&lt;p&gt;在本文中我们将集中在上述第一点：请求与响应 整个周期。一图胜千言，上图！&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_RequestReponse.png-q75&#34; alt=&#34;RequestReponse&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Akka Notes 3 - Logging and Testing Actors</title>
+      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-26_13-26-24/</link>
+      <pubDate>Wed, 26 Aug 2015 13:26:24 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-26_13-26-24/</guid>
+      <description>&lt;h1 id=&#34;akka-notes-3-logging-and-testing-actors&#34;&gt;Akka Notes 3 - Logging and Testing Actors&lt;/h1&gt;
+
+&lt;p&gt;该系列译自 &lt;a href=&#34;http://rerun.me/&#34;&gt;Rerun.me&lt;/a&gt;, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。&lt;/p&gt;
+
+&lt;p&gt;前文 &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html&#34;&gt;Akka Notes 1 - Introducing Actors&lt;/a&gt; 和 &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html&#34;&gt;Akka Notes 2 - Actor Messaging&lt;/a&gt; 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 &lt;code&gt;TeacherActor&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;前文2 中 &lt;code&gt;TeacherActor&lt;/code&gt; 的长相如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;package me.yuanbin.akkanotes.actormsg
+
+import akka.actor.Actor
+import me.yuanbin.akkanotes.protocols.StudentProtocol._
+import me.yuanbin.akkanotes.protocols.TeacherProtocol._
+import scala.util.Random
+
+/**
+ * Your Teacher Actor class.
+ *
+ * The class could use refinement by way of
+ * using ActorLogging which uses the EventBus of the Actor framework
+ * instead of the plain old System out
+ *
+ */
+
+class TeacherActor extends Actor {
+  val quotes = List(
+    &amp;quot;Moderation is for cowards&amp;quot;,
+    &amp;quot;Anything worth doing is worth overdoing&amp;quot;,
+    &amp;quot;The trouble is you think you have time&amp;quot;,
+    &amp;quot;You never gonna know if you never even try&amp;quot;)
+
+  def receive = {
+    case QuoteRequest =&amp;gt; {
+      //Get a random Quote from the list and construct a response
+      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
+      println()
+      println(quoteResponse)
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Akka Notes 1 - Introducing Actors</title>
+      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-26_09-24-56/</link>
+      <pubDate>Wed, 26 Aug 2015 09:24:56 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-26_09-24-56/</guid>
+      <description>&lt;h1 id=&#34;akka-notes-1-introducing-actors&#34;&gt;Akka Notes 1 - Introducing Actors&lt;/h1&gt;
+
+&lt;p&gt;该系列译自 &lt;a href=&#34;http://rerun.me/&#34;&gt;Rerun.me&lt;/a&gt;, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。&lt;/p&gt;
+
+&lt;p&gt;任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里『管理』是因为在刚开始时你感觉可能是简单的，并且在你开始看到性能提升后会觉得很有趣。然而，当你发现你并不能从子任务的错误中轻松恢复过来或者你发现那些僵尸 bug 很难重现，亦或是你的性能管理器告诉你你的线程在写共享状态前被阻塞了很久从而产生了资源浪费，以上这些都会让你头痛不已。&lt;/p&gt;
+
+&lt;p&gt;我在这里不会涉及 Java 的并发 API 及其应用集合如何使得并发变得更容易和更好，因为我相信如果你已经在读这篇文章了，你很可能需要对子任务更多的控制，亦或简单地因为你不喜欢使用锁和同步阻塞调用，并喜欢一种更高层次的抽象。&lt;/p&gt;
+
+&lt;p&gt;在这一系列的 Akka Notes 中，我们将会使用一些简单的 Akka 示例来探索 Akka 这个工具包中各种各样的特性。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Akka Notes 2 - Actor Messaging</title>
+      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/</link>
+      <pubDate>Tue, 25 Aug 2015 13:55:02 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/</guid>
+      <description>&lt;h1 id=&#34;akka-notes-2-actor-messaging&#34;&gt;Akka Notes 2 - Actor Messaging&lt;/h1&gt;
+
+&lt;p&gt;该系列译自 &lt;a href=&#34;http://rerun.me/&#34;&gt;Rerun.me&lt;/a&gt;, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。&lt;/p&gt;
+
+&lt;p&gt;今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html&#34;&gt;学生-老师&lt;/a&gt; 作为范例。&lt;/p&gt;
+
+&lt;h2 id=&#34;回顾-学生-老师-的例子&#34;&gt;回顾『学生-老师』的例子&lt;/h2&gt;
+
+&lt;p&gt;我们考虑由应用 &lt;code&gt;StudentSimulatorApp&lt;/code&gt; 单独给 &lt;code&gt;TeacherActor&lt;/code&gt; 发送消息的情形，这里你可以认为主程序就是 &lt;code&gt;StudentSimulatorApp&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_TeacherRequestFlowSimulatedApp.png-q75&#34; alt=&#34;TeacherRequestFlowSimulatedApp&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;从以上这张流程图我们可以得知：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;『学生』首先初始化一个叫做 &lt;code&gt;ActorSystem&lt;/code&gt; 的东西&lt;/li&gt;
+&lt;li&gt;然后它使用 &lt;code&gt;ActorSystem&lt;/code&gt; 来创建一个叫做 &lt;code&gt;ActorRef&lt;/code&gt; 的东西，并将 &lt;code&gt;QuoteRequest&lt;/code&gt; 消息发送给 &lt;code&gt;ActorRef&lt;/code&gt;(&lt;code&gt;TeacherActor&lt;/code&gt; 的代理)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ActorRef&lt;/code&gt; 将消息传送至&lt;code&gt;Message Dispatcher&lt;/code&gt; 进行分发&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Dispatcher&lt;/code&gt; 将消息压入目标 Actor 的 &lt;code&gt;MailBox&lt;/code&gt; 队列&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Dispatcher&lt;/code&gt; 将 &lt;code&gt;MailBox&lt;/code&gt; 送入到某个线程去执行(后续章节介绍更多细节)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MailBox&lt;/code&gt; 抛出一个&lt;code&gt;message&lt;/code&gt; 并最终将其委托给真正的 &lt;code&gt;Actor&lt;/code&gt; - Teacher 的 receive 方法处理。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Scala 和 Java 的混合编译指南</title>
+      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-04_17-29-01/</link>
+      <pubDate>Tue, 04 Aug 2015 17:29:01 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-04_17-29-01/</guid>
+      <description>&lt;h1 id=&#34;scala-和-java-的混合编译指南&#34;&gt;Scala 和 Java 的混合编译指南&lt;/h1&gt;
+
+&lt;p&gt;使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。
+全文的基础如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/joint-compilation-of-scala-and-java.png-q75&#34; alt=&#34;Java 和 Scala 混合编译流程&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;图片来源：&lt;a href=&#34;http://www.slideshare.net/javatwo2011/java-app-scala&#34;&gt;如何在 Java App 中導入 Scala&lt;/a&gt;，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 &lt;em&gt;Scala Cookbook&lt;/em&gt;, 先行谢过。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Deploy Hadoop cluster with Vagrant and Ambari</title>
+      <link>https://blog.yuanbin.me/posts/2015-07/2015-07-19_16-26-10/</link>
+      <pubDate>Sun, 19 Jul 2015 16:26:10 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-07/2015-07-19_16-26-10/</guid>
+      <description>&lt;h1 id=&#34;deploy-hadoop-cluster-with-vagrant-and-ambari&#34;&gt;Deploy Hadoop cluster with Vagrant and Ambari&lt;/h1&gt;
+
+&lt;p&gt;近期开始接触 Hadoop/Spark 相关的东西，部署单个节点很简单，但是要弄成集群就有点伤脑筋了，且不说集群本身的部署，光那数不清的『大数据』名词就能让人眼花缭乱，建议初次接触『大数据』的看看董飞的 &lt;a href=&#34;http://zhuanlan.zhihu.com/donglaoshi/19962491&#34;&gt;后Hadoop时代的大数据架构&lt;/a&gt; 压压惊。&lt;/p&gt;
+
+&lt;p&gt;不少教程都是教你先下 Hadoop, Spark 等然后再挨个配 hostname 等，为了你的生命着想，这里采用的是 &lt;a href=&#34;https://ambari.apache.org/&#34;&gt;Ambari&lt;/a&gt; - 一种快速批量部署 Hadoop 平台的管理软件。与自己手动安装不同，Ambari 通常需要配合一些公司发布的 Hadoop 发行版进行安装，官网上默认的是 &lt;a href=&#34;http://hortonworks.com/&#34;&gt;Hortonworks&lt;/a&gt; 公司提供的发行版。与 Hortonworks 类似，IBM 也提供了类似的发行版，称为 &lt;a href=&#34;http://www-01.ibm.com/software/data/infosphere/hadoop/enterprise.html&#34;&gt;BigInsights&lt;/a&gt;, 官方安装视频可见 &lt;a href=&#34;https://www.youtube.com/watch?v=l54JqN06Zvk&#34;&gt;Getting started with the IBM Open Platform with Apache Hadoop - YouTube&lt;/a&gt;, 本文根据以上视频结合 Vagrant 在本机部署 Hadoop 集群测试环境。&lt;/p&gt;
+
+&lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Virtualbox - 提供虚拟机环境&lt;/li&gt;
+&lt;li&gt;Vagrant - 使用配置文件批量管理虚拟机，再也不用在 Virtualbox 中图形安装了&lt;/li&gt;
+&lt;li&gt;一个好用的 Terminal - iTerm2/OSX, Terminator/Linux, Babun/Windows&lt;/li&gt;
+&lt;li&gt;tmux - 终端复用，无需新开标签或者窗口，更好地使用 Terminal&lt;/li&gt;
+&lt;li&gt;良好的外网访问环境，某些网络环境下建议加代理或者 VPN&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Windows 系统下的开发环境搭建</title>
+      <link>https://blog.yuanbin.me/posts/2015-07/2015-07-17_22-22-00/</link>
+      <pubDate>Fri, 17 Jul 2015 22:22:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-07/2015-07-17_22-22-00/</guid>
+      <description>Windows 系统下的开发环境搭建 自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p,</description>
+    </item>
+    
+    <item>
+      <title>A bit of Functional Programming</title>
+      <link>https://blog.yuanbin.me/posts/2015-07/2015-07-12_10-59-18/</link>
+      <pubDate>Sun, 12 Jul 2015 10:59:18 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-07/2015-07-12_10-59-18/</guid>
+      <description>A bit of Functional Programming 近期在某百年老店实习，需要了解下 Spark 及 Akka 等高端玩意儿，这俩都是用 Scala 写出来的，尽管有 Java 等 API 可调用，但深入了解下其实现总归是不错的。在 Mentor</description>
+    </item>
+    
+    <item>
+      <title>Filter RSS contents</title>
+      <link>https://blog.yuanbin.me/posts/2015-06/2015-06-05_22-54-43/</link>
+      <pubDate>Fri, 05 Jun 2015 22:54:43 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-06/2015-06-05_22-54-43/</guid>
+      <description>Filter RSS contents 自 Google Reader 关闭以来，模仿者应接不暇，但是能达到 GR 可用性的产品实在不多见。最近找工作实习经常要逛学校 BBS, 但这需要人工过滤掉很多并不需要的噪声，</description>
+    </item>
+    
+    <item>
+      <title>一道阿里的抛硬币选择题</title>
+      <link>https://blog.yuanbin.me/posts/2015-04/2015-04-01_16-19-45/</link>
+      <pubDate>Wed, 01 Apr 2015 16:19:45 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-04/2015-04-01_16-19-45/</guid>
+      <description>一道阿里的抛硬币选择题 最近开始准备找实习，各大公司的题自然是不可错过，今天看到一道抛硬币方面的概率题，找了下看到网上的答案几乎都是错的，这里</description>
+    </item>
+    
+    <item>
+      <title>一道fork题引发的思考</title>
+      <link>https://blog.yuanbin.me/posts/2015-03/2015-03-26_14-11-01/</link>
+      <pubDate>Thu, 26 Mar 2015 14:11:01 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-03/2015-03-26_14-11-01/</guid>
+      <description>一道fork题引发的思考 问题如下： int main(){fork()||fork();}中，其共创建了几个进程？ 此题考查fork的原理和或操作的求</description>
+    </item>
+    
+    <item>
+      <title>TCP协议浅析</title>
+      <link>https://blog.yuanbin.me/posts/2015-03/2015-03-24_13-39-59/</link>
+      <pubDate>Tue, 24 Mar 2015 13:39:59 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-03/2015-03-24_13-39-59/</guid>
+      <description>&lt;h1 id=&#34;tcp协议浅析&#34;&gt;TCP协议浅析&lt;/h1&gt;
+
+&lt;p&gt;TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。&lt;/p&gt;
+
+&lt;p&gt;在浅析TCP传输层协议之前先说说&lt;code&gt;segment&lt;/code&gt;, &lt;code&gt;datagram&lt;/code&gt;, &lt;code&gt;frame&lt;/code&gt;的区别。&lt;/p&gt;
+
+&lt;p&gt;严格说来，以上三个名词均为专业性术语。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;message&lt;/code&gt; - 用于应用层&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;segment&lt;/code&gt; - TCP的PDU(Protocol Data Unit)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;datagram&lt;/code&gt; - UDP的PDU&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;packet&lt;/code&gt; - IP的PDU(RFC791中也称之为datagram)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;frame&lt;/code&gt; - 数据链路层的PDU&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;tcp-segment-structure&#34;&gt;TCP segment structure&lt;/h2&gt;
+
+&lt;p&gt;TCP segment由TCP头部和TCP数据部分组成，首先来瞅瞅TCP头部的包结构。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/tcp_header.png-q75&#34; alt=&#34;TCP头部包结构&#34; /&gt;&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;Source port (16 bits)&lt;/dt&gt;
+&lt;dd&gt;16位源端口号(发送方使用)&lt;/dd&gt;
+&lt;dt&gt;Destination port (16 bits)&lt;/dt&gt;
+&lt;dd&gt;16位目的端口号(接收方使用)&lt;/dd&gt;
+&lt;dt&gt;Sequence number (32 bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;32位序列号，有两个作用：&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;在&lt;code&gt;SYN&lt;/code&gt; flag 置1时，此为当前连接的初始序列号（initial sequence number, ISN），数据的第一个字节序号为此ISN+1&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;在&lt;code&gt;SYN&lt;/code&gt; flag 置0时，为当前连接报文段的累计数据包字节数。&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Acknowledgment number (32 bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;32位确认序号，ACK flag置1时才有效，指接收方期待的下一个报文段的序列号。&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Data offset (4 bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;指示TCP头部的32位元的数目。由于有Options域的存在，因此TCP头部最小为20字节，最大为(15*4 = 60)字节. 同时这个域也包含了TCP报文段实际数据的开始偏移量。&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Reserved (3 bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;保留域&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Flags (9 bits) (aka Control bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;控制域信息包含9个一位标志符(3个为新增)。&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;ACK - 确认域使用。在初始SYN包之后由客户端发送到报文段都必须包含此控制信息&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;RST - 重置连接&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;SYN - 同步序列号，一般仅在连接双方发送第一个包时使用&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;FIN - 发送方不再发送数据&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Window size (16 bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;接收窗口的大小(默认以字节为单位)，期望接收到报文段多少，常用于流控。&lt;/p&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>编程语言的版本选择</title>
+      <link>https://blog.yuanbin.me/posts/2015-03/2015-03-19_08-45-55/</link>
+      <pubDate>Thu, 19 Mar 2015 08:45:55 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-03/2015-03-19_08-45-55/</guid>
+      <description>编程语言的版本选择 在实际开发和测试过程中，难免会遇到要使用编程语言的不同版本的情况。重量级的解决方案有如docker之类的容器化技术，这里自</description>
+    </item>
+    
+    <item>
+      <title>科研有方读书笔记之如何做科研</title>
+      <link>https://blog.yuanbin.me/posts/2015-01/2015-01-06_11-53-30/</link>
+      <pubDate>Tue, 06 Jan 2015 11:53:30 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-01/2015-01-06_11-53-30/</guid>
+      <description>&lt;h1 id=&#34;科研有方读书笔记之如何做科研&#34;&gt;科研有方读书笔记之如何做科研&lt;/h1&gt;
+
+&lt;p&gt;该页面为《科研有方：科研需要『想好』再『做』》一书读书笔记的第二章总结，对该书前言及第一章的总结可移步 &lt;a href=&#34;http://blog.yuanbin.me/posts/2014/09/research-preparation.html&#34;&gt;科研有方读书笔记之做科研的准备工作&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;如何做科研&#34;&gt;如何做科研&lt;/h1&gt;
+
+&lt;p&gt;做科研归根结底就是一个字：想。科研所『想』的问题通常比较复杂，因此需要有逻辑、系统并且严密的设计。逻辑性『想』的关键，所谓逻辑也就是前因后果清晰明了。&lt;/p&gt;
+
+&lt;p&gt;科研需要持续性的思考，而思考是一个缓慢的、需要积累的过程，因此需要有策略的阅读、有逻辑的思考和有步骤地总结和推进自己的科研，这是做科研的关键所在。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python for data analysis</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-30_18-36-00/</link>
+      <pubDate>Sun, 30 Nov 2014 18:36:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-30_18-36-00/</guid>
+      <description>python for data analysis 安装Pyenv - yyuu/pyenv，安装之前需要相关工具链 - Common build problems · yyuu/pyenv Wiki 申请学术用途 - The Anaconda Python Distribution for Academics 安装anaconda, pyenv install anaconda, 查看</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2/树莓派之swap交换文件</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-30_16-00-56/</link>
+      <pubDate>Sun, 30 Nov 2014 16:00:56 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-30_16-00-56/</guid>
+      <description>Cubieboard2/树莓派之swap交换文件 Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之自建 DNS 服务器</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/</link>
+      <pubDate>Sat, 29 Nov 2014 17:19:56 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/</guid>
+      <description>&lt;h1 id=&#34;家用服务器之自建-dns-服务器&#34;&gt;家用服务器之自建 DNS 服务器&lt;/h1&gt;
+
+&lt;p&gt;之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;前不久某国开始清理未备案的域名使用教育网IP。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;某高科技部门的大招之一：专业投毒污染三十年。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;好了，针对以上问题我们使用两招就好了——ChinaDNS + ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Pycon2014 美国视频合辑下载</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-29_11-04-04/</link>
+      <pubDate>Sat, 29 Nov 2014 11:04:04 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-29_11-04-04/</guid>
+      <description>Pycon2014 美国视频合辑下载 作为一名Pythoner，一年一度的Pycon当然值得关注，在美国举办的Pycon质量还是比较高的。鉴于天朝特殊的网络环境</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之 UPnP/DLNA 媒体服务</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-11_18-22-50/</link>
+      <pubDate>Tue, 11 Nov 2014 18:22:50 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-11_18-22-50/</guid>
+      <description>家用服务器之 UPnP/DLNA 媒体服务 在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之 BT(PT) 下载机</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-09_09-12-11/</link>
+      <pubDate>Sun, 09 Nov 2014 09:12:11 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-09_09-12-11/</guid>
+      <description>家用服务器之 BT(PT) 下载机 作为一个正常的大学，尤其是工科高校，应该都有自己的BT/PT站(资源分享站点)，教育网内最出名的就是六维空间了，资源超多</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2/树莓派之Archlinux网络配置</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/</link>
+      <pubDate>Sat, 08 Nov 2014 19:26:58 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/</guid>
+      <description>Cubieboard2/树莓派之Archlinux网络配置 前文1和2分别就Cubieboard2双卡版的Archlinux系统安装及简单配置</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2/树莓派之Archlinux系统配置</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</link>
+      <pubDate>Fri, 07 Nov 2014 17:21:14 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</guid>
+      <description>&lt;h1 id=&#34;cubieboard2-树莓派之archlinux系统配置&#34;&gt;Cubieboard2/树莓派之Archlinux系统配置&lt;/h1&gt;
+
+&lt;p&gt;上文 &lt;a href=&#34;http://blog.billryan.me/posts/2014/11/Cubieboard2-Archlinux-install.html&#34;&gt;Cubieboard2之Archlinux安装指南&lt;/a&gt; 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。&lt;/p&gt;
+
+&lt;p&gt;P.S. 相关文章可见&lt;a href=&#34;http://blog.billryan.me/tags/cubieboard/&#34;&gt;Tag: cubieboard&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2之Archlinux安装指南</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-06_15-56-23/</link>
+      <pubDate>Thu, 06 Nov 2014 15:56:23 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-06_15-56-23/</guid>
+      <description>Cubieboard2之Archlinux安装指南 Cubieboard2目前有两个版本，一个是后来推出的Cubieboard2双卡版，双卡版</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Programming-计算机编程导论</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-06_09-57-44/</link>
+      <pubDate>Thu, 06 Nov 2014 09:57:44 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-06_09-57-44/</guid>
+      <description>Introduction to Programming-计算机编程导论 还记得在11年年底的时候有计划整理一本与计算机编程学习有关的小书，正好之前有看过「碧蓝右耳」写过的</description>
+    </item>
+    
+    <item>
+      <title>digitalocean VPS 把玩</title>
+      <link>https://blog.yuanbin.me/posts/2014-10/2014-10-13_09-23-28/</link>
+      <pubDate>Mon, 13 Oct 2014 09:23:28 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-10/2014-10-13_09-23-28/</guid>
+      <description>&lt;h1 id=&#34;digitalocean-vps-把玩&#34;&gt;digitalocean VPS 把玩&lt;/h1&gt;
+
+&lt;p&gt;对DigitalOcean家的VPS觊觎已久，正好前不久Github有针对高校学生的优惠活动——&lt;a href=&#34;https://education.github.com/pack&#34;&gt;GitHub Student Developer Pack&lt;/a&gt;，昨晚开始总算用上了给力的DO！之前有用同学友情赞助的搬瓦工VPS，用作「&lt;a href=&#34;https://github.com/sjtug/kxsw&#34;&gt;科学上网&lt;/a&gt;」甚是物美价廉，服务了不少热爱科研和技术的孩纸，具体细节略去不表 -.- 如今自己对VPS的需求已不再局限于科学上网，更多地是想基于VPS开发自己的一些应用和学点东西。手头没多少闲钱的学生党们跟着我往下走吧 :)  110美刀的DO不是梦！&lt;strong&gt;目前Github似乎已经屏蔽了&lt;code&gt;*.edu.cn&lt;/code&gt;的邮箱，早起的鸟儿有虫吃，请各位节哀&amp;hellip;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;首先么，你得有个&lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt;帐号，注册好Github后打开链接&lt;a href=&#34;https://education.github.com/pack&#34;&gt;GitHub Student Developer Pack&lt;/a&gt;，猛击「Get your pack」链接，点进去之后应该会验证你的edu邮箱，这个可以在注册Github时就用edu邮箱，也可以在这里添加一个辅助的edu邮箱，殊途同归。注册后Github会发送一封邮件至你指定的edu邮箱，注意查收验证即可。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/get-your-pack.png-q75&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>高校实验室环境下的服务器部署小议</title>
+      <link>https://blog.yuanbin.me/posts/2014-09/2014-09-19_23-53-51/</link>
+      <pubDate>Fri, 19 Sep 2014 23:53:51 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-09/2014-09-19_23-53-51/</guid>
+      <description>高校实验室环境下的服务器部署小议 在理工科的一些科研团队实验室中，一般或多或少都会有那么几台服务器。此文主要就高校实验室环境下的服务器及应用部</description>
+    </item>
+    
+    <item>
+      <title>科研有方读书笔记之做科研的准备工作</title>
+      <link>https://blog.yuanbin.me/posts/2014-09/2014-09-16_19-50-22/</link>
+      <pubDate>Tue, 16 Sep 2014 19:50:22 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-09/2014-09-16_19-50-22/</guid>
+      <description>&lt;h1 id=&#34;科研有方读书笔记之做科研的准备工作&#34;&gt;科研有方读书笔记之做科研的准备工作&lt;/h1&gt;
+
+&lt;p&gt;以下内容为本人在阅读《科研有方：科研需要『想好』再『做』》一书时所做的笔记，此为『前言』和『第一章』部分,大多为摘抄，少部分内容为自己补充。自己其实只是一名小硕而已，也无意继续念Ph.D. 但是一些好的科研方法和思路还是值得分享的。感谢导师推荐的这本好书 :)&lt;/p&gt;
+
+&lt;p&gt;觉得此书内容还不错的可以到电商处购买，此为全文中唯一的广告，哈哈哈。&lt;/p&gt;
+
+&lt;p&gt;相关文章 - &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/01/research-how-to.html&#34;&gt;科研有方读书笔记之如何做科研&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>第十八届校园歌手大赛-陈小熊特辑</title>
+      <link>https://blog.yuanbin.me/posts/2014-08/2014-08-15_21-56-57/</link>
+      <pubDate>Fri, 15 Aug 2014 21:56:57 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-08/2014-08-15_21-56-57/</guid>
+      <description>&lt;h1 id=&#34;第十八届校园歌手大赛-陈小熊特辑&#34;&gt;第十八届校园歌手大赛-陈小熊特辑&lt;/h1&gt;
+
+&lt;p&gt;话说之前本没想来看十大的，但是梦寒学姐在人人上提及很想来看小熊的演出，遂花了不少心血总算是从「信息通通」那弄来了剩下为数不多的一张入场票，晚上十二点左右票务的工作人员把票送到了寝室楼下，真是感动地泪流满面～_～ 不过最后还是很可惜哇，某人由于闵大荒太远木有人陪还是没能来现场。于是吃完晚饭自己一个人就去排队了咯，不去不知道啊，队伍不多久就排成一条长龙了。看完后觉得，嗯，真是不虚此行，今年十大一定也要再来现场围观！&lt;/p&gt;
+
+&lt;p&gt;葡萄上很早就放出了当晚比赛的全程录像，但是没有针对个人单独整理成特辑，单个mp4文件有10GB之巨，发布在网上显然不合适。鉴于自己对小熊的极度喜爱和推崇，也便于更多的小熊粉丝们能看到小熊精彩的现场表演，趁这几天有空便筹划着把小熊在去年的lightning现场单独整理成特辑。&lt;/p&gt;
+
+&lt;p&gt;P.S. 手机或者平板上视频无法直接观看的试试点「在线播放-优酷网」链接。&lt;/p&gt;
+
+&lt;h2 id=&#34;part1-out评委-你有多久没看过星星-小熊原创&#34;&gt;Part1——out评委(你有多久没看过星星——小熊原创)&lt;/h2&gt;
+
+&lt;p&gt;小熊一出场的歌声就震撼到我了，难怪寒哥如此喜欢。之前极少有听到类似的音色，满满的治愈感 :)&lt;/p&gt;
+
+&lt;iframe height=498 width=510 src=&#34;http://player.youku.com/embed/XNzU2MzMwNTQw&#34; frameborder=0 allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://v.youku.com/v_show/id_XNzU2MzMwNTQw.html&#34;&gt;上海交通大学第十八届校园歌手大赛-part1-陈小熊—在线播放—优酷网&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pan.baidu.com/share/link?shareid=67844326&amp;amp;uk=3189859145&amp;amp;fid=1087166447040845&#34;&gt;part1-小熊-out评委.mkv|百度云下载&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>栀子花开</title>
+      <link>https://blog.yuanbin.me/posts/2014-06/2014-06-13_21-53-44/</link>
+      <pubDate>Fri, 13 Jun 2014 21:53:44 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-06/2014-06-13_21-53-44/</guid>
+      <description>栀子花开 有五年没看到南方大片大片的栀子花了，嗯，回到南方的感觉真棒！早上去二餐的途中顺便在新图书馆周边采了栀子花开时的千姿百态，第一朵长得真</description>
+    </item>
+    
+    <item>
+      <title>Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5</title>
+      <link>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</link>
+      <pubDate>Thu, 05 Jun 2014 15:33:04 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</guid>
+      <description>&lt;h1 id=&#34;architecture-of-ieee-802-15-6-wban-simulation-based-on-opnet14-5&#34;&gt;Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5&lt;/h1&gt;
+
+&lt;p&gt;Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; &lt;a href=&#34;https://github.com/billryan/WBAN-OPNET-Simulation&#34;&gt;billryan/WBAN-OPNET-Simulation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, &lt;a href=&#34;https://github.com/boulis/Castalia&#34;&gt;boulis/Castalia&lt;/a&gt; would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for the &lt;a href=&#34;http://www.open-zb.net/wpan_simulator.php&#34;&gt;open-ZB.net - IEEE 802.15.4/ZigBee OPNET Simulation Model&lt;/a&gt;, I refered a lot of code from this powerful Simulation Model.&lt;/p&gt;
+
+&lt;p&gt;Simulation Platforms:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OS: Windows XP SP3&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Simulator: OPNET 14.5 with Educational version&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;architecture-of-this-simulation-node-model-in-opent-14-5&#34;&gt;Architecture of this Simulation - Node Model in OPENT 14.5&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_opnet_node_model.png&#34; alt=&#34;wban Node Model&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>烟雨空濛游西湖</title>
+      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-24_14-37-25/</link>
+      <pubDate>Sat, 24 May 2014 14:37:25 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-24_14-37-25/</guid>
+      <description>&lt;h1 id=&#34;烟雨空濛游西湖&#34;&gt;烟雨空濛游西湖&lt;/h1&gt;
+
+&lt;p&gt;来交大读研已有近一载的时光，杭州离魔都虽挺近，从地处闵大荒的交大坐普通火车到达杭州也就两个多小时，但一直未觅得机会前往杭州看看这座历史文化名城。与其说是去看历史文化名城，倒不如说是去游西湖。正好五一过后的一个星期云儿也有意去杭州一趟，微信群里大伙儿一商量便成行了。Martin买火车票，yuner看了大半天wiki给大伙儿做了详细的行程安排，我则在中国青旅官网订了间离西湖较近的旅社。&lt;/p&gt;
+
+&lt;p&gt;周六早上8点49的火车，我和yuner最后几分钟上的车，快到火车站时Martin拿着我们俩的身份证飞奔到取票机，kok则堵在检票门口&amp;hellip; 辛苦Martin和kok了 ^_^  好在赶在关门之前上了车，惊险程度堪比我上次坐火车回家=_=&lt;/p&gt;
+
+&lt;p&gt;去杭州游玩，西湖那一片的景区自然是要去仔细品味一番的，指不定还能在西湖边和古代的文人骚客来场跨越千年的对话。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;水光潋滟晴方好，山色空濛雨亦奇。&lt;br /&gt;
+欲把西湖比西子，淡妆浓抹总相宜。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这次去杭州恰好遇到阴雨天气，好在第一天游玩时并未下雨，两天下来感觉人还不算特别多。5月10号那天一直阴，风略大，虽没有蓝天白云，但湖光山色还不错。&lt;br /&gt;
+&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/2014/201405/2014-05-10_15-53-18.jpg&#34; alt=&#34;山水一色&#34; /&gt;&lt;br /&gt;
+
+漫步在西湖边上，拂着轻风，心情甚是愉悦。在岸边远眺西湖已足以让人心旷神怡，但如若能随小船一起游荡在湖中央，感觉岂不是更好？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Victor 9500羽毛球拍试用</title>
+      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-16_21-56-49/</link>
+      <pubDate>Fri, 16 May 2014 21:56:49 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-16_21-56-49/</guid>
+      <description>Victor 9500羽毛球拍试用 话说这把新拍买了也有好些日子了，去年双11买的，比本科阶段用的100来块的牌子弹性要好，重量也更轻一些——3U么，加上</description>
+    </item>
+    
+    <item>
+      <title>deepin-screenshot把玩小记</title>
+      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-16_20-47-22/</link>
+      <pubDate>Fri, 16 May 2014 20:47:22 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-16_20-47-22/</guid>
+      <description>deepin-screenshot把玩小记 在用上「deepin-screenshot」之前用过不少截屏软件，有重量级的shutter, 也有轻</description>
+    </item>
+    
+    <item>
+      <title>英文Locale下使用Fcitx中文输入法</title>
+      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-16_17-24-43/</link>
+      <pubDate>Fri, 16 May 2014 17:24:43 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-16_17-24-43/</guid>
+      <description>英文Locale下使用Fcitx中文输入法 最近的工作模式逐渐转换到「Raspberry PI」+「实验室ESX虚拟出的多操作系统」，多装了个系</description>
+    </item>
+    
+    <item>
+      <title>Hexo多Repo部署——使用Github和GitCafe同时托管博客</title>
+      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-02_11-24-57/</link>
+      <pubDate>Fri, 02 May 2014 11:24:57 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-02_11-24-57/</guid>
+      <description>&lt;h1 id=&#34;hexo多repo部署-使用github和gitcafe同时托管博客&#34;&gt;Hexo多Repo部署——使用Github和GitCafe同时托管博客&lt;/h1&gt;
+
+&lt;p&gt;使用Github托管博客已有好几年的时间了，&lt;a href=&#34;http://zespia.tw/hexo/docs/&#34;&gt;Hexo&lt;/a&gt; + &lt;a href=&#34;https://github.com/&#34;&gt;Github&lt;/a&gt; + Markdown + &lt;a href=&#34;www.dnspod.cn&#34;&gt;DNSPod&lt;/a&gt; 的组合方案工作地非常好，这四套组合拳打下来使得博客站点的维护成本大大降低，在 Geek 之间也是流传甚广。&lt;/p&gt;
+
+&lt;p&gt;最开始在 Github 上建站用的是 Octopress，插件在当时虽然比较丰富，但是每次生成静态页面的速度实在是不敢恭维，Ruby么&amp;hellip; 偶然在西电开源社区邮件列表上看到有人推荐 &lt;a href=&#34;http://hexo.io/&#34;&gt;Hexo&lt;/a&gt;，当时并没太在意，但是过后几天特意 Google 了下 Hexo，发现其最大的特性就是 blazing fast! 果断在自己的 Arch 上配好了 Hexo，比起当初配 Octopress还是要省心不少的。&lt;/p&gt;
+
+&lt;p&gt;前两三个月一直忙着项目和论文，也没怎么打理博客，前些天看了下 &lt;a href=&#34;http://hexo.io/&#34;&gt;Hexo&lt;/a&gt;的进展，真是异常活跃咩～  issues 里边间或还能瞅到 &lt;a href=&#34;https://gitcafe.com&#34;&gt;GitCafe&lt;/a&gt; 的身影。随手就 Google 了下『hexo gitcafe』，看到好些从 &lt;a href=&#34;https://github.com/&#34;&gt;Github&lt;/a&gt;迁移到 &lt;a href=&#34;https://gitcafe.com&#34;&gt;GitCafe&lt;/a&gt; 的，&lt;a href=&#34;https://github.com/&#34;&gt;Github&lt;/a&gt; 的 CDN 固然给力，但在天朝特殊的网络环境下还是有力不从心的时候，正在这『生死存亡』的关键时刻，&lt;a href=&#34;https://gitcafe.com&#34;&gt;GitCafe&lt;/a&gt; 横空出世了，2012年10月更是推出了备受好评的 &lt;a href=&#34;http://blog.gitcafe.com/116.html&#34;&gt;Pages服务&lt;/a&gt;——没有 Pages 服务哪来现在的这个博客 :-) 2013年4月 &lt;a href=&#34;https://gitcafe.com&#34;&gt;GitCafe&lt;/a&gt; 再次发力推出了&lt;a href=&#34;http://blog.gitcafe.com/142.html&#34;&gt;自定义域名绑定&lt;/a&gt;功能。至此，作为独立博客建站的两大条件——Pages+域名绑定 &lt;a href=&#34;https://gitcafe.com&#34;&gt;GitCafe&lt;/a&gt; 均已具备。万事俱备，只欠东风～ 这东风当然非 Hexo 莫属。&lt;/p&gt;
+
+&lt;h2 id=&#34;hexo下多repository部署实战-使用github和gitcafe&#34;&gt;Hexo下多Repository部署实战——使用Github和GitCafe&lt;/h2&gt;
+
+&lt;p&gt;同时在 Github 和 GitCafe 部署 Hexo 的主要优势如下：&lt;br /&gt;
+1. 负载均衡，速度大增——由于两大 Pages 服务均可自定义域名，国内用户可选择走 GitCafe，国外用户则走 GitHub&lt;br /&gt;
+2. 自定义路由——配合 DNSPod 的『线路类型』可完美支持1中方案&lt;br /&gt;
+3. 国内用户访问走 GitCafe, dig 了下发现国内的话他们托管在香港的 Softlayer, 确实挺快！单个Repo的300MB空间对于技术博客是完全够用的&lt;br /&gt;
+4. 多机备份——两大 Pages 服务同时挂掉的可能微乎其微&lt;br /&gt;
+5. 你懂的&amp;hellip; 不方便说太细&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>树莓派把玩之OS和硬件选型</title>
+      <link>https://blog.yuanbin.me/posts/2014-02/2014-02-09_15-38-35/</link>
+      <pubDate>Sun, 09 Feb 2014 15:38:35 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-02/2014-02-09_15-38-35/</guid>
+      <description>树莓派把玩之OS和硬件选型 最开始听说树莓派(Raspberry PI)是在西电开源社区的邮件列表中，那时只知道这是个可以装Linux的微型电脑</description>
+    </item>
+    
+    <item>
+      <title>Compile r8101 driver modules for Linux-3.10</title>
+      <link>https://blog.yuanbin.me/posts/2014-02/2014-02-09_13-52-08/</link>
+      <pubDate>Sun, 09 Feb 2014 13:52:08 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-02/2014-02-09_13-52-08/</guid>
+      <description>Compile r8101 driver modules for Linux-3.10 Long long ago, I installed Ubuntu 10.04 as my first Linux Distro, due to the problems of networking, I used it only few times. The suck problem is that when you copy large files or did some other things as normal, the network is down! The only solution is to restart your computer! I asked bigeagle for solving this weird issue. He found it was the ethernet card driver that caused this weird issue, and you can find lots of problems with the key words searching &amp;ldquo;r8101 r8169 issue&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>resources of statistical learning - 统计学习资料小结</title>
+      <link>https://blog.yuanbin.me/posts/2013-12/2013-12-13_21-56-43/</link>
+      <pubDate>Fri, 13 Dec 2013 21:56:43 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-12/2013-12-13_21-56-43/</guid>
+      <description>resources of statistical learning - 统计学习资料小结 出于对 Machine Learning 的兴趣，选了这个学期开的『统计学习与推理』，真是一入统计深似海&amp;hellip; 十一之后才开的统计学习，每</description>
+    </item>
+    
+    <item>
+      <title>交大生活进行时之beginning</title>
+      <link>https://blog.yuanbin.me/posts/2013-12/2013-12-01_11-55-03/</link>
+      <pubDate>Sun, 01 Dec 2013 11:55:03 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-12/2013-12-01_11-55-03/</guid>
+      <description>&lt;h1 id=&#34;交大生活进行时之beginning&#34;&gt;交大生活进行时之beginning&lt;/h1&gt;
+
+&lt;p&gt;开学前的复试来过一次交大，正好遇着大降温，风也是呼呼地刮，那一个星期基本都是士洲学长带着满校园转，冰冷的温度下让我感受到了阵阵暖意，真心是中国好学长呀！在士洲寝室里用过交大的校园网，不能满意再多:)  9月份开学至今差不多3个月过去了，也许是经历了四年的本科，开学之初的新鲜感早已不复存在。还记得暑假时曾问过导师和师兄是否可以早点到学校，『阿斌哥你可要珍惜这最后一个暑假哇』——小明师兄语重心长地对我说道，于是乎早来学校的想法作罢。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OPNET学习笔记之入门指南</title>
+      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-21_08-22-28/</link>
+      <pubDate>Mon, 21 Oct 2013 08:22:28 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-21_08-22-28/</guid>
+      <description>OPNET学习笔记之入门指南 从接触OPNET以来大约也有3个月了，断断续续学了点皮毛，这里把自己折腾的成果陆续整理在这，也算是自己的一个学习</description>
+    </item>
+    
+    <item>
+      <title>Excerpts of _How to Read a Paper_</title>
+      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-10_21-48-40/</link>
+      <pubDate>Thu, 10 Oct 2013 21:48:40 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-10_21-48-40/</guid>
+      <description>Excerpts of How to Read a Paper Most of the contents in this document were excerpted from How to read a Paper. This article outlines a practical and efficient three-pass method for reading research papers, and describes how to use this method to do a literature survey.
+Three-Pass approach Read the paper in up to three passes.
+1. The first pass gives you a general idea about the paper.</description>
+    </item>
+    
+    <item>
+      <title>OPNET学习笔记之安装指南 (Win7 &amp; XP)</title>
+      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-05_22-17-30/</link>
+      <pubDate>Sat, 05 Oct 2013 22:17:30 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-05_22-17-30/</guid>
+      <description>OPNET学习笔记之安装指南 (Win7 &amp;amp; XP) 在前文已经就OPNET14.5在Windows下的安装做了简要说明，这篇blog就OPNET 14.5安装方</description>
+    </item>
+    
+    <item>
+      <title>Install OPNET14.5 on Windows OS</title>
+      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-05_09-39-12/</link>
+      <pubDate>Sat, 05 Oct 2013 09:39:12 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-05_09-39-12/</guid>
+      <description>Install OPNET14.5 on Windows OS Install OPNET Modeler 14.5 under Windows_XP and Windows7
+Several month ago, I wrote a Chinese version of installation with OPNET on Windows OS. Today I will give a more thorough way to install OPNET14.5 on Windows.
+An installation procedure could be shown as a piece of C code.
+could be helpful.
+#include &amp;lt;stdio.h&amp;gt; void opnet_install(); void setx_install(); void opnet_configure_path(); void opnet_configure_path_vs2008(); void opnet_configure_path_vs2010(); void opnet_crack(); if (1 == Win_XP &amp;amp;&amp;amp; VC++ 6.</description>
+    </item>
+    
+    <item>
+      <title>使用exiftool 和digikam 管理数码照片</title>
+      <link>https://blog.yuanbin.me/posts/2013-09/2013-09-03_09-12-03/</link>
+      <pubDate>Tue, 03 Sep 2013 09:12:03 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-09/2013-09-03_09-12-03/</guid>
+      <description>使用exiftool 和digikam 管理数码照片 何谓管理 「管理」一词对于照片数据量比较少的时候来说几乎是没什么意义的，几十张上百张照片瞟一眼</description>
+    </item>
+    
+    <item>
+      <title>本科毕设之RapidIO技术小结</title>
+      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-28_21-30-43/</link>
+      <pubDate>Wed, 28 Aug 2013 21:30:43 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-28_21-30-43/</guid>
+      <description>&lt;h1 id=&#34;本科毕设之rapidio技术小结&#34;&gt;本科毕设之RapidIO技术小结&lt;/h1&gt;
+
+&lt;p&gt;本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，又算作是对后来者研究使用RapidIO技术的一个指引。嗯，一举两得，何乐而不为？&lt;/p&gt;
+
+&lt;p&gt;毕设是在去年12月份开始选题，那时倒也挺贪心，一心想做一个软硬结合的课题，最先开始选的课题现在都差不多忘光了，只记得选了之后将指导老师的姓名用站内搜索在好网上搜了下。这一看不知道，二看吓一跳呀！鸡皮疙瘩都快出来了。立马到教务处上删掉了，万幸那个指导老师没及时确认，由此逃过一劫&amp;hellip;  再找了下其他的软硬结合的课题，看来看去感觉RapidIO还不错，对自己来说是全新的领域。RapidIO相关的课题共有两个，一个是B档难度的，只需在FPGA上实现，而另一个老师的是A档难度，需要使用串行RapidIO协议在DSP和FPGA之间完成通信。当时选题的时候还是患了老毛病，求新求刺激！RapidIO DSP FPGA这三者当时没有一个是很熟悉的，真是初生牛犊不怕虎！&lt;/p&gt;
+
+&lt;p&gt;选题之后自然是没法马上开工，毕竟还有1月份的考研初试咧。就这样拖到了来年的1月考完初试才开始了解这个课题——基于TMS320C6455的串行RapidIO技术及其实现。到Google Scholar上搜了下，发现包含TMS320C6455 和RapidIO两个关键词的论文还真不多，随便看了几篇，结果自然是云里雾里0.o 过年在家论文方面几乎也没什么动静，等到开学回学校也差不多要复试了，于是乎又拖了两个月才正式开始——也就是从4月3号左右开始全心准备毕设的。&lt;/p&gt;
+
+&lt;h3 id=&#34;毕设之前期准备&#34;&gt;毕设之前期准备&lt;/h3&gt;
+
+&lt;p&gt;现在看来在前期最好先大概了解下课题，并进一步分解为小课题。这个可以让指导老师和师兄给个引导，一般在毕设的任务书和工作计划书中有详细说明，每条任务都可以认为是一个小课题，也许还要进一步细分。自己在这方面开始也没有经验，首先瞎摸索了一个星期也没啥收获，到实验室请教老师和师兄时才发现任务书和工作计划的好处。接下来就是根据任务书和工作计划自己拟定小课题和研究计划了。根据自己对课题的了解，我大概把毕设分为了如下几大块：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;串行RapidIO协议的了解&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;TMS320C6455芯片的编程使用&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;TMS320C6455中有关串行RapidIO部分的初始化及使用&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Altera FPGA的烧写使用&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Altera FPGA中串行RapidIO IP核的了解和使用&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;FPGA 和 DSP 进行串行RapidIO传输测试&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;论文写作——学习使用LaTeX对论文进行排版&lt;br /&gt;
+可以看出要在短短的两个月里全部完成难度还是稍微有点大的，更坑爹的是后期实验室包含Altera FPGA的板子一直没画出来，于是乎便换到实验室现有的Xilinx平台，关键时刻还是得自己看着形势走呀，说多了都是泪&amp;hellip;&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;毕设之论文思路&#34;&gt;毕设之论文思路&lt;/h3&gt;
+
+&lt;p&gt;这个主体部分其实是参考了些硕士博士论文来的，当然也参考了RapidIO协会力荐的《RapidIO嵌入式系统互连》。首先简单描述了传统总线技术的不足，树个靶子，接下来自然就引申出了新型总线所需要的一些技术特性，满足这些技术特性的往往不止一个协议，所以对这些新型总线技术又有一个横向的比较，给些数据+曲线图，来点说服力，说明串行RapidIO在嵌入式互连领域的优势，接下来就是对RapidIO的大写特写了。写完RapidIO自然不是目的，毕竟论文标题中有个硕大的「实现」么。DSP和FPGA上的串行RapidIO实现自然也值得仔细地描述一番。OK，论文写到这差不多就快到尾声了，最后分析一下DSP和FPGA联调时使用串行RapidIO通信的一些实测数据画个图分析下原因差不多就完事了。KO! 大功告成。&lt;br /&gt;
+
+最后的成果就是这么一篇论文咯——&lt;a href=&#34;https://blog.yuanbin.me/downloads/基于TMS320C6455的串行RapidIO技术及其实现-1.2.pdf&#34;&gt;基于TMS320C6455的串行RapidIO技术及其实现&lt;/a&gt;.&lt;br /&gt;
+从中抽出一张高清大图献上&amp;ndash;&amp;gt;&lt;br /&gt;
+&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/interconnects-trends.png&#34; alt=&#34;总线互连的发展趋势&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MOOC之Coursera初体验</title>
+      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-28_15-31-20/</link>
+      <pubDate>Wed, 28 Aug 2013 15:31:20 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-28_15-31-20/</guid>
+      <description>MOOC之Coursera初体验 毕业前在果壳和Twitter上时不时地就能看到MOOC/Coursera的影子，不过当时做毕设也一直没有闲情</description>
+    </item>
+    
+    <item>
+      <title>上海交大校外代理初体验</title>
+      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-19_10-56-30/</link>
+      <pubDate>Mon, 19 Aug 2013 10:56:30 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-19_10-56-30/</guid>
+      <description>&lt;h1 id=&#34;上海交大校外代理初体验&#34;&gt;上海交大校外代理初体验&lt;/h1&gt;
+
+&lt;p&gt;最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的论文也不可能会交待较多的细节。如果要结合OPNET来分析网络性能什么的显然是不知从何下手，于是乎习惯性的Google了一番，找到了一篇博士论文，正准备下载的时候&amp;hellip; 乖乖，现在已经不是校园网了哟，立马向西电的基友求助，短信刚发出去就想到了个令人激动的消息——隐约记得交大网络信息中心是提供校外访问的代理服务器的，那么？Google一下立马找到了&lt;a href=&#34;http://www.lib.sjtu.edu.cn/list.do?articleType_id=45&amp;amp;type=63&#34;&gt;这个链接&lt;/a&gt;，网页中提供了局域网和ADSL下的使用方法，都是针对IE的。说白了就是提供了代理服务器的地址和端口号，如果只是在浏览器中使用的话SwitchySharp/Foxyproxy插件新增个代理就好了，试了下速度很理想！&lt;/p&gt;
+
+&lt;h2 id=&#34;代理服务器&#34;&gt;代理服务器&lt;/h2&gt;
+
+&lt;p&gt;代理服务器名：inproxy.sjtu.edu.cn&lt;br /&gt;
+端口号：8000 OR 80&lt;/p&gt;
+
+&lt;p&gt;连通后会让输入jAccount帐号密码，这个新生已经可以申请了，perfect!&lt;/p&gt;
+
+&lt;h3 id=&#34;全局代理&#34;&gt;全局代理&lt;/h3&gt;
+
+&lt;p&gt;虽然大部分情况在浏览器中使用代理就足够了，但有时其他应用程序也许也需要代理访问，这个时候就稍微有点麻烦喽。
+如果想要全局代理的话则需要模拟http认证，Windows下似乎有p-roxycap比较方便，Linux下暂时还没看到类似的软件，之前也没怎么需要用非浏览器应用中使用代理，这方面了解不太多。舍友yqt用Python写了个DXTL的全局代理，于是乎便借过来用了下，还不错，效果就是下边这个样子：&lt;br /&gt;
+&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/inproxy-sjtu.png&#34; alt=&#34;sjtu-inroxy&#34; /&gt;&lt;br /&gt;
+需要使用时只需在Terminal下运行&lt;code&gt;python sjtu-inproxy.py&lt;/code&gt;即可，很方便。&lt;br /&gt;
+
+上代码==&amp;gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OPNET14.5 Win7/XP下安装小记</title>
+      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-08_19-17-16/</link>
+      <pubDate>Thu, 08 Aug 2013 19:17:16 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-08_19-17-16/</guid>
+      <description>&lt;h1 id=&#34;opnet14-5-win7-xp下安装小记&#34;&gt;OPNET14.5 Win7/XP下安装小记&lt;/h1&gt;
+
+&lt;p&gt;导师几个星期前就发来邮件让熟悉网络仿真软件了，只是自己前一个月基本都在到处转悠，加之网络不便，也耽搁了许久，这个月可以好好学习研究一番了。
+第一次听说OPNET的时候似乎离现在已经很久远了，只记得那时对面7、8号楼还住着大四。值得一提的是7号楼当时是男女混住的^_^，哈哈，挺羡慕的吧！估计是当年的男女比例比较惊人，只不过男生住的是最南边那一排寝室，这段美好的过去估计只能写入西电的史册了&amp;hellip;
+这样算来，当时的我才大一。毕业之际，好网上到处都可以看到卖书的帖子，于是乎随便联系了一个7号楼的学长就去那淘书了，买回来差不多一堆书，OPNET就在其中，估摸着有半米多高，三年过后，发现能用的上的没几本呀！！连现在要用的OPNET都被我当废纸卖掉了&amp;hellip; 当初怎么也没想到研究生要用这玩意儿。所以嘛，旧书买下一年要用的就足够了啦，买多了真是浪费体力=_=! 喂喂！偏题了！&lt;/p&gt;
+
+&lt;h2 id=&#34;网络仿真软件&#34;&gt;网络仿真软件&lt;/h2&gt;
+
+&lt;p&gt;就我所知道的，常用的网络仿真/模拟软件要么是&lt;a href=&#34;http://en.wikipedia.org/wiki/Ns_(simulator)&#34;&gt;NS2&lt;/a&gt; (NS3正在活跃开发中), 要么就是OPNET, 前者是自由软件，后者是商业软件。它们二者之间在使用上的区别可见&lt;a href=&#34;http://www.360doc.com/content/11/0103/15/1520315_83619061.shtml&#34;&gt;NS2和OPNET的讨论&lt;/a&gt;，在仿真层次上的详细区别可见&lt;a href=&#34;http://db.tt/61l7RxNR&#34;&gt;OPNET Modeler and NS-2: Comparing the Accuracy of Network Simulators for Packet-Level Analysis using a Network Testbed&lt;/a&gt;，让我自己来选的话当然是NS2咯，优先自由软件么，OPNET14.5 Modeler在Linux下不能用，这是硬伤呀！用了近两年的Arch Linux后，我发现我越来越离不开它了，切换到MS Windows下感觉麻烦死了。问了下师兄，实验室里导师和师兄们都是用的OPNET14.5，合群一点自然是要用OPNET的。相对比较好的整合方案就是在Arch下用vbox/kvm虚拟个XP了，内存8G还是比较够使的，只是这样不符合如今节能环保的大趋势么&lt;/p&gt;
+
+&lt;h2 id=&#34;win7-xp下安装opnet14-5&#34;&gt;Win7/XP下安装OPNET14.5&lt;/h2&gt;
+
+&lt;p&gt;OPNET软件安装本身其实没啥好扯的，下载得到的3个软件包从大到小安装。关键在于OPNET是采用VC++进行编译的，相关的环境变量和编译器什么的配置起来就值得一提了。OPNET14.5是一款比较老的软件了，XP下先装VC6.0，OPNET14.5编译时所需的用户变量也就配置好了，所以说如果你还在用上古时代的XP系统，VC6.0是再好不过的搭档了。当然，现在大多数人的电脑里估计已经换成了Win7/Win8了，装个VC6.0还是比较费劲的。所以喽，当然得另辟蹊径。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3G无线上网卡分享网络之 Arch Linux与Win7篇</title>
+      <link>https://blog.yuanbin.me/posts/2013-07/2013-07-13_23-50-20/</link>
+      <pubDate>Sat, 13 Jul 2013 23:50:20 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-07/2013-07-13_23-50-20/</guid>
+      <description>&lt;h1 id=&#34;3g无线上网卡分享网络之-arch-linux与win7篇&#34;&gt;3G无线上网卡分享网络之 Arch Linux与Win7篇&lt;/h1&gt;
+
+&lt;p&gt;暑假回家没有宽带确实有点小郁闷，好在有日益发达的无线通信技术，使得在没法用上昂贵的宽带时还能按需使用3G网络，当然喽，费用也不菲，三个月￥300才15GB的流量，不看视频的话勉强能凑合着用，短期使用的话相对于一年近￥1000的电信宽带还是要便宜一些的。&lt;/p&gt;
+
+&lt;p&gt;下面进入正题，3G无线上网卡最开始是用在家里的台式机上，自己的笔记本电脑和手机要想同时上网自然得另外想想办法。大约可分为以下三种方案：&lt;br /&gt;
+1. 3G上网卡&amp;lt;==&amp;gt;台式机有线网卡&amp;lt;==&amp;gt;笔记本电脑有线网卡&amp;lt;==&amp;gt;笔记本电脑无线网卡作为热点&amp;lt;==&amp;gt;手机接入&lt;br /&gt;
+2. 3G上网卡&amp;lt;==&amp;gt;笔记本电脑无线网卡作为热点&amp;lt;==&amp;gt;手机接入&lt;br /&gt;
+3. 3G上网卡&amp;lt;==&amp;gt;笔记本电脑有线网卡&amp;lt;==&amp;gt;(台式机有线网卡&amp;lt;==&amp;gt;)笔记本电脑无线网卡作为热点&amp;lt;==&amp;gt;手机接入&lt;br /&gt;
+其中台式机运行Win7, 笔记本电脑运行Arch Linux. 总的思路就是3G网络接入，无线热点输出，3G网络与无线热点间则为局域网。&lt;br /&gt;
+形象一点的如下图所示：
+&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/3g-internet-share.jpeg&#34; alt=&#34;3G上网卡网络分享示意图&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>骑行：西电——西工大</title>
+      <link>https://blog.yuanbin.me/posts/2013-06/2013-06-11_23-15-43/</link>
+      <pubDate>Tue, 11 Jun 2013 23:15:43 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-06/2013-06-11_23-15-43/</guid>
+      <description>&lt;h1 id=&#34;骑行-西电-西工大&#34;&gt;骑行：西电——西工大&lt;/h1&gt;
+
+&lt;p&gt;昨天下午趁着西安难得的好天气和春哥骑车去了西工大新校区，出校门的时候是雨过天晴，没想到回来的时候仍然是雨过天晴 :( 从西太路回学校的时候被大雨淋得那叫一个迎头痛击，四年来总算赶上一回西北的暴风雨了。&lt;/p&gt;
+
+&lt;p&gt;自己还是挺喜欢骑行的，学校的南边就是秦岭，到西工大新校区来回也就35公里左右，不算很远，往南边走的话路上空气还算不错，透透气也蛮好的。&lt;/p&gt;
+
+&lt;p&gt;坐骑是室友的普通车，好想有一辆山地哇^_^ 可惜&amp;hellip;木有银子&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小米2 HDR小试</title>
+      <link>https://blog.yuanbin.me/posts/2013-06/2013-06-09_19-24-09/</link>
+      <pubDate>Sun, 09 Jun 2013 19:24:09 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-06/2013-06-09_19-24-09/</guid>
+      <description>&lt;h1 id=&#34;小米2-hdr小试&#34;&gt;小米2 HDR小试&lt;/h1&gt;
+
+&lt;p&gt;以夕阳西下为例
+不开启HDR，快门时间1/134秒，几乎什么都看不清。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/hdrtest_no_long.jpg-q75&#34; alt=&#34;不开启HDR，快门时间1/134秒，几乎什么都看不清&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>add cc license to your blog with Hexo</title>
+      <link>https://blog.yuanbin.me/posts/2013-05/2013-05-04_14-46-53/</link>
+      <pubDate>Sat, 04 May 2013 14:46:53 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-05/2013-05-04_14-46-53/</guid>
+      <description>add cc license to your blog with Hexo Thank @tommy351 for developing Hexo-a fast, simple &amp;amp; powerful blog framework. In this article, he described how to use with Scaffolds. We can add some permanent information in it, such as the following Creative Commons license. You can choose a license from creative commons&amp;rsquo;s site and put it under your scaffolds/*.md files. As for me, I put it in scaffolds/post.md. B.T.W. Putting</description>
+    </item>
+    
+    <item>
+      <title>上海交大12年电院电子工程系研究生自主招生小记</title>
+      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-19_11-00-03/</link>
+      <pubDate>Fri, 19 Apr 2013 11:00:03 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-19_11-00-03/</guid>
+      <description>&lt;h1 id=&#34;上海交大12年电院电子工程系研究生自主招生小记&#34;&gt;上海交大12年电院电子工程系研究生自主招生小记&lt;/h1&gt;
+
+&lt;h2 id=&#34;夏令营or自主招生&#34;&gt;夏令营OR自主招生&lt;/h2&gt;
+
+&lt;p&gt;交大去年开始把夏令营改为「研究生自主招生」，夏令营是要去交大本校的，而自主招生则是交大老师去指定的城市进行现场面试，和高考时的自主招生形式类似，不过面试问的问题相对学术一些吧。交大这么做无非是想扩大研究生招生的自主权和提高生源质量，代价就是交大的老师辛苦一些。搞研究生自主招生的绝不止交大一家，很多985院校都有类似的政策，只不过没有交大的规模这么大，全国跑。&lt;/p&gt;
+
+&lt;h2 id=&#34;自主招生面试资格及形式&#34;&gt;自主招生面试资格及形式？&lt;/h2&gt;
+
+&lt;p&gt;如果仍然按去年的做法，只有面试，考察一些英语口语及专业方面的问题。面试资格？——去年是首先发邮件申请，然后筛选通过后会通知面试。感觉要拿到面试资格这两项「GPA+英语」不能差，如果能有其他的工程实践或者学术论文什么的当然是锦上添花。&lt;br /&gt;
+今年似乎有变，一切以上海交大官网公布为准。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>819-FAQ</title>
+      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-46-13/</link>
+      <pubDate>Sat, 06 Apr 2013 16:46:13 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-46-13/</guid>
+      <description>&lt;h1 id=&#34;819-faq&#34;&gt;819-FAQ&lt;/h1&gt;
+
+&lt;p&gt;FAQ - Frequently Asked Questions&lt;/p&gt;
+
+&lt;h2 id=&#34;其它faq&#34;&gt;其它FAQ&lt;/h2&gt;
+
+&lt;h3 id=&#34;招生名额和报录比什么的&#34;&gt;招生名额和报录比什么的&lt;/h3&gt;
+
+&lt;p&gt;到交大研招办网站上去查吧，但是招生名额这东西不好说，其实是浮动的&lt;/p&gt;
+
+&lt;h3 id=&#34;要不要报班&#34;&gt;要不要报班？&lt;/h3&gt;
+
+&lt;p&gt;因人而异，我没报过任何辅导班——囊中羞涩外加喜欢自学。不过英语和政治的辅导班视频倒是下过不少，大多BT站点上能下载的到，当然，自己去整理这些东西还是要些时间的，不宜贪多，够用就行。大家辩证地去看吧&lt;/p&gt;
+
+&lt;h3 id=&#34;复习进度怎么把握&#34;&gt;复习进度怎么把握&lt;/h3&gt;
+
+&lt;p&gt;因人而异吧感觉，学扎实了就好。切不可盲目赶进度和与别人比进度，否则最后受伤的只会是自己&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>个人考研复习小结——踏实筑梦，水到渠成</title>
+      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-44-00/</link>
+      <pubDate>Sat, 06 Apr 2013 16:44:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-44-00/</guid>
+      <description>&lt;h1 id=&#34;个人考研复习小结-踏实筑梦-水到渠成&#34;&gt;个人考研复习小结——踏实筑梦，水到渠成&lt;/h1&gt;
+
+&lt;h2 id=&#34;概览&#34;&gt;概览&lt;/h2&gt;
+
+&lt;p&gt;2012年1月决定考研，5月份参加了上海交大在西安举行的自主招生面试，7月6日拿到B档优惠邮件通知并同时开始全心复习考研，2013年1月5日6日初试，2013年2月21日晚上9点左右出成绩，3月21日-3月24日电子工程系复试，3月28日收到无线所的录取通知，电子系的正式文件目前还没下来&amp;hellip;真是拖拉机呀！！！7月10日收到电子工程系的B档优惠时感动地一塌糊涂，尤其是那一句「我们在交大等着你的到来」更是温暖人心，仿佛自己已是交大的人。不过收到无线所的录取通知时心情倒挺平静的，似乎是这一切都是意料之中的_&lt;/p&gt;
+
+&lt;p&gt;初试总分385+30(B档优惠)，政治67,英语62,数学129,专业课127。可以看到都挺差劲的分数，但是加起来也有385,所以学弟学妹们完全不用担心，像我考这么烂都被录了&amp;hellip;数学的成绩出来后还挺伤感的，都想去查卷了，估计是前边小题错了几个。专业课当时出了两个比较大的意外吧算是，不然也不会考这么差的，不过也许是自己实在是太菜了，嘿嘿～有兴趣了解内幕的可以移步&lt;a href=&#34;https://blog.yuanbin.me/blog/2013/01/%E7%BB%88%E7%82%B9-%E4%B8%8B%E4%B8%80%E4%B8%AA%E8%B5%B7%E7%82%B9.html&#34;&gt;终点，下一个起点&lt;/a&gt;。考前一周睡眠极好，考完之后两天都失眠了，差不多凌晨四点才睡着，不过第二天照样7点多就起了。考前一周换了个寝室，最后我们几个考研的结果都还算比较好，1复旦+1上海交大+1中科大+2北邮+3西电&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>819-outline</title>
+      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-41-32/</link>
+      <pubDate>Sat, 06 Apr 2013 16:41:32 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-41-32/</guid>
+      <description>819-outline 专业课复习大纲 这个官方没明确指定，可以看到的像： 连续时间信号和离散时间信号 连续时间系统和离散时间系统的时域分析 连续时间信号的傅立叶分析 连续</description>
+    </item>
+    
+    <item>
+      <title>819专业课参考书目及资料</title>
+      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-35-36/</link>
+      <pubDate>Sat, 06 Apr 2013 16:35:36 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-35-36/</guid>
+      <description>&lt;h1 id=&#34;819专业课参考书目及资料&#34;&gt;819专业课参考书目及资料&lt;/h1&gt;
+
+&lt;h2 id=&#34;官方指定教材&#34;&gt;官方指定教材&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://yzb.sjtu.edu.cn/information/master/cksm.htm&#34;&gt;官方网页&lt;/a&gt;给出的指定教材有：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;《&lt;a href=&#34;http://book.douban.com/subject/1062827/&#34; title=&#34;信号与系统&#34;&gt;信号与系统&lt;/a&gt;》（第二版） 奥本海姆著， 电子工业出版社， 2004；&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;《&lt;a href=&#34;http://book.douban.com/subject/1095234/&#34; title=&#34;离散时间信号处理&#34;&gt;离散时间信号处理&lt;/a&gt;》（第二版）奥本海姆著， 刘树棠译，
+西安交通大学出版社 2001&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;第一本书我去年只买到西安交通大学出版社的-ISBN:9787560509709，怀疑是官方写错了，今年电子工业出版社也出了第二版的中文翻译版-ISBN:9787121194276，但是译者不变，仍然是刘树棠，只是价格上要贵一些。&lt;/p&gt;
+
+&lt;p&gt;第二本书也就是俗称的DSP，是必备的一本书，ISBN:9787560514659，这本书在网上买正版60左右，纸张质量比盗版的好很多。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>819专业课简介及适用专业</title>
+      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-10-58/</link>
+      <pubDate>Sat, 06 Apr 2013 16:10:58 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-10-58/</guid>
+      <description>819专业课简介及适用专业 对考研流程不太清楚的可以移步研究生入学考试备考手册做详细了解。 819简介 819是上海交大的一门考研初试专业课代号，</description>
+    </item>
+    
+    <item>
+      <title>用Kindle看漫画</title>
+      <link>https://blog.yuanbin.me/posts/2013-02/2013-02-13_19-44-11/</link>
+      <pubDate>Wed, 13 Feb 2013 19:44:11 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-02/2013-02-13_19-44-11/</guid>
+      <description>&lt;h1 id=&#34;用kindle看漫画&#34;&gt;用Kindle看漫画&lt;/h1&gt;
+
+&lt;p&gt;话说还是在去年考研复习的时候，宝宝就问过Kindle是否能看漫画的问题，比起那4寸左右的手机屏，用Kindle来看漫画自然是爽的多。以前自己一直没有这方面的需求，没想到寒假就用上了^_^ 木有办法，《名侦探柯南》的动画节奏太慢，还是漫画来的快&lt;/p&gt;
+
+&lt;p&gt;首先说说我手上的Kindle的基本情况-Amazon第4代电子阅读器Kindle, 非触屏，广告版. 软件版本-Version Kindle 4.01&lt;/p&gt;
+
+&lt;p&gt;对电子版的漫画不了解，但是从技术角度来说，凡是能用眼睛看到的Kindle都能派上用场，几番Google之下很快就找到了比较easy的办法。&lt;br /&gt;
+1. 将jpg打包为zip格式放到pictures文件夹下&lt;br /&gt;
+2. 将其它格式转换成pdf格式&lt;br /&gt;
+这里我采取的是第一种方法，下边就唠叨一下步骤喽~~&lt;br /&gt;
+2. 建议用漫画下载的工具下载漫画，比如comicdown, 或者Firefox 下的flashgot工具批量下载(首先可建立图库)，得到jpg源文件，压成zip&lt;br /&gt;
+3. 将zip文档丢进documents文件夹内，无需建pictures文件夹&lt;br /&gt;
+4. 重启Kindle(是真正的重启，不是平常的待机), 貌似不重启的话就需要等上一阵子才行&lt;br /&gt;
+5. 没有了&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;注意事项&#34;&gt;注意事项&lt;/h3&gt;
+
+&lt;p&gt;第2步得到的文件名最好是英文名，其实中文名也是可以的，但是必须转为UTF-8编码，嘛&amp;hellip;人家Kindle就是一台小型的Linux设备嘛，默认为UTF-8编码。如果你是在Windows下操作的话，文件名默认是GBK？反正是非UTF-8就是喽，这样子的话中文文件名在Kindle下就自然无法正常打开喽。实测zip中可包含子文件夹，Kindle会按照文件名的顺序来读取其中的图片文件。&lt;br /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>migrate from octopress to hexo</title>
+      <link>https://blog.yuanbin.me/posts/2013-02/2013-02-13_15-53-03/</link>
+      <pubDate>Wed, 13 Feb 2013 15:53:03 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-02/2013-02-13_15-53-03/</guid>
+      <description>migrate from octopress to hexo I used Octopress with Github at first. With so many plugins and concise style, Octopress is great for whom want to host a blog! But when it comes to the speed of rake generate, I would say, it goes like the snail especially when you have many posts. Fortunately, the emergence of Hexo makes up such shortcomings. What&amp;rsquo;s more, the built-in fancybox are also convenient.</description>
+    </item>
+    
+    <item>
+      <title>Use kmail with a proxy-给kmail加上代理</title>
+      <link>https://blog.yuanbin.me/posts/2013-02/2013-02-03_18-54-00/</link>
+      <pubDate>Sun, 03 Feb 2013 18:54:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-02/2013-02-03_18-54-00/</guid>
+      <description>Use kmail with a proxy-给kmail加上代理 自打从Win转移到GNU/Linux后，之前计算机里边大部分专有软件也随之转移至自由软件，KMail</description>
+    </item>
+    
+    <item>
+      <title>goldendict下优质词典简介及安装</title>
+      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-31_23-07-00/</link>
+      <pubDate>Thu, 31 Jan 2013 23:07:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-31_23-07-00/</guid>
+      <description>&lt;h1 id=&#34;goldendict下优质词典简介及安装&#34;&gt;goldendict下优质词典简介及安装&lt;/h1&gt;
+
+&lt;p&gt;使用Arch Linux一年以来，如果要问自己最为中意的词典程序是？ 当然是Goldendict啦！想详细了解这款瑞士军刀的请猛戳&lt;a href=&#34;http://goldendict.org&#34;&gt;这里&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;以前在Win下都是用的&lt;a href=&#34;www.lingoes.cn&#34;&gt;lingoes&lt;/a&gt;, 感觉还不错，词典库很全，中英双解的词典很多，其它诸如取词, 整句翻译的功能都还能凑合着用(其实是用的第三方引擎)，总之这个对于天朝大众还是很不错的啦！一年前转到Arch Linux下就一直在找Linux下比较好用的词典程序和词典，综合来看，Goldendict确实是上上之选(可以认为是stardict的升级版么？)，支持的词典格式比较典型的有&lt;code&gt;dsl bgl stardict...&lt;/code&gt;，总之是够用了啦！不过话说回来，选择过多有时候却等于没有选择，星际译王的词典确实很多，但试用了一些，大多质量不是很高，幸好使用Google找到了这么一个&lt;a href=&#34;http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;amp;t=265588&#34;&gt;帖子-Goldendict及其词典详述&lt;/a&gt;, RT,楼主实在是很用心，几乎把每个细节都讲到了，对于刚使用goldendict筒子们无疑是帮了一个大大的忙，不过帖子中提供的词典链接基本都已经坏掉了，而且个人觉得对于词典使用者来说，那些步骤也确实太麻烦了，下边我就一些优质的词典安装使用做简要的说明，跟着我这个来下载完后基本就能用了，Troubleshoot部分就一些细节再做一丁点补充。「前人种树，后人乘凉」呼呼~~&lt;/p&gt;
+
+&lt;h3 id=&#34;goldendict安装&#34;&gt;goldendict安装&lt;/h3&gt;
+
+&lt;p&gt;只要你使用的发行版不是过于小众，应该都可以在软件源找到goldendict这款软件。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Debian/Ubuntu &lt;code&gt;sudo apt-get install goldendict&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Arch &lt;code&gt;sudo pacman -S goldendict&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Oops&amp;hellip;如果实在是没有,解决方案有两个,一是果断换发行版！！二是前往&lt;a href=&#34;https://github.com/goldendict/goldendict&#34;&gt;github&lt;/a&gt;自行编译。 自从爪机换成Android后自己用的主力词典软件也是goldendict, 将下边带词库文件复制到指定目录下即可使用，非常棒。&lt;/p&gt;
+
+&lt;h3 id=&#34;词典下载及使用方法简介&#34;&gt;词典下载及使用方法简介&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Oxford Advanced Learner&amp;rsquo;s Dictionary 8th edition(En-En)-牛津高阶词典(英英)第8版，含图片及英式发音和美式发音&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Merriam-Webster&amp;rsquo;s Collegiate 11th edition(En-En)-韦氏大学词典(英英)第11版，含图片及发音&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Longman DOCE5-Longman Dictinary of Contemporary English 5th edition(En-En)-朗文当代第五版英英词典，含发音和图片，大部分例句也带有朗读，很强悍！！！&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Longman Pronunciation Dictionary 3rd edition(En-En)-朗文发声辞典第三版，词典中有英音、美音，并对于“多音”的词，配有preference poll图表，即不同的发音在不同地区、不同年龄层里所占的比例。不得不说，这个碉堡了！！！&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Longman DOCE5 Extras(En-En)-不包含单词发音和图片，但是包含了该词汇的各种搭配，和牛津搭配词典类似&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;牛津高阶英汉双解 第四版(En-zh_CN)-英汉双解，我想这个对于国人是必不可少的吧？bgl的格式，排版很美观，无发音&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;en_US_1.0.zip&lt;/code&gt;-词形匹配，查词时会自动将复数或者其他形式转换为标准形式&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;以上6部词典应该是完全够用了，前3部英英词典任选一部即可。以上的文件放在我的百度云网盘中，需要的请移步&lt;a href=&#34;http://pan.baidu.com/share/link?shareid=443301&amp;amp;uk=3189859145&#34;&gt;这里&lt;/a&gt;，将词典下载至你想要放的任何位置(直接使用网页打包下载可能会不稳定而下载失败，极其不推荐这种方式下载，做好心理准备&amp;hellip;)，再到goldendict下设置词典目录即可，重新扫描-&amp;gt;大功告成!&lt;br /&gt;
+之前用Dropbox分享过，最近Dropbox老是提示我流量过多而禁用分享，所以转向了不限流量的百度云，同时也方便国内用户下载。最近发现有其他人保存了我发布过的&lt;a href=&#34;https://www.dropbox.com/sh/bf1v7wthsl7pmbi/qt3D1kvFmv&#34;&gt;Dropbox分享&lt;/a&gt;,下载时选择「复制到我的Dropbox」就不会给分享人造成流量过多而禁用分享的问题了，而且通过同步下载的方式也稳定的多。&lt;/p&gt;
+
+&lt;h4 id=&#34;词典下载链接&#34;&gt;词典下载链接&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pan.baidu.com/share/link?shareid=443301&amp;amp;uk=3189859145&#34;&gt;百度云&lt;/a&gt;, 『保存到网盘』，尽量&lt;strong&gt;不要使用网页下载&lt;/strong&gt; ，下载不稳定并且容易损坏原文件。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/bf1v7wthsl7pmbi/qt3D1kvFmv&#34;&gt;Dropbox(流量太大长期被Dropbox关闭分享请使用以下分流链接)&lt;/a&gt;, then click the &lt;strong&gt;Add to my Dropbox&lt;/strong&gt;, 中文的话点击『复制到我的Dropbox』，尽量&lt;strong&gt;不要使用网页下载&lt;/strong&gt;，一来下载不稳定并且容易损坏原文件，二来会增加Dropbox的流量而被暂时禁掉掉分享链接！！我用了几年前注册过的Dropbox帐号对以上词典进行分流，下载方式同上，建议通过『复制到我的Dropbox』方式下载。如果你还没有Dropbox帐号的话不妨猛击&lt;a href=&#34;http://db.tt/KS1HOz14&#34;&gt;我的Dropbox推广链接&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/9nzxz0wpn0luuyv/AACR3Ilic05RorZSN1jrUEbDa&#34;&gt;En-En_Longman_DOCE5 and Longman DOCE5 Extras(En-En)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/kb3bfzwzn5fd47q/AADbo8oo71Eg4Z-aDSRmR63Da&#34;&gt;En-En_Longman_Pronunciation3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/mxhfftm3w53be1t/AABnr3P0YkJygHemFRIM6Shaa&#34;&gt;En-En_Merriam_Webster11&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/3al89ktlc8dbohp/AAAbrXAkcaV6ScWedqMOiK1ka&#34;&gt;En-En_OALD8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/i2x1z3zwtw5dku8/AAABbE7edGQKNvZ6soFhnoG-a&#34;&gt;En-zh_CN_OALD4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/s/dda9n4sok28wek7/en_US_1.0.zip&#34;&gt;en_US_1.0.zip&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;词形匹配&#34;&gt;词形匹配&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;amp;t=265588&#34;&gt;http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;amp;t=265588&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;很多人抱怨 Goldendict 取词 &amp;ldquo;books&amp;rdquo; 居然查不到，它不会自己转换成 &amp;ldquo;book&amp;rdquo;，那不过是你没有正确设置而已，事实上这一点 Goldendict 利用构词法规则库可以做得极其强大。编辑-》词典-》词典来源-》构词法规则库可以设置其所在目录。英语构词法规则库到&lt;a href=&#34;https://www.dropbox.com/s/dda9n4sok28wek7/en_US_1.0.zip&#34;&gt;这里&lt;/a&gt;下载，注意需要解压缩，英文版软件则通过&lt;code&gt;Edit-&amp;gt;Dictionaries-&amp;gt;Morphology&lt;/code&gt;设置构词法规则库所在文件夹。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux使用一周年记</title>
+      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-21_17-41-00/</link>
+      <pubDate>Mon, 21 Jan 2013 17:41:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-21_17-41-00/</guid>
+      <description>&lt;h1 id=&#34;linux使用一周年记&#34;&gt;Linux使用一周年记&lt;/h1&gt;
+
+&lt;p&gt;补充: 出于简洁的目的，下文不对GNU/Linux distribution 和Linux kernel做严格的区别，意思大家懂就好&lt;/p&gt;
+
+&lt;p&gt;RT, 自己真正开始使用Linux还只是在一年前，至于第一次听说有Linux这个系统则说不清了(总之在大学阶段咯)，只记得刚开始听说有Linux这玩意儿的时候还老把它和UNIX搞混。第一次见人玩这个貌似是&lt;a href=&#34;https://bigeagle.me&#34;&gt;bigeagel&lt;/a&gt;, 还记得那是大一下院科协的一次技术交流，请了lvzongting, bigeagel, hrn等一批技术大牛给大家开了开眼界，吕大的知识面很广，从电子讲到机械再就数学展开，令我等后生膜拜不已。交流快结束时, b哥在台上兴奋地(这就是geek的表现呀！！)给我们演示了Linux下通过命令行登录系统和终端下打开网页。当时的我真是看傻了眼，只见登录系统后屏幕右侧就飞出一头牛来！(不知那是头公牛还是母牛&amp;hellip;)，没想到Linux下的那些黑框框下还可以玩出这么高端的东西！！不过当时的第一想法并不是回寝后马上装个Linux来玩玩，而是——这货就不是普通人能玩得转的，只能望而止步喽&lt;br /&gt;
+
+再次接触Linux则是室友在我电脑上的虚拟机里装了Ubuntu, 默认的桌面环境是经典的GNOME2, 也正是这个发行版让我彻底改变了对Linux系统的看法，原来除了终端之外还可以使用「亲民」的图形界面。当然，Ubuntu只是那成百上千发行版中的一种，它的易用性是得到地球村人民的公认的，一些geek可能会不太喜欢这个发行版。我想对于广大的普通民众来说，他们并不关心用的操作系统内核是开源的还是闭源的，是单体内核还是微内核&amp;hellip; 他们关心的是系统是否易于使用，是否需要太大的学习成本，办公上网的软件是否齐全，遇到问题时是否便于找到答案&amp;hellip; 对于天朝大多数人们来说，正版OR盗版则不是他们所关心的，不过从现在的形势来看，正版是大势所趋。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>课程设计小结</title>
+      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-19_21-12-00/</link>
+      <pubDate>Sat, 19 Jan 2013 21:12:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-19_21-12-00/</guid>
+      <description>&lt;h1 id=&#34;课程设计小结&#34;&gt;课程设计小结&lt;/h1&gt;
+
+&lt;p&gt;不知不觉又忙了一个星期，周一老师把课程设计的要求简单地说了一下，然后就是两天之后提交方案并且做Presentation，这个算是比以前大作业要求严格的地方了，答辩时老师偶尔也会提几个问，呵呵，这可难为了一些酱油党喽～～不知自己是不是比较「走运」，我在介绍自己组的方案时老师竟然没有提问，估计是我讲的太快了，中间几乎没有停顿，老师也没能抓住机会提问&lt;/p&gt;
+
+&lt;p&gt;课程设计是全班做一个题目，是纯硬件的题，有点像电赛。先软件仿真，然后搭实际电路调试。大意是运用两块LM324运放和若干电容电阻什么的设计一个200Hz, 峰峰值为0.1V的正弦波和周期为1ms, 幅值为2v的三角波信号; 接下来则是将前边产生的两种信号和信号源产生的50Hz的正弦波按一定比例相加; 随后设计电路从相加后的信号中提取200Hz的正弦波，输出必须达到10V以上; 最后则是将三角波信号与提取出的200Hz正弦波通过比较器得到最终输出。整个电路做下来差不多是将模电中的运放应用部分复习了一遍，只不过这次除了理论部分还有实践部分。理论部分把课本上的一些电路排列组合一下即可，说起来倒是挺简单的，本人不才，前后花了差不多3天时间才把设计方案基本确定下来，放在Multisim下跑了一下，波形还能接受。这两天动手搭实际电路时又做了些bug fix, 下午正式收工，只等着周一到学校实验室微调和验收了。&lt;br /&gt;
+
+很喜欢「课程设计」这种形式，边学边用，这才是工科生最应该掌握的。自己还算比较喜欢做硬件，大约从初二起开始接触一些电子方面的东西，当时可以说得上是对这些玩意儿上瘾了，那时为了个电路琢磨到凌晨三四点也还精神亢奋，不过上了大学后反而有所荒废，想想还是有点痛心的。噗&amp;hellip;其实做硬件很麻烦地说，偶尔也会觉得枯燥，硬件复用的成本比起软件来复用的成本高太多太多，而且业余玩玩也还是比较烧钱的。东拉西扯了这么多，下边吐槽一下这次「课程设计」。学校和老师该改进的地方实在是太多太多了&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>终点,下一个起点</title>
+      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-11_19-42-00/</link>
+      <pubDate>Fri, 11 Jan 2013 19:42:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-11_19-42-00/</guid>
+      <description>&lt;h1 id=&#34;终点-下一个起点&#34;&gt;终点,下一个起点&lt;/h1&gt;
+
+&lt;p&gt;历时大半年的考研生活在最后一门专业课的终考铃声下划下了一个不算太完美的句号，以这种方式结束这华丽丽的初试是自己所没有想到的。还记得5号那天中午考完数学时，心中一个信念——交大离我不远了，但是没有想到的是下午的专业课却成了我这次初试唯一的痛&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;老实说，这次专业课出奇地简单，我拆开信封即大致看了一下试卷，共8道，和前些年的模式基本一样，前几道信号，后边离散。再仔细浏览了一下试题，有不少白皮和离散信号课后习题的原题，最后一道更是简单到了一定境界。于是乎便不紧不慢地从第一道题开始做下来，考虑到这次题目简单，我刚开始的时候写的解题过程十分详细，几乎每一步都交待了来由，就这样把第一道信号大题搞定时时间已经来到了15:38左右。当时不知哪根筋抽了，我竟以为才开考10分钟 囧 而这，仅仅只是悲剧的开始。第二题也是在自己预料之中的，给出一些信号，再给出一个低通滤波器，求输出信号表达式，按照以往的题来看，题中所给的应该是周期信号，但是我拿到的试卷并没有说明这一点，只是说让看图。当时自己也拿不准，只是首先按照周期信号来做，把三角级数表达式给求出来了，去掉高频部分，答案轻松搞定。谁知这时自己手贱&amp;hellip;当时在考场上越想越不对劲，感觉这道题有玄机，于是乎把按照周期信号处理的方案几笔划掉&amp;hellip;再看一下时间，已经3点过5了，直到这时自己才意识到刚才把时间多算了半个小时，天煞的&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>start blogging with octopress</title>
+      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-09_10-22-00/</link>
+      <pubDate>Wed, 09 Jan 2013 10:22:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-09_10-22-00/</guid>
+      <description>start blogging with octopress 终于可以在Github上给自己的博客安一个家了，不用担心BSP的广告和不稳定的服务，也不用去繁琐地配置主机和软件，更不用担心数据的备</description>
+    </item>
+    
+    <item>
+      <title>Chase My Dream</title>
+      <link>https://blog.yuanbin.me/posts/2012-07/2012-07-09_15-41-00/</link>
+      <pubDate>Mon, 09 Jul 2012 15:41:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2012-07/2012-07-09_15-41-00/</guid>
+      <description>&lt;h1 id=&#34;chase-my-dream&#34;&gt;Chase My Dream&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;小时候，梦想是一只画笔，如梦般的童年则定格在那五彩缤纷的画纸上；&lt;br /&gt;
+长大后，梦想是一抹天边的云，不知从何而起，也不知将飘向何方；&lt;br /&gt;
+而如今，梦想是一座远在上海的城堡，等待着自己用汗水和智慧叩开她的大门…&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>书画之记忆by人渣</title>
+      <link>https://blog.yuanbin.me/posts/2012-04/2012-04-01_22-44-47/</link>
+      <pubDate>Sun, 01 Apr 2012 22:44:47 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2012-04/2012-04-01_22-44-47/</guid>
+      <description>书画之记忆by人渣 岁月是把杀猪刀，恍惚间人渣送的这幅字画已经在寝室的墙壁上待了两年多了。每每看到这幅字画便思绪万千——《满江红》《水调歌头》</description>
+    </item>
+    
+    <item>
+      <title>武汉「七日游」流水帐之交通&amp;amp;下厨&amp;amp;华科篇</title>
+      <link>https://blog.yuanbin.me/posts/2012-01/2012-01-24_15-28-00/</link>
+      <pubDate>Tue, 24 Jan 2012 15:28:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2012-01/2012-01-24_15-28-00/</guid>
+      <description>&lt;h1 id=&#34;武汉-七日游-流水帐之交通-amp-下厨-amp-华科篇&#34;&gt;武汉「七日游」流水帐之交通&amp;amp;下厨&amp;amp;华科篇&lt;/h1&gt;
+
+&lt;p&gt;右眼已经差不多好了，趁着脑海里还残留些记忆，是时候把寒假期间的流水帐记一下了_ 自西安南下至今也没见过太阳公公，更别说他儿子老母了&amp;hellip; 从1月13号上午11点到武昌到19号早上离开武汉差不多整整7天吧，7天里每天都下雨，只有在第2天和第6天的时候出去逛了下_ 来武汉的目的主要还是为了了却08年的心愿——看看真实的华科到底是么样子_ OK,流水帐正式开始&lt;/p&gt;
+
+&lt;h2 id=&#34;交通篇&#34;&gt;交通篇&lt;/h2&gt;
+
+&lt;p&gt;武汉的公交的恶劣情况早有耳闻，百闻不如一见，13号上午11点坐公交时我彻底震惊了，一个小女孩不要命似的保护着两个座位，由此可知武汉公交的座位是有好珍贵。&lt;/p&gt;
+
+&lt;p&gt;在公交上坐了差不多半个小时我就受不了了，胃酸都快吐出来了，估计是一个上午一点东西都没吃的恶果，原以为12号晚上在橙色心情美美地吃了一顿就不用再吃了，但是&amp;hellip;坑爹的K896，丫的进入武汉市内的时候就变蜗牛了，慢慢地爬了半个小时才到站，于是乎又多饿了半个小时(12号走的过于匆忙，一点吃的东西也没买)，到公交上呕吐也很正常啦，于是乎果断下车换了Taxi，跑了半个多小时才到目的地（也就是我舅舅家啦，武汉分为三大块-武昌、汉口、汉阳，我舅舅家住在武昌的最东边差不多），武汉是有好大_&lt;/p&gt;
+
+&lt;p&gt;14号和舅舅舅母一起出去买了点东西，倒了趟公交，每辆公交上似乎都是那么挤，我上车后过了两站就被挤到里边去了，别说肉饼，我都快被挤成肉酱了！过了差不多2个小时终于下车了！！！那个时候我还在感概，武汉这么大，公交这么挤，还让人活不，要是我住在这种地方我一年都不想出来一次，东西通通网购，后来仔细看了下武汉市地图，我才发现原来武汉并没有想像中的那么大嘛，不过也不愧对“千湖之省”的称号，丫的水陆面积比目测接近1：2，长江+东湖+汉江至少占四分之一的面积，所以咧，武汉的道路似乎没有一条是直的，完全无方向可言，不知道北方的朋友到了武汉之后会不会比较容易迷路。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ASCII码之大小写那些事儿</title>
+      <link>https://blog.yuanbin.me/posts/2012-01/2012-01-11_11-45-00/</link>
+      <pubDate>Wed, 11 Jan 2012 11:45:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2012-01/2012-01-11_11-45-00/</guid>
+      <description>&lt;h1 id=&#34;ascii码之大小写那些事儿&#34;&gt;ASCII码之大小写那些事儿&lt;/h1&gt;
+
+&lt;p&gt;原帖发在&lt;a href=&#34;http://xdlinux.info/bbs/thread-1244-1-1.html&#34;&gt;开源社区论坛&lt;/a&gt;上，感觉还有点意思，于是乎就搬到这儿来了咯～本帖探讨ASCII码编码中英文字母大小写编码的相关问题，不需要读者具有计算机编码方面的专业知识，当然咯，为了更好地参与讨论，一点点计算机编码的基本常识还是要有的。&lt;br /&gt;
+不知ASCII码为何物的请先移步&lt;a href=&#34;http://en.wikipedia.org/wiki/ASCII&#34;&gt;维基百科&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;故事的起源&#34;&gt;故事的起源&lt;/h3&gt;
+
+&lt;p&gt;Long long ago, 也就是上个学期微机原理课的时候，班上一MM问了老师这么一个问题——“ASCII码中大写字母A的十六进制代码是41，而小写字母的十六进制代码是61，中间不是只能编码20个字符么，那剩下的那6个大写字母跑哪去了呀？” 只见此时老师笑而不语(显然是男老师…)，底下一小撮明白真相的群众疾呼:“那个41和61是十六进制呀！”&lt;/p&gt;
+
+&lt;p&gt;MM思维敏捷，很快又出现了新的问题:“41H和61H之间可以编码32个字符呀，那为什么小写字母不紧跟着大写字母编码呢？大小写字母连在一起多和谐呀~” 说时迟，那时快，老师答曰:“这个问题…我得先请示一下Google”。听MM刚才那么一说，52个大小写字母顿时哼起了:“让我们 握着手 手牵手 一起走到时间的尽头…” 但在得到美国国家标准化委员会的确切答复后，大A和小a只能率领50个兄弟姐妹以头跄地曰:“千杀的委员会！滥用手中的职权割断我们大写家族和小写家族之间的脐带！小心我叫老母亲来收拾你们！” 在这里我想为标准化委员会说几句话，人家帮你割断脐带是为了让小写家族得到新生呀！！欲知后事如何，且听下段分析。&lt;br /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>电子制作之处女作-西电动态校徽</title>
+      <link>https://blog.yuanbin.me/posts/2010-12/2010-12-13_23-50-20/</link>
+      <pubDate>Mon, 13 Dec 2010 23:50:20 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2010-12/2010-12-13_23-50-20/</guid>
+      <description>电子制作之处女作-西电动态校徽 如题，本作品为我的第一个电子小制作，虽然比较简单，但其还是给我带来了不少惊喜~毕竟它是我第一个自主设计的电路。</description>
+    </item>
+    
+  </channel>
+</rss>

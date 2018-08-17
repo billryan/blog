@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Akka Notes 1 - Introducing Actors - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Akka Notes 1 - Introducing Actors 该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。
+任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里『管理』是因为在刚开始时你感觉可能是简单的，并且在你开始看到性能提升后会觉得很有趣。然而，当你发现你并不能从子任务的错误中轻松恢复过来或者你发现那些僵尸 bug 很难重现，亦或是你的性能管理器告诉你你的线程在写共享状态前被阻塞了很久从而产生了资源浪费，以上这些都会让你头痛不已。
+我在这里不会涉及 Java 的并发 API 及其应用集合如何使得并发变得更容易和更好，因为我相信如果你已经在读这篇文章了，你很可能需要对子任务更多的控制，亦或简单地因为你不喜欢使用锁和同步阻塞调用，并喜欢一种更高层次的抽象。
+在这一系列的 Akka Notes 中，我们将会使用一些简单的 Akka 示例来探索 Akka 这个工具包中各种各样的特性。
+
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2015-08/2015-08-26_09-24-56/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Akka Notes 1 - Introducing Actors" />
+<meta property="og:description" content="Akka Notes 1 - Introducing Actors
+
+该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。
+
+任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里『管理』是因为在刚开始时你感觉可能是简单的，并且在你开始看到性能提升后会觉得很有趣。然而，当你发现你并不能从子任务的错误中轻松恢复过来或者你发现那些僵尸 bug 很难重现，亦或是你的性能管理器告诉你你的线程在写共享状态前被阻塞了很久从而产生了资源浪费，以上这些都会让你头痛不已。
+
+我在这里不会涉及 Java 的并发 API 及其应用集合如何使得并发变得更容易和更好，因为我相信如果你已经在读这篇文章了，你很可能需要对子任务更多的控制，亦或简单地因为你不喜欢使用锁和同步阻塞调用，并喜欢一种更高层次的抽象。
+
+在这一系列的 Akka Notes 中，我们将会使用一些简单的 Akka 示例来探索 Akka 这个工具包中各种各样的特性。
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2015-08/2015-08-26_09-24-56/" />
+
+
+
+<meta property="article:published_time" content="2015-08-26T09:24:56&#43;08:00"/>
+
+<meta property="article:modified_time" content="2015-08-26T09:24:56&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Akka Notes 1 - Introducing Actors">
+<meta itemprop="description" content="Akka Notes 1 - Introducing Actors
+
+该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。
+
+任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里『管理』是因为在刚开始时你感觉可能是简单的，并且在你开始看到性能提升后会觉得很有趣。然而，当你发现你并不能从子任务的错误中轻松恢复过来或者你发现那些僵尸 bug 很难重现，亦或是你的性能管理器告诉你你的线程在写共享状态前被阻塞了很久从而产生了资源浪费，以上这些都会让你头痛不已。
+
+我在这里不会涉及 Java 的并发 API 及其应用集合如何使得并发变得更容易和更好，因为我相信如果你已经在读这篇文章了，你很可能需要对子任务更多的控制，亦或简单地因为你不喜欢使用锁和同步阻塞调用，并喜欢一种更高层次的抽象。
+
+在这一系列的 Akka Notes 中，我们将会使用一些简单的 Akka 示例来探索 Akka 这个工具包中各种各样的特性。
+
+">
+
+
+<meta itemprop="datePublished" content="2015-08-26T09:24:56&#43;08:00" />
+<meta itemprop="dateModified" content="2015-08-26T09:24:56&#43;08:00" />
+<meta itemprop="wordCount" content="1591">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Akka Notes 1 - Introducing Actors"/>
+<meta name="twitter:description" content="Akka Notes 1 - Introducing Actors
+
+该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。
+
+任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里『管理』是因为在刚开始时你感觉可能是简单的，并且在你开始看到性能提升后会觉得很有趣。然而，当你发现你并不能从子任务的错误中轻松恢复过来或者你发现那些僵尸 bug 很难重现，亦或是你的性能管理器告诉你你的线程在写共享状态前被阻塞了很久从而产生了资源浪费，以上这些都会让你头痛不已。
+
+我在这里不会涉及 Java 的并发 API 及其应用集合如何使得并发变得更容易和更好，因为我相信如果你已经在读这篇文章了，你很可能需要对子任务更多的控制，亦或简单地因为你不喜欢使用锁和同步阻塞调用，并喜欢一种更高层次的抽象。
+
+在这一系列的 Akka Notes 中，我们将会使用一些简单的 Akka 示例来探索 Akka 这个工具包中各种各样的特性。
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Akka Notes 1 - Introducing Actors</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-08-26 </span>
+        
+        <span class="more-meta"> 约 1591 字 </span>
+        <span class="more-meta"> 预计阅读 4 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#akka-notes-1-introducing-actors">Akka Notes 1 - Introducing Actors</a>
+<ul>
+<li><a href="#何为-actor">何为 Actor</a>
+<ul>
+<li><a href="#1-message-消息">1. Message - 消息</a></li>
+<li><a href="#2-concurrency-并发">2. Concurrency - 并发</a></li>
+<li><a href="#3-failover-故障转移">3. Failover - 故障转移</a></li>
+<li><a href="#4-multitasking-多任务">4. Multitasking - 多任务</a></li>
+<li><a href="#5-chaining-链">5. Chaining - 链</a></li>
+</ul></li>
+<li><a href="#actor-messaging">Actor Messaging</a></li>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="akka-notes-1-introducing-actors">Akka Notes 1 - Introducing Actors</h1>
+
+<p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。</p>
+
+<p>任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里『管理』是因为在刚开始时你感觉可能是简单的，并且在你开始看到性能提升后会觉得很有趣。然而，当你发现你并不能从子任务的错误中轻松恢复过来或者你发现那些僵尸 bug 很难重现，亦或是你的性能管理器告诉你你的线程在写共享状态前被阻塞了很久从而产生了资源浪费，以上这些都会让你头痛不已。</p>
+
+<p>我在这里不会涉及 Java 的并发 API 及其应用集合如何使得并发变得更容易和更好，因为我相信如果你已经在读这篇文章了，你很可能需要对子任务更多的控制，亦或简单地因为你不喜欢使用锁和同步阻塞调用，并喜欢一种更高层次的抽象。</p>
+
+<p>在这一系列的 Akka Notes 中，我们将会使用一些简单的 Akka 示例来探索 Akka 这个工具包中各种各样的特性。</p>
+
+<p></p>
+
+<h2 id="何为-actor">何为 Actor</h2>
+
+<p>Akka Actor 遵循 <a href="https://en.wikipedia.org/wiki/Actor_model">Actor model</a> (废话&hellip;)</p>
+
+<p>举个例子，Actors 就像普天之下的芸芸众生，但在 Actors 的世界中，人与人之间并不能直接说话，他们通过邮件来通信。下面我们通过几个小节对其进行扩展。</p>
+
+<h3 id="1-message-消息">1. Message - 消息</h3>
+
+<p>以两个人为例——一个睿智的老师和一个普通学生，学生每天早上给老师发送一封邮件，老师则给他回复一封富含哲理的引用。这里有几点需要注意：</p>
+
+<ol>
+<li>学生发送邮件。一旦发送出去，邮件不能被再次更改编辑(消息不可变)， 这是消息天然的不可变特性。</li>
+<li>老师在他想检查邮箱的时候就可以检查邮箱。</li>
+<li>老师会回复一封邮件(同样邮件内容发出去之后也是不可变的)。</li>
+<li>学生可随时检查他自己的邮箱。</li>
+<li>学生发送邮件出去后并不等待老师的回复(即不会阻塞)。</li>
+</ol>
+
+<p>以上这些加起来就是 Actor 模型的基本组件了——消息传递，如下图所示。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/AkkaMessaging.png-q75" alt="AkkaMessaging" /></p>
+
+<!--more-->
+
+<h3 id="2-concurrency-并发">2. Concurrency - 并发</h3>
+
+<p>现在让我们设想一下有3个睿智的老师和3个学生的情形——每个学生发一封邮件给所有老师。那么这种情况如何处理？其实这时候并没有实际的变化，每个人仍然有他自己的邮箱。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/AkkaConcurrency.png-q75" alt="AkkaConcurrency" /></p>
+
+<p>这里有一个微妙的地方需要指出来：<strong>默认情况下，在邮箱当中的邮件按照他们到达的时间顺序被依次读取/处理。</strong></p>
+
+<p>在内部实现中，Mails 默认是一个 <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentLinkedQueue.html">ConcurrentLinkedQueue</a>, 因为没人会去等待这封邮件，所以它是一个简单的非阻塞消息。实际上还有一些 bounded 和 priority based 的内建 <a href="http://doc.akka.io/docs/akka/snapshot/scala/mailboxes.html">Mailboxes</a>, 另外我们其实还可以自己定义新的 mailbox.</p>
+
+<h3 id="3-failover-故障转移">3. Failover - 故障转移</h3>
+
+<p>设想有三个来自不同院系的老师——历史，地理和哲学。历史老师回复了一条 note 给过去一个事件，地理老师回复了一处有趣的地方，哲学老师则回复了一条 quote. 每个学生给每个老师发送消息并且得到相应的回复。学生并不关心是哪个院系的老师返回了消息。倘若某一天，有个老师生病倒下了怎么办？那么至少需要一名老师来 handle 发送给院系的邮件。在这种情况下，另外一名院系的老师勇敢地站了出来并接下了收邮件这个工作，如下图所示。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/AkkaFailover.png-q75" alt="AkkaFailover" /></p>
+
+<p>这里有几点需要指出：</p>
+
+<ol>
+<li>有可能存在一个 Actors 池，每个 Actor 用来做不同的事情。</li>
+<li>每个 Actor 执行某件任务后可产生 exception, 它自己并不能自行恢复。这种情况下 可以创建一个新的 Actor 来取代原来的 Actor. 当然你也可以选择忽略这个特定的消息并且处理剩下的消息。这称作 Directives, 我们后续会继续讨论这个。</li>
+</ol>
+
+<h3 id="4-multitasking-多任务">4. Multitasking - 多任务</h3>
+
+<p>转折点来了，设想如果学生想要考试分数的话，每个老师也能通过 mail 发送。类似的，Actor 应该能 handle 不止一种消息类型。</p>
+
+<h3 id="5-chaining-链">5. Chaining - 链</h3>
+
+<p>如果学生并不想接收3封邮件，而是想接收一封紧凑的最终邮件呢？我们同样可以使用 Actors 达成这一目标，我们可以将三个老师链到一起形成一个层次结构。在我们后面讨论 Supervisors 和 Futures 时再回头看看这一点。</p>
+
+<h2 id="actor-messaging">Actor Messaging</h2>
+
+<p>这一节对 Actor 的消息机制做一些简介，将以上学生和老师的比喻映射到 Actor Model 中，如下图所示：</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/AkkaComponentMatching.png-q75" alt="AkkaComponentMatching" /></p>
+
+<p>学生和老师成为了我们的 Actors, Email Inbox 则充当了 MailBox 这个组件，请求和回应不可更改，它们都是不可变对象。最后，Actor 中的 MessageDispatcher 组件管理着 mailbox 并且将这些消息路由到各自的 Mailbox 中。</p>
+
+<p>文字的介绍已经够多了，在 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 中我们将结合代码进行实战练习以便深入理解 Actor 的消息机制。</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li>ConcurrentLinkedQueue - <a href="http://www.ibm.com/developerworks/cn/java/j-lo-concurrent/">非阻塞算法在并发容器中的实现</a></li>
+<li>ConcurrentLinkedQueue - <a href="http://www.infoq.com/cn/articles/ConcurrentLinkedQueue">聊聊并发（六）——ConcurrentLinkedQueue的实现原理分析</a></li>
+</ul>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-08-26</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2015-08/2015-08-26_13-26-24/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Akka Notes 3 - Logging and Testing Actors</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2015-08/2015-08-25_13-55-02/">
+            <span class="next-text nav-default">Akka Notes 2 - Actor Messaging</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Akka Notes 1 - Introducing Actors',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

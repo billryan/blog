@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hexo多Repo部署——使用Github和GitCafe同时托管博客 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Hexo多Repo部署——使用Github和GitCafe同时托管博客 使用Github托管博客已有好几年的时间了，Hexo &#43; Github &#43; Markdown &#43; DNSPod 的组合方案工作地非常好，这四套组合拳打下来使得博客站点的维护成本大大降低，在 Geek 之间也是流传甚广。
+最开始在 Github 上建站用的是 Octopress，插件在当时虽然比较丰富，但是每次生成静态页面的速度实在是不敢恭维，Ruby么&amp;hellip; 偶然在西电开源社区邮件列表上看到有人推荐 Hexo，当时并没太在意，但是过后几天特意 Google 了下 Hexo，发现其最大的特性就是 blazing fast! 果断在自己的 Arch 上配好了 Hexo，比起当初配 Octopress还是要省心不少的。
+前两三个月一直忙着项目和论文，也没怎么打理博客，前些天看了下 Hexo的进展，真是异常活跃咩～ issues 里边间或还能瞅到 GitCafe 的身影。随手就 Google 了下『hexo gitcafe』，看到好些从 Github迁移到 GitCafe 的，Github 的 CDN 固然给力，但在天朝特殊的网络环境下还是有力不从心的时候，正在这『生死存亡』的关键时刻，GitCafe 横空出世了，2012年10月更是推出了备受好评的 Pages服务——没有 Pages 服务哪来现在的这个博客 :-) 2013年4月 GitCafe 再次发力推出了自定义域名绑定功能。至此，作为独立博客建站的两大条件——Pages&#43;域名绑定 GitCafe 均已具备。万事俱备，只欠东风～ 这东风当然非 Hexo 莫属。
+Hexo下多Repository部署实战——使用Github和GitCafe 同时在 Github 和 GitCafe 部署 Hexo 的主要优势如下：
+1. 负载均衡，速度大增——由于两大 Pages 服务均可自定义域名，国内用户可选择走 GitCafe，国外用户则走 GitHub
+2. 自定义路由——配合 DNSPod 的『线路类型』可完美支持1中方案
+3. 国内用户访问走 GitCafe, dig 了下发现国内的话他们托管在香港的 Softlayer, 确实挺快！单个Repo的300MB空间对于技术博客是完全够用的
+4. 多机备份——两大 Pages 服务同时挂掉的可能微乎其微
+5. 你懂的&amp;hellip; 不方便说太细
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2014-05/2014-05-02_11-24-57/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Hexo多Repo部署——使用Github和GitCafe同时托管博客" />
+<meta property="og:description" content="Hexo多Repo部署——使用Github和GitCafe同时托管博客
+
+使用Github托管博客已有好几年的时间了，Hexo &#43; Github &#43; Markdown &#43; DNSPod 的组合方案工作地非常好，这四套组合拳打下来使得博客站点的维护成本大大降低，在 Geek 之间也是流传甚广。
+
+最开始在 Github 上建站用的是 Octopress，插件在当时虽然比较丰富，但是每次生成静态页面的速度实在是不敢恭维，Ruby么&hellip; 偶然在西电开源社区邮件列表上看到有人推荐 Hexo，当时并没太在意，但是过后几天特意 Google 了下 Hexo，发现其最大的特性就是 blazing fast! 果断在自己的 Arch 上配好了 Hexo，比起当初配 Octopress还是要省心不少的。
+
+前两三个月一直忙着项目和论文，也没怎么打理博客，前些天看了下 Hexo的进展，真是异常活跃咩～  issues 里边间或还能瞅到 GitCafe 的身影。随手就 Google 了下『hexo gitcafe』，看到好些从 Github迁移到 GitCafe 的，Github 的 CDN 固然给力，但在天朝特殊的网络环境下还是有力不从心的时候，正在这『生死存亡』的关键时刻，GitCafe 横空出世了，2012年10月更是推出了备受好评的 Pages服务——没有 Pages 服务哪来现在的这个博客 :-) 2013年4月 GitCafe 再次发力推出了自定义域名绑定功能。至此，作为独立博客建站的两大条件——Pages&#43;域名绑定 GitCafe 均已具备。万事俱备，只欠东风～ 这东风当然非 Hexo 莫属。
+
+Hexo下多Repository部署实战——使用Github和GitCafe
+
+同时在 Github 和 GitCafe 部署 Hexo 的主要优势如下：
+1. 负载均衡，速度大增——由于两大 Pages 服务均可自定义域名，国内用户可选择走 GitCafe，国外用户则走 GitHub
+2. 自定义路由——配合 DNSPod 的『线路类型』可完美支持1中方案
+3. 国内用户访问走 GitCafe, dig 了下发现国内的话他们托管在香港的 Softlayer, 确实挺快！单个Repo的300MB空间对于技术博客是完全够用的
+4. 多机备份——两大 Pages 服务同时挂掉的可能微乎其微
+5. 你懂的&hellip; 不方便说太细" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2014-05/2014-05-02_11-24-57/" />
+
+
+
+<meta property="article:published_time" content="2014-05-02T11:24:57&#43;08:00"/>
+
+<meta property="article:modified_time" content="2014-05-02T11:24:57&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Hexo多Repo部署——使用Github和GitCafe同时托管博客">
+<meta itemprop="description" content="Hexo多Repo部署——使用Github和GitCafe同时托管博客
+
+使用Github托管博客已有好几年的时间了，Hexo &#43; Github &#43; Markdown &#43; DNSPod 的组合方案工作地非常好，这四套组合拳打下来使得博客站点的维护成本大大降低，在 Geek 之间也是流传甚广。
+
+最开始在 Github 上建站用的是 Octopress，插件在当时虽然比较丰富，但是每次生成静态页面的速度实在是不敢恭维，Ruby么&hellip; 偶然在西电开源社区邮件列表上看到有人推荐 Hexo，当时并没太在意，但是过后几天特意 Google 了下 Hexo，发现其最大的特性就是 blazing fast! 果断在自己的 Arch 上配好了 Hexo，比起当初配 Octopress还是要省心不少的。
+
+前两三个月一直忙着项目和论文，也没怎么打理博客，前些天看了下 Hexo的进展，真是异常活跃咩～  issues 里边间或还能瞅到 GitCafe 的身影。随手就 Google 了下『hexo gitcafe』，看到好些从 Github迁移到 GitCafe 的，Github 的 CDN 固然给力，但在天朝特殊的网络环境下还是有力不从心的时候，正在这『生死存亡』的关键时刻，GitCafe 横空出世了，2012年10月更是推出了备受好评的 Pages服务——没有 Pages 服务哪来现在的这个博客 :-) 2013年4月 GitCafe 再次发力推出了自定义域名绑定功能。至此，作为独立博客建站的两大条件——Pages&#43;域名绑定 GitCafe 均已具备。万事俱备，只欠东风～ 这东风当然非 Hexo 莫属。
+
+Hexo下多Repository部署实战——使用Github和GitCafe
+
+同时在 Github 和 GitCafe 部署 Hexo 的主要优势如下：
+1. 负载均衡，速度大增——由于两大 Pages 服务均可自定义域名，国内用户可选择走 GitCafe，国外用户则走 GitHub
+2. 自定义路由——配合 DNSPod 的『线路类型』可完美支持1中方案
+3. 国内用户访问走 GitCafe, dig 了下发现国内的话他们托管在香港的 Softlayer, 确实挺快！单个Repo的300MB空间对于技术博客是完全够用的
+4. 多机备份——两大 Pages 服务同时挂掉的可能微乎其微
+5. 你懂的&hellip; 不方便说太细">
+
+
+<meta itemprop="datePublished" content="2014-05-02T11:24:57&#43;08:00" />
+<meta itemprop="dateModified" content="2014-05-02T11:24:57&#43;08:00" />
+<meta itemprop="wordCount" content="1319">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hexo多Repo部署——使用Github和GitCafe同时托管博客"/>
+<meta name="twitter:description" content="Hexo多Repo部署——使用Github和GitCafe同时托管博客
+
+使用Github托管博客已有好几年的时间了，Hexo &#43; Github &#43; Markdown &#43; DNSPod 的组合方案工作地非常好，这四套组合拳打下来使得博客站点的维护成本大大降低，在 Geek 之间也是流传甚广。
+
+最开始在 Github 上建站用的是 Octopress，插件在当时虽然比较丰富，但是每次生成静态页面的速度实在是不敢恭维，Ruby么&hellip; 偶然在西电开源社区邮件列表上看到有人推荐 Hexo，当时并没太在意，但是过后几天特意 Google 了下 Hexo，发现其最大的特性就是 blazing fast! 果断在自己的 Arch 上配好了 Hexo，比起当初配 Octopress还是要省心不少的。
+
+前两三个月一直忙着项目和论文，也没怎么打理博客，前些天看了下 Hexo的进展，真是异常活跃咩～  issues 里边间或还能瞅到 GitCafe 的身影。随手就 Google 了下『hexo gitcafe』，看到好些从 Github迁移到 GitCafe 的，Github 的 CDN 固然给力，但在天朝特殊的网络环境下还是有力不从心的时候，正在这『生死存亡』的关键时刻，GitCafe 横空出世了，2012年10月更是推出了备受好评的 Pages服务——没有 Pages 服务哪来现在的这个博客 :-) 2013年4月 GitCafe 再次发力推出了自定义域名绑定功能。至此，作为独立博客建站的两大条件——Pages&#43;域名绑定 GitCafe 均已具备。万事俱备，只欠东风～ 这东风当然非 Hexo 莫属。
+
+Hexo下多Repository部署实战——使用Github和GitCafe
+
+同时在 Github 和 GitCafe 部署 Hexo 的主要优势如下：
+1. 负载均衡，速度大增——由于两大 Pages 服务均可自定义域名，国内用户可选择走 GitCafe，国外用户则走 GitHub
+2. 自定义路由——配合 DNSPod 的『线路类型』可完美支持1中方案
+3. 国内用户访问走 GitCafe, dig 了下发现国内的话他们托管在香港的 Softlayer, 确实挺快！单个Repo的300MB空间对于技术博客是完全够用的
+4. 多机备份——两大 Pages 服务同时挂掉的可能微乎其微
+5. 你懂的&hellip; 不方便说太细"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hexo多Repo部署——使用Github和GitCafe同时托管博客</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-05-02 </span>
+        
+        <span class="more-meta"> 约 1319 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#hexo多repo部署-使用github和gitcafe同时托管博客">Hexo多Repo部署——使用Github和GitCafe同时托管博客</a>
+<ul>
+<li><a href="#hexo下多repository部署实战-使用github和gitcafe">Hexo下多Repository部署实战——使用Github和GitCafe</a>
+<ul>
+<li><a href="#dnspod-多线路解析">DNSPod 多线路解析</a></li>
+</ul></li>
+<li><a href="#reference">Reference</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="hexo多repo部署-使用github和gitcafe同时托管博客">Hexo多Repo部署——使用Github和GitCafe同时托管博客</h1>
+
+<p>使用Github托管博客已有好几年的时间了，<a href="http://zespia.tw/hexo/docs/">Hexo</a> + <a href="https://github.com/">Github</a> + Markdown + <a href="www.dnspod.cn">DNSPod</a> 的组合方案工作地非常好，这四套组合拳打下来使得博客站点的维护成本大大降低，在 Geek 之间也是流传甚广。</p>
+
+<p>最开始在 Github 上建站用的是 Octopress，插件在当时虽然比较丰富，但是每次生成静态页面的速度实在是不敢恭维，Ruby么&hellip; 偶然在西电开源社区邮件列表上看到有人推荐 <a href="http://hexo.io/">Hexo</a>，当时并没太在意，但是过后几天特意 Google 了下 Hexo，发现其最大的特性就是 blazing fast! 果断在自己的 Arch 上配好了 Hexo，比起当初配 Octopress还是要省心不少的。</p>
+
+<p>前两三个月一直忙着项目和论文，也没怎么打理博客，前些天看了下 <a href="http://hexo.io/">Hexo</a>的进展，真是异常活跃咩～  issues 里边间或还能瞅到 <a href="https://gitcafe.com">GitCafe</a> 的身影。随手就 Google 了下『hexo gitcafe』，看到好些从 <a href="https://github.com/">Github</a>迁移到 <a href="https://gitcafe.com">GitCafe</a> 的，<a href="https://github.com/">Github</a> 的 CDN 固然给力，但在天朝特殊的网络环境下还是有力不从心的时候，正在这『生死存亡』的关键时刻，<a href="https://gitcafe.com">GitCafe</a> 横空出世了，2012年10月更是推出了备受好评的 <a href="http://blog.gitcafe.com/116.html">Pages服务</a>——没有 Pages 服务哪来现在的这个博客 :-) 2013年4月 <a href="https://gitcafe.com">GitCafe</a> 再次发力推出了<a href="http://blog.gitcafe.com/142.html">自定义域名绑定</a>功能。至此，作为独立博客建站的两大条件——Pages+域名绑定 <a href="https://gitcafe.com">GitCafe</a> 均已具备。万事俱备，只欠东风～ 这东风当然非 Hexo 莫属。</p>
+
+<h2 id="hexo下多repository部署实战-使用github和gitcafe">Hexo下多Repository部署实战——使用Github和GitCafe</h2>
+
+<p>同时在 Github 和 GitCafe 部署 Hexo 的主要优势如下：<br />
+1. 负载均衡，速度大增——由于两大 Pages 服务均可自定义域名，国内用户可选择走 GitCafe，国外用户则走 GitHub<br />
+2. 自定义路由——配合 DNSPod 的『线路类型』可完美支持1中方案<br />
+3. 国内用户访问走 GitCafe, dig 了下发现国内的话他们托管在香港的 Softlayer, 确实挺快！单个Repo的300MB空间对于技术博客是完全够用的<br />
+4. 多机备份——两大 Pages 服务同时挂掉的可能微乎其微<br />
+5. 你懂的&hellip; 不方便说太细</p>
+
+<p>
+Hexo 的多仓库部署详情见 <a href="http://hexo.io/docs/deployment.html">Deployment | Hexo</a>
+所以现在如果你需要同时部署blog到Github和Gitcafe的话，只需要在「hexo init」目录的<code>_config.yml</code>文件deploy处写上:</p>
+
+<pre><code class="language-yaml">deploy:
+  type: git
+  repo: 
+      github: git@github.com:billryan/blog.git,gh-pages
+      gitcafe: git@gitcafe.com:billryan/blog.git,gitcafe-pages
+</code></pre>
+
+<p>Hexo init根目录下<code>source</code>目录下的<code>CNAME</code>文件中我写入了<code>blog.yuanbin.me</code>，也就是说<code>CNAME</code>应该在子目录<code>source</code>下，而不是在 hexo init 根目录下，初次使用 Hexo 部署时可能会混淆。GitHub 不支持多域名绑定，只能写入一个，如需多个其实是可以在域名解析处自己设定的(显式 URL 等)。Gitcafe 则可以绑定多个域名(参考 GitCafe 的 Pages 帮助)，其实一般用一个就足够了，多了反而混乱。</p>
+
+<h3 id="dnspod-多线路解析">DNSPod 多线路解析</h3>
+
+<p>首先请确保 Github/GitCafe 处的 CNAME 和域名绑定已经添加好，随后到 DNSPod 处添加如下 blog 主机记录：<br />
+<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/blog-dnspod.png-q75" alt="blog主机记录" /><br />
+考虑到 GitHub 相对更稳定，所以默认使用 GitHub 提供的 CNAME 方式，国内用户使用 GitCafe 提供的 CNAME 记录，过上几分钟至几小时应该就好了，可以用<code>dig</code>在挂 VPN 前后进行测试。</p>
+
+<p>享受秒开的快乐吧，Roll it! :)</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+<li><a href="http://blog.gitcafe.com/142.html">GitCafe Pages服务现支持自定义域名绑定 | Blog – GitCafe</a></li>
+<li><a href="https://gitcafe.com/GitCafe/Help/wiki/Pages-%E7%9B%B8%E5%85%B3%E5%B8%AE%E5%8A%A9">Wiki Pages 相关帮助 · GitCafe/Help - GitCafe</a><br /></li>
+<li><a href="http://zipperary.com/2013/11/23/hexo-to-gitcafe/">托管博客到gitcafe | Zippera&rsquo;s blog</a><br /></li>
+<li><a href="http://liberize.me/post/host-your-blog-on-both-github-and-gitcafe.html">同时使用 GitHub 和 GitCafe 托管博客</a><br /></li>
+<li><a href="http://ruby-china.org/topics/18084">Ruby China | 同时使用 GitHub 与 GitCafe 托管博客 » 社区</a></li>
+<li><a href="http://guojing.me/tec/2014/03/29/host-blog-in-both-github-and-gitcafe/">同时部署博客到GitHub/GitCafe|GuoJing&rsquo;s Blog</a></li>
+</ul>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-05-02</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2014-05/2014-05-16_17-24-43/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">英文Locale下使用Fcitx中文输入法</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2014-02/2014-02-09_15-38-35/">
+            <span class="next-text nav-default">树莓派把玩之OS和硬件选型</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Hexo多Repo部署——使用Github和GitCafe同时托管博客',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x 缘由 之前一直在 Archlinux 下部署整套 黑魔法服务，各种工具安装起来很方便，即使源里头没有，AUR 中一般也有其他人提供的 PKGBUILD, 根据" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2016-01/2016-01-15_15-10-28/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x" />
+<meta property="og:description" content="Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x 缘由 之前一直在 Archlinux 下部署整套 黑魔法服务，各种工具安装起来很方便，即使源里头没有，AUR 中一般也有其他人提供的 PKGBUILD, 根据" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2016-01/2016-01-15_15-10-28/" />
+
+
+
+<meta property="article:published_time" content="2016-01-15T15:10:28&#43;08:00"/>
+
+<meta property="article:modified_time" content="2016-01-15T15:10:28&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x">
+<meta itemprop="description" content="Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x 缘由 之前一直在 Archlinux 下部署整套 黑魔法服务，各种工具安装起来很方便，即使源里头没有，AUR 中一般也有其他人提供的 PKGBUILD, 根据">
+
+
+<meta itemprop="datePublished" content="2016-01-15T15:10:28&#43;08:00" />
+<meta itemprop="dateModified" content="2016-01-15T15:10:28&#43;08:00" />
+<meta itemprop="wordCount" content="894">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x"/>
+<meta name="twitter:description" content="Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x 缘由 之前一直在 Archlinux 下部署整套 黑魔法服务，各种工具安装起来很方便，即使源里头没有，AUR 中一般也有其他人提供的 PKGBUILD, 根据"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2016-01-15 </span>
+        
+        <span class="more-meta"> 约 894 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#ubuntu-下编译支持解析-ipv6-域名的-haproxy-1-6-x">Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x</a>
+<ul>
+<li><a href="#缘由">缘由</a></li>
+<li><a href="#问题分析">问题分析</a></li>
+<li><a href="#编译带-getaddrinfo-支持的-haproxy">编译带 <code>getaddrinfo()</code> 支持的 HAProxy</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h1 id="ubuntu-下编译支持解析-ipv6-域名的-haproxy-1-6-x">Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x</h1>
+
+<h2 id="缘由">缘由</h2>
+
+<p>之前一直在 Archlinux 下部署整套 <a href="https://github.com/sjtug/kxsw">黑魔法服务</a>，各种工具安装起来很方便，即使源里头没有，AUR 中一般也有其他人提供的 PKGBUILD, 根据此脚本构建适用于自己系统的包也是十分方便的。由于自己即将硕士毕业，这套服务还是放在学校的机房里为好，交大的外网带宽资源实在是太丰富了。:)</p>
+
+<p>最近拿到的一台机器是 Ubuntu, 用作黑魔法服务还是有点麻烦，于是乎就搞了个基于 Arch 的 docker image，搞定之后发现要在 docker 中支持 IPv6 还是有点困难，弃疗后就转向原生的 Ubuntu 了。由于自己目前 ss 的出口共有 10 条线路，IPv4 和 IPv6 各 5 条，这种情况下用 HAProxy 做负载均衡、高可用和国内 ss 中转再好不过了。</p>
+
+<h2 id="问题分析">问题分析</h2>
+
+<p>HAProxy 1.5 版本后是支持 IPv6 的，自己好几个 Arch 的机器用 HAProxy 1.6 都是能正常和 IPv6 的远程服务器连接的，所以从版本上来看在 Ubuntu 下使用 HAProxy 1.6 应该是可以支持的。<a href="http://haproxy.debian.net/">HAProxy packages for Debian and Ubuntu</a> 提供了 Debian/Ubuntu 下各版本的安装包。安装后发现 Ubuntu 14.04 下无论是 backports 还是 ppa 中提供的 1.<sup>5</sup>&frasl;<sub>1</sub>.6 都不支持解析 IPv6 的域名，然后 HAProxy 就直接报错退出了&hellip; 用 dig 测了下 AAAA 记录的解析是正常的，因此基本确定问题出在 HAProxy 上。</p>
+
+<p>使用 <code>haproxy -vv</code> 可以看到 HAProxy 的详细编译构建信息，对比了 Ubuntu 和 Arch 下的信息，发现构建信息中 Arch 下多了这么一个关键的选项：</p>
+
+<pre><code>OPTIONS = USE_GETADDRINFO=1
+</code></pre>
+
+<p>顺着这个关键词搜了下发现 GitHub 中的 <a href="https://github.com/haproxy/haproxy">haproxy</a> 说明文档下有这么一行：</p>
+
+<pre><code>Recent systems can resolve IPv6 host names using getaddrinfo().
+</code></pre>
+
+<p>也就是说 Ubuntu 下的那些打包的维护者并没有添加这个选项，因此也就不能正常解析 AAAA 记录的域名。那 HAProxy 宣称的 IPv6 支持又是怎么一回事呢？根据自己有限的经验猜测是它能监听 IPv6 的 socket.</p>
+
+<p>好了，既然没有能支持解析 IPv6 的包，那就自己根据源码编译一个呗。</p>
+
+<h2 id="编译带-getaddrinfo-支持的-haproxy">编译带 <code>getaddrinfo()</code> 支持的 HAProxy</h2>
+
+<p>进入官网 <a href="http://www.haproxy.org/">http://www.haproxy.org/</a>, 找到 1.6 稳定版的最新发布版，下载后解压、编译、构建。以目前最新的稳定版 1.6.3 为例：</p>
+
+<pre><code>cd ~/src/haproxy
+http_proxy=http://your_proxy:port wget http://www.haproxy.org/download/1.6/src/haproxy-1.6.3.tar.gz # blocked by XXX
+tar -xzvf haproxy-1.6.3.tar.gz
+cd haproxy-1.6.3/
+make CFLAGS='-I/usr/include/lua5.3 -O2 -g -fno-strict-aliasing -Wdeclaration-after-statement' USE_GETADDRINFO=1 USE_ZLIB=1 USE_OPENSSL=1 USE_LUA=1 USE_PCRE=1 USE_PCRE_JIT=1 TARGET=linux2628
+</code></pre>
+
+<p>考虑到后期的扩展性，你很可能需要 lua, 因此需要先将 lua5.3 的头文件和库准备好(不需要 lua 支持的话就不用 USE_LUA=1)。简单起见，到 <a href="http://haproxy.debian.net/">http://haproxy.debian.net/</a> 找到适合自己发行版和 1.6-stable 的 ppa, 更新后安装 lua 的开发版：</p>
+
+<pre><code>apt-get install lua5.3 liblua5.3-dev
+</code></pre>
+
+<p>安装好 lua 后你就可以顺利执行以上最后一行的构建命令了。由于通过这种方式编译生成的 HAProxy 并没有相应的 service 等文件，因此可以先从 ppa 中安装 HAProxy, 然后将编译生成的两个二进制文件替换之，大功告成~</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2016-01-15</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2016-07/2016-07-03_22-10-13/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Play with 新创云 X32-N2808</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2015-11/2015-11-26_20-10-26/">
+            <span class="next-text nav-default">在 Linux/OS X 下优雅地写论文(TeX)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

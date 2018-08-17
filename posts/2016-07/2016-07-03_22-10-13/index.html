@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Play with 新创云 X32-N2808 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Play with 新创云 X32-N2808 之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
+X32-N2808 硬件概述 依稀记得在 SHLUG 邮件列表中有人提到过新创云的低功耗板子，前一阵子趁京东 618 大促搜了下新创云，发现 X32-N2808 这款移动端半价促销(不到400即可拿下)，无内存无硬盘，虽然也写明无 WiFi, 但实际上卖家发货时还是带了一块 PCI-E 无线网卡及蓝牙芯片，无线网卡是 Atheros 家的，实测对 Linux 支持很好，用于自建热点很方便。简单问了下客服，内存条是可以使用笔记本内存条的，但是得使用低压版 1.35v 的，也就是说没有必要买新创云自家昂贵的内存条以及 SSD 等，由于不确定自己的笔记本内存条是否可用，低压版 1.35v 的内存条没有一起下单。
+拿到板子后立马把后盖拆了下来，内部做工还算不错，接口及组件列表如下：
+ CPU 为赛扬双核 N2808 内存条仅有一个插槽，LPDDR3，也就是说这里和客服说的有出入，以 1.5V(LPDDR3) 为准 一个 PCI-E 的无线网卡，卖家送的 Atheros 网卡 一个 msata，可以扩展 SSD 用，SSD 暂时太贵了，没买 一个 SATA II，我买了一块 1 T 西数笔记本硬盘，板子预留了空间，拧上螺丝即用 两个 HDMI 高清接口 两个 USB 3.0 四个 USB 2.0 一个千兆以太网卡，作为网络路由器和媒体服务器非常不错 音频接口  所以总的来讲接口还是非常丰富的，和一台普通的台式机没差多少。整机功耗实测 6 W 左右，名副其实的低功耗 X86 服务器。 自己加内存条和硬盘后的谍照如下。
+
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2016-07/2016-07-03_22-10-13/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Play with 新创云 X32-N2808" />
+<meta property="og:description" content="Play with 新创云 X32-N2808
+
+之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
+
+X32-N2808 硬件概述
+
+依稀记得在 SHLUG 邮件列表中有人提到过新创云的低功耗板子，前一阵子趁京东 618 大促搜了下新创云，发现 X32-N2808 这款移动端半价促销(不到400即可拿下)，无内存无硬盘，虽然也写明无 WiFi, 但实际上卖家发货时还是带了一块 PCI-E 无线网卡及蓝牙芯片，无线网卡是 Atheros 家的，实测对 Linux 支持很好，用于自建热点很方便。简单问了下客服，内存条是可以使用笔记本内存条的，但是得使用低压版 1.35v 的，也就是说没有必要买新创云自家昂贵的内存条以及 SSD 等，由于不确定自己的笔记本内存条是否可用，低压版 1.35v 的内存条没有一起下单。
+
+拿到板子后立马把后盖拆了下来，内部做工还算不错，接口及组件列表如下：
+
+
+CPU 为赛扬双核 N2808
+内存条仅有一个插槽，LPDDR3，也就是说这里和客服说的有出入，以 1.5V(LPDDR3) 为准
+一个 PCI-E 的无线网卡，卖家送的 Atheros 网卡
+一个 msata，可以扩展 SSD 用，SSD 暂时太贵了，没买
+一个 SATA II，我买了一块 1 T 西数笔记本硬盘，板子预留了空间，拧上螺丝即用
+两个 HDMI 高清接口
+两个 USB 3.0
+四个 USB 2.0
+一个千兆以太网卡，作为网络路由器和媒体服务器非常不错
+音频接口
+
+
+所以总的来讲接口还是非常丰富的，和一台普通的台式机没差多少。整机功耗实测 6 W 左右，名副其实的低功耗 X86 服务器。
+自己加内存条和硬盘后的谍照如下。
+
+
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2016-07/2016-07-03_22-10-13/" />
+
+
+
+<meta property="article:published_time" content="2016-07-03T22:10:13&#43;08:00"/>
+
+<meta property="article:modified_time" content="2016-07-03T22:10:13&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Play with 新创云 X32-N2808">
+<meta itemprop="description" content="Play with 新创云 X32-N2808
+
+之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
+
+X32-N2808 硬件概述
+
+依稀记得在 SHLUG 邮件列表中有人提到过新创云的低功耗板子，前一阵子趁京东 618 大促搜了下新创云，发现 X32-N2808 这款移动端半价促销(不到400即可拿下)，无内存无硬盘，虽然也写明无 WiFi, 但实际上卖家发货时还是带了一块 PCI-E 无线网卡及蓝牙芯片，无线网卡是 Atheros 家的，实测对 Linux 支持很好，用于自建热点很方便。简单问了下客服，内存条是可以使用笔记本内存条的，但是得使用低压版 1.35v 的，也就是说没有必要买新创云自家昂贵的内存条以及 SSD 等，由于不确定自己的笔记本内存条是否可用，低压版 1.35v 的内存条没有一起下单。
+
+拿到板子后立马把后盖拆了下来，内部做工还算不错，接口及组件列表如下：
+
+
+CPU 为赛扬双核 N2808
+内存条仅有一个插槽，LPDDR3，也就是说这里和客服说的有出入，以 1.5V(LPDDR3) 为准
+一个 PCI-E 的无线网卡，卖家送的 Atheros 网卡
+一个 msata，可以扩展 SSD 用，SSD 暂时太贵了，没买
+一个 SATA II，我买了一块 1 T 西数笔记本硬盘，板子预留了空间，拧上螺丝即用
+两个 HDMI 高清接口
+两个 USB 3.0
+四个 USB 2.0
+一个千兆以太网卡，作为网络路由器和媒体服务器非常不错
+音频接口
+
+
+所以总的来讲接口还是非常丰富的，和一台普通的台式机没差多少。整机功耗实测 6 W 左右，名副其实的低功耗 X86 服务器。
+自己加内存条和硬盘后的谍照如下。
+
+
+
+
+">
+
+
+<meta itemprop="datePublished" content="2016-07-03T22:10:13&#43;08:00" />
+<meta itemprop="dateModified" content="2016-07-03T22:10:13&#43;08:00" />
+<meta itemprop="wordCount" content="2022">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Play with 新创云 X32-N2808"/>
+<meta name="twitter:description" content="Play with 新创云 X32-N2808
+
+之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
+
+X32-N2808 硬件概述
+
+依稀记得在 SHLUG 邮件列表中有人提到过新创云的低功耗板子，前一阵子趁京东 618 大促搜了下新创云，发现 X32-N2808 这款移动端半价促销(不到400即可拿下)，无内存无硬盘，虽然也写明无 WiFi, 但实际上卖家发货时还是带了一块 PCI-E 无线网卡及蓝牙芯片，无线网卡是 Atheros 家的，实测对 Linux 支持很好，用于自建热点很方便。简单问了下客服，内存条是可以使用笔记本内存条的，但是得使用低压版 1.35v 的，也就是说没有必要买新创云自家昂贵的内存条以及 SSD 等，由于不确定自己的笔记本内存条是否可用，低压版 1.35v 的内存条没有一起下单。
+
+拿到板子后立马把后盖拆了下来，内部做工还算不错，接口及组件列表如下：
+
+
+CPU 为赛扬双核 N2808
+内存条仅有一个插槽，LPDDR3，也就是说这里和客服说的有出入，以 1.5V(LPDDR3) 为准
+一个 PCI-E 的无线网卡，卖家送的 Atheros 网卡
+一个 msata，可以扩展 SSD 用，SSD 暂时太贵了，没买
+一个 SATA II，我买了一块 1 T 西数笔记本硬盘，板子预留了空间，拧上螺丝即用
+两个 HDMI 高清接口
+两个 USB 3.0
+四个 USB 2.0
+一个千兆以太网卡，作为网络路由器和媒体服务器非常不错
+音频接口
+
+
+所以总的来讲接口还是非常丰富的，和一台普通的台式机没差多少。整机功耗实测 6 W 左右，名副其实的低功耗 X86 服务器。
+自己加内存条和硬盘后的谍照如下。
+
+
+
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Play with 新创云 X32-N2808</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2016-07-03 </span>
+        
+        <span class="more-meta"> 约 2022 字 </span>
+        <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#play-with-新创云-x32-n2808">Play with 新创云 X32-N2808</a>
+<ul>
+<li><a href="#x32-n2808-硬件概述">X32-N2808 硬件概述</a>
+<ul>
+<li><a href="#bios-设置">BIOS 设置</a></li>
+</ul></li>
+<li><a href="#安装-archlinux">安装 Archlinux</a>
+<ul>
+<li><a href="#重启时系统无法正常关机">重启时系统无法正常关机</a></li>
+<li><a href="#dmesg-显示-usb-xxx-device-descriptor-read-64-error">dmesg 显示 usb xxx device descriptor read/64, error</a></li>
+<li><a href="#启动时忽略硬盘挂载错误">启动时忽略硬盘挂载错误</a></li>
+<li><a href="#使用-linux-lts">使用 linux-lts</a></li>
+<li><a href="#新建用户">新建用户</a></li>
+<li><a href="#oh-my-zsh">oh-my-zsh</a></li>
+<li><a href="#ssh">ssh</a></li>
+<li><a href="#优化-ssh-连接-tmux-mosh">优化 ssh 连接 - tmux + mosh</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="play-with-新创云-x32-n2808">Play with 新创云 X32-N2808</h1>
+
+<p>之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 <a href="https://nghttp2.org/">Nghttp2</a> 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。</p>
+
+<h2 id="x32-n2808-硬件概述">X32-N2808 硬件概述</h2>
+
+<p>依稀记得在 SHLUG 邮件列表中有人提到过新创云的低功耗板子，前一阵子趁京东 618 大促搜了下新创云，发现 X32-N2808 这款移动端半价促销(不到400即可拿下)，无内存无硬盘，虽然也写明无 WiFi, 但实际上卖家发货时还是带了一块 PCI-E 无线网卡及蓝牙芯片，无线网卡是 Atheros 家的，实测对 Linux 支持很好，用于自建热点很方便。简单问了下客服，内存条是可以使用笔记本内存条的，但是得使用低压版 1.35v 的，也就是说没有必要买新创云自家昂贵的内存条以及 SSD 等，由于不确定自己的笔记本内存条是否可用，低压版 1.35v 的内存条没有一起下单。</p>
+
+<p>拿到板子后立马把后盖拆了下来，内部做工还算不错，接口及组件列表如下：</p>
+
+<ul>
+<li>CPU 为赛扬双核 N2808</li>
+<li>内存条仅有一个插槽，LPDDR3，也就是说这里和客服说的有出入，以 1.5V(LPDDR3) 为准</li>
+<li>一个 PCI-E 的无线网卡，卖家送的 Atheros 网卡</li>
+<li>一个 msata，可以扩展 SSD 用，SSD 暂时太贵了，没买</li>
+<li>一个 SATA II，我买了一块 1 T 西数笔记本硬盘，板子预留了空间，拧上螺丝即用</li>
+<li>两个 HDMI 高清接口</li>
+<li>两个 USB 3.0</li>
+<li>四个 USB 2.0</li>
+<li>一个千兆以太网卡，作为网络路由器和媒体服务器非常不错</li>
+<li>音频接口</li>
+</ul>
+
+<p>所以总的来讲接口还是非常丰富的，和一台普通的台式机没差多少。整机功耗实测 6 W 左右，名副其实的低功耗 X86 服务器。
+自己加内存条和硬盘后的谍照如下。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-1.jpeg-q75" alt="板子内部接口" />
+<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-2.jpeg-q75" alt="2.5英寸笔记本硬盘" /></p>
+
+<p></p>
+
+<h3 id="bios-设置">BIOS 设置</h3>
+
+<p>X23-N2808 的默认 BIOS 设置很多特性都是关闭的，比如 ACPI, 启动项的 Legacy USB 支持等，为了避免安装 Linux 系统时和 UEFI 肉搏，建议支持 Legacy USB 启动。</p>
+
+<h2 id="安装-archlinux">安装 Archlinux</h2>
+
+<p>Archlinux 发行版的软件包更新虽然非常快，但作为家用服务器操作系统还是有不少优势的，比如丰富的第三方 AUR 和较新的软件包，默认没有 GUI，极简哲学。室友问我为何不选择相对更稳定的 Ubuntu Server，对于我来说，除了以上优势外，那就是我对 Archlinux 比较熟悉，配置各项服务来那是轻车熟路。systemd 写起 service 来也深得我心——简洁，清晰。</p>
+
+<p>对于 ARM 板子来说，安装 Archlinux 那是易如反掌，按照 <a href="https://archlinuxarm.org">https://archlinuxarm.org</a> 上的操作 dd 写入 sd 卡即可，非常简单。对于 X86 板子来说则需要按照 <a href="https://wiki.archlinux.org/index.php/Beginners%27_guide">Beginners&rsquo; guide</a> 安装。也可以参考下 <a href="https://bigeagle.me/2014/06/archlinux-install-for-beginners/">给妹子看的 Arch Linux 桌面日常安装</a>，不过这里是作为家用服务器用途，所以图形界面 X 是不必要的，简述下步骤如下：</p>
+
+<ol>
+<li>将 Archlinux 的 ISO 安装镜像 dd 到优盘制作启动优盘</li>
+<li>开机后启动项引导选择刚制作好的 Archlinux 启动优盘</li>
+<li>给硬盘分区，我之前想使用 LVM 作为逻辑卷管理，但启动失败，弃用 LVM 后顺利安装</li>
+<li>格式化文件系统后可以使用 discard,noatime 等挂载提升性能，并写入到 fstab 中</li>
+<li>安装基本系统 <code>pacstrap -i /mnt base base-devel vim zsh</code></li>
+<li><code>arch-chroot</code>, 将 USTC 或者 tuna 的源放在前面对大陆的朋友有好处</li>
+<li>启用 <code>en_US.UTF-8</code> 和 <code>zh_CN.UTF-8</code> locale</li>
+<li>因为我这里采用有线方式联网，所以不必安装 <code>wpa_supplicant dialog</code> 等，家用服务器用途还是建议以有线方式接入</li>
+<li>安装 <code>grub</code> 引导器，这里有坑，后面细说</li>
+<li>添加新用户及启用 <code>archlinuxcn</code> 和安装<code>yaourt</code></li>
+</ol>
+
+<p>为了更好的使用 <code>pacman</code> 和 <code>yaourt</code>, 你可以在新建普通用户之后安装 <code>packer</code>, 这样在安装软件时可不必再加上 <code>sudo</code>, 也不必区别对待 <code>pacman</code> 和 <code>yaourt</code>.</p>
+
+<h3 id="重启时系统无法正常关机">重启时系统无法正常关机</h3>
+
+<p>在关机或者重启时系统会显示
+&gt; <strong>watchdog did not stop!</strong></p>
+
+<p>并且系统几分钟内都无法正常关机。解决办法是在 grub 配置文件(<code>/etc/default/grub</code>)中设置 <code>GRUB_CMDLINE_LINUX=&quot;reboot=bios&quot;</code>.  更新 grub.cfg - <code>grub-mkconfig -o /boot/grub/grub.cfg</code>. 详见 <a href="http://unix.stackexchange.com/questions/249654/message-at-shutdown-watchdog-did-not-stop">acpi - message at shutdown: watchdog did not stop! - Unix &amp; Linux Stack Exchange</a></p>
+
+<h3 id="dmesg-显示-usb-xxx-device-descriptor-read-64-error">dmesg 显示 usb xxx device descriptor read/64, error</h3>
+
+<p>对于这个板子倒是无关紧要，试过插入不同 USB 接口时 <code>dmesg</code> 显示的错误信息与后面6个接口无关。如果有关系的话可参考
+<a href="https://www.guyrutenberg.com/2008/06/26/usb-1-4-device-descriptor-read64-error-71/">usb 1-4: device descriptor read/64, error -71 | Guy Rutenberg</a></p>
+
+<h3 id="启动时忽略硬盘挂载错误">启动时忽略硬盘挂载错误</h3>
+
+<p>作为家用服务器，你很可能会给它增添一块硬盘作为数据存储中心，这块硬盘在你测试时也许就不接入服务器了，在这种情况下我们需要改动 <code>/etc/fstab</code> 的挂载参数忽略这种错误，否则系统可能无法正常启动。以我为例；</p>
+
+<pre><code># /dev/sdb1
+UUID=bf5aae46-d95a-461d-b9f3-544db87b6696       /xxxx     ext4            rw,noatime,discard,data=ordered,nofail,x-systemd.device-timeout=1 0 2
+</code></pre>
+
+<p>细节可参看 <a href="https://wiki.archlinux.org/index.php/fstab#Automount_with_systemd">fstab - ArchWiki</a></p>
+
+<h3 id="使用-linux-lts">使用 linux-lts</h3>
+
+<p>众所周知，Arch 的哲学之一就是尽量与上游保持一致，kernel 的更新也是非常频繁，所以为了稳定性考虑还是建议安装使用 <code>linux-lts</code>.</p>
+
+<h3 id="新建用户">新建用户</h3>
+
+<pre><code>useradd -m -g users -G wheel -s /bin/zsh neo
+</code></pre>
+
+<p>将用户 neo 加入附加组 <code>wheel</code> 中，启用 <code>sudo</code> 特权。</p>
+
+<p>运行 <code>visudo</code> 将用户 <code>neo</code> 加入免密使用 <code>sudo</code>:</p>
+
+<pre><code>## Uncomment to allow members of group wheel to execute any command
+%wheel ALL=(ALL) ALL
+</code></pre>
+
+<p>password-free for user neo:</p>
+
+<pre><code>Defaults:neo !authenticate
+</code></pre>
+
+<h3 id="oh-my-zsh">oh-my-zsh</h3>
+
+<p>安装完 <code>zsh</code> 之后怎能没有扩展？<code>oh-my-zsh</code> 是非常不错的选择。</p>
+
+<pre><code>packer -S oh-my-zsh-git
+cp /usr/share/oh-my-zsh/zshrc ~/.zshrc
+</code></pre>
+
+<h3 id="ssh">ssh</h3>
+
+<pre><code>packer -S openssh
+</code></pre>
+
+<p>由于默认不提供 ssh 接入，作为服务器使用这个还是必不可少的。
+生成密钥可参考 <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">Generating a new SSH key</a></p>
+
+<pre><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+</code></pre>
+
+<h3 id="优化-ssh-连接-tmux-mosh">优化 ssh 连接 - tmux + mosh</h3>
+
+<pre><code>packer -S mosh tmux
+</code></pre>
+
+<p>tmux 可用于同时 hold 多个 terminal, 断线重连只需 <code>tmux a</code>, 谁用谁知道。
+mosh 则可用于 UDP 接入，在移动环境或者网络环境较差时非常管用。</p>
+
+<p>基本系统及软件已经安装完毕，后续我将自己配置无线热点、无痛科学上网和媒体服务器等过程详述在博客中。</p>
+
+<ul>
+<li><a href="../../2016/07/DDNS-for-home-server.html">家用服务器之 DDNS</a></li>
+<li><a href="../../2016/07/Access-Points-for-home-server.html">家用服务器之无线路由器(AP)</a></li>
+<li><a href="../../2014/11/cubieboard2-dns-server.html">家用服务器之自建 DNS 服务器</a></li>
+<li><a href="../../2016/07/Transparent-routing-for-home-server-in-China.html">Transparent routing for home server in China</a></li>
+<li><a href="../../2016/07/Squid-for-home-server.html">家用服务器之 Squid 分流</a></li>
+<li><a href="../../2016/07/HTTP-2-proxy-for-home-server.html">家用服务器之 HTTP/2</a></li>
+<li><a href="../../2014/11/archlinux-bt-download.html">家用服务器之 BT(PT) 下载机</a></li>
+<li><a href="../../2014/11/archlinux-minidlna.html">家用服务器之 UPnP/DLNA 媒体服务</a></li>
+</ul>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2016-07-03</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2016-07/2016-07-08_22-25-28/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">家用服务器之 DDNS</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2016-01/2016-01-15_15-10-28/">
+            <span class="next-text nav-default">Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Play with 新创云 X32-N2808',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

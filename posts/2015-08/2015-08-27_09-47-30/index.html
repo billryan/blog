@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Akka Notes 4 - Request and Response - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Akka Notes 4 - Request and Response 该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
+前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)
+从技术角度考虑，我们发送消息给 Actor 总是期望有副作用发生的，从设计上便是如此。目标 Actor 除了不作回应之外还可以对消息做如下事情：
+ 返回一条回复给发送者(在我们的例子中，TeacherActor 回应一条名言给 StudentActor) 给其他有可能成为目标受众的 Actor 转发一条回应，这个 Actor 反过来会回应/转发而产生副作用。Routers 和 Supervisors 就是这一类例子。之后我们对这两类进行详解。  请求和响应 在本文中我们将集中在上述第一点：请求与响应 整个周期。一图胜千言，上图！
+
+" />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2015-08/2015-08-27_09-47-30/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Akka Notes 4 - Request and Response" />
+<meta property="og:description" content="Akka Notes 4 - Request and Response
+
+该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
+
+前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)
+
+从技术角度考虑，我们发送消息给 Actor 总是期望有副作用发生的，从设计上便是如此。目标 Actor 除了不作回应之外还可以对消息做如下事情：
+
+
+返回一条回复给发送者(在我们的例子中，TeacherActor 回应一条名言给 StudentActor)
+给其他有可能成为目标受众的 Actor 转发一条回应，这个 Actor 反过来会回应/转发而产生副作用。Routers 和 Supervisors 就是这一类例子。之后我们对这两类进行详解。
+
+
+请求和响应
+
+在本文中我们将集中在上述第一点：请求与响应 整个周期。一图胜千言，上图！
+
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2015-08/2015-08-27_09-47-30/" />
+
+
+
+<meta property="article:published_time" content="2015-08-27T09:47:30&#43;08:00"/>
+
+<meta property="article:modified_time" content="2015-08-27T09:47:30&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Akka Notes 4 - Request and Response">
+<meta itemprop="description" content="Akka Notes 4 - Request and Response
+
+该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
+
+前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)
+
+从技术角度考虑，我们发送消息给 Actor 总是期望有副作用发生的，从设计上便是如此。目标 Actor 除了不作回应之外还可以对消息做如下事情：
+
+
+返回一条回复给发送者(在我们的例子中，TeacherActor 回应一条名言给 StudentActor)
+给其他有可能成为目标受众的 Actor 转发一条回应，这个 Actor 反过来会回应/转发而产生副作用。Routers 和 Supervisors 就是这一类例子。之后我们对这两类进行详解。
+
+
+请求和响应
+
+在本文中我们将集中在上述第一点：请求与响应 整个周期。一图胜千言，上图！
+
+
+
+">
+
+
+<meta itemprop="datePublished" content="2015-08-27T09:47:30&#43;08:00" />
+<meta itemprop="dateModified" content="2015-08-27T09:47:30&#43;08:00" />
+<meta itemprop="wordCount" content="1371">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Akka Notes 4 - Request and Response"/>
+<meta name="twitter:description" content="Akka Notes 4 - Request and Response
+
+该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
+
+前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)
+
+从技术角度考虑，我们发送消息给 Actor 总是期望有副作用发生的，从设计上便是如此。目标 Actor 除了不作回应之外还可以对消息做如下事情：
+
+
+返回一条回复给发送者(在我们的例子中，TeacherActor 回应一条名言给 StudentActor)
+给其他有可能成为目标受众的 Actor 转发一条回应，这个 Actor 反过来会回应/转发而产生副作用。Routers 和 Supervisors 就是这一类例子。之后我们对这两类进行详解。
+
+
+请求和响应
+
+在本文中我们将集中在上述第一点：请求与响应 整个周期。一图胜千言，上图！
+
+
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Akka Notes 4 - Request and Response</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-08-27 </span>
+        
+        <span class="more-meta"> 约 1371 字 </span>
+        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#akka-notes-4-request-and-response">Akka Notes 4 - Request and Response</a>
+<ul>
+<li><a href="#请求和响应">请求和响应</a>
+<ul>
+<li><a href="#1-driverapp-发送-initsignal">1. DriverApp 发送 InitSignal</a></li>
+<li><a href="#studentactor-响应-initsignal-并发送-quoterequest-消息给-teacheractor">StudentActor 响应 InitSignal 并发送 QuoteRequest 消息给 TeacherActor</a></li>
+<li><a href="#teacheractor-回应一条-quoteresponse">TeacherActor 回应一条 QuoteResponse</a></li>
+<li><a href="#studentactor-接收来自-teacheractor-的-quoteresponse-并记录到-console-logger">StudentActor 接收来自 TeacherActor 的 QuoteResponse 并记录到 console/logger</a></li>
+</ul></li>
+<li><a href="#测试">测试</a></li>
+<li><a href="#源码">源码</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="akka-notes-4-request-and-response">Akka Notes 4 - Request and Response</h1>
+
+<p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。</p>
+
+<p>前文 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)</p>
+
+<p>从技术角度考虑，我们发送消息给 Actor 总是期望有副作用发生的，从设计上便是如此。目标 Actor 除了不作回应之外还可以对消息做如下事情：</p>
+
+<ol>
+<li>返回一条回复给发送者(在我们的例子中，TeacherActor 回应一条名言给 StudentActor)</li>
+<li>给其他有可能成为目标受众的 Actor 转发一条回应，这个 Actor 反过来会回应/转发而产生副作用。Routers 和 Supervisors 就是这一类例子。之后我们对这两类进行详解。</li>
+</ol>
+
+<h2 id="请求和响应">请求和响应</h2>
+
+<p>在本文中我们将集中在上述第一点：请求与响应 整个周期。一图胜千言，上图！</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_RequestReponse.png-q75" alt="RequestReponse" /></p>
+
+<p></p>
+
+<p>这张图传达了我们将要达成的目标，简单起见，这张图并不展示 ActorSystem, Dispatcher 或者 Mailboxes.</p>
+
+<ol>
+<li><code>DriverApp</code> 发送一条 <code>InitSignal</code> 消息给 <code>StudentActor</code></li>
+<li><code>StudentActor</code> 对 <code>InitSignal</code> 消息作出回应并发送一条 <code>QuoteRequest</code> 消息给 <code>TeacherActor</code></li>
+<li>和我们第一次讨论的一样，<code>TeacherActor</code> 则回应一条 <code>QuoteResponse</code></li>
+<li><code>StudentActor</code> 记录 <code>QuoteResponse</code> 到 console/logger</li>
+</ol>
+
+<p>我们接下来写一个测试用例来验证它。让我们对以上四点逐一剖析。</p>
+
+<h3 id="1-driverapp-发送-initsignal">1. DriverApp 发送 InitSignal</h3>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_DriverApp.png-q75" alt="DriverApp" /></p>
+
+<p>如上图所见，你可能猜到这个 DriverApp 可能要干什么了，它做了如下四件事：</p>
+
+<ol>
+<li>初始化 ActorSystem</li>
+</ol>
+
+<pre><code class="language-scala">//Initialize the ActorSystem
+  val system = ActorSystem(&quot;UniversityMessageSystem&quot;)
+</code></pre>
+
+<ol>
+<li>创建 TeacherActor</li>
+</ol>
+
+<pre><code class="language-scala">//create the teacher actor
+  val teacherRef = system.actorOf(Props[TeacherActor], &quot;teacherActor&quot;)
+</code></pre>
+
+<ol>
+<li>创建 StudentActor</li>
+</ol>
+
+<pre><code class="language-scala">//create the Student Actor - pass the teacher actorref as a constructor parameter to StudentActor
+  val studentRef = system.actorOf(Props(new StudentActor(teacherRef)), &quot;studentActor&quot;)
+</code></pre>
+
+<p>你可能注意到我将 TeacherActor 的 ActorRef 作为构造参数传递给了 StudentActor, 这样 StudentActor 就能使用 ActorRef 发送消息给 TeacherActor 了。当然你也可以使用其他方法达到同样的效果(比如通过 Props)。但是通过构造参数的方式在我们后续使用 Supervisors 和 Routers 时将会非常方便。很快我们就会发现子 Actor 也能做到，但是这在这从名字上听起来不太适合—— 使用 Student 来生成 Teacher 听起来确实不太好。</p>
+
+<ol>
+<li>DriverApp 发送 InitSignal 给 StudentActor</li>
+</ol>
+
+<p>DriverApp 发送 InitSignal 给 StudentActor 后 StudentActor 就能发送一条 QuoteRequest 给 TeacherActor 了。</p>
+
+<pre><code class="language-scala">//send a message to the Student Actor
+  studentRef ! InitSignal
+</code></pre>
+
+<p>这就是 DriverClass 的核心了，Thread.sleep 和 ActorSystem.shutdown 只是用来等待数秒以使得消息在最终关闭 ActorSystem 之前发送完毕。</p>
+
+<p>DriverApp.scala 程序如下：</p>
+
+<pre><code class="language-scala">package me.yuanbin.akkanotes.requestresponse
+
+import akka.actor.ActorSystem
+import akka.actor.Props
+import me.yuanbin.akkanotes.actormsg.StudentActor
+import me.yuanbin.akkanotes.actormsg.TeacherActor
+import me.yuanbin.akkanotes.protocols.StudentProtocol._
+
+object DriverApp extends App {
+  //Initialize the ActorSystem
+  val system = ActorSystem(&quot;UniversityMessageSystem&quot;)
+
+  //create the teacher actor
+  val teacherRef = system.actorOf(Props[TeacherActor], &quot;teacherActor&quot;)
+
+  //create the Student Actor - pass the teacher actorref as a constructor parameter to StudentActor
+  val studentRef = system.actorOf(Props(new StudentActor(teacherRef)), &quot;studentActor&quot;)
+
+  //send a message to the Student Actor
+  studentRef ! InitSignal
+
+  //Let's wait for a couple of seconds before we shut down the system
+  Thread.sleep(2000)
+
+  //Shut down the ActorSystem.
+  system.shutdown()
+}
+</code></pre>
+
+<h3 id="studentactor-响应-initsignal-并发送-quoterequest-消息给-teacheractor">StudentActor 响应 InitSignal 并发送 QuoteRequest 消息给 TeacherActor</h3>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_StudentTeacher23.png-q75" alt="StudentTeacher23" /></p>
+
+<pre><code class="language-scala">class StudentActor (teacherActorRef:ActorRef) extends Actor with ActorLogging {
+  def receive = {
+    /*
+     * This InitSignal is received from the DriverApp. 
+     * On receipt, the Student sends a message to the Teacher actor. 
+     * The teacher actor on receipt of the QuoteRequest responds with a QuoteResponse 
+     */
+    case InitSignal=&gt; {
+      teacherActorRef ! QuoteRequest
+    }
+    ...
+</code></pre>
+
+<h3 id="teacheractor-回应一条-quoteresponse">TeacherActor 回应一条 QuoteResponse</h3>
+
+<p>这部分代码和我们在 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 中的代码几乎一样。TeacherActor 在接收 QuoteRequest 消息后返回一条 QuoteResponse.</p>
+
+<p>TeacherActor 的代码如下：</p>
+
+<pre><code class="language-scala">package me.yuanbin.akkanotes.actormsg
+
+import akka.actor.{Actor, ActorLogging}
+import me.yuanbin.akkanotes.protocols.StudentProtocol._
+import me.yuanbin.akkanotes.protocols.TeacherProtocol._
+import scala.util.Random
+
+/*
+ * The Philosophy Teacher
+ *
+ */
+class TeacherActor extends Actor with ActorLogging {
+  val quotes = List(
+    &quot;Moderation is for cowards&quot;,
+    &quot;Anything worth doing is worth overdoing&quot;,
+    &quot;The trouble is you think you have time&quot;,
+    &quot;You never gonna know if you never even try&quot;)
+
+  def receive = {
+    case QuoteRequest =&gt; {
+      //Get a random Quote from the list and construct a response
+      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
+
+      log.info (&quot;QuoteRequest received. Sending response to Student&quot;)
+      //respond back to the Student who is the original sender of QuoteRequest
+      sender ! quoteResponse
+    }
+  }
+}
+</code></pre>
+
+<h3 id="studentactor-接收来自-teacheractor-的-quoteresponse-并记录到-console-logger">StudentActor 接收来自 TeacherActor 的 QuoteResponse 并记录到 console/logger</h3>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_StudentLog.png-q75" alt="StudentLog" /></p>
+
+<p>StudentActor 的完整代码如下：</p>
+
+<pre><code class="language-scala">package me.yuanbin.akkanotes.actormsg
+
+import akka.actor.{Actor, ActorLogging, ActorRef}
+import me.yuanbin.akkanotes.protocols.StudentProtocol._
+import me.yuanbin.akkanotes.protocols.TeacherProtocol._
+
+/*
+ * The Student Actor class. 
+ * 
+ */
+class StudentActor (teacherActorRef:ActorRef) extends Actor with ActorLogging {
+  def receive = {
+    /*
+     * This InitSignal is received from the DriverApp. 
+     * On receipt, the Student sends a message to the Teacher actor. 
+     * The teacher actor on receipt of the QuoteRequest responds with a QuoteResponse 
+     */
+    case InitSignal=&gt; {
+      teacherActorRef ! QuoteRequest
+    }
+
+    /*
+     * The Student simply logs the quote received from the TeacherActor
+     * 
+     */
+    case QuoteResponse(quoteString) =&gt; {
+      log.info(&quot;Received QuoteResponse from Teacher&quot;)
+      log.info(s&quot;Printing from Student Actor $quoteString&quot;)
+    }
+  }
+}
+</code></pre>
+
+<h2 id="测试">测试</h2>
+
+<p>Now, our testcase would simulate the DriverApp. Since, the StudentActor just logs the message and we won&rsquo;t be able to assert on the QuoteResponse itself, we&rsquo;ll just assert the presence of the log message in the EventStream (just like we talked last time)</p>
+
+<p>我们的测试应该去驱动 DriverApp, 因为 StudentActor 仅仅只是记录了消息并且我们并不能对 QuoteResponse 本身进行断言，我们仅对 EventStream 中日志消息出现的地方进行断言(正如我们在 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Logging-and-Testing-Actors.html">Akka Notes 3 - Logging and Testing Actors</a>) 中所提到的。</p>
+
+<h2 id="源码">源码</h2>
+
+<p>源码可以从 <a href="https://github.com/billryan/akka_notes/tree/master/akka_messaging_request_response">akka_notes/akka_messaging_request_response</a> 找到。</p>
+
+<p>运行方式，确保系统装好 sbt 0.13.8.</p>
+
+<pre><code>cd akka_notes/akka_messaging_request_response
+sbt run
+sbt test
+</code></pre>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-08-27</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2015-08/2015-08-27_15-57-59/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">一个简洁优雅的 XeLaTeX 简历模板</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2015-08/2015-08-26_13-26-24/">
+            <span class="next-text nav-default">Akka Notes 3 - Logging and Testing Actors</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Akka Notes 4 - Request and Response',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cubieboard2/树莓派之Archlinux系统配置 - 东海一叶</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="billryan" />
+  <meta name="description" content="Cubieboard2/树莓派之Archlinux系统配置 上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
+P.S. 相关文章可见Tag: cubieboard " />
+
+  <meta name="keywords" content="blog, billryan, hugo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.46" />
+
+
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Cubieboard2/树莓派之Archlinux系统配置" />
+<meta property="og:description" content="Cubieboard2/树莓派之Archlinux系统配置
+
+上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
+
+P.S. 相关文章可见Tag: cubieboard
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/" />
+
+
+
+<meta property="article:published_time" content="2014-11-07T17:21:14&#43;08:00"/>
+
+<meta property="article:modified_time" content="2014-11-07T17:21:14&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Cubieboard2/树莓派之Archlinux系统配置">
+<meta itemprop="description" content="Cubieboard2/树莓派之Archlinux系统配置
+
+上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
+
+P.S. 相关文章可见Tag: cubieboard
+">
+
+
+<meta itemprop="datePublished" content="2014-11-07T17:21:14&#43;08:00" />
+<meta itemprop="dateModified" content="2014-11-07T17:21:14&#43;08:00" />
+<meta itemprop="wordCount" content="3349">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cubieboard2/树莓派之Archlinux系统配置"/>
+<meta name="twitter:description" content="Cubieboard2/树莓派之Archlinux系统配置
+
+上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
+
+P.S. 相关文章可见Tag: cubieboard
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">东海一叶</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">东海一叶</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cubieboard2/树莓派之Archlinux系统配置</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-11-07 </span>
+        
+        <span class="more-meta"> 约 3349 字 </span>
+        <span class="more-meta"> 预计阅读 7 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#cubieboard2-树莓派之archlinux系统配置">Cubieboard2/树莓派之Archlinux系统配置</a>
+<ul>
+<li>
+<ul>
+<li><a href="#micro-sd-tf卡选型">micro-SD/TF卡选型</a></li>
+<li><a href="#软件源选择">软件源选择</a></li>
+<li><a href="#系统更新">系统更新</a></li>
+<li><a href="#挂载硬盘">挂载硬盘</a></li>
+<li><a href="#aur小帮手">AUR小帮手</a></li>
+<li><a href="#安装常用软件包">安装常用软件包</a></li>
+<li><a href="#新建普通用户">新建普通用户</a></li>
+</ul></li>
+<li><a href="#设置locale">设置Locale</a>
+<ul>
+<li><a href="#安装中文字体">安装中文字体</a></li>
+</ul></li>
+<li><a href="#ssh优化">SSH优化</a>
+<ul>
+<li><a href="#mosh">mosh</a></li>
+<li><a href="#安全优化">安全优化</a></li>
+<li><a href="#使用public-key登录">使用public key登录</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <h1 id="cubieboard2-树莓派之archlinux系统配置">Cubieboard2/树莓派之Archlinux系统配置</h1>
+
+<p>上文 <a href="http://blog.billryan.me/posts/2014/11/Cubieboard2-Archlinux-install.html">Cubieboard2之Archlinux安装指南</a> 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。</p>
+
+<p>P.S. 相关文章可见<a href="http://blog.billryan.me/tags/cubieboard/">Tag: cubieboard</a>
+</p>
+
+<h3 id="micro-sd-tf卡选型">micro-SD/TF卡选型</h3>
+
+<p>作为根分区的micro-SD卡我用的是一张Class10 8G 的TF卡，<code>home</code>分区用的是Class10 32G 的TF卡，写有系统的那张卡(根分区)插在板子的正面(印有data card)，<code>home</code>分区的卡则插在板子背面(印有boot card)。关于micro-SD卡的选择，Class 10是比较合适的，某逊上还算便宜。</p>
+
+<h3 id="软件源选择">软件源选择</h3>
+
+<p><strong>这一节的内容同样适用于树莓派(Raspberry PI)</strong></p>
+
+<p><code>/etc/pacman.d/mirrorlist</code>中提供的Geo-IP based mirror支持的线路其实非常少，<code>dig</code>查询可以得知其仅对美洲和欧洲做了线路区分。</p>
+
+<pre><code>## Geo-IP based mirror selection and load balancing
+Server = http://mirror.archlinuxarm.org/$arch/$repo
+</code></pre>
+
+<p>直接连国外的软件源一般来说速度不太理想，
+目前国内的Archlinuxarm软件源我知道的有中科大和华中科大两家提供镜像服务。用你最喜欢的编辑器在文件<code>/etc/pacman.d/mirrorlist</code>的<code>## Geo-IP based mirror selection and load balancing</code>之前加入如下几行：</p>
+
+<pre><code>## USTC  
+Server = http://mirrors.ustc.edu.cn/archlinuxarm/$arch/$repo
+## HUST
+Server = http://mirrors.hustunique.com/archlinuxarm/$arch/$repo
+</code></pre>
+
+<p>中科大在软件源这一块的口碑是非常好的，对不同网络线路的速度都还不错，大家可根据实际情况选择使用中科大的还是华中科大的软件源。如果到中科大和华中科大的网络都不太理想，台湾和新加坡的也可以考虑下。</p>
+
+<h3 id="系统更新">系统更新</h3>
+
+<p>在安装软件包时可能会遇到如<code>Signature</code>之类的错误，在<code>/etc/pacman.conf</code>里设置<code>SigLevel = Never</code>就好了，只要软件包不是太老应该不大会出现此类问题。在mirrorlist里改好软件源的Server之后在终端输入<code>pacman -Syu</code>进行全局更新，熟悉Arch的自然不用多说，对Arch不熟的建议多看看Arch的<a href="https://wiki.archlinux.org/">Wiki</a>，Arch和Gentoo的Wiki可以说是众多Linux发行版的典范，其中包含了非常多的系统及软件包的详细安装配置文档，凝聚了全世界众多Archer的心血，力荐！</p>
+
+<p>需要注意的是执行全局更新时会提示更新<code>uboot-cubieboard2</code>，更新完后需要将<a href="http://blog.billryan.me/posts/2014/11/Cubieboard2-Archlinux-install.html">上文</a>提到的<code>script.bin</code>文件重新复制到<code>/boot/</code>目录下，否则无法识别板子底部的TF卡插槽。如果系统运行正常的话不建议更新<code>uboot-cubieboard2</code>这个软件包。<code>vi /etc/pacman.conf</code>找到<code># IgnorePkg   =</code>这一行，在其后加入<code>IgnorePkg   = uboot-cubieboard2</code>，以免夜长梦多，这就是双卡版带来的噩梦 :(</p>
+
+<h3 id="挂载硬盘">挂载硬盘</h3>
+
+<p>Cubieboard2一大亮点是提供了SATA接口，挂载2.5吋的移动硬盘和SSD时相比树莓派要方便不少。如果手头只有3.5吋的硬盘，可以考虑用硬盘盒。之前在树莓派上用ORICO 6518挂载过一块老的3.5吋硬盘，发现树莓派的供电能力实在是太有限了，即使使用硬盘盒和外部供电，在树莓派上进行大文件的传输时相应的USB接口也会掉电重启，具体表现就是硬盘会被强制<code>unmount</code>。使用Cubieboard2外接同样的硬盘盒时则未发现类似现象。</p>
+
+<p>使用<code>lsblk -f</code>可查看到各SD卡和硬盘的UUID和设备名称，推荐在<code>/etc/fstab</code>中使用UUID指定SD卡或者硬盘进行开机自动挂载，具体挂载参数依实际情况而定。我的fstab如下：</p>
+
+<pre><code># 
+# /etc/fstab: static file system information
+#
+# &lt;file system&gt; &lt;dir&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;
+# /dev/mmcblk1p1
+UUID=dda83b0a-9897-4338-a2c5-80f1df92ae41       /home           ext4            defaults,data=writeback,noatime,nodiratime      0 1
+# /dev/sda1
+UUID=c89cbdf6-e043-4f76-b8b0-4d33ba6aeb93       /datacenter     ext4            rw,relatime,data=ordered        0 2
+</code></pre>
+
+<p><code>/home</code>分区我用的是禁用了日志的ext4文件系统，所以和硬盘的挂载参数不太一样。</p>
+
+<p>OK，针对Cubieboard2的一些特殊配置及注意事项就到此为止了，接下来的对基于系统之上的应用着重介绍下。</p>
+
+<h3 id="aur小帮手">AUR小帮手</h3>
+
+<p>用过Arch的人都知道AUR对Archer有多么重要，<a href="https://wiki.archlinux.org/index.php/Yaourt">Yaourt</a>是为AUR设计的包管理工具，可以替代<code>pacman</code>。但是使用<code>yaourt</code>安装更新软件时可能会稍显繁琐和缓慢，比如不断输入yes，无法同时对AUR和官方源进行全局更新&hellip;</p>
+
+<p>为了解决基于<code>bash</code>的<code>yaourt</code>速度较慢和操作繁琐的问题，<a href="https://github.com/rmarquis/pacaur">rmarquis/pacaur</a>横空出世了；为了解决<code>yaourt</code>不能很好地整合pacman和AUR这个问题，<a href="https://github.com/keenerd/packer">keenerd/packer</a>被发明了出来，目前来看<a href="https://github.com/rmarquis/pacaur">pacaur</a>的功能更为强大，当然这与这两个工具的定位有关。虽然这两个新的wrapper已足够好用，但是偶尔也难免出点bug，这个时候就不得不用yaourt了。</p>
+
+<p>选用<code>yaourt + packer</code>组合的执行<code># pacman -S yaourt packer</code>就好了，选用<code>yaourt + pacaur</code>的需要先执行<code>#pacman -S yaourt</code>，而后再调用<code>yaourt</code>安装AUR中的软件包，<code>yaourt -S pacaur</code>。注意：archlinuxarm和archlinux的软件源略有不同，archlinuxarm中<code>/etc/pacman.conf</code>的repo已包含<code>aur</code>，无需自行添加如archlinux.fr的Server地址。</p>
+
+<h3 id="安装常用软件包">安装常用软件包</h3>
+
+<p>常用软件包自然是经常需要用的那些软件包，比如编译所需的工具链、编辑器、版本控制工具和<code>zsh</code>等。在Arch下安装这些软件包执行<code>yaourt -S base-devel git</code>就好了。一般系统默认的Shell是<code>bash</code>，鉴于<code>zsh</code>强大的补全和其他特性，建议你还是用<code>zsh</code>吧，执行<code>yaourt -S zsh oh-my-zsh-git</code>就好了 :) 装好<code>oh-my-zsh</code>后按照要求复制配置文件到如下新建的普通用户家目录下。</p>
+
+<h3 id="新建普通用户">新建普通用户</h3>
+
+<pre><code># useradd -m -g users -G wheel -s /bin/zsh your_user_name
+# passwd your_user_name
+</code></pre>
+
+<p>Arch下通过<code>wheel</code>这个用户组来赋予普通用户在使用 <a href="https://wiki.archlinux.org/index.php/Sudo">Sudo</a>时以root身份运行程序，这个和其他发行版略有不同。</p>
+
+<h2 id="设置locale">设置Locale</h2>
+
+<p>这一步主要是为了远程接入Cubieboard/树莓派时能正常地显示非Ascii码，比如中文和部分特殊符号，一般情况下启用<code>en_US</code>和<code>zh_CN</code>即可。<code># vim /etc/locale.gen</code>使用Vim的搜索功能找到如下两行并取消注释。</p>
+
+<pre><code>...
+#en_SG ISO-8859-1
+en_US.UTF-8 UTF-8
+#en_US ISO-8859-1
+...
+#zh_CN.GBK GBK
+zh_CN.UTF-8 UTF-8
+#zh_CN GB2312
+...
+</code></pre>
+
+<p>保存退出，执行<code># locale-gen</code>生成相应locale。接下来设置<code>LANG</code>变量，为了避免不必要的麻烦，建议使用英文，<code># vim /etc/locale.conf</code>，加入行<code>LANG=en_US.UTF-8
+</code>。关于Locale的详细设置可参考<a href="https://wiki.archlinux.org/index.php/locale">Locale - ArchWiki</a>。</p>
+
+<h3 id="安装中文字体">安装中文字体</h3>
+
+<p>执行<code># yaourt -S wqy-microhei</code>安装文泉驿微米黑，效果不错～ 实际上如果你不用Cubieboard/树莓派的图形界面，中文字体安装这一步是可以省略的。</p>
+
+<h2 id="ssh优化">SSH优化</h2>
+
+<h3 id="mosh">mosh</h3>
+
+<p>传统的SSH方式非常不适合用于移动环境，比如无缝漫游，低速网络环境等。MIT团队推出的<a href="https://mosh.mit.edu/">Mosh: the mobile shell</a>则很好地解决这类问题。Arch下通过<code>yaourt -S mosh</code>安装。</p>
+
+<p>使用mosh连接Cubieboard/树莓派和SSH用法不大，<code>mosh --ssh=&quot;ssh -p 2222&quot; user_name@host_ip</code>，其中<code>2222</code>为修改后的SSH端口，<code>user_name</code>为你自己新建的账户，<code>host_ip</code>则是Cubieboard/树莓派的IP了咯。</p>
+
+<h3 id="安全优化">安全优化</h3>
+
+<p>为了安全起见，建议修改SSH常用的22端口，<code># vim /etc/ssh/sshd_config</code>，找到<code>Port 22</code>这一行，将22更改为1024～65535之间任一你喜欢的端口。</p>
+
+<p>由于root的威力实在是太大，允许root进行SSH是一件极其危险的事情。<code># vim /etc/ssh/sshd_config</code>，找到<code>PermitRootLogin no</code>这一行，设置为<code>no</code>。</p>
+
+<p>最后别忘了重启sshd服务生效-<code># systemctl restart sshd</code></p>
+
+<h3 id="使用public-key登录">使用public key登录</h3>
+
+<p>每次ssh连接到Cubieboard2/树莓派都需要输入密码自然非常繁琐，那为何不用public key的方式哩？</p>
+
+<p>按照<a href="https://wiki.archlinux.org/index.php/SSH_keys">SSH keys - ArchWiki</a>提供的方法先在本地主机生成public key, 随后使用<code>ssh-copy-id</code>将public key拷贝到Cubieboard2/树莓派上。拷贝好之后你就可以在自己的主机上写一行bash更为方便地执行一长串的ssh命令了。</p>
+
+<p>Nice! 到此为此你已经武装上了大刀长矛，下一步就来点小米加步枪吧 :)</p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">billryan</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2014-11-07</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/posts/2014-11/2014-11-08_19-26-58/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cubieboard2/树莓派之Archlinux网络配置</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/posts/2014-11/2014-11-06_15-56-23/">
+            <span class="next-text nav-default">Cubieboard2之Archlinux安装指南</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+  <div class="btn">Comments</div>
+  <div id="comment-thread"></div>
+
+  <link rel="stylesheet" href="/lib/comment/comment.css">
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+  <script type="text/javascript">
+    marked.setOptions({
+    highlight: function (code, lang) {
+       return hljs.highlightAuto(code).value;
+    }
+    });
+    function Highlighting(){
+      var markdowns = document.getElementsByClassName('markdown');
+      for(var i=0;i<markdowns.length;i++){
+         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', Highlighting, false);
+    window.addEventListener('load', Highlighting, false);
+  </script>
+
+  
+  <script src="/lib/comment/comment.js"></script>
+
+  <div id="loading-spin"></div>
+  <script type="text/javascript">
+    var opt = {
+      type: "github",
+      user: 'billryan',
+      repo: 'blog',
+      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
+      go_to_comment: "去留言",
+      issue_title: 'Cubieboard2\/树莓派之Archlinux系统配置',
+      btn_class: "btn",
+      comments_target: "#comment-thread",
+      loading_target: "#loading-spin",
+      client_id: 'df994b73c7b5a106459b',
+      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    };
+    getComments(opt);
+ </script>
+
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
+      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2010 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">billryan</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
