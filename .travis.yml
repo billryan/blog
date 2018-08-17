@@ -1,13 +1,19 @@
-language: node_js
+language: go
 
-node_js:
-  - "stable"
+go:
+  - 1.10
+
+sudo: false
+
+env:
+  global:
+  - HUGO_VERSION=0.46
 
 before_install:
-  # Install GitBook
-  - npm install gitbook-cli -g
-  - npm install svgexport -g
-  - gitbook fetch 3.2.3
+  # Install Hugo
+  - mkdir -p bin
+  - curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz -o bin/hugo.tar.gz
+  - tar xzvvf bin/hugo.tar.gz -C ./bin
 
 install:
   # Install GitBook dependencies
@@ -15,18 +21,13 @@ install:
   - gitbook install
 
 script:
-  - echo "build blog..."
-  - gitbook build
+  - "./bin/hugo"
 
 before_deploy:
   # Set up git user name and tag this commit
   #- git config --local user.name "YOUR GIT USER NAME"
   #- git config --local user.email "YOUR GIT USER EMAIL"
   - git tag "$(date +'%Y%m%d_%H%M%S')-$(git log --format=%h -1)"
-  - wget https://github.com/billryan/blog/files/1762412/original.tar.gz
-  - tar xzvf original.tar.gz
-  - rsync -aP original/ _book/
-  - tar czvf blog.tar.gz _book/
 
 deploy:
   - provider: pages
@@ -34,7 +35,7 @@ deploy:
     github-token:
       secure: QU4B9CIPUdelYJKnS72SUjOY/9/w9+m536RX8Ex4PsKYMJHEIW7rkbP16ZAvMDoqiQkfPwpQSE8tFOBxMmkgGIgWY86o0xr022ak0iGICFCkjedEfNkKBENjOA8JoMlCx+QRyGcRJKuHBAy8WQU+PKykJDzJzadGNs0ud/+P75k=
     keep-history: true
-    local-dir: _book
+    local-dir: public
     on:
       branch: master
     target-branch: gh-pages
