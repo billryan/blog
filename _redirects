@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+https://serene-fermat-295717.netlify.com/* https://blog.yuanbin.me/:splat 301!
