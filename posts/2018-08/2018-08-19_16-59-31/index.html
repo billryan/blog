@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>基于大数据平台的客户画像系统设计 - 东海一叶</title>
+  <title>为 Hugo even 主题移植 comment.js 评论插件 - 东海一叶</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行" />
+  <meta name="description" content="在前文 博客写作工作流 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/" />
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2018-08/2018-08-19_16-59-31/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,20 +49,16 @@
 
 
 
-<meta property="og:title" content="基于大数据平台的客户画像系统设计" />
-<meta property="og:description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行" />
+<meta property="og:title" content="为 Hugo even 主题移植 comment.js 评论插件" />
+<meta property="og:description" content="在前文 博客写作工作流 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2018-08/2018-08-19_16-59-31/" />
 
 
 
-<meta property="article:published_time" content="2018-08-02T23:59:46&#43;08:00"/>
+<meta property="article:published_time" content="2018-08-19T16:59:31&#43;08:00"/>
 
-<meta property="article:modified_time" content="2018-08-02T23:59:46&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2018-08-19T16:59:31&#43;08:00"/>
 
 
 
@@ -70,20 +66,24 @@
 
 
 
-<meta itemprop="name" content="基于大数据平台的客户画像系统设计">
-<meta itemprop="description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行">
-
-
-<meta itemprop="datePublished" content="2018-08-02T23:59:46&#43;08:00" />
-<meta itemprop="dateModified" content="2018-08-02T23:59:46&#43;08:00" />
-<meta itemprop="wordCount" content="1004">
 
 
 
-<meta itemprop="keywords" content="" />
+
+<meta itemprop="name" content="为 Hugo even 主题移植 comment.js 评论插件">
+<meta itemprop="description" content="在前文 博客写作工作流 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment">
+
+
+<meta itemprop="datePublished" content="2018-08-19T16:59:31&#43;08:00" />
+<meta itemprop="dateModified" content="2018-08-19T16:59:31&#43;08:00" />
+<meta itemprop="wordCount" content="460">
+
+
+
+<meta itemprop="keywords" content="Hugo," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="基于大数据平台的客户画像系统设计"/>
-<meta name="twitter:description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行"/>
+<meta name="twitter:title" content="为 Hugo even 主题移植 comment.js 评论插件"/>
+<meta name="twitter:description" content="在前文 博客写作工作流 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,13 +146,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">基于大数据平台的客户画像系统设计</h1>
+      <h1 class="post-title">为 Hugo even 主题移植 comment.js 评论插件</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-08-02 </span>
+        <span class="post-time"> 2018-08-19 </span>
         
-        <span class="more-meta"> 约 1004 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span class="more-meta"> 约 460 字 </span>
+        <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -163,15 +163,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#基于大数据平台的客户画像系统设计">基于大数据平台的客户画像系统设计</a>
-<ul>
-<li><a href="#系统架构及数据流">系统架构及数据流</a></li>
-<li><a href="#数据模型映射">数据模型映射</a></li>
-</ul></li>
-</ul>
-</nav>
+    
   </div>
 </div>
 
@@ -180,70 +172,18 @@
 
     
     <div class="post-content">
-      
+      <p>在前文 <a href="http://blog.yuanbin.me/posts/2018-02/2018-02-23_23-19-29/">博客写作工作流</a> 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment 的方案会导致在博客当前页面评论登陆 GitHub 时提示的权限有点多，比如读写权限。新的基于 GitHub App 的方案如 <a href="https://github.com/utterance/utterances/pull/25">utterances 1.0</a> 就会好很多了。但这种方式对于非知名公司/个人博主来讲，我是不敢随便去让这种 app 接入的。基于同样的理念，我找到了 wzpan 的 <a href="https://github.com/wzpan/comment.js">wzpan/comment.js</a> <a href="http://www.hahack.com/codes/comment-js/">中文文档</a>, 这种方案将鉴权完全转移至 GitHub 上控制，安全感会好很多。稍显麻烦的是会有一个跳转而不是直接在本页评论。下面我详细介绍一下 Hugo even 下的如何使用 comment.js</p>
 
-<h1 id="基于大数据平台的客户画像系统设计">基于大数据平台的客户画像系统设计</h1>
+<p>由于目前还未向 even 发起 PR, 所以现在想使用的话可以直接使用我 fork 改过的 ==&gt; <a href="https://github.com/billryan/hugo-theme-even">billryan/hugo-theme-even</a>, 具体配置同 comment.js 要求，你可以参考我的 <a href="https://github.com/billryan/blog/blob/master/config.toml">blog/config.toml</a>, 主要是一些如 owner, repo, token 的设置。对 comment.js 有需求的可以留言，我可以尝试向 even 发起一个 PR 合并到官方去。</p>
 
-<p>客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推荐或者营销。基础的客户画像系统有如下几种需求：</p>
+<p>核心配置如下：</p>
 
-<ol>
-<li>输入用户 id, 输出用户相应的画像标签</li>
-<li>输入用户 id，相应标签和指定时间区间，输出对应标签值在这段时间内的变化情况</li>
-<li>输入多个标签值，输出满足指定标签值的一组用户(精准推荐或营销用)</li>
-<li>输出的标签最好能和业务数据进行关联</li>
-</ol>
-
-<p>这四个需求虽然都可以通过 HBase 实现，但是对于需求3这种搜索的场景，用 HBase 来实现则往往需要 scan 全表，而且范围查询也不易实现。我们可以选用 ES(ElasticSearch) 来作为搜索过滤。对于需求4，常用的数据仓库有 Hive, 我们可以通过外表的形式关联 HBase, 也可以定期从 HBase 导入至 Hive.</p>
-
-<h2 id="系统架构及数据流">系统架构及数据流</h2>
-
-<ul>
-<li>源数据层：数据源可以是关系型数据库，实时行为日志，Hive 仓库或者从 HBase 加工过的标签数据。</li>
-<li>计算引擎层：使用 Spark 作为中间的计算引擎和不同的数据源接口可以省掉繁琐的数据驱动整合工作，同时借助 dataframe API 可以高效的进行异构数据源关联分析和处理。</li>
-<li>数据分发层：使用 HBase 作为主存储，ES 通过 HBase 的 coprocessor 机制同步更新，往 ES 写可以通过批量写减少网络 IO。Hive 通过外表则不必做专门的数据同步操作，但是这种方法效率往往不高。</li>
-<li>数据对外使用层：通过 REST API 查询 HBase 和 ES 获取所需标签/用户 id</li>
-</ul>
-
-<pre><code>                                                  +------------+
-                                                  |            |
-                              +-----------------&gt; |  REST API  |
-                              |                   |            |
-                              |                   +------+-----+
-                              |                          ^
-                              |                          |
-                              |                          |
-+--------+               +----+----+                +----+----+
-|        |    external   |         |  coprocessor   |         |
-|  Hive  | &lt;-------------+  HBase  +--------------&gt; |    ES   |
-|        |               |         |                |         |
-+--------+               +----+----+                +---------+
-                              ^
-                              |
-                +-------------+-------------+
-                |                           |
-                |  Spark / Spark Streaming  |
-                |                           |
-                +-------------+-------------+
-                              ^
-                              |
-         +--------------------+------------------+
-         |                                       |
-         |  Hive, SQLServer, MySQL, HBase, HDFS  |
-         |                                       |
-         +---------------------------------------+
+<pre><code>  [params.comment]           # comment is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
+    owner = &quot;billryan&quot;              # Your GitHub ID
+    repo = &quot;blog&quot;               # The repo to store comments
 </code></pre>
 
-<p>Spark 写 HBase 可以用 <a href="https://github.com/hortonworks-spark/shc">hortonworks-spark/shc</a></p>
-
-<p>其中 HBase 写 ES 和 Hive 建外表的细节另外写两篇博文做深度一点的解析，这里不再赘述。</p>
-
-<h2 id="数据模型映射">数据模型映射</h2>
-
-<p>我们知道 HBase 主要是通过 rowkey 来实现快速查询，对于典型的用户画像场景，用户 id 往往必不可少。但 rowkey 在 HBase 中的存储为字节数组，且为了更好发挥 HBase 分布式存储的效率，我们需要防止用户 id 过于集中造成热点，这里我们可以尝试将 int 型数据映射到 00000000~FFFFFFFF 内，然后反转字符串即可完美适配 HBase 对 rowkey 设计的要求。</p>
-
-<p>对于 HBase 往 ES 的数据同步，我们主要利用了 HBase coprocessor 绑定更新/删除事件进而对 ES 同步。这里一个比较棘手的问题是 HBase 的内容都是以字节数组存储的，比较理想的方案是同步到 ES 时保留类型信息以便范围查询。这里我采取的方案是通过 Spark dataframe 取出类型信息，在写入 HBase 时列的最后一个字节用于类型标记，如 <code>i -&gt; integer</code>, <code>d -&gt; double</code>, <code>s -&gt; string</code>. 这样就完美的解决了类型的转化问题了，还能自适应匹配。</p>
-
-<p>HBase 中的 rowkey 可以映射为 ES 中的 docid, 列名 <code>cf:tag_namespace.tag_name</code> 可以映射为 ES 中的 JSON 嵌套结构。</p>
+<p>看完 comment.js 的文档后移植起来其实是非常简单的，在这个过程中我还参考了 <a href="https://github.com/olOwOlo/hugo-theme-even/pull/51">feat: add gitalk</a>, 加入了一些公开的 CDN 资源，在 comment.js 的基础上增加了 <code>.btn</code> 的样式，这个样式参考了 GitHub issue. 另外我默认开启了 highlight 和 spin 这两个特性。</p>
 
     </div>
 
@@ -255,7 +195,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-08-02</span>
+    <span class="item-content">2018-08-19</span>
   </p>
   
   <p class="copyright-item">
@@ -285,19 +225,18 @@
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/hugo/">Hugo</a>
+          
+        </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/posts/2018-08/2018-08-19_16-59-31/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">为 Hugo even 主题移植 comment.js 评论插件</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/posts/2018-06/2018-06-30_21-26-14/">
-            <span class="next-text nav-default">HAProxy 进阶使用技巧</span>
+          <a class="next" href="/posts/2018-08/2018-08-02_23-59-46/">
+            <span class="next-text nav-default">基于大数据平台的客户画像系统设计</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -349,7 +288,7 @@
       repo: 'blog',
       no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
       go_to_comment: "去留言",
-      issue_title: '基于大数据平台的客户画像系统设计',
+      issue_title: '为 Hugo even 主题移植 comment.js 评论插件',
       btn_class: "btn",
       comments_target: "#comment-thread",
       loading_target: "#loading-spin",
