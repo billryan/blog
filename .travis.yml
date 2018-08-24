@@ -20,6 +20,7 @@ before_deploy:
   #- git config --local user.name "YOUR GIT USER NAME"
   #- git config --local user.email "YOUR GIT USER EMAIL"
   - git tag "$(date +'%Y%m%d_%H%M%S')-$(git log --format=%h -1)"
+  - tar cjvf public.tar.bz2 public/
 
 deploy:
   - provider: pages
@@ -34,12 +35,12 @@ deploy:
   - provider: releases
     api_key:
       secure: QU4B9CIPUdelYJKnS72SUjOY/9/w9+m536RX8Ex4PsKYMJHEIW7rkbP16ZAvMDoqiQkfPwpQSE8tFOBxMmkgGIgWY86o0xr022ak0iGICFCkjedEfNkKBENjOA8JoMlCx+QRyGcRJKuHBAy8WQU+PKykJDzJzadGNs0ud/+P75k=
+    file: public.tar.bz2
     skip_cleanup: true
     on:
-      branch: gh-pages
+      branch: master
 
 # whitelist
 branches:
   only:
     - master
-    - gh-pages
