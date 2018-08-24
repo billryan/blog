@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="自制 GitBook 插件之 gitbook-plugin-tags 最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下" />
+  <meta name="description" content="最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下班后的周末抽空" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="自制 GitBook 插件之 gitbook-plugin-tags" />
-<meta property="og:description" content="自制 GitBook 插件之 gitbook-plugin-tags 最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下" />
+<meta property="og:description" content="最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下班后的周末抽空" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2016-09/2016-09-18_22-55-14/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="自制 GitBook 插件之 gitbook-plugin-tags">
-<meta itemprop="description" content="自制 GitBook 插件之 gitbook-plugin-tags 最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下">
+<meta itemprop="description" content="最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下班后的周末抽空">
 
 
 <meta itemprop="datePublished" content="2016-09-18T22:55:14&#43;08:00" />
 <meta itemprop="dateModified" content="2016-09-18T22:55:14&#43;08:00" />
-<meta itemprop="wordCount" content="1232">
+<meta itemprop="wordCount" content="1225">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="GitBook," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="自制 GitBook 插件之 gitbook-plugin-tags"/>
-<meta name="twitter:description" content="自制 GitBook 插件之 gitbook-plugin-tags 最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下"/>
+<meta name="twitter:description" content="最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下班后的周末抽空"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2016-09-18 </span>
-        
-        <span class="more-meta"> 约 1232 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 1225 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -165,7 +169,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#自制-gitbook-插件之-gitbook-plugin-tags">自制 GitBook 插件之 gitbook-plugin-tags</a>
+<li>
 <ul>
 <li><a href="#使用">使用</a>
 <ul>
@@ -194,8 +198,6 @@
     
     <div class="post-content">
       
-
-<h1 id="自制-gitbook-插件之-gitbook-plugin-tags">自制 GitBook 插件之 gitbook-plugin-tags</h1>
 
 <p>最开始使用 GitBook 撰写电子书是从去年开始维护的 <a href="https://github.com/billryan/algorithm-exercise">billryan/algorithm-exercise</a> 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下班后的周末抽空写了写，趁这个中秋小长假美化了 CSS, 修了修 bug. 下文先介绍如何使用 <a href="https://github.com/billryan/gitbook-plugin-tags">gitbook-plugin-tags</a> 插件，随后介绍自己实现这个插件的全过程。</p>
 
@@ -336,7 +338,11 @@ tags: tag1, tag2, tag3 is here
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/gitbook/">GitBook</a>
+          
+        </div>
 
       
       <nav class="post-nav">
@@ -348,7 +354,7 @@ tags: tag1, tag2, tag3 is here
           </a>
         
           <a class="next" href="/posts/2016-08/2016-08-19_07-30-10/">
-            <span class="next-text nav-default">Gitbook 网页版中文字型优化</span>
+            <span class="next-text nav-default">GitBook 网页版中文字型优化</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

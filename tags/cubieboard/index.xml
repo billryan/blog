@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cubieboard on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/cubieboard/</link>
+    <description>Recent content in Cubieboard on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 30 Nov 2014 16:00:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/cubieboard/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cubieboard2/树莓派之swap交换文件</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-30_16-00-56/</link>
+      <pubDate>Sun, 30 Nov 2014 16:00:56 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-30_16-00-56/</guid>
+      <description>Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，使用SD卡作为swap交换空间是一件极不理智的行</description>
+    </item>
+    
+  </channel>
+</rss>

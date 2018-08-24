@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>题 on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/%E9%A2%98/</link>
+    <description>Recent content in 题 on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 01 Apr 2015 16:19:45 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>一道阿里的抛硬币选择题</title>
+      <link>https://blog.yuanbin.me/posts/2015-04/2015-04-01_16-19-45/</link>
+      <pubDate>Wed, 01 Apr 2015 16:19:45 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-04/2015-04-01_16-19-45/</guid>
+      <description>最近开始准备找实习，各大公司的题自然是不可错过，今天看到一道抛硬币方面的概率题，找了下看到网上的答案几乎都是错的，这里给出自己的推理。 题目如</description>
+    </item>
+    
+  </channel>
+</rss>

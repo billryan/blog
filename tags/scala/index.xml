@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scala on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/scala/</link>
+    <description>Recent content in Scala on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 28 Feb 2018 23:48:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Scala/Java 多环境配置管理——使用 Typesafe Config</title>
+      <link>https://blog.yuanbin.me/posts/2018-02/2018-02-28_23-48-31/</link>
+      <pubDate>Wed, 28 Feb 2018 23:48:31 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-28_23-48-31/</guid>
+      <description>在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，Scala/Java 使用同样的</description>
+    </item>
+    
+    <item>
+      <title>Scala 和 Java 的混合编译指南</title>
+      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-04_17-29-01/</link>
+      <pubDate>Tue, 04 Aug 2015 17:29:01 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-04_17-29-01/</guid>
+      <description>&lt;p&gt;使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。
+全文的基础如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/joint-compilation-of-scala-and-java.png-q75&#34; alt=&#34;Java 和 Scala 混合编译流程&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;图片来源：&lt;a href=&#34;http://www.slideshare.net/javatwo2011/java-app-scala&#34;&gt;如何在 Java App 中導入 Scala&lt;/a&gt;，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 &lt;em&gt;Scala Cookbook&lt;/em&gt;, 先行谢过。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

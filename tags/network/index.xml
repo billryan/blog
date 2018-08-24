@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/network/</link>
+    <description>Recent content in Network on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 10 Jul 2016 20:34:03 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>家用服务器之 HTTP/2</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/</link>
+      <pubDate>Sun, 10 Jul 2016 20:34:03 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/</guid>
+      <description>&lt;p&gt;之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 &lt;a href=&#34;https://wzyboy.im/post/1052.html&#34;&gt;使用 nghttpx 搭建 HTTP/2 代理&lt;/a&gt; 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&amp;rsquo;s Encrypt, 方便好使，生成方法可参考 &lt;a href=&#34;../../2016/07/Let-s-Encrypt-for-Archlinux.html&#34;&gt;Let&amp;rsquo;s Encrypt for Archlinux&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;nghttp2 已经进入 extra 仓库，使用 &lt;code&gt;packer -S nghttp2&lt;/code&gt; 即可安装。我的 nghttpx 配置文件如下：
+
+{% gist id=&amp;ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&amp;rdquo;,file=&amp;ldquo;nghttpx.conf&amp;rdquo; %}{% endgist %}&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Encrypt for Archlinux</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_17-19-49/</link>
+      <pubDate>Sun, 10 Jul 2016 17:19:49 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_17-19-49/</guid>
+      <description>Let&amp;rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下命令即可</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之 Squid 分流</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_16-38-19/</link>
+      <pubDate>Sun, 10 Jul 2016 16:38:19 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_16-38-19/</guid>
+      <description>&lt;p&gt;由于大家都知道的原因，大多数 ISP 的国外带宽往往不太理想，据说这个可以用 kcp 突破，我暂时没有国外带宽的困扰，有兴趣的可以去研究下。这篇博文提供的方法是使用 Squid 进行分流，国内直连，国外走父级代理，配合 polipo 和 ChinaDNS 效果拔群。&lt;/p&gt;
+
+&lt;p&gt;由于 Squid 的父级代理暂不支持 socks5, 故还需要配合 polipo 将 socks5 转换为 HTTP proxy 使用。在 Arch 下通过 &lt;code&gt;packer -S squid polipo&lt;/code&gt; 即可安装，接下来结合我的配置文件进行分析。&lt;/p&gt;
+
+&lt;p&gt;由于 polipo 和 Squid 都具有缓存功能，考虑到 Squid 在用户鉴权上更为强大，作为 HTTP 前端接入比较合适，因此需要禁用 polipo 的缓存功能。&lt;/p&gt;
+
+&lt;h2 id=&#34;socks5-to-http-polipo&#34;&gt;socks5 to HTTP - polipo&lt;/h2&gt;
+
+&lt;p&gt;polipo 的配置(&lt;code&gt;/etc/polipo/config&lt;/code&gt;)如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Transparent routing for home server in China</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_10-19-55/</link>
+      <pubDate>Sun, 10 Jul 2016 10:19:55 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_10-19-55/</guid>
+      <description>Since this post is sensitive in China, I will roll it with English instead.
+ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with ChinaDNS and can resolv the external websites correctly. You can see a file including China IP in /etc/chnroute.txt. This file is very important for ss-rules. In Access Points for home server, we have built a AP and can assign the clients with DHCP and Unbound DNS Server backend.</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之无线路由器(AP)</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-09_15-08-41/</link>
+      <pubDate>Sat, 09 Jul 2016 15:08:41 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-09_15-08-41/</guid>
+      <description>之前玩 Raspberry PI/Cubieboard 时写过类似的合辑，这次入 X32-N2808 X86服务器后准备写一个类似的合辑，相比会更新不少内容。 对普通玩家来说，商用无线路由器的性能显然更好，但</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之 DDNS</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-08_22-25-28/</link>
+      <pubDate>Fri, 08 Jul 2016 22:25:28 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-08_22-25-28/</guid>
+      <description>&lt;p&gt;自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
+来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。&lt;/p&gt;
+
+&lt;h2 id=&#34;人工投诉索要公网-ip&#34;&gt;人工投诉索要公网 IP&lt;/h2&gt;
+
+&lt;p&gt;某个周末的下午试着给联通打了个投诉电话说转人工宽带服务，说明要公网地址，客服问了下账户信息就答复说24小时内处理好并回电，约摸两个小时后有个工程师就来电说已经处理好，请重启路由器。重启路由器后发现联通诚不欺我，全程下来十分顺畅，原以为要说一堆理由并且还有可能不给开通公网地址，没想到联通这么爽快，赞！&lt;/p&gt;
+
+&lt;h3 id=&#34;光猫用户&#34;&gt;光猫用户&lt;/h3&gt;
+
+&lt;p&gt;需要注意的是使用了光猫的客户，即使申请获得公网地址，这个地址也只存在于光猫的 WAN 口，内网服务器还是无法发挥作用，所以还需要先破解光猫获得超级用户权限以设置 DMZ 和端口映射等。以中兴的 F607 联通版为例，浏览器中输入 &lt;a href=&#34;http://192.168.1.1/cu.html&#34;&gt;http://192.168.1.1/cu.html&lt;/a&gt;, 用户名密码可能为如下组合：
+- CUAdmin/CUAdmin
+- admin/admin
+- unicomadmin/adminunicom&lt;/p&gt;
+
+&lt;h3 id=&#34;网络拓扑&#34;&gt;网络拓扑&lt;/h3&gt;
+
+&lt;p&gt;一般情况下服务器网络入口使用防火墙还是很有必要的，获取光猫超级用户权限后虽然可以设置端口映射，但是受制于光猫的有线网口数和硬件布局，使用起来多少有些不便。考虑到连接光猫的至少有一台无线路由器，所以可以在光猫中固定这台无线路由器 WAN 口的 IP，并对其 DMZ, 这样你的路由器就相当于外接广域网了，后面对路由器下的服务器做端口映射就比较方便了。端口映射在有些路由器固件中也称为虚拟服务器，不同路由器的称呼不太一样。&lt;/p&gt;
+
+&lt;h2 id=&#34;ddns&#34;&gt;DDNS&lt;/h2&gt;
+
+&lt;p&gt;有了公网 IP 还只是对外服务的第一步，ISP 给你分配公网 IP，并不代表你每次重新拨号获得的 IP 不变，所以你还需要 DDNS 来动态获知这一 IP，典型的 DDNS 服务提供商有花生壳，但是这货并不太稳定，某些固件在路由器界面开启 DDNS 后还会引发路由器工作异常。&lt;/p&gt;
+
+&lt;h3 id=&#34;dnspod-ddns&#34;&gt;DNSPod DDNS&lt;/h3&gt;
+
+&lt;p&gt;有自己域名的基本都知道这家 DNSPod，提供的 API 十分丰富，服务也是比较稳定的。下面是我参考了 &lt;a href=&#34;https://github.com/leeyiw/dnspod_ddns/blob/master/dnspod_ddns.py&#34;&gt;leeyiw/dnspod_ddns&lt;/a&gt; 和 &lt;a href=&#34;https://gist.github.com/chuangbo/833369&#34;&gt;Python dynamic DNSPod DNS Script&lt;/a&gt; 改进的 &lt;a href=&#34;https://gist.github.com/billryan/239778f0821937939c8c140bdddd6840&#34;&gt;DNSPod DDNS Python Script&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x</title>
+      <link>https://blog.yuanbin.me/posts/2016-01/2016-01-15_15-10-28/</link>
+      <pubDate>Fri, 15 Jan 2016 15:10:28 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-01/2016-01-15_15-10-28/</guid>
+      <description>缘由 之前一直在 Archlinux 下部署整套 黑魔法服务，各种工具安装起来很方便，即使源里头没有，AUR 中一般也有其他人提供的 PKGBUILD, 根据此脚本构建适用于自己系统的包</description>
+    </item>
+    
+    <item>
+      <title>WBAN Traffic Source Model - WBAN 应用层业务模型</title>
+      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-18_13-52-51/</link>
+      <pubDate>Wed, 18 Nov 2015 13:52:51 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-18_13-52-51/</guid>
+      <description>&lt;p&gt;在 &lt;a href=&#34;http://blog.yuanbin.me/posts/2014/06/architecture-of-ieee-802156-simulation-based-on-opnet145.html&#34;&gt;Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5&lt;/a&gt; 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。&lt;/p&gt;
+
+&lt;p&gt;这层模型中主要负责根据用户设定的包产生间隔分布函数向 MAC 层传送不同优先级的包。WBAN 中的业务共有8种不同用户优先级，不同用户优先级对应的业务类型如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_traffic_up8.png&#34; alt=&#34;WBAN-User Priority Mapping&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>TCP协议浅析</title>
+      <link>https://blog.yuanbin.me/posts/2015-03/2015-03-24_13-39-59/</link>
+      <pubDate>Tue, 24 Mar 2015 13:39:59 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-03/2015-03-24_13-39-59/</guid>
+      <description>&lt;p&gt;TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。&lt;/p&gt;
+
+&lt;p&gt;在浅析TCP传输层协议之前先说说&lt;code&gt;segment&lt;/code&gt;, &lt;code&gt;datagram&lt;/code&gt;, &lt;code&gt;frame&lt;/code&gt;的区别。&lt;/p&gt;
+
+&lt;p&gt;严格说来，以上三个名词均为专业性术语。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;message&lt;/code&gt; - 用于应用层&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;segment&lt;/code&gt; - TCP的PDU(Protocol Data Unit)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;datagram&lt;/code&gt; - UDP的PDU&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;packet&lt;/code&gt; - IP的PDU(RFC791中也称之为datagram)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;frame&lt;/code&gt; - 数据链路层的PDU&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;tcp-segment-structure&#34;&gt;TCP segment structure&lt;/h2&gt;
+
+&lt;p&gt;TCP segment由TCP头部和TCP数据部分组成，首先来瞅瞅TCP头部的包结构。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/tcp_header.png-q75&#34; alt=&#34;TCP头部包结构&#34; /&gt;&lt;/p&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;Source port (16 bits)&lt;/dt&gt;
+&lt;dd&gt;16位源端口号(发送方使用)&lt;/dd&gt;
+&lt;dt&gt;Destination port (16 bits)&lt;/dt&gt;
+&lt;dd&gt;16位目的端口号(接收方使用)&lt;/dd&gt;
+&lt;dt&gt;Sequence number (32 bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;32位序列号，有两个作用：&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;在&lt;code&gt;SYN&lt;/code&gt; flag 置1时，此为当前连接的初始序列号（initial sequence number, ISN），数据的第一个字节序号为此ISN+1&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;在&lt;code&gt;SYN&lt;/code&gt; flag 置0时，为当前连接报文段的累计数据包字节数。&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Acknowledgment number (32 bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;32位确认序号，ACK flag置1时才有效，指接收方期待的下一个报文段的序列号。&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Data offset (4 bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;指示TCP头部的32位元的数目。由于有Options域的存在，因此TCP头部最小为20字节，最大为(15*4 = 60)字节. 同时这个域也包含了TCP报文段实际数据的开始偏移量。&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Reserved (3 bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;保留域&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Flags (9 bits) (aka Control bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;控制域信息包含9个一位标志符(3个为新增)。&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;ACK - 确认域使用。在初始SYN包之后由客户端发送到报文段都必须包含此控制信息&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;RST - 重置连接&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;SYN - 同步序列号，一般仅在连接双方发送第一个包时使用&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;FIN - 发送方不再发送数据&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Window size (16 bits)&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;接收窗口的大小(默认以字节为单位)，期望接收到报文段多少，常用于流控。&lt;/p&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之自建 DNS 服务器</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/</link>
+      <pubDate>Sat, 29 Nov 2014 17:19:56 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/</guid>
+      <description>&lt;p&gt;之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;前不久某国开始清理未备案的域名使用教育网IP。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;某高科技部门的大招之一：专业投毒污染三十年。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;好了，针对以上问题我们使用两招就好了——ChinaDNS + ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2/树莓派之Archlinux网络配置</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/</link>
+      <pubDate>Sat, 08 Nov 2014 19:26:58 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/</guid>
+      <description>前文1和2分别就Cubieboard2双卡版的Archlinux系统安装及简单配置做了详细说明，这里就Cubieboard2/树莓派的网络配</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2/树莓派之Archlinux系统配置</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</link>
+      <pubDate>Fri, 07 Nov 2014 17:21:14 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</guid>
+      <description>&lt;p&gt;上文 &lt;a href=&#34;http://blog.billryan.me/posts/2014/11/Cubieboard2-Archlinux-install.html&#34;&gt;Cubieboard2之Archlinux安装指南&lt;/a&gt; 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。&lt;/p&gt;
+
+&lt;p&gt;P.S. 相关文章可见&lt;a href=&#34;http://blog.billryan.me/tags/cubieboard/&#34;&gt;Tag: cubieboard&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2之Archlinux安装指南</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-06_15-56-23/</link>
+      <pubDate>Thu, 06 Nov 2014 15:56:23 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-06_15-56-23/</guid>
+      <description>Cubieboard2目前有两个版本，一个是后来推出的Cubieboard2双卡版，双卡版将原来板载的Nand Flash换成了一个TF卡槽，</description>
+    </item>
+    
+    <item>
+      <title>Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5</title>
+      <link>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</link>
+      <pubDate>Thu, 05 Jun 2014 15:33:04 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</guid>
+      <description>&lt;p&gt;Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; &lt;a href=&#34;https://github.com/billryan/WBAN-OPNET-Simulation&#34;&gt;billryan/WBAN-OPNET-Simulation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, &lt;a href=&#34;https://github.com/boulis/Castalia&#34;&gt;boulis/Castalia&lt;/a&gt; would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for the &lt;a href=&#34;http://www.open-zb.net/wpan_simulator.php&#34;&gt;open-ZB.net - IEEE 802.15.4/ZigBee OPNET Simulation Model&lt;/a&gt;, I refered a lot of code from this powerful Simulation Model.&lt;/p&gt;
+
+&lt;p&gt;Simulation Platforms:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OS: Windows XP SP3&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Simulator: OPNET 14.5 with Educational version&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;architecture-of-this-simulation-node-model-in-opent-14-5&#34;&gt;Architecture of this Simulation - Node Model in OPENT 14.5&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_opnet_node_model.png&#34; alt=&#34;wban Node Model&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Compile r8101 driver modules for Linux-3.10</title>
+      <link>https://blog.yuanbin.me/posts/2014-02/2014-02-09_13-52-08/</link>
+      <pubDate>Sun, 09 Feb 2014 13:52:08 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-02/2014-02-09_13-52-08/</guid>
+      <description>Long long ago, I installed Ubuntu 10.04 as my first Linux Distro, due to the problems of networking, I used it only few times. The suck problem is that when you copy large files or did some other things as normal, the network is down! The only solution is to restart your computer! I asked bigeagle for solving this weird issue. He found it was the ethernet card driver that caused this weird issue, and you can find lots of problems with the key words searching &amp;ldquo;r8101 r8169 issue&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>上海交大校外代理初体验</title>
+      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-19_10-56-30/</link>
+      <pubDate>Mon, 19 Aug 2013 10:56:30 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-19_10-56-30/</guid>
+      <description>&lt;p&gt;最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的论文也不可能会交待较多的细节。如果要结合OPNET来分析网络性能什么的显然是不知从何下手，于是乎习惯性的Google了一番，找到了一篇博士论文，正准备下载的时候&amp;hellip; 乖乖，现在已经不是校园网了哟，立马向西电的基友求助，短信刚发出去就想到了个令人激动的消息——隐约记得交大网络信息中心是提供校外访问的代理服务器的，那么？Google一下立马找到了&lt;a href=&#34;http://www.lib.sjtu.edu.cn/list.do?articleType_id=45&amp;amp;type=63&#34;&gt;这个链接&lt;/a&gt;，网页中提供了局域网和ADSL下的使用方法，都是针对IE的。说白了就是提供了代理服务器的地址和端口号，如果只是在浏览器中使用的话SwitchySharp/Foxyproxy插件新增个代理就好了，试了下速度很理想！&lt;/p&gt;
+
+&lt;h2 id=&#34;代理服务器&#34;&gt;代理服务器&lt;/h2&gt;
+
+&lt;p&gt;代理服务器名：inproxy.sjtu.edu.cn&lt;br /&gt;
+端口号：8000 OR 80&lt;/p&gt;
+
+&lt;p&gt;连通后会让输入jAccount帐号密码，这个新生已经可以申请了，perfect!&lt;/p&gt;
+
+&lt;h3 id=&#34;全局代理&#34;&gt;全局代理&lt;/h3&gt;
+
+&lt;p&gt;虽然大部分情况在浏览器中使用代理就足够了，但有时其他应用程序也许也需要代理访问，这个时候就稍微有点麻烦喽。
+如果想要全局代理的话则需要模拟http认证，Windows下似乎有p-roxycap比较方便，Linux下暂时还没看到类似的软件，之前也没怎么需要用非浏览器应用中使用代理，这方面了解不太多。舍友yqt用Python写了个DXTL的全局代理，于是乎便借过来用了下，还不错，效果就是下边这个样子：&lt;br /&gt;
+&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/inproxy-sjtu.png&#34; alt=&#34;sjtu-inroxy&#34; /&gt;&lt;br /&gt;
+需要使用时只需在Terminal下运行&lt;code&gt;python sjtu-inproxy.py&lt;/code&gt;即可，很方便。&lt;br /&gt;
+
+上代码==&amp;gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3G无线上网卡分享网络之 Arch Linux与Win7篇</title>
+      <link>https://blog.yuanbin.me/posts/2013-07/2013-07-13_23-50-20/</link>
+      <pubDate>Sat, 13 Jul 2013 23:50:20 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-07/2013-07-13_23-50-20/</guid>
+      <description>&lt;p&gt;暑假回家没有宽带确实有点小郁闷，好在有日益发达的无线通信技术，使得在没法用上昂贵的宽带时还能按需使用3G网络，当然喽，费用也不菲，三个月￥300才15GB的流量，不看视频的话勉强能凑合着用，短期使用的话相对于一年近￥1000的电信宽带还是要便宜一些的。&lt;/p&gt;
+
+&lt;p&gt;下面进入正题，3G无线上网卡最开始是用在家里的台式机上，自己的笔记本电脑和手机要想同时上网自然得另外想想办法。大约可分为以下三种方案：&lt;br /&gt;
+1. 3G上网卡&amp;lt;==&amp;gt;台式机有线网卡&amp;lt;==&amp;gt;笔记本电脑有线网卡&amp;lt;==&amp;gt;笔记本电脑无线网卡作为热点&amp;lt;==&amp;gt;手机接入&lt;br /&gt;
+2. 3G上网卡&amp;lt;==&amp;gt;笔记本电脑无线网卡作为热点&amp;lt;==&amp;gt;手机接入&lt;br /&gt;
+3. 3G上网卡&amp;lt;==&amp;gt;笔记本电脑有线网卡&amp;lt;==&amp;gt;(台式机有线网卡&amp;lt;==&amp;gt;)笔记本电脑无线网卡作为热点&amp;lt;==&amp;gt;手机接入&lt;br /&gt;
+其中台式机运行Win7, 笔记本电脑运行Arch Linux. 总的思路就是3G网络接入，无线热点输出，3G网络与无线热点间则为局域网。&lt;br /&gt;
+形象一点的如下图所示：
+&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/3g-internet-share.jpeg&#34; alt=&#34;3G上网卡网络分享示意图&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Use kmail with a proxy-给kmail加上代理</title>
+      <link>https://blog.yuanbin.me/posts/2013-02/2013-02-03_18-54-00/</link>
+      <pubDate>Sun, 03 Feb 2013 18:54:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-02/2013-02-03_18-54-00/</guid>
+      <description>自打从Win转移到GNU/Linux后，之前计算机里边大部分专有软件也随之转移至自由软件，KMail就是其中一例啦！但是在天朝这么一个「中国</description>
+    </item>
+    
+  </channel>
+</rss>

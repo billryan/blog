@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hadoop on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/hadoop/</link>
+    <description>Recent content in Hadoop on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 19 Jul 2015 16:26:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deploy Hadoop cluster with Vagrant and Ambari</title>
+      <link>https://blog.yuanbin.me/posts/2015-07/2015-07-19_16-26-10/</link>
+      <pubDate>Sun, 19 Jul 2015 16:26:10 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-07/2015-07-19_16-26-10/</guid>
+      <description>&lt;p&gt;近期开始接触 Hadoop/Spark 相关的东西，部署单个节点很简单，但是要弄成集群就有点伤脑筋了，且不说集群本身的部署，光那数不清的『大数据』名词就能让人眼花缭乱，建议初次接触『大数据』的看看董飞的 &lt;a href=&#34;http://zhuanlan.zhihu.com/donglaoshi/19962491&#34;&gt;后Hadoop时代的大数据架构&lt;/a&gt; 压压惊。&lt;/p&gt;
+
+&lt;p&gt;不少教程都是教你先下 Hadoop, Spark 等然后再挨个配 hostname 等，为了你的生命着想，这里采用的是 &lt;a href=&#34;https://ambari.apache.org/&#34;&gt;Ambari&lt;/a&gt; - 一种快速批量部署 Hadoop 平台的管理软件。与自己手动安装不同，Ambari 通常需要配合一些公司发布的 Hadoop 发行版进行安装，官网上默认的是 &lt;a href=&#34;http://hortonworks.com/&#34;&gt;Hortonworks&lt;/a&gt; 公司提供的发行版。与 Hortonworks 类似，IBM 也提供了类似的发行版，称为 &lt;a href=&#34;http://www-01.ibm.com/software/data/infosphere/hadoop/enterprise.html&#34;&gt;BigInsights&lt;/a&gt;, 官方安装视频可见 &lt;a href=&#34;https://www.youtube.com/watch?v=l54JqN06Zvk&#34;&gt;Getting started with the IBM Open Platform with Apache Hadoop - YouTube&lt;/a&gt;, 本文根据以上视频结合 Vagrant 在本机部署 Hadoop 集群测试环境。&lt;/p&gt;
+
+&lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Virtualbox - 提供虚拟机环境&lt;/li&gt;
+&lt;li&gt;Vagrant - 使用配置文件批量管理虚拟机，再也不用在 Virtualbox 中图形安装了&lt;/li&gt;
+&lt;li&gt;一个好用的 Terminal - iTerm2/OSX, Terminator/Linux, Babun/Windows&lt;/li&gt;
+&lt;li&gt;tmux - 终端复用，无需新开标签或者窗口，更好地使用 Terminal&lt;/li&gt;
+&lt;li&gt;良好的外网访问环境，某些网络环境下建议加代理或者 VPN&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

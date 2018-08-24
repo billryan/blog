@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Akka Notes 2 - Actor Messaging 该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
+  <meta name="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
 回顾『学生-老师』的例子 我们考虑由应用 StudentSimulatorApp 单独给 TeacherActor 发送消息的情形，这里你可以认为主程序就是 StudentSimulatorApp.
 从以上这张流程图我们可以得知：
@@ -56,9 +56,7 @@
 
 
 <meta property="og:title" content="Akka Notes 2 - Actor Messaging" />
-<meta property="og:description" content="Akka Notes 2 - Actor Messaging
-
-该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
+<meta property="og:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
 
 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
 
@@ -102,9 +100,7 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
 
 
 <meta itemprop="name" content="Akka Notes 2 - Actor Messaging">
-<meta itemprop="description" content="Akka Notes 2 - Actor Messaging
-
-该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
+<meta itemprop="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
 
 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
 
@@ -132,16 +128,14 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
 
 <meta itemprop="datePublished" content="2015-08-25T13:55:02&#43;08:00" />
 <meta itemprop="dateModified" content="2015-08-25T13:55:02&#43;08:00" />
-<meta itemprop="wordCount" content="1985">
+<meta itemprop="wordCount" content="1979">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Akka," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Akka Notes 2 - Actor Messaging"/>
-<meta name="twitter:description" content="Akka Notes 2 - Actor Messaging
-
-该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
+<meta name="twitter:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
 
 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
 
@@ -231,8 +225,12 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
 
       <div class="post-meta">
         <span class="post-time"> 2015-08-25 </span>
-        
-        <span class="more-meta"> 约 1985 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 1979 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -246,7 +244,7 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#akka-notes-2-actor-messaging">Akka Notes 2 - Actor Messaging</a>
+<li>
 <ul>
 <li><a href="#回顾-学生-老师-的例子">回顾『学生-老师』的例子</a></li>
 <li><a href="#studentsimulatorapp-程序"><code>StudentSimulatorApp</code> 程序</a>
@@ -281,9 +279,7 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
 
     
     <div class="post-content">
-      <h1 id="akka-notes-2-actor-messaging">Akka Notes 2 - Actor Messaging</h1>
-
-<p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。</p>
+      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。</p>
 
 <p>今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html">学生-老师</a> 作为范例。</p>
 
@@ -566,7 +562,11 @@ sbt run
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/akka/">Akka</a>
+          
+        </div>
 
       
       <nav class="post-nav">

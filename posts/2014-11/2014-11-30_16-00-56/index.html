@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Cubieboard2/树莓派之swap交换文件 Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，" />
+  <meta name="description" content="Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，使用SD卡作为swap交换空间是一件极不理智的行" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="Cubieboard2/树莓派之swap交换文件" />
-<meta property="og:description" content="Cubieboard2/树莓派之swap交换文件 Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，" />
+<meta property="og:description" content="Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，使用SD卡作为swap交换空间是一件极不理智的行" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2014-11/2014-11-30_16-00-56/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="Cubieboard2/树莓派之swap交换文件">
-<meta itemprop="description" content="Cubieboard2/树莓派之swap交换文件 Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，">
+<meta itemprop="description" content="Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，使用SD卡作为swap交换空间是一件极不理智的行">
 
 
 <meta itemprop="datePublished" content="2014-11-30T16:00:56&#43;08:00" />
 <meta itemprop="dateModified" content="2014-11-30T16:00:56&#43;08:00" />
-<meta itemprop="wordCount" content="418">
+<meta itemprop="wordCount" content="394">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Cubieboard,树莓派," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cubieboard2/树莓派之swap交换文件"/>
-<meta name="twitter:description" content="Cubieboard2/树莓派之swap交换文件 Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，"/>
+<meta name="twitter:description" content="Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，使用SD卡作为swap交换空间是一件极不理智的行"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2014-11-30 </span>
-        
-        <span class="more-meta"> 约 418 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 394 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -163,11 +167,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#cubieboard2-树莓派之swap交换文件">Cubieboard2/树莓派之swap交换文件</a></li>
-</ul>
-</nav>
+    
   </div>
 </div>
 
@@ -176,11 +176,7 @@
 
     
     <div class="post-content">
-      
-
-<h1 id="cubieboard2-树莓派之swap交换文件">Cubieboard2/树莓派之swap交换文件</h1>
-
-<p>Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，使用SD卡作为swap交换空间是一件极不理智的行为，用不了多久SD卡就跪了&hellip; 在外接有大硬盘的前提下，可单独分配一部分空间作为swap交换文件，相对SD卡来说安全地多。</p>
+      <p>Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，使用SD卡作为swap交换空间是一件极不理智的行为，用不了多久SD卡就跪了&hellip; 在外接有大硬盘的前提下，可单独分配一部分空间作为swap交换文件，相对SD卡来说安全地多。</p>
 
 <p>假设你之前没有分配过swap空间，<code>sudo swapon -s</code>可检查swap的情况。</p>
 
@@ -252,7 +248,13 @@ sudo swapon /datacenter/swapfile
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/cubieboard/">Cubieboard</a>
+          
+          <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+          
+        </div>
 
       
       <nav class="post-nav">

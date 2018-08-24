@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Hive show create table 显示空白行的问题 对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免" />
+  <meta name="description" content="对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="Hive show create table 显示空白行的问题" />
-<meta property="og:description" content="Hive show create table 显示空白行的问题 对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免" />
+<meta property="og:description" content="对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="Hive show create table 显示空白行的问题">
-<meta itemprop="description" content="Hive show create table 显示空白行的问题 对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免">
+<meta itemprop="description" content="对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细">
 
 
 <meta itemprop="datePublished" content="2018-04-02T16:35:55&#43;08:00" />
 <meta itemprop="dateModified" content="2018-04-02T16:35:55&#43;08:00" />
-<meta itemprop="wordCount" content="682">
+<meta itemprop="wordCount" content="670">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Hive," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hive show create table 显示空白行的问题"/>
-<meta name="twitter:description" content="Hive show create table 显示空白行的问题 对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免"/>
+<meta name="twitter:description" content="对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-04-02 </span>
-        
-        <span class="more-meta"> 约 682 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 670 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -163,11 +167,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#hive-show-create-table-显示空白行的问题">Hive show create table 显示空白行的问题</a></li>
-</ul>
-</nav>
+    
   </div>
 </div>
 
@@ -176,11 +176,7 @@
 
     
     <div class="post-content">
-      
-
-<h1 id="hive-show-create-table-显示空白行的问题">Hive show create table 显示空白行的问题</h1>
-
-<p>对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细节的。好在 Hive 0.10 <a href="https://issues.apache.org/jira/browse/HIVE-967">HIVE-967</a> 起就对表/视图的 DDL 予以支持了，这部分 DDL 自然是存储在 Hive Metastore 中的。但实际使用 <code>show create table</code> 进行查询时(Hive 1.2.x)，会发现以下两个比较讨厌的小问题：
+      <p>对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细节的。好在 Hive 0.10 <a href="https://issues.apache.org/jira/browse/HIVE-967">HIVE-967</a> 起就对表/视图的 DDL 予以支持了，这部分 DDL 自然是存储在 Hive Metastore 中的。但实际使用 <code>show create table</code> 进行查询时(Hive 1.2.x)，会发现以下两个比较讨厌的小问题：
 1. 无法显示中文注释(comment)
 2. 偶尔会出现中间的一些行为空白</p>
 
@@ -246,7 +242,11 @@ metastore/src/gen/thrift/gen-javabean/org/apache/hadoop/hive/metastore/api/Table
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/hive/">Hive</a>
+          
+        </div>
 
       
       <nav class="post-nav">

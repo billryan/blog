@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2013-08-28T21:30:43&#43;08:00"/>
+<meta property="og:updated_time" content="2013-07-13T23:50:20&#43;08:00"/>
 
 
 
@@ -140,169 +140,22 @@
     
       <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2013-08/2013-08-28_21-30-43/">本科毕设之RapidIO技术小结</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-08-28 </span>
-      
-      <span class="more-meta"> 约 3507 字 </span>
-      <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="本科毕设之rapidio技术小结">本科毕设之RapidIO技术小结</h1>
-
-<p>本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，又算作是对后来者研究使用RapidIO技术的一个指引。嗯，一举两得，何乐而不为？</p>
-
-<p>毕设是在去年12月份开始选题，那时倒也挺贪心，一心想做一个软硬结合的课题，最先开始选的课题现在都差不多忘光了，只记得选了之后将指导老师的姓名用站内搜索在好网上搜了下。这一看不知道，二看吓一跳呀！鸡皮疙瘩都快出来了。立马到教务处上删掉了，万幸那个指导老师没及时确认，由此逃过一劫&hellip;  再找了下其他的软硬结合的课题，看来看去感觉RapidIO还不错，对自己来说是全新的领域。RapidIO相关的课题共有两个，一个是B档难度的，只需在FPGA上实现，而另一个老师的是A档难度，需要使用串行RapidIO协议在DSP和FPGA之间完成通信。当时选题的时候还是患了老毛病，求新求刺激！RapidIO DSP FPGA这三者当时没有一个是很熟悉的，真是初生牛犊不怕虎！</p>
-
-<p>选题之后自然是没法马上开工，毕竟还有1月份的考研初试咧。就这样拖到了来年的1月考完初试才开始了解这个课题——基于TMS320C6455的串行RapidIO技术及其实现。到Google Scholar上搜了下，发现包含TMS320C6455 和RapidIO两个关键词的论文还真不多，随便看了几篇，结果自然是云里雾里0.o 过年在家论文方面几乎也没什么动静，等到开学回学校也差不多要复试了，于是乎又拖了两个月才正式开始——也就是从4月3号左右开始全心准备毕设的。</p>
-
-<h3 id="毕设之前期准备">毕设之前期准备</h3>
-
-<p>现在看来在前期最好先大概了解下课题，并进一步分解为小课题。这个可以让指导老师和师兄给个引导，一般在毕设的任务书和工作计划书中有详细说明，每条任务都可以认为是一个小课题，也许还要进一步细分。自己在这方面开始也没有经验，首先瞎摸索了一个星期也没啥收获，到实验室请教老师和师兄时才发现任务书和工作计划的好处。接下来就是根据任务书和工作计划自己拟定小课题和研究计划了。根据自己对课题的了解，我大概把毕设分为了如下几大块：</p>
-
-<ol>
-<li>串行RapidIO协议的了解<br /></li>
-<li>TMS320C6455芯片的编程使用<br /></li>
-<li>TMS320C6455中有关串行RapidIO部分的初始化及使用<br /></li>
-<li>Altera FPGA的烧写使用<br /></li>
-<li>Altera FPGA中串行RapidIO IP核的了解和使用<br /></li>
-<li>FPGA 和 DSP 进行串行RapidIO传输测试<br /></li>
-<li>论文写作——学习使用LaTeX对论文进行排版<br />
-可以看出要在短短的两个月里全部完成难度还是稍微有点大的，更坑爹的是后期实验室包含Altera FPGA的板子一直没画出来，于是乎便换到实验室现有的Xilinx平台，关键时刻还是得自己看着形势走呀，说多了都是泪&hellip;<br /></li>
-</ol>
-
-<h3 id="毕设之论文思路">毕设之论文思路</h3>
-
-<p>这个主体部分其实是参考了些硕士博士论文来的，当然也参考了RapidIO协会力荐的《RapidIO嵌入式系统互连》。首先简单描述了传统总线技术的不足，树个靶子，接下来自然就引申出了新型总线所需要的一些技术特性，满足这些技术特性的往往不止一个协议，所以对这些新型总线技术又有一个横向的比较，给些数据+曲线图，来点说服力，说明串行RapidIO在嵌入式互连领域的优势，接下来就是对RapidIO的大写特写了。写完RapidIO自然不是目的，毕竟论文标题中有个硕大的「实现」么。DSP和FPGA上的串行RapidIO实现自然也值得仔细地描述一番。OK，论文写到这差不多就快到尾声了，最后分析一下DSP和FPGA联调时使用串行RapidIO通信的一些实测数据画个图分析下原因差不多就完事了。KO! 大功告成。<br />
-
-最后的成果就是这么一篇论文咯——<a href="/downloads/基于TMS320C6455的串行RapidIO技术及其实现-1.2.pdf">基于TMS320C6455的串行RapidIO技术及其实现</a>.<br />
-从中抽出一张高清大图献上&ndash;&gt;<br />
-<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/interconnects-trends.png" alt="总线互连的发展趋势" /></p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2013-08/2013-08-28_21-30-43/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2013-08/2013-08-28_15-31-20/">MOOC之Coursera初体验</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-08-28 </span>
-      
-      <span class="more-meta"> 约 1233 字 </span>
-      <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      MOOC之Coursera初体验 毕业前在果壳和Twitter上时不时地就能看到MOOC/Coursera的影子，不过当时做毕设也一直没有闲情
-    </div>
-    <div class="read-more">
-      <a href="/posts/2013-08/2013-08-28_15-31-20/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2013-08/2013-08-19_10-56-30/">上海交大校外代理初体验</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-08-19 </span>
-      
-      <span class="more-meta"> 约 1099 字 </span>
-      <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="上海交大校外代理初体验">上海交大校外代理初体验</h1>
-
-<p>最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的论文也不可能会交待较多的细节。如果要结合OPNET来分析网络性能什么的显然是不知从何下手，于是乎习惯性的Google了一番，找到了一篇博士论文，正准备下载的时候&hellip; 乖乖，现在已经不是校园网了哟，立马向西电的基友求助，短信刚发出去就想到了个令人激动的消息——隐约记得交大网络信息中心是提供校外访问的代理服务器的，那么？Google一下立马找到了<a href="http://www.lib.sjtu.edu.cn/list.do?articleType_id=45&amp;type=63">这个链接</a>，网页中提供了局域网和ADSL下的使用方法，都是针对IE的。说白了就是提供了代理服务器的地址和端口号，如果只是在浏览器中使用的话SwitchySharp/Foxyproxy插件新增个代理就好了，试了下速度很理想！</p>
-
-<h2 id="代理服务器">代理服务器</h2>
-
-<p>代理服务器名：inproxy.sjtu.edu.cn<br />
-端口号：8000 OR 80</p>
-
-<p>连通后会让输入jAccount帐号密码，这个新生已经可以申请了，perfect!</p>
-
-<h3 id="全局代理">全局代理</h3>
-
-<p>虽然大部分情况在浏览器中使用代理就足够了，但有时其他应用程序也许也需要代理访问，这个时候就稍微有点麻烦喽。
-如果想要全局代理的话则需要模拟http认证，Windows下似乎有p-roxycap比较方便，Linux下暂时还没看到类似的软件，之前也没怎么需要用非浏览器应用中使用代理，这方面了解不太多。舍友yqt用Python写了个DXTL的全局代理，于是乎便借过来用了下，还不错，效果就是下边这个样子：<br />
-<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/inproxy-sjtu.png" alt="sjtu-inroxy" /><br />
-需要使用时只需在Terminal下运行<code>python sjtu-inproxy.py</code>即可，很方便。<br />
-
-上代码==&gt;</p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2013-08/2013-08-19_10-56-30/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2013-08/2013-08-08_19-17-16/">OPNET14.5 Win7/XP下安装小记</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-08-08 </span>
-      
-      <span class="more-meta"> 约 2176 字 </span>
-      <span class="more-meta"> 预计阅读 5 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="opnet14-5-win7-xp下安装小记">OPNET14.5 Win7/XP下安装小记</h1>
-
-<p>导师几个星期前就发来邮件让熟悉网络仿真软件了，只是自己前一个月基本都在到处转悠，加之网络不便，也耽搁了许久，这个月可以好好学习研究一番了。
-第一次听说OPNET的时候似乎离现在已经很久远了，只记得那时对面7、8号楼还住着大四。值得一提的是7号楼当时是男女混住的^_^，哈哈，挺羡慕的吧！估计是当年的男女比例比较惊人，只不过男生住的是最南边那一排寝室，这段美好的过去估计只能写入西电的史册了&hellip;
-这样算来，当时的我才大一。毕业之际，好网上到处都可以看到卖书的帖子，于是乎随便联系了一个7号楼的学长就去那淘书了，买回来差不多一堆书，OPNET就在其中，估摸着有半米多高，三年过后，发现能用的上的没几本呀！！连现在要用的OPNET都被我当废纸卖掉了&hellip; 当初怎么也没想到研究生要用这玩意儿。所以嘛，旧书买下一年要用的就足够了啦，买多了真是浪费体力=_=! 喂喂！偏题了！</p>
-
-<h2 id="网络仿真软件">网络仿真软件</h2>
-
-<p>就我所知道的，常用的网络仿真/模拟软件要么是<a href="http://en.wikipedia.org/wiki/Ns_(simulator)">NS2</a> (NS3正在活跃开发中), 要么就是OPNET, 前者是自由软件，后者是商业软件。它们二者之间在使用上的区别可见<a href="http://www.360doc.com/content/11/0103/15/1520315_83619061.shtml">NS2和OPNET的讨论</a>，在仿真层次上的详细区别可见<a href="http://db.tt/61l7RxNR">OPNET Modeler and NS-2: Comparing the Accuracy of Network Simulators for Packet-Level Analysis using a Network Testbed</a>，让我自己来选的话当然是NS2咯，优先自由软件么，OPNET14.5 Modeler在Linux下不能用，这是硬伤呀！用了近两年的Arch Linux后，我发现我越来越离不开它了，切换到MS Windows下感觉麻烦死了。问了下师兄，实验室里导师和师兄们都是用的OPNET14.5，合群一点自然是要用OPNET的。相对比较好的整合方案就是在Arch下用vbox/kvm虚拟个XP了，内存8G还是比较够使的，只是这样不符合如今节能环保的大趋势么</p>
-
-<h2 id="win7-xp下安装opnet14-5">Win7/XP下安装OPNET14.5</h2>
-
-<p>OPNET软件安装本身其实没啥好扯的，下载得到的3个软件包从大到小安装。关键在于OPNET是采用VC++进行编译的，相关的环境变量和编译器什么的配置起来就值得一提了。OPNET14.5是一款比较老的软件了，XP下先装VC6.0，OPNET14.5编译时所需的用户变量也就配置好了，所以说如果你还在用上古时代的XP系统，VC6.0是再好不过的搭档了。当然，现在大多数人的电脑里估计已经换成了Win7/Win8了，装个VC6.0还是比较费劲的。所以喽，当然得另辟蹊径。</p>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2013-08/2013-08-08_19-17-16/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/posts/2013-07/2013-07-13_23-50-20/">3G无线上网卡分享网络之 Arch Linux与Win7篇</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2013-07-13 </span>
-      
-      <span class="more-meta"> 约 1665 字 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1641 字 </span>
       <span class="more-meta"> 预计阅读 4 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <h1 id="3g无线上网卡分享网络之-arch-linux与win7篇">3G无线上网卡分享网络之 Arch Linux与Win7篇</h1>
-
-<p>暑假回家没有宽带确实有点小郁闷，好在有日益发达的无线通信技术，使得在没法用上昂贵的宽带时还能按需使用3G网络，当然喽，费用也不菲，三个月￥300才15GB的流量，不看视频的话勉强能凑合着用，短期使用的话相对于一年近￥1000的电信宽带还是要便宜一些的。</p>
+      <p>暑假回家没有宽带确实有点小郁闷，好在有日益发达的无线通信技术，使得在没法用上昂贵的宽带时还能按需使用3G网络，当然喽，费用也不菲，三个月￥300才15GB的流量，不看视频的话勉强能凑合着用，短期使用的话相对于一年近￥1000的电信宽带还是要便宜一些的。</p>
 
 <p>下面进入正题，3G无线上网卡最开始是用在家里的台式机上，自己的笔记本电脑和手机要想同时上网自然得另外想想办法。大约可分为以下三种方案：<br />
 1. 3G上网卡&lt;==&gt;台式机有线网卡&lt;==&gt;笔记本电脑有线网卡&lt;==&gt;笔记本电脑无线网卡作为热点&lt;==&gt;手机接入<br />
@@ -316,6 +169,142 @@
     </div>
     <div class="read-more">
       <a href="/posts/2013-07/2013-07-13_23-50-20/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2013-06/2013-06-11_23-15-43/">骑行：西电——西工大</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-06-11 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E7%94%9F%E6%B4%BB/"> 生活 </a>
+          
+        </div>
+      <span class="more-meta"> 约 376 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>昨天下午趁着西安难得的好天气和春哥骑车去了西工大新校区，出校门的时候是雨过天晴，没想到回来的时候仍然是雨过天晴 :( 从西太路回学校的时候被大雨淋得那叫一个迎头痛击，四年来总算赶上一回西北的暴风雨了。</p>
+
+<p>自己还是挺喜欢骑行的，学校的南边就是秦岭，到西工大新校区来回也就35公里左右，不算很远，往南边走的话路上空气还算不错，透透气也蛮好的。</p>
+
+<p>坐骑是室友的普通车，好想有一辆山地哇^_^ 可惜&hellip;木有银子</p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2013-06/2013-06-11_23-15-43/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2013-06/2013-06-09_19-24-09/">小米2 HDR小试</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-06-09 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%91%84%E5%BD%B1/"> 摄影 </a>
+          
+        </div>
+      <span class="more-meta"> 约 139 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>以夕阳西下为例
+不开启HDR，快门时间1/134秒，几乎什么都看不清。</p>
+
+<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/hdrtest_no_long.jpg-q75" alt="不开启HDR，快门时间1/134秒，几乎什么都看不清" /></p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2013-06/2013-06-09_19-24-09/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2013-04/2013-04-19_11-00-03/">上海交大12年电院电子工程系研究生自主招生小记</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-04-19 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%9D%82%E8%B0%88/"> 杂谈 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1963 字 </span>
+      <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="夏令营or自主招生">夏令营OR自主招生</h2>
+
+<p>交大去年开始把夏令营改为「研究生自主招生」，夏令营是要去交大本校的，而自主招生则是交大老师去指定的城市进行现场面试，和高考时的自主招生形式类似，不过面试问的问题相对学术一些吧。交大这么做无非是想扩大研究生招生的自主权和提高生源质量，代价就是交大的老师辛苦一些。搞研究生自主招生的绝不止交大一家，很多985院校都有类似的政策，只不过没有交大的规模这么大，全国跑。</p>
+
+<h2 id="自主招生面试资格及形式">自主招生面试资格及形式？</h2>
+
+<p>如果仍然按去年的做法，只有面试，考察一些英语口语及专业方面的问题。面试资格？——去年是首先发邮件申请，然后筛选通过后会通知面试。感觉要拿到面试资格这两项「GPA+英语」不能差，如果能有其他的工程实践或者学术论文什么的当然是锦上添花。<br />
+今年似乎有变，一切以上海交大官网公布为准。</p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2013-04/2013-04-19_11-00-03/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2013-04/2013-04-06_16-46-13/">819-FAQ</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-04-06 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%9D%82%E8%B0%88/"> 杂谈 </a>
+          
+        </div>
+      <span class="more-meta"> 约 904 字 </span>
+      <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>FAQ - Frequently Asked Questions</p>
+
+<h2 id="其它faq">其它FAQ</h2>
+
+<h3 id="招生名额和报录比什么的">招生名额和报录比什么的</h3>
+
+<p>到交大研招办网站上去查吧，但是招生名额这东西不好说，其实是浮动的</p>
+
+<h3 id="要不要报班">要不要报班？</h3>
+
+<p>因人而异，我没报过任何辅导班——囊中羞涩外加喜欢自学。不过英语和政治的辅导班视频倒是下过不少，大多BT站点上能下载的到，当然，自己去整理这些东西还是要些时间的，不宜贪多，够用就行。大家辩证地去看吧</p>
+
+<h3 id="复习进度怎么把握">复习进度怎么把握</h3>
+
+<p>因人而异吧感觉，学扎实了就好。切不可盲目赶进度和与别人比进度，否则最后受伤的只会是自己&hellip;</p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2013-04/2013-04-06_16-46-13/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

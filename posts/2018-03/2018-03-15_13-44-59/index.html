@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Python 网页爬虫入门——信息抓取 之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什" />
+  <meta name="description" content="之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什么样的工具，我们最终都需要" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="Python 网页爬虫入门——信息抓取" />
-<meta property="og:description" content="Python 网页爬虫入门——信息抓取 之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什" />
+<meta property="og:description" content="之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什么样的工具，我们最终都需要" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2018-03/2018-03-15_13-44-59/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="Python 网页爬虫入门——信息抓取">
-<meta itemprop="description" content="Python 网页爬虫入门——信息抓取 之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什">
+<meta itemprop="description" content="之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什么样的工具，我们最终都需要">
 
 
 <meta itemprop="datePublished" content="2018-03-15T13:44:59&#43;08:00" />
 <meta itemprop="dateModified" content="2018-03-15T13:44:59&#43;08:00" />
-<meta itemprop="wordCount" content="1760">
+<meta itemprop="wordCount" content="1747">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Python,爬虫," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python 网页爬虫入门——信息抓取"/>
-<meta name="twitter:description" content="Python 网页爬虫入门——信息抓取 之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什"/>
+<meta name="twitter:description" content="之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什么样的工具，我们最终都需要"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-03-15 </span>
-        
-        <span class="more-meta"> 约 1760 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 1747 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -165,7 +169,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#python-网页爬虫入门-信息抓取">Python 网页爬虫入门——信息抓取</a>
+<li>
 <ul>
 <li><a href="#网页爬虫基础知识">网页爬虫基础知识</a></li>
 <li><a href="#网页信息抽取-pyquery">网页信息抽取 - PyQuery</a></li>
@@ -185,8 +189,6 @@
     
     <div class="post-content">
       
-
-<h1 id="python-网页爬虫入门-信息抓取">Python 网页爬虫入门——信息抓取</h1>
 
 <p>之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什么样的工具，我们最终都需要对抓取的网页做进一步的结构化处理以获取我们需要的信息，这一篇博客主要介绍基于 Python 的轻量级网页抓取及信息抽取工具。以代码实战分析为主，原理介绍为辅。</p>
 
@@ -373,7 +375,13 @@ class Leetcode(object):
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/python/">Python</a>
+          
+          <a href="/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+          
+        </div>
 
       
       <nav class="post-nav">

@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Spark 开发之环境准备 JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala" />
+  <meta name="description" content="JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala 的特性。 对于 Spark 的" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="Spark 开发之环境准备" />
-<meta property="og:description" content="Spark 开发之环境准备 JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala" />
+<meta property="og:description" content="JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala 的特性。 对于 Spark 的" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2018-03/2018-03-19_11-17-37/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="Spark 开发之环境准备">
-<meta itemprop="description" content="Spark 开发之环境准备 JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala">
+<meta itemprop="description" content="JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala 的特性。 对于 Spark 的">
 
 
 <meta itemprop="datePublished" content="2018-03-19T11:17:37&#43;08:00" />
 <meta itemprop="dateModified" content="2018-03-19T11:17:37&#43;08:00" />
-<meta itemprop="wordCount" content="636">
+<meta itemprop="wordCount" content="628">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Spark," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spark 开发之环境准备"/>
-<meta name="twitter:description" content="Spark 开发之环境准备 JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala"/>
+<meta name="twitter:description" content="JVM 是必须的，所以需要 Java(JDK 1.8&#43;), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala 的特性。 对于 Spark 的"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-03-19 </span>
-        
-        <span class="more-meta"> 约 636 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 628 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -165,7 +169,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#spark-开发之环境准备">Spark 开发之环境准备</a>
+<li>
 <ul>
 <li><a href="#windows">Windows</a></li>
 <li><a href="#pyspark">PySpark</a></li>
@@ -182,8 +186,6 @@
     
     <div class="post-content">
       
-
-<h1 id="spark-开发之环境准备">Spark 开发之环境准备</h1>
 
 <p>JVM 是必须的，所以需要 Java(JDK 1.8+), 想写 Python 的还需要 Python(2.7.x/3.x).</p>
 
@@ -294,7 +296,11 @@ assemblyMergeStrategy in assembly := {
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/spark/">Spark</a>
+          
+        </div>
 
       
       <nav class="post-nav">

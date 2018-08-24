@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Windows 系统下的开发环境搭建 自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p," />
+  <meta name="description" content="自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p, i7 的 CPU, 16 GB 内存，除了硬" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="Windows 系统下的开发环境搭建" />
-<meta property="og:description" content="Windows 系统下的开发环境搭建 自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p," />
+<meta property="og:description" content="自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p, i7 的 CPU, 16 GB 内存，除了硬" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2015-07/2015-07-17_22-22-00/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="Windows 系统下的开发环境搭建">
-<meta itemprop="description" content="Windows 系统下的开发环境搭建 自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p,">
+<meta itemprop="description" content="自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p, i7 的 CPU, 16 GB 内存，除了硬">
 
 
 <meta itemprop="datePublished" content="2015-07-17T22:22:00&#43;08:00" />
 <meta itemprop="dateModified" content="2015-07-17T22:22:00&#43;08:00" />
-<meta itemprop="wordCount" content="1186">
+<meta itemprop="wordCount" content="1175">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Windows," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Windows 系统下的开发环境搭建"/>
-<meta name="twitter:description" content="Windows 系统下的开发环境搭建 自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p,"/>
+<meta name="twitter:description" content="自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p, i7 的 CPU, 16 GB 内存，除了硬"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2015-07-17 </span>
-        
-        <span class="more-meta"> 约 1186 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 1175 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -165,7 +169,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#windows-系统下的开发环境搭建">Windows 系统下的开发环境搭建</a>
+<li>
 <ul>
 <li><a href="#终端-babun-powerful-windows-shell-tmux">终端 - Babun(powerful Windows Shell) + tmux</a></li>
 <li><a href="#virtualbox-vagrant-https-www-vagrantup-com-development-environments-made-easy">Virtualbox + <a href="https://www.vagrantup.com/">Vagrant</a> - Development environments made easy</a>
@@ -185,8 +189,6 @@
     
     <div class="post-content">
       
-
-<h1 id="windows-系统下的开发环境搭建">Windows 系统下的开发环境搭建</h1>
 
 <p>自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p, i7 的 CPU, 16 GB 内存，除了硬盘不是 SSD外性能还是挺好的。不喜欢用 Windows 很重要的一点就是 Linux 那一套命令行工具和服务用起来不爽。</p>
 
@@ -268,7 +270,11 @@ PACT_REPO=http://mirrors.163.com/cygwin/
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/windows/">Windows</a>
+          
+        </div>
 
       
       <nav class="post-nav">
@@ -279,8 +285,8 @@ PACT_REPO=http://mirrors.163.com/cygwin/
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
-          <a class="next" href="/posts/2015-07/2015-07-12_10-59-18/">
-            <span class="next-text nav-default">A bit of Functional Programming</span>
+          <a class="next" href="/posts/2015-06/2015-06-05_22-54-43/">
+            <span class="next-text nav-default">Filter RSS contents</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

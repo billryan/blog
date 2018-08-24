@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>电子 on 东海一叶</title>
+    <link>https://blog.yuanbin.me/categories/%E7%94%B5%E5%AD%90/</link>
+    <description>Recent content in 电子 on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 19 Jan 2013 21:12:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/categories/%E7%94%B5%E5%AD%90/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>课程设计小结</title>
+      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-19_21-12-00/</link>
+      <pubDate>Sat, 19 Jan 2013 21:12:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-19_21-12-00/</guid>
+      <description>&lt;p&gt;不知不觉又忙了一个星期，周一老师把课程设计的要求简单地说了一下，然后就是两天之后提交方案并且做Presentation，这个算是比以前大作业要求严格的地方了，答辩时老师偶尔也会提几个问，呵呵，这可难为了一些酱油党喽～～不知自己是不是比较「走运」，我在介绍自己组的方案时老师竟然没有提问，估计是我讲的太快了，中间几乎没有停顿，老师也没能抓住机会提问&lt;/p&gt;
+
+&lt;p&gt;课程设计是全班做一个题目，是纯硬件的题，有点像电赛。先软件仿真，然后搭实际电路调试。大意是运用两块LM324运放和若干电容电阻什么的设计一个200Hz, 峰峰值为0.1V的正弦波和周期为1ms, 幅值为2v的三角波信号; 接下来则是将前边产生的两种信号和信号源产生的50Hz的正弦波按一定比例相加; 随后设计电路从相加后的信号中提取200Hz的正弦波，输出必须达到10V以上; 最后则是将三角波信号与提取出的200Hz正弦波通过比较器得到最终输出。整个电路做下来差不多是将模电中的运放应用部分复习了一遍，只不过这次除了理论部分还有实践部分。理论部分把课本上的一些电路排列组合一下即可，说起来倒是挺简单的，本人不才，前后花了差不多3天时间才把设计方案基本确定下来，放在Multisim下跑了一下，波形还能接受。这两天动手搭实际电路时又做了些bug fix, 下午正式收工，只等着周一到学校实验室微调和验收了。&lt;br /&gt;
+
+很喜欢「课程设计」这种形式，边学边用，这才是工科生最应该掌握的。自己还算比较喜欢做硬件，大约从初二起开始接触一些电子方面的东西，当时可以说得上是对这些玩意儿上瘾了，那时为了个电路琢磨到凌晨三四点也还精神亢奋，不过上了大学后反而有所荒废，想想还是有点痛心的。噗&amp;hellip;其实做硬件很麻烦地说，偶尔也会觉得枯燥，硬件复用的成本比起软件来复用的成本高太多太多，而且业余玩玩也还是比较烧钱的。东拉西扯了这么多，下边吐槽一下这次「课程设计」。学校和老师该改进的地方实在是太多太多了&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>电子制作之处女作-西电动态校徽</title>
+      <link>https://blog.yuanbin.me/posts/2010-12/2010-12-13_23-50-20/</link>
+      <pubDate>Mon, 13 Dec 2010 23:50:20 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2010-12/2010-12-13_23-50-20/</guid>
+      <description>如题，本作品为我的第一个电子小制作，虽然比较简单，但其还是给我带来了不少惊喜~毕竟它是我第一个自主设计的电路。 本作品主体由LED阵、多个数码</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Let&amp;rsquo;s Encrypt for Archlinux Let&amp;rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下" />
+  <meta name="description" content="Let&amp;rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下命令即可" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="Let&#39;s Encrypt for Archlinux" />
-<meta property="og:description" content="Let&rsquo;s Encrypt for Archlinux Let&rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下" />
+<meta property="og:description" content="Let&rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下命令即可" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2016-07/2016-07-10_17-19-49/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="Let&#39;s Encrypt for Archlinux">
-<meta itemprop="description" content="Let&rsquo;s Encrypt for Archlinux Let&rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下">
+<meta itemprop="description" content="Let&rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下命令即可">
 
 
 <meta itemprop="datePublished" content="2016-07-10T17:19:49&#43;08:00" />
 <meta itemprop="dateModified" content="2016-07-10T17:19:49&#43;08:00" />
-<meta itemprop="wordCount" content="195">
+<meta itemprop="wordCount" content="191">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Linux,Network," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Let&#39;s Encrypt for Archlinux"/>
-<meta name="twitter:description" content="Let&rsquo;s Encrypt for Archlinux Let&rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下"/>
+<meta name="twitter:description" content="Let&rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下命令即可"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2016-07-10 </span>
-        
-        <span class="more-meta"> 约 195 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 191 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -163,11 +167,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#let-s-encrypt-for-archlinux">Let&rsquo;s Encrypt for Archlinux</a></li>
-</ul>
-</nav>
+    
   </div>
 </div>
 
@@ -176,11 +176,7 @@
 
     
     <div class="post-content">
-      
-
-<h1 id="let-s-encrypt-for-archlinux">Let&rsquo;s Encrypt for Archlinux</h1>
-
-<p>Let&rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 <a href="https://wiki.archlinux.org/index.php/Let%E2%80%99s_Encrypt">Let’s Encrypt</a>。我使用的是 nginx, 通过如下命令即可安装。</p>
+      <p>Let&rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 <a href="https://wiki.archlinux.org/index.php/Let%E2%80%99s_Encrypt">Let’s Encrypt</a>。我使用的是 nginx, 通过如下命令即可安装。</p>
 
 <pre><code>packer -S certbot certbot-nginx nginx
 </code></pre>
@@ -235,7 +231,13 @@ certbot certonly --email youremailaddress --webroot -w /usr/share/nginx/html -d 
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/linux/">Linux</a>
+          
+          <a href="/tags/network/">Network</a>
+          
+        </div>
 
       
       <nav class="post-nav">

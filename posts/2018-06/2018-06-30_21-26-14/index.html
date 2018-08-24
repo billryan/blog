@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="HAProxy 进阶使用技巧 本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中" />
+  <meta name="description" content="本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中的使用细节。 Health" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="HAProxy 进阶使用技巧" />
-<meta property="og:description" content="HAProxy 进阶使用技巧 本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中" />
+<meta property="og:description" content="本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中的使用细节。 Health" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2018-06/2018-06-30_21-26-14/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="HAProxy 进阶使用技巧">
-<meta itemprop="description" content="HAProxy 进阶使用技巧 本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中">
+<meta itemprop="description" content="本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中的使用细节。 Health">
 
 
 <meta itemprop="datePublished" content="2018-06-30T21:26:14&#43;08:00" />
 <meta itemprop="dateModified" content="2018-06-30T21:26:14&#43;08:00" />
-<meta itemprop="wordCount" content="819">
+<meta itemprop="wordCount" content="812">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="HAProxy," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="HAProxy 进阶使用技巧"/>
-<meta name="twitter:description" content="HAProxy 进阶使用技巧 本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中"/>
+<meta name="twitter:description" content="本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中的使用细节。 Health"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-06-30 </span>
-        
-        <span class="more-meta"> 约 819 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 812 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -165,7 +169,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#haproxy-进阶使用技巧">HAProxy 进阶使用技巧</a>
+<li>
 <ul>
 <li><a href="#health-check">Health Check</a>
 <ul>
@@ -185,8 +189,6 @@
     
     <div class="post-content">
       
-
-<h1 id="haproxy-进阶使用技巧">HAProxy 进阶使用技巧</h1>
 
 <p>本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中的使用细节。</p>
 
@@ -295,14 +297,18 @@
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/haproxy/">HAProxy</a>
+          
+        </div>
 
       
       <nav class="post-nav">
         
           <a class="prev" href="/posts/2018-08/2018-08-02_23-59-46/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">基于大数据平台的客户画像系统设计</span>
+            <span class="prev-text nav-default">基于大数据平台的客户像系统设计</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         

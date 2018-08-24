@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="家用服务器之 UPnP/DLNA 媒体服务 在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机" />
+  <meta name="description" content="在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机上欣赏那些下好的视频音" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="家用服务器之 UPnP/DLNA 媒体服务" />
-<meta property="og:description" content="家用服务器之 UPnP/DLNA 媒体服务 在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机" />
+<meta property="og:description" content="在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机上欣赏那些下好的视频音" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2014-11/2014-11-11_18-22-50/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="家用服务器之 UPnP/DLNA 媒体服务">
-<meta itemprop="description" content="家用服务器之 UPnP/DLNA 媒体服务 在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机">
+<meta itemprop="description" content="在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机上欣赏那些下好的视频音">
 
 
 <meta itemprop="datePublished" content="2014-11-11T18:22:50&#43;08:00" />
 <meta itemprop="dateModified" content="2014-11-11T18:22:50&#43;08:00" />
-<meta itemprop="wordCount" content="660">
+<meta itemprop="wordCount" content="649">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="树莓派," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="家用服务器之 UPnP/DLNA 媒体服务"/>
-<meta name="twitter:description" content="家用服务器之 UPnP/DLNA 媒体服务 在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机"/>
+<meta name="twitter:description" content="在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机上欣赏那些下好的视频音"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2014-11-11 </span>
-        
-        <span class="more-meta"> 约 660 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 649 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -165,7 +169,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#家用服务器之-upnp-dlna-媒体服务">家用服务器之 UPnP/DLNA 媒体服务</a>
+<li>
 <ul>
 <li><a href="#upnp-dlna-server">UPnP/DLNA Server</a></li>
 <li><a href="#upnp-dlna-client">UPnP/DLNA Client</a></li>
@@ -181,8 +185,6 @@
     
     <div class="post-content">
       
-
-<h1 id="家用服务器之-upnp-dlna-媒体服务">家用服务器之 UPnP/DLNA 媒体服务</h1>
 
 <p>在上文 <a href="../../2014/11/archlinux-bt-download.html">家用服务器之BT(PT)下载机</a> 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机上欣赏那些下好的视频音乐呢？一处下载，四处观看！ ≖‿≖✧ 这可是巨大的商机啊！！</p>
 
@@ -253,7 +255,11 @@ friendly_name=DLNA Server for bill # DLNA服务器的名字，无所谓
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+          
+        </div>
 
       
       <nav class="post-nav">

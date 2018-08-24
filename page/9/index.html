@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2015-04-01T16:19:45&#43;08:00"/>
+<meta property="og:updated_time" content="2015-03-19T08:45:55&#43;08:00"/>
 
 
 
@@ -140,131 +140,22 @@
     
       <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2015-04/2015-04-01_16-19-45/">一道阿里的抛硬币选择题</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-04-01 </span>
-      
-      <span class="more-meta"> 约 879 字 </span>
-      <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      一道阿里的抛硬币选择题 最近开始准备找实习，各大公司的题自然是不可错过，今天看到一道抛硬币方面的概率题，找了下看到网上的答案几乎都是错的，这里
-    </div>
-    <div class="read-more">
-      <a href="/posts/2015-04/2015-04-01_16-19-45/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2015-03/2015-03-26_14-11-01/">一道fork题引发的思考</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-03-26 </span>
-      
-      <span class="more-meta"> 约 1082 字 </span>
-      <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      一道fork题引发的思考 问题如下： int main(){fork()||fork();}中，其共创建了几个进程？ 此题考查fork的原理和或操作的求
-    </div>
-    <div class="read-more">
-      <a href="/posts/2015-03/2015-03-26_14-11-01/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2015-03/2015-03-24_13-39-59/">TCP协议浅析</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-03-24 </span>
-      
-      <span class="more-meta"> 约 3504 字 </span>
-      <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h1 id="tcp协议浅析">TCP协议浅析</h1>
-
-<p>TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。</p>
-
-<p>在浅析TCP传输层协议之前先说说<code>segment</code>, <code>datagram</code>, <code>frame</code>的区别。</p>
-
-<p>严格说来，以上三个名词均为专业性术语。</p>
-
-<ol>
-<li><code>message</code> - 用于应用层</li>
-<li><code>segment</code> - TCP的PDU(Protocol Data Unit)</li>
-<li><code>datagram</code> - UDP的PDU</li>
-<li><code>packet</code> - IP的PDU(RFC791中也称之为datagram)</li>
-<li><code>frame</code> - 数据链路层的PDU</li>
-</ol>
-
-<h2 id="tcp-segment-structure">TCP segment structure</h2>
-
-<p>TCP segment由TCP头部和TCP数据部分组成，首先来瞅瞅TCP头部的包结构。</p>
-
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/tcp_header.png-q75" alt="TCP头部包结构" /></p>
-
-<dl>
-<dt>Source port (16 bits)</dt>
-<dd>16位源端口号(发送方使用)</dd>
-<dt>Destination port (16 bits)</dt>
-<dd>16位目的端口号(接收方使用)</dd>
-<dt>Sequence number (32 bits)</dt>
-<dd><p>32位序列号，有两个作用：</p></dd>
-<dd><p>在<code>SYN</code> flag 置1时，此为当前连接的初始序列号（initial sequence number, ISN），数据的第一个字节序号为此ISN+1</p></dd>
-<dd><p>在<code>SYN</code> flag 置0时，为当前连接报文段的累计数据包字节数。</p></dd>
-<dt>Acknowledgment number (32 bits)</dt>
-<dd><p>32位确认序号，ACK flag置1时才有效，指接收方期待的下一个报文段的序列号。</p></dd>
-<dt>Data offset (4 bits)</dt>
-<dd><p>指示TCP头部的32位元的数目。由于有Options域的存在，因此TCP头部最小为20字节，最大为(15*4 = 60)字节. 同时这个域也包含了TCP报文段实际数据的开始偏移量。</p></dd>
-<dt>Reserved (3 bits)</dt>
-<dd><p>保留域</p></dd>
-<dt>Flags (9 bits) (aka Control bits)</dt>
-<dd><p>控制域信息包含9个一位标志符(3个为新增)。</p></dd>
-<dd><p>ACK - 确认域使用。在初始SYN包之后由客户端发送到报文段都必须包含此控制信息</p></dd>
-<dd><p>RST - 重置连接</p></dd>
-<dd><p>SYN - 同步序列号，一般仅在连接双方发送第一个包时使用</p></dd>
-<dd><p>FIN - 发送方不再发送数据</p></dd>
-<dt>Window size (16 bits)</dt>
-<dd><p>接收窗口的大小(默认以字节为单位)，期望接收到报文段多少，常用于流控。</p></dd>
-</dl>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2015-03/2015-03-24_13-39-59/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/posts/2015-03/2015-03-19_08-45-55/">编程语言的版本选择</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2015-03-19 </span>
-      
-      <span class="more-meta"> 约 234 字 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 225 字 </span>
       <span class="more-meta"> 预计阅读 1 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      编程语言的版本选择 在实际开发和测试过程中，难免会遇到要使用编程语言的不同版本的情况。重量级的解决方案有如docker之类的容器化技术，这里自
+      在实际开发和测试过程中，难免会遇到要使用编程语言的不同版本的情况。重量级的解决方案有如docker之类的容器化技术，这里自然是介绍一些轻量级
     </div>
     <div class="read-more">
       <a href="/posts/2015-03/2015-03-19_08-45-55/" class="read-more-link">阅读更多</a>
@@ -278,17 +169,19 @@
     <h1 class="post-title"><a class="post-link" href="/posts/2015-01/2015-01-06_11-53-30/">科研有方读书笔记之如何做科研</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2015-01-06 </span>
-      
-      <span class="more-meta"> 约 4212 字 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E5%AD%A6%E6%9C%AF/"> 学术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 4198 字 </span>
       <span class="more-meta"> 预计阅读 9 分钟 </span>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <h1 id="科研有方读书笔记之如何做科研">科研有方读书笔记之如何做科研</h1>
-
-<p>该页面为《科研有方：科研需要『想好』再『做』》一书读书笔记的第二章总结，对该书前言及第一章的总结可移步 <a href="http://blog.yuanbin.me/posts/2014/09/research-preparation.html">科研有方读书笔记之做科研的准备工作</a></p>
+      <p>该页面为《科研有方：科研需要『想好』再『做』》一书读书笔记的第二章总结，对该书前言及第一章的总结可移步 <a href="https://blog.yuanbin.me/posts/2014/09/research-preparation.html">科研有方读书笔记之做科研的准备工作</a></p>
 
 <h1 id="如何做科研">如何做科研</h1>
 
@@ -299,6 +192,93 @@
     </div>
     <div class="read-more">
       <a href="/posts/2015-01/2015-01-06_11-53-30/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2014-11/2014-11-30_18-36-00/">python for data analysis</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-11-30 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 214 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      安装Pyenv - yyuu/pyenv，安装之前需要相关工具链 - Common build problems · yyuu/pyenv Wiki 申请学术用途 - The Anaconda Python Distribution for Academics 安装anaconda, pyenv install anaconda, 查看最新版，
+    </div>
+    <div class="read-more">
+      <a href="/posts/2014-11/2014-11-30_18-36-00/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2014-11/2014-11-30_16-00-56/">Cubieboard2/树莓派之swap交换文件</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-11-30 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 394 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，使用SD卡作为swap交换空间是一件极不理智的行
+    </div>
+    <div class="read-more">
+      <a href="/posts/2014-11/2014-11-30_16-00-56/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2014-11/2014-11-29_17-19-56/">家用服务器之自建 DNS 服务器</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2014-11-29 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1011 字 </span>
+      <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。</p>
+
+<ol>
+<li>在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。<br /></li>
+<li>前不久某国开始清理未备案的域名使用教育网IP。<br /></li>
+<li>某高科技部门的大招之一：专业投毒污染三十年。</li>
+</ol>
+
+<p>好了，针对以上问题我们使用两招就好了——ChinaDNS + ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
+</p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2014-11/2014-11-29_17-19-56/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

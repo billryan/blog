@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="身份证解析的那些小事 说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。" />
+  <meta name="description" content="说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。除籍贯外其它信息都可" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="身份证解析的那些小事" />
-<meta property="og:description" content="身份证解析的那些小事 说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。" />
+<meta property="og:description" content="说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。除籍贯外其它信息都可" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2018-03/2018-03-28_23-50-56/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="身份证解析的那些小事">
-<meta itemprop="description" content="身份证解析的那些小事 说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。">
+<meta itemprop="description" content="说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。除籍贯外其它信息都可">
 
 
 <meta itemprop="datePublished" content="2018-03-28T23:50:56&#43;08:00" />
 <meta itemprop="dateModified" content="2018-03-28T23:50:56&#43;08:00" />
-<meta itemprop="wordCount" content="596">
+<meta itemprop="wordCount" content="586">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="解析," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="身份证解析的那些小事"/>
-<meta name="twitter:description" content="身份证解析的那些小事 说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。"/>
+<meta name="twitter:description" content="说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。除籍贯外其它信息都可"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-03-28 </span>
-        
-        <span class="more-meta"> 约 596 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 586 字 </span>
         <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -163,11 +167,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#身份证解析的那些小事">身份证解析的那些小事</a></li>
-</ul>
-</nav>
+    
   </div>
 </div>
 
@@ -176,11 +176,7 @@
 
     
     <div class="post-content">
-      
-
-<h1 id="身份证解析的那些小事">身份证解析的那些小事</h1>
-
-<p>说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。除籍贯外其它信息都可以自己解析生成，籍贯这个，我们又不可以连到公安局内网查，自然需要求助官方发布的数据。</p>
+      <p>说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。除籍贯外其它信息都可以自己解析生成，籍贯这个，我们又不可以连到公安局内网查，自然需要求助官方发布的数据。</p>
 
 <p>身份证相关的行政数据目前已由民政部管理，部分已经整理好的数据可参考 <a href="https://github.com/cn/GB2260">cn/GB2260: 中华人民共和国国家标准 GB/T 2260 行政区划代码</a> mca 目录下保存有原始信息。在使用 cn 下不同语言的实现时，发现引用的数据还是有点滞后，这会造成部分老的行政身份证号无法解析。因此在自己项目中使用时，<strong>建议基于这些数据构建自己的数据库。</strong></p>
 
@@ -230,7 +226,11 @@
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/%E8%A7%A3%E6%9E%90/">解析</a>
+          
+        </div>
 
       
       <nav class="post-nav">

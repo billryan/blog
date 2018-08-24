@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Python 多环境配置管理 实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态" />
+  <meta name="description" content="实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态切换的效果。这种" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="Python 多环境配置管理" />
-<meta property="og:description" content="Python 多环境配置管理 实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态" />
+<meta property="og:description" content="实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态切换的效果。这种" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2018-02/2018-02-24_16-30-16/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="Python 多环境配置管理">
-<meta itemprop="description" content="Python 多环境配置管理 实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态">
+<meta itemprop="description" content="实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态切换的效果。这种">
 
 
 <meta itemprop="datePublished" content="2018-02-24T16:30:16&#43;08:00" />
 <meta itemprop="dateModified" content="2018-02-24T16:30:16&#43;08:00" />
-<meta itemprop="wordCount" content="359">
+<meta itemprop="wordCount" content="351">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Python," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python 多环境配置管理"/>
-<meta name="twitter:description" content="Python 多环境配置管理 实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态"/>
+<meta name="twitter:description" content="实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态切换的效果。这种"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-02-24 </span>
-        
-        <span class="more-meta"> 约 359 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 351 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -163,11 +167,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#python-多环境配置管理">Python 多环境配置管理</a></li>
-</ul>
-</nav>
+    
   </div>
 </div>
 
@@ -176,11 +176,7 @@
 
     
     <div class="post-content">
-      
-
-<h1 id="python-多环境配置管理">Python 多环境配置管理</h1>
-
-<p>实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态切换的效果。这种方式还不错，不过不同环境间往往会共享相同的配置而造成一些重复工作。Python Flask 的作者采用的则是通过类继承的方式共享相同的配置，使用起来个人觉得更为优雅。但如果在非 Flask 应用中想使用这种配置方式就比较麻烦了，毕竟为了一个配置选项而引入一个并不需要使用的第三方库是非常不划算的。</p>
+      <p>实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态切换的效果。这种方式还不错，不过不同环境间往往会共享相同的配置而造成一些重复工作。Python Flask 的作者采用的则是通过类继承的方式共享相同的配置，使用起来个人觉得更为优雅。但如果在非 Flask 应用中想使用这种配置方式就比较麻烦了，毕竟为了一个配置选项而引入一个并不需要使用的第三方库是非常不划算的。</p>
 
 <pre><code class="language-python">#!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -275,7 +271,11 @@ config['MYSQL_HOST']
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/python/">Python</a>
+          
+        </div>
 
       
       <nav class="post-nav">

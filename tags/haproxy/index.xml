@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HAProxy on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/haproxy/</link>
+    <description>Recent content in HAProxy on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 30 Jun 2018 21:26:14 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HAProxy 进阶使用技巧</title>
+      <link>https://blog.yuanbin.me/posts/2018-06/2018-06-30_21-26-14/</link>
+      <pubDate>Sat, 30 Jun 2018 21:26:14 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-06/2018-06-30_21-26-14/</guid>
+      <description>本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中的使用细节。 Health</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>基于大数据平台的客户画像系统设计 - 东海一叶</title>
+  <title>基于大数据平台的客户像系统设计 - 东海一叶</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行" />
+  <meta name="description" content="客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -49,8 +49,8 @@
 
 
 
-<meta property="og:title" content="基于大数据平台的客户画像系统设计" />
-<meta property="og:description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行" />
+<meta property="og:title" content="基于大数据平台的客户像系统设计" />
+<meta property="og:description" content="客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/" />
 
@@ -70,20 +70,20 @@
 
 
 
-<meta itemprop="name" content="基于大数据平台的客户画像系统设计">
-<meta itemprop="description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行">
+<meta itemprop="name" content="基于大数据平台的客户像系统设计">
+<meta itemprop="description" content="客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推">
 
 
 <meta itemprop="datePublished" content="2018-08-02T23:59:46&#43;08:00" />
 <meta itemprop="dateModified" content="2018-08-02T23:59:46&#43;08:00" />
-<meta itemprop="wordCount" content="1004">
+<meta itemprop="wordCount" content="988">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Spark,HBase,ElasticSearch," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="基于大数据平台的客户画像系统设计"/>
-<meta name="twitter:description" content="基于大数据平台的客户画像系统设计 客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行"/>
+<meta name="twitter:title" content="基于大数据平台的客户像系统设计"/>
+<meta name="twitter:description" content="客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,13 +146,17 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">基于大数据平台的客户画像系统设计</h1>
+      <h1 class="post-title">基于大数据平台的客户像系统设计</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2018-08-02 </span>
-        
-        <span class="more-meta"> 约 1004 字 </span>
-        <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 988 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -165,7 +169,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#基于大数据平台的客户画像系统设计">基于大数据平台的客户画像系统设计</a>
+<li>
 <ul>
 <li><a href="#系统架构及数据流">系统架构及数据流</a></li>
 <li><a href="#数据模型映射">数据模型映射</a></li>
@@ -181,8 +185,6 @@
     
     <div class="post-content">
       
-
-<h1 id="基于大数据平台的客户画像系统设计">基于大数据平台的客户画像系统设计</h1>
 
 <p>客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推荐或者营销。基础的客户画像系统有如下几种需求：</p>
 
@@ -285,7 +287,15 @@
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/spark/">Spark</a>
+          
+          <a href="/tags/hbase/">HBase</a>
+          
+          <a href="/tags/elasticsearch/">ElasticSearch</a>
+          
+        </div>
 
       
       <nav class="post-nav">
@@ -349,7 +359,7 @@
       repo: 'blog',
       no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
       go_to_comment: "去留言",
-      issue_title: '基于大数据平台的客户画像系统设计',
+      issue_title: '基于大数据平台的客户像系统设计',
       btn_class: "btn",
       comments_target: "#comment-thread",
       loading_target: "#loading-spin",

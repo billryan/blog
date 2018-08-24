@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Akka Notes 4 - Request and Response 该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
+  <meta name="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
 前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)
 从技术角度考虑，我们发送消息给 Actor 总是期望有副作用发生的，从设计上便是如此。目标 Actor 除了不作回应之外还可以对消息做如下事情：
  返回一条回复给发送者(在我们的例子中，TeacherActor 回应一条名言给 StudentActor) 给其他有可能成为目标受众的 Actor 转发一条回应，这个 Actor 反过来会回应/转发而产生副作用。Routers 和 Supervisors 就是这一类例子。之后我们对这两类进行详解。  请求和响应 在本文中我们将集中在上述第一点：请求与响应 整个周期。一图胜千言，上图！
@@ -55,9 +55,7 @@
 
 
 <meta property="og:title" content="Akka Notes 4 - Request and Response" />
-<meta property="og:description" content="Akka Notes 4 - Request and Response
-
-该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
+<meta property="og:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
 
 前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)
 
@@ -95,9 +93,7 @@
 
 
 <meta itemprop="name" content="Akka Notes 4 - Request and Response">
-<meta itemprop="description" content="Akka Notes 4 - Request and Response
-
-该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
+<meta itemprop="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
 
 前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)
 
@@ -119,16 +115,14 @@
 
 <meta itemprop="datePublished" content="2015-08-27T09:47:30&#43;08:00" />
 <meta itemprop="dateModified" content="2015-08-27T09:47:30&#43;08:00" />
-<meta itemprop="wordCount" content="1371">
+<meta itemprop="wordCount" content="1364">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Akka," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Akka Notes 4 - Request and Response"/>
-<meta name="twitter:description" content="Akka Notes 4 - Request and Response
-
-该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
+<meta name="twitter:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。
 
 前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)
 
@@ -212,8 +206,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2015-08-27 </span>
-        
-        <span class="more-meta"> 约 1371 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 1364 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -227,7 +225,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#akka-notes-4-request-and-response">Akka Notes 4 - Request and Response</a>
+<li>
 <ul>
 <li><a href="#请求和响应">请求和响应</a>
 <ul>
@@ -249,9 +247,7 @@
 
     
     <div class="post-content">
-      <h1 id="akka-notes-4-request-and-response">Akka Notes 4 - Request and Response</h1>
-
-<p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。</p>
+      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。</p>
 
 <p>前文 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)</p>
 
@@ -505,7 +501,11 @@ sbt test
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/akka/">Akka</a>
+          
+        </div>
 
       
       <nav class="post-nav">

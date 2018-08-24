@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>摄影 on 东海一叶</title>
+    <link>https://blog.yuanbin.me/categories/%E6%91%84%E5%BD%B1/</link>
+    <description>Recent content in 摄影 on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 03 Sep 2013 09:12:03 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/categories/%E6%91%84%E5%BD%B1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用exiftool 和digikam 管理数码照片</title>
+      <link>https://blog.yuanbin.me/posts/2013-09/2013-09-03_09-12-03/</link>
+      <pubDate>Tue, 03 Sep 2013 09:12:03 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-09/2013-09-03_09-12-03/</guid>
+      <description>何谓管理 「管理」一词对于照片数据量比较少的时候来说几乎是没什么意义的，几十张上百张照片瞟一眼几乎都知道是些啥，但是当数码照片达到成千上万的量</description>
+    </item>
+    
+    <item>
+      <title>小米2 HDR小试</title>
+      <link>https://blog.yuanbin.me/posts/2013-06/2013-06-09_19-24-09/</link>
+      <pubDate>Sun, 09 Jun 2013 19:24:09 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-06/2013-06-09_19-24-09/</guid>
+      <description>&lt;p&gt;以夕阳西下为例
+不开启HDR，快门时间1/134秒，几乎什么都看不清。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/hdrtest_no_long.jpg-q75&#34; alt=&#34;不开启HDR，快门时间1/134秒，几乎什么都看不清&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

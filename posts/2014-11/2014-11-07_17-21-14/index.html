@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Cubieboard2/树莓派之Archlinux系统配置 上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
+  <meta name="description" content="上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
 P.S. 相关文章可见Tag: cubieboard " />
 
   <meta name="keywords" content="blog, billryan, hugo" />
@@ -51,9 +51,7 @@ P.S. 相关文章可见Tag: cubieboard " />
 
 
 <meta property="og:title" content="Cubieboard2/树莓派之Archlinux系统配置" />
-<meta property="og:description" content="Cubieboard2/树莓派之Archlinux系统配置
-
-上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
+<meta property="og:description" content="上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
 
 P.S. 相关文章可见Tag: cubieboard
 " />
@@ -77,9 +75,7 @@ P.S. 相关文章可见Tag: cubieboard
 
 
 <meta itemprop="name" content="Cubieboard2/树莓派之Archlinux系统配置">
-<meta itemprop="description" content="Cubieboard2/树莓派之Archlinux系统配置
-
-上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
+<meta itemprop="description" content="上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
 
 P.S. 相关文章可见Tag: cubieboard
 ">
@@ -87,16 +83,14 @@ P.S. 相关文章可见Tag: cubieboard
 
 <meta itemprop="datePublished" content="2014-11-07T17:21:14&#43;08:00" />
 <meta itemprop="dateModified" content="2014-11-07T17:21:14&#43;08:00" />
-<meta itemprop="wordCount" content="3349">
+<meta itemprop="wordCount" content="3320">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Linux,Network," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cubieboard2/树莓派之Archlinux系统配置"/>
-<meta name="twitter:description" content="Cubieboard2/树莓派之Archlinux系统配置
-
-上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
+<meta name="twitter:description" content="上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。
 
 P.S. 相关文章可见Tag: cubieboard
 "/>
@@ -166,8 +160,12 @@ P.S. 相关文章可见Tag: cubieboard
 
       <div class="post-meta">
         <span class="post-time"> 2014-11-07 </span>
-        
-        <span class="more-meta"> 约 3349 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 3320 字 </span>
         <span class="more-meta"> 预计阅读 7 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -181,7 +179,7 @@ P.S. 相关文章可见Tag: cubieboard
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#cubieboard2-树莓派之archlinux系统配置">Cubieboard2/树莓派之Archlinux系统配置</a>
+<li>
 <ul>
 <li>
 <ul>
@@ -214,9 +212,7 @@ P.S. 相关文章可见Tag: cubieboard
 
     
     <div class="post-content">
-      <h1 id="cubieboard2-树莓派之archlinux系统配置">Cubieboard2/树莓派之Archlinux系统配置</h1>
-
-<p>上文 <a href="http://blog.billryan.me/posts/2014/11/Cubieboard2-Archlinux-install.html">Cubieboard2之Archlinux安装指南</a> 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。</p>
+      <p>上文 <a href="http://blog.billryan.me/posts/2014/11/Cubieboard2-Archlinux-install.html">Cubieboard2之Archlinux安装指南</a> 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。</p>
 
 <p>P.S. 相关文章可见<a href="http://blog.billryan.me/tags/cubieboard/">Tag: cubieboard</a>
 </p>
@@ -377,7 +373,13 @@ zh_CN.UTF-8 UTF-8
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/linux/">Linux</a>
+          
+          <a href="/tags/network/">Network</a>
+          
+        </div>
 
       
       <nav class="post-nav">

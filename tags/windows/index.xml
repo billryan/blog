@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/windows/</link>
+    <description>Recent content in Windows on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Jul 2015 22:22:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Windows 系统下的开发环境搭建</title>
+      <link>https://blog.yuanbin.me/posts/2015-07/2015-07-17_22-22-00/</link>
+      <pubDate>Fri, 17 Jul 2015 22:22:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-07/2015-07-17_22-22-00/</guid>
+      <description>自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p, i7 的 CPU, 16 GB 内存，除了硬</description>
+    </item>
+    
+  </channel>
+</rss>

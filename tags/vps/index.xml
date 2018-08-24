@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VPS on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/vps/</link>
+    <description>Recent content in VPS on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 13 Oct 2014 09:23:28 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/vps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>digitalocean VPS 把玩</title>
+      <link>https://blog.yuanbin.me/posts/2014-10/2014-10-13_09-23-28/</link>
+      <pubDate>Mon, 13 Oct 2014 09:23:28 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-10/2014-10-13_09-23-28/</guid>
+      <description>&lt;p&gt;对DigitalOcean家的VPS觊觎已久，正好前不久Github有针对高校学生的优惠活动——&lt;a href=&#34;https://education.github.com/pack&#34;&gt;GitHub Student Developer Pack&lt;/a&gt;，昨晚开始总算用上了给力的DO！之前有用同学友情赞助的搬瓦工VPS，用作「&lt;a href=&#34;https://github.com/sjtug/kxsw&#34;&gt;科学上网&lt;/a&gt;」甚是物美价廉，服务了不少热爱科研和技术的孩纸，具体细节略去不表 -.- 如今自己对VPS的需求已不再局限于科学上网，更多地是想基于VPS开发自己的一些应用和学点东西。手头没多少闲钱的学生党们跟着我往下走吧 :)  110美刀的DO不是梦！&lt;strong&gt;目前Github似乎已经屏蔽了&lt;code&gt;*.edu.cn&lt;/code&gt;的邮箱，早起的鸟儿有虫吃，请各位节哀&amp;hellip;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;首先么，你得有个&lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt;帐号，注册好Github后打开链接&lt;a href=&#34;https://education.github.com/pack&#34;&gt;GitHub Student Developer Pack&lt;/a&gt;，猛击「Get your pack」链接，点进去之后应该会验证你的edu邮箱，这个可以在注册Github时就用edu邮箱，也可以在这里添加一个辅助的edu邮箱，殊途同归。注册后Github会发送一封邮件至你指定的edu邮箱，注意查收验证即可。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/get-your-pack.png-q75&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>高校实验室环境下的服务器部署小议</title>
+      <link>https://blog.yuanbin.me/posts/2014-09/2014-09-19_23-53-51/</link>
+      <pubDate>Fri, 19 Sep 2014 23:53:51 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-09/2014-09-19_23-53-51/</guid>
+      <description>在理工科的一些科研团队实验室中，一般或多或少都会有那么几台服务器。此文主要就高校实验室环境下的服务器及应用部署做些简要的经验介绍。 硬件选型 诸</description>
+    </item>
+    
+  </channel>
+</rss>

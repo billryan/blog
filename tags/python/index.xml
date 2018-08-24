@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/python/</link>
+    <description>Recent content in Python on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 15 Mar 2018 13:44:59 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python 网页爬虫入门——信息抓取</title>
+      <link>https://blog.yuanbin.me/posts/2018-03/2018-03-15_13-44-59/</link>
+      <pubDate>Thu, 15 Mar 2018 13:44:59 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-15_13-44-59/</guid>
+      <description>之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什么样的工具，我们最终都需要</description>
+    </item>
+    
+    <item>
+      <title>Python 多环境配置管理</title>
+      <link>https://blog.yuanbin.me/posts/2018-02/2018-02-24_16-30-16/</link>
+      <pubDate>Sat, 24 Feb 2018 16:30:16 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-24_16-30-16/</guid>
+      <description>实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态切换的效果。这种</description>
+    </item>
+    
+    <item>
+      <title>python for data analysis</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-30_18-36-00/</link>
+      <pubDate>Sun, 30 Nov 2014 18:36:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-30_18-36-00/</guid>
+      <description>安装Pyenv - yyuu/pyenv，安装之前需要相关工具链 - Common build problems · yyuu/pyenv Wiki 申请学术用途 - The Anaconda Python Distribution for Academics 安装anaconda, pyenv install anaconda, 查看最新版，</description>
+    </item>
+    
+    <item>
+      <title>Pycon2014 美国视频合辑下载</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-29_11-04-04/</link>
+      <pubDate>Sat, 29 Nov 2014 11:04:04 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-29_11-04-04/</guid>
+      <description>作为一名Pythoner，一年一度的Pycon当然值得关注，在美国举办的Pycon质量还是比较高的。鉴于天朝特殊的网络环境，要想顺畅的在线观</description>
+    </item>
+    
+  </channel>
+</rss>

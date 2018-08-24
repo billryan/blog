@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Hue hive metastore 显示时间差的问题 Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我" />
+  <meta name="description" content="Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。 从" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="Hue hive metastore 显示时间差的问题" />
-<meta property="og:description" content="Hue hive metastore 显示时间差的问题 Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我" />
+<meta property="og:description" content="Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。 从" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="Hue hive metastore 显示时间差的问题">
-<meta itemprop="description" content="Hue hive metastore 显示时间差的问题 Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我">
+<meta itemprop="description" content="Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。 从">
 
 
 <meta itemprop="datePublished" content="2018-04-20T17:24:14&#43;08:00" />
 <meta itemprop="dateModified" content="2018-04-20T17:24:14&#43;08:00" />
-<meta itemprop="wordCount" content="302">
+<meta itemprop="wordCount" content="291">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Hive,Hue," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hue hive metastore 显示时间差的问题"/>
-<meta name="twitter:description" content="Hue hive metastore 显示时间差的问题 Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我"/>
+<meta name="twitter:description" content="Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。 从"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-04-20 </span>
-        
-        <span class="more-meta"> 约 302 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 291 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -163,11 +167,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#hue-hive-metastore-显示时间差的问题">Hue hive metastore 显示时间差的问题</a></li>
-</ul>
-</nav>
+    
   </div>
 </div>
 
@@ -176,11 +176,7 @@
 
     
     <div class="post-content">
-      
-
-<h1 id="hue-hive-metastore-显示时间差的问题">Hue hive metastore 显示时间差的问题</h1>
-
-<p>Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。</p>
+      <p>Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。</p>
 
 <p>从 Overview 中分析 Properties 中的时间 Created 的源码可以发现其使用的是</p>
 
@@ -238,7 +234,13 @@
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/hive/">Hive</a>
+          
+          <a href="/tags/hue/">Hue</a>
+          
+        </div>
 
       
       <nav class="post-nav">

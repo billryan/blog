@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Play with 新创云 X32-N2808 之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
+  <meta name="description" content="之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
 X32-N2808 硬件概述 依稀记得在 SHLUG 邮件列表中有人提到过新创云的低功耗板子，前一阵子趁京东 618 大促搜了下新创云，发现 X32-N2808 这款移动端半价促销(不到400即可拿下)，无内存无硬盘，虽然也写明无 WiFi, 但实际上卖家发货时还是带了一块 PCI-E 无线网卡及蓝牙芯片，无线网卡是 Atheros 家的，实测对 Linux 支持很好，用于自建热点很方便。简单问了下客服，内存条是可以使用笔记本内存条的，但是得使用低压版 1.35v 的，也就是说没有必要买新创云自家昂贵的内存条以及 SSD 等，由于不确定自己的笔记本内存条是否可用，低压版 1.35v 的内存条没有一起下单。
 拿到板子后立马把后盖拆了下来，内部做工还算不错，接口及组件列表如下：
  CPU 为赛扬双核 N2808 内存条仅有一个插槽，LPDDR3，也就是说这里和客服说的有出入，以 1.5V(LPDDR3) 为准 一个 PCI-E 的无线网卡，卖家送的 Atheros 网卡 一个 msata，可以扩展 SSD 用，SSD 暂时太贵了，没买 一个 SATA II，我买了一块 1 T 西数笔记本硬盘，板子预留了空间，拧上螺丝即用 两个 HDMI 高清接口 两个 USB 3.0 四个 USB 2.0 一个千兆以太网卡，作为网络路由器和媒体服务器非常不错 音频接口  所以总的来讲接口还是非常丰富的，和一台普通的台式机没差多少。整机功耗实测 6 W 左右，名副其实的低功耗 X86 服务器。 自己加内存条和硬盘后的谍照如下。
@@ -55,9 +55,7 @@ X32-N2808 硬件概述 依稀记得在 SHLUG 邮件列表中有人提到过新�
 
 
 <meta property="og:title" content="Play with 新创云 X32-N2808" />
-<meta property="og:description" content="Play with 新创云 X32-N2808
-
-之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
+<meta property="og:description" content="之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
 
 X32-N2808 硬件概述
 
@@ -105,9 +103,7 @@ CPU 为赛扬双核 N2808
 
 
 <meta itemprop="name" content="Play with 新创云 X32-N2808">
-<meta itemprop="description" content="Play with 新创云 X32-N2808
-
-之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
+<meta itemprop="description" content="之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
 
 X32-N2808 硬件概述
 
@@ -139,16 +135,14 @@ CPU 为赛扬双核 N2808
 
 <meta itemprop="datePublished" content="2016-07-03T22:10:13&#43;08:00" />
 <meta itemprop="dateModified" content="2016-07-03T22:10:13&#43;08:00" />
-<meta itemprop="wordCount" content="2022">
+<meta itemprop="wordCount" content="2016">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Linux," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Play with 新创云 X32-N2808"/>
-<meta name="twitter:description" content="Play with 新创云 X32-N2808
-
-之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
+<meta name="twitter:description" content="之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 Nghttp2 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。
 
 X32-N2808 硬件概述
 
@@ -242,8 +236,12 @@ CPU 为赛扬双核 N2808
 
       <div class="post-meta">
         <span class="post-time"> 2016-07-03 </span>
-        
-        <span class="more-meta"> 约 2022 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 2016 字 </span>
         <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -257,7 +255,7 @@ CPU 为赛扬双核 N2808
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#play-with-新创云-x32-n2808">Play with 新创云 X32-N2808</a>
+<li>
 <ul>
 <li><a href="#x32-n2808-硬件概述">X32-N2808 硬件概述</a>
 <ul>
@@ -285,9 +283,7 @@ CPU 为赛扬双核 N2808
 
     
     <div class="post-content">
-      <h1 id="play-with-新创云-x32-n2808">Play with 新创云 X32-N2808</h1>
-
-<p>之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 <a href="https://nghttp2.org/">Nghttp2</a> 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。</p>
+      <p>之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 <a href="https://nghttp2.org/">Nghttp2</a> 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。</p>
 
 <h2 id="x32-n2808-硬件概述">X32-N2808 硬件概述</h2>
 
@@ -464,7 +460,11 @@ mosh 则可用于 UDP 接入，在移动环境或者网络环境较差时非常�
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/linux/">Linux</a>
+          
+        </div>
 
       
       <nav class="post-nav">

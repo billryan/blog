@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Akka Notes 3 - Logging and Testing Actors 该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
+  <meta name="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 TeacherActor.
 前文2 中 TeacherActor 的长相如下：
 package me.yuanbin.akkanotes.actormsg import akka.actor.Actor import me.yuanbin.akkanotes.protocols.StudentProtocol._ import me.yuanbin.akkanotes.protocols.TeacherProtocol._ import scala.util.Random /** * Your Teacher Actor class. * * The class could use refinement by way of * using ActorLogging which uses the EventBus of the Actor framework * instead of the plain old System out * */ class TeacherActor extends Actor { val quotes = List( &amp;quot;Moderation is for cowards&amp;quot;, &amp;quot;Anything worth doing is worth overdoing&amp;quot;, &amp;quot;The trouble is you think you have time&amp;quot;, &amp;quot;You never gonna know if you never even try&amp;quot;) def receive = { case QuoteRequest =&amp;gt; { //Get a random Quote from the list and construct a response val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size))) println() println(quoteResponse) } } }  
@@ -54,9 +54,7 @@ package me.yuanbin.akkanotes.actormsg import akka.actor.Actor import me.yuanbin.
 
 
 <meta property="og:title" content="Akka Notes 3 - Logging and Testing Actors" />
-<meta property="og:description" content="Akka Notes 3 - Logging and Testing Actors
-
-该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
+<meta property="og:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
 
 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 TeacherActor.
 
@@ -117,9 +115,7 @@ class TeacherActor extends Actor {
 
 
 <meta itemprop="name" content="Akka Notes 3 - Logging and Testing Actors">
-<meta itemprop="description" content="Akka Notes 3 - Logging and Testing Actors
-
-该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
+<meta itemprop="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
 
 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 TeacherActor.
 
@@ -164,16 +160,14 @@ class TeacherActor extends Actor {
 
 <meta itemprop="datePublished" content="2015-08-26T13:26:24&#43;08:00" />
 <meta itemprop="dateModified" content="2015-08-26T13:26:24&#43;08:00" />
-<meta itemprop="wordCount" content="2792">
+<meta itemprop="wordCount" content="2784">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Akka," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Akka Notes 3 - Logging and Testing Actors"/>
-<meta name="twitter:description" content="Akka Notes 3 - Logging and Testing Actors
-
-该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
+<meta name="twitter:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
 
 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 TeacherActor.
 
@@ -280,8 +274,12 @@ class TeacherActor extends Actor {
 
       <div class="post-meta">
         <span class="post-time"> 2015-08-26 </span>
-        
-        <span class="more-meta"> 约 2792 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 2784 字 </span>
         <span class="more-meta"> 预计阅读 6 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -295,7 +293,7 @@ class TeacherActor extends Actor {
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#akka-notes-3-logging-and-testing-actors">Akka Notes 3 - Logging and Testing Actors</a>
+<li>
 <ul>
 <li><a href="#使用-slf4j-作为-akka-的日志组件">使用 <code>SLF4J</code> 作为 Akka 的日志组件</a>
 <ul>
@@ -330,9 +328,7 @@ class TeacherActor extends Actor {
 
     
     <div class="post-content">
-      <h1 id="akka-notes-3-logging-and-testing-actors">Akka Notes 3 - Logging and Testing Actors</h1>
-
-<p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。</p>
+      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。</p>
 
 <p>前文 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html">Akka Notes 1 - Introducing Actors</a> 和 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 <code>TeacherActor</code>.</p>
 
@@ -672,7 +668,11 @@ sbt test
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/akka/">Akka</a>
+          
+        </div>
 
       
       <nav class="post-nav">

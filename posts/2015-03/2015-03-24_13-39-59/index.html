@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="TCP协议浅析 TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。
+  <meta name="description" content="TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。
 在浅析TCP传输层协议之前先说说segment, datagram, frame的区别。
 严格说来，以上三个名词均为专业性术语。
  message - 用于应用层 segment - TCP的PDU(Protocol Data Unit) datagram - UDP的PDU packet - IP的PDU(RFC791中也称之为datagram) frame - 数据链路层的PDU  TCP segment structure TCP segment由TCP头部和TCP数据部分组成，首先来瞅瞅TCP头部的包结构。
@@ -67,9 +67,7 @@
 
 
 <meta property="og:title" content="TCP协议浅析" />
-<meta property="og:description" content="TCP协议浅析
-
-TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。
+<meta property="og:description" content="TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。
 
 在浅析TCP传输层协议之前先说说segment, datagram, frame的区别。
 
@@ -135,9 +133,7 @@ Window size (16 bits)
 
 
 <meta itemprop="name" content="TCP协议浅析">
-<meta itemprop="description" content="TCP协议浅析
-
-TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。
+<meta itemprop="description" content="TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。
 
 在浅析TCP传输层协议之前先说说segment, datagram, frame的区别。
 
@@ -187,16 +183,14 @@ Window size (16 bits)
 
 <meta itemprop="datePublished" content="2015-03-24T13:39:59&#43;08:00" />
 <meta itemprop="dateModified" content="2015-03-24T13:39:59&#43;08:00" />
-<meta itemprop="wordCount" content="3504">
+<meta itemprop="wordCount" content="3497">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Network,TCP," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TCP协议浅析"/>
-<meta name="twitter:description" content="TCP协议浅析
-
-TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。
+<meta name="twitter:description" content="TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。
 
 在浅析TCP传输层协议之前先说说segment, datagram, frame的区别。
 
@@ -308,8 +302,12 @@ Window size (16 bits)
 
       <div class="post-meta">
         <span class="post-time"> 2015-03-24 </span>
-        
-        <span class="more-meta"> 约 3504 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 3497 字 </span>
         <span class="more-meta"> 预计阅读 7 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -323,7 +321,7 @@ Window size (16 bits)
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#tcp协议浅析">TCP协议浅析</a>
+<li>
 <ul>
 <li><a href="#tcp-segment-structure">TCP segment structure</a></li>
 <li><a href="#tcp-协议操作细节">TCP 协议操作细节</a>
@@ -347,9 +345,7 @@ Window size (16 bits)
 
     
     <div class="post-content">
-      <h1 id="tcp协议浅析">TCP协议浅析</h1>
-
-<p>TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。</p>
+      <p>TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。</p>
 
 <p>在浅析TCP传输层协议之前先说说<code>segment</code>, <code>datagram</code>, <code>frame</code>的区别。</p>
 
@@ -594,7 +590,13 @@ awk '/10000|65247/' /tmp/socket.log &gt; /tmp/socket_echo.log # 过滤含有1000
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/network/">Network</a>
+          
+          <a href="/tags/tcp/">TCP</a>
+          
+        </div>
 
       
       <nav class="post-nav">

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Gitbook 网页版中文字型优化 - 东海一叶</title>
+  <title>GitBook 网页版中文字型优化 - 东海一叶</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Gitbook 网页版中文字型优化 Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallba" />
+  <meta name="description" content="Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallback 至sans-se" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -49,8 +49,8 @@
 
 
 
-<meta property="og:title" content="Gitbook 网页版中文字型优化" />
-<meta property="og:description" content="Gitbook 网页版中文字型优化 Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallba" />
+<meta property="og:title" content="GitBook 网页版中文字型优化" />
+<meta property="og:description" content="Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallback 至sans-se" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2016-08/2016-08-19_07-30-10/" />
 
@@ -70,20 +70,20 @@
 
 
 
-<meta itemprop="name" content="Gitbook 网页版中文字型优化">
-<meta itemprop="description" content="Gitbook 网页版中文字型优化 Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallba">
+<meta itemprop="name" content="GitBook 网页版中文字型优化">
+<meta itemprop="description" content="Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallback 至sans-se">
 
 
 <meta itemprop="datePublished" content="2016-08-19T07:30:10&#43;08:00" />
 <meta itemprop="dateModified" content="2016-08-19T07:30:10&#43;08:00" />
-<meta itemprop="wordCount" content="324">
+<meta itemprop="wordCount" content="314">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="GitBook," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Gitbook 网页版中文字型优化"/>
-<meta name="twitter:description" content="Gitbook 网页版中文字型优化 Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallba"/>
+<meta name="twitter:title" content="GitBook 网页版中文字型优化"/>
+<meta name="twitter:description" content="Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallback 至sans-se"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,12 +146,16 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Gitbook 网页版中文字型优化</h1>
+      <h1 class="post-title">GitBook 网页版中文字型优化</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2016-08-19 </span>
-        
-        <span class="more-meta"> 约 324 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 314 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -163,11 +167,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#gitbook-网页版中文字型优化">Gitbook 网页版中文字型优化</a></li>
-</ul>
-</nav>
+    
   </div>
 </div>
 
@@ -176,11 +176,7 @@
 
     
     <div class="post-content">
-      
-
-<h1 id="gitbook-网页版中文字型优化">Gitbook 网页版中文字型优化</h1>
-
-<p>Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS <del>对中文并不太友好</del>首先匹配英文字体族，fallback 至sans-serif 字体族，这在中英文和简繁并用时会有一些小小的问题。好在 Gitbook 提供了自定义 website/ebook 等 CSS 的方法 ==&gt; <a href="https://help.gitbook.com/content/how-can-i-include-css.html">How can I include custom CSS? · GitBook</a></p>
+      <p>Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS <del>对中文并不太友好</del>首先匹配英文字体族，fallback 至sans-serif 字体族，这在中英文和简繁并用时会有一些小小的问题。好在 Gitbook 提供了自定义 website/ebook 等 CSS 的方法 ==&gt; <a href="https://help.gitbook.com/content/how-can-i-include-css.html">How can I include custom CSS? · GitBook</a></p>
 
 <p>这里我们主要关注网页版的阅读体验，所以在 <code>styles</code> 目录下新建 <code>website.css</code> 即可，默认的主题 <a href="https://github.com/GitbookIO/theme-default">GitbookIO/theme-default</a> 关于 <code>font-family</code> 的设置为</p>
 
@@ -241,7 +237,11 @@
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/gitbook/">GitBook</a>
+          
+        </div>
 
       
       <nav class="post-nav">
@@ -252,8 +252,8 @@
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
-          <a class="next" href="/posts/2016-07/2016-07-31_18-17-05/">
-            <span class="next-text nav-default">enable HTTPS for hexo blog with dokku</span>
+          <a class="next" href="/posts/2016-07/2016-07-10_20-34-03/">
+            <span class="next-text nav-default">家用服务器之 HTTP/2</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -305,7 +305,7 @@
       repo: 'blog',
       no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
       go_to_comment: "去留言",
-      issue_title: 'Gitbook 网页版中文字型优化',
+      issue_title: 'GitBook 网页版中文字型优化',
       btn_class: "btn",
       comments_target: "#comment-thread",
       loading_target: "#loading-spin",

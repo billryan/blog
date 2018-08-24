@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="家用服务器之 DDNS 自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。 来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。
+  <meta name="description" content="自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。 来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。
 人工投诉索要公网 IP 某个周末的下午试着给联通打了个投诉电话说转人工宽带服务，说明要公网地址，客服问了下账户信息就答复说24小时内处理好并回电，约摸两个小时后有个工程师就来电说已经处理好，请重启路由器。重启路由器后发现联通诚不欺我，全程下来十分顺畅，原以为要说一堆理由并且还有可能不给开通公网地址，没想到联通这么爽快，赞！
 光猫用户 需要注意的是使用了光猫的客户，即使申请获得公网地址，这个地址也只存在于光猫的 WAN 口，内网服务器还是无法发挥作用，所以还需要先破解光猫获得超级用户权限以设置 DMZ 和端口映射等。以中兴的 F607 联通版为例，浏览器中输入 http://192.168.1.1/cu.html, 用户名密码可能为如下组合： - CUAdmin/CUAdmin - admin/admin - unicomadmin/adminunicom
 网络拓扑 一般情况下服务器网络入口使用防火墙还是很有必要的，获取光猫超级用户权限后虽然可以设置端口映射，但是受制于光猫的有线网口数和硬件布局，使用起来多少有些不便。考虑到连接光猫的至少有一台无线路由器，所以可以在光猫中固定这台无线路由器 WAN 口的 IP，并对其 DMZ, 这样你的路由器就相当于外接广域网了，后面对路由器下的服务器做端口映射就比较方便了。端口映射在有些路由器固件中也称为虚拟服务器，不同路由器的称呼不太一样。
@@ -56,9 +56,7 @@ DNSPod DDNS 有自己域名的基本都知道这家 DNSPod，提供的 API 十�
 
 
 <meta property="og:title" content="家用服务器之 DDNS" />
-<meta property="og:description" content="家用服务器之 DDNS
-
-自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
+<meta property="og:description" content="自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
 来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。
 
 人工投诉索要公网 IP
@@ -103,9 +101,7 @@ DNSPod DDNS
 
 
 <meta itemprop="name" content="家用服务器之 DDNS">
-<meta itemprop="description" content="家用服务器之 DDNS
-
-自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
+<meta itemprop="description" content="自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
 来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。
 
 人工投诉索要公网 IP
@@ -134,16 +130,14 @@ DNSPod DDNS
 
 <meta itemprop="datePublished" content="2016-07-08T22:25:28&#43;08:00" />
 <meta itemprop="dateModified" content="2016-07-08T22:25:28&#43;08:00" />
-<meta itemprop="wordCount" content="1258">
+<meta itemprop="wordCount" content="1251">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Linux,Network," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="家用服务器之 DDNS"/>
-<meta name="twitter:description" content="家用服务器之 DDNS
-
-自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
+<meta name="twitter:description" content="自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
 来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。
 
 人工投诉索要公网 IP
@@ -234,8 +228,12 @@ DNSPod DDNS
 
       <div class="post-meta">
         <span class="post-time"> 2016-07-08 </span>
-        
-        <span class="more-meta"> 约 1258 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 1251 字 </span>
         <span class="more-meta"> 预计阅读 3 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -249,7 +247,7 @@ DNSPod DDNS
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#家用服务器之-ddns">家用服务器之 DDNS</a>
+<li>
 <ul>
 <li><a href="#人工投诉索要公网-ip">人工投诉索要公网 IP</a>
 <ul>
@@ -271,9 +269,7 @@ DNSPod DDNS
 
     
     <div class="post-content">
-      <h1 id="家用服务器之-ddns">家用服务器之 DDNS</h1>
-
-<p>自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
+      <p>自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
 来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。</p>
 
 <h2 id="人工投诉索要公网-ip">人工投诉索要公网 IP</h2>
@@ -356,7 +352,13 @@ sudo systemctl enable dnspod-ddns
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/linux/">Linux</a>
+          
+          <a href="/tags/network/">Network</a>
+          
+        </div>
 
       
       <nav class="post-nav">

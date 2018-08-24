@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hive on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/hive/</link>
+    <description>Recent content in Hive on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 20 Apr 2018 17:24:14 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/hive/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hue hive metastore 显示时间差的问题</title>
+      <link>https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/</link>
+      <pubDate>Fri, 20 Apr 2018 17:24:14 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/</guid>
+      <description>Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。 从</description>
+    </item>
+    
+    <item>
+      <title>Hive show create table 显示空白行的问题</title>
+      <link>https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/</link>
+      <pubDate>Mon, 02 Apr 2018 16:35:55 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/</guid>
+      <description>对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细</description>
+    </item>
+    
+  </channel>
+</rss>

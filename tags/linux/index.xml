@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/linux/</link>
+    <description>Recent content in Linux on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 10 Jul 2016 20:34:03 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>家用服务器之 HTTP/2</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/</link>
+      <pubDate>Sun, 10 Jul 2016 20:34:03 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/</guid>
+      <description>&lt;p&gt;之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 &lt;a href=&#34;https://wzyboy.im/post/1052.html&#34;&gt;使用 nghttpx 搭建 HTTP/2 代理&lt;/a&gt; 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&amp;rsquo;s Encrypt, 方便好使，生成方法可参考 &lt;a href=&#34;../../2016/07/Let-s-Encrypt-for-Archlinux.html&#34;&gt;Let&amp;rsquo;s Encrypt for Archlinux&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;nghttp2 已经进入 extra 仓库，使用 &lt;code&gt;packer -S nghttp2&lt;/code&gt; 即可安装。我的 nghttpx 配置文件如下：
+
+{% gist id=&amp;ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&amp;rdquo;,file=&amp;ldquo;nghttpx.conf&amp;rdquo; %}{% endgist %}&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Encrypt for Archlinux</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_17-19-49/</link>
+      <pubDate>Sun, 10 Jul 2016 17:19:49 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_17-19-49/</guid>
+      <description>Let&amp;rsquo;s Encrypt 的出现使得部署 HTTPS 服务变得异常简单，Arch 下安装使用自然也很方便，不了解的可先参考 Let’s Encrypt。我使用的是 nginx, 通过如下命令即可</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之 Squid 分流</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_16-38-19/</link>
+      <pubDate>Sun, 10 Jul 2016 16:38:19 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_16-38-19/</guid>
+      <description>&lt;p&gt;由于大家都知道的原因，大多数 ISP 的国外带宽往往不太理想，据说这个可以用 kcp 突破，我暂时没有国外带宽的困扰，有兴趣的可以去研究下。这篇博文提供的方法是使用 Squid 进行分流，国内直连，国外走父级代理，配合 polipo 和 ChinaDNS 效果拔群。&lt;/p&gt;
+
+&lt;p&gt;由于 Squid 的父级代理暂不支持 socks5, 故还需要配合 polipo 将 socks5 转换为 HTTP proxy 使用。在 Arch 下通过 &lt;code&gt;packer -S squid polipo&lt;/code&gt; 即可安装，接下来结合我的配置文件进行分析。&lt;/p&gt;
+
+&lt;p&gt;由于 polipo 和 Squid 都具有缓存功能，考虑到 Squid 在用户鉴权上更为强大，作为 HTTP 前端接入比较合适，因此需要禁用 polipo 的缓存功能。&lt;/p&gt;
+
+&lt;h2 id=&#34;socks5-to-http-polipo&#34;&gt;socks5 to HTTP - polipo&lt;/h2&gt;
+
+&lt;p&gt;polipo 的配置(&lt;code&gt;/etc/polipo/config&lt;/code&gt;)如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Transparent routing for home server in China</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_10-19-55/</link>
+      <pubDate>Sun, 10 Jul 2016 10:19:55 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_10-19-55/</guid>
+      <description>Since this post is sensitive in China, I will roll it with English instead.
+ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with ChinaDNS and can resolv the external websites correctly. You can see a file including China IP in /etc/chnroute.txt. This file is very important for ss-rules. In Access Points for home server, we have built a AP and can assign the clients with DHCP and Unbound DNS Server backend.</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之无线路由器(AP)</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-09_15-08-41/</link>
+      <pubDate>Sat, 09 Jul 2016 15:08:41 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-09_15-08-41/</guid>
+      <description>之前玩 Raspberry PI/Cubieboard 时写过类似的合辑，这次入 X32-N2808 X86服务器后准备写一个类似的合辑，相比会更新不少内容。 对普通玩家来说，商用无线路由器的性能显然更好，但</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之 DDNS</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-08_22-25-28/</link>
+      <pubDate>Fri, 08 Jul 2016 22:25:28 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-08_22-25-28/</guid>
+      <description>&lt;p&gt;自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
+来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。&lt;/p&gt;
+
+&lt;h2 id=&#34;人工投诉索要公网-ip&#34;&gt;人工投诉索要公网 IP&lt;/h2&gt;
+
+&lt;p&gt;某个周末的下午试着给联通打了个投诉电话说转人工宽带服务，说明要公网地址，客服问了下账户信息就答复说24小时内处理好并回电，约摸两个小时后有个工程师就来电说已经处理好，请重启路由器。重启路由器后发现联通诚不欺我，全程下来十分顺畅，原以为要说一堆理由并且还有可能不给开通公网地址，没想到联通这么爽快，赞！&lt;/p&gt;
+
+&lt;h3 id=&#34;光猫用户&#34;&gt;光猫用户&lt;/h3&gt;
+
+&lt;p&gt;需要注意的是使用了光猫的客户，即使申请获得公网地址，这个地址也只存在于光猫的 WAN 口，内网服务器还是无法发挥作用，所以还需要先破解光猫获得超级用户权限以设置 DMZ 和端口映射等。以中兴的 F607 联通版为例，浏览器中输入 &lt;a href=&#34;http://192.168.1.1/cu.html&#34;&gt;http://192.168.1.1/cu.html&lt;/a&gt;, 用户名密码可能为如下组合：
+- CUAdmin/CUAdmin
+- admin/admin
+- unicomadmin/adminunicom&lt;/p&gt;
+
+&lt;h3 id=&#34;网络拓扑&#34;&gt;网络拓扑&lt;/h3&gt;
+
+&lt;p&gt;一般情况下服务器网络入口使用防火墙还是很有必要的，获取光猫超级用户权限后虽然可以设置端口映射，但是受制于光猫的有线网口数和硬件布局，使用起来多少有些不便。考虑到连接光猫的至少有一台无线路由器，所以可以在光猫中固定这台无线路由器 WAN 口的 IP，并对其 DMZ, 这样你的路由器就相当于外接广域网了，后面对路由器下的服务器做端口映射就比较方便了。端口映射在有些路由器固件中也称为虚拟服务器，不同路由器的称呼不太一样。&lt;/p&gt;
+
+&lt;h2 id=&#34;ddns&#34;&gt;DDNS&lt;/h2&gt;
+
+&lt;p&gt;有了公网 IP 还只是对外服务的第一步，ISP 给你分配公网 IP，并不代表你每次重新拨号获得的 IP 不变，所以你还需要 DDNS 来动态获知这一 IP，典型的 DDNS 服务提供商有花生壳，但是这货并不太稳定，某些固件在路由器界面开启 DDNS 后还会引发路由器工作异常。&lt;/p&gt;
+
+&lt;h3 id=&#34;dnspod-ddns&#34;&gt;DNSPod DDNS&lt;/h3&gt;
+
+&lt;p&gt;有自己域名的基本都知道这家 DNSPod，提供的 API 十分丰富，服务也是比较稳定的。下面是我参考了 &lt;a href=&#34;https://github.com/leeyiw/dnspod_ddns/blob/master/dnspod_ddns.py&#34;&gt;leeyiw/dnspod_ddns&lt;/a&gt; 和 &lt;a href=&#34;https://gist.github.com/chuangbo/833369&#34;&gt;Python dynamic DNSPod DNS Script&lt;/a&gt; 改进的 &lt;a href=&#34;https://gist.github.com/billryan/239778f0821937939c8c140bdddd6840&#34;&gt;DNSPod DDNS Python Script&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Play with 新创云 X32-N2808</title>
+      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-03_22-10-13/</link>
+      <pubDate>Sun, 03 Jul 2016 22:10:13 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-03_22-10-13/</guid>
+      <description>&lt;p&gt;之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 &lt;a href=&#34;https://nghttp2.org/&#34;&gt;Nghttp2&lt;/a&gt; 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。&lt;/p&gt;
+
+&lt;h2 id=&#34;x32-n2808-硬件概述&#34;&gt;X32-N2808 硬件概述&lt;/h2&gt;
+
+&lt;p&gt;依稀记得在 SHLUG 邮件列表中有人提到过新创云的低功耗板子，前一阵子趁京东 618 大促搜了下新创云，发现 X32-N2808 这款移动端半价促销(不到400即可拿下)，无内存无硬盘，虽然也写明无 WiFi, 但实际上卖家发货时还是带了一块 PCI-E 无线网卡及蓝牙芯片，无线网卡是 Atheros 家的，实测对 Linux 支持很好，用于自建热点很方便。简单问了下客服，内存条是可以使用笔记本内存条的，但是得使用低压版 1.35v 的，也就是说没有必要买新创云自家昂贵的内存条以及 SSD 等，由于不确定自己的笔记本内存条是否可用，低压版 1.35v 的内存条没有一起下单。&lt;/p&gt;
+
+&lt;p&gt;拿到板子后立马把后盖拆了下来，内部做工还算不错，接口及组件列表如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CPU 为赛扬双核 N2808&lt;/li&gt;
+&lt;li&gt;内存条仅有一个插槽，LPDDR3，也就是说这里和客服说的有出入，以 1.5V(LPDDR3) 为准&lt;/li&gt;
+&lt;li&gt;一个 PCI-E 的无线网卡，卖家送的 Atheros 网卡&lt;/li&gt;
+&lt;li&gt;一个 msata，可以扩展 SSD 用，SSD 暂时太贵了，没买&lt;/li&gt;
+&lt;li&gt;一个 SATA II，我买了一块 1 T 西数笔记本硬盘，板子预留了空间，拧上螺丝即用&lt;/li&gt;
+&lt;li&gt;两个 HDMI 高清接口&lt;/li&gt;
+&lt;li&gt;两个 USB 3.0&lt;/li&gt;
+&lt;li&gt;四个 USB 2.0&lt;/li&gt;
+&lt;li&gt;一个千兆以太网卡，作为网络路由器和媒体服务器非常不错&lt;/li&gt;
+&lt;li&gt;音频接口&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;所以总的来讲接口还是非常丰富的，和一台普通的台式机没差多少。整机功耗实测 6 W 左右，名副其实的低功耗 X86 服务器。
+自己加内存条和硬盘后的谍照如下。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-1.jpeg-q75&#34; alt=&#34;板子内部接口&#34; /&gt;
+&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-2.jpeg-q75&#34; alt=&#34;2.5英寸笔记本硬盘&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x</title>
+      <link>https://blog.yuanbin.me/posts/2016-01/2016-01-15_15-10-28/</link>
+      <pubDate>Fri, 15 Jan 2016 15:10:28 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2016-01/2016-01-15_15-10-28/</guid>
+      <description>缘由 之前一直在 Archlinux 下部署整套 黑魔法服务，各种工具安装起来很方便，即使源里头没有，AUR 中一般也有其他人提供的 PKGBUILD, 根据此脚本构建适用于自己系统的包</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2/树莓派之Archlinux网络配置</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/</link>
+      <pubDate>Sat, 08 Nov 2014 19:26:58 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/</guid>
+      <description>前文1和2分别就Cubieboard2双卡版的Archlinux系统安装及简单配置做了详细说明，这里就Cubieboard2/树莓派的网络配</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2/树莓派之Archlinux系统配置</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</link>
+      <pubDate>Fri, 07 Nov 2014 17:21:14 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</guid>
+      <description>&lt;p&gt;上文 &lt;a href=&#34;http://blog.billryan.me/posts/2014/11/Cubieboard2-Archlinux-install.html&#34;&gt;Cubieboard2之Archlinux安装指南&lt;/a&gt; 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。&lt;/p&gt;
+
+&lt;p&gt;P.S. 相关文章可见&lt;a href=&#34;http://blog.billryan.me/tags/cubieboard/&#34;&gt;Tag: cubieboard&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2之Archlinux安装指南</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-06_15-56-23/</link>
+      <pubDate>Thu, 06 Nov 2014 15:56:23 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-06_15-56-23/</guid>
+      <description>Cubieboard2目前有两个版本，一个是后来推出的Cubieboard2双卡版，双卡版将原来板载的Nand Flash换成了一个TF卡槽，</description>
+    </item>
+    
+    <item>
+      <title>deepin-screenshot把玩小记</title>
+      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-16_20-47-22/</link>
+      <pubDate>Fri, 16 May 2014 20:47:22 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-16_20-47-22/</guid>
+      <description>在用上「deepin-screenshot」之前用过不少截屏软件，有重量级的shutter, 也有轻量级的scrot, 后来换到KDE桌面环境后</description>
+    </item>
+    
+    <item>
+      <title>英文Locale下使用Fcitx中文输入法</title>
+      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-16_17-24-43/</link>
+      <pubDate>Fri, 16 May 2014 17:24:43 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-16_17-24-43/</guid>
+      <description>英文Locale下使用Fcitx中文输入法 最近的工作模式逐渐转换到「Raspberry PI」+「实验室ESX虚拟出的多操作系统」，多装了个系</description>
+    </item>
+    
+    <item>
+      <title>树莓派把玩之OS和硬件选型</title>
+      <link>https://blog.yuanbin.me/posts/2014-02/2014-02-09_15-38-35/</link>
+      <pubDate>Sun, 09 Feb 2014 15:38:35 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-02/2014-02-09_15-38-35/</guid>
+      <description>最开始听说树莓派(Raspberry PI)是在西电开源社区的邮件列表中，那时只知道这是个可以装Linux的微型电脑，功耗非常低。一次在学校里</description>
+    </item>
+    
+    <item>
+      <title>Compile r8101 driver modules for Linux-3.10</title>
+      <link>https://blog.yuanbin.me/posts/2014-02/2014-02-09_13-52-08/</link>
+      <pubDate>Sun, 09 Feb 2014 13:52:08 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-02/2014-02-09_13-52-08/</guid>
+      <description>Long long ago, I installed Ubuntu 10.04 as my first Linux Distro, due to the problems of networking, I used it only few times. The suck problem is that when you copy large files or did some other things as normal, the network is down! The only solution is to restart your computer! I asked bigeagle for solving this weird issue. He found it was the ethernet card driver that caused this weird issue, and you can find lots of problems with the key words searching &amp;ldquo;r8101 r8169 issue&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>3G无线上网卡分享网络之 Arch Linux与Win7篇</title>
+      <link>https://blog.yuanbin.me/posts/2013-07/2013-07-13_23-50-20/</link>
+      <pubDate>Sat, 13 Jul 2013 23:50:20 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-07/2013-07-13_23-50-20/</guid>
+      <description>&lt;p&gt;暑假回家没有宽带确实有点小郁闷，好在有日益发达的无线通信技术，使得在没法用上昂贵的宽带时还能按需使用3G网络，当然喽，费用也不菲，三个月￥300才15GB的流量，不看视频的话勉强能凑合着用，短期使用的话相对于一年近￥1000的电信宽带还是要便宜一些的。&lt;/p&gt;
+
+&lt;p&gt;下面进入正题，3G无线上网卡最开始是用在家里的台式机上，自己的笔记本电脑和手机要想同时上网自然得另外想想办法。大约可分为以下三种方案：&lt;br /&gt;
+1. 3G上网卡&amp;lt;==&amp;gt;台式机有线网卡&amp;lt;==&amp;gt;笔记本电脑有线网卡&amp;lt;==&amp;gt;笔记本电脑无线网卡作为热点&amp;lt;==&amp;gt;手机接入&lt;br /&gt;
+2. 3G上网卡&amp;lt;==&amp;gt;笔记本电脑无线网卡作为热点&amp;lt;==&amp;gt;手机接入&lt;br /&gt;
+3. 3G上网卡&amp;lt;==&amp;gt;笔记本电脑有线网卡&amp;lt;==&amp;gt;(台式机有线网卡&amp;lt;==&amp;gt;)笔记本电脑无线网卡作为热点&amp;lt;==&amp;gt;手机接入&lt;br /&gt;
+其中台式机运行Win7, 笔记本电脑运行Arch Linux. 总的思路就是3G网络接入，无线热点输出，3G网络与无线热点间则为局域网。&lt;br /&gt;
+形象一点的如下图所示：
+&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/3g-internet-share.jpeg&#34; alt=&#34;3G上网卡网络分享示意图&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Use kmail with a proxy-给kmail加上代理</title>
+      <link>https://blog.yuanbin.me/posts/2013-02/2013-02-03_18-54-00/</link>
+      <pubDate>Sun, 03 Feb 2013 18:54:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-02/2013-02-03_18-54-00/</guid>
+      <description>自打从Win转移到GNU/Linux后，之前计算机里边大部分专有软件也随之转移至自由软件，KMail就是其中一例啦！但是在天朝这么一个「中国</description>
+    </item>
+    
+    <item>
+      <title>goldendict下优质词典简介及安装</title>
+      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-31_23-07-00/</link>
+      <pubDate>Thu, 31 Jan 2013 23:07:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-31_23-07-00/</guid>
+      <description>&lt;p&gt;使用Arch Linux一年以来，如果要问自己最为中意的词典程序是？ 当然是Goldendict啦！想详细了解这款瑞士军刀的请猛戳&lt;a href=&#34;http://goldendict.org&#34;&gt;这里&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;以前在Win下都是用的&lt;a href=&#34;www.lingoes.cn&#34;&gt;lingoes&lt;/a&gt;, 感觉还不错，词典库很全，中英双解的词典很多，其它诸如取词, 整句翻译的功能都还能凑合着用(其实是用的第三方引擎)，总之这个对于天朝大众还是很不错的啦！一年前转到Arch Linux下就一直在找Linux下比较好用的词典程序和词典，综合来看，Goldendict确实是上上之选(可以认为是stardict的升级版么？)，支持的词典格式比较典型的有&lt;code&gt;dsl bgl stardict...&lt;/code&gt;，总之是够用了啦！不过话说回来，选择过多有时候却等于没有选择，星际译王的词典确实很多，但试用了一些，大多质量不是很高，幸好使用Google找到了这么一个&lt;a href=&#34;http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;amp;t=265588&#34;&gt;帖子-Goldendict及其词典详述&lt;/a&gt;, RT,楼主实在是很用心，几乎把每个细节都讲到了，对于刚使用goldendict筒子们无疑是帮了一个大大的忙，不过帖子中提供的词典链接基本都已经坏掉了，而且个人觉得对于词典使用者来说，那些步骤也确实太麻烦了，下边我就一些优质的词典安装使用做简要的说明，跟着我这个来下载完后基本就能用了，Troubleshoot部分就一些细节再做一丁点补充。「前人种树，后人乘凉」呼呼~~&lt;/p&gt;
+
+&lt;h3 id=&#34;goldendict安装&#34;&gt;goldendict安装&lt;/h3&gt;
+
+&lt;p&gt;只要你使用的发行版不是过于小众，应该都可以在软件源找到goldendict这款软件。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Debian/Ubuntu &lt;code&gt;sudo apt-get install goldendict&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Arch &lt;code&gt;sudo pacman -S goldendict&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Oops&amp;hellip;如果实在是没有,解决方案有两个,一是果断换发行版！！二是前往&lt;a href=&#34;https://github.com/goldendict/goldendict&#34;&gt;github&lt;/a&gt;自行编译。 自从爪机换成Android后自己用的主力词典软件也是goldendict, 将下边带词库文件复制到指定目录下即可使用，非常棒。&lt;/p&gt;
+
+&lt;h3 id=&#34;词典下载及使用方法简介&#34;&gt;词典下载及使用方法简介&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Oxford Advanced Learner&amp;rsquo;s Dictionary 8th edition(En-En)-牛津高阶词典(英英)第8版，含图片及英式发音和美式发音&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Merriam-Webster&amp;rsquo;s Collegiate 11th edition(En-En)-韦氏大学词典(英英)第11版，含图片及发音&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Longman DOCE5-Longman Dictinary of Contemporary English 5th edition(En-En)-朗文当代第五版英英词典，含发音和图片，大部分例句也带有朗读，很强悍！！！&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Longman Pronunciation Dictionary 3rd edition(En-En)-朗文发声辞典第三版，词典中有英音、美音，并对于“多音”的词，配有preference poll图表，即不同的发音在不同地区、不同年龄层里所占的比例。不得不说，这个碉堡了！！！&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Longman DOCE5 Extras(En-En)-不包含单词发音和图片，但是包含了该词汇的各种搭配，和牛津搭配词典类似&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;牛津高阶英汉双解 第四版(En-zh_CN)-英汉双解，我想这个对于国人是必不可少的吧？bgl的格式，排版很美观，无发音&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;en_US_1.0.zip&lt;/code&gt;-词形匹配，查词时会自动将复数或者其他形式转换为标准形式&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;以上6部词典应该是完全够用了，前3部英英词典任选一部即可。以上的文件放在我的百度云网盘中，需要的请移步&lt;a href=&#34;http://pan.baidu.com/share/link?shareid=443301&amp;amp;uk=3189859145&#34;&gt;这里&lt;/a&gt;，将词典下载至你想要放的任何位置(直接使用网页打包下载可能会不稳定而下载失败，极其不推荐这种方式下载，做好心理准备&amp;hellip;)，再到goldendict下设置词典目录即可，重新扫描-&amp;gt;大功告成!&lt;br /&gt;
+之前用Dropbox分享过，最近Dropbox老是提示我流量过多而禁用分享，所以转向了不限流量的百度云，同时也方便国内用户下载。最近发现有其他人保存了我发布过的&lt;a href=&#34;https://www.dropbox.com/sh/bf1v7wthsl7pmbi/qt3D1kvFmv&#34;&gt;Dropbox分享&lt;/a&gt;,下载时选择「复制到我的Dropbox」就不会给分享人造成流量过多而禁用分享的问题了，而且通过同步下载的方式也稳定的多。&lt;/p&gt;
+
+&lt;h4 id=&#34;词典下载链接&#34;&gt;词典下载链接&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://pan.baidu.com/share/link?shareid=443301&amp;amp;uk=3189859145&#34;&gt;百度云&lt;/a&gt;, 『保存到网盘』，尽量&lt;strong&gt;不要使用网页下载&lt;/strong&gt; ，下载不稳定并且容易损坏原文件。&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/bf1v7wthsl7pmbi/qt3D1kvFmv&#34;&gt;Dropbox(流量太大长期被Dropbox关闭分享请使用以下分流链接)&lt;/a&gt;, then click the &lt;strong&gt;Add to my Dropbox&lt;/strong&gt;, 中文的话点击『复制到我的Dropbox』，尽量&lt;strong&gt;不要使用网页下载&lt;/strong&gt;，一来下载不稳定并且容易损坏原文件，二来会增加Dropbox的流量而被暂时禁掉掉分享链接！！我用了几年前注册过的Dropbox帐号对以上词典进行分流，下载方式同上，建议通过『复制到我的Dropbox』方式下载。如果你还没有Dropbox帐号的话不妨猛击&lt;a href=&#34;http://db.tt/KS1HOz14&#34;&gt;我的Dropbox推广链接&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/9nzxz0wpn0luuyv/AACR3Ilic05RorZSN1jrUEbDa&#34;&gt;En-En_Longman_DOCE5 and Longman DOCE5 Extras(En-En)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/kb3bfzwzn5fd47q/AADbo8oo71Eg4Z-aDSRmR63Da&#34;&gt;En-En_Longman_Pronunciation3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/mxhfftm3w53be1t/AABnr3P0YkJygHemFRIM6Shaa&#34;&gt;En-En_Merriam_Webster11&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/3al89ktlc8dbohp/AAAbrXAkcaV6ScWedqMOiK1ka&#34;&gt;En-En_OALD8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/sh/i2x1z3zwtw5dku8/AAABbE7edGQKNvZ6soFhnoG-a&#34;&gt;En-zh_CN_OALD4&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropbox.com/s/dda9n4sok28wek7/en_US_1.0.zip&#34;&gt;en_US_1.0.zip&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;词形匹配&#34;&gt;词形匹配&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;amp;t=265588&#34;&gt;http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;amp;t=265588&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;很多人抱怨 Goldendict 取词 &amp;ldquo;books&amp;rdquo; 居然查不到，它不会自己转换成 &amp;ldquo;book&amp;rdquo;，那不过是你没有正确设置而已，事实上这一点 Goldendict 利用构词法规则库可以做得极其强大。编辑-》词典-》词典来源-》构词法规则库可以设置其所在目录。英语构词法规则库到&lt;a href=&#34;https://www.dropbox.com/s/dda9n4sok28wek7/en_US_1.0.zip&#34;&gt;这里&lt;/a&gt;下载，注意需要解压缩，英文版软件则通过&lt;code&gt;Edit-&amp;gt;Dictionaries-&amp;gt;Morphology&lt;/code&gt;设置构词法规则库所在文件夹。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux使用一周年记</title>
+      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-21_17-41-00/</link>
+      <pubDate>Mon, 21 Jan 2013 17:41:00 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-21_17-41-00/</guid>
+      <description>&lt;p&gt;补充: 出于简洁的目的，下文不对GNU/Linux distribution 和Linux kernel做严格的区别，意思大家懂就好&lt;/p&gt;
+
+&lt;p&gt;RT, 自己真正开始使用Linux还只是在一年前，至于第一次听说有Linux这个系统则说不清了(总之在大学阶段咯)，只记得刚开始听说有Linux这玩意儿的时候还老把它和UNIX搞混。第一次见人玩这个貌似是&lt;a href=&#34;https://bigeagle.me&#34;&gt;bigeagel&lt;/a&gt;, 还记得那是大一下院科协的一次技术交流，请了lvzongting, bigeagel, hrn等一批技术大牛给大家开了开眼界，吕大的知识面很广，从电子讲到机械再就数学展开，令我等后生膜拜不已。交流快结束时, b哥在台上兴奋地(这就是geek的表现呀！！)给我们演示了Linux下通过命令行登录系统和终端下打开网页。当时的我真是看傻了眼，只见登录系统后屏幕右侧就飞出一头牛来！(不知那是头公牛还是母牛&amp;hellip;)，没想到Linux下的那些黑框框下还可以玩出这么高端的东西！！不过当时的第一想法并不是回寝后马上装个Linux来玩玩，而是——这货就不是普通人能玩得转的，只能望而止步喽&lt;br /&gt;
+
+再次接触Linux则是室友在我电脑上的虚拟机里装了Ubuntu, 默认的桌面环境是经典的GNOME2, 也正是这个发行版让我彻底改变了对Linux系统的看法，原来除了终端之外还可以使用「亲民」的图形界面。当然，Ubuntu只是那成百上千发行版中的一种，它的易用性是得到地球村人民的公认的，一些geek可能会不太喜欢这个发行版。我想对于广大的普通民众来说，他们并不关心用的操作系统内核是开源的还是闭源的，是单体内核还是微内核&amp;hellip; 他们关心的是系统是否易于使用，是否需要太大的学习成本，办公上网的软件是否齐全，遇到问题时是否便于找到答案&amp;hellip; 对于天朝大多数人们来说，正版OR盗版则不是他们所关心的，不过从现在的形势来看，正版是大势所趋。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spark on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/spark/</link>
+    <description>Recent content in Spark on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 02 Aug 2018 23:59:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>基于大数据平台的客户像系统设计</title>
+      <link>https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/</link>
+      <pubDate>Thu, 02 Aug 2018 23:59:46 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/</guid>
+      <description>客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推</description>
+    </item>
+    
+    <item>
+      <title>Spark 开发之环境准备</title>
+      <link>https://blog.yuanbin.me/posts/2018-03/2018-03-19_11-17-37/</link>
+      <pubDate>Mon, 19 Mar 2018 11:17:37 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-19_11-17-37/</guid>
+      <description>JVM 是必须的，所以需要 Java(JDK 1.8+), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala 的特性。 对于 Spark 的</description>
+    </item>
+    
+  </channel>
+</rss>

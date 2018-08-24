@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="Scala/Java 多环境配置管理——使用 Typesafe Config 在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，S" />
+  <meta name="description" content="在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，Scala/Java 使用同样的" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -50,7 +50,7 @@
 
 
 <meta property="og:title" content="Scala/Java 多环境配置管理——使用 Typesafe Config" />
-<meta property="og:description" content="Scala/Java 多环境配置管理——使用 Typesafe Config 在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，S" />
+<meta property="og:description" content="在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，Scala/Java 使用同样的" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2018-02/2018-02-28_23-48-31/" />
 
@@ -71,19 +71,19 @@
 
 
 <meta itemprop="name" content="Scala/Java 多环境配置管理——使用 Typesafe Config">
-<meta itemprop="description" content="Scala/Java 多环境配置管理——使用 Typesafe Config 在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，S">
+<meta itemprop="description" content="在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，Scala/Java 使用同样的">
 
 
 <meta itemprop="datePublished" content="2018-02-28T23:48:31&#43;08:00" />
 <meta itemprop="dateModified" content="2018-02-28T23:48:31&#43;08:00" />
-<meta itemprop="wordCount" content="373">
+<meta itemprop="wordCount" content="359">
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="Scala,Java," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Scala/Java 多环境配置管理——使用 Typesafe Config"/>
-<meta name="twitter:description" content="Scala/Java 多环境配置管理——使用 Typesafe Config 在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，S"/>
+<meta name="twitter:description" content="在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，Scala/Java 使用同样的"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -150,8 +150,12 @@
 
       <div class="post-meta">
         <span class="post-time"> 2018-02-28 </span>
-        
-        <span class="more-meta"> 约 373 字 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        <span class="more-meta"> 约 359 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -163,11 +167,7 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#scala-java-多环境配置管理-使用-typesafe-config">Scala/Java 多环境配置管理——使用 Typesafe Config</a></li>
-</ul>
-</nav>
+    
   </div>
 </div>
 
@@ -176,11 +176,7 @@
 
     
     <div class="post-content">
-      
-
-<h1 id="scala-java-多环境配置管理-使用-typesafe-config">Scala/Java 多环境配置管理——使用 Typesafe Config</h1>
-
-<p>在前文 <a href="/posts/2018-02/2018-02-24_16-30-16.html">Python 多环境配置类</a> 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，Scala/Java 使用同样的思路来实现多环境配置管理则蹩脚的多。故传统 Java 开发中常采用<code>dev</code>, <code>prod</code> 等不同后缀名的配置文件对不同环境进行区分，也算简单实用，只是不可避免会存在一些重复配置项。</p>
+      <p>在前文 <a href="/posts/2018-02/2018-02-24_16-30-16.html">Python 多环境配置类</a> 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，Scala/Java 使用同样的思路来实现多环境配置管理则蹩脚的多。故传统 Java 开发中常采用<code>dev</code>, <code>prod</code> 等不同后缀名的配置文件对不同环境进行区分，也算简单实用，只是不可避免会存在一些重复配置项。</p>
 
 <p>除了使用类继承，还有没有其他优雅的方式对不同环境进行配置管理呢？答案是有的，那就是 <a href="https://github.com/lightbend/config#merging-config-trees">lightbend/config</a> 中提到的方法，利用嵌套字典，使用 <code>dev</code>, <code>test</code> 等隔离子空间，配合默认根空间共享同样的配置项。核心代码如下所示：</p>
 
@@ -246,7 +242,13 @@ object Config {
 </div>
 
     <footer class="post-footer">
-      
+      <div class="post-tags">
+          
+          <a href="/tags/scala/">Scala</a>
+          
+          <a href="/tags/java/">Java</a>
+          
+        </div>
 
       
       <nav class="post-nav">

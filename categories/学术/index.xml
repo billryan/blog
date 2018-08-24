@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学术 on 东海一叶</title>
+    <link>https://blog.yuanbin.me/categories/%E5%AD%A6%E6%9C%AF/</link>
+    <description>Recent content in 学术 on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 26 Nov 2015 20:10:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/categories/%E5%AD%A6%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在 Linux/OS X 下优雅地写论文(TeX)</title>
+      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-26_20-10-26/</link>
+      <pubDate>Thu, 26 Nov 2015 20:10:26 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-26_20-10-26/</guid>
+      <description>&lt;p&gt;本科毕业设计就是用 LaTeX 写的，那时还只是第一次接触 TeX 这么强大的排版引擎。几年过去了自己对 LaTeX 也算是轻车熟路，最近遇到比较集中的问题自然是 &lt;a href=&#34;https://github.com/weijianwen/SJTUThesis&#34;&gt;硕士论文模板&lt;/a&gt; 啦。GitHub 上作者对一些细节并没有做详细的描述，这对于 TeX 新手来说造成了不少的困扰，比如这种东西怎么这么难用云云&amp;hellip;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>WBAN Traffic Source Model - WBAN 应用层业务模型</title>
+      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-18_13-52-51/</link>
+      <pubDate>Wed, 18 Nov 2015 13:52:51 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-18_13-52-51/</guid>
+      <description>&lt;p&gt;在 &lt;a href=&#34;http://blog.yuanbin.me/posts/2014/06/architecture-of-ieee-802156-simulation-based-on-opnet145.html&#34;&gt;Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5&lt;/a&gt; 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。&lt;/p&gt;
+
+&lt;p&gt;这层模型中主要负责根据用户设定的包产生间隔分布函数向 MAC 层传送不同优先级的包。WBAN 中的业务共有8种不同用户优先级，不同用户优先级对应的业务类型如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_traffic_up8.png&#34; alt=&#34;WBAN-User Priority Mapping&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>科研有方读书笔记之如何做科研</title>
+      <link>https://blog.yuanbin.me/posts/2015-01/2015-01-06_11-53-30/</link>
+      <pubDate>Tue, 06 Jan 2015 11:53:30 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2015-01/2015-01-06_11-53-30/</guid>
+      <description>&lt;p&gt;该页面为《科研有方：科研需要『想好』再『做』》一书读书笔记的第二章总结，对该书前言及第一章的总结可移步 &lt;a href=&#34;https://blog.yuanbin.me/posts/2014/09/research-preparation.html&#34;&gt;科研有方读书笔记之做科研的准备工作&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;如何做科研&#34;&gt;如何做科研&lt;/h1&gt;
+
+&lt;p&gt;做科研归根结底就是一个字：想。科研所『想』的问题通常比较复杂，因此需要有逻辑、系统并且严密的设计。逻辑性『想』的关键，所谓逻辑也就是前因后果清晰明了。&lt;/p&gt;
+
+&lt;p&gt;科研需要持续性的思考，而思考是一个缓慢的、需要积累的过程，因此需要有策略的阅读、有逻辑的思考和有步骤地总结和推进自己的科研，这是做科研的关键所在。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>科研有方读书笔记之做科研的准备工作</title>
+      <link>https://blog.yuanbin.me/posts/2014-09/2014-09-16_19-50-22/</link>
+      <pubDate>Tue, 16 Sep 2014 19:50:22 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-09/2014-09-16_19-50-22/</guid>
+      <description>&lt;p&gt;以下内容为本人在阅读《科研有方：科研需要『想好』再『做』》一书时所做的笔记，此为『前言』和『第一章』部分,大多为摘抄，少部分内容为自己补充。自己其实只是一名小硕而已，也无意继续念Ph.D. 但是一些好的科研方法和思路还是值得分享的。感谢导师推荐的这本好书 :)&lt;/p&gt;
+
+&lt;p&gt;觉得此书内容还不错的可以到电商处购买，此为全文中唯一的广告，哈哈哈。&lt;/p&gt;
+
+&lt;p&gt;相关文章 - &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/01/research-how-to.html&#34;&gt;科研有方读书笔记之如何做科研&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5</title>
+      <link>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</link>
+      <pubDate>Thu, 05 Jun 2014 15:33:04 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</guid>
+      <description>&lt;p&gt;Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; &lt;a href=&#34;https://github.com/billryan/WBAN-OPNET-Simulation&#34;&gt;billryan/WBAN-OPNET-Simulation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, &lt;a href=&#34;https://github.com/boulis/Castalia&#34;&gt;boulis/Castalia&lt;/a&gt; would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for the &lt;a href=&#34;http://www.open-zb.net/wpan_simulator.php&#34;&gt;open-ZB.net - IEEE 802.15.4/ZigBee OPNET Simulation Model&lt;/a&gt;, I refered a lot of code from this powerful Simulation Model.&lt;/p&gt;
+
+&lt;p&gt;Simulation Platforms:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OS: Windows XP SP3&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Simulator: OPNET 14.5 with Educational version&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;architecture-of-this-simulation-node-model-in-opent-14-5&#34;&gt;Architecture of this Simulation - Node Model in OPENT 14.5&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_opnet_node_model.png&#34; alt=&#34;wban Node Model&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OPNET学习笔记之入门指南</title>
+      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-21_08-22-28/</link>
+      <pubDate>Mon, 21 Oct 2013 08:22:28 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-21_08-22-28/</guid>
+      <description>从接触OPNET以来大约也有3个月了，断断续续学了点皮毛，这里把自己折腾的成果陆续整理在这，也算是自己的一个学习笔记吧。 OPNET安装 在Op</description>
+    </item>
+    
+    <item>
+      <title>Excerpts of _How to Read a Paper_</title>
+      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-10_21-48-40/</link>
+      <pubDate>Thu, 10 Oct 2013 21:48:40 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-10_21-48-40/</guid>
+      <description>Most of the contents in this document were excerpted from How to read a Paper. This article outlines a practical and efficient three-pass method for reading research papers, and describes how to use this method to do a literature survey.
+Three-Pass approach Read the paper in up to three passes.
+1. The first pass gives you a general idea about the paper.
+2. The second pass lets you grasp the paper&amp;rsquo;s content, but not its details.</description>
+    </item>
+    
+    <item>
+      <title>OPNET学习笔记之安装指南 (Win7 &amp; XP)</title>
+      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-05_22-17-30/</link>
+      <pubDate>Sat, 05 Oct 2013 22:17:30 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-05_22-17-30/</guid>
+      <description>在前文已经就OPNET14.5在Windows下的安装做了简要说明，这篇blog就OPNET 14.5安装方面做了更为详细的介绍，对于XP和w</description>
+    </item>
+    
+    <item>
+      <title>Install OPNET14.5 on Windows OS</title>
+      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-05_09-39-12/</link>
+      <pubDate>Sat, 05 Oct 2013 09:39:12 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-05_09-39-12/</guid>
+      <description>Install OPNET Modeler 14.5 under Windows_XP and Windows7
+Several month ago, I wrote a Chinese version of installation with OPNET on Windows OS. Today I will give a more thorough way to install OPNET14.5 on Windows.
+An installation procedure could be shown as a piece of C code.
+could be helpful.
+#include &amp;lt;stdio.h&amp;gt; void opnet_install(); void setx_install(); void opnet_configure_path(); void opnet_configure_path_vs2008(); void opnet_configure_path_vs2010(); void opnet_crack(); if (1 == Win_XP &amp;amp;&amp;amp; VC++ 6.</description>
+    </item>
+    
+    <item>
+      <title>本科毕设之RapidIO技术小结</title>
+      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-28_21-30-43/</link>
+      <pubDate>Wed, 28 Aug 2013 21:30:43 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-28_21-30-43/</guid>
+      <description>&lt;p&gt;本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，又算作是对后来者研究使用RapidIO技术的一个指引。嗯，一举两得，何乐而不为？&lt;/p&gt;
+
+&lt;p&gt;毕设是在去年12月份开始选题，那时倒也挺贪心，一心想做一个软硬结合的课题，最先开始选的课题现在都差不多忘光了，只记得选了之后将指导老师的姓名用站内搜索在好网上搜了下。这一看不知道，二看吓一跳呀！鸡皮疙瘩都快出来了。立马到教务处上删掉了，万幸那个指导老师没及时确认，由此逃过一劫&amp;hellip;  再找了下其他的软硬结合的课题，看来看去感觉RapidIO还不错，对自己来说是全新的领域。RapidIO相关的课题共有两个，一个是B档难度的，只需在FPGA上实现，而另一个老师的是A档难度，需要使用串行RapidIO协议在DSP和FPGA之间完成通信。当时选题的时候还是患了老毛病，求新求刺激！RapidIO DSP FPGA这三者当时没有一个是很熟悉的，真是初生牛犊不怕虎！&lt;/p&gt;
+
+&lt;p&gt;选题之后自然是没法马上开工，毕竟还有1月份的考研初试咧。就这样拖到了来年的1月考完初试才开始了解这个课题——基于TMS320C6455的串行RapidIO技术及其实现。到Google Scholar上搜了下，发现包含TMS320C6455 和RapidIO两个关键词的论文还真不多，随便看了几篇，结果自然是云里雾里0.o 过年在家论文方面几乎也没什么动静，等到开学回学校也差不多要复试了，于是乎又拖了两个月才正式开始——也就是从4月3号左右开始全心准备毕设的。&lt;/p&gt;
+
+&lt;h3 id=&#34;毕设之前期准备&#34;&gt;毕设之前期准备&lt;/h3&gt;
+
+&lt;p&gt;现在看来在前期最好先大概了解下课题，并进一步分解为小课题。这个可以让指导老师和师兄给个引导，一般在毕设的任务书和工作计划书中有详细说明，每条任务都可以认为是一个小课题，也许还要进一步细分。自己在这方面开始也没有经验，首先瞎摸索了一个星期也没啥收获，到实验室请教老师和师兄时才发现任务书和工作计划的好处。接下来就是根据任务书和工作计划自己拟定小课题和研究计划了。根据自己对课题的了解，我大概把毕设分为了如下几大块：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;串行RapidIO协议的了解&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;TMS320C6455芯片的编程使用&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;TMS320C6455中有关串行RapidIO部分的初始化及使用&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Altera FPGA的烧写使用&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Altera FPGA中串行RapidIO IP核的了解和使用&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;FPGA 和 DSP 进行串行RapidIO传输测试&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;论文写作——学习使用LaTeX对论文进行排版&lt;br /&gt;
+可以看出要在短短的两个月里全部完成难度还是稍微有点大的，更坑爹的是后期实验室包含Altera FPGA的板子一直没画出来，于是乎便换到实验室现有的Xilinx平台，关键时刻还是得自己看着形势走呀，说多了都是泪&amp;hellip;&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;毕设之论文思路&#34;&gt;毕设之论文思路&lt;/h3&gt;
+
+&lt;p&gt;这个主体部分其实是参考了些硕士博士论文来的，当然也参考了RapidIO协会力荐的《RapidIO嵌入式系统互连》。首先简单描述了传统总线技术的不足，树个靶子，接下来自然就引申出了新型总线所需要的一些技术特性，满足这些技术特性的往往不止一个协议，所以对这些新型总线技术又有一个横向的比较，给些数据+曲线图，来点说服力，说明串行RapidIO在嵌入式互连领域的优势，接下来就是对RapidIO的大写特写了。写完RapidIO自然不是目的，毕竟论文标题中有个硕大的「实现」么。DSP和FPGA上的串行RapidIO实现自然也值得仔细地描述一番。OK，论文写到这差不多就快到尾声了，最后分析一下DSP和FPGA联调时使用串行RapidIO通信的一些实测数据画个图分析下原因差不多就完事了。KO! 大功告成。&lt;br /&gt;
+
+最后的成果就是这么一篇论文咯——&lt;a href=&#34;https://blog.yuanbin.me/downloads/基于TMS320C6455的串行RapidIO技术及其实现-1.2.pdf&#34;&gt;基于TMS320C6455的串行RapidIO技术及其实现&lt;/a&gt;.&lt;br /&gt;
+从中抽出一张高清大图献上&amp;ndash;&amp;gt;&lt;br /&gt;
+&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/interconnects-trends.png&#34; alt=&#34;总线互连的发展趋势&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OPNET14.5 Win7/XP下安装小记</title>
+      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-08_19-17-16/</link>
+      <pubDate>Thu, 08 Aug 2013 19:17:16 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-08_19-17-16/</guid>
+      <description>&lt;p&gt;导师几个星期前就发来邮件让熟悉网络仿真软件了，只是自己前一个月基本都在到处转悠，加之网络不便，也耽搁了许久，这个月可以好好学习研究一番了。
+第一次听说OPNET的时候似乎离现在已经很久远了，只记得那时对面7、8号楼还住着大四。值得一提的是7号楼当时是男女混住的^_^，哈哈，挺羡慕的吧！估计是当年的男女比例比较惊人，只不过男生住的是最南边那一排寝室，这段美好的过去估计只能写入西电的史册了&amp;hellip;
+这样算来，当时的我才大一。毕业之际，好网上到处都可以看到卖书的帖子，于是乎随便联系了一个7号楼的学长就去那淘书了，买回来差不多一堆书，OPNET就在其中，估摸着有半米多高，三年过后，发现能用的上的没几本呀！！连现在要用的OPNET都被我当废纸卖掉了&amp;hellip; 当初怎么也没想到研究生要用这玩意儿。所以嘛，旧书买下一年要用的就足够了啦，买多了真是浪费体力=_=! 喂喂！偏题了！&lt;/p&gt;
+
+&lt;h2 id=&#34;网络仿真软件&#34;&gt;网络仿真软件&lt;/h2&gt;
+
+&lt;p&gt;就我所知道的，常用的网络仿真/模拟软件要么是&lt;a href=&#34;http://en.wikipedia.org/wiki/Ns_(simulator)&#34;&gt;NS2&lt;/a&gt; (NS3正在活跃开发中), 要么就是OPNET, 前者是自由软件，后者是商业软件。它们二者之间在使用上的区别可见&lt;a href=&#34;http://www.360doc.com/content/11/0103/15/1520315_83619061.shtml&#34;&gt;NS2和OPNET的讨论&lt;/a&gt;，在仿真层次上的详细区别可见&lt;a href=&#34;http://db.tt/61l7RxNR&#34;&gt;OPNET Modeler and NS-2: Comparing the Accuracy of Network Simulators for Packet-Level Analysis using a Network Testbed&lt;/a&gt;，让我自己来选的话当然是NS2咯，优先自由软件么，OPNET14.5 Modeler在Linux下不能用，这是硬伤呀！用了近两年的Arch Linux后，我发现我越来越离不开它了，切换到MS Windows下感觉麻烦死了。问了下师兄，实验室里导师和师兄们都是用的OPNET14.5，合群一点自然是要用OPNET的。相对比较好的整合方案就是在Arch下用vbox/kvm虚拟个XP了，内存8G还是比较够使的，只是这样不符合如今节能环保的大趋势么&lt;/p&gt;
+
+&lt;h2 id=&#34;win7-xp下安装opnet14-5&#34;&gt;Win7/XP下安装OPNET14.5&lt;/h2&gt;
+
+&lt;p&gt;OPNET软件安装本身其实没啥好扯的，下载得到的3个软件包从大到小安装。关键在于OPNET是采用VC++进行编译的，相关的环境变量和编译器什么的配置起来就值得一提了。OPNET14.5是一款比较老的软件了，XP下先装VC6.0，OPNET14.5编译时所需的用户变量也就配置好了，所以说如果你还在用上古时代的XP系统，VC6.0是再好不过的搭档了。当然，现在大多数人的电脑里估计已经换成了Win7/Win8了，装个VC6.0还是比较费劲的。所以喽，当然得另辟蹊径。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
