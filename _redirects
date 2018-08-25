@@ -1,2 +1,10 @@
 # Redirect default Netlify subdomain to primary domain
 https://serene-fermat-295717.netlify.com/* https://blog.yuanbin.me/:splat 301!
+
+https://blog.yuanbin.me/posts/2015/08/An-elegant-XeLaTeX-resume-template.html https://blog.yuanbin.me/posts/2015-08/2015-08-27_15-57-59/ 301!
+https://blog.yuanbin.me/posts/2013/01/goldendictxia-san-da-you-zhi-ci-ku-shi-yong-xiao-ji.html https://blog.yuanbin.me/posts/2013-01/2013-01-31_23-07-00/ 301!
+https://blog.yuanbin.me/posts/2015/08/Joint-Compilation-of-Scala-and-Java.html https://blog.yuanbin.me/posts/2015-08/2015-08-04_17-29-01/ 301!
+https://blog.yuanbin.me/posts/2016/11/GitBook-part2-plugin.html https://blog.yuanbin.me/posts/2016-11/2016-11-07_10-48-42/ 301!
+https://blog.yuanbin.me/posts/2016/07/Squid-for-home-server.html https://blog.yuanbin.me/posts/2016-07/2016-07-10_16-38-19/ 301!
+https://blog.yuanbin.me/posts/2014/11/cubieboard2-dns-server.html https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/ 301!
+https://blog.yuanbin.me/posts/2015/07/Dev-Environment-in-Windows.html https://blog.yuanbin.me/posts/2015-07/2015-07-17_22-22-00/ 301!
