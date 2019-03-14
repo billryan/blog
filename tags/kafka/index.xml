@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kafka on 东海一叶</title>
+    <link>https://blog.yuanbin.me/tags/kafka/</link>
+    <description>Recent content in Kafka on 东海一叶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 14 Mar 2019 09:47:40 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.yuanbin.me/tags/kafka/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>神策 Kafka 0.8.2 Mirror Maker 优化</title>
+      <link>https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/</link>
+      <pubDate>Thu, 14 Mar 2019 09:47:40 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/</guid>
+      <description>由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/</loc>
+    <lastmod>2019-03-14T09:47:40+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.yuanbin.me/posts/2018-08/2018-08-19_16-59-31/</loc>
     <lastmod>2018-08-19T16:59:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -758,6 +765,13 @@
   </url>
   
   <url>
+    <loc>https://blog.yuanbin.me/tags/kafka/</loc>
+    <lastmod>2019-03-14T09:47:40+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.yuanbin.me/tags/linux/</loc>
     <lastmod>2016-07-10T20:34:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -780,7 +794,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/post/</loc>
-    <lastmod>2018-08-19T16:59:31+08:00</lastmod>
+    <lastmod>2019-03-14T09:47:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -864,7 +878,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/</loc>
-    <lastmod>2018-08-19T16:59:31+08:00</lastmod>
+    <lastmod>2019-03-14T09:47:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -885,7 +899,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2018-08-19T16:59:31+08:00</lastmod>
+    <lastmod>2019-03-14T09:47:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

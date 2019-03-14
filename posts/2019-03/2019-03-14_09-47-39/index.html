@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>为 Hugo even 主题移植 comment.js 评论插件 - 东海一叶</title>
+  <title>神策 Kafka 0.8.2 Mirror Maker 优化 - 东海一叶</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="在前文 博客写作工作流 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment" />
+  <meta name="description" content="由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://blog.yuanbin.me/posts/2018-08/2018-08-19_16-59-31/" />
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,20 +49,16 @@
 
 
 
-<meta property="og:title" content="为 Hugo even 主题移植 comment.js 评论插件" />
-<meta property="og:description" content="在前文 博客写作工作流 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment" />
+<meta property="og:title" content="神策 Kafka 0.8.2 Mirror Maker 优化" />
+<meta property="og:description" content="由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.yuanbin.me/posts/2018-08/2018-08-19_16-59-31/" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/" />
 
 
 
-<meta property="article:published_time" content="2018-08-19T16:59:31&#43;08:00"/>
+<meta property="article:published_time" content="2019-03-14T09:47:40&#43;08:00"/>
 
-<meta property="article:modified_time" content="2018-08-19T16:59:31&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2019-03-14T09:47:40&#43;08:00"/>
 
 
 
@@ -70,20 +66,24 @@
 
 
 
-<meta itemprop="name" content="为 Hugo even 主题移植 comment.js 评论插件">
-<meta itemprop="description" content="在前文 博客写作工作流 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment">
-
-
-<meta itemprop="datePublished" content="2018-08-19T16:59:31&#43;08:00" />
-<meta itemprop="dateModified" content="2018-08-19T16:59:31&#43;08:00" />
-<meta itemprop="wordCount" content="460">
 
 
 
-<meta itemprop="keywords" content="Hugo," />
+
+<meta itemprop="name" content="神策 Kafka 0.8.2 Mirror Maker 优化">
+<meta itemprop="description" content="由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点">
+
+
+<meta itemprop="datePublished" content="2019-03-14T09:47:40&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-14T09:47:40&#43;08:00" />
+<meta itemprop="wordCount" content="321">
+
+
+
+<meta itemprop="keywords" content="Kafka," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="为 Hugo even 主题移植 comment.js 评论插件"/>
-<meta name="twitter:description" content="在前文 博客写作工作流 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment"/>
+<meta name="twitter:title" content="神策 Kafka 0.8.2 Mirror Maker 优化"/>
+<meta name="twitter:description" content="由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,16 +146,16 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">为 Hugo even 主题移植 comment.js 评论插件</h1>
+      <h1 class="post-title">神策 Kafka 0.8.2 Mirror Maker 优化</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-08-19 </span>
+        <span class="post-time"> 2019-03-14 </span>
         <div class="post-category">
             
               <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 460 字 </span>
+        <span class="more-meta"> 约 321 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -176,18 +176,16 @@
 
     
     <div class="post-content">
-      <p>在前文 <a href="http://blog.yuanbin.me/posts/2018-02/2018-02-23_23-19-29/">博客写作工作流</a> 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment 的方案会导致在博客当前页面评论登陆 GitHub 时提示的权限有点多，比如读写权限。新的基于 GitHub App 的方案如 <a href="https://github.com/utterance/utterances/pull/25">utterances 1.0</a> 就会好很多了。但这种方式对于非知名公司/个人博主来讲，我是不敢随便去让这种 app 接入的。基于同样的理念，我找到了 wzpan 的 <a href="https://github.com/wzpan/comment.js">wzpan/comment.js</a> <a href="http://www.hahack.com/codes/comment-js/">中文文档</a>, 这种方案将鉴权完全转移至 GitHub 上控制，安全感会好很多。稍显麻烦的是会有一个跳转而不是直接在本页评论。下面我详细介绍一下 Hugo even 下的如何使用 comment.js</p>
+      <p>由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点改造：</p>
 
-<p>由于目前还未向 even 发起 PR, 所以现在想使用的话可以直接使用我 fork 改过的 ==&gt; <a href="https://github.com/billryan/hugo-theme-even">billryan/hugo-theme-even</a>, 具体配置同 comment.js 要求，你可以参考我的 <a href="https://github.com/billryan/blog/blob/master/config.toml">blog/config.toml</a>, 主要是一些如 owner, repo, token 的设置。对 comment.js 有需求的可以留言，我可以尝试向 even 发起一个 PR 合并到官方去。</p>
+<ol>
+<li>将属于我们的项目的数据单独过滤出来，通过原始的 <code>kafka-mirror-maker</code> 只能做到 topic 级别的复制</li>
+<li>镜像到我们自建的 Kafka 数据管道时，尽可能保证事件有序，尤其是对同一用户的行为事件</li>
+</ol>
 
-<p>核心配置如下：</p>
+<p>第一个问题，在新版 Kafka, 如 1.0 之后的版本中，我们可以实现 <code>kafka-mirror-maker</code> 的接口进行加载定制，无需对原有 Kafka 源码进行变动。但是在 0.8.2 这个老版本还是做不到，故需要对源码中有关 <code>kafka-mirror-maker</code> 进行改造。第二个问题，Kafka 只能保证分区内有序，无法做到全局有序的，但是我们如果能将神策行为事件中的用户 ID 提取作为 key, 属于同一用户的行为事件自然就在同一 partition 中了。</p>
 
-<pre><code>  [params.comment]           # comment is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
-    owner = &quot;billryan&quot;              # Your GitHub ID
-    repo = &quot;blog&quot;               # The repo to store comments
-</code></pre>
-
-<p>看完 comment.js 的文档后移植起来其实是非常简单的，在这个过程中我还参考了 <a href="https://github.com/olOwOlo/hugo-theme-even/pull/51">feat: add gitalk</a>, 加入了一些公开的 CDN 资源，在 comment.js 的基础上增加了 <code>.btn</code> 的样式，这个样式参考了 GitHub issue. 另外我默认开启了 highlight 和 spin 这两个特性。</p>
+<p>改动过的源码见 <a href="https://github.com/billryan/kafka-mirror-maker/commit/85b2dabc7fa2050aaaf1afea64a1e64ccd79be8e">MirrorMaker</a>, 相关的 Makefile 及 Dockerfile 也一并提供了。</p>
 
     </div>
 
@@ -199,7 +197,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-08-19</span>
+    <span class="item-content">2019-03-14</span>
   </p>
   
   <p class="copyright-item">
@@ -231,21 +229,16 @@
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/hugo/">Hugo</a>
+          <a href="/tags/kafka/">Kafka</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/posts/2019-03/2019-03-14_09-47-39/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">神策 Kafka 0.8.2 Mirror Maker 优化</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/posts/2018-08/2018-08-02_23-59-46/">
-            <span class="next-text nav-default">基于大数据平台的客户像系统设计</span>
+          <a class="next" href="/posts/2018-08/2018-08-19_16-59-31/">
+            <span class="next-text nav-default">为 Hugo even 主题移植 comment.js 评论插件</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -297,7 +290,7 @@
       repo: 'blog',
       no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
       go_to_comment: "去留言",
-      issue_title: '为 Hugo even 主题移植 comment.js 评论插件',
+      issue_title: '神策 Kafka 0.8.2 Mirror Maker 优化',
       btn_class: "btn",
       comments_target: "#comment-thread",
       loading_target: "#loading-spin",

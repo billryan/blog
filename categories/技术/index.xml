@@ -6,10 +6,19 @@
     <description>Recent content in 技术 on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Aug 2018 16:59:31 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 Mar 2019 09:47:40 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>神策 Kafka 0.8.2 Mirror Maker 优化</title>
+      <link>https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/</link>
+      <pubDate>Thu, 14 Mar 2019 09:47:40 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/</guid>
+      <description>由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点</description>
+    </item>
     
     <item>
       <title>为 Hugo even 主题移植 comment.js 评论插件</title>
