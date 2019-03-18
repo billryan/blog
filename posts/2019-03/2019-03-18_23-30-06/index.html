@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>神策 Kafka 0.8.2 Mirror Maker 优化 - 东海一叶</title>
+  <title>JVM 在 Docker 等容器环境下的资源限制问题 - 东海一叶</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点" />
+  <meta name="description" content="堆内存设置 Java 程序中，我们通常比较关注堆的使用情况，一般通过 -Xmx 和 -Xms 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/" />
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2019-03/2019-03-18_23-30-06/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,20 +49,16 @@
 
 
 
-<meta property="og:title" content="神策 Kafka 0.8.2 Mirror Maker 优化" />
-<meta property="og:description" content="由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点" />
+<meta property="og:title" content="JVM 在 Docker 等容器环境下的资源限制问题" />
+<meta property="og:description" content="堆内存设置 Java 程序中，我们通常比较关注堆的使用情况，一般通过 -Xmx 和 -Xms 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2019-03/2019-03-18_23-30-06/" />
 
 
 
-<meta property="article:published_time" content="2019-03-14T09:47:40&#43;08:00"/>
+<meta property="article:published_time" content="2019-03-18T23:30:06&#43;08:00"/>
 
-<meta property="article:modified_time" content="2019-03-14T09:47:40&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2019-03-18T23:30:06&#43;08:00"/>
 
 
 
@@ -70,20 +66,24 @@
 
 
 
-<meta itemprop="name" content="神策 Kafka 0.8.2 Mirror Maker 优化">
-<meta itemprop="description" content="由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点">
-
-
-<meta itemprop="datePublished" content="2019-03-14T09:47:40&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-14T09:47:40&#43;08:00" />
-<meta itemprop="wordCount" content="321">
 
 
 
-<meta itemprop="keywords" content="Kafka," />
+
+<meta itemprop="name" content="JVM 在 Docker 等容器环境下的资源限制问题">
+<meta itemprop="description" content="堆内存设置 Java 程序中，我们通常比较关注堆的使用情况，一般通过 -Xmx 和 -Xms 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老">
+
+
+<meta itemprop="datePublished" content="2019-03-18T23:30:06&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-18T23:30:06&#43;08:00" />
+<meta itemprop="wordCount" content="405">
+
+
+
+<meta itemprop="keywords" content="docker," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="神策 Kafka 0.8.2 Mirror Maker 优化"/>
-<meta name="twitter:description" content="由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点"/>
+<meta name="twitter:title" content="JVM 在 Docker 等容器环境下的资源限制问题"/>
+<meta name="twitter:description" content="堆内存设置 Java 程序中，我们通常比较关注堆的使用情况，一般通过 -Xmx 和 -Xms 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,16 +146,16 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">神策 Kafka 0.8.2 Mirror Maker 优化</h1>
+      <h1 class="post-title">JVM 在 Docker 等容器环境下的资源限制问题</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-03-14 </span>
+        <span class="post-time"> 2019-03-18 </span>
         <div class="post-category">
             
               <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 321 字 </span>
+        <span class="more-meta"> 约 405 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -167,7 +167,14 @@
   <h2 class="post-toc-title">文章目录</h2>
   
   <div class="post-toc-content always-active">
-    
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#堆内存设置">堆内存设置</a></li>
+<li><a href="#jmap-等-jvm-诊断工具无法正常使用">jmap 等 JVM 诊断工具无法正常使用</a></li>
+<li><a href="#cpu-核数">CPU 核数</a></li>
+<li><a href="#dockerfile">Dockerfile</a></li>
+</ul>
+</nav>
   </div>
 </div>
 
@@ -176,16 +183,23 @@
 
     
     <div class="post-content">
-      <p>由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点改造：</p>
+      
 
-<ol>
-<li>将属于我们的项目的数据单独过滤出来，通过原始的 <code>kafka-mirror-maker</code> 只能做到 topic 级别的复制</li>
-<li>镜像到我们自建的 Kafka 数据管道时，尽可能保证事件有序，尤其是对同一用户的行为事件</li>
-</ol>
+<h1 id="堆内存设置">堆内存设置</h1>
 
-<p>第一个问题，在新版 Kafka, 如 1.0 之后的版本中，我们可以实现 <code>kafka-mirror-maker</code> 的接口进行加载定制，无需对原有 Kafka 源码进行变动。但是在 0.8.2 这个老版本还是做不到，故需要对源码中有关 <code>kafka-mirror-maker</code> 进行改造。第二个问题，Kafka 只能保证分区内有序，无法做到全局有序的，但是我们如果能将神策行为事件中的用户 ID 提取作为 key, 属于同一用户的行为事件自然就在同一 partition 中了。</p>
+<p>Java 程序中，我们通常比较关注堆的使用情况，一般通过 <code>-Xmx</code> 和 <code>-Xms</code> 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老的 JVM 版本是无法感知容器的资源限制的。在新的 JDK 8u191 版本以后，我们已经可以享受到新版 JVM 对容器的良好支持，并且可以通过 <code>-XX:InitialRAMPercentage</code> 和 <code>-XX:MaxRAMPercentage</code> 控制堆内存启动时和最大可用内存百分比。考虑到堆外内存的使用，<code>-XX:MaxRAMPercentage</code> 不宜设置过高，具体值可以根据自己应用的情况灵活设置。需要注意的是百分比需要包含一位小数，否则会报错。文末有 Dockerfile 可供参考。</p>
 
-<p>改动过的源码见 <a href="https://github.com/billryan/kafka-mirror-maker/commit/85b2dabc7fa2050aaaf1afea64a1e64ccd79be8e">MirrorMaker</a>, 相关的 Makefile 及 Dockerfile 也一并提供了。</p>
+<h1 id="jmap-等-jvm-诊断工具无法正常使用">jmap 等 JVM 诊断工具无法正常使用</h1>
+
+<p>由于容器的特殊性，应用启动时的进程 ID 其实是 1, jmap/jstat/jstack 等诊断工具依赖底层的 <code>PTRACE_ATTACH</code>, 而由于 docker 后期版本的安全加固原因，这种操作是不允许的。因此我们可以想办法让 JVM 应用不以 PID 1 运行即可，但又能正常接收来自容器的停止等信号，这就是 <a href="https://github.com/krallin/tini">krallin/tini</a> 的用武之地了！</p>
+
+<h1 id="cpu-核数">CPU 核数</h1>
+
+<p>TODO</p>
+
+<h1 id="dockerfile">Dockerfile</h1>
+
+<p><a href="https://github.com/billryan/devops/blob/master/docker/jdk/Dockerfile">devops/Dockerfile</a> 是我自用的 JDK 的基础镜像(基于 Alpine, JDK 8u191) 包含阿里的 <a href="https://alibaba.github.io/arthas/">Arthas</a> 诊断利器，已设置时区为东八区。</p>
 
     </div>
 
@@ -197,7 +211,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-03-14</span>
+    <span class="item-content">2019-03-18</span>
   </p>
   
   <p class="copyright-item">
@@ -229,21 +243,16 @@
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/kafka/">Kafka</a>
+          <a href="/tags/docker/">docker</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/posts/2019-03/2019-03-18_23-30-06/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">JVM 在 Docker 等容器环境下的资源限制问题</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/posts/2018-08/2018-08-19_16-59-31/">
-            <span class="next-text nav-default">为 Hugo even 主题移植 comment.js 评论插件</span>
+          <a class="next" href="/posts/2019-03/2019-03-14_09-47-39/">
+            <span class="next-text nav-default">神策 Kafka 0.8.2 Mirror Maker 优化</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -295,7 +304,7 @@
       repo: 'blog',
       no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
       go_to_comment: "去留言",
-      issue_title: '神策 Kafka 0.8.2 Mirror Maker 优化',
+      issue_title: 'JVM 在 Docker 等容器环境下的资源限制问题',
       btn_class: "btn",
       comments_target: "#comment-thread",
       loading_target: "#loading-spin",

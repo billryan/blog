@@ -6,10 +6,19 @@
     <description>Recent content in 技术 on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 14 Mar 2019 09:47:40 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 18 Mar 2019 23:30:06 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JVM 在 Docker 等容器环境下的资源限制问题</title>
+      <link>https://blog.yuanbin.me/posts/2019-03/2019-03-18_23-30-06/</link>
+      <pubDate>Mon, 18 Mar 2019 23:30:06 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2019-03/2019-03-18_23-30-06/</guid>
+      <description>堆内存设置 Java 程序中，我们通常比较关注堆的使用情况，一般通过 -Xmx 和 -Xms 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老</description>
+    </item>
     
     <item>
       <title>神策 Kafka 0.8.2 Mirror Maker 优化</title>

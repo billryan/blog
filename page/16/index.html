@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2013-08-08T19:17:16&#43;08:00"/>
+<meta property="og:updated_time" content="2013-08-19T10:56:30&#43;08:00"/>
 
 
 
@@ -137,6 +137,48 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2013-08/2013-08-19_10-56-30/">上海交大校外代理初体验</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-08-19 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1088 字 </span>
+      <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了远程医疗监控(RHM)的体系架构，后半部分介绍了ViiCare产品提供的解决方案。概述性的东西毕竟只是起个引导作用，而且短短几页的论文也不可能会交待较多的细节。如果要结合OPNET来分析网络性能什么的显然是不知从何下手，于是乎习惯性的Google了一番，找到了一篇博士论文，正准备下载的时候&hellip; 乖乖，现在已经不是校园网了哟，立马向西电的基友求助，短信刚发出去就想到了个令人激动的消息——隐约记得交大网络信息中心是提供校外访问的代理服务器的，那么？Google一下立马找到了<a href="http://www.lib.sjtu.edu.cn/list.do?articleType_id=45&amp;type=63">这个链接</a>，网页中提供了局域网和ADSL下的使用方法，都是针对IE的。说白了就是提供了代理服务器的地址和端口号，如果只是在浏览器中使用的话SwitchySharp/Foxyproxy插件新增个代理就好了，试了下速度很理想！</p>
+
+<h2 id="代理服务器">代理服务器</h2>
+
+<p>代理服务器名：inproxy.sjtu.edu.cn<br />
+端口号：8000 OR 80</p>
+
+<p>连通后会让输入jAccount帐号密码，这个新生已经可以申请了，perfect!</p>
+
+<h3 id="全局代理">全局代理</h3>
+
+<p>虽然大部分情况在浏览器中使用代理就足够了，但有时其他应用程序也许也需要代理访问，这个时候就稍微有点麻烦喽。
+如果想要全局代理的话则需要模拟http认证，Windows下似乎有p-roxycap比较方便，Linux下暂时还没看到类似的软件，之前也没怎么需要用非浏览器应用中使用代理，这方面了解不太多。舍友yqt用Python写了个DXTL的全局代理，于是乎便借过来用了下，还不错，效果就是下边这个样子：<br />
+<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/inproxy-sjtu.png" alt="sjtu-inroxy" /><br />
+需要使用时只需在Terminal下运行<code>python sjtu-inproxy.py</code>即可，很方便。<br />
+
+上代码==&gt;</p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2013-08/2013-08-19_10-56-30/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -266,41 +308,6 @@
     </div>
     <div class="read-more">
       <a href="/posts/2013-06/2013-06-09_19-24-09/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2013-04/2013-04-19_11-00-03/">上海交大12年电院电子工程系研究生自主招生小记</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-04-19 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88/"> 杂谈 </a>
-          
-        </div>
-      <span class="more-meta"> 约 1963 字 </span>
-      <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h2 id="夏令营or自主招生">夏令营OR自主招生</h2>
-
-<p>交大去年开始把夏令营改为「研究生自主招生」，夏令营是要去交大本校的，而自主招生则是交大老师去指定的城市进行现场面试，和高考时的自主招生形式类似，不过面试问的问题相对学术一些吧。交大这么做无非是想扩大研究生招生的自主权和提高生源质量，代价就是交大的老师辛苦一些。搞研究生自主招生的绝不止交大一家，很多985院校都有类似的政策，只不过没有交大的规模这么大，全国跑。</p>
-
-<h2 id="自主招生面试资格及形式">自主招生面试资格及形式？</h2>
-
-<p>如果仍然按去年的做法，只有面试，考察一些英语口语及专业方面的问题。面试资格？——去年是首先发邮件申请，然后筛选通过后会通知面试。感觉要拿到面试资格这两项「GPA+英语」不能差，如果能有其他的工程实践或者学术论文什么的当然是锦上添花。<br />
-今年似乎有变，一切以上海交大官网公布为准。</p>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2013-04/2013-04-19_11-00-03/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.yuanbin.me/posts/2019-03/2019-03-18_23-30-06/</loc>
+    <lastmod>2019-03-18T23:30:06+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/</loc>
     <lastmod>2019-03-14T09:47:40+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -695,6 +702,13 @@
   </url>
   
   <url>
+    <loc>https://blog.yuanbin.me/tags/docker/</loc>
+    <lastmod>2019-03-18T23:30:06+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.yuanbin.me/tags/elasticsearch/</loc>
     <lastmod>2018-08-02T23:59:46+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -794,7 +808,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/post/</loc>
-    <lastmod>2019-03-14T09:47:40+08:00</lastmod>
+    <lastmod>2019-03-18T23:30:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -878,7 +892,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/</loc>
-    <lastmod>2019-03-14T09:47:40+08:00</lastmod>
+    <lastmod>2019-03-18T23:30:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -899,7 +913,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2019-03-14T09:47:40+08:00</lastmod>
+    <lastmod>2019-03-18T23:30:06+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
