@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>JVM 在 Docker 等容器环境下的资源限制问题 - 东海一叶</title>
+  <title>信息流推荐和搜索的实时数据流架构 - 东海一叶</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="堆内存设置 Java 程序中，我们通常比较关注堆的使用情况，一般通过 -Xmx 和 -Xms 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老" />
+  <meta name="description" content="本文主要介绍了自己近两个月重构产品推荐引擎后端的实时数据流同步架构，抛弃了之前的 Spark Streaming, 选择了基于 Kafka Stream 以及 Kafka Connect 做一些轻量级的实时 ETL. 数据流同步架构" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://blog.yuanbin.me/posts/2019-03/2019-03-18_23-30-06/" />
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2019-03/2019-03-19_23-33-51/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,20 +49,16 @@
 
 
 
-<meta property="og:title" content="JVM 在 Docker 等容器环境下的资源限制问题" />
-<meta property="og:description" content="堆内存设置 Java 程序中，我们通常比较关注堆的使用情况，一般通过 -Xmx 和 -Xms 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老" />
+<meta property="og:title" content="信息流推荐和搜索的实时数据流架构" />
+<meta property="og:description" content="本文主要介绍了自己近两个月重构产品推荐引擎后端的实时数据流同步架构，抛弃了之前的 Spark Streaming, 选择了基于 Kafka Stream 以及 Kafka Connect 做一些轻量级的实时 ETL. 数据流同步架构" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.yuanbin.me/posts/2019-03/2019-03-18_23-30-06/" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2019-03/2019-03-19_23-33-51/" />
 
 
 
-<meta property="article:published_time" content="2019-03-18T23:30:06&#43;08:00"/>
+<meta property="article:published_time" content="2019-03-19T23:33:51&#43;08:00"/>
 
-<meta property="article:modified_time" content="2019-03-18T23:30:06&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2019-03-19T23:33:51&#43;08:00"/>
 
 
 
@@ -70,20 +66,24 @@
 
 
 
-<meta itemprop="name" content="JVM 在 Docker 等容器环境下的资源限制问题">
-<meta itemprop="description" content="堆内存设置 Java 程序中，我们通常比较关注堆的使用情况，一般通过 -Xmx 和 -Xms 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老">
-
-
-<meta itemprop="datePublished" content="2019-03-18T23:30:06&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-18T23:30:06&#43;08:00" />
-<meta itemprop="wordCount" content="405">
 
 
 
-<meta itemprop="keywords" content="docker," />
+
+<meta itemprop="name" content="信息流推荐和搜索的实时数据流架构">
+<meta itemprop="description" content="本文主要介绍了自己近两个月重构产品推荐引擎后端的实时数据流同步架构，抛弃了之前的 Spark Streaming, 选择了基于 Kafka Stream 以及 Kafka Connect 做一些轻量级的实时 ETL. 数据流同步架构">
+
+
+<meta itemprop="datePublished" content="2019-03-19T23:33:51&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-19T23:33:51&#43;08:00" />
+<meta itemprop="wordCount" content="922">
+
+
+
+<meta itemprop="keywords" content="stream,架构," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="JVM 在 Docker 等容器环境下的资源限制问题"/>
-<meta name="twitter:description" content="堆内存设置 Java 程序中，我们通常比较关注堆的使用情况，一般通过 -Xmx 和 -Xms 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老"/>
+<meta name="twitter:title" content="信息流推荐和搜索的实时数据流架构"/>
+<meta name="twitter:description" content="本文主要介绍了自己近两个月重构产品推荐引擎后端的实时数据流同步架构，抛弃了之前的 Spark Streaming, 选择了基于 Kafka Stream 以及 Kafka Connect 做一些轻量级的实时 ETL. 数据流同步架构"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,17 +146,17 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">JVM 在 Docker 等容器环境下的资源限制问题</h1>
+      <h1 class="post-title">信息流推荐和搜索的实时数据流架构</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-03-18 </span>
+        <span class="post-time"> 2019-03-19 </span>
         <div class="post-category">
             
               <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 405 字 </span>
-        <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span class="more-meta"> 约 922 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -169,10 +169,15 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#堆内存设置">堆内存设置</a></li>
-<li><a href="#jmap-等-jvm-诊断工具无法正常使用">jmap 等 JVM 诊断工具无法正常使用</a></li>
-<li><a href="#cpu-核数">CPU 核数</a></li>
-<li><a href="#dockerfile">Dockerfile</a></li>
+<li>
+<ul>
+<li><a href="#数据流同步架构">数据流同步架构</a>
+<ul>
+<li><a href="#binlog-到-kafka-工具选型-maxwell-vs-canal">binlog 到 Kafka 工具选型，maxwell vs canal</a></li>
+<li><a href="#kafka-stream-实时-etl-的好工具">Kafka Stream, 实时 ETL 的好工具</a></li>
+<li><a href="#kafka-connect-沟通-kafka-和其它存储系统的桥梁">Kafka Connect, 沟通 Kafka 和其它存储系统的桥梁</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
   </div>
@@ -185,21 +190,57 @@
     <div class="post-content">
       
 
-<h1 id="堆内存设置">堆内存设置</h1>
+<p>本文主要介绍了自己近两个月重构产品推荐引擎后端的实时数据流同步架构，抛弃了之前的 Spark Streaming, 选择了基于 Kafka Stream 以及 Kafka Connect 做一些轻量级的实时 ETL.</p>
 
-<p>Java 程序中，我们通常比较关注堆的使用情况，一般通过 <code>-Xmx</code> 和 <code>-Xms</code> 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老的 JVM 版本是无法感知容器的资源限制的。在新的 JDK 8u191 版本以后，我们已经可以享受到新版 JVM 对容器的良好支持，并且可以通过 <code>-XX:InitialRAMPercentage</code> 和 <code>-XX:MaxRAMPercentage</code> 控制堆内存启动时和最大可用内存百分比。考虑到堆外内存的使用，<code>-XX:MaxRAMPercentage</code> 不宜设置过高，具体值可以根据自己应用的情况灵活设置。需要注意的是百分比需要包含一位小数，否则会报错。文末有 Dockerfile 可供参考。</p>
+<h2 id="数据流同步架构">数据流同步架构</h2>
 
-<h1 id="jmap-等-jvm-诊断工具无法正常使用">jmap 等 JVM 诊断工具无法正常使用</h1>
+<pre><code>                +-------+         +---------------+
+                | Redis +&lt;-+   +-&gt;+ Elasticsearch |
+                +-------+  |   |  +---------------+
+                           |   |
+                           |   |
+                           |   |
+    +--------------+  +----+---+------+
++---+ Kafka Stream |  | Kafka Connect |
+|   +------+-------+  +-------+-------+
+|          ^                  ^
+|          |                  |
+|          |                  |
+|    +-----+------------------+------+
++---&gt;+             Kafka             |
+     +---+--------------------+------+
+         ^                    ^
+         |Maxwell             |
+         |                    |
+     +---+----+       +-------+------+
+     | binlog |       | tracking log |
+     +----+---+       +--------------+
+          ^
+          |
+          |
+      +---+---+
+      | MySQL |
+      +-------+
+</code></pre>
 
-<p>由于容器的特殊性，应用启动时的进程 ID 其实是 1, jmap/jstat/jstack 等诊断工具依赖底层的 <code>PTRACE_ATTACH</code>, 而由于 docker 后期版本的安全加固原因，这种操作是不允许的。因此我们可以想办法让 JVM 应用不以 PID 1 运行即可，但又能正常接收来自容器的停止等信号，这就是 <a href="https://github.com/krallin/tini">krallin/tini</a> 的用武之地了！</p>
+<h3 id="binlog-到-kafka-工具选型-maxwell-vs-canal">binlog 到 Kafka 工具选型，maxwell vs canal</h3>
 
-<h1 id="cpu-核数">CPU 核数</h1>
+<p>从数据的生产者来看，我们的数据源主要由产品数据库 MySQL(binlog) 和前端用户行为日志埋点两部分构成。binlog 到 Kafka 我选用了 <a href="https://github.com/zendesk/maxwell">zendesk/maxwell</a> 而不是国内使用较多的 <a href="https://github.com/alibaba/canal">alibaba/canal</a>. 原因主要是因为我们的产品库目前还比较单一，maxwell 使用和部署比较简单，而且能以已经解析好的 schema 数据进入 Kafka, 这对后面对接的 Elasticsearch 非常友好。新版的 canal 其实也具备了直接生产到 Kafka 和 Elasticsearch 的能力了，但就到 Kafka 这一环来说，canal 在使用上还是有一些不便利的地方，maxwell 在一些细节上更为便利些。但是需要注意的是，maxwell 在生产环境上需要自己定制 HA 方案，就我们的实测发现，产品起步阶段的量级用 maxwell 毫无压力。</p>
 
-<p>TODO</p>
+<h3 id="kafka-stream-实时-etl-的好工具">Kafka Stream, 实时 ETL 的好工具</h3>
 
-<h1 id="dockerfile">Dockerfile</h1>
+<p>国内 Kafka Stream 的文档相对还是不多的，Kafka 官网和 confluent 的文档比较详细，可以读一读。在尝试 Kafka Stream 之前，因为自己对 Spark 熟悉一些，尝试了 Spark Streaming 作为实时数据同步任务。使用过程中我们发现一些痛点：
+1. Spark 开发起来太重了，对小团队有较高的使用成本
+2. CICD 融入 K8S 比较困难，开发迭代较慢
+3. 资源消耗高，不适合小公司/初创公司</p>
 
-<p><a href="https://github.com/billryan/devops/blob/master/docker/jdk/Dockerfile">devops/Dockerfile</a> 是我自用的 JDK 的基础镜像(基于 Alpine, JDK 8u191) 包含阿里的 <a href="https://alibaba.github.io/arthas/">Arthas</a> 诊断利器，已设置时区为东八区。</p>
+<p>在读了一些 Kafka Stream 的文档后，我首先写了一个 <code>kafka-stream-filter</code> 作为 binlog 到 Kafka 的路由分发器。觉得确实和文档里说的一样，非常轻，使用 Kafka Stream 只需要像其它普通库一样使用，但是可以完美结合 Kafka 的水平 scale 能力，没有水平扩展的压力。部署上，我可以像普通 Java 应用一样部署在 K8S 上，运维管理上比较统一。资源上也能节约不少，测试环境上数据量小一点的内存分配 500MB 以内足够了。</p>
+
+<p>Kafka Stream 的定位并不是一个 ETL 的全能工具，它聚焦在以 Kafka 为核心的 ETL, 数据输出也通常在 Kafka 的其它 topic 中。</p>
+
+<h3 id="kafka-connect-沟通-kafka-和其它存储系统的桥梁">Kafka Connect, 沟通 Kafka 和其它存储系统的桥梁</h3>
+
+<p>如果说 Kafka Stream 可以专注于实时 ETL 并将数据存储在 Kafka 中，那么 Kafka Connect 解决的问题则是如何将 Kafka 和外部存储系统对接了。官方的 Kafka Connect 已经为我们准备好了很贴心的同步框架，容错、任务数扩展等都比较完善。即使自己从头开发，开发成本也不算高。后文我会开源自己设计的 <code>kafka-connect-redis</code> 和 <code>kafka-connect-elasticsearch</code>. 同步协议上参考了 maxwell, 有点类似 Event Sourcing.</p>
 
     </div>
 
@@ -211,7 +252,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-03-18</span>
+    <span class="item-content">2019-03-19</span>
   </p>
   
   <p class="copyright-item">
@@ -243,21 +284,18 @@
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/docker/">docker</a>
+          <a href="/tags/stream/">stream</a>
+          
+          <a href="/tags/%E6%9E%B6%E6%9E%84/">架构</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/posts/2019-03/2019-03-19_23-33-51/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">信息流推荐和搜索的实时数据流架构</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/posts/2019-03/2019-03-14_09-47-39/">
-            <span class="next-text nav-default">神策 Kafka 0.8.2 Mirror Maker 优化</span>
+          <a class="next" href="/posts/2019-03/2019-03-18_23-30-06/">
+            <span class="next-text nav-default">JVM 在 Docker 等容器环境下的资源限制问题</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -309,7 +347,7 @@
       repo: 'blog',
       no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
       go_to_comment: "去留言",
-      issue_title: 'JVM 在 Docker 等容器环境下的资源限制问题',
+      issue_title: '信息流推荐和搜索的实时数据流架构',
       btn_class: "btn",
       comments_target: "#comment-thread",
       loading_target: "#loading-spin",
