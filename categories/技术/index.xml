@@ -6,19 +6,10 @@
     <description>Recent content in 技术 on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 21 Mar 2019 22:56:12 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Mar 2019 23:33:51 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>使用枚举 enum 实现单例配置类</title>
-      <link>https://blog.yuanbin.me/posts/2019-03/2019-03-21_22-56-11/</link>
-      <pubDate>Thu, 21 Mar 2019 22:56:12 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2019-03/2019-03-21_22-56-11/</guid>
-      <description>Java 中实现单例模式有很多种方法，Effective Java 中一书中比较推崇的是私有构造器和枚举类型，而考虑到类的序列化，作者则更倾向于使用枚举来实现</description>
-    </item>
     
     <item>
       <title>信息流推荐和搜索的实时数据流架构</title>

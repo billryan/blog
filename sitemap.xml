@@ -3,13 +3,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.yuanbin.me/posts/2019-03/2019-03-21_22-56-11/</loc>
-    <lastmod>2019-03-21T22:56:12+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.yuanbin.me/posts/2019-03/2019-03-19_23-33-51/</loc>
     <lastmod>2019-03-19T23:33:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -787,7 +780,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/tags/java/</loc>
-    <lastmod>2019-03-21T22:56:12+08:00</lastmod>
+    <lastmod>2018-02-28T23:48:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -822,7 +815,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/post/</loc>
-    <lastmod>2019-03-21T22:56:12+08:00</lastmod>
+    <lastmod>2019-03-19T23:33:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -913,7 +906,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/</loc>
-    <lastmod>2019-03-21T22:56:12+08:00</lastmod>
+    <lastmod>2019-03-19T23:33:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -934,7 +927,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2019-03-21T22:56:12+08:00</lastmod>
+    <lastmod>2019-03-19T23:33:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

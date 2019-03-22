@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2015-11-18T13:52:51&#43;08:00"/>
+<meta property="og:updated_time" content="2015-11-09T19:22:58&#43;08:00"/>
 
 
 
@@ -137,38 +137,6 @@
   <section id="posts" class="posts">
     
     
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2015-11/2015-11-18_13-52-51/">WBAN Traffic Source Model - WBAN 应用层业务模型</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-11-18 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E5%AD%A6%E6%9C%AF/"> 学术 </a>
-          
-        </div>
-      <span class="more-meta"> 约 625 字 </span>
-      <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>在 <a href="http://blog.yuanbin.me/posts/2014/06/architecture-of-ieee-802156-simulation-based-on-opnet145.html">Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5</a> 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。</p>
-
-<p>这层模型中主要负责根据用户设定的包产生间隔分布函数向 MAC 层传送不同优先级的包。WBAN 中的业务共有8种不同用户优先级，不同用户优先级对应的业务类型如下图所示：</p>
-
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_traffic_up8.png" alt="WBAN-User Priority Mapping" /></p>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2015-11/2015-11-18_13-52-51/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     
       <article class="post">
   <header class="post-header">
@@ -335,6 +303,40 @@ class TeacherActor extends Actor {
     </div>
     <div class="read-more">
       <a href="/posts/2015-08/2015-08-26_13-26-24/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2015-08/2015-08-26_09-24-56/">Akka Notes 1 - Introducing Actors</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-08-26 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1585 字 </span>
+      <span class="more-meta"> 预计阅读 4 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。</p>
+
+<p>任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里『管理』是因为在刚开始时你感觉可能是简单的，并且在你开始看到性能提升后会觉得很有趣。然而，当你发现你并不能从子任务的错误中轻松恢复过来或者你发现那些僵尸 bug 很难重现，亦或是你的性能管理器告诉你你的线程在写共享状态前被阻塞了很久从而产生了资源浪费，以上这些都会让你头痛不已。</p>
+
+<p>我在这里不会涉及 Java 的并发 API 及其应用集合如何使得并发变得更容易和更好，因为我相信如果你已经在读这篇文章了，你很可能需要对子任务更多的控制，亦或简单地因为你不喜欢使用锁和同步阻塞调用，并喜欢一种更高层次的抽象。</p>
+
+<p>在这一系列的 Akka Notes 中，我们将会使用一些简单的 Akka 示例来探索 Akka 这个工具包中各种各样的特性。</p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2015-08/2015-08-26_09-24-56/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>

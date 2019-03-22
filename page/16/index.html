@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2013-08-28T21:30:43&#43;08:00"/>
+<meta property="og:updated_time" content="2013-08-28T15:31:20&#43;08:00"/>
 
 
 
@@ -137,59 +137,6 @@
   <section id="posts" class="posts">
     
     
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2013-08/2013-08-28_21-30-43/">本科毕设之RapidIO技术小结</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2013-08-28 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E5%AD%A6%E6%9C%AF/"> 学术 </a>
-          
-        </div>
-      <span class="more-meta"> 约 3491 字 </span>
-      <span class="more-meta"> 预计阅读 7 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，又算作是对后来者研究使用RapidIO技术的一个指引。嗯，一举两得，何乐而不为？</p>
-
-<p>毕设是在去年12月份开始选题，那时倒也挺贪心，一心想做一个软硬结合的课题，最先开始选的课题现在都差不多忘光了，只记得选了之后将指导老师的姓名用站内搜索在好网上搜了下。这一看不知道，二看吓一跳呀！鸡皮疙瘩都快出来了。立马到教务处上删掉了，万幸那个指导老师没及时确认，由此逃过一劫&hellip;  再找了下其他的软硬结合的课题，看来看去感觉RapidIO还不错，对自己来说是全新的领域。RapidIO相关的课题共有两个，一个是B档难度的，只需在FPGA上实现，而另一个老师的是A档难度，需要使用串行RapidIO协议在DSP和FPGA之间完成通信。当时选题的时候还是患了老毛病，求新求刺激！RapidIO DSP FPGA这三者当时没有一个是很熟悉的，真是初生牛犊不怕虎！</p>
-
-<p>选题之后自然是没法马上开工，毕竟还有1月份的考研初试咧。就这样拖到了来年的1月考完初试才开始了解这个课题——基于TMS320C6455的串行RapidIO技术及其实现。到Google Scholar上搜了下，发现包含TMS320C6455 和RapidIO两个关键词的论文还真不多，随便看了几篇，结果自然是云里雾里0.o 过年在家论文方面几乎也没什么动静，等到开学回学校也差不多要复试了，于是乎又拖了两个月才正式开始——也就是从4月3号左右开始全心准备毕设的。</p>
-
-<h3 id="毕设之前期准备">毕设之前期准备</h3>
-
-<p>现在看来在前期最好先大概了解下课题，并进一步分解为小课题。这个可以让指导老师和师兄给个引导，一般在毕设的任务书和工作计划书中有详细说明，每条任务都可以认为是一个小课题，也许还要进一步细分。自己在这方面开始也没有经验，首先瞎摸索了一个星期也没啥收获，到实验室请教老师和师兄时才发现任务书和工作计划的好处。接下来就是根据任务书和工作计划自己拟定小课题和研究计划了。根据自己对课题的了解，我大概把毕设分为了如下几大块：</p>
-
-<ol>
-<li>串行RapidIO协议的了解<br /></li>
-<li>TMS320C6455芯片的编程使用<br /></li>
-<li>TMS320C6455中有关串行RapidIO部分的初始化及使用<br /></li>
-<li>Altera FPGA的烧写使用<br /></li>
-<li>Altera FPGA中串行RapidIO IP核的了解和使用<br /></li>
-<li>FPGA 和 DSP 进行串行RapidIO传输测试<br /></li>
-<li>论文写作——学习使用LaTeX对论文进行排版<br />
-可以看出要在短短的两个月里全部完成难度还是稍微有点大的，更坑爹的是后期实验室包含Altera FPGA的板子一直没画出来，于是乎便换到实验室现有的Xilinx平台，关键时刻还是得自己看着形势走呀，说多了都是泪&hellip;<br /></li>
-</ol>
-
-<h3 id="毕设之论文思路">毕设之论文思路</h3>
-
-<p>这个主体部分其实是参考了些硕士博士论文来的，当然也参考了RapidIO协会力荐的《RapidIO嵌入式系统互连》。首先简单描述了传统总线技术的不足，树个靶子，接下来自然就引申出了新型总线所需要的一些技术特性，满足这些技术特性的往往不止一个协议，所以对这些新型总线技术又有一个横向的比较，给些数据+曲线图，来点说服力，说明串行RapidIO在嵌入式互连领域的优势，接下来就是对RapidIO的大写特写了。写完RapidIO自然不是目的，毕竟论文标题中有个硕大的「实现」么。DSP和FPGA上的串行RapidIO实现自然也值得仔细地描述一番。OK，论文写到这差不多就快到尾声了，最后分析一下DSP和FPGA联调时使用串行RapidIO通信的一些实测数据画个图分析下原因差不多就完事了。KO! 大功告成。<br />
-
-最后的成果就是这么一篇论文咯——<a href="/downloads/基于TMS320C6455的串行RapidIO技术及其实现-1.2.pdf">基于TMS320C6455的串行RapidIO技术及其实现</a>.<br />
-从中抽出一张高清大图献上&ndash;&gt;<br />
-<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/interconnects-trends.png" alt="总线互连的发展趋势" /></p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2013-08/2013-08-28_21-30-43/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     
       <article class="post">
   <header class="post-header">
@@ -328,6 +275,36 @@
     </div>
     <div class="read-more">
       <a href="/posts/2013-07/2013-07-13_23-50-20/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2013-06/2013-06-11_23-15-43/">骑行：西电——西工大</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-06-11 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E7%94%9F%E6%B4%BB/"> 生活 </a>
+          
+        </div>
+      <span class="more-meta"> 约 376 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>昨天下午趁着西安难得的好天气和春哥骑车去了西工大新校区，出校门的时候是雨过天晴，没想到回来的时候仍然是雨过天晴 :( 从西太路回学校的时候被大雨淋得那叫一个迎头痛击，四年来总算赶上一回西北的暴风雨了。</p>
+
+<p>自己还是挺喜欢骑行的，学校的南边就是秦岭，到西工大新校区来回也就35公里左右，不算很远，往南边走的话路上空气还算不错，透透气也蛮好的。</p>
+
+<p>坐骑是室友的普通车，好想有一辆山地哇^_^ 可惜&hellip;木有银子</p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2013-06/2013-06-11_23-15-43/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
