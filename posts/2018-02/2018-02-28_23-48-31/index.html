@@ -76,7 +76,7 @@
 
 <meta itemprop="datePublished" content="2018-02-28T23:48:31&#43;08:00" />
 <meta itemprop="dateModified" content="2018-02-28T23:48:31&#43;08:00" />
-<meta itemprop="wordCount" content="359">
+<meta itemprop="wordCount" content="420">
 
 
 
@@ -155,7 +155,7 @@
               <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 359 字 </span>
+        <span class="more-meta"> 约 420 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -178,29 +178,32 @@
     <div class="post-content">
       <p>在前文 <a href="/posts/2018-02/2018-02-24_16-30-16.html">Python 多环境配置类</a> 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，Scala/Java 使用同样的思路来实现多环境配置管理则蹩脚的多。故传统 Java 开发中常采用<code>dev</code>, <code>prod</code> 等不同后缀名的配置文件对不同环境进行区分，也算简单实用，只是不可避免会存在一些重复配置项。</p>
 
-<p>除了使用类继承，还有没有其他优雅的方式对不同环境进行配置管理呢？答案是有的，那就是 <a href="https://github.com/lightbend/config#merging-config-trees">lightbend/config</a> 中提到的方法，利用嵌套字典，使用 <code>dev</code>, <code>test</code> 等隔离子空间，配合默认根空间共享同样的配置项。核心代码如下所示：</p>
+<p>除了使用类继承，还有没有其他优雅的方式对不同环境进行配置管理呢？答案是有的，那就是 <a href="https://github.com/lightbend/config#merging-config-trees">lightbend/config</a> 中提到的方法，利用嵌套字典，使用 <code>dev</code>, <code>test</code> 等隔离子空间，或者使用单独的配置文件隔离，配合默认根空间共享同样的配置项。完整的使用方式可见测试类 <a href="https://github.com/billryan/zeus-jdk-common/blob/master/src/test/java/me/yuanbin/common/config/AppConfigFactoryTest.java">AppConfigFactoryTest.java</a></p>
 
-<pre><code class="language-scala">import System.{getenv, getProperty}
-import com.typesafe.config.ConfigFactory
-import com.typesafe.config.{Config =&gt; TypesafeConfig}
+<p>核心代码如下所示：</p>
 
-/**
-  * Created by yuanbin on 2018/2/26.
-  */
-object Config {
-  private val originalConfig = ConfigFactory.load()
-  val appEnv: String = Option(getProperty(&quot;APP_ENV&quot;)).getOrElse(getenv(&quot;APP_ENV&quot;)) match {
-    case s: String =&gt; s
-    case _ =&gt; {
-      println(&quot;APP_ENV is not set in both environment and properties!!!&quot;)
-      sys.exit(1)
+<pre><code class="language-java">public class AppConfigFactoryTest {
+
+    @Test
+    public void testConfig() {
+        Config config = AppConfigFactory.load();
+        assertEquals(&quot;ci.yuanbin.me&quot;, config.getString(&quot;common.host&quot;));
+        assertEquals(8080, config.getInt(&quot;common.port&quot;));
+        assertEquals(&quot;ci&quot;, config.getString(&quot;app.profiles.active&quot;));
     }
-  }
-  val conf: TypesafeConfig = originalConfig.getConfig(appEnv).withFallback(originalConfig)
+
+    @Test
+    public void testSingleton() {
+        Config config1 = AppConfigFactory.load();
+        Config config2 = AppConfigFactory.load();
+        assert config1 == config2;
+    }
 }
 </code></pre>
 
-<p>上述代码中优先从 JVM 系统变量中读取 <code>APP_ENV</code>, 其次从环境变量中读取，读取后默认使用 <code>appEnv</code> 下的子空间变量，如若未找到则从共享的根空间读取。</p>
+<p>上述代码中优先从 JVM 系统变量中读取 <code>APP_PROFILES_ACTIVE</code>, 其次从环境变量中读取。<code>AppConfigFactory.load()</code> 为单例实现，赌赢环境变量的配置文件内容会覆盖默认的 <code>application.conf</code> 中的内容。</p>
+
+<p>这里的 <code>AppConfigFactory.load()</code> 相对于 TypesafeConfig 新增了多环境配置文件的选择，并且可以通过 <code>APP_PROFILES_ACTIVE</code> 控制。</p>
 
     </div>
 
