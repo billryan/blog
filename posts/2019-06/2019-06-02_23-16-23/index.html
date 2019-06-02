@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>阿里云 EMR gateway 替代方案 - 东海一叶</title>
+  <title>青甘大环线 6 日游 - 东海一叶</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="本文主要分享小规模开发测试环境下阿里云 EMR gateway 节点的替代方案，同时也为想寻找同时支持 HTTP proxy 和 websocket 的代理工具提供一些思路。传统的 HTTP proxy 有 Squid, 但是 Squid 对 HTTPS, HTTP/2 和" />
+  <meta name="description" content="5 月 10 日从上海出发，至 17 号抵达上海，大环线车程耗时 6 天，全程近 3000 公里，终于有机会一睹西北的风采了。前三天的天气还凑合，可从第四天开始就遇到了" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -29,7 +29,7 @@
 <meta name="generator" content="Hugo 0.46" />
 
 
-<link rel="canonical" href="https://blog.yuanbin.me/posts/2019-03/2019-03-25_20-59-21/" />
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2019-06/2019-06-02_23-16-23/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,20 +49,16 @@
 
 
 
-<meta property="og:title" content="阿里云 EMR gateway 替代方案" />
-<meta property="og:description" content="本文主要分享小规模开发测试环境下阿里云 EMR gateway 节点的替代方案，同时也为想寻找同时支持 HTTP proxy 和 websocket 的代理工具提供一些思路。传统的 HTTP proxy 有 Squid, 但是 Squid 对 HTTPS, HTTP/2 和" />
+<meta property="og:title" content="青甘大环线 6 日游" />
+<meta property="og:description" content="5 月 10 日从上海出发，至 17 号抵达上海，大环线车程耗时 6 天，全程近 3000 公里，终于有机会一睹西北的风采了。前三天的天气还凑合，可从第四天开始就遇到了" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.yuanbin.me/posts/2019-03/2019-03-25_20-59-21/" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2019-06/2019-06-02_23-16-23/" />
 
 
 
-<meta property="article:published_time" content="2019-03-25T20:59:21&#43;08:00"/>
+<meta property="article:published_time" content="2019-06-02T23:16:23&#43;08:00"/>
 
-<meta property="article:modified_time" content="2019-03-25T20:59:21&#43;08:00"/>
-
-
-
-
+<meta property="article:modified_time" content="2019-06-02T23:16:23&#43;08:00"/>
 
 
 
@@ -70,20 +66,24 @@
 
 
 
-<meta itemprop="name" content="阿里云 EMR gateway 替代方案">
-<meta itemprop="description" content="本文主要分享小规模开发测试环境下阿里云 EMR gateway 节点的替代方案，同时也为想寻找同时支持 HTTP proxy 和 websocket 的代理工具提供一些思路。传统的 HTTP proxy 有 Squid, 但是 Squid 对 HTTPS, HTTP/2 和">
-
-
-<meta itemprop="datePublished" content="2019-03-25T20:59:21&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-25T20:59:21&#43;08:00" />
-<meta itemprop="wordCount" content="257">
 
 
 
-<meta itemprop="keywords" content="network," />
+
+<meta itemprop="name" content="青甘大环线 6 日游">
+<meta itemprop="description" content="5 月 10 日从上海出发，至 17 号抵达上海，大环线车程耗时 6 天，全程近 3000 公里，终于有机会一睹西北的风采了。前三天的天气还凑合，可从第四天开始就遇到了">
+
+
+<meta itemprop="datePublished" content="2019-06-02T23:16:23&#43;08:00" />
+<meta itemprop="dateModified" content="2019-06-02T23:16:23&#43;08:00" />
+<meta itemprop="wordCount" content="232">
+
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="阿里云 EMR gateway 替代方案"/>
-<meta name="twitter:description" content="本文主要分享小规模开发测试环境下阿里云 EMR gateway 节点的替代方案，同时也为想寻找同时支持 HTTP proxy 和 websocket 的代理工具提供一些思路。传统的 HTTP proxy 有 Squid, 但是 Squid 对 HTTPS, HTTP/2 和"/>
+<meta name="twitter:title" content="青甘大环线 6 日游"/>
+<meta name="twitter:description" content="5 月 10 日从上海出发，至 17 号抵达上海，大环线车程耗时 6 天，全程近 3000 公里，终于有机会一睹西北的风采了。前三天的天气还凑合，可从第四天开始就遇到了"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,16 +146,16 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">阿里云 EMR gateway 替代方案</h1>
+      <h1 class="post-title">青甘大环线 6 日游</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-03-25 </span>
+        <span class="post-time"> 2019-06-02 </span>
         <div class="post-category">
             
-              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+              <a href="/categories/%E6%97%85%E6%B8%B8/"> 旅游 </a>
             
           </div>
-        <span class="more-meta"> 约 257 字 </span>
+        <span class="more-meta"> 约 232 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -176,28 +176,7 @@
 
     
     <div class="post-content">
-      <p>本文主要分享小规模开发测试环境下阿里云 EMR gateway 节点的替代方案，同时也为想寻找同时支持 HTTP proxy 和 websocket 的代理工具提供一些思路。传统的 HTTP proxy 有 Squid, 但是 Squid 对 HTTPS, HTTP/2 和 websocket 的支持不算太好。在大部分简单场景下，我推荐部署和配置极其简单的 <a href="https://caddyserver.com/">Caddy</a>, 配合 forwardproxy 插件配置起来非常简单。</p>
-
-<p>到官网下载即可，选中 <code>http.forwardproxy</code>，可能需要根据自己的平台适配，如 Linux64 下可以如下安装。</p>
-
-<pre><code>curl https://getcaddy.com | bash -s personal http.forwardproxy
-</code></pre>
-
-<p>想作为系统启动服务进行管理可参考 Caddy 的 systemd 服务，见 <a href="https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service">caddy.service</a>.</p>
-
-<pre><code>0.0.0.0:3128 {
-    errors
-    forwardproxy {
-        basicauth your_user your_pass
-        acl {
-            allow 10.0.x.0/24
-            deny all
-        }
-    }
-}
-</code></pre>
-
-<p>其中的 ACL 规则和认证可根据自己集群的情况进行调整。配合 letsencrypt, Caddy 还可以支持 HTTP/2(HTTPS) 代理，很美好</p>
+      <p>5 月 10 日从上海出发，至 17 号抵达上海，大环线车程耗时 6 天，全程近 3000 公里，终于有机会一睹西北的风采了。前三天的天气还凑合，可从第四天开始就遇到了沙尘暴，所有景点几乎全蒙上了一层阴影，好些景点因为天气和人的原因都没去成。以后争取七月八月再去一次小环线吧，真是心有不甘。游记的图片还是略多的，博客里面插图还是略显不便，周末试用了一下蚂蚁的 <a href="https://www.yuque.com">羽雀</a>, 第一次知道这货是因为团队内部在内网用羽雀协作文档。偶然发现外网也有，用来写游记还真不错，欢迎有兴趣的前往我的 <a href="https://www.yuque.com/billryan/siab93">青甘大环线</a> 专栏阅读。</p>
 
     </div>
 
@@ -209,7 +188,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019-03-25</span>
+    <span class="item-content">2019-06-02</span>
   </p>
   
   <p class="copyright-item">
@@ -239,23 +218,14 @@
 </div>
 
     <footer class="post-footer">
-      <div class="post-tags">
-          
-          <a href="/tags/network/">network</a>
-          
-        </div>
+      
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/posts/2019-06/2019-06-02_23-16-23/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">青甘大环线 6 日游</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
         
-          <a class="next" href="/posts/2019-03/2019-03-19_23-33-51/">
-            <span class="next-text nav-default">信息流推荐和搜索的实时数据流架构</span>
+          <a class="next" href="/posts/2019-03/2019-03-25_20-59-21/">
+            <span class="next-text nav-default">阿里云 EMR gateway 替代方案</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -307,7 +277,7 @@
       repo: 'blog',
       no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
       go_to_comment: "去留言",
-      issue_title: '阿里云 EMR gateway 替代方案',
+      issue_title: '青甘大环线 6 日游',
       btn_class: "btn",
       comments_target: "#comment-thread",
       loading_target: "#loading-spin",

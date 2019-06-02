@@ -6,10 +6,19 @@
     <description>Recent content on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 25 Mar 2019 20:59:21 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jun 2019 23:16:23 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>青甘大环线 6 日游</title>
+      <link>https://blog.yuanbin.me/posts/2019-06/2019-06-02_23-16-23/</link>
+      <pubDate>Sun, 02 Jun 2019 23:16:23 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2019-06/2019-06-02_23-16-23/</guid>
+      <description>5 月 10 日从上海出发，至 17 号抵达上海，大环线车程耗时 6 天，全程近 3000 公里，终于有机会一睹西北的风采了。前三天的天气还凑合，可从第四天开始就遇到了</description>
+    </item>
     
     <item>
       <title>阿里云 EMR gateway 替代方案</title>

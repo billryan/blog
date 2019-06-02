@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2015-08-26T09:24:56&#43;08:00"/>
+<meta property="og:updated_time" content="2015-08-26T13:26:24&#43;08:00"/>
 
 
 
@@ -137,6 +137,72 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2015-08/2015-08-26_13-26-24/">Akka Notes 3 - Logging and Testing Actors</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-08-26 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 2784 字 </span>
+      <span class="more-meta"> 预计阅读 6 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。</p>
+
+<p>前文 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html">Akka Notes 1 - Introducing Actors</a> 和 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 <code>TeacherActor</code>.</p>
+
+<p>前文2 中 <code>TeacherActor</code> 的长相如下：</p>
+
+<pre><code class="language-scala">package me.yuanbin.akkanotes.actormsg
+
+import akka.actor.Actor
+import me.yuanbin.akkanotes.protocols.StudentProtocol._
+import me.yuanbin.akkanotes.protocols.TeacherProtocol._
+import scala.util.Random
+
+/**
+ * Your Teacher Actor class.
+ *
+ * The class could use refinement by way of
+ * using ActorLogging which uses the EventBus of the Actor framework
+ * instead of the plain old System out
+ *
+ */
+
+class TeacherActor extends Actor {
+  val quotes = List(
+    &quot;Moderation is for cowards&quot;,
+    &quot;Anything worth doing is worth overdoing&quot;,
+    &quot;The trouble is you think you have time&quot;,
+    &quot;You never gonna know if you never even try&quot;)
+
+  def receive = {
+    case QuoteRequest =&gt; {
+      //Get a random Quote from the list and construct a response
+      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
+      println()
+      println(quoteResponse)
+    }
+  }
+}
+</code></pre>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2015-08/2015-08-26_13-26-24/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -289,32 +355,6 @@
     </div>
     <div class="read-more">
       <a href="/posts/2015-07/2015-07-19_16-26-10/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2015-07/2015-07-17_22-22-00/">Windows 系统下的开发环境搭建</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-07-17 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
-          
-        </div>
-      <span class="more-meta"> 约 1175 字 </span>
-      <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p, i7 的 CPU, 16 GB 内存，除了硬
-    </div>
-    <div class="read-more">
-      <a href="/posts/2015-07/2015-07-17_22-22-00/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
