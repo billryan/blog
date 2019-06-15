@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2013-01-11T19:42:00&#43;08:00"/>
+<meta property="og:updated_time" content="2013-01-19T21:12:00&#43;08:00"/>
 
 
 
@@ -137,6 +137,36 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2013-01/2013-01-19_21-12-00/">课程设计小结</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2013-01-19 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E7%94%B5%E5%AD%90/"> 电子 </a>
+          
+        </div>
+      <span class="more-meta"> 约 2312 字 </span>
+      <span class="more-meta"> 预计阅读 5 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>不知不觉又忙了一个星期，周一老师把课程设计的要求简单地说了一下，然后就是两天之后提交方案并且做Presentation，这个算是比以前大作业要求严格的地方了，答辩时老师偶尔也会提几个问，呵呵，这可难为了一些酱油党喽～～不知自己是不是比较「走运」，我在介绍自己组的方案时老师竟然没有提问，估计是我讲的太快了，中间几乎没有停顿，老师也没能抓住机会提问</p>
+
+<p>课程设计是全班做一个题目，是纯硬件的题，有点像电赛。先软件仿真，然后搭实际电路调试。大意是运用两块LM324运放和若干电容电阻什么的设计一个200Hz, 峰峰值为0.1V的正弦波和周期为1ms, 幅值为2v的三角波信号; 接下来则是将前边产生的两种信号和信号源产生的50Hz的正弦波按一定比例相加; 随后设计电路从相加后的信号中提取200Hz的正弦波，输出必须达到10V以上; 最后则是将三角波信号与提取出的200Hz正弦波通过比较器得到最终输出。整个电路做下来差不多是将模电中的运放应用部分复习了一遍，只不过这次除了理论部分还有实践部分。理论部分把课本上的一些电路排列组合一下即可，说起来倒是挺简单的，本人不才，前后花了差不多3天时间才把设计方案基本确定下来，放在Multisim下跑了一下，波形还能接受。这两天动手搭实际电路时又做了些bug fix, 下午正式收工，只等着周一到学校实验室微调和验收了。<br />
+
+很喜欢「课程设计」这种形式，边学边用，这才是工科生最应该掌握的。自己还算比较喜欢做硬件，大约从初二起开始接触一些电子方面的东西，当时可以说得上是对这些玩意儿上瘾了，那时为了个电路琢磨到凌晨三四点也还精神亢奋，不过上了大学后反而有所荒废，想想还是有点痛心的。噗&hellip;其实做硬件很麻烦地说，偶尔也会觉得枯燥，硬件复用的成本比起软件来复用的成本高太多太多，而且业余玩玩也还是比较烧钱的。东拉西扯了这么多，下边吐槽一下这次「课程设计」。学校和老师该改进的地方实在是太多太多了</p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2013-01/2013-01-19_21-12-00/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -252,40 +282,6 @@
     </div>
     <div class="read-more">
       <a href="/posts/2012-01/2012-01-24_15-28-00/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2012-01/2012-01-11_11-45-00/">ASCII码之大小写那些事儿</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2012-01-11 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E6%9D%82%E8%B0%88/"> 杂谈 </a>
-          
-        </div>
-      <span class="more-meta"> 约 1285 字 </span>
-      <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>原帖发在 <a href="http://xdlinux.info/bbs/thread-1244-1-1.html">开源社区论坛</a>上，感觉还有点意思，于是乎就搬到这儿来了咯～本帖探讨ASCII码编码中英文字母大小写编码的相关问题，不需要读者具有计算机编码方面的专业知识，当然咯，为了更好地参与讨论，一点点计算机编码的基本常识还是要有的。<br />
-不知ASCII码为何物的请先移步<a href="http://en.wikipedia.org/wiki/ASCII">维基百科</a></p>
-
-<h3 id="故事的起源">故事的起源</h3>
-
-<p>Long long ago, 也就是上个学期微机原理课的时候，班上一MM问了老师这么一个问题——“ASCII码中大写字母A的十六进制代码是41，而小写字母的十六进制代码是61，中间不是只能编码20个字符么，那剩下的那6个大写字母跑哪去了呀？” 只见此时老师笑而不语(显然是男老师…)，底下一小撮明白真相的群众疾呼:“那个41和61是十六进制呀！”</p>
-
-<p>MM思维敏捷，很快又出现了新的问题:“41H和61H之间可以编码32个字符呀，那为什么小写字母不紧跟着大写字母编码呢？大小写字母连在一起多和谐呀~” 说时迟，那时快，老师答曰:“这个问题…我得先请示一下Google”。听MM刚才那么一说，52个大小写字母顿时哼起了:“让我们 握着手 手牵手 一起走到时间的尽头…” 但在得到美国国家标准化委员会的确切答复后，大A和小a只能率领50个兄弟姐妹以头跄地曰:“千杀的委员会！滥用手中的职权割断我们大写家族和小写家族之间的脐带！小心我叫老母亲来收拾你们！” 在这里我想为标准化委员会说几句话，人家帮你割断脐带是为了让小写家族得到新生呀！！欲知后事如何，且听下段分析。<br />
-</p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2012-01/2012-01-11_11-45-00/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
