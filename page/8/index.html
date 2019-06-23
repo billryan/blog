@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2015-11-18T13:52:51&#43;08:00"/>
+<meta property="og:updated_time" content="2015-11-26T20:10:26&#43;08:00"/>
 
 
 
@@ -137,6 +137,66 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2015-11/2015-11-26_20-10-26/">在 Linux/OS X 下优雅地写论文(TeX)</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-11-26 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E5%AD%A6%E6%9C%AF/"> 学术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1227 字 </span>
+      <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>本科毕业设计就是用 LaTeX 写的，那时还只是第一次接触 TeX 这么强大的排版引擎。几年过去了自己对 LaTeX 也算是轻车熟路，最近遇到比较集中的问题自然是 <a href="https://github.com/weijianwen/SJTUThesis">硕士论文模板</a> 啦。GitHub 上作者对一些细节并没有做详细的描述，这对于 TeX 新手来说造成了不少的困扰，比如这种东西怎么这么难用云云&hellip;
+</p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2015-11/2015-11-26_20-10-26/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2015-11/2015-11-22_20-57-57/">镇江一瞥</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-11-22 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E6%97%85%E6%B8%B8/"> 旅游 </a>
+          
+        </div>
+      <span class="more-meta"> 约 989 字 </span>
+      <span class="more-meta"> 预计阅读 2 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <blockquote>
+<p>撑着油纸伞，独自<br />
+彷徨在悠长、悠长<br />
+又寂寥的雨巷</p>
+</blockquote>
+
+<p>九月秋高气爽，可那时忙着找人生中第一份工作，出游的计划便暂时搁置。一场秋雨一场寒，被11月的这么几场雨这么一搅合出去游玩的兴致也不算很高，不过在 Martin 和茄子的带动下，一场说走就走的旅行即刻开启。
+</p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2015-11/2015-11-22_20-57-57/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -226,115 +286,6 @@
     </div>
     <div class="read-more">
       <a href="/posts/2015-08/2015-08-27_15-57-59/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2015-08/2015-08-27_09-47-30/">Akka Notes 4 - Request and Response</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-08-27 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
-          
-        </div>
-      <span class="more-meta"> 约 1364 字 </span>
-      <span class="more-meta"> 预计阅读 3 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。</p>
-
-<p>前文 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)</p>
-
-<p>从技术角度考虑，我们发送消息给 Actor 总是期望有副作用发生的，从设计上便是如此。目标 Actor 除了不作回应之外还可以对消息做如下事情：</p>
-
-<ol>
-<li>返回一条回复给发送者(在我们的例子中，TeacherActor 回应一条名言给 StudentActor)</li>
-<li>给其他有可能成为目标受众的 Actor 转发一条回应，这个 Actor 反过来会回应/转发而产生副作用。Routers 和 Supervisors 就是这一类例子。之后我们对这两类进行详解。</li>
-</ol>
-
-<h2 id="请求和响应">请求和响应</h2>
-
-<p>在本文中我们将集中在上述第一点：请求与响应 整个周期。一图胜千言，上图！</p>
-
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_RequestReponse.png-q75" alt="RequestReponse" /></p>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2015-08/2015-08-27_09-47-30/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2015-08/2015-08-26_13-26-24/">Akka Notes 3 - Logging and Testing Actors</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-08-26 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
-          
-        </div>
-      <span class="more-meta"> 约 2784 字 </span>
-      <span class="more-meta"> 预计阅读 6 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。</p>
-
-<p>前文 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html">Akka Notes 1 - Introducing Actors</a> 和 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 <code>TeacherActor</code>.</p>
-
-<p>前文2 中 <code>TeacherActor</code> 的长相如下：</p>
-
-<pre><code class="language-scala">package me.yuanbin.akkanotes.actormsg
-
-import akka.actor.Actor
-import me.yuanbin.akkanotes.protocols.StudentProtocol._
-import me.yuanbin.akkanotes.protocols.TeacherProtocol._
-import scala.util.Random
-
-/**
- * Your Teacher Actor class.
- *
- * The class could use refinement by way of
- * using ActorLogging which uses the EventBus of the Actor framework
- * instead of the plain old System out
- *
- */
-
-class TeacherActor extends Actor {
-  val quotes = List(
-    &quot;Moderation is for cowards&quot;,
-    &quot;Anything worth doing is worth overdoing&quot;,
-    &quot;The trouble is you think you have time&quot;,
-    &quot;You never gonna know if you never even try&quot;)
-
-  def receive = {
-    case QuoteRequest =&gt; {
-      //Get a random Quote from the list and construct a response
-      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
-      println()
-      println(quoteResponse)
-    }
-  }
-}
-</code></pre>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2015-08/2015-08-26_13-26-24/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
