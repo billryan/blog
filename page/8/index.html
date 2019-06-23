@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2015-08-27T15:57:59&#43;08:00"/>
+<meta property="og:updated_time" content="2015-11-09T19:22:58&#43;08:00"/>
 
 
 
@@ -137,6 +137,34 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2015-11/2015-11-09_19-22-58/">三行小诗</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-11-09 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E7%94%9F%E6%B4%BB/"> 生活 </a>
+          
+        </div>
+      <span class="more-meta"> 约 210 字 </span>
+      <span class="more-meta"> 预计阅读 1 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>之前本科准备考研没有找过工作，读研后对学术这条路也算是死心了，当然这不是指学术无用，而是不想再浪费时间做无意义的『学术』。11月中旬把三方交给心仪公司后总算是不用每天紧绷着神经准备赶场面试了，找工作的面试经历对学生步入社会挺有磨练的价值的。你的职业发展方向、个人兴趣和对不同公司的权衡都能在找工作这段经历中很好的体现出来。</p>
+
+<p></p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2015-11/2015-11-09_19-22-58/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -309,55 +337,6 @@ class TeacherActor extends Actor {
     </div>
     <div class="read-more">
       <a href="/posts/2015-08/2015-08-26_09-24-56/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2015-08/2015-08-25_13-55-02/">Akka Notes 2 - Actor Messaging</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-08-25 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
-          
-        </div>
-      <span class="more-meta"> 约 1979 字 </span>
-      <span class="more-meta"> 预计阅读 4 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。</p>
-
-<p>今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html">学生-老师</a> 作为范例。</p>
-
-<h2 id="回顾-学生-老师-的例子">回顾『学生-老师』的例子</h2>
-
-<p>我们考虑由应用 <code>StudentSimulatorApp</code> 单独给 <code>TeacherActor</code> 发送消息的情形，这里你可以认为主程序就是 <code>StudentSimulatorApp</code>.</p>
-
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_TeacherRequestFlowSimulatedApp.png-q75" alt="TeacherRequestFlowSimulatedApp" /></p>
-
-<p>从以上这张流程图我们可以得知：</p>
-
-<ol>
-<li>『学生』首先初始化一个叫做 <code>ActorSystem</code> 的东西</li>
-<li>然后它使用 <code>ActorSystem</code> 来创建一个叫做 <code>ActorRef</code> 的东西，并将 <code>QuoteRequest</code> 消息发送给 <code>ActorRef</code>(<code>TeacherActor</code> 的代理)</li>
-<li><code>ActorRef</code> 将消息传送至<code>Message Dispatcher</code> 进行分发</li>
-<li><code>Dispatcher</code> 将消息压入目标 Actor 的 <code>MailBox</code> 队列</li>
-<li><code>Dispatcher</code> 将 <code>MailBox</code> 送入到某个线程去执行(后续章节介绍更多细节)</li>
-<li><code>MailBox</code> 抛出一个<code>message</code> 并最终将其委托给真正的 <code>Actor</code> - Teacher 的 receive 方法处理。</li>
-</ol>
-
-<p>下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。</p>
-
-<p></p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2015-08/2015-08-25_13-55-02/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
