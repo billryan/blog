@@ -19,18 +19,6 @@ before_deploy:
   - git tag "$(date +'%Y%m%d_%H%M%S')-$(git log --format=%h -1)"
   - tar cjvf public.tar.bz2 public/
 
-after_deploy:
-  # Set up git user name and tag this commit
-  - git config --local user.name "travis"
-  - git config --local user.email "travis@github"
-  - cp public /tmp/public -r
-  - cd /tmp/public
-  - git init
-  - git add .
-  - git commit -m "Travis CI build at `date +"%Y-%m-%d %H:%M"`"
-  # Coding Pages
-  - git push --force --quiet "https://${CODING_USERNAME}:${CODING_TOKEN}@${CODING_URL}" master:master
-
 deploy:
   - provider: pages
     skip-cleanup: true
@@ -48,6 +36,18 @@ deploy:
     skip_cleanup: true
     on:
       branch: master
+
+after_deploy:
+  # Set up git user name and tag this commit
+  - git config --local user.name "travis"
+  - git config --local user.email "travis@github"
+  - cp public /tmp/public -r
+  - cd /tmp/public
+  - git init
+  - git add .
+  - git commit -m "Travis CI build at `date +"%Y-%m-%d %H:%M"`"
+  # Coding Pages
+  - git push --force --quiet "https://${CODING_USERNAME}:${CODING_TOKEN}@${CODING_URL}" master:master
 
 # whitelist
 branches:
