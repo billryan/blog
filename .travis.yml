@@ -47,7 +47,7 @@ after_deploy:
   - git add .
   - git commit -m "Travis CI build at `date +"%Y-%m-%d %H:%M"`"
   # Coding Pages
-  - git push --force --quiet "https://${CODING_USERNAME}:${CODING_TOKEN}@${CODING_URL}" master:master
+  - git push --force --quiet https://${CODING_USERNAME}:${CODING_TOKEN}@${CODING_URL} master:master
 
 # whitelist
 branches:
