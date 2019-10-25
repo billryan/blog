@@ -37,7 +37,7 @@ deploy:
     on:
       branch: master
 
-after_deploy:
+after_script:
   # Set up git user name and tag this commit
   - git config --local user.name "travis"
   - git config --local user.email "travis@github"
