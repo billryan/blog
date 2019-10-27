@@ -29,13 +29,6 @@ deploy:
     on:
       branch: master
     target-branch: gh-pages
-#  - provider: releases
-#    api_key:
-#      secure: QU4B9CIPUdelYJKnS72SUjOY/9/w9+m536RX8Ex4PsKYMJHEIW7rkbP16ZAvMDoqiQkfPwpQSE8tFOBxMmkgGIgWY86o0xr022ak0iGICFCkjedEfNkKBENjOA8JoMlCx+QRyGcRJKuHBAy8WQU+PKykJDzJzadGNs0ud/+P75k=
-#    file: public.tar.bz2
-#    skip_cleanup: true
-#    on:
-#      branch: master
 
 after_deploy:
   # Set up git user name and tag this commit
