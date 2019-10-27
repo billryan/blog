@@ -76,7 +76,7 @@
 
 <meta itemprop="datePublished" content="2018-02-23T23:19:29&#43;08:00" />
 <meta itemprop="dateModified" content="2018-02-23T23:19:29&#43;08:00" />
-<meta itemprop="wordCount" content="2430">
+<meta itemprop="wordCount" content="2700">
 
 
 
@@ -155,8 +155,8 @@
               <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 2430 字 </span>
-        <span class="more-meta"> 预计阅读 5 分钟 </span>
+        <span class="more-meta"> 约 2700 字 </span>
+        <span class="more-meta"> 预计阅读 6 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -207,7 +207,7 @@
 </ol>
 
 <p>能满足以上几点的可以自建诸如 Wordpress 之类的 CMS, 写作起来是非常容易的，但需要维护数据库什么的，而且在如今也显得不够 geek :)
-基于 GitBook 的博客方案自己虽然也用过一阵子，自己也给 GitBook 造过几个轮子，但用下来发现和博客的风格还是有点不合，用作专题类的书籍/主题写作更为合适一些。</p>
+基于 GitBook 的博客方案自己虽然也用过一阵子，自己也给 GitBook 造过几个轮子，但用下来发现和博客的风格还是有点不合，用作专题类的书籍/主题写作更为合适一些，然鹅，Gitbook 生成 PDF 的速度是真的慢，几百个文件能搞一个小时，直接被 travis 干掉了。</p>
 
 <p>基于 git + markdown 几乎是最近几年程序员写博客的标配，GitHub Pages/Netlify 之类的静态页面服务器更是为部署提供了方便。目前自己的博客写作工具有如下组合拳：</p>
 
@@ -217,6 +217,7 @@
 <li>Hugo 静态页面引擎，性能秒杀 GitBook. 静态编译的二进制包，不用再和 node 搏斗了</li>
 <li>GitHub issue 作为评论系统，内容生产和反馈形成闭环</li>
 <li>travis/netlify 持续集成，本地专注内容创作即可，编译和部署交给 travis/netlify</li>
+<li>为了大陆用户方便，使用了 DNS 分流，大陆用户路由到针对国内加速一处付费的线路</li>
 </ol>
 
 <h1 id="博客源文档管理">博客源文档管理</h1>
@@ -237,13 +238,13 @@
 
 <p>静态页面部署这一块，可复杂可简单。最简单的莫过于使用 Netlify, 可以做到比 GitHub Pages 功能更强大更方便。如果使用的是 Hugo 引擎，Netlify 是直接支持的，不确定是不是 Netlify 做了一定的识别导致我产生的这种错觉?  相较于 GitHub 往往需要自己编写 <code>.travis.yml</code> 文件来定制编译细节，Netlify 提供了在其网页上配置编译选项，大大简化了部署这件小事。Netlify 其他的优点可以去看官方文档，东岳的一篇博文写的也不错 <a href="https://blog.dongyueweb.com/case_study:_%E4%BD%BF%E7%94%A8_netlify_%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%BD%A0%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99.html">Case Study: 使用 Netlify 持续集成你的静态网站</a> 不过讽刺的是，他们现在使用的是 GitHub Pages 服务&hellip; 2333</p>
 
-<p>Netlify 除了支持基本的静态页面部署外，还支持很多细节优化，如减少 js/css/图片 等体积。另外实测发现现在的 Netlify 在大陆地区的访问速度要优于 GitHub Pages. 明天发图，今天太晚了就不发对比图了。</p>
+<p>Netlify 除了支持基本的静态页面部署外，还支持很多细节优化，如减少 js/css/图片 等体积，自定义跳转。另外实测发现现在的 Netlify 在大陆地区的访问速度要优于 GitHub Pages.</p>
 
 <p>值得注意的是，GitHub Pages 和 Netlify 现在都支持自定义域名获取 let&rsquo;s encrypt 的免费证书了。</p>
 
 <h2 id="国内访问优化-不追求极致优化的略过">国内访问优化 —— 不追求极致优化的略过</h2>
 
-<p>众所周知的原因，国内访问很多国外资源是存在很多问题的，如果你博客的内容主要针对国内读者，如果能定向优化下就更好了。这里我采取的方案是结合 DNSPod 的 DNS 分线路路由配置国外和移动线路指向 Netlify, 国内其他线路则指向我最快的 VPS, 这样我的博客网站对全球不同网络都有很好的访问速度了。在这个过程中有几个问题需要解决:</p>
+<p>众所周知的原因，国内访问很多国外资源是存在很多问题的，如果你博客的内容主要针对国内读者，如果能定向优化下就更好了。这里我采取的方案是结合 DNSPod 的 DNS 分线路路由配置国外指向 GitHub Pages, 国内其他线路则指向我最快的 VPS, 这样我的博客网站对全球不同网络都有很好的访问速度了。在这个过程中有几个问题需要解决:</p>
 
 <ol>
 <li>国内外 DNS 记录分流 - DNSPod</li>
@@ -251,11 +252,39 @@
 <li>分流后也要保障 HTTPS 正常访问 - let&rsquo;s encrypt DNS challenge</li>
 </ol>
 
-<p>第一个问题已经说过了，DNSPod 上可以设置分流。</p>
+<p>第一个问题已经说过了，DNSPod 上免费版也可以设置国内国外分流。</p>
 
-<p>对于第二个问题，我们可以基于 GitHub webhook, 待 travis 编译好静态页面后推送到 <code>gh-pages</code> 分支，VPS 接收 webhook 事件后拉取最新静态文件更新。VPS 上我使用了 caddy 作为 web server, 它的 plugin 机制扩展起来非常方便，日常使用性能绰绰有余，又一个用 Go 写的平台工具。caddy 上使用 http.git 插件配置 GitHub webhook 不要太方便! 在配置 GitHub 上的 webhook 也是有讲究的，我们不能直接用 <code>blog.yuanbin.me</code> 这种域名，因为 <code>blog.yuanbin.me</code> 在分流时路由到了 Netlify, 不在 VPS 上，所以我们需要使用单独的域名作为 VPS 对接 GitHub webhook 服务并将静态页面文件写入到指定的目录中，便于 VPS 上的 <code>blog.yuanbin.me</code> 使用。</p>
+<p>对于第二个问题，我们可以基于 GitHub webhook, 待 travis 编译好静态页面后推送到 <code>gh-pages</code> 分支，VPS 接收 webhook 事件后拉取最新静态文件更新。VPS 上我使用了 caddy 作为 web server, 它的 plugin 机制扩展起来非常方便，日常使用性能绰绰有余，又一个用 Go 写的平台工具。caddy 虽然有 http.git 插件可以配置 GitHub webhook, 但实测在文件变动时可能会出现拉取失败，所以可以自己写一个。</p>
 
-<p>第三个问题由于一般不是自购 HTTPS 证书，依赖的是 let&rsquo;s encrypt, 所以多了一个获取证书的步骤，好在 caddy 可以自动获取和更新 let&rsquo;s encrypt 证书。但实际上在 VPS 上自动更新证书时不能使用普通的 https challenge, 因为我们的域名被分流了&hellip; https challenge 的请求过不来。这里我们可以选择使用 DNS challenge 模式，在使用 DNS challenge 时，需要注意自己 VPS 上的 resolv 配置，有可能需要加一个 <code>8.8.8.8</code>, 否则可能会产生超时的现象导致 caddy 启动失败。考虑到开机启动 <code>/etc/resolv.conf</code> 中的记录可能会更新，我么可以在 <code>/etc/resolvconf/xxx/head</code> 中加入 <code>nameserver 8.8.8.8</code></p>
+<p>webhook 在 VPS 上更新网站原理也很简单，先克隆 <code>gh-pages</code> 分支的静态文件，然后覆盖原静态文件，网站就更新了。这里我的做法具体分为以下几步:</p>
+
+<ol>
+<li>在临时目录下新建随机目录</li>
+<li>git clone 指定 URL 和分支到步骤 1 得到的临时目录，最大深度可以指定为 1，加快克隆速度</li>
+<li>使用 rsync 镜像临时目录到原静态目录</li>
+<li>删除临时目录</li>
+</ol>
+
+<p>Go 代码及对应 systemd service:</p>
+
+<script src="//gist.github.com/billryan/827a0c0af06aa18f248421f198cc5fe9.js"></script>
+
+<pre><code>go build webhook.go
+sudo cp webhook /usr/local/bin/webhook
+</code></pre>
+
+<p>Caddyfile 配置可参考</p>
+
+<pre><code>yoursite.com {
+    proxy / http://127.0.0.1:8001 {
+        transparent
+    }
+}
+</code></pre>
+
+<p>在配置 GitHub 上的 webhook 也是有讲究的，我们不能直接用 <code>blog.yuanbin.me</code> 这种域名，因为 <code>blog.yuanbin.me</code> 在分流时路由到了 GitHub Pages, 不在 VPS 上，所以我们需要使用单独的域名作为 VPS 对接 GitHub webhook 服务并将静态页面文件写入到指定的目录中，便于 VPS 上的 <code>blog.yuanbin.me</code> 使用。</p>
+
+<p>第三个问题由于一般不是自购 HTTPS 证书，依赖的是 let&rsquo;s encrypt, 所以多了一个获取证书的步骤，好在 caddy 可以自动获取和更新 let&rsquo;s encrypt 证书。但实际上在 VPS 上自动更新证书时不能使用普通的 https challenge, 因为我们的域名被分流了&hellip; 国外的 VPS 拿到的域名指向是 GitHub Pages, 所以 https challenge 的请求过不来。这里我们可以选择使用 DNS challenge 模式，在使用 DNS challenge 时，需要注意自己 VPS 上的 resolv 配置，有可能需要加一个 <code>8.8.8.8</code>, 否则可能会产生超时的现象导致 caddy 启动失败。考虑到开机启动 <code>/etc/resolv.conf</code> 中的记录可能会更新，我么可以在 <code>/etc/resolvconf/xxx/head</code> 中加入 <code>nameserver 8.8.8.8</code></p>
 
 <h1 id="总结">总结</h1>
 
