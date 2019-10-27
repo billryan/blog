@@ -4,16 +4,16 @@ set -e
 
 year_month=$(date '+%Y-%m')
 full_date=$(date '+%Y-%m-%d_%H-%M-%S')
-hugo_fn=posts/${year_month}/${full_date}.md
+hugo_fn=post/${year_month}/${full_date}.md
 new_fn=content/${hugo_fn}
 fn=${new_fn}
 
-# hugo new posts//.md
+# hugo new post//.md
 
 while getopts "o:nt:" opt; do
   case $opt in
     n)
-      echo "create new posts with name ${filename}"
+      echo "create new post with name ${filename}"
       hugo new ${hugo_fn}
       ;;
     o)
