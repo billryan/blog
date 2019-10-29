@@ -278,11 +278,7 @@
       <pubDate>Sun, 10 Jul 2016 20:34:03 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/</guid>
-      <description>&lt;p&gt;之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 &lt;a href=&#34;https://wzyboy.im/post/1052.html&#34;&gt;使用 nghttpx 搭建 HTTP/2 代理&lt;/a&gt; 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&amp;rsquo;s Encrypt, 方便好使，生成方法可参考 &lt;a href=&#34;../../2016/07/Let-s-Encrypt-for-Archlinux.html&#34;&gt;Let&amp;rsquo;s Encrypt for Archlinux&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;nghttp2 已经进入 extra 仓库，使用 &lt;code&gt;packer -S nghttp2&lt;/code&gt; 即可安装。我的 nghttpx 配置文件如下：
-
-{% gist id=&amp;ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&amp;rdquo;,file=&amp;ldquo;nghttpx.conf&amp;rdquo; %}{% endgist %}&lt;/p&gt;</description>
+      <description>之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性</description>
     </item>
     
     <item>

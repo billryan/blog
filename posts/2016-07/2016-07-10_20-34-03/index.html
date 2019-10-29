@@ -17,9 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&amp;rsquo;s Encrypt, 方便好使，生成方法可参考 Let&amp;rsquo;s Encrypt for Archlinux.
-nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我的 nghttpx 配置文件如下： {% gist id=&amp;ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&amp;rdquo;,file=&amp;ldquo;nghttpx.conf&amp;rdquo; %}{% endgist %}
-" />
+  <meta name="description" content="之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -52,11 +50,7 @@ nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我�
 
 
 <meta property="og:title" content="家用服务器之 HTTP/2" />
-<meta property="og:description" content="之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&rsquo;s Encrypt, 方便好使，生成方法可参考 Let&rsquo;s Encrypt for Archlinux.
-
-nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我的 nghttpx 配置文件如下：
-
-{% gist id=&ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&rdquo;,file=&ldquo;nghttpx.conf&rdquo; %}{% endgist %}" />
+<meta property="og:description" content="之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/" />
 
@@ -77,27 +71,19 @@ nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我�
 
 
 <meta itemprop="name" content="家用服务器之 HTTP/2">
-<meta itemprop="description" content="之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&rsquo;s Encrypt, 方便好使，生成方法可参考 Let&rsquo;s Encrypt for Archlinux.
-
-nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我的 nghttpx 配置文件如下：
-
-{% gist id=&ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&rdquo;,file=&ldquo;nghttpx.conf&rdquo; %}{% endgist %}">
+<meta itemprop="description" content="之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性">
 
 
 <meta itemprop="datePublished" content="2016-07-10T20:34:03&#43;08:00" />
 <meta itemprop="dateModified" content="2016-07-10T20:34:03&#43;08:00" />
-<meta itemprop="wordCount" content="411">
+<meta itemprop="wordCount" content="172">
 
 
 
 <meta itemprop="keywords" content="Linux,Network," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="家用服务器之 HTTP/2"/>
-<meta name="twitter:description" content="之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&rsquo;s Encrypt, 方便好使，生成方法可参考 Let&rsquo;s Encrypt for Archlinux.
-
-nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我的 nghttpx 配置文件如下：
-
-{% gist id=&ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&rdquo;,file=&ldquo;nghttpx.conf&rdquo; %}{% endgist %}"/>
+<meta name="twitter:description" content="之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -169,7 +155,7 @@ nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我�
               <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 411 字 </span>
+        <span class="more-meta"> 约 172 字 </span>
         <span class="more-meta"> 预计阅读 1 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -190,22 +176,24 @@ nghttp2 已经进入 extra 仓库，使用 packer -S nghttp2 即可安装。我�
 
     
     <div class="post-content">
-      <p>之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 <a href="https://wzyboy.im/post/1052.html">使用 nghttpx 搭建 HTTP/2 代理</a> 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&rsquo;s Encrypt, 方便好使，生成方法可参考 <a href="../../2016/07/Let-s-Encrypt-for-Archlinux.html">Let&rsquo;s Encrypt for Archlinux</a>.</p>
+      <p>之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 <a href="https://wzyboy.im/post/1052.html">使用 nghttpx 搭建 HTTP/2 代理</a> 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性得到了极大地提升。证书可以使用 Let&rsquo;s Encrypt, 直接使用 caddy 即可，借助 forwardproxy 插件用起来非常方便，代理后端可以接入 socks5/http 等不同方式。</p>
 
-<p>nghttp2 已经进入 extra 仓库，使用 <code>packer -S nghttp2</code> 即可安装。我的 nghttpx 配置文件如下：
+<p>Caddyfile 如下，鉴于家庭网络服务直接用 <sup>80</sup>&frasl;<sub>443</sub> 服务，故采用 DNS txt 方式获取证书。</p>
 
-{% gist id=&ldquo;billryan/718af2a3500bdf93a30e225d1e7dd725&rdquo;,file=&ldquo;nghttpx.conf&rdquo; %}{% endgist %}</p>
+<pre><code>yourdomain {
+    gzip
 
-<ul>
-<li>前端接受 HTTP/2 请求，并监听 11111 端口</li>
-<li>后端与 Squid 对接，Squid 的配置可参考 <a href="../../2016/07/Squid-for-home-server.html">家用服务器之 Squid 分流</a></li>
-<li>private-key 等证书使用 Let&rsquo;s Encrypt 生成，免去了申请商业证书的麻烦</li>
-<li>workers 根据你的 CPU 核数设定</li>
-<li>add-x-forwarded-for=yes 设定 forwarded-for 参数，让 Squid 能获取到客户端的真实 IP，便于 Squid 层面的鉴权</li>
-<li>accesslog-file 便于分析不明 IP</li>
-</ul>
+    forwardproxy {
+        basicauth username password
+        upstream  socks5://localhost:1080
+    }
 
-<p>对比过不使用 nghttp2 的代理情况，HTTP 1.1 的代理分分钟被不明 IP 访问，使用 nghttp2 后几乎没有再遇到骚扰。Chrome/Firefox 对 HTTP/2 的支持应该是毫无压力，Chrome 下 SwitchOmega 插件甚是好用。至此，HTTP proxy 层面已经十分完善，nghttp2 作为前端接入，Squid 作为分流、鉴权和缓存，polipo 提供 socks5 转 HTTP, ss 提供 socks5, HAProxy 提供高可用和负载均衡。</p>
+    tls me@master.me {
+        dns dnspod
+    }
+}
+</code></pre>
+
     </div>
 
     
