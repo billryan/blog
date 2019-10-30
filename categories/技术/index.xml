@@ -303,24 +303,7 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
       <pubDate>Thu, 27 Aug 2015 09:47:30 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-27_09-47-30/</guid>
-      <description>&lt;p&gt;该系列译自 &lt;a href=&#34;http://rerun.me/&#34;&gt;Rerun.me&lt;/a&gt;, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。&lt;/p&gt;
-
-&lt;p&gt;前文 &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html&#34;&gt;Akka Notes 2 - Actor Messaging&lt;/a&gt; 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)&lt;/p&gt;
-
-&lt;p&gt;从技术角度考虑，我们发送消息给 Actor 总是期望有副作用发生的，从设计上便是如此。目标 Actor 除了不作回应之外还可以对消息做如下事情：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;返回一条回复给发送者(在我们的例子中，TeacherActor 回应一条名言给 StudentActor)&lt;/li&gt;
-&lt;li&gt;给其他有可能成为目标受众的 Actor 转发一条回应，这个 Actor 反过来会回应/转发而产生副作用。Routers 和 Supervisors 就是这一类例子。之后我们对这两类进行详解。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;请求和响应&#34;&gt;请求和响应&lt;/h2&gt;
-
-&lt;p&gt;在本文中我们将集中在上述第一点：请求与响应 整个周期。一图胜千言，上图！&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_RequestReponse.png-q75&#34; alt=&#34;RequestReponse&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。 前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在</description>
     </item>
     
     <item>
@@ -329,47 +312,7 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
       <pubDate>Wed, 26 Aug 2015 13:26:24 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-26_13-26-24/</guid>
-      <description>&lt;p&gt;该系列译自 &lt;a href=&#34;http://rerun.me/&#34;&gt;Rerun.me&lt;/a&gt;, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。&lt;/p&gt;
-
-&lt;p&gt;前文 &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html&#34;&gt;Akka Notes 1 - Introducing Actors&lt;/a&gt; 和 &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html&#34;&gt;Akka Notes 2 - Actor Messaging&lt;/a&gt; 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 &lt;code&gt;TeacherActor&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;前文2 中 &lt;code&gt;TeacherActor&lt;/code&gt; 的长相如下：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;package me.yuanbin.akkanotes.actormsg
-
-import akka.actor.Actor
-import me.yuanbin.akkanotes.protocols.StudentProtocol._
-import me.yuanbin.akkanotes.protocols.TeacherProtocol._
-import scala.util.Random
-
-/**
- * Your Teacher Actor class.
- *
- * The class could use refinement by way of
- * using ActorLogging which uses the EventBus of the Actor framework
- * instead of the plain old System out
- *
- */
-
-class TeacherActor extends Actor {
-  val quotes = List(
-    &amp;quot;Moderation is for cowards&amp;quot;,
-    &amp;quot;Anything worth doing is worth overdoing&amp;quot;,
-    &amp;quot;The trouble is you think you have time&amp;quot;,
-    &amp;quot;You never gonna know if you never even try&amp;quot;)
-
-  def receive = {
-    case QuoteRequest =&amp;gt; {
-      //Get a random Quote from the list and construct a response
-      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
-      println()
-      println(quoteResponse)
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机</description>
     </item>
     
     <item>
@@ -378,15 +321,7 @@ class TeacherActor extends Actor {
       <pubDate>Wed, 26 Aug 2015 09:24:56 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-26_09-24-56/</guid>
-      <description>&lt;p&gt;该系列译自 &lt;a href=&#34;http://rerun.me/&#34;&gt;Rerun.me&lt;/a&gt;, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。&lt;/p&gt;
-
-&lt;p&gt;任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里『管理』是因为在刚开始时你感觉可能是简单的，并且在你开始看到性能提升后会觉得很有趣。然而，当你发现你并不能从子任务的错误中轻松恢复过来或者你发现那些僵尸 bug 很难重现，亦或是你的性能管理器告诉你你的线程在写共享状态前被阻塞了很久从而产生了资源浪费，以上这些都会让你头痛不已。&lt;/p&gt;
-
-&lt;p&gt;我在这里不会涉及 Java 的并发 API 及其应用集合如何使得并发变得更容易和更好，因为我相信如果你已经在读这篇文章了，你很可能需要对子任务更多的控制，亦或简单地因为你不喜欢使用锁和同步阻塞调用，并喜欢一种更高层次的抽象。&lt;/p&gt;
-
-&lt;p&gt;在这一系列的 Akka Notes 中，我们将会使用一些简单的 Akka 示例来探索 Akka 这个工具包中各种各样的特性。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。 任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里</description>
     </item>
     
     <item>
@@ -395,30 +330,7 @@ class TeacherActor extends Actor {
       <pubDate>Tue, 25 Aug 2015 13:55:02 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/</guid>
-      <description>&lt;p&gt;该系列译自 &lt;a href=&#34;http://rerun.me/&#34;&gt;Rerun.me&lt;/a&gt;, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。&lt;/p&gt;
-
-&lt;p&gt;今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html&#34;&gt;学生-老师&lt;/a&gt; 作为范例。&lt;/p&gt;
-
-&lt;h2 id=&#34;回顾-学生-老师-的例子&#34;&gt;回顾『学生-老师』的例子&lt;/h2&gt;
-
-&lt;p&gt;我们考虑由应用 &lt;code&gt;StudentSimulatorApp&lt;/code&gt; 单独给 &lt;code&gt;TeacherActor&lt;/code&gt; 发送消息的情形，这里你可以认为主程序就是 &lt;code&gt;StudentSimulatorApp&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_TeacherRequestFlowSimulatedApp.png-q75&#34; alt=&#34;TeacherRequestFlowSimulatedApp&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;从以上这张流程图我们可以得知：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;『学生』首先初始化一个叫做 &lt;code&gt;ActorSystem&lt;/code&gt; 的东西&lt;/li&gt;
-&lt;li&gt;然后它使用 &lt;code&gt;ActorSystem&lt;/code&gt; 来创建一个叫做 &lt;code&gt;ActorRef&lt;/code&gt; 的东西，并将 &lt;code&gt;QuoteRequest&lt;/code&gt; 消息发送给 &lt;code&gt;ActorRef&lt;/code&gt;(&lt;code&gt;TeacherActor&lt;/code&gt; 的代理)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ActorRef&lt;/code&gt; 将消息传送至&lt;code&gt;Message Dispatcher&lt;/code&gt; 进行分发&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Dispatcher&lt;/code&gt; 将消息压入目标 Actor 的 &lt;code&gt;MailBox&lt;/code&gt; 队列&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Dispatcher&lt;/code&gt; 将 &lt;code&gt;MailBox&lt;/code&gt; 送入到某个线程去执行(后续章节介绍更多细节)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;MailBox&lt;/code&gt; 抛出一个&lt;code&gt;message&lt;/code&gt; 并最终将其委托给真正的 &lt;code&gt;Actor&lt;/code&gt; - Teacher 的 receive 方法处理。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生</description>
     </item>
     
     <item>

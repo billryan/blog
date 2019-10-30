@@ -155,47 +155,7 @@
   
   <div class="post-content">
     <div class="post-summary">
-      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。</p>
-
-<p>前文 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html">Akka Notes 1 - Introducing Actors</a> 和 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 <code>TeacherActor</code>.</p>
-
-<p>前文2 中 <code>TeacherActor</code> 的长相如下：</p>
-
-<pre><code class="language-scala">package me.yuanbin.akkanotes.actormsg
-
-import akka.actor.Actor
-import me.yuanbin.akkanotes.protocols.StudentProtocol._
-import me.yuanbin.akkanotes.protocols.TeacherProtocol._
-import scala.util.Random
-
-/**
- * Your Teacher Actor class.
- *
- * The class could use refinement by way of
- * using ActorLogging which uses the EventBus of the Actor framework
- * instead of the plain old System out
- *
- */
-
-class TeacherActor extends Actor {
-  val quotes = List(
-    &quot;Moderation is for cowards&quot;,
-    &quot;Anything worth doing is worth overdoing&quot;,
-    &quot;The trouble is you think you have time&quot;,
-    &quot;You never gonna know if you never even try&quot;)
-
-  def receive = {
-    case QuoteRequest =&gt; {
-      //Get a random Quote from the list and construct a response
-      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
-      println()
-      println(quoteResponse)
-    }
-  }
-}
-</code></pre>
-
-<p></p>
+      该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机
     </div>
     <div class="read-more">
       <a href="/posts/2015-08/2015-08-26_13-26-24/" class="read-more-link">阅读更多</a>
@@ -221,15 +181,7 @@ class TeacherActor extends Actor {
   
   <div class="post-content">
     <div class="post-summary">
-      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。</p>
-
-<p>任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里『管理』是因为在刚开始时你感觉可能是简单的，并且在你开始看到性能提升后会觉得很有趣。然而，当你发现你并不能从子任务的错误中轻松恢复过来或者你发现那些僵尸 bug 很难重现，亦或是你的性能管理器告诉你你的线程在写共享状态前被阻塞了很久从而产生了资源浪费，以上这些都会让你头痛不已。</p>
-
-<p>我在这里不会涉及 Java 的并发 API 及其应用集合如何使得并发变得更容易和更好，因为我相信如果你已经在读这篇文章了，你很可能需要对子任务更多的控制，亦或简单地因为你不喜欢使用锁和同步阻塞调用，并喜欢一种更高层次的抽象。</p>
-
-<p>在这一系列的 Akka Notes 中，我们将会使用一些简单的 Akka 示例来探索 Akka 这个工具包中各种各样的特性。</p>
-
-<p></p>
+      该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。 任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里
     </div>
     <div class="read-more">
       <a href="/posts/2015-08/2015-08-26_09-24-56/" class="read-more-link">阅读更多</a>
@@ -255,30 +207,7 @@ class TeacherActor extends Actor {
   
   <div class="post-content">
     <div class="post-summary">
-      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。</p>
-
-<p>今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html">学生-老师</a> 作为范例。</p>
-
-<h2 id="回顾-学生-老师-的例子">回顾『学生-老师』的例子</h2>
-
-<p>我们考虑由应用 <code>StudentSimulatorApp</code> 单独给 <code>TeacherActor</code> 发送消息的情形，这里你可以认为主程序就是 <code>StudentSimulatorApp</code>.</p>
-
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_TeacherRequestFlowSimulatedApp.png-q75" alt="TeacherRequestFlowSimulatedApp" /></p>
-
-<p>从以上这张流程图我们可以得知：</p>
-
-<ol>
-<li>『学生』首先初始化一个叫做 <code>ActorSystem</code> 的东西</li>
-<li>然后它使用 <code>ActorSystem</code> 来创建一个叫做 <code>ActorRef</code> 的东西，并将 <code>QuoteRequest</code> 消息发送给 <code>ActorRef</code>(<code>TeacherActor</code> 的代理)</li>
-<li><code>ActorRef</code> 将消息传送至<code>Message Dispatcher</code> 进行分发</li>
-<li><code>Dispatcher</code> 将消息压入目标 Actor 的 <code>MailBox</code> 队列</li>
-<li><code>Dispatcher</code> 将 <code>MailBox</code> 送入到某个线程去执行(后续章节介绍更多细节)</li>
-<li><code>MailBox</code> 抛出一个<code>message</code> 并最终将其委托给真正的 <code>Actor</code> - Teacher 的 receive 方法处理。</li>
-</ol>
-
-<p>下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。</p>
-
-<p></p>
+      该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生
     </div>
     <div class="read-more">
       <a href="/posts/2015-08/2015-08-25_13-55-02/" class="read-more-link">阅读更多</a>

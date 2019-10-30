@@ -17,13 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
-今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
-回顾『学生-老师』的例子 我们考虑由应用 StudentSimulatorApp 单独给 TeacherActor 发送消息的情形，这里你可以认为主程序就是 StudentSimulatorApp.
-从以上这张流程图我们可以得知：
- 『学生』首先初始化一个叫做 ActorSystem 的东西 然后它使用 ActorSystem 来创建一个叫做 ActorRef 的东西，并将 QuoteRequest 消息发送给 ActorRef(TeacherActor 的代理) ActorRef 将消息传送至Message Dispatcher 进行分发 Dispatcher 将消息压入目标 Actor 的 MailBox 队列 Dispatcher 将 MailBox 送入到某个线程去执行(后续章节介绍更多细节) MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher 的 receive 方法处理。  下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。
-
-" />
+  <meta name="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -56,30 +50,7 @@
 
 
 <meta property="og:title" content="Akka Notes 2 - Actor Messaging" />
-<meta property="og:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
-
-今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
-
-回顾『学生-老师』的例子
-
-我们考虑由应用 StudentSimulatorApp 单独给 TeacherActor 发送消息的情形，这里你可以认为主程序就是 StudentSimulatorApp.
-
-
-
-从以上这张流程图我们可以得知：
-
-
-『学生』首先初始化一个叫做 ActorSystem 的东西
-然后它使用 ActorSystem 来创建一个叫做 ActorRef 的东西，并将 QuoteRequest 消息发送给 ActorRef(TeacherActor 的代理)
-ActorRef 将消息传送至Message Dispatcher 进行分发
-Dispatcher 将消息压入目标 Actor 的 MailBox 队列
-Dispatcher 将 MailBox 送入到某个线程去执行(后续章节介绍更多细节)
-MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher 的 receive 方法处理。
-
-
-下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。
-
-" />
+<meta property="og:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/" />
 
@@ -100,30 +71,7 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
 
 
 <meta itemprop="name" content="Akka Notes 2 - Actor Messaging">
-<meta itemprop="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
-
-今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
-
-回顾『学生-老师』的例子
-
-我们考虑由应用 StudentSimulatorApp 单独给 TeacherActor 发送消息的情形，这里你可以认为主程序就是 StudentSimulatorApp.
-
-
-
-从以上这张流程图我们可以得知：
-
-
-『学生』首先初始化一个叫做 ActorSystem 的东西
-然后它使用 ActorSystem 来创建一个叫做 ActorRef 的东西，并将 QuoteRequest 消息发送给 ActorRef(TeacherActor 的代理)
-ActorRef 将消息传送至Message Dispatcher 进行分发
-Dispatcher 将消息压入目标 Actor 的 MailBox 队列
-Dispatcher 将 MailBox 送入到某个线程去执行(后续章节介绍更多细节)
-MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher 的 receive 方法处理。
-
-
-下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。
-
-">
+<meta itemprop="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生">
 
 
 <meta itemprop="datePublished" content="2015-08-25T13:55:02&#43;08:00" />
@@ -135,30 +83,7 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
 <meta itemprop="keywords" content="Akka," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Akka Notes 2 - Actor Messaging"/>
-<meta name="twitter:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。
-
-今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生-老师 作为范例。
-
-回顾『学生-老师』的例子
-
-我们考虑由应用 StudentSimulatorApp 单独给 TeacherActor 发送消息的情形，这里你可以认为主程序就是 StudentSimulatorApp.
-
-
-
-从以上这张流程图我们可以得知：
-
-
-『学生』首先初始化一个叫做 ActorSystem 的东西
-然后它使用 ActorSystem 来创建一个叫做 ActorRef 的东西，并将 QuoteRequest 消息发送给 ActorRef(TeacherActor 的代理)
-ActorRef 将消息传送至Message Dispatcher 进行分发
-Dispatcher 将消息压入目标 Actor 的 MailBox 队列
-Dispatcher 将 MailBox 送入到某个线程去执行(后续章节介绍更多细节)
-MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher 的 receive 方法处理。
-
-
-下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。
-
-"/>
+<meta name="twitter:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -279,15 +204,17 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
 
     
     <div class="post-content">
-      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。</p>
+      
 
-<p>今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html">学生-老师</a> 作为范例。</p>
+<p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。</p>
+
+<p>今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 <a href="/posts/2015/08/2015-08-26_09-24-56/">学生-老师</a> 作为范例。</p>
 
 <h2 id="回顾-学生-老师-的例子">回顾『学生-老师』的例子</h2>
 
 <p>我们考虑由应用 <code>StudentSimulatorApp</code> 单独给 <code>TeacherActor</code> 发送消息的情形，这里你可以认为主程序就是 <code>StudentSimulatorApp</code>.</p>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_TeacherRequestFlowSimulatedApp.png-q75" alt="TeacherRequestFlowSimulatedApp" /></p>
+<p><img src="/pictures/misc/akka_TeacherRequestFlowSimulatedApp.png" alt="TeacherRequestFlowSimulatedApp" /></p>
 
 <p>从以上这张流程图我们可以得知：</p>
 
@@ -302,13 +229,11 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
 
 <p>下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。</p>
 
-<p></p>
-
 <h2 id="studentsimulatorapp-程序"><code>StudentSimulatorApp</code> 程序</h2>
 
 <p>我们使用<code>StudentSimulatorApp</code> 程序启动 JVM 并初始化 <code>ActorSystem</code>.</p>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_StudentSimulatorApp.png-q75" alt="StudentSimulatorApp" /></p>
+<p><img src="/pictures/misc/akka_StudentSimulatorApp.png" alt="StudentSimulatorApp" /></p>
 
 <p>从图中我们可以发现，<code>StudentSimulatorApp</code> 主要完成以下三个步骤：</p>
 
@@ -326,7 +251,7 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
 
 <p>从另一方面来讲，Actors 是层级化的并且对于所有的 Actors 来讲，ActorSystem 和 <code>java.lang.Object</code> 或 <code>scala.Any</code> 是类似的, 也就是说这是所有 Actors 的祖先。当你使用 ActorSystem 的 actorOf 方法创建 Actor 时，你创建的 Actor 总是在 ActorSystem 之下。</p>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_ActorSystemActorCreation-q75.png" alt="ActorSystemActorCreation" /></p>
+<p><img src="/pictures/misc/akka_ActorSystemActorCreation.png" alt="ActorSystemActorCreation" /></p>
 
 <p>初始化 ActorSystem 的语句看起来像是如下这个样子：</p>
 
@@ -346,7 +271,7 @@ MailBox 抛出一个message 并最终将其委托给真正的 Actor - Teacher �
 ActorRef 扮演的角色类似实际 Actors 的一个代理，客户端并不与 Actor 直接通信。这正是 Actor 模型的处理方式：避免直接访问 TeacherActor 中任意自定义或者私有方法及变量。
 再复述一遍，你只能将消息发送给 ActorRef, 它最终会到达实际的 Actor. 你永远都不能与 Actor 直接通信，如果你找到了某种方法做到了，其他人会恨你到死的。:-(</p>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_ActorRef.png-q75" alt="ActorRef" /></p>
+<p><img src="/pictures/misc/akka_ActorRef.png" alt="ActorRef" /></p>
 
 <h3 id="3-向代理发送-quoterequest">3. 向代理发送 QuoteRequest</h3>
 
@@ -426,7 +351,7 @@ object TeacherProtocol {
 
 <p>ActorRef 将 message handling 的功能委托给 Dispatcher, 深入分析发现，当我们创建 ActorSystem 和 ActorRef 时，相应的 Dispatcher 和 Mailbox 也同时也创建。下面让我们看看他们到底是什么。</p>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_MessageDispatcherMailbox-q75.png" alt="MessageDispatcherMailbox" /></p>
+<p><img src="/pictures/misc/akka_MessageDispatcherMailbox.png" alt="MessageDispatcherMailbox" /></p>
 
 <h3 id="mailbox">MailBox</h3>
 
@@ -459,7 +384,7 @@ object TeacherProtocol {
 
 <h2 id="teacher-actor">Teacher Actor</h2>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_TeacherActor.png-q75" alt="TeacherActor" /></p>
+<p><img src="/pictures/misc/akka_TeacherActor.png" alt="TeacherActor" /></p>
 
 <p>当 <code>MailBox</code> 启动了 run 方法时，将会从 message queue 中移除 message 并将其传输给 Actor 进行处理。当你把消息告诉给了 ActorRef 时，最终被调用的方法是目标 Actor 的 receive 方法。
 TeacherActor 是一个比较原始的类，它有一组 quotes 并且由 receive 方法 handle 这些消息。</p>
@@ -522,6 +447,7 @@ sbt run
 </code></pre>
 
 <p>稍等片刻即可看到 TeacherActor 的输出。</p>
+
     </div>
 
     

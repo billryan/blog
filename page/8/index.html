@@ -259,24 +259,7 @@
   
   <div class="post-content">
     <div class="post-summary">
-      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。</p>
-
-<p>前文 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 中已经对 Actor 的消息机制做了简介，在那我们可以看到一条 fire-n-forget 消息是如何发送的。(即我们向 Actor 发送一条消息但是并不期望得到它的回应)</p>
-
-<p>从技术角度考虑，我们发送消息给 Actor 总是期望有副作用发生的，从设计上便是如此。目标 Actor 除了不作回应之外还可以对消息做如下事情：</p>
-
-<ol>
-<li>返回一条回复给发送者(在我们的例子中，TeacherActor 回应一条名言给 StudentActor)</li>
-<li>给其他有可能成为目标受众的 Actor 转发一条回应，这个 Actor 反过来会回应/转发而产生副作用。Routers 和 Supervisors 就是这一类例子。之后我们对这两类进行详解。</li>
-</ol>
-
-<h2 id="请求和响应">请求和响应</h2>
-
-<p>在本文中我们将集中在上述第一点：请求与响应 整个周期。一图胜千言，上图！</p>
-
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/akka_RequestReponse.png-q75" alt="RequestReponse" /></p>
-
-<p></p>
+      该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。 前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在
     </div>
     <div class="read-more">
       <a href="/posts/2015-08/2015-08-27_09-47-30/" class="read-more-link">阅读更多</a>

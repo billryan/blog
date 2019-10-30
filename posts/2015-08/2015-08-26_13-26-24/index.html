@@ -17,11 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
-前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 TeacherActor.
-前文2 中 TeacherActor 的长相如下：
-package me.yuanbin.akkanotes.actormsg import akka.actor.Actor import me.yuanbin.akkanotes.protocols.StudentProtocol._ import me.yuanbin.akkanotes.protocols.TeacherProtocol._ import scala.util.Random /** * Your Teacher Actor class. * * The class could use refinement by way of * using ActorLogging which uses the EventBus of the Actor framework * instead of the plain old System out * */ class TeacherActor extends Actor { val quotes = List( &amp;quot;Moderation is for cowards&amp;quot;, &amp;quot;Anything worth doing is worth overdoing&amp;quot;, &amp;quot;The trouble is you think you have time&amp;quot;, &amp;quot;You never gonna know if you never even try&amp;quot;) def receive = { case QuoteRequest =&amp;gt; { //Get a random Quote from the list and construct a response val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size))) println() println(quoteResponse) } } }  
-" />
+  <meta name="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -54,47 +50,7 @@ package me.yuanbin.akkanotes.actormsg import akka.actor.Actor import me.yuanbin.
 
 
 <meta property="og:title" content="Akka Notes 3 - Logging and Testing Actors" />
-<meta property="og:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
-
-前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 TeacherActor.
-
-前文2 中 TeacherActor 的长相如下：
-
-package me.yuanbin.akkanotes.actormsg
-
-import akka.actor.Actor
-import me.yuanbin.akkanotes.protocols.StudentProtocol._
-import me.yuanbin.akkanotes.protocols.TeacherProtocol._
-import scala.util.Random
-
-/**
- * Your Teacher Actor class.
- *
- * The class could use refinement by way of
- * using ActorLogging which uses the EventBus of the Actor framework
- * instead of the plain old System out
- *
- */
-
-class TeacherActor extends Actor {
-  val quotes = List(
-    &quot;Moderation is for cowards&quot;,
-    &quot;Anything worth doing is worth overdoing&quot;,
-    &quot;The trouble is you think you have time&quot;,
-    &quot;You never gonna know if you never even try&quot;)
-
-  def receive = {
-    case QuoteRequest =&gt; {
-      //Get a random Quote from the list and construct a response
-      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
-      println()
-      println(quoteResponse)
-    }
-  }
-}
-
-
-" />
+<meta property="og:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2015-08/2015-08-26_13-26-24/" />
 
@@ -115,47 +71,7 @@ class TeacherActor extends Actor {
 
 
 <meta itemprop="name" content="Akka Notes 3 - Logging and Testing Actors">
-<meta itemprop="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
-
-前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 TeacherActor.
-
-前文2 中 TeacherActor 的长相如下：
-
-package me.yuanbin.akkanotes.actormsg
-
-import akka.actor.Actor
-import me.yuanbin.akkanotes.protocols.StudentProtocol._
-import me.yuanbin.akkanotes.protocols.TeacherProtocol._
-import scala.util.Random
-
-/**
- * Your Teacher Actor class.
- *
- * The class could use refinement by way of
- * using ActorLogging which uses the EventBus of the Actor framework
- * instead of the plain old System out
- *
- */
-
-class TeacherActor extends Actor {
-  val quotes = List(
-    &quot;Moderation is for cowards&quot;,
-    &quot;Anything worth doing is worth overdoing&quot;,
-    &quot;The trouble is you think you have time&quot;,
-    &quot;You never gonna know if you never even try&quot;)
-
-  def receive = {
-    case QuoteRequest =&gt; {
-      //Get a random Quote from the list and construct a response
-      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
-      println()
-      println(quoteResponse)
-    }
-  }
-}
-
-
-">
+<meta itemprop="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机">
 
 
 <meta itemprop="datePublished" content="2015-08-26T13:26:24&#43;08:00" />
@@ -167,47 +83,7 @@ class TeacherActor extends Actor {
 <meta itemprop="keywords" content="Akka," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Akka Notes 3 - Logging and Testing Actors"/>
-<meta name="twitter:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。
-
-前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 TeacherActor.
-
-前文2 中 TeacherActor 的长相如下：
-
-package me.yuanbin.akkanotes.actormsg
-
-import akka.actor.Actor
-import me.yuanbin.akkanotes.protocols.StudentProtocol._
-import me.yuanbin.akkanotes.protocols.TeacherProtocol._
-import scala.util.Random
-
-/**
- * Your Teacher Actor class.
- *
- * The class could use refinement by way of
- * using ActorLogging which uses the EventBus of the Actor framework
- * instead of the plain old System out
- *
- */
-
-class TeacherActor extends Actor {
-  val quotes = List(
-    &quot;Moderation is for cowards&quot;,
-    &quot;Anything worth doing is worth overdoing&quot;,
-    &quot;The trouble is you think you have time&quot;,
-    &quot;You never gonna know if you never even try&quot;)
-
-  def receive = {
-    case QuoteRequest =&gt; {
-      //Get a random Quote from the list and construct a response
-      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
-      println()
-      println(quoteResponse)
-    }
-  }
-}
-
-
-"/>
+<meta name="twitter:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -328,9 +204,11 @@ class TeacherActor extends Actor {
 
     
     <div class="post-content">
-      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。</p>
+      
 
-<p>前文 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Introducing-Actors.html">Akka Notes 1 - Introducing Actors</a> 和 <a href="http://blog.yuanbin.me/posts/2015/08/Akka-Notes-Actor-Messaging.html">Akka Notes 2 - Actor Messaging</a> 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 <code>TeacherActor</code>.</p>
+<p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。</p>
+
+<p>前文 <a href="/posts/2015/08/2015-08-26_09-24-56/">Akka Notes 1 - Introducing Actors</a> 和 <a href="/posts/2015/08/2015-08-25_13-55-02/">Akka Notes 2 - Actor Messaging</a> 对 Akka Actor 设计模式和消息机制做了简单的介绍。今天我们来探讨 Actor 的日志和测试功能，而今天测试的对象则主要是 <code>TeacherActor</code>.</p>
 
 <p>前文2 中 <code>TeacherActor</code> 的长相如下：</p>
 
@@ -367,8 +245,6 @@ class TeacherActor extends Actor {
   }
 }
 </code></pre>
-
-<p></p>
 
 <h2 id="使用-slf4j-作为-akka-的日志组件">使用 <code>SLF4J</code> 作为 Akka 的日志组件</h2>
 
@@ -468,7 +344,7 @@ class TeacherActor extends Actor {
 
 <p>首先将我们的<code>StudentSimulatorApp</code> 映射为一个 Testcase.</p>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/Mapping.001.png-q75" alt="Mapping.001" /></p>
+<p><img src="/pictures/images/misc/akka_Mapping.001.png" alt="Mapping.001" /></p>
 
 <p>我们先来看看上面的声明部分:</p>
 
@@ -628,6 +504,7 @@ sbt run
 <pre><code>cd akka_notes/akka_testing
 sbt test
 </code></pre>
+
     </div>
 
     
