@@ -17,10 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="在 Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。
-这层模型中主要负责根据用户设定的包产生间隔分布函数向 MAC 层传送不同优先级的包。WBAN 中的业务共有8种不同用户优先级，不同用户优先级对应的业务类型如下图所示：
-
-" />
+  <meta name="description" content="在 Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。 这层模型中主要负责根据用户设定的包产" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -53,13 +50,7 @@
 
 
 <meta property="og:title" content="WBAN Traffic Source Model - WBAN 应用层业务模型" />
-<meta property="og:description" content="在 Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。
-
-这层模型中主要负责根据用户设定的包产生间隔分布函数向 MAC 层传送不同优先级的包。WBAN 中的业务共有8种不同用户优先级，不同用户优先级对应的业务类型如下图所示：
-
-
-
-" />
+<meta property="og:description" content="在 Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。 这层模型中主要负责根据用户设定的包产" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2015-11/2015-11-18_13-52-51/" />
 
@@ -80,13 +71,7 @@
 
 
 <meta itemprop="name" content="WBAN Traffic Source Model - WBAN 应用层业务模型">
-<meta itemprop="description" content="在 Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。
-
-这层模型中主要负责根据用户设定的包产生间隔分布函数向 MAC 层传送不同优先级的包。WBAN 中的业务共有8种不同用户优先级，不同用户优先级对应的业务类型如下图所示：
-
-
-
-">
+<meta itemprop="description" content="在 Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。 这层模型中主要负责根据用户设定的包产">
 
 
 <meta itemprop="datePublished" content="2015-11-18T13:52:51&#43;08:00" />
@@ -98,13 +83,7 @@
 <meta itemprop="keywords" content="WBAN,Network," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="WBAN Traffic Source Model - WBAN 应用层业务模型"/>
-<meta name="twitter:description" content="在 Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。
-
-这层模型中主要负责根据用户设定的包产生间隔分布函数向 MAC 层传送不同优先级的包。WBAN 中的业务共有8种不同用户优先级，不同用户优先级对应的业务类型如下图所示：
-
-
-
-"/>
+<meta name="twitter:description" content="在 Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。 这层模型中主要负责根据用户设定的包产"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -201,9 +180,7 @@
 
 <p>这层模型中主要负责根据用户设定的包产生间隔分布函数向 MAC 层传送不同优先级的包。WBAN 中的业务共有8种不同用户优先级，不同用户优先级对应的业务类型如下图所示：</p>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_traffic_up8.png" alt="WBAN-User Priority Mapping" /></p>
-
-<p></p>
+<p><img src="/pictures/misc/wban_traffic_up8.png" alt="WBAN-User Priority Mapping" /></p>
 
 <p>作为应用层的数据包业务源产生模块，该模块支持设置8种不同用户优先级业务的到达时间间隔(可以选择均匀分布/指数分布等分布函数)，数据包大小，起始时间及结束时间。</p>
 
@@ -217,11 +194,12 @@
 <li>数据包产生的结束时间（Stop Time）——通常设置为 Infinity 即可</li>
 </ol>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_traffic_attr_up.png" alt="Traffic Attributes Setting" /></p>
+<p><img src="/pictures/misc/wban_traffic_attr_up.png" alt="Traffic Attributes Setting" /></p>
 
 <p>需要注意的是若需要模拟泊松流，那么数据包产生的时间间隔则服从指数分布。</p>
 
 <p>这一模型的源码实现见 <a href="https://github.com/billryan/WBAN-OPNET-Simulation/tree/master/src">WBAN-OPNET-Simulation/src</a>, 以<code>wban_pkt_src_up_pr</code> 开头的即是。之前的代码太冗长了，优雅一点的实现应该使用结构体数组表示不同业务特性参数，包产生函数中传入不同结构体即可。目前已经重构了这一部分，去掉了多种不同优先级业务的支持。</p>
+
     </div>
 
     

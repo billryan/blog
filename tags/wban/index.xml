@@ -17,13 +17,7 @@
       <pubDate>Wed, 18 Nov 2015 13:52:51 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-18_13-52-51/</guid>
-      <description>&lt;p&gt;在 &lt;a href=&#34;http://blog.yuanbin.me/posts/2014/06/architecture-of-ieee-802156-simulation-based-on-opnet145.html&#34;&gt;Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5&lt;/a&gt; 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。&lt;/p&gt;
-
-&lt;p&gt;这层模型中主要负责根据用户设定的包产生间隔分布函数向 MAC 层传送不同优先级的包。WBAN 中的业务共有8种不同用户优先级，不同用户优先级对应的业务类型如下图所示：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_traffic_up8.png&#34; alt=&#34;WBAN-User Priority Mapping&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>在 Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。 这层模型中主要负责根据用户设定的包产</description>
     </item>
     
     <item>
@@ -32,21 +26,8 @@
       <pubDate>Thu, 05 Jun 2014 15:33:04 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</guid>
-      <description>&lt;p&gt;Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; &lt;a href=&#34;https://github.com/billryan/WBAN-OPNET-Simulation&#34;&gt;billryan/WBAN-OPNET-Simulation&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, &lt;a href=&#34;https://github.com/boulis/Castalia&#34;&gt;boulis/Castalia&lt;/a&gt; would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for the &lt;a href=&#34;http://www.open-zb.net/wpan_simulator.php&#34;&gt;open-ZB.net - IEEE 802.15.4/ZigBee OPNET Simulation Model&lt;/a&gt;, I refered a lot of code from this powerful Simulation Model.&lt;/p&gt;
-
-&lt;p&gt;Simulation Platforms:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;OS: Windows XP SP3&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Simulator: OPNET 14.5 with Educational version&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;architecture-of-this-simulation-node-model-in-opent-14-5&#34;&gt;Architecture of this Simulation - Node Model in OPENT 14.5&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/wban_opnet_node_model.png&#34; alt=&#34;wban Node Model&#34; /&gt;
-&lt;/p&gt;</description>
+      <description>Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; billryan/WBAN-OPNET-Simulation
+For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, boulis/Castalia would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for the open-ZB.</description>
     </item>
     
   </channel>
