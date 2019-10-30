@@ -17,15 +17,7 @@
       <pubDate>Sun, 10 Jul 2016 16:38:19 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_16-38-19/</guid>
-      <description>&lt;p&gt;由于大家都知道的原因，大多数 ISP 的国外带宽往往不太理想，据说这个可以用 kcp 突破，我暂时没有国外带宽的困扰，有兴趣的可以去研究下。这篇博文提供的方法是使用 Squid 进行分流，国内直连，国外走父级代理，配合 polipo 和 ChinaDNS 效果拔群。&lt;/p&gt;
-
-&lt;p&gt;由于 Squid 的父级代理暂不支持 socks5, 故还需要配合 polipo 将 socks5 转换为 HTTP proxy 使用。在 Arch 下通过 &lt;code&gt;packer -S squid polipo&lt;/code&gt; 即可安装，接下来结合我的配置文件进行分析。&lt;/p&gt;
-
-&lt;p&gt;由于 polipo 和 Squid 都具有缓存功能，考虑到 Squid 在用户鉴权上更为强大，作为 HTTP 前端接入比较合适，因此需要禁用 polipo 的缓存功能。&lt;/p&gt;
-
-&lt;h2 id=&#34;socks5-to-http-polipo&#34;&gt;socks5 to HTTP - polipo&lt;/h2&gt;
-
-&lt;p&gt;polipo 的配置(&lt;code&gt;/etc/polipo/config&lt;/code&gt;)如下：&lt;/p&gt;</description>
+      <description>直接使用 v2xxx 的分流规则即可，比 squid 这种更简单 由于大家都知道的原因，大多数 ISP 的国外带宽往往不太理想，据说这个可以用 kcp 突破，我暂时没有国外带宽的困扰</description>
     </item>
     
     <item>

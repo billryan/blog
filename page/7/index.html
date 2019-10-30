@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2016-07-10T10:19:55&#43;08:00"/>
+<meta property="og:updated_time" content="2016-07-09T15:08:41&#43;08:00"/>
 
 
 
@@ -137,33 +137,6 @@
   <section id="posts" class="posts">
     
     
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/posts/2016-07/2016-07-10_10-19-55/">Transparent routing for home server in China</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-07-10 </span>
-      <div class="post-category">
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
-          
-        </div>
-      <span class="more-meta"> 约 277 字 </span>
-      <span class="more-meta"> 预计阅读 2 分钟 </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Since this post is sensitive in China, I will roll it with English instead.
-ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with ChinaDNS and can resolv the external websites correctly. You can see a file including China IP in /etc/chnroute.txt. This file is very important for ss-rules. In Access Points for home server, we have built a AP and can assign the clients with DHCP and Unbound DNS Server backend.
-    </div>
-    <div class="read-more">
-      <a href="/posts/2016-07/2016-07-10_10-19-55/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
     
       <article class="post">
   <header class="post-header">
@@ -258,34 +231,7 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
   
   <div class="post-content">
     <div class="post-summary">
-      <p>之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是不错的，也有 sata 接口。X86 架构的服务器在软件兼容性和性能上是要高出普通 ARM 板子不少的，虽然 Intel NUC 之类的硬件性能还是不错，但是价格和功耗还是偏高。然而前几天在家准备使用 <a href="https://nghttp2.org/">Nghttp2</a> 对接交大服务器时却遇到不小的问题，软件仓库及自己编译出的二进制在运行时总会遇到段错误，于是乎便开始寻觅价格相对低廉的低功耗 X86 家用服务器。</p>
-
-<h2 id="x32-n2808-硬件概述">X32-N2808 硬件概述</h2>
-
-<p>依稀记得在 SHLUG 邮件列表中有人提到过新创云的低功耗板子，前一阵子趁京东 618 大促搜了下新创云，发现 X32-N2808 这款移动端半价促销(不到400即可拿下)，无内存无硬盘，虽然也写明无 WiFi, 但实际上卖家发货时还是带了一块 PCI-E 无线网卡及蓝牙芯片，无线网卡是 Atheros 家的，实测对 Linux 支持很好，用于自建热点很方便。简单问了下客服，内存条是可以使用笔记本内存条的，但是得使用低压版 1.35v 的，也就是说没有必要买新创云自家昂贵的内存条以及 SSD 等，由于不确定自己的笔记本内存条是否可用，低压版 1.35v 的内存条没有一起下单。</p>
-
-<p>拿到板子后立马把后盖拆了下来，内部做工还算不错，接口及组件列表如下：</p>
-
-<ul>
-<li>CPU 为赛扬双核 N2808</li>
-<li>内存条仅有一个插槽，LPDDR3，也就是说这里和客服说的有出入，以 1.5V(LPDDR3) 为准</li>
-<li>一个 PCI-E 的无线网卡，卖家送的 Atheros 网卡</li>
-<li>一个 msata，可以扩展 SSD 用，SSD 暂时太贵了，没买</li>
-<li>一个 SATA II，我买了一块 1 T 西数笔记本硬盘，板子预留了空间，拧上螺丝即用</li>
-<li>两个 HDMI 高清接口</li>
-<li>两个 USB 3.0</li>
-<li>四个 USB 2.0</li>
-<li>一个千兆以太网卡，作为网络路由器和媒体服务器非常不错</li>
-<li>音频接口</li>
-</ul>
-
-<p>所以总的来讲接口还是非常丰富的，和一台普通的台式机没差多少。整机功耗实测 6 W 左右，名副其实的低功耗 X86 服务器。
-自己加内存条和硬盘后的谍照如下。</p>
-
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-1.jpeg-q75" alt="板子内部接口" />
-<img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/x32-n2808-2.jpeg-q75" alt="2.5英寸笔记本硬盘" /></p>
-
-<p></p>
+      之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是
     </div>
     <div class="read-more">
       <a href="/posts/2016-07/2016-07-03_22-10-13/" class="read-more-link">阅读更多</a>
@@ -315,6 +261,33 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
     </div>
     <div class="read-more">
       <a href="/posts/2016-01/2016-01-15_15-10-28/" class="read-more-link">阅读更多</a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/posts/2015-11/2015-11-26_20-10-26/">在 Linux/OS X 下优雅地写论文(TeX)</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2015-11-26 </span>
+      <div class="post-category">
+          
+            <a href="/categories/%E5%AD%A6%E6%9C%AF/"> 学术 </a>
+          
+        </div>
+      <span class="more-meta"> 约 1227 字 </span>
+      <span class="more-meta"> 预计阅读 3 分钟 </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>本科毕业设计就是用 LaTeX 写的，那时还只是第一次接触 TeX 这么强大的排版引擎。几年过去了自己对 LaTeX 也算是轻车熟路，最近遇到比较集中的问题自然是 <a href="https://github.com/weijianwen/SJTUThesis">硕士论文模板</a> 啦。GitHub 上作者对一些细节并没有做详细的描述，这对于 TeX 新手来说造成了不少的困扰，比如这种东西怎么这么难用云云&hellip;
+</p>
+    </div>
+    <div class="read-more">
+      <a href="/posts/2015-11/2015-11-26_20-10-26/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
