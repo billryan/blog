@@ -26,14 +26,7 @@
       <pubDate>Tue, 04 Aug 2015 17:29:01 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-04_17-29-01/</guid>
-      <description>&lt;p&gt;使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。
-全文的基础如下：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/joint-compilation-of-scala-and-java.png-q75&#34; alt=&#34;Java 和 Scala 混合编译流程&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;图片来源：&lt;a href=&#34;http://www.slideshare.net/javatwo2011/java-app-scala&#34;&gt;如何在 Java App 中導入 Scala&lt;/a&gt;，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 &lt;em&gt;Scala Cookbook&lt;/em&gt;, 先行谢过。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。 全文的基础如下： 图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了</description>
     </item>
     
   </channel>

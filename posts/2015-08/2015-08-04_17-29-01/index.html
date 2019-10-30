@@ -17,10 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。 全文的基础如下：
-图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 Scala Cookbook, 先行谢过。
-
-" />
+  <meta name="description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。 全文的基础如下： 图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -53,14 +50,7 @@
 
 
 <meta property="og:title" content="Scala 和 Java 的混合编译指南" />
-<meta property="og:description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。
-全文的基础如下：
-
-
-
-图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 Scala Cookbook, 先行谢过。
-
-" />
+<meta property="og:description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。 全文的基础如下： 图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2015-08/2015-08-04_17-29-01/" />
 
@@ -81,33 +71,19 @@
 
 
 <meta itemprop="name" content="Scala 和 Java 的混合编译指南">
-<meta itemprop="description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。
-全文的基础如下：
-
-
-
-图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 Scala Cookbook, 先行谢过。
-
-">
+<meta itemprop="description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。 全文的基础如下： 图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了">
 
 
 <meta itemprop="datePublished" content="2015-08-04T17:29:01&#43;08:00" />
 <meta itemprop="dateModified" content="2015-08-04T17:29:01&#43;08:00" />
-<meta itemprop="wordCount" content="1738">
+<meta itemprop="wordCount" content="1733">
 
 
 
 <meta itemprop="keywords" content="Scala,Java," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Scala 和 Java 的混合编译指南"/>
-<meta name="twitter:description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。
-全文的基础如下：
-
-
-
-图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 Scala Cookbook, 先行谢过。
-
-"/>
+<meta name="twitter:description" content="使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。 全文的基础如下： 图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -179,7 +155,7 @@
               <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 1738 字 </span>
+        <span class="more-meta"> 约 1733 字 </span>
         <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -217,14 +193,14 @@
 
     
     <div class="post-content">
-      <p>使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。
+      
+
+<p>使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。
 全文的基础如下：</p>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/joint-compilation-of-scala-and-java.png-q75" alt="Java 和 Scala 混合编译流程" /></p>
+<p><img src="/pictures/images/misc/joint-compilation-of-scala-and-java.png" alt="Java 和 Scala 混合编译流程" /></p>
 
 <p>图片来源：<a href="http://www.slideshare.net/javatwo2011/java-app-scala">如何在 Java App 中導入 Scala</a>，另外本文也大量参考了 sbt 官方文档和 Alvin Alexander 的 <em>Scala Cookbook</em>, 先行谢过。</p>
-
-<p></p>
 
 <h2 id="在-scala-中使用-java-sbt">在 Scala 中使用 Java - sbt</h2>
 
@@ -363,7 +339,7 @@ object Hello {
 
 <h3 id="实战3-使用maven-repository-library">实战3 - 使用Maven Repository Library</h3>
 
-<p>本小节参考自 <a href="http://alvinalexander.com/scala/simple-scala-akka-actor-examples-hello-world-actors">Simple Scala Akka Actor examples (Hello, world examples) | alvinalexander.com</a></p>
+<p>本小节参考自 <a href="http://alvinalexander.com/scala/simple-scala-akka-actor-examples-hello-world-actors">Simple Scala Akka Actor examples</a></p>
 
 <p>在 sbt 中使用 Maven 仓库非常简单，将 Maven 的groupId, artifactId, 和 version 域更改为 sbt libraryDependencies 字符串即可。以 Akka Actor 为例，相应的 Maven 依赖写法如下：</p>
 
@@ -427,6 +403,7 @@ object Main extends App {
 <li><a href="http://docs.scala-lang.org/tutorials/scala-with-maven.html">Scala with Maven - Scala Documentation</a></li>
 <li><a href="https://github.com/davidB/scala-maven-plugin">davidB/scala-maven-plugin</a></li>
 </ul>
+
     </div>
 
     
