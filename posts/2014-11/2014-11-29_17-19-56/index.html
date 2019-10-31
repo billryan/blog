@@ -17,10 +17,7 @@
 
 
 <meta name="author" content="billryan" />
-  <meta name="description" content="之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。
- 在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。
- 前不久某国开始清理未备案的域名使用教育网IP。
- 某高科技部门的大招之一：专业投毒污染三十年。  好了，针对以上问题我们使用两招就好了——ChinaDNS &#43; ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。 " />
+  <meta name="description" content="之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。 在学校下载App S" />
 
   <meta name="keywords" content="blog, billryan, hugo" />
 
@@ -53,16 +50,7 @@
 
 
 <meta property="og:title" content="家用服务器之自建 DNS 服务器" />
-<meta property="og:description" content="之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。
-
-
-在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。
-前不久某国开始清理未备案的域名使用教育网IP。
-某高科技部门的大招之一：专业投毒污染三十年。
-
-
-好了，针对以上问题我们使用两招就好了——ChinaDNS &#43; ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
-" />
+<meta property="og:description" content="之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。 在学校下载App S" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/" />
 
@@ -83,16 +71,7 @@
 
 
 <meta itemprop="name" content="家用服务器之自建 DNS 服务器">
-<meta itemprop="description" content="之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。
-
-
-在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。
-前不久某国开始清理未备案的域名使用教育网IP。
-某高科技部门的大招之一：专业投毒污染三十年。
-
-
-好了，针对以上问题我们使用两招就好了——ChinaDNS &#43; ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
-">
+<meta itemprop="description" content="之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。 在学校下载App S">
 
 
 <meta itemprop="datePublished" content="2014-11-29T17:19:56&#43;08:00" />
@@ -104,16 +83,7 @@
 <meta itemprop="keywords" content="Network," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="家用服务器之自建 DNS 服务器"/>
-<meta name="twitter:description" content="之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。
-
-
-在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。
-前不久某国开始清理未备案的域名使用教育网IP。
-某高科技部门的大招之一：专业投毒污染三十年。
-
-
-好了，针对以上问题我们使用两招就好了——ChinaDNS &#43; ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
-"/>
+<meta name="twitter:description" content="之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。 在学校下载App S"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -220,7 +190,9 @@
 
     
     <div class="post-content">
-      <p>之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。</p>
+      
+
+<p>之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。</p>
 
 <ol>
 <li>在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。<br /></li>
@@ -228,8 +200,7 @@
 <li>某高科技部门的大招之一：专业投毒污染三十年。</li>
 </ol>
 
-<p>好了，针对以上问题我们使用两招就好了——ChinaDNS + ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
-</p>
+<p>好了，针对以上问题我们使用两招就好了——ChinaDNS + ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。</p>
 
 <h2 id="chinadns-正确-解析国外域名">ChinaDNS - <strong>正确</strong>解析国外域名</h2>
 
@@ -303,6 +274,7 @@ nameserver 127.0.0.1
 <li><a href="https://www.unbound.net/documentation/unbound.conf.html">Unbound documentation</a><br /></li>
 <li><a href="https://calomel.org/unbound_dns.html">Unbound DNS Server Tutorial @ Calomel.org</a></li>
 </ol>
+
     </div>
 
     

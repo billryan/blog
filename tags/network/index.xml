@@ -114,16 +114,7 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
       <pubDate>Sat, 29 Nov 2014 17:19:56 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/</guid>
-      <description>&lt;p&gt;之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;在学校下载App Store上的Apps实在是太慢！了！偶尔挂VPN加速还行。&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;前不久某国开始清理未备案的域名使用教育网IP。&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;某高科技部门的大招之一：专业投毒污染三十年。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;好了，针对以上问题我们使用两招就好了——ChinaDNS + ss-redir, 这篇提供 DNS 层级的解决方案，科学上网方案另写一篇。
-&lt;/p&gt;</description>
+      <description>之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。 在学校下载App S</description>
     </item>
     
     <item>
@@ -141,10 +132,7 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
       <pubDate>Fri, 07 Nov 2014 17:21:14 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</guid>
-      <description>&lt;p&gt;上文 &lt;a href=&#34;http://blog.billryan.me/posts/2014/11/Cubieboard2-Archlinux-install.html&#34;&gt;Cubieboard2之Archlinux安装指南&lt;/a&gt; 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。&lt;/p&gt;
-
-&lt;p&gt;P.S. 相关文章可见&lt;a href=&#34;http://blog.billryan.me/tags/cubieboard/&#34;&gt;Tag: cubieboard&lt;/a&gt;
-&lt;/p&gt;</description>
+      <description>上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双</description>
     </item>
     
     <item>

@@ -190,7 +190,7 @@
       
 
 <p>作为一个正常的大学，尤其是工科高校，应该都有自己的BT/PT站(资源分享站点)，教育网内最出名的就是<a href="http://bt.neu6.edu.cn/forum.php">六维空间</a>了，资源超多，做种的人也蛮多的，下载起来速度自然快。
-如果你已按照 <a href="../../2014/11/archlinux-network-config.html">Cubieboard2/树莓派之Archlinux网络配置</a> 配置好了网络，在我交寝室网络环境下你的 Cubieboard/树莓派应该有一个静态 IPv6 地址。有了 IPv6 自然就可以无障碍使用六维了 :)  如果用不了六维也可以试试其他BT站点。</p>
+如果你已按照 <a href="/posts/2014-11/2014-11-08_19-26-58/">Cubieboard2/树莓派之Archlinux网络配置</a> 配置好了网络，在我交寝室网络环境下你的 Cubieboard/树莓派应该有一个静态 IPv6 地址。有了 IPv6 自然就可以无障碍使用六维了 :)  如果用不了六维也可以试试其他BT站点。</p>
 
 <p>BT/PT客户端首推 transmission-daemon, 小巧方便，一般也在各大 BT/PT 站点 BT 客户端的白名单之中。Arch 下通过<code>packer -S transmission-cli</code>安装。
 方便起见，添加你所使用的常用用户<code>username</code>到<code>transmission</code>用户组，</p>
@@ -242,7 +242,7 @@ sudo chown -R transmission:transmission transmission
 
 <p>我这里图方便所以选择使用IP白名单机制，同时禁用账户认证。其它注意事项可参考 <a href="https://wiki.archlinux.org/index.php/Transmission">Transmission - ArchWiki</a> transmission 配置好之后就可以在你的浏览器里打开<code>IP:Port</code>远程上传种子文件进行下载了。真相如下：</p>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/transmission-daemon.jpg-q75" alt="用transmission-daemon实现远程BT下载" /></p>
+<p><img src="/pictures/misc/transmission-daemon.jpg" alt="用transmission-daemon实现远程BT下载" /></p>
 
 <p>上传种子文件后就可以关掉当前网页了，让Cubieboard/树莓派为你服务去。下载的文件存放在外挂的硬盘而不是本地，那么我们可以通过 <a href="../../2014/11/archlinux-minidlna.html">家用服务器之 UPnP/DLNA 媒体服务</a> 在本地观看。</p>
 
@@ -250,7 +250,7 @@ sudo chown -R transmission:transmission transmission
 
 <p>如果要长期挂BT/PT，机械硬盘这货的马达和磁头运动的声音在寝室其实还是有点吵的，尤其是一些相对较老的硬盘 :( 这个问题也困扰了我很久，昨日偶然间看到 <a href="http://scigame.ntcu.edu.tw/Site1/Game_voice6.html">隔音盒</a>，遂用了俩一大一小的纸盒，配合双面泡棉胶带和一些废纸做出了一个还能看的「隔音盒」，消音效果拔群！！无图无真相！</p>
 
-<p><img src="http://7xojrx.com1.z0.glb.clouddn.com/images/misc/geyinhe.jpg-q75" alt="隔音盒" /></p>
+<p><img src="/pictures/misc/geyinhe.jpg" alt="隔音盒" /></p>
 
 <p>最上面带雷达的玩意儿就是之前说过的雷达USB无线网卡咯，硬盘盒放在小盒子里边，硬盘盒的底部用四层双面泡棉胶带架空，起到减震的效果，小盒子底部采用三角形镂空，上面也用刀划出一个三角形以形成对流。「一号店」那个大盒子做同样的镂空处理，底部铺一些揉成一团的废纸，将小盒子放到「一号店」大盒子中，上下各留一定高度的空白，如果周边有空隙就用揉过的废纸塞一下，封好大小盒子，对外仅留出对流用的口子和插线的地方，如图所示。妈妈再也不用担心硬盘的噪音了 ≖‿≖✧</p>
 
