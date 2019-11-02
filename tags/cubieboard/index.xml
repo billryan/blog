@@ -56,5 +56,14 @@
       <description>上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双</description>
     </item>
     
+    <item>
+      <title>Cubieboard2之Archlinux安装指南</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-06_15-56-23/</link>
+      <pubDate>Thu, 06 Nov 2014 15:56:23 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-06_15-56-23/</guid>
+      <description>Cubieboard2目前有两个版本，一个是后来推出的Cubieboard2双卡版，双卡版将原来板载的Nand Flash换成了一个TF卡槽，</description>
+    </item>
+    
   </channel>
 </rss>
