@@ -80,7 +80,7 @@
 
 
 
-<meta itemprop="keywords" content="Linux,Network," />
+<meta itemprop="keywords" content="Linux,Network,Cubieboard," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cubieboard2/树莓派之Archlinux系统配置"/>
 <meta name="twitter:description" content="上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双"/>
@@ -206,7 +206,7 @@
 
 <p>上文 <a href="/posts/2014-11/2014-11-06_15-56-23/">Cubieboard2之Archlinux安装指南</a> 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双卡版的hack及注意事项。这篇blog就谈谈安装好基本系统之后的一些环境及应用配置。</p>
 
-<p>P.S. 相关文章可见<a href="http://blog.billryan.me/tags/cubieboard/">Tag: cubieboard</a></p>
+<p>P.S. 相关文章可见<a href="https://blog.yuanbin.me/tags/cubieboard/">Tag: cubieboard</a></p>
 
 <h3 id="micro-sd-tf卡选型">micro-SD/TF卡选型</h3>
 
@@ -237,7 +237,7 @@ Server = http://mirrors.hustunique.com/archlinuxarm/$arch/$repo
 
 <p>在安装软件包时可能会遇到如<code>Signature</code>之类的错误，在<code>/etc/pacman.conf</code>里设置<code>SigLevel = Never</code>就好了，只要软件包不是太老应该不大会出现此类问题。在mirrorlist里改好软件源的Server之后在终端输入<code>pacman -Syu</code>进行全局更新，熟悉Arch的自然不用多说，对Arch不熟的建议多看看Arch的<a href="https://wiki.archlinux.org/">Wiki</a>，Arch和Gentoo的Wiki可以说是众多Linux发行版的典范，其中包含了非常多的系统及软件包的详细安装配置文档，凝聚了全世界众多Archer的心血，力荐！</p>
 
-<p>需要注意的是执行全局更新时会提示更新<code>uboot-cubieboard2</code>，更新完后需要将<a href="http://blog.billryan.me/posts/2014/11/Cubieboard2-Archlinux-install.html">上文</a>提到的<code>script.bin</code>文件重新复制到<code>/boot/</code>目录下，否则无法识别板子底部的TF卡插槽。如果系统运行正常的话不建议更新<code>uboot-cubieboard2</code>这个软件包。<code>vi /etc/pacman.conf</code>找到<code># IgnorePkg   =</code>这一行，在其后加入<code>IgnorePkg   = uboot-cubieboard2</code>，以免夜长梦多，这就是双卡版带来的噩梦 :(</p>
+<p>需要注意的是执行全局更新时会提示更新<code>uboot-cubieboard2</code>，更新完后需要将<a href="/posts/2014-11/2014-11-06_15-56-23/">上文</a>提到的<code>script.bin</code>文件重新复制到<code>/boot/</code>目录下，否则无法识别板子底部的TF卡插槽。如果系统运行正常的话不建议更新<code>uboot-cubieboard2</code>这个软件包。<code>vi /etc/pacman.conf</code>找到<code># IgnorePkg   =</code>这一行，在其后加入<code>IgnorePkg   = uboot-cubieboard2</code>，以免夜长梦多，这就是双卡版带来的噩梦 :(</p>
 
 <h3 id="挂载硬盘">挂载硬盘</h3>
 
@@ -370,6 +370,8 @@ zh_CN.UTF-8 UTF-8
           <a href="/tags/linux/">Linux</a>
           
           <a href="/tags/network/">Network</a>
+          
+          <a href="/tags/cubieboard/">Cubieboard</a>
           
         </div>
 

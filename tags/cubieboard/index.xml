@@ -20,5 +20,41 @@
       <description>Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，使用SD卡作为swap交换空间是一件极不理智的行</description>
     </item>
     
+    <item>
+      <title>家用服务器之 UPnP/DLNA 媒体服务</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-11_18-22-50/</link>
+      <pubDate>Tue, 11 Nov 2014 18:22:50 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-11_18-22-50/</guid>
+      <description>在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机上欣赏那些下好的视频音</description>
+    </item>
+    
+    <item>
+      <title>家用服务器之 BT(PT) 下载机</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-09_09-12-11/</link>
+      <pubDate>Sun, 09 Nov 2014 09:12:11 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-09_09-12-11/</guid>
+      <description>作为一个正常的大学，尤其是工科高校，应该都有自己的BT/PT站(资源分享站点)，教育网内最出名的就是六维空间了，资源超多，做种的人也蛮多的，</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2/树莓派之Archlinux网络配置</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/</link>
+      <pubDate>Sat, 08 Nov 2014 19:26:58 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/</guid>
+      <description>前文1和2分别就Cubieboard2双卡版的Archlinux系统安装及简单配置做了详细说明，这里就Cubieboard2/树莓派的网络配</description>
+    </item>
+    
+    <item>
+      <title>Cubieboard2/树莓派之Archlinux系统配置</title>
+      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</link>
+      <pubDate>Fri, 07 Nov 2014 17:21:14 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</guid>
+      <description>上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双</description>
+    </item>
+    
   </channel>
 </rss>
