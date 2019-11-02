@@ -614,21 +614,6 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
     </item>
     
     <item>
-      <title>digitalocean VPS 把玩</title>
-      <link>https://blog.yuanbin.me/posts/2014-10/2014-10-13_09-23-28/</link>
-      <pubDate>Mon, 13 Oct 2014 09:23:28 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-10/2014-10-13_09-23-28/</guid>
-      <description>&lt;p&gt;对DigitalOcean家的VPS觊觎已久，正好前不久Github有针对高校学生的优惠活动——&lt;a href=&#34;https://education.github.com/pack&#34;&gt;GitHub Student Developer Pack&lt;/a&gt;，昨晚开始总算用上了给力的DO！之前有用同学友情赞助的搬瓦工VPS，用作「&lt;a href=&#34;https://github.com/sjtug/kxsw&#34;&gt;科学上网&lt;/a&gt;」甚是物美价廉，服务了不少热爱科研和技术的孩纸，具体细节略去不表 -.- 如今自己对VPS的需求已不再局限于科学上网，更多地是想基于VPS开发自己的一些应用和学点东西。手头没多少闲钱的学生党们跟着我往下走吧 :)  110美刀的DO不是梦！&lt;strong&gt;目前Github似乎已经屏蔽了&lt;code&gt;*.edu.cn&lt;/code&gt;的邮箱，早起的鸟儿有虫吃，请各位节哀&amp;hellip;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;首先么，你得有个&lt;a href=&#34;https://github.com&#34;&gt;GitHub&lt;/a&gt;帐号，注册好Github后打开链接&lt;a href=&#34;https://education.github.com/pack&#34;&gt;GitHub Student Developer Pack&lt;/a&gt;，猛击「Get your pack」链接，点进去之后应该会验证你的edu邮箱，这个可以在注册Github时就用edu邮箱，也可以在这里添加一个辅助的edu邮箱，殊途同归。注册后Github会发送一封邮件至你指定的edu邮箱，注意查收验证即可。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/misc/get-your-pack.png-q75&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>高校实验室环境下的服务器部署小议</title>
       <link>https://blog.yuanbin.me/posts/2014-09/2014-09-19_23-53-51/</link>
       <pubDate>Fri, 19 Sep 2014 23:53:51 +0800</pubDate>
@@ -643,12 +628,7 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
       <pubDate>Tue, 16 Sep 2014 19:50:22 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2014-09/2014-09-16_19-50-22/</guid>
-      <description>&lt;p&gt;以下内容为本人在阅读《科研有方：科研需要『想好』再『做』》一书时所做的笔记，此为『前言』和『第一章』部分,大多为摘抄，少部分内容为自己补充。自己其实只是一名小硕而已，也无意继续念Ph.D. 但是一些好的科研方法和思路还是值得分享的。感谢导师推荐的这本好书 :)&lt;/p&gt;
-
-&lt;p&gt;觉得此书内容还不错的可以到电商处购买，此为全文中唯一的广告，哈哈哈。&lt;/p&gt;
-
-&lt;p&gt;相关文章 - &lt;a href=&#34;http://blog.yuanbin.me/posts/2015/01/research-how-to.html&#34;&gt;科研有方读书笔记之如何做科研&lt;/a&gt;
-&lt;/p&gt;</description>
+      <description>以下内容为本人在阅读《科研有方：科研需要『想好』再『做』》一书时所做的笔记，此为『前言』和『第一章』部分,大多为摘抄，少部分内容为自己补充。</description>
     </item>
     
     <item>
@@ -657,24 +637,7 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
       <pubDate>Fri, 15 Aug 2014 21:56:57 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2014-08/2014-08-15_21-56-57/</guid>
-      <description>&lt;p&gt;话说之前本没想来看十大的，但是梦寒学姐在人人上提及很想来看小熊的演出，遂花了不少心血总算是从「信息通通」那弄来了剩下为数不多的一张入场票，晚上十二点左右票务的工作人员把票送到了寝室楼下，真是感动地泪流满面～_～ 不过最后还是很可惜哇，某人由于闵大荒太远木有人陪还是没能来现场。于是吃完晚饭自己一个人就去排队了咯，不去不知道啊，队伍不多久就排成一条长龙了。看完后觉得，嗯，真是不虚此行，今年十大一定也要再来现场围观！&lt;/p&gt;
-
-&lt;p&gt;葡萄上很早就放出了当晚比赛的全程录像，但是没有针对个人单独整理成特辑，单个mp4文件有10GB之巨，发布在网上显然不合适。鉴于自己对小熊的极度喜爱和推崇，也便于更多的小熊粉丝们能看到小熊精彩的现场表演，趁这几天有空便筹划着把小熊在去年的lightning现场单独整理成特辑。&lt;/p&gt;
-
-&lt;p&gt;P.S. 手机或者平板上视频无法直接观看的试试点「在线播放-优酷网」链接。&lt;/p&gt;
-
-&lt;h2 id=&#34;part1-out评委-你有多久没看过星星-小熊原创&#34;&gt;Part1——out评委(你有多久没看过星星——小熊原创)&lt;/h2&gt;
-
-&lt;p&gt;小熊一出场的歌声就震撼到我了，难怪寒哥如此喜欢。之前极少有听到类似的音色，满满的治愈感 :)&lt;/p&gt;
-
-&lt;iframe height=498 width=510 src=&#34;http://player.youku.com/embed/XNzU2MzMwNTQw&#34; frameborder=0 allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://v.youku.com/v_show/id_XNzU2MzMwNTQw.html&#34;&gt;上海交通大学第十八届校园歌手大赛-part1-陈小熊—在线播放—优酷网&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://pan.baidu.com/share/link?shareid=67844326&amp;amp;uk=3189859145&amp;amp;fid=1087166447040845&#34;&gt;part1-小熊-out评委.mkv|百度云下载&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>话说之前本没想来看十大的，但是梦寒学姐在人人上提及很想来看小熊的演出，遂花了不少心血总算是从「信息通通」那弄来了剩下为数不多的一张入场票，晚</description>
     </item>
     
     <item>
@@ -693,21 +656,7 @@ For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for O
       <pubDate>Sat, 24 May 2014 14:37:25 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-24_14-37-25/</guid>
-      <description>&lt;p&gt;来交大读研已有近一载的时光，杭州离魔都虽挺近，从地处闵大荒的交大坐普通火车到达杭州也就两个多小时，但一直未觅得机会前往杭州看看这座历史文化名城。与其说是去看历史文化名城，倒不如说是去游西湖。正好五一过后的一个星期云儿也有意去杭州一趟，微信群里大伙儿一商量便成行了。Martin买火车票，yuner看了大半天wiki给大伙儿做了详细的行程安排，我则在中国青旅官网订了间离西湖较近的旅社。&lt;/p&gt;
-
-&lt;p&gt;周六早上8点49的火车，我和yuner最后几分钟上的车，快到火车站时Martin拿着我们俩的身份证飞奔到取票机，kok则堵在检票门口&amp;hellip; 辛苦Martin和kok了 ^_^  好在赶在关门之前上了车，惊险程度堪比我上次坐火车回家=_=&lt;/p&gt;
-
-&lt;p&gt;去杭州游玩，西湖那一片的景区自然是要去仔细品味一番的，指不定还能在西湖边和古代的文人骚客来场跨越千年的对话。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;水光潋滟晴方好，山色空濛雨亦奇。&lt;br /&gt;
-欲把西湖比西子，淡妆浓抹总相宜。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;这次去杭州恰好遇到阴雨天气，好在第一天游玩时并未下雨，两天下来感觉人还不算特别多。5月10号那天一直阴，风略大，虽没有蓝天白云，但湖光山色还不错。&lt;br /&gt;
-&lt;img src=&#34;http://7xojrx.com1.z0.glb.clouddn.com/images/2014/201405/2014-05-10_15-53-18.jpg&#34; alt=&#34;山水一色&#34; /&gt;&lt;br /&gt;
-
-漫步在西湖边上，拂着轻风，心情甚是愉悦。在岸边远眺西湖已足以让人心旷神怡，但如若能随小船一起游荡在湖中央，感觉岂不是更好？&lt;/p&gt;</description>
+      <description>来交大读研已有近一载的时光，杭州离魔都虽挺近，从地处闵大荒的交大坐普通火车到达杭州也就两个多小时，但一直未觅得机会前往杭州看看这座历史文化名</description>
     </item>
     
     <item>

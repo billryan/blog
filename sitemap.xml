@@ -437,13 +437,6 @@
   </url>
   
   <url>
-    <loc>https://blog.yuanbin.me/posts/2014-10/2014-10-13_09-23-28/</loc>
-    <lastmod>2014-10-13T09:23:28+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.yuanbin.me/posts/2014-09/2014-09-19_23-53-51/</loc>
     <lastmod>2014-09-19T23:53:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -941,7 +934,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/tags/vps/</loc>
-    <lastmod>2014-10-13T09:23:28+08:00</lastmod>
+    <lastmod>2014-09-19T23:53:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
