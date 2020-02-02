@@ -4,7 +4,7 @@ sudo: false
 
 env:
   global:
-  - HUGO_VERSION=0.62
+  - HUGO_VERSION=0.62.0
 
 before_install:
   # Install Hugo
