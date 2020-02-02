@@ -1,87 +1,81 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Akka Notes 2 - Actor Messaging - 东海一叶</title>
-  <meta name="renderer" content="webkit" />
+  
+
+<meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
 
 <meta name="theme-color" content="#f8f5ec" />
 <meta name="msapplication-navbutton-color" content="#f8f5ec">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
+<meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="billryan" />
+<meta name="author" content="东海一叶" />
   <meta name="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生" />
 
-  <meta name="keywords" content="blog, billryan, hugo" />
+  <meta name="keywords" content="Hugo, billryan, 博客, 东海一叶" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.46" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/" />
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link rel="icon" href="/favicon.ico" />
 
 
-<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
 
 
 <meta property="og:title" content="Akka Notes 2 - Actor Messaging" />
 <meta property="og:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/" />
-
-
-
-<meta property="article:published_time" content="2015-08-25T13:55:02&#43;08:00"/>
-
-<meta property="article:modified_time" content="2015-08-25T13:55:02&#43;08:00"/>
-
-
-
-
-
-
-
-
-
-
-
+<meta property="article:published_time" content="2015-08-25T13:55:02+08:00" />
+<meta property="article:modified_time" content="2020-02-02T12:44:46+08:00" />
 <meta itemprop="name" content="Akka Notes 2 - Actor Messaging">
 <meta itemprop="description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生">
-
-
 <meta itemprop="datePublished" content="2015-08-25T13:55:02&#43;08:00" />
-<meta itemprop="dateModified" content="2015-08-25T13:55:02&#43;08:00" />
-<meta itemprop="wordCount" content="1979">
+<meta itemprop="dateModified" content="2020-02-02T12:44:46&#43;08:00" />
+<meta itemprop="wordCount" content="1962">
 
 
 
-<meta itemprop="keywords" content="Akka," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="Akka," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Akka Notes 2 - Actor Messaging"/>
 <meta name="twitter:description" content="该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生"/>
 
@@ -93,6 +87,20 @@
   <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <![endif]-->
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 
 </head>
 <body>
@@ -108,56 +116,293 @@
 </div>
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/post/">全部文章</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/tags/">标签</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/categories/">分类</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/about/">关于</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/index.xml">订阅</a>
+          
+        
+      </li>
+    
+
+    
+      <li class="mobile-menu-item">
+        <a id="openSearchMobile" class="mobile-menu-item-link menu-item-search" href="#">
+          <i class="iconfont">
+            <svg version="1.1" viewBox="0 0 1024 1024"
+  xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M973.81454219 973.81454219a91.78207815 91.78207815 0 0 1-129.80999631 0l-161.97482118-161.97482118a425.48527711 425.48527711 0 0 1-230.35931791 68.16531768 428.3346319 428.3346319 0 1 1 428.3346319-428.3346319 425.48527711 425.48527711 0 0 1-68.16531768 230.35931791l162.02961656 161.97482118a91.83687354 91.83687354 0 0 1-0.05479538 129.80999631zM451.67040679 145.69361559a305.97679241 305.97679241 0 1 0 0 611.95358361 305.97679241 305.97679241 0 0 0 0-611.95358361z">
+  </path>
+</svg>
+
+          </i>
+        </a>
+      </li>
+    
   </ul>
 </nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">东海一叶</a>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+    
+<div class="modal-dialog">
+    
+    <div class="modal-content">
+      <div id="closeSearch" title="Close" class="close">X</div>
+      <div class="modal-header">
+        <div class="modal-title">Search</div>
+      </div>
+      <div class="modal-body">
+          <script>
+            (function() {
+              var cx = '018220290031572399476:pa4brobb2ji';
+              var gcse = document.createElement('script');
+              gcse.type = 'text/javascript';
+              gcse.async = true;
+              gcse.src = (document.location.protocol == 'https:' ? 'https:' :
+                  'http:') +
+                '//cse.google.com/cse.js?cx=' + cx;
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(gcse, s);
+            })();
+          </script>
+          <gcse:search></gcse:search>
+      </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      东海一叶
+    
+  </a>
 </div>
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/">主页</a>
+          
+
+        
+
       </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/post/">全部文章</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/tags/">标签</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/about/">关于</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/index.xml">订阅</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+      <li class="menu-item">
+        <a id="openSearch" class="menu-item-link menu-item-search" href="#">
+          <i class="iconfont">
+            <svg version="1.1" viewBox="0 0 1024 1024"
+  xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M973.81454219 973.81454219a91.78207815 91.78207815 0 0 1-129.80999631 0l-161.97482118-161.97482118a425.48527711 425.48527711 0 0 1-230.35931791 68.16531768 428.3346319 428.3346319 0 1 1 428.3346319-428.3346319 425.48527711 425.48527711 0 0 1-68.16531768 230.35931791l162.02961656 161.97482118a91.83687354 91.83687354 0 0 1-0.05479538 129.80999631zM451.67040679 145.69361559a305.97679241 305.97679241 0 1 0 0 611.95358361 305.97679241 305.97679241 0 0 0 0-611.95358361z">
+  </path>
+</svg>
+
+          </i>
+        </a>
+      </li>
+    
   </ul>
 </nav>
-    </header>
 
-    <main id="main" class="main">
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
       <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
+        <div id="content" class="content container">
+          <article class="post bg-white">
     
     <header class="post-header">
       <h1 class="post-title">Akka Notes 2 - Actor Messaging</h1>
-
+      
       <div class="post-meta">
-        <span class="post-time"> 2015-08-25 </span>
+        <time datetime="2015-08-25" class="post-time">
+          2015-08-25
+        </time>
         <div class="post-category">
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            <a href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
             
           </div>
-        <span class="more-meta"> 约 1979 字 </span>
-        <span class="more-meta"> 预计阅读 4 分钟 </span>
-        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+        
+
+        
+        
+          <span id="busuanzi_container_page_pv">
+            | 阅读 <span id="busuanzi_value_page_pv"></span>
+          </span>
+        
+
+        
+        
       </div>
     </header>
 
@@ -165,59 +410,48 @@
     
 <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  
-  <div class="post-toc-content always-active">
+  <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#回顾-学生-老师-的例子">回顾『学生-老师』的例子</a></li>
-<li><a href="#studentsimulatorapp-程序"><code>StudentSimulatorApp</code> 程序</a>
-<ul>
-<li><a href="#1-创建-actorsystem">1. 创建 <code>ActorSystem</code></a></li>
-<li><a href="#2-创建指向-teacheractor-的代理">2. 创建指向 TeacherActor 的代理</a></li>
-<li><a href="#3-向代理发送-quoterequest">3. 向代理发送 QuoteRequest</a></li>
-</ul></li>
-<li><a href="#消息">消息</a>
-<ul>
-<li><a href="#studentprotocol"><code>StudentProtocol</code></a></li>
-<li><a href="#teacherprotocol"><code>TeacherProtocol</code></a></li>
-</ul></li>
-<li><a href="#dispatcher-和-mailbox">Dispatcher 和 Mailbox</a>
-<ul>
-<li><a href="#mailbox">MailBox</a></li>
-<li><a href="#dispatcher">Dispatcher</a></li>
-</ul></li>
-<li><a href="#teacher-actor">Teacher Actor</a>
-<ul>
-<li><a href="#teacheractor-scala"><code>TeacherActor.scala</code></a></li>
-</ul></li>
-<li><a href="#源码">源码</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#-">回顾『学生-老师』的例子</a></li>
+    <li><a href="#studentsimulatorapp-">StudentSimulatorApp 程序</a>
+      <ul>
+        <li><a href="#1--actorsystem">1. 创建 ActorSystem</a></li>
+        <li><a href="#2--teacheractor-">2. 创建指向 TeacherActor 的代理</a></li>
+        <li><a href="#3--quoterequest">3. 向代理发送 QuoteRequest</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading">消息</a>
+      <ul>
+        <li><a href="#studentprotocol">StudentProtocol</a></li>
+        <li><a href="#teacherprotocol">TeacherProtocol</a></li>
+      </ul>
+    </li>
+    <li><a href="#dispatcher--mailbox">Dispatcher 和 Mailbox</a>
+      <ul>
+        <li><a href="#mailbox">MailBox</a></li>
+        <li><a href="#dispatcher">Dispatcher</a></li>
+      </ul>
+    </li>
+    <li><a href="#teacher-actor">Teacher Actor</a>
+      <ul>
+        <li><a href="#teacheractorscala">TeacherActor.scala</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-1">源码</a></li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
-    
-
-    
     <div class="post-content">
-      
-
-<p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。</p>
-
+      <p>该系列译自 <a href="http://rerun.me/">Rerun.me</a>, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。</p>
 <p>今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 <a href="/posts/2015-08/2015-08-26_09-24-56/">学生-老师</a> 作为范例。</p>
-
-<h2 id="回顾-学生-老师-的例子">回顾『学生-老师』的例子</h2>
-
+<h2 id="-">回顾『学生-老师』的例子</h2>
 <p>我们考虑由应用 <code>StudentSimulatorApp</code> 单独给 <code>TeacherActor</code> 发送消息的情形，这里你可以认为主程序就是 <code>StudentSimulatorApp</code>.</p>
-
-<p><img src="/pictures/misc/akka_TeacherRequestFlowSimulatedApp.png" alt="TeacherRequestFlowSimulatedApp" /></p>
-
+<p><img src="/pictures/misc/akka_TeacherRequestFlowSimulatedApp.png" alt="TeacherRequestFlowSimulatedApp"></p>
 <p>从以上这张流程图我们可以得知：</p>
-
 <ol>
 <li>『学生』首先初始化一个叫做 <code>ActorSystem</code> 的东西</li>
 <li>然后它使用 <code>ActorSystem</code> 来创建一个叫做 <code>ActorRef</code> 的东西，并将 <code>QuoteRequest</code> 消息发送给 <code>ActorRef</code>(<code>TeacherActor</code> 的代理)</li>
@@ -226,239 +460,183 @@
 <li><code>Dispatcher</code> 将 <code>MailBox</code> 送入到某个线程去执行(后续章节介绍更多细节)</li>
 <li><code>MailBox</code> 抛出一个<code>message</code> 并最终将其委托给真正的 <code>Actor</code> - Teacher 的 receive 方法处理。</li>
 </ol>
-
 <p>下面我们将会对以上各个步骤的细节进行详解，你可以随时回来体会这6个步骤。</p>
-
-<h2 id="studentsimulatorapp-程序"><code>StudentSimulatorApp</code> 程序</h2>
-
+<h2 id="studentsimulatorapp-"><code>StudentSimulatorApp</code> 程序</h2>
 <p>我们使用<code>StudentSimulatorApp</code> 程序启动 JVM 并初始化 <code>ActorSystem</code>.</p>
-
-<p><img src="/pictures/misc/akka_StudentSimulatorApp.png" alt="StudentSimulatorApp" /></p>
-
+<p><img src="/pictures/misc/akka_StudentSimulatorApp.png" alt="StudentSimulatorApp"></p>
 <p>从图中我们可以发现，<code>StudentSimulatorApp</code> 主要完成以下三个步骤：</p>
-
 <ol>
 <li>创建 <code>ActorSystem</code></li>
 <li>使用 <code>ActorSystem</code> 创建指向 Teacher Actor 的代理(ActorRef)</li>
 <li>向 Teacher 的代理发送 <code>QuoteRequest</code> 消息</li>
 </ol>
-
 <p>以下对这三点逐一剖析。</p>
-
-<h3 id="1-创建-actorsystem">1. 创建 <code>ActorSystem</code></h3>
-
+<h3 id="1--actorsystem">1. 创建 <code>ActorSystem</code></h3>
 <p><a href="http://doc.akka.io/api/akka/2.3.12/index.html#akka.actor.ActorSystem">ActorSystem</a> 是通往 Actor 世界的入口，你可以通过 <code>ActorSystems</code> 创建或者停止 <code>Actors</code>, 甚至停止整个 Actor 环境。</p>
-
 <p>从另一方面来讲，Actors 是层级化的并且对于所有的 Actors 来讲，ActorSystem 和 <code>java.lang.Object</code> 或 <code>scala.Any</code> 是类似的, 也就是说这是所有 Actors 的祖先。当你使用 ActorSystem 的 actorOf 方法创建 Actor 时，你创建的 Actor 总是在 ActorSystem 之下。</p>
-
-<p><img src="/pictures/misc/akka_ActorSystemActorCreation.png" alt="ActorSystemActorCreation" /></p>
-
+<p><img src="/pictures/misc/akka_ActorSystemActorCreation.png" alt="ActorSystemActorCreation"></p>
 <p>初始化 ActorSystem 的语句看起来像是如下这个样子：</p>
-
-<pre><code class="language-scala">val system = ActorSystem(&quot;UniversityMessageSystem&quot;)
-</code></pre>
-
-<p><code>UniversityMessageSystem</code> 仅仅只是 ActorSystem 的一个名字。</p>
-
-<h3 id="2-创建指向-teacheractor-的代理">2. 创建指向 TeacherActor 的代理</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> system <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">ActorSystem</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;UniversityMessageSystem&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><p><code>UniversityMessageSystem</code> 仅仅只是 ActorSystem 的一个名字。</p>
+<h3 id="2--teacheractor-">2. 创建指向 TeacherActor 的代理</h3>
 <p>创建指向 TeacherActor 的代理的代码片段如下：</p>
-
-<pre><code class="language-scala">val teacherActorRef:ActorRef = actorSystem.actorOf(Props[TeacherActor])
-</code></pre>
-
-<p><code>actorOf</code> 是 ActorSystem 中创建 Actor 的方法。但是正如你所见，它并不返回我们需要的 TeacherActor, 而是返回一个类型为 ActorRef 的东西。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">val</span> teacherActorRef<span style="color:#66d9ef">:</span><span style="color:#66d9ef">ActorRef</span> <span style="color:#f92672">=</span> actorSystem<span style="color:#f92672">.</span>actorOf<span style="color:#f92672">(</span><span style="color:#a6e22e">Props</span><span style="color:#f92672">[</span><span style="color:#66d9ef">TeacherActor</span><span style="color:#f92672">]</span><span style="color:#f92672">)</span>
+</code></pre></div><p><code>actorOf</code> 是 ActorSystem 中创建 Actor 的方法。但是正如你所见，它并不返回我们需要的 TeacherActor, 而是返回一个类型为 ActorRef 的东西。
 ActorRef 扮演的角色类似实际 Actors 的一个代理，客户端并不与 Actor 直接通信。这正是 Actor 模型的处理方式：避免直接访问 TeacherActor 中任意自定义或者私有方法及变量。
 再复述一遍，你只能将消息发送给 ActorRef, 它最终会到达实际的 Actor. 你永远都不能与 Actor 直接通信，如果你找到了某种方法做到了，其他人会恨你到死的。:-(</p>
-
-<p><img src="/pictures/misc/akka_ActorRef.png" alt="ActorRef" /></p>
-
-<h3 id="3-向代理发送-quoterequest">3. 向代理发送 QuoteRequest</h3>
-
+<p><img src="/pictures/misc/akka_ActorRef.png" alt="ActorRef"></p>
+<h3 id="3--quoterequest">3. 向代理发送 QuoteRequest</h3>
 <p>这同样只需一行即可完成，你可以告诉 QuoteRequest 消息发送给 ActorRef. Actor 中的 <code>tell</code> 方法实际上是 <code>!</code>. (实际上也有<code>tell</code> 方法，简略起见这里使用 <code>!</code>)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#75715e">//send a message to the Teacher Actor
+</span><span style="color:#75715e"></span>teacherActorRef <span style="color:#f92672">!</span> <span style="color:#a6e22e">QuoteRequest</span>
+</code></pre></div><p>好了！这就是<code>StudentSimulatorApp</code> 的核心机制了。<code>StudentSimulatorApp.scala</code> 的源码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">package</span> me.yuanbin.akkanotes.actormsg
 
-<pre><code class="language-scala">//send a message to the Teacher Actor
-teacherActorRef ! QuoteRequest
-</code></pre>
+<span style="color:#66d9ef">import</span> akka.actor.ActorSystem
+<span style="color:#66d9ef">import</span> akka.actor.Props
+<span style="color:#66d9ef">import</span> me.yuanbin.akkanotes.protocols.StudentProtocol._
 
-<p>好了！这就是<code>StudentSimulatorApp</code> 的核心机制了。<code>StudentSimulatorApp.scala</code> 的源码如下：</p>
+<span style="color:#75715e">/*</span><span style="color:#75715e">*</span><span style="color:#75715e">
+</span><span style="color:#75715e"> </span><span style="color:#75715e">*</span><span style="color:#75715e"> Let&#39;s have the student as a simple App now instead of an Actor for the first part.
+</span><span style="color:#75715e"> </span><span style="color:#75715e">*</span><span style="color:#75715e">
+</span><span style="color:#75715e"> </span><span style="color:#75715e">*/</span>
+<span style="color:#66d9ef">object</span> <span style="color:#a6e22e">StudentSimulatorApp</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">App</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">//Initialize the ActorSystem
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">val</span> actorSystem <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">ActorSystem</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;UniversityMessageSystem&#34;</span><span style="color:#f92672">)</span>
 
-<pre><code class="language-scala">package me.yuanbin.akkanotes.actormsg
+  <span style="color:#75715e">//construct the Teacher Actor Ref
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">val</span> teacherActorRef <span style="color:#66d9ef">=</span> actorSystem<span style="color:#f92672">.</span>actorOf<span style="color:#f92672">(</span><span style="color:#a6e22e">Props</span><span style="color:#f92672">[</span><span style="color:#66d9ef">TeacherActor</span><span style="color:#f92672">]</span><span style="color:#f92672">)</span>
 
-import akka.actor.ActorSystem
-import akka.actor.Props
-import me.yuanbin.akkanotes.protocols.StudentProtocol._
+  <span style="color:#75715e">//send a message to the Teacher Actor
+</span><span style="color:#75715e"></span>  teacherActorRef <span style="color:#f92672">!</span> <span style="color:#a6e22e">QuoteRequest</span>
 
-/**
- * Let's have the student as a simple App now instead of an Actor for the first part.
- *
- */
-object StudentSimulatorApp extends App {
-  //Initialize the ActorSystem
-  val actorSystem = ActorSystem(&quot;UniversityMessageSystem&quot;)
+  <span style="color:#75715e">//Let&#39;s wait for a couple of seconds before we shut down the system
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">Thread</span><span style="color:#f92672">.</span>sleep<span style="color:#f92672">(</span><span style="color:#ae81ff">2000</span><span style="color:#f92672">)</span>
 
-  //construct the Teacher Actor Ref
-  val teacherActorRef = actorSystem.actorOf(Props[TeacherActor])
-
-  //send a message to the Teacher Actor
-  teacherActorRef ! QuoteRequest
-
-  //Let's wait for a couple of seconds before we shut down the system
-  Thread.sleep(2000)
-
-  //Shut down the ActorSystem.
-  actorSystem.shutdown()
-}
-</code></pre>
-
-<p>在代码的结尾处，你需要关闭 ActorSystem, 否则 JVM 将会一直运行。主线程睡眠一小会以使得 TeacherActor 可以完成它的任务。当然你也可以使用一些测试类而不使主线程睡眠。</p>
-
-<h2 id="消息">消息</h2>
-
+  <span style="color:#75715e">//Shut down the ActorSystem.
+</span><span style="color:#75715e"></span>  actorSystem<span style="color:#f92672">.</span>shutdown<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>在代码的结尾处，你需要关闭 ActorSystem, 否则 JVM 将会一直运行。主线程睡眠一小会以使得 TeacherActor 可以完成它的任务。当然你也可以使用一些测试类而不使主线程睡眠。</p>
+<h2 id="heading">消息</h2>
 <p>我们在之前将 QuoteRequest 发送给了 ActorRef, 但是我们却根本没见着消息类！细思极恐！
 为了便于组织，我们通常将消息封装为 scala 中的 <code>object</code>.</p>
-
 <p><code>QuoteRequest</code> 是 Student 发往 TeacherActor 的请求。TeacherActor 随后则回应一个 <code>QuoteResponse</code>.</p>
-
 <h3 id="studentprotocol"><code>StudentProtocol</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">package</span> me.yuanbin.akkanotes.protocols
 
-<pre><code class="language-scala">package me.yuanbin.akkanotes.protocols
+<span style="color:#66d9ef">object</span> <span style="color:#a6e22e">StudentProtocol</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">/*</span><span style="color:#75715e">
+</span><span style="color:#75715e">   </span><span style="color:#75715e">*</span><span style="color:#75715e"> The Student sends this message to request for a Quotation
+</span><span style="color:#75715e">   </span><span style="color:#75715e">*</span><span style="color:#75715e">
+</span><span style="color:#75715e">   </span><span style="color:#75715e">*/</span>
+  <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QuoteRequest</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="teacherprotocol"><code>TeacherProtocol</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">package</span> me.yuanbin.akkanotes.protocols
 
-object StudentProtocol {
-  /*
-   * The Student sends this message to request for a Quotation
-   *
-   */
-  case class QuoteRequest()
-}
-</code></pre>
-
-<h3 id="teacherprotocol"><code>TeacherProtocol</code></h3>
-
-<pre><code class="language-scala">package me.yuanbin.akkanotes.protocols
-
-object TeacherProtocol {
-  /*
-   * The TeacherActor responds back to the Student with this message object
-   * The actual quote string is wrapped inside the response.
-   *
-   */
-  case class QuoteResponse(quoteString:String)
-}
-</code></pre>
-
-<h2 id="dispatcher-和-mailbox">Dispatcher 和 Mailbox</h2>
-
+<span style="color:#66d9ef">object</span> <span style="color:#a6e22e">TeacherProtocol</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">/*</span><span style="color:#75715e">
+</span><span style="color:#75715e">   </span><span style="color:#75715e">*</span><span style="color:#75715e"> The TeacherActor responds back to the Student with this message object
+</span><span style="color:#75715e">   </span><span style="color:#75715e">*</span><span style="color:#75715e"> The actual quote string is wrapped inside the response.
+</span><span style="color:#75715e">   </span><span style="color:#75715e">*</span><span style="color:#75715e">
+</span><span style="color:#75715e">   </span><span style="color:#75715e">*/</span>
+  <span style="color:#66d9ef">case</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QuoteResponse</span><span style="color:#f92672">(</span>quoteString<span style="color:#66d9ef">:</span><span style="color:#66d9ef">String</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="dispatcher--mailbox">Dispatcher 和 Mailbox</h2>
 <p>ActorRef 将 message handling 的功能委托给 Dispatcher, 深入分析发现，当我们创建 ActorSystem 和 ActorRef 时，相应的 Dispatcher 和 Mailbox 也同时也创建。下面让我们看看他们到底是什么。</p>
-
-<p><img src="/pictures/misc/akka_MessageDispatcherMailbox.png" alt="MessageDispatcherMailbox" /></p>
-
+<p><img src="/pictures/misc/akka_MessageDispatcherMailbox.png" alt="MessageDispatcherMailbox"></p>
 <h3 id="mailbox">MailBox</h3>
-
 <p>每个 Actor 都有一个 Mailbox(有一个特殊例子), 以我们的比喻为例，每个 Teacher 都有一个 mailbox. Teacher 需要检查邮箱并且处理其中的消息。在 Actor 的世界中，使用另一种方法——mailbox 在得到机会后使用 Actor 完成这项工作。mailbox 有一个 queue 以 FIFO 的形式来存储和处理消息，这和我们通常的信箱有点区别，我们通常的信箱通常是最近的信件放在最上面。</p>
-
 <h3 id="dispatcher">Dispatcher</h3>
-
 <p>分发器的实现比较精妙，咋一看，Dispatcher 仅仅只是从 ActorRef 中获取消息并将其传送至 Mailbox. 但实际上在其背后却大有玄机：
 分发器封装了 <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html">ExecutorService</a> (ForkJoinPool or ThreadPoolExecutor), 它依赖 ExecutorService <strong>执行 MailBox 程序。</strong></p>
-
 <p>Akka 中 <a href="https://github.com/akka/akka/blob/master/akka-actor/src/main/scala/akka/dispatch/Dispatcher.scala#L114">Dispatcher</a> 相关的程序如下：</p>
-
-<pre><code class="language-scala">protected[akka] override def registerForExecution(mbox: Mailbox, ...): Boolean = {  
-  ...
-  try {
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">protected</span><span style="color:#f92672">[</span><span style="color:#66d9ef">akka</span><span style="color:#f92672">]</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">def</span> registerForExecution<span style="color:#f92672">(</span>mbox<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Mailbox</span><span style="color:#f92672">,</span> <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">)</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Boolean</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span>  
+  <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+  <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
       executorService execute mbox
-      true
-  }
-  ...
-}
-</code></pre>
-
-<p>我们已经知道 MailBox 将所有 messages 保存在 Queue 中，由于需要 Executor 运行 Mailbox, 所以 MailBox 需要以线程的形式存在。Bingo! 这正是 MailBox 的声明和构造方式！</p>
-
+      <span style="color:#66d9ef">true</span>
+  <span style="color:#f92672">}</span>
+  <span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>我们已经知道 MailBox 将所有 messages 保存在 Queue 中，由于需要 Executor 运行 Mailbox, 所以 MailBox 需要以线程的形式存在。Bingo! 这正是 MailBox 的声明和构造方式！</p>
 <p><a href="https://github.com/akka/akka/blob/master/akka-actor/src/main/scala/akka/dispatch/Mailbox.scala#L56">Mailbox</a> 的签名如下：</p>
-
-<pre><code class="language-scala">private[akka] abstract class Mailbox(val messageQueue: MessageQueue)
-  extends ForkJoinTask[Unit] with SystemMessageQueue with Runnable
-</code></pre>
-
-<h2 id="teacher-actor">Teacher Actor</h2>
-
-<p><img src="/pictures/misc/akka_TeacherActor.png" alt="TeacherActor" /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">private</span><span style="color:#f92672">[</span><span style="color:#66d9ef">akka</span><span style="color:#f92672">]</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Mailbox</span><span style="color:#f92672">(</span><span style="color:#66d9ef">val</span> messageQueue<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">MessageQueue</span><span style="color:#f92672">)</span>
+  <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">ForkJoinTask</span><span style="color:#f92672">[</span><span style="color:#66d9ef">Unit</span><span style="color:#f92672">]</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">SystemMessageQueue</span> <span style="color:#66d9ef">with</span> <span style="color:#a6e22e">Runnable</span>
+</code></pre></div><h2 id="teacher-actor">Teacher Actor</h2>
+<p><img src="/pictures/misc/akka_TeacherActor.png" alt="TeacherActor"></p>
 <p>当 <code>MailBox</code> 启动了 run 方法时，将会从 message queue 中移除 message 并将其传输给 Actor 进行处理。当你把消息告诉给了 ActorRef 时，最终被调用的方法是目标 Actor 的 receive 方法。
 TeacherActor 是一个比较原始的类，它有一组 quotes 并且由 receive 方法 handle 这些消息。</p>
+<h3 id="teacheractorscala"><code>TeacherActor.scala</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">package</span> me.yuanbin.akkanotes.actormsg
 
-<h3 id="teacheractor-scala"><code>TeacherActor.scala</code></h3>
+<span style="color:#66d9ef">import</span> akka.actor.Actor
+<span style="color:#66d9ef">import</span> me.yuanbin.akkanotes.protocols.StudentProtocol._
+<span style="color:#66d9ef">import</span> me.yuanbin.akkanotes.protocols.TeacherProtocol._
+<span style="color:#66d9ef">import</span> scala.util.Random
 
-<pre><code class="language-scala">package me.yuanbin.akkanotes.actormsg
+<span style="color:#75715e">/*</span><span style="color:#75715e">*</span><span style="color:#75715e">
+</span><span style="color:#75715e"> </span><span style="color:#75715e">*</span><span style="color:#75715e"> Your Teacher Actor class.
+</span><span style="color:#75715e"> </span><span style="color:#75715e">*</span><span style="color:#75715e">
+</span><span style="color:#75715e"> </span><span style="color:#75715e">*</span><span style="color:#75715e"> The class could use refinement by way of
+</span><span style="color:#75715e"> </span><span style="color:#75715e">*</span><span style="color:#75715e"> using ActorLogging which uses the EventBus of the Actor framework
+</span><span style="color:#75715e"> </span><span style="color:#75715e">*</span><span style="color:#75715e"> instead of the plain old System out
+</span><span style="color:#75715e"> </span><span style="color:#75715e">*</span><span style="color:#75715e">
+</span><span style="color:#75715e"> </span><span style="color:#75715e">*/</span>
 
-import akka.actor.Actor
-import me.yuanbin.akkanotes.protocols.StudentProtocol._
-import me.yuanbin.akkanotes.protocols.TeacherProtocol._
-import scala.util.Random
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TeacherActor</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Actor</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">val</span> quotes <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">(</span>
+    <span style="color:#e6db74">&#34;Moderation is for cowards&#34;</span><span style="color:#f92672">,</span>
+    <span style="color:#e6db74">&#34;Anything worth doing is worth overdoing&#34;</span><span style="color:#f92672">,</span>
+    <span style="color:#e6db74">&#34;The trouble is you think you have time&#34;</span><span style="color:#f92672">,</span>
+    <span style="color:#e6db74">&#34;You never gonna know if you never even try&#34;</span><span style="color:#f92672">)</span>
 
-/**
- * Your Teacher Actor class.
- *
- * The class could use refinement by way of
- * using ActorLogging which uses the EventBus of the Actor framework
- * instead of the plain old System out
- *
- */
-
-class TeacherActor extends Actor {
-  val quotes = List(
-    &quot;Moderation is for cowards&quot;,
-    &quot;Anything worth doing is worth overdoing&quot;,
-    &quot;The trouble is you think you have time&quot;,
-    &quot;You never gonna know if you never even try&quot;)
-
-  def receive = {
-    case QuoteRequest =&gt; {
-      //Get a random Quote from the list and construct a response
-      val quoteResponse = QuoteResponse(quotes(Random.nextInt(quotes.size)))
-      println()
-      println(quoteResponse)
-    }
-  }
-}
-</code></pre>
-
-<p>TeacherActor 的 receive 方法通过模式匹配最终仅匹配一个消息——QuoteRequest (实际上我们应该为 default case 匹配，但这里有别的原因)</p>
-
+  <span style="color:#66d9ef">def</span> receive <span style="color:#66d9ef">=</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">QuoteRequest</span> <span style="color:#66d9ef">=&gt;</span> <span style="color:#f92672">{</span>
+      <span style="color:#75715e">//Get a random Quote from the list and construct a response
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">val</span> quoteResponse <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">QuoteResponse</span><span style="color:#f92672">(</span>quotes<span style="color:#f92672">(</span><span style="color:#a6e22e">Random</span><span style="color:#f92672">.</span>nextInt<span style="color:#f92672">(</span>quotes<span style="color:#f92672">.</span>size<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span>
+      println<span style="color:#f92672">(</span><span style="color:#f92672">)</span>
+      println<span style="color:#f92672">(</span>quoteResponse<span style="color:#f92672">)</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>TeacherActor 的 receive 方法通过模式匹配最终仅匹配一个消息——QuoteRequest (实际上我们应该为 default case 匹配，但这里有别的原因)</p>
 <p>receive 方法做了如下事情：</p>
-
 <ol>
 <li>模式匹配：<code>QuoteRequest</code></li>
 <li>从静态的 quotes list 中随机挑选一条 quote</li>
 <li>构建 <code>QuoteResponse</code></li>
 <li>将 <code>QuoteResponse</code> 打印到终端</li>
 </ol>
-
-<h2 id="源码">源码</h2>
-
+<h2 id="heading-1">源码</h2>
 <p>源码可以从 <a href="https://github.com/billryan/akka_notes/tree/master/akka_messaging">akka_notes/akka_messaging</a> 找到。</p>
-
 <p>运行方式，确保系统装好 sbt 0.13.8.</p>
-
 <pre><code>cd akka_notes/akka_messaging
 sbt run
-</code></pre>
-
-<p>稍等片刻即可看到 TeacherActor 的输出。</p>
+</code></pre><p>稍等片刻即可看到 TeacherActor 的输出。</p>
 
     </div>
 
     
-    <div class="post-copyright">
+    
+<div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">billryan</span>
+    <span class="item-content">东海一叶</span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2015-08-25</span>
+    <span class="item-content">
+      2020-02-02
+      
+        <a href="https://github.com/billryan/blog/commit/c006d89ffe4bba3b7e663698f582491ea68af5ac" title="fix urls">
+          (c006d89)
+        </a>
+        
+          <br>fix urls
+        
+      
+    </span>
   </p>
   
   <p class="copyright-item">
@@ -466,6 +644,7 @@ sbt run
     <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
   </p>
 </div>
+
 
     
     
@@ -489,8 +668,7 @@ sbt run
 
     <footer class="post-footer">
       <div class="post-tags">
-          
-          <a href="/tags/akka/">Akka</a>
+          <a href="https://blog.yuanbin.me/tags/akka/">Akka</a>
           
         </div>
 
@@ -498,148 +676,281 @@ sbt run
       <nav class="post-nav">
         
           <a class="prev" href="/posts/2015-08/2015-08-26_09-24-56/">
-            <i class="iconfont icon-left"></i>
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+            </i>
             <span class="prev-text nav-default">Akka Notes 1 - Introducing Actors</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
           <a class="next" href="/posts/2015-08/2015-08-04_17-29-01/">
             <span class="next-text nav-default">Scala 和 Java 的混合编译指南</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
+            <span class="prev-text nav-mobile">下一篇</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
           </a>
       </nav>
     </footer>
   </article>
-        </div>
-        
+
+  
+  
+
+  
   
 
   
 
-  <div class="btn">Comments</div>
-  <div id="comment-thread"></div>
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "billryan/blog"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+  
 
-  <link rel="stylesheet" href="/lib/comment/comment.css">
   
+
   
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+
+  <div class="disqus-comment">
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+    显示 Disqus 评论
+  </div>
+  <div id="disqus_thread"></div>
   <script type="text/javascript">
-    marked.setOptions({
-    highlight: function (code, lang) {
-       return hljs.highlightAuto(code).value;
-    }
-    });
-    function Highlighting(){
-      var markdowns = document.getElementsByClassName('markdown');
-      for(var i=0;i<markdowns.length;i++){
-         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
-      }
-    }
-    window.addEventListener('DOMContentLoaded', Highlighting, false);
-    window.addEventListener('load', Highlighting, false);
-  </script>
-
-  
-  <script src="/lib/comment/comment.js"></script>
-
-  <div id="loading-spin"></div>
-  <script type="text/javascript">
-    var opt = {
-      type: "github",
-      user: 'billryan',
-      repo: 'blog',
-      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
-      go_to_comment: "去留言",
-      issue_title: 'Akka Notes 2 - Actor Messaging',
-      btn_class: "btn",
-      comments_target: "#comment-thread",
-      loading_target: "#loading-spin",
-      client_id: 'df994b73c7b5a106459b',
-      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    var disqus_config = function () {
+      this.page.url = "https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/";
     };
-    getComments(opt);
- </script>
+    function load_disqus() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
 
-  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'billryan_xd';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 
+      $('#load_disqus').remove();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+  
+  </div>
+
+    
+
+  
+
+        </div>
       </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
-      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
-      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
-  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+      <div class="icon-links">
+  
+  
+    <a href="mailto:yuanbin2014@gmail.com" rel="me noopener" class="iconfont"
+      title="email" >
+      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://www.linkedin.com/in/billryan8/" rel="me noopener" class="iconfont"
+      title="linkedin"  target="_blank"
+      >
+      <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="33" height="33">
+  <path d="M872.405333 872.618667h-151.637333v-237.610667c0-56.661333-1.152-129.578667-79.018667-129.578667-79.061333 0-91.136 61.653333-91.136 125.397334v241.792H398.976V384h145.664v66.602667h1.962667c20.352-38.4 69.845333-78.933333 143.786666-78.933334 153.642667 0 182.058667 101.12 182.058667 232.746667v268.202667zM227.712 317.141333a87.978667 87.978667 0 0 1-88.021333-88.106666 88.064 88.064 0 1 1 88.021333 88.106666z m76.032 555.477334H151.68V384h152.064v488.618667zM948.266667 0H75.562667C33.792 0 0 33.024 0 73.770667v876.458666C0 991.018667 33.792 1024 75.562667 1024h872.576C989.866667 1024 1024 991.018667 1024 950.229333V73.770667C1024 33.024 989.866667 0 948.138667 0h0.128z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://github.com/billryan" rel="me noopener" class="iconfont"
+      title="github"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
+</svg>
+
+    </a>
+  
+    <a href="http://www.douban.com/people/billryan/" rel="me noopener" class="iconfont"
+      title="douban"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M926.917973 37.80608C959.65184 37.80608 986.19392 64.34816 986.19392 97.082027L986.19392 926.917973C986.19392 959.65184 959.65184 986.19392 926.917973 986.19392L97.082027 986.19392C64.34816 986.19392 37.80608 959.65184 37.80608 926.917973L37.80608 97.082027C37.80608 64.34816 64.34816 37.80608 97.082027 37.80608zM176.653653 176.19968 176.653653 252.678827 825.658027 252.678827 825.658027 176.19968zM217.719467 316.146347 217.719467 628.08064 273.524053 628.08064 341.292373 770.39616 157.259093 770.39616 157.259093 845.417813 842.949973 845.417813 842.949973 770.39616 654.226773 770.39616 722.899627 628.08064 783.67744 628.08064 783.67744 316.146347zM684.885333 392.891733 684.885333 553.987413 312.576 553.987413 312.576 392.891733zM570.770773 770.39616 426.653013 770.39616 359.621973 628.08064 639.443627 628.08064z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://instagram.com/bin.yuan/" rel="me noopener" class="iconfont"
+      title="instagram"  target="_blank"
+      >
+      <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M853.333333 277.333333C853.333333 289.28 843.946667 298.666667 832 298.666667L746.666667 298.666667C734.72 298.666667 725.333333 289.28 725.333333 277.333333L725.333333 192C725.333333 180.053333 734.72 170.666667 746.666667 170.666667L832 170.666667C843.946667 170.666667 853.333333 180.053333 853.333333 192M192 853.333333C180.053333 853.333333 170.666667 843.946667 170.666667 832L170.666667 469.333333 259.84 469.333333C257.28 482.986667 256 497.493333 256 512 256 653.226667 370.773333 768 512 768 653.226667 768 768 653.226667 768 512 768 497.493333 766.293333 482.986667 764.16 469.333333L853.333333 469.333333 853.333333 832C853.333333 843.946667 843.946667 853.333333 832 853.333333M512 341.333333C606.293333 341.333333 682.666667 417.706667 682.666667 512 682.666667 606.293333 606.293333 682.666667 512 682.666667 417.706667 682.666667 341.333333 606.293333 341.333333 512 341.333333 417.706667 417.706667 341.333333 512 341.333333M853.333333 85.333333 170.666667 85.333333C123.306667 85.333333 85.333333 123.306667 85.333333 170.666667L85.333333 853.333333C85.333333 900.266667 123.733333 938.666667 170.666667 938.666667L853.333333 938.666667C900.266667 938.666667 938.666667 900.266667 938.666667 853.333333L938.666667 170.666667C938.666667 123.306667 900.266667 85.333333 853.333333 85.333333Z"></path>
+</svg>
+
+    </a>
+
+
+<a href="https://blog.yuanbin.me/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
+  </a>
+   
 </div>
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
   </span>
-
-  <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
-    <span class="division">|</span>
-    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
-  </div>
 
   <span class="copyright-year">
-    &copy; 
+    &copy;
     
-      2010 - 
+      2010 -
     2020
     <span class="heart">
-      <i class="iconfont icon-heart"></i>
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        东海一叶
+        
+      </span></span>
+
+  
+  
+    <span id="busuanzi_container">
+      访客数/访问量：<span id="busuanzi_value_site_uv"></span>/<span id="busuanzi_value_site_pv"></span>
     </span>
-    <span class="author">billryan</span>
-  </span>
+  
+
+  
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
+      <i class="iconfont">
+        
+        <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+      </i>
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
 
 
-<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
 
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-32317667-4', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
 
 
 
 
 
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  <script>
+    $("#openSearch, #openSearchMobile").click(function(){
+      $(".modal-dialog").addClass("visible");
+    });
+
+    $("#closeSearch").click(function(){
+      $(".modal-dialog").removeClass("visible");
+    });
+
+    $(document).click(function(event) {
+    
+      if (!$(event.target).closest(".modal-content, #openSearch, #openSearchMobile").length) {
+        $("body").find(".modal-dialog").removeClass("visible");
+      }
+    });
+  </script>
+
+
+
+
+  <script src="/js/custom.js"></script>
 
 
 </body>

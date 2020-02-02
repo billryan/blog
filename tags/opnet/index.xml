@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OPNET on 东海一叶</title>
@@ -17,8 +17,7 @@
       <pubDate>Thu, 05 Jun 2014 15:33:04 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</guid>
-      <description>Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; billryan/WBAN-OPNET-Simulation
-For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, boulis/Castalia would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for the open-ZB.</description>
+      <description>Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; billryan/WBAN-OPNET-Simulation For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, boulis/Castalia would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for</description>
     </item>
     
     <item>
@@ -45,11 +44,7 @@ For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for O
       <pubDate>Sat, 05 Oct 2013 09:39:12 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-05_09-39-12/</guid>
-      <description>Install OPNET Modeler 14.5 under Windows_XP and Windows7
-Several month ago, I wrote a Chinese version of installation with OPNET on Windows OS. Today I will give a more thorough way to install OPNET14.5 on Windows.
-An installation procedure could be shown as a piece of C code.
-could be helpful.
-#include &amp;lt;stdio.h&amp;gt; void opnet_install(); void setx_install(); void opnet_configure_path(); void opnet_configure_path_vs2008(); void opnet_configure_path_vs2010(); void opnet_crack(); if (1 == Win_XP &amp;amp;&amp;amp; VC++ 6.</description>
+      <description>Install OPNET Modeler 14.5 under Windows_XP and Windows7 Several month ago, I wrote a Chinese version of installation with OPNET on Windows OS. Today I will give a more thorough way to install OPNET14.5 on Windows. An installation procedure could be shown as a piece of C code. could be helpful. #include &amp;lt;stdio.h&amp;gt; void opnet_install(); void setx_install(); void opnet_configure_path(); void opnet_configure_path_vs2008(); void opnet_configure_path_vs2010(); void opnet_crack(); if (1 == Win_XP &amp;amp;&amp;amp;</description>
     </item>
     
     <item>

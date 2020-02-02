@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WBAN on 东海一叶</title>
@@ -26,8 +26,7 @@
       <pubDate>Thu, 05 Jun 2014 15:33:04 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</guid>
-      <description>Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; billryan/WBAN-OPNET-Simulation
-For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, boulis/Castalia would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for the open-ZB.</description>
+      <description>Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; billryan/WBAN-OPNET-Simulation For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, boulis/Castalia would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for</description>
     </item>
     
   </channel>

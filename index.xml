@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>东海一叶</title>
@@ -8,7 +8,7 @@
     <language>zh-cn</language>
     <lastBuildDate>Sun, 02 Feb 2020 08:43:56 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.yuanbin.me/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://blog.yuanbin.me/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,7 +17,21 @@
       <pubDate>Sun, 02 Feb 2020 08:43:56 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2020-02/2020-02-02_08-43-55/</guid>
-      <description>熟悉 Java 的看到这种标题，下意识会觉得这篇文章可能是分析 Go 中 set 的实现细节，但我要告诉你的是，Go 官方并没有 set 这种东西，需要的话自己去实现吧&amp;he</description>
+      
+        <description>&lt;p&gt;熟悉 Java 的看到这种标题，下意识会觉得这篇文章可能是分析 Go 中 set 的实现细节，但我要告诉你的是，Go 官方并没有 set 这种东西，需要的话自己去实现吧&amp;hellip; 于是有了这篇文章。知其然且知其所以然，Go 官方之所以还不提供原生的 set, 究其原因，个人猜测与 Go1 无泛型有关，map 和 slice 是 Go 在编译器层面做了手脚以支持『泛型』。可以阅读 &lt;a href=&#34;https://blog.golang.org/why-generics&#34; title=&#34;Go blog&#34;&gt;Go blog&lt;/a&gt; 的如下声明：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If we can write generic types, we can define new data structures, like these, that have the same type-checking advantages as slices and maps: the compiler can statically type-check the types of the values that they hold, and the values can be stored as themselves, not as interface types.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;有了其他语言实现 set 的先例，我们依葫芦画瓢也是可以造出来的，以 Java 为例，我们可以基于 Go 的 map 来实现 set, 由于仅需要 key, 所以 value 部分我们能省则省。最开始我想到的是使用 bool, 毕竟空间够小嘛，但是，经过一番搜索后，我们可以发现有一种叫『&lt;a href=&#34;https://dave.cheney.net/2014/03/25/the-empty-struct&#34; title=&#34;Empty struct&#34;&gt;empty struct&lt;/a&gt;』的东西，它占用的空间是 0!&lt;/p&gt;
+&lt;p&gt;如果只是使用 set, 目前的 &lt;a href=&#34;https://github.com/deckarep/golang-set&#34; title=&#34;Go set&#34;&gt;golang-set&lt;/a&gt; 流传较广，可以试试，虽然线程安全的 set 实现是直接使用读写锁这种粗粒度的锁。&lt;/p&gt;
+&lt;h2 id=&#34;go-collections&#34;&gt;Go collections&lt;/h2&gt;
+&lt;p&gt;Go set 的轮子其实已经不少了，八仙过海各显神通，为什么我还要重新发明轮子呢？一是为 Go 生态添砖加瓦；二是想在 set 中夹带私货，一些自己需要的 feature 可以自己按需实现；三是 set 实现也确实不难，练练手也是极好的。&lt;/p&gt;
+&lt;p&gt;综上，我就 fork 了一个 &lt;a href=&#34;https://github.com/billryan/collections&#34; title=&#34;Go collections&#34;&gt;go-collections&lt;/a&gt;, 逐步完善 set, queue 等一系列基础数据结构。目前 set 的实现，加了 &lt;code&gt;Foreach&lt;/code&gt;, &lt;code&gt;Map&lt;/code&gt; 和 &lt;code&gt;UnmarshalText&lt;/code&gt;(toml 解析用) 这些有意思的实现，其他移植了部分 Java 和 Python 中常用的一些方法。&lt;/p&gt;
+&lt;h2 id=&#34;todo&#34;&gt;TODO&lt;/h2&gt;
+&lt;p&gt;ConcurrentHashSet&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+</description>
+      
     </item>
     
     <item>
@@ -26,7 +40,37 @@
       <pubDate>Wed, 29 Jan 2020 23:25:38 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2020-01/2020-01-29_23-25-37/</guid>
-      <description>2019 年，是我研究生毕业后工作的第三年，时光飞逝，自己再也不是象牙塔里的小孩子了，需要承担越来越多的责任和各方面的挑战。年度总结虽不那么『敏捷』</description>
+      
+        <description>&lt;p&gt;2019 年，是我研究生毕业后工作的第三年，时光飞逝，自己再也不是象牙塔里的小孩子了，需要承担越来越多的责任和各方面的挑战。年度总结虽不那么『敏捷』，但把时间尺度拉长到整个生命的几十年甚至上百年时光中，定期的总结能以史为鉴，指引自己的方向，看到自己一步一步的成长轨迹。&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;工作感悟&lt;/h2&gt;
+&lt;p&gt;从这一年的工作经历来看，简历上确实有些难看，好在年底进入了一家个人觉得还不错的公司，公司文化和提供的福利能让员工更为高效和专注。综合这一年三家公司『丰富』的工作经验，深刻觉得好公司、好团队和好业务确实难以兼得，如果按工作体验排个序，我会倾向于一个好的团队，一个团队的天花板往往取决于团队的核心人物，团队的核心人物靠谱，能负责的业务往往不会差，机会也多。&lt;/p&gt;
+&lt;p&gt;从工作内容的延续性来看，最近两三年可以认为一直在从事数据密集型应用、推荐系统和垂直领域搜索这几个领域。毕业初期做过一些大数据基础设施相关的工作，而后逐步转向应用方向，如一些客户画像、分类、AntiSpam、推荐系统和垂直领域搜索等，接触面虽广但深度还有待提升。2019 年在技术分享和总结上做的较差，2020 年争取在 CDC 实时流处理、推荐系统和 ES 搜索领域分享一些心得。&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;旅行&lt;/h2&gt;
+&lt;p&gt;2019 年 5 月去了一次大西北，走了一次青甘大环线，感慨祖国的大西北真是幅员辽阔和很多奇观异景，同时更感慨水资源的珍贵，前期的总结可以移步分类 &lt;a href=&#34;https://blog.yuanbin.me/categories/%E6%97%85%E6%B8%B8/&#34;&gt;旅游&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;书影音&lt;/h2&gt;
+&lt;p&gt;2019 年的阅读量还是太少了，无论是代码、技术类书籍还是非技术类书籍，输入量都太小了。自己读过听过看过的一些比较有意思的资料总结如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://movie.douban.com/subject/34807113/&#34;&gt;走进比尔：解码比尔·盖茨&lt;/a&gt; - 看看盖茨是如何阅读和学习的，使用工程思维解决人类社会难题。他的好奇心、求知欲、工程能力和阅读习惯深深感染了我。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://time.geekbang.org/column/intro/139&#34;&gt;MySQL实战45讲-丁奇&lt;/a&gt; - 作为后端，免不了要与数据库打交道，丁奇的这个专栏质量非常高，而且回复也极其认真，可以大大扩展自己对 MySQL 的了解和使用深度。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://time.geekbang.org/column/intro/42&#34;&gt;技术与商业案例解读-徐飞&lt;/a&gt; - 除了纯技术外，我们也需要了解 IT 江湖的经典商业历史，以史为鉴，博采众长。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;heading-3&#34;&gt;投资&lt;/h2&gt;
+&lt;p&gt;对于普通人来说，股票/基金/债券等是相对较为现实的一种投资方式，虽然这个市场可能只有 20% 不到的人是盈利的，但你可以利用钱来买到比你更适合的人去从事你所看好的行业，为你赚取更多回报。更重要的是，投资赚钱的能力是可以随着你的知识提升而提升的，那么越往后你盈利的概率就会越大。2019 年之前乱七八糟的都投过一些，曾经血赚过，也曾血亏过，也算是穿越感受过完整的牛熊周期了，越发觉得稳健的重要性。有幸遇到了小白菜推荐的『复利先生』，2019 年我尝试了可转债，虽然每次赚取利润不多，但好在心里安稳。买入的格力和场内中概互联也获利良多，视觉中国在两次黑天鹅事件后果断出手，也盈利了不少——机会是跌出来的，好公司的生意和盈利模式没有大幅改变时，一些小的黑天鹅不算啥。&lt;/p&gt;
+&lt;p&gt;2020 年争取进军港美股，去香港把香港账户开了，了解更多好的科技公司，毕竟这是自己的行业，有一定的判断能力。&lt;/p&gt;
+&lt;h2 id=&#34;heading-4&#34;&gt;展望&lt;/h2&gt;
+&lt;p&gt;公司有使命愿景价值观，那对于我个人来说，我的使命愿景价值观又是什么呢？——那就是在有限的生命里，体验这个世界更多的可能性，尽可能给这个世界创造更多美好的东西。&lt;/p&gt;
+&lt;h3 id=&#34;todo&#34;&gt;TODO&lt;/h3&gt;
+&lt;ol start=&#34;0&#34;&gt;
+&lt;li&gt;组建自己的小家庭，是时候送出一辈子的承诺了&lt;/li&gt;
+&lt;li&gt;《原则》——阅读的过程中发现公司文化有不少和 Ray 的理念是相符的&lt;/li&gt;
+&lt;li&gt;填坑 &lt;a href=&#34;https://octopusflow.github.io/&#34;&gt;octopusflow&lt;/a&gt;, 做 DAG 版的 CDC，面向搜索、推荐、缓存等 ToC 场景&lt;/li&gt;
+&lt;li&gt;阅读计算机领域的一些经典论文&lt;/li&gt;
+&lt;li&gt;读读 ES, lucene 的源码，深入了解检索领域的工程实现&lt;/li&gt;
+&lt;li&gt;再去一次沙巴体验海岛和滑翔伞&lt;/li&gt;
+&lt;li&gt;锻炼身体，早睡早起&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+      
     </item>
     
     <item>
@@ -35,7 +79,26 @@
       <pubDate>Sun, 23 Jun 2019 22:50:22 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-06/2019-06-23_22-50-22/</guid>
-      <description>沙尘一瞥七彩丹霞，风雪远眺皑皑雪山 第五天从敦煌赶往张掖，因为逛过阳关，不少人都已经对西北景点审美疲劳了，加之沙尘天气还未散去，中途的嘉峪关就</description>
+      
+        <description>&lt;blockquote&gt;
+&lt;p&gt;沙尘一瞥七彩丹霞，风雪远眺皑皑雪山&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第五天从敦煌赶往张掖，因为逛过阳关，不少人都已经对西北景点审美疲劳了，加之沙尘天气还未散去，中途的嘉峪关就直接略过了，导致一天全程基本都在路上，大环线的 D5 篇自然也就没有了。抵达张掖后，我们在丹霞景区附近住下，这一片还比较新，能吃饭的地方不多。&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;张掖丹霞&lt;/h2&gt;
+&lt;p&gt;由于沙尘暴的影响，我们错过了最适合观赏丹霞的晚霞时刻，下午便窝在宾馆里休息了。丹霞景区还是比较大的，游客可以凭身份证连续使用两天，在出口处登记即可。所以最佳使用方式是下午第一次使用看晚霞，第二天早上看朝霞，这两个时间点是最适合观景和拍照的。&lt;/p&gt;
+&lt;p&gt;第二天早上沙尘天气依旧，但已经没有时间让我们多等一天了，我们驱车直奔丹霞景区。景区入口比一般的都要大一些，进去后又是熟悉的配方，坐大巴前往景区。景区大大小小有六个左右的片区可供观赏，其中的精华应该是最后一个和中间一个。除了大巴的方式，壕也可以选择直升机的方案鸟瞰整个景区，看普通游客看不到的景。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-16_10-18-24.jpg&#34; alt=&#34;七彩丹霞&#34;&gt;&lt;/p&gt;
+&lt;p&gt;不知道是恶劣的天气原因还是网上图片P的太过，我们看到的丹霞离五彩还是有点差距的 😔 不少片区的木梯还在刷油漆，味道刺鼻，好些游客因为这个原因放弃了部分景点。附上最后一站的沙尘+七彩丹霞，天气不好真是浪费了门票。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-16_10-11-07.jpg&#34; alt=&#34;七彩丹霞气球&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;225&#34;&gt;最美225国道&lt;/h2&gt;
+&lt;p&gt;225 国道被评为中国最美的几大公路之一，沿途有雪山，戈壁滩，树林等，我们从丹霞游完后便沿225国道直奔西宁而去了。张掖部分的225国道在翻修，一半的树木被割掉，这意味着以后最美国道的可观赏区域越来越短了。从气候上来说，张掖应该是大环线上城市中最像南方城市的了，温度高，水源多。&lt;/p&gt;
+&lt;p&gt;祁连山下好草原，如果七月八月来草长绿了，油菜花也黄了，远处的雪山仍旧是那么白，那么这一段就能算是最美公路了。在草原之前其实还有岗什卡雪峰，因为队友不再愿意下车远眺，于是又放弃了一个景点&amp;hellip; 😔&lt;/p&gt;
+&lt;p&gt;穿过岗什卡雪峰和祁连山大草原后，我们就到达了本次大环线的最后一个险峰达坂山隧道了，马路九曲回肠，我们的司机仍然开到了 90 码，不得不佩服他高超的技术。穿越达坂山隧道后就进入青海省的范围了，下山的途中水源依旧丰富，我估计秋天的时候沿途的树林金黄一片应该也美极了。&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;全剧终&lt;/h2&gt;
+&lt;p&gt;至此，本次青甘大环线的全部行程就基本告一段落了，游记也全部整理完了，遗憾不少，主要是后面三天的沙尘暴来的实在不是时候，加之队友后面 3 天对西北景点已经有审美疲劳，我们也放弃了不少景点。如果再有一次机会，我一定会选择 7 月 8 月天气好的时候，走走小环线就好了，景点密度高，和一群志同道合的年轻小伙伴一起来看看祖国的大西北。&lt;/p&gt;
+&lt;p&gt;羽雀专栏——&lt;a href=&#34;https://www.yuque.com/billryan/siab93&#34;&gt;青甘大环线-西北 6 日行 · 语雀&lt;/a&gt;&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -44,7 +107,27 @@
       <pubDate>Sun, 23 Jun 2019 22:48:31 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-06/2019-06-23_22-48-31/</guid>
-      <description>一睹千年历史文化莫高窟，喜迎万丈黄沙飞天沙尘暴 敦煌整个城市不大，城市路灯，建筑和雕饰都受到了莫高窟很大的影响，飞天等形象随处可见。下图是我们</description>
+      
+        <description>&lt;blockquote&gt;
+&lt;p&gt;一睹千年历史文化莫高窟，喜迎万丈黄沙飞天沙尘暴&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;敦煌整个城市不大，城市路灯，建筑和雕饰都受到了莫高窟很大的影响，飞天等形象随处可见。下图是我们晚上在『敦煌小镇』觅食的地方，里面算是传统的夜市了，很多烧烤等小吃。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-14_15-44-31.jpg&#34; alt=&#34;敦煌小镇&#34;&gt;&lt;/p&gt;
+&lt;p&gt;今天的原定行程是上午逛莫高窟，下午逛鸣沙山月牙泉，但逛完莫高窟后就遇到了沙尘暴，下午去了鸣沙山后又折返回宾馆休息了。不得不说这真是全程最大的遗憾了，即使有风沙，应该也可以留下一些西北的独特记忆，出一些不错的照片。&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;敦煌莫高窟&lt;/h2&gt;
+&lt;p&gt;敦煌莫高窟应该是很多人考虑大环线很重要的一个景点了，沉淀了近两千年的佛教文化，对佛教有研究的同学们一定不会错过。如果你要问我全程最热门的景点是哪一处，我觉得那肯定就是莫高窟了，莫高窟的门票是比较贵的，238 一人，还得到莫高窟指定的网站或者公众号上买票预约，最佳观看时间是早上 9 点那一档，如果确定去的话，需要尽可能提前购买，旺季时一票难求。&lt;/p&gt;
+&lt;p&gt;莫高窟的门票中，238 块的是包含导游费用的，进去后首先是观看两场数字电影，随后由大巴进入真正的石窟景区，前面说过了，这是西北景区的通用套路，只是莫高窟距离检票口的距离更远一些&amp;hellip; 开始观看的两场数字电影是非常有利于了解石窟文化的。球状的幕布也挺新颖。进入景区后，会有专业的导游带队，并每人戴一副耳机听讲解，这次我们能看到的石窟是 8 个，其它的都是不允许观看的。里面有一个石窟是相对早期的作品，尽管过了上千年，保存依旧还是不错的。有不少石窟被清朝翻修过，很多人物表情明显就差了些意思，没有那么精致了。能到莫高窟开窟的不是达官显贵就是皇室家族了。除了莫高窟外，旁边还有一个日本人捐建的石窟博物馆，里面也有不少作品可以身临其境观看。莫高窟内很多经典都是禁止拍照的，因此这边我几乎没有拍过照片，下面拿一张随手拍的充充数大家感受下吧。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-14_13-18-49.jpg&#34; alt=&#34;敦煌莫高窟&#34;&gt;&lt;/p&gt;
+&lt;p&gt;每一个窟就像是一间房子，进去后别有一番天地，一层叠一层。莫高窟历史上经历过两次比较大的劫难，一次被大火烧个精光，一次是战乱躲进去后生火氧化毁坏了不少艺术品。清末和建国以前，也有不少西方国家在莫高窟搜刮佛像和佛经，如今想要研究敦煌文化，还得去国外各种博物馆搜集资料，真是民族的耻辱！&lt;/p&gt;
+&lt;p&gt;从莫高窟出来后可以看到路旁一些未完工的别墅群，司机说是因为官商勾结贪腐查案所以成了烂尾楼，可惜，可叹。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-14_15-14-10.jpg&#34; alt=&#34;废弃别墅群&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;鸣沙山月牙泉——风沙过大放弃&lt;/h2&gt;
+&lt;p&gt;从以上两张图都可以看出从莫高窟内开始天空就起了沙尘暴，这些绿林还是没能阻止黄沙的肆虐。从莫高窟出来之后我们便朝鸣沙山月牙泉走去，因为风沙太大的缘故，我们实际上先回宾馆休息了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-14_15-10-49.jpg&#34; alt=&#34;鸣山村&#34;&gt;&lt;/p&gt;
+&lt;p&gt;回到宾馆后我们发现房间内靠近窗户的地方也全是沙子，西北这种风沙确实不适合人类长期居住。这种天气仍执意出行的需要戴好口罩，带相机的则需要保护好镜头，防止过多灰尘进入。在下午风变小后我们仍尝试再次出发前往鸣沙山月牙泉，走了一公里后司机说上去后什么也看不见，遂作罢。现在想想如果当初坚持去看看鸣沙山，说不定就能体会到真正的沙漠风景了。所以说要去西北的，建议还是做好这种心理准备，并能和在坏天气时也能不放弃的队友一起旅行。&lt;/p&gt;
+&lt;p&gt;羽雀专栏——&lt;a href=&#34;https://www.yuque.com/billryan/siab93&#34;&gt;青甘大环线-西北 6 日行 · 语雀&lt;/a&gt;&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -53,7 +136,36 @@
       <pubDate>Sun, 23 Jun 2019 22:41:50 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-06/2019-06-23_22-41-49/</guid>
-      <description>深入无人区，翻越当金山，西出阳关无故人 第三天的行程又是远距离旅行，途中要经过不少需要严格检查的关卡，关卡的警察叔叔们八点半左右上班，所以我们</description>
+      
+        <description>&lt;blockquote&gt;
+&lt;p&gt;深入无人区，翻越当金山，西出阳关无故人&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第三天的行程又是远距离旅行，途中要经过不少需要严格检查的关卡，关卡的警察叔叔们八点半左右上班，所以我们必须早上七点准时出发以尽可能减少遇上关卡查人或者查物件(看人品)的几率，查物件时需要翻开所携带的所有行李，遇上前面有几辆大巴的话一天就过去一大半了。&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;南八仙雅丹&lt;/h2&gt;
+&lt;p&gt;前方的第一站是『南八仙雅丹』，也被称为魔鬼城，这个地方是风蚀形成的自然景观，目之所及，几乎看不到任何生物，也没有人类常住。我们早上八点半左右就到了，这个时候几乎没风，自然也听不到呼呼的『魔鬼声』，可惜的是天公不作美，蓝天也不在。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-13_08-47-06.jpg&#34; alt=&#34;雅丹地貌&#34;&gt;&lt;/p&gt;
+&lt;p&gt;值得一提的是雅丹魔鬼城这边的公厕是及其简陋的，司机一直给我们说的就是辣眼睛，需要戴防毒面具，其它一个车队的游客有因为进了一次后吐到胃酸都出来的&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;冷湖镇偶遇野骆驼&lt;/h2&gt;
+&lt;p&gt;从雅丹魔鬼城出来后我们便前往下一站当金山，在拐往冷湖镇的途中遇到了一群野骆驼，在荒凉的戈壁滩上徐徐前进。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-30_20-19-09.jpg&#34; alt=&#34;马路骆驼&#34;&gt;&lt;/p&gt;
+&lt;p&gt;冷湖镇是真的冷清，街上不见一个人，只有几只塑料袋在飘来飘去。司机师傅说不能在这边吃饭，吃了必拉肚子。不怕死的大可在这尝试一下。&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;最美公路大片&lt;/h2&gt;
+&lt;p&gt;从雅丹魔鬼城开车两小时后遇到的一条公路（冷湖镇范围）是整个环线中最适合飙车和拍公路大片的马路了，两边都是荒漠，路特别直，直通天际。这条公路适合拍摄集体照或者单人的飞天照，如果遇到蓝天白云那更是美的不行。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-13_11-27-06.jpg&#34; alt=&#34;笔直公路&#34;&gt;&lt;/p&gt;
+&lt;p&gt;从这条笔直公路拐弯后进入的是另一个无人区，远处的戈壁颇有点外星球的感觉。山脚下的沙石都变成白色的了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-13_12-44-05.jpg&#34; alt=&#34;无人区&#34;&gt;&lt;/p&gt;
+&lt;p&gt;到当金山的时候已经下午了，山上的雪仍然未化，山路十八弯估计会让不少马路杀手闻风丧胆。&lt;/p&gt;
+&lt;h2 id=&#34;heading-3&#34;&gt;阿克塞小镇&lt;/h2&gt;
+&lt;p&gt;过了当金山，基本就是甘肃的领地了，下山后有一个石油小镇的遗址，有不少电影道具还在那边留着，我们一行人兴趣不大就略过直接赶往阿克塞镇上直接吃中饭了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-30_20-53-23.jpg&#34; alt=&#34;阿克塞小镇&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-4&#34;&gt;阳关&lt;/h2&gt;
+&lt;p&gt;离开阿克塞小镇之后我们就直奔阳关了——劝君更尽一杯酒，西出阳关无故人。阳关的门票在线买的话需要提前半小时买，如果没有优惠就直接现场买，买完后蹭一个导游是最好的。到阳关的路上也是一路黄沙，有一小处有风蚀的雅丹地貌，拍照应该不错。快到阳关时我们已能远远地看到一大片绿林，在沙漠中很是茂盛，走进时发现这边是水源的聚集地，也是沙漠中的绿洲。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-30_20-53-23.jpg&#34; alt=&#34;沙漠战车&#34;&gt;&lt;/p&gt;
+&lt;p&gt;除了绿洲，其它方向仍然是满目苍痍，寸草不生。此情此景不得不感概水源对生命的重要性，丝绸之路的开通真是不容易。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-13_18-03-05.jpg&#34; alt=&#34;阳关绿洲&#34;&gt;&lt;/p&gt;
+&lt;p&gt;羽雀专栏——&lt;a href=&#34;https://www.yuque.com/billryan/siab93&#34;&gt;青甘大环线-西北 6 日行 · 语雀&lt;/a&gt;&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -62,7 +174,30 @@
       <pubDate>Sun, 23 Jun 2019 22:36:50 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-06/2019-06-23_22-36-49/</guid>
-      <description>深入柴达木盆地腹地，巧遇德令哈外星人遗址，邂逅最美大柴旦镇翡翠湖 第二天的行程本可以安排早上的茶卡盐湖和下午的翡翠湖，但我们在第一天下午已经逛</description>
+      
+        <description>&lt;blockquote&gt;
+&lt;p&gt;深入柴达木盆地腹地，巧遇德令哈外星人遗址，邂逅最美大柴旦镇翡翠湖&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第二天的行程本可以安排早上的茶卡盐湖和下午的翡翠湖，但我们在第一天下午已经逛过茶卡盐湖天空一号，对景区极为失望，虽然第二天天气非常适合去盐湖拍照，但我们还是放弃了，直接前往400公里开外的大柴旦镇。
+西北这边两个小镇之间往往相隔较远，几十公里上百公里也常见，所以测速基本以区间测速为主，我们在途中路况好的地方跑150码左右，然后在途中一些点下车拍照休息。我们早上八点多出发，下午近一点抵达大柴旦镇。&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;德令哈外星人遗址&lt;/h2&gt;
+&lt;p&gt;途经德令哈的时候司机给我们说这边有外星人基地，我首先是很不屑一顾地笑了笑，以为又是师傅说的一个当地流传的神话故事，万万没想到的是，这个遗址还真是真实存在，名字还是『外星人遗址』！前往外星人遗址的话，又得往返近150公里了，而且现在那个遗址已经坍塌，也看不到多少有价值的东西了，作罢。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-12_11-05-38.jpg&#34; alt=&#34;德令哈外星人遗址&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;大柴旦镇&lt;/h2&gt;
+&lt;p&gt;前往大柴旦镇的旅途属于柴达木盆地的一部分，极具西北特色，5月份的路边满目荒凉，基本只有黄色的骆驼草，野生的黑枸杞等，唯一值得让人欣慰的就是远方的雪山了。下图雪山脚下的小镇就是大柴旦镇了，远处看着不大，但实际步行起来还是有点规模的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-12_12-52-34.jpg&#34; alt=&#34;柴旦镇&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在大柴旦镇走了几条街，发现这边除了本地饭店之外基本就是川菜了，颇具规模。在这边吃完中饭后，我们便趁人少顶着烈日去了翡翠湖景区，翡翠湖景区目前还处于开发中，不收门票，和茶卡盐湖类似也是盐湖，但相比天空一号来说规模小很多。远处看似就在小镇旁边，但实际上离大柴旦镇有七八公里远，进去的一段沙石路并不好走。&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;翡翠湖&lt;/h2&gt;
+&lt;p&gt;在快抵达翡翠湖时我们发现已经有从茶卡镇那边陆续过来的大巴了，两辆大巴的人几乎就能把整个翡翠湖塞满，不敢想象七八月旺季的时候那里人山人海的场景。翡翠湖之所以叫翡翠湖，是因为其中一两个盐湖颜色绿的像翡翠。听司机说的其实在这个翡翠湖之前，还有些其它颜色如红色的盐湖，天气好遇到晚霞时景色异常艳丽。但是在工业开采过后，很多曾经美丽的五颜六色的盐湖都消失了。目前景区还在开发中，暂未收费，预计下半年修好后就会开始收费了。现在游客能观看的一般是三个湖，两个翡翠色深一点，另外一个浅一些，另外还有一个几乎没有水的盐湖。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-12_16-02-51.jpg&#34; alt=&#34;柴旦镇&#34;&gt;&lt;/p&gt;
+&lt;p&gt;中午时分感觉风不大，但当我们到达湖边时风已经起来了，想要达到和茶卡盐湖类似的镜面效果也是奢求了，刚进去的两个湖颜色还挺耐看的，但后面这个湖的颜色就差强人意了，风大的时候雪山的倒影也不清晰。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-12_16-00-33.jpg&#34; alt=&#34;翡翠湖&#34;&gt;&lt;/p&gt;
+&lt;p&gt;逛完了几处翡翠色的小湖，我们来到了靠近雪山脚下的一片盐田寻找灵感，人可以穿鞋踩进去也不用担心陷进去。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-12_16-10-38.jpg&#34; alt=&#34;翡翠湖&#34;&gt;&lt;/p&gt;
+&lt;p&gt;晚上八点半左右日落时本还有所期待，没想到风仍然是大成狗，而且也没有一点晚霞的样子，晚上出来看星空也没有看到银河，有点小失望 😞&lt;/p&gt;
+&lt;p&gt;羽雀专栏——&lt;a href=&#34;https://www.yuque.com/billryan/siab93&#34;&gt;青甘大环线-西北 6 日行 · 语雀&lt;/a&gt;&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -71,7 +206,38 @@
       <pubDate>Sat, 15 Jun 2019 15:40:53 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-06/2019-06-15_15-40-53/</guid>
-      <description>翻越拉脊山，醉美青海湖，远眺日月山，梦断茶卡盐湖 塔尔寺 在西宁修整一晚后，我们便按照司机吩咐早上七点吃完早餐将行礼放至车上前往塔尔寺，塔尔寺是</description>
+      
+        <description>&lt;blockquote&gt;
+&lt;p&gt;翻越拉脊山，醉美青海湖，远眺日月山，梦断茶卡盐湖&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;heading&#34;&gt;塔尔寺&lt;/h2&gt;
+&lt;p&gt;在西宁修整一晚后，我们便按照司机吩咐早上七点吃完早餐将行礼放至车上前往塔尔寺，塔尔寺是一座非常有名的西北藏传佛教寺，历史悠久，距离西宁市区不算近，约有五十公里。我们行至塔尔寺脚下时，已经过了七点半，这时已经有工作人员上班封路了。正当我们认为要去他们指定的停车场并付费乘坐电瓶车时，老司机说他有祖传的密道，直达寺庙入口。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-11_08-07-00.jpg&#34; alt=&#34;塔尔寺&#34;&gt;&lt;/p&gt;
+&lt;p&gt;塔尔寺内较大，里面不仅有各种佛像金身，也有历史悠久的艺术瑰宝。我们一行人中虽有信佛的但是对这种历史悠久的藏传佛教文化所知还是甚少，蹭了几个导游了解了一些历史和文化，也不枉白来一趟。门内外的转轮和游览方向几乎都遵循顺时针方向，到处都遍布着虔诚的信徒。考虑到路途遥远，我们在寺内逛了差不多两小时后便前往下一站拉脊山了。&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;拉脊山&lt;/h2&gt;
+&lt;p&gt;从塔尔寺到拉脊山大约40公里，但由于沿途要翻山越岭走盘山公路，我们实际花了约40分钟抵达山峰。对于我们这种从南方长大的孩子，沿途能远眺到白皑皑的雪山时已激动不已，雪是那么的白，天空也非常干净，唯独图中的挡风玻璃是个 bug。沿途从山脚三千多米到山峰四千多米，我们明显能感觉到风越来越大，气温越来越低，沿途遇到不错的风景下车时需要注意防寒保暖。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-11_10-09-58.jpg&#34; alt=&#34;拉脊山路上&#34;&gt;&lt;/p&gt;
+&lt;p&gt;拉脊山峰处其实不大，风倒是呼呼地刮，一件薄薄的轻羽绒根本顶不住那刺骨的寒风。一脚踏进山峰边的积雪上，快到膝盖了&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-11_10-42-30.jpg&#34; alt=&#34;拉脊山&#34;&gt;&lt;/p&gt;
+&lt;p&gt;拉脊山上的洗手间是我们行程中第一个无水洗手的洗手间，当然也不是最后一个&amp;hellip; 我们一行人大概谁也没想到后面的洗手间环境更为恶劣，拿司机的话来说就是辣眼睛 👀 此处省略一万字，请各位看官自行脑补 😁&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;青海湖&lt;/h2&gt;
+&lt;p&gt;告别了拉脊山，我们便下山直奔青海湖。从拉脊山前往青海湖大约120公里，我们花了不到两个小时就到了，快到青海湖的时候，我们便远远地看到了一片碧蓝色的大海，犹如镶嵌在高原上的一颗宝石。&lt;/p&gt;
+&lt;p&gt;可惜的是5月份还没种油菜花，湖旁边的空地上一片荒凉，只有零星的几根草。这些空地看起来有些有路可以开进去，但需要注意的是，**这些路不是都可以随便进去的，有些是钓鱼执法！牧民会让你按损坏的草的根数进行敲诈勒索！**好在老司机轻车熟路，告诉我们其实青海湖最佳游览点不在官方的二郎剑景区，而在旁边一个私人搭建的区域，这两个的区别在于二郎剑景区有大船，但风大的时候船不会开多远。在司机的建议下，我们去了这个私人区域，司机讨价还价，说淡季便宜点，最终30一个人。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-11_12-47-33.jpg&#34; alt=&#34;青海湖&#34;&gt;&lt;/p&gt;
+&lt;p&gt;我们去的那天下午天气还不错，但风那是真的大，湖水很干净，远处颜色很蓝，在尽头相接的雪山就是日月山脉了。雪山脚下充满了西北的特色，全是戈壁滩沙石，寸草不生。&lt;/p&gt;
+&lt;p&gt;这个私人景点有几处青海湖的石碑，最适合打卡的是风口浪尖带着牛头的石碑，给个浪花大家感受一下。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-11_13-03-45.jpg&#34; alt=&#34;青海湖&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在青海湖逗留了约一个小时，我们便前往号称天空之镜的茶卡盐湖去了，沿途的一些如倒淌河，文成公主等日月山旁的小景点我们觉得没啥意思让司机没停直接开过去了，中饭也是在车内解决节约时间。&lt;/p&gt;
+&lt;h2 id=&#34;heading-3&#34;&gt;茶卡盐湖&lt;/h2&gt;
+&lt;p&gt;抵达茶卡盐湖的时间大约是下午四点，行程里程约150公里，这段路有不少山路和限速路段，我们行驶了约两个半小时才到。这段路也是典型的西北荒漠，只能看到零星的几根骆驼草散发出的生命的气息，远处偶尔能见一些雪山。&lt;/p&gt;
+&lt;p&gt;茶卡盐湖实际上是很大一片盐湖，供工业开采用，我们到达的时候老的景区可能在下雨，于是便尝试了一下路边的广告牌『天空一号』景区，这个景区是新修的，就盐湖构成上和传统的茶卡盐湖景区是一样的。本着猎奇的心态，我们买了门票，电瓶车交通票和下盐湖拍倒影用的靴子。&lt;strong&gt;事实证明这是一次非常失败的尝试&lt;/strong&gt;，当天下午风嗖嗖地刮，再好的湖面也不太可能会有什么天空之镜的效果，游玩体验极差！更为恶劣的是，这个天空一号修这么大，有一大片都是开发中或者未开发的盐湖，没完成的景区就开始收高昂的门票和交通费这一点让我们十分气愤。&lt;/p&gt;
+&lt;p&gt;本以为盐湖会像青海湖一样深不见底，实际却发现盐湖普遍不过是浅浅的一层，穿个靴子就能下去了，这样的好处是适合站在湖中拍照，没风的时候适合出大片。如果一定要来茶卡盐湖景区，强烈建议只在风小的时候前往，且在天空一号景区未开发成熟前还是去老的景区，至少老景区还是有些盐雕等适合拍照的打卡地。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-11_16-31-04.jpg&#34; alt=&#34;茶卡盐湖&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在茶卡盐湖的这个景点上，根据到达茶卡的时间点，我们是可以选择当天下午或者第二天早晨游玩的，由于我们在之前的景点逗留时间都不长，加之司机开车又快又稳，我们到盐湖的时候还是挺早的。但由于未和司机做充分的沟通，也不了解在天气不好或是风大时不适合游玩盐湖景点，我以为这个景点必须下午玩，于是便让司机去了天空一号景区。在传统的攻略上，会有一项黑马河看日出的行程，但实际上由于黑马河镇太小，太多小作坊式的住宿点，被投诉过于严重，现已被国家强制拆除，所以我们只能夜宿茶卡镇，那些所谓的黑马河看日出也几乎是不可能的了。&lt;/p&gt;
+&lt;p&gt;当晚在茶卡镇我们找了家当地的饭店，吃了羊肉火锅，味道也还不错，并且没什么膻味，这一点远超大部分东部城市地区的肥羊。我们住的宾馆就在茶卡盐湖旁边，但由于晚上有点事情，我们也没有出来走走看看日落，接近十点的时候，看了下天空好像也没有什么银河之类的壮观夜景。早上在宾馆外面散步时，发现风还挺小的，其实此时是非常适合去茶卡盐湖打卡拍照的，但因为昨天天空一号被伤过，其他人似乎都无兴致，我也断掉再去老景区打卡的念头了。人多的时候总是众口难调，一起旅游的要么是想法一致，要么能理解其他人并做一定妥协，否则很容易在旅途中产生矛盾。&lt;/p&gt;
+&lt;p&gt;羽雀专栏——&lt;a href=&#34;https://www.yuque.com/billryan/siab93&#34;&gt;青甘大环线-西北 6 日行 · 语雀&lt;/a&gt;&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -80,7 +246,71 @@
       <pubDate>Wed, 12 Jun 2019 22:00:00 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-06/2019-06-12_22-00-00/</guid>
-      <description>青甘大环线，爬雪山，过草地，穿越无人区。 自打四月底确定去阿里系的一家公司后，我便和女朋友寻思着怎么利用这段离职交接的间隙来一场家庭旅游。我们</description>
+      
+        <description>&lt;blockquote&gt;
+&lt;p&gt;青甘大环线，爬雪山，过草地，穿越无人区。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;自打四月底确定去阿里系的一家公司后，我便和女朋友寻思着怎么利用这段离职交接的间隙来一场家庭旅游。我们的初步候选地点有东南亚、台湾、桂林、云南九寨沟和青海，考虑到签证等多方面因素，我们最终选定了绵延近 3000 公里的甘青大环线。&lt;/p&gt;
+&lt;p&gt;看过同学八月份在甘肃和青海的租车自驾攻略，风景真是美如画，便更坚定了自驾游的意愿。借助万能的淘宝，我们找到了一家口碑和价格都极好的旅行社，确定了6天5晚的包车自驾游套餐，最终套餐优惠下来实际上是6天6晚，路线是经典的甘青大环线。&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;行程概览&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-19_09-45-28.jpg&#34; alt=&#34;行程概览&#34;&gt;&lt;/p&gt;
+&lt;p&gt;从上海出发的每天的实际详细行程如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-01_08-07-00.jpg&#34; alt=&#34;上海出发&#34;&gt;&lt;/p&gt;
+&lt;p&gt;行程规划类的 APP 之前有用过 出发吧，觉得做的太烂了，这次换成了 穷游行程助手，感觉还凑合。上海到西宁的航班不仅时间不合适，票价还是到兰州的近两倍&amp;hellip; 好在兰州机场有城铁到火车站，所以兰州中转也是可以接受的。&lt;/p&gt;
+&lt;p&gt;此次行程主要是包车自驾游，我们的老司机还是挺辛苦的，西宁当地人，对路况非常熟悉，开车技术一流，无人区中能飙150码，在最险的山路上还可以开90 码 😁 司机集多种功能于一身，开车、摄影、介绍沿途典故、景点攻略和美食推荐一样不落！这里要再次感谢马师傅，让我们的西北之行有了更好的安全保障和游玩体验。&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;费用&lt;/h2&gt;
+&lt;p&gt;上海到西宁的机票加动车往返全程 1350，包车自驾游1390(含住宿)，吃饭一天在一百以内，门票费用差不多 600，全部费用预估在 4000 以内。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;塔尔寺 70&lt;/li&gt;
+&lt;li&gt;拉脊山 0&lt;/li&gt;
+&lt;li&gt;青海湖私人景点 30(师傅帮我们砍价了)&lt;/li&gt;
+&lt;li&gt;茶卡天空一号 50+20&lt;/li&gt;
+&lt;li&gt;翡翠湖 0&lt;/li&gt;
+&lt;li&gt;南八仙雅丹魔鬼城 0&lt;/li&gt;
+&lt;li&gt;阳关 70&lt;/li&gt;
+&lt;li&gt;敦煌石窟 238&lt;/li&gt;
+&lt;li&gt;张掖丹霞 70&lt;/li&gt;
+&lt;li&gt;嘉峪关那边由于已经逛过阳关了，大家有点累就没去，鸣沙山因为遇到沙尘暴，也取消了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;交通方案及行前准备&lt;/h2&gt;
+&lt;p&gt;由于祖国的大西北普遍地广人稀，路途遥远，所以甘青大环线比较经典的自驾游走法也就那么些，绝大多数人会选择西宁作为行程的起止点，这种走法每天的行程安排较为紧凑。其它城市也不是不可以，难在包车自驾游的选择上。&lt;/p&gt;
+&lt;h3 id=&#34;heading-3&#34;&gt;西宁不便则从兰州或张掖中转&lt;/h3&gt;
+&lt;p&gt;由于西宁不是热门的西北城市，交通还是略显不便的，上海这边直达的航班不仅比较少，而且还比较贵，单程都要1000多了。看了看淘宝上套餐中兰州起止的方案，其实也是先到兰州再自行去西宁的，所以甘青环线不管怎么安排，比较好的选择中，基本都绕不开以西宁作为起止点。&lt;/p&gt;
+&lt;p&gt;在西北的这些城市中，西宁旁边的城市有兰州和张掖，兰州机场到兰州火车站，有专门的城铁(35分钟到兰州西站)，机场内即可无缝接驳，兰州火车西站到西宁则有动车和直达车(2小时多一点)，两趟火车的价格加起来几十块就搞定了。所以如果选择兰州作为中转，机票往返才1210，比直接到西宁的方案便宜接近一半，而且可以虹桥起飞，代价则是会多两小时的火车中转时间。&lt;/p&gt;
+&lt;p&gt;张掖到西宁的动车时间一般在两小时以内，和兰州的时间相差不大。但直飞张掖的航班就比兰州少多了，上海过去有一趟春秋的航班，价格比较便宜。关于动车和普通直达车的选择: 建议多花一二十块享受下更为舒适的动车，还可以选座。七月八月是西北的旅游旺季，刚查了下直飞西宁的价格和兰州也相差不远了，所以还是建议兰州，张掖和西宁这三种航班方案都比较下。&lt;/p&gt;
+&lt;h3 id=&#34;heading-4&#34;&gt;上海出发行程参考&lt;/h3&gt;
+&lt;p&gt;附上我们当时上海出发的行程参考&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;去程：上海 -&amp;gt; 兰州 -&amp;gt; 西宁&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-06-02_08-08-13.jpg&#34; alt=&#34;上海出发&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;回程：西宁 -&amp;gt; 兰州 -&amp;gt; 上海&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-06-02_08-08-20.jpg&#34; alt=&#34;回上海&#34;&gt;&lt;/p&gt;
+&lt;p&gt;回程怕赶不上飞机也可以前一天晚上住兰州火车站，不担心的大可西宁休息第二天赶车。&lt;/p&gt;
+&lt;h2 id=&#34;heading-5&#34;&gt;行前准备&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;温度：青甘大环线上一路都是高原为主，也有几处为雪山，所以防寒肯定跑不掉的。&lt;/li&gt;
+&lt;li&gt;大风及沙尘：运气不好的话会遇到大风和沙尘天气，迪卡侬有专业的防风沙面罩，强烈建议入手。&lt;/li&gt;
+&lt;li&gt;医药：特殊的药品一定要自带，一路上以小镇为主，药店少的可怜，只有一些常用药。担心落地就高原反应的可以带一些高反药物。一般如果是包车自驾游的旅行社产品车上会带。&lt;/li&gt;
+&lt;li&gt;手机信号：大部分地方信号还是可以的，一少部分无人区公路和山路信号不太好，移动的信号覆盖度普遍会好一点点。&lt;/li&gt;
+&lt;li&gt;景点门票：敦煌莫高窟一定要提前一个月甚至更早预约，莫高窟这个门票需要到他的指定网站购买，无法在其他 APP 购买。部分景点对电子票有生效期的限制，建议提前至少一个小时购买，否则到了景区可能无法兑换。&lt;/li&gt;
+&lt;li&gt;区间限速：可以开一段超速的搭配中途休息拍照缓冲。&lt;/li&gt;
+&lt;li&gt;自驾：如果不请当地司机的话一定要提前熟悉下路况，部分山路还是挺危险的。&lt;/li&gt;
+&lt;li&gt;饮食：当地以清真为主，建议尊重一些当地的风俗，不带酒及外食。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在行程的前几天，旅行社便安排司机师傅对接了，并约定抵达西宁的当天由师傅接送至宾馆，我们住在西宁的第一晚是吉华宾馆，条件还不错。5月10日从兰州坐火车抵达西宁车站大约是五点半，我们出站后发现司机师傅已早早地在车站旁边等候了，感觉很守时，赞一个。看得出来师傅是位很客气友好的老司机，一问是当地人，给我们介绍了哪里有好吃的，哪里可以买到本地的特产而且不容易被宰。宾馆离火车站很近，几分钟后便到了，到宾馆办理完入住手续后司机便载我们到当地的新千国际广场大快朵颐。&lt;/p&gt;
+&lt;h2 id=&#34;heading-6&#34;&gt;吃吃吃&lt;/h2&gt;
+&lt;p&gt;晚上我们吃了当地有名的炕锅羊肉，一大盘只要138，肉比较足，味道也鲜美，问了下老板有没有汤和米饭之类的，答曰没有。店家给的说法是他们这里的市场规则是这家店不允许提供汤和米饭，需要的要去旁边其它专门卖米饭或者卖汤的店买。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2019/201905/2019-05-10_18.47.39.jpg&#34; alt=&#34;大餐&#34;&gt;&lt;/p&gt;
+&lt;p&gt;酒足饭饱后我们步行回到了宾馆，在回宾馆的路上遇到了清真寺开斋或是礼毕，门口的小孩子端着一盆又一盆葡萄干和大枣，嗯，很香！&lt;/p&gt;
+&lt;h2 id=&#34;heading-7&#34;&gt;早起防坑&lt;/h2&gt;
+&lt;p&gt;对于明天第一站塔尔寺的行程，司机特意说了塔尔寺需要赶在七点半工作人员到达，否则需要停至他们指定的停车场，并额外交几十块的电瓶车费用用于抵达景区门口。去西北的景点玩的多了后发现，这些都是西北旅游景点的套路，检票口修在离真实景点很远的地方，让你几乎一定会乘坐他们的内部交通工具，最常见的就是这种能装不少人的电瓶车了，这种车一趟一般都是20起步，简直是暴利！&lt;/p&gt;
+&lt;h2 id=&#34;heading-8&#34;&gt;旅游方案选择&lt;/h2&gt;
+&lt;p&gt;青海甘肃这一圈有大环线和小环线两种方案，时间长的到一周可以建议大环线，时间紧张只有四天的建议小环线，小环线的景观密度更高，但是会少了敦煌这一文化瑰宝。自驾游的话，选好司机非常重要，安全第一，不要一味图便宜！&lt;/p&gt;
+&lt;p&gt;值得一提的是敦煌石窟门票需要提前网上预约，遇到下雨等不良天气时可能无法参观。西北这边的大环线想要玩的好，选对季节和天气很重要，我们五月中旬去了一趟感觉还是不理想，前三天天气虽好，但是狂风大作，茶卡盐湖也不再是『天空之镜』，后三天偶遇沙尘暴，尘土飞扬，山上的草也还是略显枯黄，少了几分生命的脉动。七八月是最佳旅游时节，但这两个月各种费用都贵，暑假学生也多，做好心理准备 😁&lt;/p&gt;
+&lt;p&gt;通过此次西北之行，我们感受到了西北真是地广人稀，水资源的宝贵。如果再去一次大西北，我会选择七八月再去看看那广袤的门源油菜花海和祁连山下的大草原，秋天再去邂逅那最美的227国道。&lt;/p&gt;
+&lt;p&gt;后文将分景点单独介绍我们的旅游体验，敬请关注 😄&lt;/p&gt;
+&lt;p&gt;羽雀专栏——&lt;a href=&#34;https://www.yuque.com/billryan/siab93&#34;&gt;青甘大环线-西北 6 日行 · 语雀&lt;/a&gt;&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -89,7 +319,10 @@
       <pubDate>Sun, 02 Jun 2019 23:16:23 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-06/2019-06-02_23-16-23/</guid>
-      <description>5 月 10 日从上海出发，至 17 号抵达上海，大环线车程耗时 6 天，全程近 3000 公里，终于有机会一睹西北的风采了。前三天的天气还凑合，可从第四天开始就遇到了</description>
+      
+        <description>&lt;p&gt;5 月 10 日从上海出发，至 17 号抵达上海，大环线车程耗时 6 天，全程近 3000 公里，终于有机会一睹西北的风采了。前三天的天气还凑合，可从第四天开始就遇到了沙尘暴，所有景点几乎全蒙上了一层阴影，好些景点因为天气和人的原因都没去成。以后争取七月八月再去一次小环线吧，真是心有不甘。游记的图片还是略多的，博客里面插图还是略显不便，周末试用了一下蚂蚁的 &lt;a href=&#34;https://www.yuque.com&#34;&gt;羽雀&lt;/a&gt;, 第一次知道这货是因为团队内部在内网用羽雀协作文档。偶然发现外网也有，用来写游记还真不错，欢迎有兴趣的前往我的 &lt;a href=&#34;https://www.yuque.com/billryan/siab93&#34;&gt;青甘大环线&lt;/a&gt; 专栏阅读。&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -98,7 +331,24 @@
       <pubDate>Mon, 25 Mar 2019 20:59:21 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-03/2019-03-25_20-59-21/</guid>
-      <description>本文主要分享小规模开发测试环境下阿里云 EMR gateway 节点的替代方案，同时也为想寻找同时支持 HTTP proxy 和 websocket 的代理工具提供一些思路。传统的 HTTP proxy 有 Squid, 但是 Squid 对 HTTPS, HTTP/2 和</description>
+      
+        <description>&lt;p&gt;本文主要分享小规模开发测试环境下阿里云 EMR gateway 节点的替代方案，同时也为想寻找同时支持 HTTP proxy 和 websocket 的代理工具提供一些思路。传统的 HTTP proxy 有 Squid, 但是 Squid 对 HTTPS, HTTP/2 和 websocket 的支持不算太好。在大部分简单场景下，我推荐部署和配置极其简单的 &lt;a href=&#34;https://caddyserver.com/&#34;&gt;Caddy&lt;/a&gt;, 配合 forwardproxy 插件配置起来非常简单。&lt;/p&gt;
+&lt;p&gt;到官网下载即可，选中 &lt;code&gt;http.forwardproxy&lt;/code&gt;，可能需要根据自己的平台适配，如 Linux64 下可以如下安装。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl https://getcaddy.com | bash -s personal http.forwardproxy
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;想作为系统启动服务进行管理可参考 Caddy 的 systemd 服务，见 &lt;a href=&#34;https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service&#34;&gt;caddy.service&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;0.0.0.0:3128 {
+    errors
+    forwardproxy {
+        basicauth your_user your_pass
+        acl {
+            allow 10.0.x.0/24
+            deny all
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中的 ACL 规则和认证可根据自己集群的情况进行调整。配合 letsencrypt, Caddy 还可以支持 HTTP/2(HTTPS) 代理，很美好&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -107,7 +357,51 @@
       <pubDate>Tue, 19 Mar 2019 23:33:51 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-03/2019-03-19_23-33-51/</guid>
-      <description>本文主要介绍了自己近两个月重构产品推荐引擎后端的实时数据流同步架构，抛弃了之前的 Spark Streaming, 选择了基于 Kafka Stream 以及 Kafka Connect 做一些轻量级的实时 ETL. 数据流同步架构</description>
+      
+        <description>&lt;p&gt;本文主要介绍了自己近两个月重构产品推荐引擎后端的实时数据流同步架构，抛弃了之前的 Spark Streaming, 选择了基于 Kafka Stream 以及 Kafka Connect 做一些轻量级的实时 ETL.&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;数据流同步架构&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;                +-------+         +---------------+
+                | Redis +&amp;lt;-+   +-&amp;gt;+ Elasticsearch |
+                +-------+  |   |  +---------------+
+                           |   |
+                           |   |
+                           |   |
+    +--------------+  +----+---+------+
++---+ Kafka Stream |  | Kafka Connect |
+|   +------+-------+  +-------+-------+
+|          ^                  ^
+|          |                  |
+|          |                  |
+|    +-----+------------------+------+
++---&amp;gt;+             Kafka             |
+     +---+--------------------+------+
+         ^                    ^
+         |Maxwell             |
+         |                    |
+     +---+----+       +-------+------+
+     | binlog |       | tracking log |
+     +----+---+       +--------------+
+          ^
+          |
+          |
+      +---+---+
+      | MySQL |
+      +-------+
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;binlog--kafka-maxwell-vs-canal&#34;&gt;binlog 到 Kafka 工具选型，maxwell vs canal&lt;/h3&gt;
+&lt;p&gt;从数据的生产者来看，我们的数据源主要由产品数据库 MySQL(binlog) 和前端用户行为日志埋点两部分构成。binlog 到 Kafka 我选用了 &lt;a href=&#34;https://github.com/zendesk/maxwell&#34;&gt;zendesk/maxwell&lt;/a&gt; 而不是国内使用较多的 &lt;a href=&#34;https://github.com/alibaba/canal&#34;&gt;alibaba/canal&lt;/a&gt;. 原因主要是因为我们的产品库目前还比较单一，maxwell 使用和部署比较简单，而且能以已经解析好的 schema 数据进入 Kafka, 这对后面对接的 Elasticsearch 非常友好。新版的 canal 其实也具备了直接生产到 Kafka 和 Elasticsearch 的能力了，但就到 Kafka 这一环来说，canal 在使用上还是有一些不便利的地方，maxwell 在一些细节上更为便利些。但是需要注意的是，maxwell 在生产环境上需要自己定制 HA 方案，就我们的实测发现，产品起步阶段的量级用 maxwell 毫无压力。&lt;/p&gt;
+&lt;h3 id=&#34;kafka-stream--etl-&#34;&gt;Kafka Stream, 实时 ETL 的好工具&lt;/h3&gt;
+&lt;p&gt;国内 Kafka Stream 的文档相对还是不多的，Kafka 官网和 confluent 的文档比较详细，可以读一读。在尝试 Kafka Stream 之前，因为自己对 Spark 熟悉一些，尝试了 Spark Streaming 作为实时数据同步任务。使用过程中我们发现一些痛点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Spark 开发起来太重了，对小团队有较高的使用成本&lt;/li&gt;
+&lt;li&gt;CICD 融入 K8S 比较困难，开发迭代较慢&lt;/li&gt;
+&lt;li&gt;资源消耗高，不适合小公司/初创公司&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在读了一些 Kafka Stream 的文档后，我首先写了一个 &lt;code&gt;kafka-stream-filter&lt;/code&gt; 作为 binlog 到 Kafka 的路由分发器。觉得确实和文档里说的一样，非常轻，使用 Kafka Stream 只需要像其它普通库一样使用，但是可以完美结合 Kafka 的水平 scale 能力，没有水平扩展的压力。部署上，我可以像普通 Java 应用一样部署在 K8S 上，运维管理上比较统一。资源上也能节约不少，测试环境上数据量小一点的内存分配 500MB 以内足够了。&lt;/p&gt;
+&lt;p&gt;Kafka Stream 的定位并不是一个 ETL 的全能工具，它聚焦在以 Kafka 为核心的 ETL, 数据输出也通常在 Kafka 的其它 topic 中。&lt;/p&gt;
+&lt;h3 id=&#34;kafka-connect--kafka-&#34;&gt;Kafka Connect, 沟通 Kafka 和其它存储系统的桥梁&lt;/h3&gt;
+&lt;p&gt;如果说 Kafka Stream 可以专注于实时 ETL 并将数据存储在 Kafka 中，那么 Kafka Connect 解决的问题则是如何将 Kafka 和外部存储系统对接了。官方的 Kafka Connect 已经为我们准备好了很贴心的同步框架，容错、任务数扩展等都比较完善。即使自己从头开发，开发成本也不算高。后文我会开源自己设计的 &lt;code&gt;kafka-connect-redis&lt;/code&gt; 和 &lt;code&gt;kafka-connect-elasticsearch&lt;/code&gt;. 同步协议上参考了 maxwell, 有点类似 Event Sourcing.&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -116,7 +410,17 @@
       <pubDate>Mon, 18 Mar 2019 23:30:06 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-03/2019-03-18_23-30-06/</guid>
-      <description>堆内存设置 Java 程序中，我们通常比较关注堆的使用情况，一般通过 -Xmx 和 -Xms 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老</description>
+      
+        <description>&lt;h1 id=&#34;heading&#34;&gt;堆内存设置&lt;/h1&gt;
+&lt;p&gt;Java 程序中，我们通常比较关注堆的使用情况，一般通过 &lt;code&gt;-Xmx&lt;/code&gt; 和 &lt;code&gt;-Xms&lt;/code&gt; 分别控制最大和最小可用堆内存大小。在容器环境中，如果不显式指定堆内存参数，老的 JVM 版本是无法感知容器的资源限制的。在新的 JDK 8u191 版本以后，我们已经可以享受到新版 JVM 对容器的良好支持，并且可以通过 &lt;code&gt;-XX:InitialRAMPercentage&lt;/code&gt; 和 &lt;code&gt;-XX:MaxRAMPercentage&lt;/code&gt; 控制堆内存启动时和最大可用内存百分比。考虑到堆外内存的使用，&lt;code&gt;-XX:MaxRAMPercentage&lt;/code&gt; 不宜设置过高，具体值可以根据自己应用的情况灵活设置。需要注意的是百分比需要包含一位小数，否则会报错。文末有 Dockerfile 可供参考。&lt;/p&gt;
+&lt;h1 id=&#34;jmap--jvm-&#34;&gt;jmap 等 JVM 诊断工具无法正常使用&lt;/h1&gt;
+&lt;p&gt;由于容器的特殊性，应用启动时的进程 ID 其实是 1, jmap/jstat/jstack 等诊断工具依赖底层的 &lt;code&gt;PTRACE_ATTACH&lt;/code&gt;, 而由于 docker 后期版本的安全加固原因，这种操作是不允许的。因此我们可以想办法让 JVM 应用不以 PID 1 运行即可，但又能正常接收来自容器的停止等信号，这就是 &lt;a href=&#34;https://github.com/krallin/tini&#34;&gt;krallin/tini&lt;/a&gt; 的用武之地了！&lt;/p&gt;
+&lt;h1 id=&#34;cpu-&#34;&gt;CPU 核数&lt;/h1&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;h1 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/billryan/devops/blob/master/docker/jdk/Dockerfile&#34;&gt;devops/Dockerfile&lt;/a&gt; 是我自用的 JDK 的基础镜像(基于 Alpine, JDK 8u191) 包含阿里的 &lt;a href=&#34;https://alibaba.github.io/arthas/&#34;&gt;Arthas&lt;/a&gt; 诊断利器，已设置时区为东八区。&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -125,7 +429,16 @@
       <pubDate>Thu, 14 Mar 2019 09:47:40 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2019-03/2019-03-14_09-47-39/</guid>
-      <description>由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点</description>
+      
+        <description>&lt;p&gt;由于历史原因，我们采购的神策所用的 Kafka 是老版本 0.8.2, 其所有的项目均在同一 topic 中，所以在构建我们的实时数据管道的过程中，我们需要对原有神策 Kafka 做如下两点改造：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将属于我们的项目的数据单独过滤出来，通过原始的 &lt;code&gt;kafka-mirror-maker&lt;/code&gt; 只能做到 topic 级别的复制&lt;/li&gt;
+&lt;li&gt;镜像到我们自建的 Kafka 数据管道时，尽可能保证事件有序，尤其是对同一用户的行为事件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;第一个问题，在新版 Kafka, 如 1.0 之后的版本中，我们可以实现 &lt;code&gt;kafka-mirror-maker&lt;/code&gt; 的接口进行加载定制，无需对原有 Kafka 源码进行变动。但是在 0.8.2 这个老版本还是做不到，故需要对源码中有关 &lt;code&gt;kafka-mirror-maker&lt;/code&gt; 进行改造。第二个问题，Kafka 只能保证分区内有序，无法做到全局有序的，但是我们如果能将神策行为事件中的用户 ID 提取作为 key, 属于同一用户的行为事件自然就在同一 partition 中了。&lt;/p&gt;
+&lt;p&gt;改动过的源码见 &lt;a href=&#34;https://github.com/billryan/kafka-mirror-maker/commit/85b2dabc7fa2050aaaf1afea64a1e64ccd79be8e&#34;&gt;MirrorMaker&lt;/a&gt;, 相关的 Makefile 及 Dockerfile 也一并提供了。&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -134,7 +447,16 @@
       <pubDate>Sun, 19 Aug 2018 16:59:31 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2018-08/2018-08-19_16-59-31/</guid>
-      <description>在前文 博客写作工作流 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment</description>
+      
+        <description>&lt;p&gt;在前文 &lt;a href=&#34;http://blog.yuanbin.me/posts/2018-02/2018-02-23_23-19-29/&#34;&gt;博客写作工作流&lt;/a&gt; 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment 的方案会导致在博客当前页面评论登陆 GitHub 时提示的权限有点多，比如读写权限。新的基于 GitHub App 的方案如 &lt;a href=&#34;https://github.com/utterance/utterances/pull/25&#34;&gt;utterances 1.0&lt;/a&gt; 就会好很多了。但这种方式对于非知名公司/个人博主来讲，我是不敢随便去让这种 app 接入的。基于同样的理念，我找到了 wzpan 的 &lt;a href=&#34;https://github.com/wzpan/comment.js&#34;&gt;wzpan/comment.js&lt;/a&gt; &lt;a href=&#34;http://www.hahack.com/codes/comment-js/&#34;&gt;中文文档&lt;/a&gt;, 这种方案将鉴权完全转移至 GitHub 上控制，安全感会好很多。稍显麻烦的是会有一个跳转而不是直接在本页评论。下面我详细介绍一下 Hugo even 下的如何使用 comment.js&lt;/p&gt;
+&lt;p&gt;由于目前还未向 even 发起 PR, 所以现在想使用的话可以直接使用我 fork 改过的 ==&amp;gt; &lt;a href=&#34;https://github.com/billryan/hugo-theme-even&#34;&gt;billryan/hugo-theme-even&lt;/a&gt;, 具体配置同 comment.js 要求，你可以参考我的 &lt;a href=&#34;https://github.com/billryan/blog/blob/master/config.toml&#34;&gt;blog/config.toml&lt;/a&gt;, 主要是一些如 owner, repo, token 的设置。对 comment.js 有需求的可以留言，我可以尝试向 even 发起一个 PR 合并到官方去。&lt;/p&gt;
+&lt;p&gt;核心配置如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  [params.comment]           # comment is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
+    owner = &amp;quot;billryan&amp;quot;              # Your GitHub ID
+    repo = &amp;quot;blog&amp;quot;               # The repo to store comments
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;看完 comment.js 的文档后移植起来其实是非常简单的，在这个过程中我还参考了 &lt;a href=&#34;https://github.com/olOwOlo/hugo-theme-even/pull/51&#34;&gt;feat: add gitalk&lt;/a&gt;, 加入了一些公开的 CDN 资源，在 comment.js 的基础上增加了 &lt;code&gt;.btn&lt;/code&gt; 的样式，这个样式参考了 GitHub issue. 另外我默认开启了 highlight 和 spin 这两个特性。&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -143,7 +465,62 @@
       <pubDate>Thu, 02 Aug 2018 23:59:46 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/</guid>
-      <description>客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推</description>
+      
+        <description>&lt;p&gt;客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推荐或者营销。基础的客户画像系统有如下几种需求：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;输入用户 id, 输出用户相应的画像标签&lt;/li&gt;
+&lt;li&gt;输入用户 id，相应标签和指定时间区间，输出对应标签值在这段时间内的变化情况&lt;/li&gt;
+&lt;li&gt;输入多个标签值，输出满足指定标签值的一组用户(精准推荐或营销用)&lt;/li&gt;
+&lt;li&gt;输出的标签最好能和业务数据进行关联&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这四个需求虽然都可以通过 HBase 实现，但是对于需求3这种搜索的场景，用 HBase 来实现则往往需要 scan 全表，而且范围查询也不易实现。我们可以选用 ES(ElasticSearch) 来作为搜索过滤。对于需求4，常用的数据仓库有 Hive, 我们可以通过外表的形式关联 HBase, 也可以定期从 HBase 导入至 Hive.&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;系统架构及数据流&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;源数据层：数据源可以是关系型数据库，实时行为日志，Hive 仓库或者从 HBase 加工过的标签数据。&lt;/li&gt;
+&lt;li&gt;计算引擎层：使用 Spark 作为中间的计算引擎和不同的数据源接口可以省掉繁琐的数据驱动整合工作，同时借助 dataframe API 可以高效的进行异构数据源关联分析和处理。&lt;/li&gt;
+&lt;li&gt;数据分发层：使用 HBase 作为主存储，ES 通过 HBase 的 coprocessor 机制同步更新，往 ES 写可以通过批量写减少网络 IO。Hive 通过外表则不必做专门的数据同步操作，但是这种方法效率往往不高。&lt;/li&gt;
+&lt;li&gt;数据对外使用层：通过 REST API 查询 HBase 和 ES 获取所需标签/用户 id&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;                                                  +------------+
+                                                  |            |
+                              +-----------------&amp;gt; |  REST API  |
+                              |                   |            |
+                              |                   +------+-----+
+                              |                          ^
+                              |                          |
+                              |                          |
++--------+               +----+----+                +----+----+
+|        |    external   |         |  coprocessor   |         |
+|  Hive  | &amp;lt;-------------+  HBase  +--------------&amp;gt; |    ES   |
+|        |               |         |                |         |
++--------+               +----+----+                +---------+
+                              ^
+                              |
+                +-------------+-------------+
+                |                           |
+                |  Spark / Spark Streaming  |
+                |                           |
+                +-------------+-------------+
+                              ^
+                              |
+         +--------------------+------------------+
+         |                                       |
+         |  Hive, SQLServer, MySQL, HBase, HDFS  |
+         |                                       |
+         +---------------------------------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Spark 写 HBase 可以用 &lt;a href=&#34;https://github.com/hortonworks-spark/shc&#34;&gt;hortonworks-spark/shc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其中 HBase 写 ES 和 Hive 建外表的细节另外写两篇博文做深度一点的解析，这里不再赘述。&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;数据模型映射&lt;/h2&gt;
+&lt;h3 id=&#34;spark-dataframe--hbase&#34;&gt;Spark dataframe &amp;lt;==&amp;gt; HBase&lt;/h3&gt;
+&lt;p&gt;我们知道 HBase 主要是通过 rowkey 来实现快速查询，对于典型的用户画像场景，用户 id 往往必不可少。但 rowkey 在 HBase 中的存储为字节数组，且为了更好发挥 HBase 分布式存储的效率，我们需要防止用户 id 过于集中造成热点，这里我们可以尝试将 int 型数据映射到 00000000~FFFFFFFF 内，然后反转字符串即可完美适配 HBase 对 rowkey 设计的要求。&lt;/p&gt;
+&lt;p&gt;对于 HBase 往 ES 的数据同步，我们主要利用了 HBase coprocessor 绑定更新/删除事件进而对 ES 同步。这里一个比较棘手的问题是 HBase 的内容都是以字节数组存储的，比较理想的方案是同步到 ES 时保留类型信息以便范围查询。这里我采取的方案是通过 Spark dataframe 取出类型信息，在写入 HBase 时列的最后一个字节用于类型标记，如 &lt;code&gt;i -&amp;gt; integer&lt;/code&gt;, &lt;code&gt;d -&amp;gt; double&lt;/code&gt;, &lt;code&gt;s -&amp;gt; string&lt;/code&gt;. 这样就完美的解决了类型的转化问题了，还能自适应匹配。&lt;/p&gt;
+&lt;p&gt;HBase 中的 rowkey 可以映射为 ES 中的 docid, 列名 &lt;code&gt;cf:tag_namespace.tag_name&lt;/code&gt; 可以映射为 ES 中的 JSON 嵌套结构。&lt;/p&gt;
+&lt;h3 id=&#34;hbase--elasticsearch&#34;&gt;HBase &amp;lt;==&amp;gt; ElasticSearch&lt;/h3&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+&lt;h3 id=&#34;hbase--hive&#34;&gt;HBase &amp;lt;==&amp;gt; Hive&lt;/h3&gt;
+&lt;p&gt;TODO&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -152,7 +529,56 @@
       <pubDate>Sat, 30 Jun 2018 21:26:14 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2018-06/2018-06-30_21-26-14/</guid>
-      <description>本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中的使用细节。 Health</description>
+      
+        <description>&lt;p&gt;本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中的使用细节。&lt;/p&gt;
+&lt;h2 id=&#34;health-check&#34;&gt;Health Check&lt;/h2&gt;
+&lt;p&gt;我们使用 HAProxy 作为大局域网内的多 VPS 聚合和 HA 是想尽可能提高科学服务的稳定性的，进程异常退出和 TCP 端口连接超时这些问题都是比较容易检测出来的，但是还有一些时候通往国外的 TCP 端口连接正常，可科学服务就是有问题。这种场景下，我们就需要利用 HAProxy 高级一点的 TCP 或者 HTTP 检活机制了，让其更接近上层应用的真实需求。&lt;/p&gt;
+&lt;p&gt;在了解 HAProxy Health Check 的进阶技巧之前，推荐去看看 &lt;a href=&#34;http://cbonte.github.io/haproxy-dconv/&#34;&gt;HAProxy 官网文档&lt;/a&gt; 和 &lt;a href=&#34;https://www.haproxy.com/documentation/aloha/7-0/traffic-management/lb-layer7/health-checks/&#34;&gt;Performing Health Checks&lt;/a&gt; 官网文档有利于了解 HAProxy 的全貌，而后文则对你了解 HAProxy 的 Health Check 机制更有帮助。对于我们的科学网络服务，更贴近上层应用的检活机制恐怕非 Google 的 &lt;code&gt;generate_204&lt;/code&gt; 服务莫属了，我们只需要请求 &lt;a href=&#34;http://client3.google.com/generate_204&#34;&gt;http://client3.google.com/generate_204&lt;/a&gt; 即可判断网络是否连通。由于是一个 HTTP 请求，我们可以利用 HAProxy 的 &lt;code&gt;tcp-check&lt;/code&gt; 和 &lt;code&gt;http-check&lt;/code&gt; 分别检测 &lt;code&gt;socks5&lt;/code&gt; 和 &lt;code&gt;http&lt;/code&gt; proxy.&lt;/p&gt;
+&lt;h3 id=&#34;tcp-check&#34;&gt;tcp-check&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;tcp-check&lt;/code&gt; 机制相对麻烦一些，毕竟是处于应用层之下的协议，&lt;code&gt;tcp-check&lt;/code&gt; 中，我们需要发送的内容是 TCP payload, 这部分可以通过 tcpdump 或者更为直观一点的 wireshark 抓包得到。以 &lt;code&gt;socks5&lt;/code&gt; 为例，HAProxy 中的配置如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;listen ha-socks5
+    bind 127.0.0.1:xxxx
+    option tcp-check
+    tcp-check connect
+    tcp-check send-binary 05020001
+    tcp-check expect binary 0500
+    tcp-check send-binary 0501000312636c69656e74332e676f6f676c652e636f6d0050
+    tcp-check expect binary 050000010000000006b5
+    #tcp-check send-binary 474554202f67656e65726174655f32303420485454502f312e310d0a486f73743a20636c69656e74332e676f6f676c652e636f6d0d0a557365722d4167656e743a206375726c2f372e35342e300d0a4163636570743a202a2f2a0d0a0d0a
+    tcp-check send GET\ /generate_204\ HTTP/1.1\r\n
+    tcp-check send Host:\ client3.google.com\r\n
+    tcp-check send User-Agent:\ curl/7.54.0\r\n
+    tcp-check send Accept:\ */*\r\n
+    tcp-check send \r\n
+    tcp-check expect rstring ^HTTP/1.1\ 204
+    balance     source
+    hash-type consistent # optional
+    server xxx1 127.0.0.1:11110 check
+    server xxx2 127.0.0.1:11111 check backup
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;从以上配置可以看出我们利用 HAProxy 模拟了 &lt;code&gt;socks5&lt;/code&gt; 请求的全过程：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;建 TCP 连接&lt;/li&gt;
+&lt;li&gt;协商认证方式&lt;/li&gt;
+&lt;li&gt;协商访问目标主机&lt;/li&gt;
+&lt;li&gt;发送真正代理请求&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其中第2步和第3步与 socks server 的实现有关系，需要自己抓包进行分析，着重分析 TCP payload(data) 部分就好了。多行 send 请求会合并为一行，当然你也可以选择发送对应的二进制内容。&lt;/p&gt;
+&lt;p&gt;socks5 协议细节可参考 &lt;a href=&#34;https://www.ietf.org/rfc/rfc1928.txt&#34;&gt;https://www.ietf.org/rfc/rfc1928.txt&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;http-check&#34;&gt;http-check&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;http-check&lt;/code&gt; 的配置相对简单一些，HAProxy 的配置如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;listen ha-http
+    bind :::xxxx
+    option httpchk GET http://client3.google.com/generate_204 HTTP/1.1\r\nHost:\ client3.google.com\r\nProxy-Authorization:\ Basic\ xxxx\r\nProxy-Connection:\ Keep-Alive
+    balance     source
+    hash-type consistent # optional
+    server xxx1 127.0.0.1:11120 check
+    server xxx2 127.0.0.1:11121 check backup
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;需要注意的是其中 &lt;code&gt;\r\n&lt;/code&gt; 和 &lt;code&gt;\ &lt;/code&gt; 空格的发送，由于我的 http proxy 配置了 Basic 认证，因此在这里也需要一并加上，Basic 的内容是对用户名和密码 base64 编码，这个报文细节可以通过 curl -v 得到。&lt;/p&gt;
+&lt;h2 id=&#34;load-balance&#34;&gt;Load Balance&lt;/h2&gt;
+&lt;p&gt;细心的小伙伴可能会发现上述 Health Check 的配置中 balance 使用了 source.&lt;/p&gt;
+&lt;p&gt;待续&amp;hellip;&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -161,7 +587,17 @@
       <pubDate>Fri, 20 Apr 2018 17:24:14 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/</guid>
-      <description>Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。 从</description>
+      
+        <description>&lt;p&gt;Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。&lt;/p&gt;
+&lt;p&gt;从 Overview 中分析 Properties 中的时间 Created 的源码可以发现其使用的是&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;data-bind=&amp;quot;text: localeFormat(details.properties.create_time)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;从 &lt;code&gt;localeFormat&lt;/code&gt; 的函数继续跟踪可以发现使用的其实是 moment 库中的 utc 方法，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;return moment.utc(mTime).format(&amp;quot;L LT&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;从以上两段代码来看，Overview 中 Created 的显示时间比 Details 中的北京时间晚8小时才对，但实际却比北京时间提前了6小时!&lt;/p&gt;
+&lt;p&gt;百思不得其解，后面才发现，这是 JavaScript 对时区处理的坑！！！&lt;/p&gt;
+&lt;p&gt;Details 中 CreateTime 为 &lt;code&gt;Wed Apr 04 15:41:58 CST 2018&lt;/code&gt;, 其中的 CST 可以是『Central Standard Time 美国中部时间』和『中国标准时间』，而美国中部时间是西六区&amp;hellip; JS 将 CST 作为美国中部时间处理了&amp;hellip;&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -170,7 +606,26 @@
       <pubDate>Mon, 02 Apr 2018 16:35:55 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/</guid>
-      <description>对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细</description>
+      
+        <description>&lt;p&gt;对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细节的。好在 Hive 0.10 &lt;a href=&#34;https://issues.apache.org/jira/browse/HIVE-967&#34;&gt;HIVE-967&lt;/a&gt; 起就对表/视图的 DDL 予以支持了，这部分 DDL 自然是存储在 Hive Metastore 中的。但实际使用 &lt;code&gt;show create table&lt;/code&gt; 进行查询时(Hive 1.2.x)，会发现以下两个比较讨厌的小问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;无法显示中文注释(comment)&lt;/li&gt;
+&lt;li&gt;偶尔会出现中间的一些行为空白&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上这两个问题，第二个是非常影响用户对视图的理解的。通过一番搜索和本地测试可以发现引起这一现象的罪魁祸首竟然是 &lt;code&gt;\t&lt;/code&gt; 特殊字符引起的！！！见 &lt;a href=&#34;https://issues.apache.org/jira/browse/HIVE-4659&#34;&gt;HIVE-4659&lt;/a&gt; 和 &lt;a href=&#34;http://www.ericlin.me/2017/12/show-create-table-output-truncated-for-view-in-hive/&#34;&gt;Eric&#39;s Blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;从 Hive Metastore 对应的库表 &lt;code&gt;hive.TBLS&lt;/code&gt; 中与视图 DDL 显示直接相关的字段我们可以发现有 &lt;code&gt;VIEW_ORIGINAL_TEXT&lt;/code&gt; 和 &lt;code&gt;VIEW_EXPANDED_TEXT&lt;/code&gt;. 直接查表可以发现 &lt;code&gt;\t&lt;/code&gt; 均存储其中，所以从这可以推断在存储至 Metastore 时 Hive 并未做处理，最终显示为空白行是在查询输出的过程中产生的。&lt;/p&gt;
+&lt;p&gt;既然找到问题了，我们再想想怎么从源头上解决，从代码上可以跟到以下三个相关文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ql/src/java/org/apache/hadoop/hive/ql/exec/DDLTask.java
+ql/src/java/org/apache/hadoop/hive/ql/metadata/formatting/MetaDataFormatUtils.java
+metastore/src/gen/thrift/gen-javabean/org/apache/hadoop/hive/metastore/api/Table.java
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中 &lt;a href=&#34;https://github.com/apache/hive/blob/release-1.2.1/ql/src/java/org/apache/hadoop/hive/ql/exec/DDLTask.java#L1923&#34;&gt;DDLTask.java#L1923&lt;/a&gt;`` 和 &lt;code&gt;MetaDataFormatUtils.java&lt;/code&gt; 均含有调用视图创建文本的逻辑。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;      if (tbl.isView()) {
+        String createTab_stmt = &amp;quot;CREATE VIEW `&amp;quot; + tableName + &amp;quot;` AS &amp;quot; + tbl.getViewExpandedText();
+        outStream.writeBytes(createTab_stmt.toString());
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;简单粗暴的方法是在这里对输出的 &lt;code&gt;\t&lt;/code&gt; 替换，这也是 Hive-4659 采取的方法。而从 Eric 的博客中可以发现 CDH 是在创建 DDL 存储至 Metastore 前去掉 &lt;code&gt;\t&lt;/code&gt; 这种空白字符的。尽管这两种方法均可解决问题 2, 但这仍然并未从根本上解释问题的来源。从 &lt;code&gt;tbl.getViewExpandedText()&lt;/code&gt; 继续跟下去可以发现这个方法是在 &lt;code&gt;Table.java&lt;/code&gt; 中调用的，然后在这里面也没发现有对 &lt;code&gt;\t&lt;/code&gt; 等特殊字符做特殊处理的步骤&amp;hellip; 卒，这个问题后面再分析一下 Hive Metastore 源码才能给出根本原因了。&lt;/p&gt;
+&lt;p&gt;对于中文乱码的问题，我们可以在 toString 后加入 UTF-8 编解码即可。&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -179,7 +634,14 @@
       <pubDate>Wed, 28 Mar 2018 23:50:56 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-28_23-50-56/</guid>
-      <description>说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。除籍贯外其它信息都可</description>
+      
+        <description>&lt;p&gt;说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。除籍贯外其它信息都可以自己解析生成，籍贯这个，我们又不可以连到公安局内网查，自然需要求助官方发布的数据。&lt;/p&gt;
+&lt;p&gt;身份证相关的行政数据目前已由民政部管理，部分已经整理好的数据可参考 &lt;a href=&#34;https://github.com/cn/GB2260&#34;&gt;cn/GB2260: 中华人民共和国国家标准 GB/T 2260 行政区划代码&lt;/a&gt; mca 目录下保存有原始信息。在使用 cn 下不同语言的实现时，发现引用的数据还是有点滞后，这会造成部分老的行政身份证号无法解析。因此在自己项目中使用时，&lt;strong&gt;建议基于这些数据构建自己的数据库。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;除了官方整理的数据之外，还有一作者在 &lt;a href=&#34;http://www.zxinc.org/gb2260.htm&#34;&gt;自己网站&lt;/a&gt; 也整理了一份，并标注有『民政部自己以1984年版为基础向1980年倒推了编码，可惜很多倒推是错误的。本表不使用倒推编码』，想偷懒的可以直接用这个网页的数据。&lt;/p&gt;
+&lt;p&gt;接下来说说身份证号前六位的变化情况，身份证号前六位即籍贯地行政区划，随着各种撤县改市等拆分合并，较老的行政区划或多或少会有变化，民政局上的数据一般以年为单位进行更新，构建自己的数据库时可以加上这一列。需要注意的是官方数据最新版是不包含那些老的废弃的行政区划的，所以在查询时需要注意数据源是否覆盖完整。如果还是遇到为空的情况，简单粗暴的方法是取前两位省份编码。&lt;/p&gt;
+&lt;p&gt;P.S. 我在整理民政局的 &lt;a href=&#34;https://github.com/cn/GB2260/pull/46&#34;&gt;行政区划数据&lt;/a&gt; 时发现 1987 年的数据是有问题的，安徽省竟然是 339007! 大家使用时可以考虑移除这一年的数据。&lt;/p&gt;
+</description>
+      
     </item>
     
     <item>
@@ -188,833 +650,65 @@
       <pubDate>Mon, 19 Mar 2018 11:17:37 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-19_11-17-37/</guid>
-      <description>JVM 是必须的，所以需要 Java(JDK 1.8+), 想写 Python 的还需要 Python(2.7.x/3.x). 快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 spark-notebook/spark-notebook 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala 的特性。 对于 Spark 的</description>
-    </item>
-    
-    <item>
-      <title>Python 网页爬虫入门——信息抓取</title>
-      <link>https://blog.yuanbin.me/posts/2018-03/2018-03-15_13-44-59/</link>
-      <pubDate>Thu, 15 Mar 2018 13:44:59 +0800</pubDate>
       
-      <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-15_13-44-59/</guid>
-      <description>之所以需要写网页爬虫，无非是因为无法直接读取对方数据库，需要借助于网页将需要的文字和图片等信息抓取下来。不管使用什么样的工具，我们最终都需要</description>
-    </item>
-    
-    <item>
-      <title>Scala/Java 多环境配置管理——使用 Typesafe Config</title>
-      <link>https://blog.yuanbin.me/posts/2018-02/2018-02-28_23-48-31/</link>
-      <pubDate>Wed, 28 Feb 2018 23:48:31 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-28_23-48-31/</guid>
-      <description>在前文 Python 多环境配置类 中提过可以使用类继承的方式管理开发、测试和生产环境的配置，简洁优雅。相较于动态语言 Python 而言，Scala/Java 使用同样的</description>
-    </item>
-    
-    <item>
-      <title>Python 多环境配置管理</title>
-      <link>https://blog.yuanbin.me/posts/2018-02/2018-02-24_16-30-16/</link>
-      <pubDate>Sat, 24 Feb 2018 16:30:16 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-24_16-30-16/</guid>
-      <description>实际工程开发中常常会对开发、测试和生产等不同环境配置不同的数据库环境，传统方式可以通过添加不同环境的配置文件达到部署时的动态切换的效果。这种</description>
-    </item>
-    
-    <item>
-      <title>博客写作工作流</title>
-      <link>https://blog.yuanbin.me/posts/2018-02/2018-02-23_23-19-29/</link>
-      <pubDate>Fri, 23 Feb 2018 23:19:29 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-23_23-19-29/</guid>
-      <description>平台/工具折腾血泪史 博客陆陆续续也写了有七八年了，早年在51空间、QQ 空间、人人网、点点网上写过一些矫情的文字，后来接触了比较 geek 的 GitHub Pages 方式，</description>
-    </item>
-    
-    <item>
-      <title>如何做一场好的技术分享</title>
-      <link>https://blog.yuanbin.me/posts/2018-02/2018-02-23_20-44-30/</link>
-      <pubDate>Fri, 23 Feb 2018 20:44:30 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-23_20-44-30/</guid>
-      <description>在做技术分享时，一场好的技术分享不仅能提高听众吸收新知识的效率，还能锻炼自己的演讲逻辑能力。团队内部的每周技术分享会进行了几次之后，仔细观察</description>
-    </item>
-    
-    <item>
-      <title>GitBook 插件介绍及定制</title>
-      <link>https://blog.yuanbin.me/posts/2016-11/2016-11-07_10-48-42/</link>
-      <pubDate>Mon, 07 Nov 2016 10:48:42 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-11/2016-11-07_10-48-42/</guid>
-      <description>在 使用 GitBook 制作高质量电子书 一文中我简要描述了 GitBook 的基本功能和使用，适用于 GitBook 的所有插件均可以从 Plugins for GitBook 中找到，下文将介绍一些适用于 GitBook 的实用插件及定制</description>
-    </item>
-    
-    <item>
-      <title>使用 GitBook 制作高质量电子书</title>
-      <link>https://blog.yuanbin.me/posts/2016-10/2016-10-09_21-48-24/</link>
-      <pubDate>Sun, 09 Oct 2016 21:48:24 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-10/2016-10-09_21-48-24/</guid>
-      <description>&lt;p&gt;作为知识型工作者，时常会遇到的一个问题是如何将自己所做的工作精心汇总并便利地展示给广大读者。从阅读、传播和互动的角度来看，制作一个专业的网站可能是较为理想的方案，但实际操作起来可能会因为各种各样的技术问题而让人望而却步。&lt;a href=&#34;https://www.gitbook.com&#34;&gt;GitBook&lt;/a&gt; 的出现算是解决了用户的绝大部分痛点。与 GitHub Pages 仅作为静态页面展示平台不同，GitBook 在文本编辑、多人协作、互动和电子书最终输出形式等方面的支持非常完善，基本上涵盖了现代出版物的整个生命周期，接下来的篇幅将详述这几个环节并介绍一些自己的实践经验。GitBook 的官方文档见 &lt;a href=&#34;https://toolchain.gitbook.com/&#34;&gt;GitBook Toolchain Documentation&lt;/a&gt;&lt;/p&gt;
+        <description>&lt;p&gt;JVM 是必须的，所以需要 Java(JDK 1.8+), 想写 Python 的还需要 Python(2.7.x/3.x).&lt;/p&gt;
+&lt;p&gt;快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 &lt;a href=&#34;https://github.com/spark-notebook/spark-notebook&#34;&gt;spark-notebook/spark-notebook&lt;/a&gt; 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala 的特性。&lt;/p&gt;
+&lt;p&gt;对于 Spark 的安装，去官方页面下载选中的编译好压缩包即可，解压即用。其中 1.x(1.6.3) 在一些老的集群中还在大量使用，但基本不再有新的功能加入。2.x(2018 年 2 月底 2.3.0 引入了大量新的 feature) 开发非常活跃，API 的便利性和性能都有较大提升，推荐使用。基于 Spark 的开发模式往往比较重，如果使用 IDE 的话推荐使用 IntelliJ IDEA 进行开发，安装好 Scala 和 Python 插件。&lt;/p&gt;
+&lt;h2 id=&#34;windows&#34;&gt;Windows&lt;/h2&gt;
+&lt;p&gt;Windows 下使用 Spark 需要做的准备工作稍微多一点点，设置 Spark 环境 &lt;code&gt;SPARK_HOME&lt;/code&gt; 为 Spark 解压目录 &lt;code&gt;D:\spark\spark-1.6.3-bin-hadoop2.6&lt;/code&gt;. 尽管 Spark 在本地运行并不需要完整的 Hadoop 环境，但还是间接依赖了一些 Hadoop 提供的文件操作工具，故在 Windows 下需要一些 POSIX 的文件权限操作，因此我们需要 &lt;code&gt;winutils.exe&lt;/code&gt;. 作者在 &lt;a href=&#34;https://github.com/steveloughran/winutils&#34;&gt;steveloughran/winutils&lt;/a&gt; 上放出了预编译好的二进制版本，按需选择即可。需要注意的是 &lt;code&gt;winutils.exe&lt;/code&gt; 需要置于 &lt;code&gt;HADOOP_HOME&lt;/code&gt; 的 &lt;code&gt;bin&lt;/code&gt; 目录下，我们可以新建 &lt;code&gt;D:\hadoop&lt;/code&gt; 作为 &lt;code&gt;HADOOP_HOME&lt;/code&gt; 变量。变量设置好后需要判断这两个环境变量是否生效。&lt;/p&gt;
+&lt;h2 id=&#34;pyspark&#34;&gt;PySpark&lt;/h2&gt;
+&lt;p&gt;使用 PySpark 时最重要的环境变量是 &lt;code&gt;PYTHONPATH&lt;/code&gt; 和 &lt;code&gt;spark-submit&lt;/code&gt; 提交时 &lt;code&gt;--py-files&lt;/code&gt; Python 及其依赖的打包注意事项。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env bash
 
-&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/misc/gitbook-part1-site.png&#34; alt=&#34;GitBook website&#34; /&gt;&lt;/p&gt;
+set -e
 
-&lt;h3 id=&#34;客户端或-web&#34;&gt;客户端或 Web&lt;/h3&gt;
+export SPARK_HOME=${SPARK_HOME:=&amp;quot;/usr/hdp/2.6.1.0-129&amp;quot;}
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.9-src.zip:$SPARK_HOME/python/lib/pyspark.zip:$PYTHONPATH
+export SPARK_MASTER=${SPARK_MASTER:=&amp;quot;local[*]&amp;quot;}
 
-&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/misc/gitbook-part1-editor.png&#34; alt=&#34;GitBook editor&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;相比于 GitHub Pages 高门槛的写作方式，GitBook 在这方面则显得亲民的多（和 Word Office 之类的软件易用程度相当），由于是基于 Node.js 的应用，其不仅提供跨平台的图形化写作软件，同时也提供了 Web 版在线编辑，两者在功能上无异。虽然 GitBook 同时支持 Markdown 和 AsciiDoc, 但可以明显感受到其对 Markdown 格式的偏爱，不熟悉 Markdown 的朋友们也不用担心，GitBook 的工具栏中提供了各种常用格式的快捷方式。Markdown 相比 LaTeX 来说要简单地多，需要记的格式最多也只有十来种，基本上是那种一看就会用的极简格式，详细的格式支持和使用见 &lt;a href=&#34;https://toolchain.gitbook.com/syntax/markdown.html&#34;&gt;Markdown&lt;/a&gt;&lt;/p&gt;
+spark-submit \
+    --master \
+    ${SPARK_MASTER} \
+    --deploy-mode \
+    client \
+    --name \
+    PySpark \
+    --verbose \
+    main.py $@
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;scala&#34;&gt;Scala&lt;/h2&gt;
+&lt;p&gt;使用 Scala 来开发 Spark 程序是最为 native 的方式，也没有性能惩罚，是我个人最喜欢的方式。考虑到我们通常并不将 Spark 的核心包打包至最终的 jar 包提交，我们可以在 &lt;code&gt;build.sbt&lt;/code&gt; 中指定 Spark 相关依赖为 &lt;code&gt;provided&lt;/code&gt;, 完整的 &lt;code&gt;build.sbt&lt;/code&gt; 见下文。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name := &amp;quot;scala-ml-text&amp;quot;
 
-&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/misc/gitbook-part1-template.png&#34; alt=&#34;GitBook template&#34; /&gt;&lt;/p&gt;
+organization := &amp;quot;com.yintech&amp;quot;
 
-&lt;p&gt;在 GitBook 网站新建电子书时可从默认的三种模板 (书籍或手册/API 文档/知识库 FAQ) 选择一个，官方虽然只提供了三种模板，但由于 GitBook 的可定制性极强，已经有不少第三方的模板可选了。除新建外你也可以从已有的 docs/odt/html/GitHub 等地方导入，从第三方导入的格式往往和 GitBook 家的稍微有那么点不一样，可能需要微调。&lt;/p&gt;
+version := &amp;quot;1.0&amp;quot;
 
-&lt;h3 id=&#34;绑定-github-repo&#34;&gt;绑定 GitHub repo&lt;/h3&gt;
+scalaVersion := &amp;quot;2.10.7&amp;quot;
 
-&lt;p&gt;除了使用客户端和 Web 编辑文本这种简易模式外，你也可以挑战一下 Hard 模式如通过绑定 GitHub repo 推送更新，需要注意的是绑定到 GitHub repo 后当前电子书不可再从客户端或者 Web 上更新，这大概是 git 的锅了吧 :( 使用 GitHub 绑定的电子书在添加新文件时容易忘记更新目录文件 &lt;code&gt;SUMMARY.md&lt;/code&gt;，在此特意提醒下。&lt;/p&gt;
+val sparkVersion = &amp;quot;1.6.3&amp;quot;
 
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>自制 GitBook 插件之 gitbook-plugin-tags</title>
-      <link>https://blog.yuanbin.me/posts/2016-09/2016-09-18_22-55-14/</link>
-      <pubDate>Sun, 18 Sep 2016 22:55:14 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-09/2016-09-18_22-55-14/</guid>
-      <description>最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下班后的周末抽空</description>
-    </item>
-    
-    <item>
-      <title>GitBook 网页版中文字型优化</title>
-      <link>https://blog.yuanbin.me/posts/2016-08/2016-08-19_07-30-10/</link>
-      <pubDate>Fri, 19 Aug 2016 07:30:10 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-08/2016-08-19_07-30-10/</guid>
-      <description>Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallback 至sans-se</description>
-    </item>
-    
-    <item>
-      <title>家用服务器之 HTTP/2</title>
-      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/</link>
-      <pubDate>Sun, 10 Jul 2016 20:34:03 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_20-34-03/</guid>
-      <description>之前在学校用的 cow, cow 向外提供 HTTP, 虽然有认证，但多少还是有些不安全。受博文 使用 nghttpx 搭建 HTTP/2 代理 影响，最近开始尝试使用 HTTP/2 作为前端接入，配合证书使用安全性</description>
-    </item>
-    
-    <item>
-      <title>家用服务器之 Squid 分流</title>
-      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_16-38-19/</link>
-      <pubDate>Sun, 10 Jul 2016 16:38:19 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_16-38-19/</guid>
-      <description>直接使用 v2xxx 的分流规则即可，比 squid 这种更简单 由于大家都知道的原因，大多数 ISP 的国外带宽往往不太理想，据说这个可以用 kcp 突破，我暂时没有国外带宽的困扰</description>
-    </item>
-    
-    <item>
-      <title>Transparent routing for home server in China</title>
-      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-10_10-19-55/</link>
-      <pubDate>Sun, 10 Jul 2016 10:19:55 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_10-19-55/</guid>
-      <description>Since this post is sensitive in China, I will roll it with English instead.
-ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with ChinaDNS and can resolv the external websites correctly. You can see a file including China IP in /etc/chnroute.txt. This file is very important for ss-rules. In Access Points for home server, we have built a AP and can assign the clients with DHCP and Unbound DNS Server backend.</description>
-    </item>
-    
-    <item>
-      <title>家用服务器之无线路由器(AP)</title>
-      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-09_15-08-41/</link>
-      <pubDate>Sat, 09 Jul 2016 15:08:41 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-09_15-08-41/</guid>
-      <description>之前玩 Raspberry PI/Cubieboard 时写过类似的合辑，这次入 X32-N2808 X86服务器后准备写一个类似的合辑，相比会更新不少内容。 对普通玩家来说，商用无线路由器的性能显然更好，但</description>
-    </item>
-    
-    <item>
-      <title>家用服务器之 DDNS</title>
-      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-08_22-25-28/</link>
-      <pubDate>Fri, 08 Jul 2016 22:25:28 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-08_22-25-28/</guid>
-      <description>&lt;p&gt;自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
-来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。&lt;/p&gt;
+lazy val sparkDependencies = Seq(
+  &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-core&amp;quot; % sparkVersion,
+  &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-mllib&amp;quot; % sparkVersion,
+  &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-hive&amp;quot; % sparkVersion
+)
 
-&lt;h2 id=&#34;人工投诉索要公网-ip&#34;&gt;人工投诉索要公网 IP&lt;/h2&gt;
+libraryDependencies ++= Seq(
+  &amp;quot;log4j&amp;quot; % &amp;quot;log4j&amp;quot; % &amp;quot;1.2.17&amp;quot;,
+  &amp;quot;org.slf4j&amp;quot; % &amp;quot;slf4j-log4j12&amp;quot; % &amp;quot;1.7.10&amp;quot;,
+  &amp;quot;com.typesafe&amp;quot; % &amp;quot;config&amp;quot; % &amp;quot;1.2.1&amp;quot;,
+  &amp;quot;com.databricks&amp;quot; % &amp;quot;spark-csv_2.10&amp;quot; % &amp;quot;1.5.0&amp;quot;
+)
 
-&lt;p&gt;某个周末的下午试着给联通打了个投诉电话说转人工宽带服务，说明要公网地址，客服问了下账户信息就答复说24小时内处理好并回电，约摸两个小时后有个工程师就来电说已经处理好，请重启路由器。重启路由器后发现联通诚不欺我，全程下来十分顺畅，原以为要说一堆理由并且还有可能不给开通公网地址，没想到联通这么爽快，赞！&lt;/p&gt;
+libraryDependencies ++= sparkDependencies.map(_ % &amp;quot;provided&amp;quot;)
 
-&lt;h3 id=&#34;光猫用户&#34;&gt;光猫用户&lt;/h3&gt;
-
-&lt;p&gt;需要注意的是使用了光猫的客户，即使申请获得公网地址，这个地址也只存在于光猫的 WAN 口，内网服务器还是无法发挥作用，所以还需要先破解光猫获得超级用户权限以设置 DMZ 和端口映射等。以中兴的 F607 联通版为例，浏览器中输入 &lt;a href=&#34;http://192.168.1.1/cu.html&#34;&gt;http://192.168.1.1/cu.html&lt;/a&gt;, 用户名密码可能为如下组合：
-- CUAdmin/CUAdmin
-- admin/admin
-- unicomadmin/adminunicom&lt;/p&gt;
-
-&lt;h3 id=&#34;网络拓扑&#34;&gt;网络拓扑&lt;/h3&gt;
-
-&lt;p&gt;一般情况下服务器网络入口使用防火墙还是很有必要的，获取光猫超级用户权限后虽然可以设置端口映射，但是受制于光猫的有线网口数和硬件布局，使用起来多少有些不便。考虑到连接光猫的至少有一台无线路由器，所以可以在光猫中固定这台无线路由器 WAN 口的 IP，并对其 DMZ, 这样你的路由器就相当于外接广域网了，后面对路由器下的服务器做端口映射就比较方便了。端口映射在有些路由器固件中也称为虚拟服务器，不同路由器的称呼不太一样。&lt;/p&gt;
-
-&lt;h2 id=&#34;ddns&#34;&gt;DDNS&lt;/h2&gt;
-
-&lt;p&gt;有了公网 IP 还只是对外服务的第一步，ISP 给你分配公网 IP，并不代表你每次重新拨号获得的 IP 不变，所以你还需要 DDNS 来动态获知这一 IP，典型的 DDNS 服务提供商有花生壳，但是这货并不太稳定，某些固件在路由器界面开启 DDNS 后还会引发路由器工作异常。&lt;/p&gt;
-
-&lt;h3 id=&#34;dnspod-ddns&#34;&gt;DNSPod DDNS&lt;/h3&gt;
-
-&lt;p&gt;有自己域名的基本都知道这家 DNSPod，提供的 API 十分丰富，服务也是比较稳定的。下面是我参考了 &lt;a href=&#34;https://github.com/leeyiw/dnspod_ddns/blob/master/dnspod_ddns.py&#34;&gt;leeyiw/dnspod_ddns&lt;/a&gt; 和 &lt;a href=&#34;https://gist.github.com/chuangbo/833369&#34;&gt;Python dynamic DNSPod DNS Script&lt;/a&gt; 改进的 &lt;a href=&#34;https://gist.github.com/billryan/239778f0821937939c8c140bdddd6840&#34;&gt;DNSPod DDNS Python Script&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Play with 新创云 X32-N2808</title>
-      <link>https://blog.yuanbin.me/posts/2016-07/2016-07-03_22-10-13/</link>
-      <pubDate>Sun, 03 Jul 2016 22:10:13 +0800</pubDate>
+assemblyMergeStrategy in assembly := {
+  case PathList(&amp;quot;META-INF&amp;quot;, xs @ _*) =&amp;gt; MergeStrategy.discard
+  case x =&amp;gt; MergeStrategy.first
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
       
-      <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-03_22-10-13/</guid>
-      <description>之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是</description>
-    </item>
-    
-    <item>
-      <title>Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x</title>
-      <link>https://blog.yuanbin.me/posts/2016-01/2016-01-15_15-10-28/</link>
-      <pubDate>Fri, 15 Jan 2016 15:10:28 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-01/2016-01-15_15-10-28/</guid>
-      <description>缘由 之前一直在 Archlinux 下部署整套 黑魔法服务，各种工具安装起来很方便，即使源里头没有，AUR 中一般也有其他人提供的 PKGBUILD, 根据此脚本构建适用于自己系统的包</description>
-    </item>
-    
-    <item>
-      <title>在 Linux/OS X 下优雅地写论文(TeX)</title>
-      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-26_20-10-26/</link>
-      <pubDate>Thu, 26 Nov 2015 20:10:26 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-26_20-10-26/</guid>
-      <description>&lt;p&gt;本科毕业设计就是用 LaTeX 写的，那时还只是第一次接触 TeX 这么强大的排版引擎。几年过去了自己对 LaTeX 也算是轻车熟路，最近遇到比较集中的问题自然是 &lt;a href=&#34;https://github.com/weijianwen/SJTUThesis&#34;&gt;硕士论文模板&lt;/a&gt; 啦。GitHub 上作者对一些细节并没有做详细的描述，这对于 TeX 新手来说造成了不少的困扰，比如这种东西怎么这么难用云云&amp;hellip;
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>镇江一瞥</title>
-      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-22_20-57-57/</link>
-      <pubDate>Sun, 22 Nov 2015 20:57:57 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-22_20-57-57/</guid>
-      <description>撑着油纸伞，独自 彷徨在悠长、悠长 又寂寥的雨巷 九月秋高气爽，可那时忙着找人生中第一份工作，出游的计划便暂时搁置。一场秋雨一场寒，被11月的这么</description>
-    </item>
-    
-    <item>
-      <title>WBAN Traffic Source Model - WBAN 应用层业务模型</title>
-      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-18_13-52-51/</link>
-      <pubDate>Wed, 18 Nov 2015 13:52:51 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-18_13-52-51/</guid>
-      <description>在 Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5 中我概要地介绍了基于 OPNET 14.5 的 IEEE 802.15.6(WBAN) 协议实现，这里介绍三层模型中的最上层——应用层业务模型。 这层模型中主要负责根据用户设定的包产</description>
-    </item>
-    
-    <item>
-      <title>三行小诗</title>
-      <link>https://blog.yuanbin.me/posts/2015-11/2015-11-09_19-22-58/</link>
-      <pubDate>Mon, 09 Nov 2015 19:22:58 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-11/2015-11-09_19-22-58/</guid>
-      <description>之前本科准备考研没有找过工作，读研后对学术这条路也算是死心了，当然这不是指学术无用，而是不想再浪费时间做无意义的『学术』。11月中旬把三方交</description>
-    </item>
-    
-    <item>
-      <title>一个简洁优雅的 XeLaTeX 简历模板</title>
-      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-27_15-57-59/</link>
-      <pubDate>Thu, 27 Aug 2015 15:57:59 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-27_15-57-59/</guid>
-      <description>初稿最开始发在 latexstudio.net 上，前几天在小S 的热邀下翻修了一番后投在了她和大S 维护的微信公众号『程序媛的日常』上，据说反响还不错，原文链接 ==&amp;gt; 干货 | 一个简</description>
-    </item>
-    
-    <item>
-      <title>Akka Notes 4 - Request and Response</title>
-      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-27_09-47-30/</link>
-      <pubDate>Thu, 27 Aug 2015 09:47:30 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-27_09-47-30/</guid>
-      <description>该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第四篇——Actor 的消息请求和响应。 前文 Akka Notes 2 - Actor Messaging 中已经对 Actor 的消息机制做了简介，在</description>
-    </item>
-    
-    <item>
-      <title>Akka Notes 3 - Logging and Testing Actors</title>
-      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-26_13-26-24/</link>
-      <pubDate>Wed, 26 Aug 2015 13:26:24 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-26_13-26-24/</guid>
-      <description>该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第三篇——Actor 的日志和测试。 前文 Akka Notes 1 - Introducing Actors 和 Akka Notes 2 - Actor Messaging 对 Akka Actor 设计模式和消息机</description>
-    </item>
-    
-    <item>
-      <title>Akka Notes 1 - Introducing Actors</title>
-      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-26_09-24-56/</link>
-      <pubDate>Wed, 26 Aug 2015 09:24:56 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-26_09-24-56/</guid>
-      <description>该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的开篇—— Actors 简介。 任何写过多线程程序的人都知道管理多线程应用程序是极其困难和痛苦的。这里</description>
-    </item>
-    
-    <item>
-      <title>Akka Notes 2 - Actor Messaging</title>
-      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/</link>
-      <pubDate>Tue, 25 Aug 2015 13:55:02 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-25_13-55-02/</guid>
-      <description>该系列译自 Rerun.me, 并在原作者的基础上有所改动。本篇为该系列的第二篇——Actor 的消息机制。 今天我们来探讨 Akka 的 Actor 消息机制，我们仍以之前讨论过的 学生</description>
-    </item>
-    
-    <item>
-      <title>Scala 和 Java 的混合编译指南</title>
-      <link>https://blog.yuanbin.me/posts/2015-08/2015-08-04_17-29-01/</link>
-      <pubDate>Tue, 04 Aug 2015 17:29:01 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-08/2015-08-04_17-29-01/</guid>
-      <description>使用 Scala 开发不可避免地会涉及与 Java 的混合编译，这里记录下这两天的发现。 全文的基础如下： 图片来源：如何在 Java App 中導入 Scala，另外本文也大量参考了</description>
-    </item>
-    
-    <item>
-      <title>Deploy Hadoop cluster with Vagrant and Ambari</title>
-      <link>https://blog.yuanbin.me/posts/2015-07/2015-07-19_16-26-10/</link>
-      <pubDate>Sun, 19 Jul 2015 16:26:10 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-07/2015-07-19_16-26-10/</guid>
-      <description>近期开始接触 Hadoop/Spark 相关的东西，部署单个节点很简单，但是要弄成集群就有点伤脑筋了，且不说集群本身的部署，光那数不清的『大数据』名词就能让人眼花缭乱</description>
-    </item>
-    
-    <item>
-      <title>Windows 系统下的开发环境搭建</title>
-      <link>https://blog.yuanbin.me/posts/2015-07/2015-07-17_22-22-00/</link>
-      <pubDate>Fri, 17 Jul 2015 22:22:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-07/2015-07-17_22-22-00/</guid>
-      <description>据说 Chocolatey 不错，去试试吧。 自从 2015 年7月实习开始又重新把 Windows 作为了开发机，公司虽然已逐步向 Mac 迁移，但是新员工暂时还是领不到 Mac, #sigh 正式入职后用的电脑是 T440p,</description>
-    </item>
-    
-    <item>
-      <title>Filter RSS contents</title>
-      <link>https://blog.yuanbin.me/posts/2015-06/2015-06-05_22-54-43/</link>
-      <pubDate>Fri, 05 Jun 2015 22:54:43 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-06/2015-06-05_22-54-43/</guid>
-      <description>自 Google Reader 关闭以来，模仿者应接不暇，但是能达到 GR 可用性的产品实在不多见。最近找工作实习经常要逛学校 BBS, 但这需要人工过滤掉很多并不需要的噪声，好在交</description>
-    </item>
-    
-    <item>
-      <title>一道阿里的抛硬币选择题</title>
-      <link>https://blog.yuanbin.me/posts/2015-04/2015-04-01_16-19-45/</link>
-      <pubDate>Wed, 01 Apr 2015 16:19:45 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-04/2015-04-01_16-19-45/</guid>
-      <description>最近开始准备找实习，各大公司的题自然是不可错过，今天看到一道抛硬币方面的概率题，找了下看到网上的答案几乎都是错的，这里给出自己的推理。 题目如</description>
-    </item>
-    
-    <item>
-      <title>一道fork题引发的思考</title>
-      <link>https://blog.yuanbin.me/posts/2015-03/2015-03-26_14-11-01/</link>
-      <pubDate>Thu, 26 Mar 2015 14:11:01 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-03/2015-03-26_14-11-01/</guid>
-      <description>问题如下： int main(){fork()||fork();}中，其共创建了几个进程？ 此题考查fork的原理和或操作的求值操作。fork()的核</description>
-    </item>
-    
-    <item>
-      <title>TCP协议浅析</title>
-      <link>https://blog.yuanbin.me/posts/2015-03/2015-03-24_13-39-59/</link>
-      <pubDate>Tue, 24 Mar 2015 13:39:59 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-03/2015-03-24_13-39-59/</guid>
-      <description>TCP为应用层提供的是全双工服务，也就是说数据能在发送方和接收方两个方向上独立地进行传输。 在浅析TCP传输层协议之前先说说segment, datagram,</description>
-    </item>
-    
-    <item>
-      <title>编程语言的版本选择</title>
-      <link>https://blog.yuanbin.me/posts/2015-03/2015-03-19_08-45-55/</link>
-      <pubDate>Thu, 19 Mar 2015 08:45:55 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-03/2015-03-19_08-45-55/</guid>
-      <description>在实际开发和测试过程中，难免会遇到要使用编程语言的不同版本的情况。重量级的解决方案有如docker之类的容器化技术，这里自然是介绍一些轻量级</description>
-    </item>
-    
-    <item>
-      <title>科研有方读书笔记之如何做科研</title>
-      <link>https://blog.yuanbin.me/posts/2015-01/2015-01-06_11-53-30/</link>
-      <pubDate>Tue, 06 Jan 2015 11:53:30 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2015-01/2015-01-06_11-53-30/</guid>
-      <description>该页面为《科研有方：科研需要『想好』再『做』》一书读书笔记的第二章总结，对该书前言及第一章的总结可移步 科研有方读书笔记之做科研的准备工作 如何</description>
-    </item>
-    
-    <item>
-      <title>python for data analysis</title>
-      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-30_18-36-00/</link>
-      <pubDate>Sun, 30 Nov 2014 18:36:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-30_18-36-00/</guid>
-      <description>安装Pyenv - yyuu/pyenv，安装之前需要相关工具链 - Common build problems · yyuu/pyenv Wiki 申请学术用途 - The Anaconda Python Distribution for Academics 安装anaconda, pyenv install anaconda, 查看最新版，</description>
-    </item>
-    
-    <item>
-      <title>Cubieboard2/树莓派之swap交换文件</title>
-      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-30_16-00-56/</link>
-      <pubDate>Sun, 30 Nov 2014 16:00:56 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-30_16-00-56/</guid>
-      <description>Cubieboard2虽有1G内存可用，但是在编译一些稍微大型的项目时内存就有点捉襟见肘了，使用SD卡作为swap交换空间是一件极不理智的行</description>
-    </item>
-    
-    <item>
-      <title>家用服务器之自建 DNS 服务器</title>
-      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/</link>
-      <pubDate>Sat, 29 Nov 2014 17:19:56 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-29_17-19-56/</guid>
-      <description>之前一直用的是学校提供的 DNS Server，在学校查询速度快，但是有这么几个与DNS有关的问题实在是不能忍，忍无可忍无须再忍。 在学校下载App S</description>
-    </item>
-    
-    <item>
-      <title>Pycon2014 美国视频合辑下载</title>
-      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-29_11-04-04/</link>
-      <pubDate>Sat, 29 Nov 2014 11:04:04 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-29_11-04-04/</guid>
-      <description>作为一名Pythoner，一年一度的Pycon当然值得关注，在美国举办的Pycon质量还是比较高的。鉴于天朝特殊的网络环境，要想顺畅的在线观</description>
-    </item>
-    
-    <item>
-      <title>家用服务器之 UPnP/DLNA 媒体服务</title>
-      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-11_18-22-50/</link>
-      <pubDate>Tue, 11 Nov 2014 18:22:50 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-11_18-22-50/</guid>
-      <description>在上文 家用服务器之BT(PT)下载机 中提到可以使用 transmission 代替常用的 utorrent/deluge 进行服务器上的 BT/PT 下载。那么我们如何在手机、平板和计算机上欣赏那些下好的视频音</description>
-    </item>
-    
-    <item>
-      <title>家用服务器之 BT(PT) 下载机</title>
-      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-09_09-12-11/</link>
-      <pubDate>Sun, 09 Nov 2014 09:12:11 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-09_09-12-11/</guid>
-      <description>作为一个正常的大学，尤其是工科高校，应该都有自己的BT/PT站(资源分享站点)，教育网内最出名的就是六维空间了，资源超多，做种的人也蛮多的，</description>
-    </item>
-    
-    <item>
-      <title>Cubieboard2/树莓派之Archlinux网络配置</title>
-      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/</link>
-      <pubDate>Sat, 08 Nov 2014 19:26:58 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-08_19-26-58/</guid>
-      <description>前文1和2分别就Cubieboard2双卡版的Archlinux系统安装及简单配置做了详细说明，这里就Cubieboard2/树莓派的网络配</description>
-    </item>
-    
-    <item>
-      <title>Cubieboard2/树莓派之Archlinux系统配置</title>
-      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</link>
-      <pubDate>Fri, 07 Nov 2014 17:21:14 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-07_17-21-14/</guid>
-      <description>上文 Cubieboard2之Archlinux安装指南 中谈到了Archlinux在Cubieboard2上的安装过程，尤其是总结了一些针对双</description>
-    </item>
-    
-    <item>
-      <title>Cubieboard2之Archlinux安装指南</title>
-      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-06_15-56-23/</link>
-      <pubDate>Thu, 06 Nov 2014 15:56:23 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-06_15-56-23/</guid>
-      <description>Cubieboard2目前有两个版本，一个是后来推出的Cubieboard2双卡版，双卡版将原来板载的Nand Flash换成了一个TF卡槽，</description>
-    </item>
-    
-    <item>
-      <title>Introduction to Programming-计算机编程导论</title>
-      <link>https://blog.yuanbin.me/posts/2014-11/2014-11-06_09-57-44/</link>
-      <pubDate>Thu, 06 Nov 2014 09:57:44 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-11/2014-11-06_09-57-44/</guid>
-      <description>还记得在11年年底的时候有计划整理一本与计算机编程学习有关的小书，正好之前有看过「碧蓝右耳」写过的「C/C++ FAQ」，于是乎就Fork了他</description>
-    </item>
-    
-    <item>
-      <title>高校实验室环境下的服务器部署小议</title>
-      <link>https://blog.yuanbin.me/posts/2014-09/2014-09-19_23-53-51/</link>
-      <pubDate>Fri, 19 Sep 2014 23:53:51 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-09/2014-09-19_23-53-51/</guid>
-      <description>在理工科的一些科研团队实验室中，一般或多或少都会有那么几台服务器。此文主要就高校实验室环境下的服务器及应用部署做些简要的经验介绍。 硬件选型 诸</description>
-    </item>
-    
-    <item>
-      <title>科研有方读书笔记之做科研的准备工作</title>
-      <link>https://blog.yuanbin.me/posts/2014-09/2014-09-16_19-50-22/</link>
-      <pubDate>Tue, 16 Sep 2014 19:50:22 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-09/2014-09-16_19-50-22/</guid>
-      <description>以下内容为本人在阅读《科研有方：科研需要『想好』再『做』》一书时所做的笔记，此为『前言』和『第一章』部分,大多为摘抄，少部分内容为自己补充。</description>
-    </item>
-    
-    <item>
-      <title>第十八届校园歌手大赛-陈小熊特辑</title>
-      <link>https://blog.yuanbin.me/posts/2014-08/2014-08-15_21-56-57/</link>
-      <pubDate>Fri, 15 Aug 2014 21:56:57 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-08/2014-08-15_21-56-57/</guid>
-      <description>话说之前本没想来看十大的，但是梦寒学姐在人人上提及很想来看小熊的演出，遂花了不少心血总算是从「信息通通」那弄来了剩下为数不多的一张入场票，晚</description>
-    </item>
-    
-    <item>
-      <title>Architecture of IEEE 802.15.6(WBAN) simulation based on OPNET14.5</title>
-      <link>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</link>
-      <pubDate>Thu, 05 Jun 2014 15:33:04 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</guid>
-      <description>Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; billryan/WBAN-OPNET-Simulation
-For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, boulis/Castalia would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for the open-ZB.</description>
-    </item>
-    
-    <item>
-      <title>烟雨空濛游西湖</title>
-      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-24_14-37-25/</link>
-      <pubDate>Sat, 24 May 2014 14:37:25 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-24_14-37-25/</guid>
-      <description>来交大读研已有近一载的时光，杭州离魔都虽挺近，从地处闵大荒的交大坐普通火车到达杭州也就两个多小时，但一直未觅得机会前往杭州看看这座历史文化名</description>
-    </item>
-    
-    <item>
-      <title>Victor 9500羽毛球拍试用</title>
-      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-16_21-56-49/</link>
-      <pubDate>Fri, 16 May 2014 21:56:49 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-16_21-56-49/</guid>
-      <description>话说这把新拍买了也有好些日子了，去年双11买的，比本科阶段用的100来块的牌子弹性要好，重量也更轻一些——3U么，加上猴儿送的手胶目测也就9</description>
-    </item>
-    
-    <item>
-      <title>deepin-screenshot把玩小记</title>
-      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-16_20-47-22/</link>
-      <pubDate>Fri, 16 May 2014 20:47:22 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-16_20-47-22/</guid>
-      <description>在用上「deepin-screenshot」之前用过不少截屏软件，有重量级的shutter, 也有轻量级的scrot, 后来换到KDE桌面环境后</description>
-    </item>
-    
-    <item>
-      <title>英文Locale下使用Fcitx中文输入法</title>
-      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-16_17-24-43/</link>
-      <pubDate>Fri, 16 May 2014 17:24:43 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-16_17-24-43/</guid>
-      <description>最近的工作模式逐渐转换到「Raspberry PI」+「实验室ESX虚拟出的多操作系统」，多装了个系统免不了又要折腾些时日，平时主要使用Arc</description>
-    </item>
-    
-    <item>
-      <title>Hexo多Repo部署——使用Github和GitCafe同时托管博客</title>
-      <link>https://blog.yuanbin.me/posts/2014-05/2014-05-02_11-24-57/</link>
-      <pubDate>Fri, 02 May 2014 11:24:57 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-05/2014-05-02_11-24-57/</guid>
-      <description>目前国内只剩 Coding 还可以托管在香港了，据说 Coding 曾经私自在个人用户页面插入广告，所以也不建议了，另外考虑到 HTTPS 支持，这种方案局限性也太大了。目前我的方</description>
-    </item>
-    
-    <item>
-      <title>树莓派把玩之OS和硬件选型</title>
-      <link>https://blog.yuanbin.me/posts/2014-02/2014-02-09_15-38-35/</link>
-      <pubDate>Sun, 09 Feb 2014 15:38:35 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-02/2014-02-09_15-38-35/</guid>
-      <description>最开始听说树莓派(Raspberry PI)是在西电开源社区的邮件列表中，那时只知道这是个可以装Linux的微型电脑，功耗非常低。一次在学校里</description>
-    </item>
-    
-    <item>
-      <title>Compile r8101 driver modules for Linux-3.10</title>
-      <link>https://blog.yuanbin.me/posts/2014-02/2014-02-09_13-52-08/</link>
-      <pubDate>Sun, 09 Feb 2014 13:52:08 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2014-02/2014-02-09_13-52-08/</guid>
-      <description>Long long ago, I installed Ubuntu 10.04 as my first Linux Distro, due to the problems of networking, I used it only few times. The suck problem is that when you copy large files or did some other things as normal, the network is down! The only solution is to restart your computer! I asked bigeagle for solving this weird issue. He found it was the ethernet card driver that caused this weird issue, and you can find lots of problems with the key words searching &amp;ldquo;r8101 r8169 issue&amp;rdquo;.</description>
-    </item>
-    
-    <item>
-      <title>统计学习资料小结</title>
-      <link>https://blog.yuanbin.me/posts/2013-12/2013-12-13_21-56-43/</link>
-      <pubDate>Fri, 13 Dec 2013 21:56:43 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-12/2013-12-13_21-56-43/</guid>
-      <description>出于对 Machine Learning 的兴趣，选了这个学期开的『统计学习与推理』，真是一入统计深似海&amp;hellip; 十一之后才开的统计学习，每周6节，完全招架不住的节奏</description>
-    </item>
-    
-    <item>
-      <title>交大生活进行时之beginning</title>
-      <link>https://blog.yuanbin.me/posts/2013-12/2013-12-01_11-55-03/</link>
-      <pubDate>Sun, 01 Dec 2013 11:55:03 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-12/2013-12-01_11-55-03/</guid>
-      <description>开学前的复试来过一次交大，正好遇着大降温，风也是呼呼地刮，那一个星期基本都是士洲学长带着满校园转，冰冷的温度下让我感受到了阵阵暖意，真心是中</description>
-    </item>
-    
-    <item>
-      <title>OPNET学习笔记之入门指南</title>
-      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-21_08-22-28/</link>
-      <pubDate>Mon, 21 Oct 2013 08:22:28 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-21_08-22-28/</guid>
-      <description>从接触OPNET以来大约也有3个月了，断断续续学了点皮毛，这里把自己折腾的成果陆续整理在这，也算是自己的一个学习笔记吧。 OPNET安装 在Op</description>
-    </item>
-    
-    <item>
-      <title>Excerpts of _How to Read a Paper_</title>
-      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-10_21-48-40/</link>
-      <pubDate>Thu, 10 Oct 2013 21:48:40 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-10_21-48-40/</guid>
-      <description>Most of the contents in this document were excerpted from How to read a Paper. This article outlines a practical and efficient three-pass method for reading research papers, and describes how to use this method to do a literature survey.
-Three-Pass approach Read the paper in up to three passes.
-1. The first pass gives you a general idea about the paper.
-2. The second pass lets you grasp the paper&amp;rsquo;s content, but not its details.</description>
-    </item>
-    
-    <item>
-      <title>OPNET学习笔记之安装指南 (Win7 &amp; XP)</title>
-      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-05_22-17-30/</link>
-      <pubDate>Sat, 05 Oct 2013 22:17:30 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-05_22-17-30/</guid>
-      <description>在前文已经就OPNET14.5在Windows下的安装做了简要说明，这篇blog就OPNET 14.5安装方面做了更为详细的介绍，对于XP和w</description>
-    </item>
-    
-    <item>
-      <title>Install OPNET14.5 on Windows OS</title>
-      <link>https://blog.yuanbin.me/posts/2013-10/2013-10-05_09-39-12/</link>
-      <pubDate>Sat, 05 Oct 2013 09:39:12 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-10/2013-10-05_09-39-12/</guid>
-      <description>Install OPNET Modeler 14.5 under Windows_XP and Windows7
-Several month ago, I wrote a Chinese version of installation with OPNET on Windows OS. Today I will give a more thorough way to install OPNET14.5 on Windows.
-An installation procedure could be shown as a piece of C code.
-could be helpful.
-#include &amp;lt;stdio.h&amp;gt; void opnet_install(); void setx_install(); void opnet_configure_path(); void opnet_configure_path_vs2008(); void opnet_configure_path_vs2010(); void opnet_crack(); if (1 == Win_XP &amp;amp;&amp;amp; VC++ 6.</description>
-    </item>
-    
-    <item>
-      <title>使用exiftool 和digikam 管理数码照片</title>
-      <link>https://blog.yuanbin.me/posts/2013-09/2013-09-03_09-12-03/</link>
-      <pubDate>Tue, 03 Sep 2013 09:12:03 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-09/2013-09-03_09-12-03/</guid>
-      <description>何谓管理 「管理」一词对于照片数据量比较少的时候来说几乎是没什么意义的，几十张上百张照片瞟一眼几乎都知道是些啥，但是当数码照片达到成千上万的量</description>
-    </item>
-    
-    <item>
-      <title>本科毕设之RapidIO技术小结</title>
-      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-28_21-30-43/</link>
-      <pubDate>Wed, 28 Aug 2013 21:30:43 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-28_21-30-43/</guid>
-      <description>本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，</description>
-    </item>
-    
-    <item>
-      <title>MOOC之Coursera初体验</title>
-      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-28_15-31-20/</link>
-      <pubDate>Wed, 28 Aug 2013 15:31:20 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-28_15-31-20/</guid>
-      <description>毕业前在果壳和Twitter上时不时地就能看到MOOC/Coursera的影子，不过当时做毕设也一直没有闲情去体验一把，暑假有一大把时间是该</description>
-    </item>
-    
-    <item>
-      <title>上海交大校外代理初体验</title>
-      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-19_10-56-30/</link>
-      <pubDate>Mon, 19 Aug 2013 10:56:30 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-19_10-56-30/</guid>
-      <description>最近忙着熟悉导师的研究方向和OPNET网络仿真工具，做毕设翻译那会找导师要过几篇英文文献，认真翻译了 Enable Pervasive Healthcare through Continuous Remote Health Monitoring 一文，论文前半部分概述了</description>
-    </item>
-    
-    <item>
-      <title>OPNET14.5 Win7/XP下安装小记</title>
-      <link>https://blog.yuanbin.me/posts/2013-08/2013-08-08_19-17-16/</link>
-      <pubDate>Thu, 08 Aug 2013 19:17:16 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-08/2013-08-08_19-17-16/</guid>
-      <description>导师几个星期前就发来邮件让熟悉网络仿真软件了，只是自己前一个月基本都在到处转悠，加之网络不便，也耽搁了许久，这个月可以好好学习研究一番了。 第</description>
-    </item>
-    
-    <item>
-      <title>3G无线上网卡分享网络之 Arch Linux与Win7篇</title>
-      <link>https://blog.yuanbin.me/posts/2013-07/2013-07-13_23-50-20/</link>
-      <pubDate>Sat, 13 Jul 2013 23:50:20 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-07/2013-07-13_23-50-20/</guid>
-      <description>暑假回家没有宽带确实有点小郁闷，好在有日益发达的无线通信技术，使得在没法用上昂贵的宽带时还能按需使用3G网络，当然喽，费用也不菲，三个月￥3</description>
-    </item>
-    
-    <item>
-      <title>骑行：西电——西工大</title>
-      <link>https://blog.yuanbin.me/posts/2013-06/2013-06-11_23-15-43/</link>
-      <pubDate>Tue, 11 Jun 2013 23:15:43 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-06/2013-06-11_23-15-43/</guid>
-      <description>昨天下午趁着西安难得的好天气和春哥骑车去了西工大新校区，出校门的时候是雨过天晴，没想到回来的时候仍然是雨过天晴 :( 从西太路回学校的时候被大雨淋</description>
-    </item>
-    
-    <item>
-      <title>小米2 HDR小试</title>
-      <link>https://blog.yuanbin.me/posts/2013-06/2013-06-09_19-24-09/</link>
-      <pubDate>Sun, 09 Jun 2013 19:24:09 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-06/2013-06-09_19-24-09/</guid>
-      <description>以夕阳西下为例 不开启HDR，快门时间1/134秒，几乎什么都看不清。 不开启HDR，快门时间1/397秒，天边的云彩依稀可见。 开启HDR，快门</description>
-    </item>
-    
-    <item>
-      <title>上海交大12年电院电子工程系研究生自主招生小记</title>
-      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-19_11-00-03/</link>
-      <pubDate>Fri, 19 Apr 2013 11:00:03 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-19_11-00-03/</guid>
-      <description>夏令营OR自主招生 交大去年开始把夏令营改为「研究生自主招生」，夏令营是要去交大本校的，而自主招生则是交大老师去指定的城市进行现场面试，和高考</description>
-    </item>
-    
-    <item>
-      <title>819-FAQ</title>
-      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-46-13/</link>
-      <pubDate>Sat, 06 Apr 2013 16:46:13 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-46-13/</guid>
-      <description>FAQ - Frequently Asked Questions 其它FAQ 招生名额和报录比什么的 到交大研招办网站上去查吧，但是招生名额这东西不好说，其实是浮动的 要不要报班？ 因人而异，我没报过任何</description>
-    </item>
-    
-    <item>
-      <title>个人考研复习小结——踏实筑梦，水到渠成</title>
-      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-44-00/</link>
-      <pubDate>Sat, 06 Apr 2013 16:44:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-44-00/</guid>
-      <description>概览 2012年1月决定考研，5月份参加了上海交大在西安举行的自主招生面试，7月6日拿到B档优惠邮件通知并同时开始全心复习考研，2013年1月</description>
-    </item>
-    
-    <item>
-      <title>819-outline</title>
-      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-41-32/</link>
-      <pubDate>Sat, 06 Apr 2013 16:41:32 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-41-32/</guid>
-      <description>专业课复习大纲 这个官方没明确指定，可以看到的像： 连续时间信号和离散时间信号 连续时间系统和离散时间系统的时域分析 连续时间信号的傅立叶分析 连续时</description>
-    </item>
-    
-    <item>
-      <title>819专业课参考书目及资料</title>
-      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-35-36/</link>
-      <pubDate>Sat, 06 Apr 2013 16:35:36 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-35-36/</guid>
-      <description>官方指定教材 官方网页给出的指定教材有： 《信号与系统》（第二版） 奥本海姆著， 电子工业出版社， 2004； 《离散时间信号处理》（第二版）奥本海姆著</description>
-    </item>
-    
-    <item>
-      <title>819专业课简介及适用专业</title>
-      <link>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-10-58/</link>
-      <pubDate>Sat, 06 Apr 2013 16:10:58 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-04/2013-04-06_16-10-58/</guid>
-      <description>对考研流程不太清楚的可以移步研究生入学考试备考手册做详细了解。 819简介 819是上海交大的一门考研初试专业课代号，也就是「信号系统与信号处理</description>
-    </item>
-    
-    <item>
-      <title>用Kindle看漫画</title>
-      <link>https://blog.yuanbin.me/posts/2013-02/2013-02-13_19-44-11/</link>
-      <pubDate>Wed, 13 Feb 2013 19:44:11 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-02/2013-02-13_19-44-11/</guid>
-      <description>话说还是在去年考研复习的时候，宝宝就问过Kindle是否能看漫画的问题，比起那4寸左右的手机屏，用Kindle来看漫画自然是爽的多。以前自己</description>
-    </item>
-    
-    <item>
-      <title>Use kmail with a proxy-给kmail加上代理</title>
-      <link>https://blog.yuanbin.me/posts/2013-02/2013-02-03_18-54-00/</link>
-      <pubDate>Sun, 03 Feb 2013 18:54:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-02/2013-02-03_18-54-00/</guid>
-      <description>自打从Win转移到GNU/Linux后，之前计算机里边大部分专有软件也随之转移至自由软件，KMail就是其中一例啦！但是在天朝这么一个「中国</description>
-    </item>
-    
-    <item>
-      <title>goldendict下优质词典简介及安装</title>
-      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-31_23-07-00/</link>
-      <pubDate>Thu, 31 Jan 2013 23:07:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-31_23-07-00/</guid>
-      <description>使用Arch Linux一年以来，如果要问自己最为中意的词典程序是？ 当然是Goldendict啦！想详细了解这款瑞士军刀的请猛戳这里. 以前在W</description>
-    </item>
-    
-    <item>
-      <title>Linux使用一周年记</title>
-      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-21_17-41-00/</link>
-      <pubDate>Mon, 21 Jan 2013 17:41:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-21_17-41-00/</guid>
-      <description>补充: 出于简洁的目的，下文不对GNU/Linux distribution 和Linux kernel做严格的区别，意思大家懂就好 RT, 自己真正开始使用Linux还只是在一</description>
-    </item>
-    
-    <item>
-      <title>课程设计小结</title>
-      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-19_21-12-00/</link>
-      <pubDate>Sat, 19 Jan 2013 21:12:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-19_21-12-00/</guid>
-      <description>不知不觉又忙了一个星期，周一老师把课程设计的要求简单地说了一下，然后就是两天之后提交方案并且做Presentation，这个算是比以前大作业</description>
-    </item>
-    
-    <item>
-      <title>终点,下一个起点</title>
-      <link>https://blog.yuanbin.me/posts/2013-01/2013-01-11_19-42-00/</link>
-      <pubDate>Fri, 11 Jan 2013 19:42:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2013-01/2013-01-11_19-42-00/</guid>
-      <description>历时大半年的考研生活在最后一门专业课的终考铃声下划下了一个不算太完美的句号，以这种方式结束这华丽丽的初试是自己所没有想到的。还记得5号那天中</description>
-    </item>
-    
-    <item>
-      <title>Chase My Dream</title>
-      <link>https://blog.yuanbin.me/posts/2012-07/2012-07-09_15-41-00/</link>
-      <pubDate>Mon, 09 Jul 2012 15:41:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2012-07/2012-07-09_15-41-00/</guid>
-      <description>小时候，梦想是一只画笔，如梦般的童年则定格在那五彩缤纷的画纸上； 长大后，梦想是一抹天边的云，不知从何而起，也不知将飘向何方； 而如今，梦想是一</description>
-    </item>
-    
-    <item>
-      <title>书画之记忆by人渣</title>
-      <link>https://blog.yuanbin.me/posts/2012-04/2012-04-01_22-44-47/</link>
-      <pubDate>Sun, 01 Apr 2012 22:44:47 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2012-04/2012-04-01_22-44-47/</guid>
-      <description>岁月是把杀猪刀，恍惚间人渣送的这幅字画已经在寝室的墙壁上待了两年多了。每每看到这幅字画便思绪万千——《满江红》《水调歌头》&amp;rdquo;非情</description>
-    </item>
-    
-    <item>
-      <title>武汉「七日游」流水帐</title>
-      <link>https://blog.yuanbin.me/posts/2012-01/2012-01-24_15-28-00/</link>
-      <pubDate>Tue, 24 Jan 2012 15:28:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2012-01/2012-01-24_15-28-00/</guid>
-      <description>右眼已经差不多好了，趁着脑海里还残留些记忆，是时候把寒假期间的流水帐记一下了_ 自西安南下至今也没见过太阳公公，更别说他儿子老母了&amp;helli</description>
-    </item>
-    
-    <item>
-      <title>ASCII码之大小写那些事儿</title>
-      <link>https://blog.yuanbin.me/posts/2012-01/2012-01-11_11-45-00/</link>
-      <pubDate>Wed, 11 Jan 2012 11:45:00 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2012-01/2012-01-11_11-45-00/</guid>
-      <description>原帖发在 开源社区论坛上，感觉还有点意思，于是乎就搬到这儿来了咯～本帖探讨ASCII码编码中英文字母大小写编码的相关问题，不需要读者具有计算机</description>
-    </item>
-    
-    <item>
-      <title>电子制作之处女作-西电动态校徽</title>
-      <link>https://blog.yuanbin.me/posts/2010-12/2010-12-13_23-50-20/</link>
-      <pubDate>Mon, 13 Dec 2010 23:50:20 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2010-12/2010-12-13_23-50-20/</guid>
-      <description>如题，本作品为我的第一个电子小制作，虽然比较简单，但其还是给我带来了不少惊喜~毕竟它是我第一个自主设计的电路。 本作品主体由LED阵、多个数码</description>
     </item>
     
   </channel>

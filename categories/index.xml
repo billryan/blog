@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 东海一叶</title>
@@ -6,18 +6,10 @@
     <description>Recent content in Categories on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Sun, 02 Feb 2020 08:43:56 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>学术</title>
-      <link>https://blog.yuanbin.me/categories/%E5%AD%A6%E6%9C%AF/</link>
-      <pubDate>Thu, 26 Nov 2015 20:10:26 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/categories/%E5%AD%A6%E6%9C%AF/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>技术</title>
@@ -25,33 +17,6 @@
       <pubDate>Sun, 02 Feb 2020 08:43:56 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>摄影</title>
-      <link>https://blog.yuanbin.me/categories/%E6%91%84%E5%BD%B1/</link>
-      <pubDate>Tue, 03 Sep 2013 09:12:03 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/categories/%E6%91%84%E5%BD%B1/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>旅游</title>
-      <link>https://blog.yuanbin.me/categories/%E6%97%85%E6%B8%B8/</link>
-      <pubDate>Sun, 23 Jun 2019 22:50:22 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/categories/%E6%97%85%E6%B8%B8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>机器学习</title>
-      <link>https://blog.yuanbin.me/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
-      <pubDate>Fri, 13 Dec 2013 21:56:43 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
       <description></description>
     </item>
     
@@ -65,11 +30,47 @@
     </item>
     
     <item>
+      <title>旅游</title>
+      <link>https://blog.yuanbin.me/categories/%E6%97%85%E6%B8%B8/</link>
+      <pubDate>Sun, 23 Jun 2019 22:50:22 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/categories/%E6%97%85%E6%B8%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>学术</title>
+      <link>https://blog.yuanbin.me/categories/%E5%AD%A6%E6%9C%AF/</link>
+      <pubDate>Thu, 26 Nov 2015 20:10:26 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/categories/%E5%AD%A6%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>生活</title>
       <link>https://blog.yuanbin.me/categories/%E7%94%9F%E6%B4%BB/</link>
       <pubDate>Mon, 09 Nov 2015 19:22:58 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/categories/%E7%94%9F%E6%B4%BB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>机器学习</title>
+      <link>https://blog.yuanbin.me/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 13 Dec 2013 21:56:43 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>摄影</title>
+      <link>https://blog.yuanbin.me/categories/%E6%91%84%E5%BD%B1/</link>
+      <pubDate>Tue, 03 Sep 2013 09:12:03 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/categories/%E6%91%84%E5%BD%B1/</guid>
       <description></description>
     </item>
     

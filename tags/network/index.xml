@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Network on 东海一叶</title>
@@ -6,10 +6,19 @@
     <description>Recent content in Network on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 10 Jul 2016 20:34:03 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 Mar 2019 20:59:21 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/tags/network/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>阿里云 EMR gateway 替代方案</title>
+      <link>https://blog.yuanbin.me/posts/2019-03/2019-03-25_20-59-21/</link>
+      <pubDate>Mon, 25 Mar 2019 20:59:21 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2019-03/2019-03-25_20-59-21/</guid>
+      <description>本文主要分享小规模开发测试环境下阿里云 EMR gateway 节点的替代方案，同时也为想寻找同时支持 HTTP proxy 和 websocket 的代理工具提供一些思路。传统的 HTTP proxy 有 Squid, 但是 Squid 对 HTTPS, HTTP/2 和</description>
+    </item>
     
     <item>
       <title>家用服务器之 HTTP/2</title>
@@ -35,8 +44,7 @@
       <pubDate>Sun, 10 Jul 2016 10:19:55 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_10-19-55/</guid>
-      <description>Since this post is sensitive in China, I will roll it with English instead.
-ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with ChinaDNS and can resolv the external websites correctly. You can see a file including China IP in /etc/chnroute.txt. This file is very important for ss-rules. In Access Points for home server, we have built a AP and can assign the clients with DHCP and Unbound DNS Server backend.</description>
+      <description>Since this post is sensitive in China, I will roll it with English instead. ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with ChinaDNS and can resolv the external websites correctly. You can see a file including China IP in /etc/chnroute.txt. This file is very important for ss-rules. In Access Points for home server, we have built a AP and can assign the clients with</description>
     </item>
     
     <item>
@@ -56,28 +64,20 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
       <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-08_22-25-28/</guid>
       <description>&lt;p&gt;自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
 来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。&lt;/p&gt;
-
-&lt;h2 id=&#34;人工投诉索要公网-ip&#34;&gt;人工投诉索要公网 IP&lt;/h2&gt;
-
+&lt;h2 id=&#34;-ip&#34;&gt;人工投诉索要公网 IP&lt;/h2&gt;
 &lt;p&gt;某个周末的下午试着给联通打了个投诉电话说转人工宽带服务，说明要公网地址，客服问了下账户信息就答复说24小时内处理好并回电，约摸两个小时后有个工程师就来电说已经处理好，请重启路由器。重启路由器后发现联通诚不欺我，全程下来十分顺畅，原以为要说一堆理由并且还有可能不给开通公网地址，没想到联通这么爽快，赞！&lt;/p&gt;
-
-&lt;h3 id=&#34;光猫用户&#34;&gt;光猫用户&lt;/h3&gt;
-
-&lt;p&gt;需要注意的是使用了光猫的客户，即使申请获得公网地址，这个地址也只存在于光猫的 WAN 口，内网服务器还是无法发挥作用，所以还需要先破解光猫获得超级用户权限以设置 DMZ 和端口映射等。以中兴的 F607 联通版为例，浏览器中输入 &lt;a href=&#34;http://192.168.1.1/cu.html&#34;&gt;http://192.168.1.1/cu.html&lt;/a&gt;, 用户名密码可能为如下组合：
-- CUAdmin/CUAdmin
-- admin/admin
-- unicomadmin/adminunicom&lt;/p&gt;
-
-&lt;h3 id=&#34;网络拓扑&#34;&gt;网络拓扑&lt;/h3&gt;
-
+&lt;h3 id=&#34;heading&#34;&gt;光猫用户&lt;/h3&gt;
+&lt;p&gt;需要注意的是使用了光猫的客户，即使申请获得公网地址，这个地址也只存在于光猫的 WAN 口，内网服务器还是无法发挥作用，所以还需要先破解光猫获得超级用户权限以设置 DMZ 和端口映射等。以中兴的 F607 联通版为例，浏览器中输入 &lt;a href=&#34;http://192.168.1.1/cu.html&#34;&gt;http://192.168.1.1/cu.html&lt;/a&gt;, 用户名密码可能为如下组合：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CUAdmin/CUAdmin&lt;/li&gt;
+&lt;li&gt;admin/admin&lt;/li&gt;
+&lt;li&gt;unicomadmin/adminunicom&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;heading-1&#34;&gt;网络拓扑&lt;/h3&gt;
 &lt;p&gt;一般情况下服务器网络入口使用防火墙还是很有必要的，获取光猫超级用户权限后虽然可以设置端口映射，但是受制于光猫的有线网口数和硬件布局，使用起来多少有些不便。考虑到连接光猫的至少有一台无线路由器，所以可以在光猫中固定这台无线路由器 WAN 口的 IP，并对其 DMZ, 这样你的路由器就相当于外接广域网了，后面对路由器下的服务器做端口映射就比较方便了。端口映射在有些路由器固件中也称为虚拟服务器，不同路由器的称呼不太一样。&lt;/p&gt;
-
 &lt;h2 id=&#34;ddns&#34;&gt;DDNS&lt;/h2&gt;
-
 &lt;p&gt;有了公网 IP 还只是对外服务的第一步，ISP 给你分配公网 IP，并不代表你每次重新拨号获得的 IP 不变，所以你还需要 DDNS 来动态获知这一 IP，典型的 DDNS 服务提供商有花生壳，但是这货并不太稳定，某些固件在路由器界面开启 DDNS 后还会引发路由器工作异常。&lt;/p&gt;
-
 &lt;h3 id=&#34;dnspod-ddns&#34;&gt;DNSPod DDNS&lt;/h3&gt;
-
 &lt;p&gt;有自己域名的基本都知道这家 DNSPod，提供的 API 十分丰富，服务也是比较稳定的。下面是我参考了 &lt;a href=&#34;https://github.com/leeyiw/dnspod_ddns/blob/master/dnspod_ddns.py&#34;&gt;leeyiw/dnspod_ddns&lt;/a&gt; 和 &lt;a href=&#34;https://gist.github.com/chuangbo/833369&#34;&gt;Python dynamic DNSPod DNS Script&lt;/a&gt; 改进的 &lt;a href=&#34;https://gist.github.com/billryan/239778f0821937939c8c140bdddd6840&#34;&gt;DNSPod DDNS Python Script&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
@@ -150,8 +150,7 @@ ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with China
       <pubDate>Thu, 05 Jun 2014 15:33:04 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2014-06/2014-06-05_15-33-04/</guid>
-      <description>Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; billryan/WBAN-OPNET-Simulation
-For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, boulis/Castalia would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for the open-ZB.</description>
+      <description>Currently only Beacon mode with superframes, and CSMA/CA for Random access are implemented. Source code and some documentation ==&amp;gt; billryan/WBAN-OPNET-Simulation For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for OPNET Modeler. For those who do not want to use OPNET Modeler, boulis/Castalia would be a good choice. Thanks for the hardwork of boulis with Castalia, I refered his MAC design experience for implementation under OPNET. Thanks for</description>
     </item>
     
     <item>
@@ -160,7 +159,7 @@ For various reasons, I must develope a IEEE 802.15.6/WBAN Simulation Model for O
       <pubDate>Sun, 09 Feb 2014 13:52:08 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2014-02/2014-02-09_13-52-08/</guid>
-      <description>Long long ago, I installed Ubuntu 10.04 as my first Linux Distro, due to the problems of networking, I used it only few times. The suck problem is that when you copy large files or did some other things as normal, the network is down! The only solution is to restart your computer! I asked bigeagle for solving this weird issue. He found it was the ethernet card driver that caused this weird issue, and you can find lots of problems with the key words searching &amp;ldquo;r8101 r8169 issue&amp;rdquo;.</description>
+      <description>Long long ago, I installed Ubuntu 10.04 as my first Linux Distro, due to the problems of networking, I used it only few times. The suck problem is that when you copy large files or did some other things as normal, the network is down! The only solution is to restart your computer! I asked bigeagle for solving this weird issue. He found it was the ethernet card driver that</description>
     </item>
     
     <item>

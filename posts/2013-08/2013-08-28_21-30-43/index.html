@@ -1,87 +1,81 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" itemscope itemtype="http://schema.org/WebPage">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>本科毕设之RapidIO技术小结 - 东海一叶</title>
-  <meta name="renderer" content="webkit" />
+  
+
+<meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="MobileOptimized" content="width"/>
+<meta name="HandheldFriendly" content="true"/>
+
+
+<meta name="applicable-device" content="pc,mobile">
 
 <meta name="theme-color" content="#f8f5ec" />
 <meta name="msapplication-navbutton-color" content="#f8f5ec">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
+<meta name="mobile-web-app-capable" content="yes">
 
-<meta name="author" content="billryan" />
+<meta name="author" content="东海一叶" />
   <meta name="description" content="本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，" />
 
-  <meta name="keywords" content="blog, billryan, hugo" />
+  <meta name="keywords" content="Hugo, billryan, 博客, 东海一叶" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.46" />
+<meta name="generator" content="Hugo 0.62.0" />
 
 
 <link rel="canonical" href="https://blog.yuanbin.me/posts/2013-08/2013-08-28_21-30-43/" />
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link rel="icon" href="/favicon.ico" />
 
 
-<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/sass/jane.min.af20b78e95c84de86b00a0242a4a77bd2601700e1b250edf27537d957ac0041d.css" integrity="sha256-ryC3jpXITehrAKAkKkp3vSYBcA4bJQ7fJ1N9lXrABB0=" media="screen" crossorigin="anonymous">
+
+
+
+
+<link rel="stylesheet" href="/css/custom.css">
 
 
 <meta property="og:title" content="本科毕设之RapidIO技术小结" />
 <meta property="og:description" content="本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2013-08/2013-08-28_21-30-43/" />
-
-
-
-<meta property="article:published_time" content="2013-08-28T21:30:43&#43;08:00"/>
-
-<meta property="article:modified_time" content="2013-08-28T21:30:43&#43;08:00"/>
-
-
-
-
-
-
-
-
-
-
-
+<meta property="article:published_time" content="2013-08-28T21:30:43+08:00" />
+<meta property="article:modified_time" content="2020-02-02T12:44:46+08:00" />
 <meta itemprop="name" content="本科毕设之RapidIO技术小结">
 <meta itemprop="description" content="本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，">
-
-
 <meta itemprop="datePublished" content="2013-08-28T21:30:43&#43;08:00" />
-<meta itemprop="dateModified" content="2013-08-28T21:30:43&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-02T12:44:46&#43;08:00" />
 <meta itemprop="wordCount" content="3491">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="本科毕设之RapidIO技术小结"/>
 <meta name="twitter:description" content="本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，"/>
 
@@ -93,6 +87,20 @@
   <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 <![endif]-->
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-32317667-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 
 </head>
 <body>
@@ -108,56 +116,293 @@
 </div>
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">Home</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">Archives</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">Tags</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">Categories</li>
-      </a>
+    <li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/">主页</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/post/">全部文章</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/tags/">标签</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/categories/">分类</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/about/">关于</a>
+          
+        
+      </li><li class="mobile-menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/index.xml">订阅</a>
+          
+        
+      </li>
+    
+
+    
+      <li class="mobile-menu-item">
+        <a id="openSearchMobile" class="mobile-menu-item-link menu-item-search" href="#">
+          <i class="iconfont">
+            <svg version="1.1" viewBox="0 0 1024 1024"
+  xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M973.81454219 973.81454219a91.78207815 91.78207815 0 0 1-129.80999631 0l-161.97482118-161.97482118a425.48527711 425.48527711 0 0 1-230.35931791 68.16531768 428.3346319 428.3346319 0 1 1 428.3346319-428.3346319 425.48527711 425.48527711 0 0 1-68.16531768 230.35931791l162.02961656 161.97482118a91.83687354 91.83687354 0 0 1-0.05479538 129.80999631zM451.67040679 145.69361559a305.97679241 305.97679241 0 1 0 0 611.95358361 305.97679241 305.97679241 0 0 0 0-611.95358361z">
+  </path>
+</svg>
+
+          </i>
+        </a>
+      </li>
+    
   </ul>
 </nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">东海一叶</a>
+
+
+  
+    
+
+
+
+
+
+
+  <link rel="stylesheet" href="/lib/photoswipe/photoswipe.min.css" />
+  <link rel="stylesheet" href="/lib/photoswipe/default-skin/default-skin.min.css" />
+
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+  
+
+  
+    
+<div class="modal-dialog">
+    
+    <div class="modal-content">
+      <div id="closeSearch" title="Close" class="close">X</div>
+      <div class="modal-header">
+        <div class="modal-title">Search</div>
+      </div>
+      <div class="modal-body">
+          <script>
+            (function() {
+              var cx = '018220290031572399476:pa4brobb2ji';
+              var gcse = document.createElement('script');
+              gcse.type = 'text/javascript';
+              gcse.async = true;
+              gcse.src = (document.location.protocol == 'https:' ? 'https:' :
+                  'http:') +
+                '//cse.google.com/cse.js?cx=' + cx;
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(gcse, s);
+            })();
+          </script>
+          <gcse:search></gcse:search>
+      </div>
+    </div>
+</div>
+
+  
+
+  
+
+  <header id="header" class="header container">
+    <div class="logo-wrapper">
+  <a href="/" class="logo">
+    
+      东海一叶
+    
+  </a>
 </div>
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">Home</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">Archives</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">Tags</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">Categories</a>
+    
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/">主页</a>
+          
+
+        
+
       </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/post/">全部文章</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/tags/">标签</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/categories/">分类</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/about/">关于</a>
+          
+
+        
+
+      </li>
+    
+        <li class="menu-item">
+        
+          
+          
+            <a class="menu-item-link" href="https://blog.yuanbin.me/index.xml">订阅</a>
+          
+
+        
+
+      </li>
+    
+
+    
+    
+
+    
+      <li class="menu-item">
+        <a id="openSearch" class="menu-item-link menu-item-search" href="#">
+          <i class="iconfont">
+            <svg version="1.1" viewBox="0 0 1024 1024"
+  xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M973.81454219 973.81454219a91.78207815 91.78207815 0 0 1-129.80999631 0l-161.97482118-161.97482118a425.48527711 425.48527711 0 0 1-230.35931791 68.16531768 428.3346319 428.3346319 0 1 1 428.3346319-428.3346319 425.48527711 425.48527711 0 0 1-68.16531768 230.35931791l162.02961656 161.97482118a91.83687354 91.83687354 0 0 1-0.05479538 129.80999631zM451.67040679 145.69361559a305.97679241 305.97679241 0 1 0 0 611.95358361 305.97679241 305.97679241 0 0 0 0-611.95358361z">
+  </path>
+</svg>
+
+          </i>
+        </a>
+      </li>
+    
   </ul>
 </nav>
-    </header>
 
-    <main id="main" class="main">
+  </header>
+
+  <div id="mobile-panel">
+    <main id="main" class="main bg-llight">
       <div class="content-wrapper">
-        <div id="content" class="content">
-          <article class="post">
+        <div id="content" class="content container">
+          <article class="post bg-white">
     
     <header class="post-header">
       <h1 class="post-title">本科毕设之RapidIO技术小结</h1>
-
+      
       <div class="post-meta">
-        <span class="post-time"> 2013-08-28 </span>
+        <time datetime="2013-08-28" class="post-time">
+          2013-08-28
+        </time>
         <div class="post-category">
-            
-              <a href="/categories/%E5%AD%A6%E6%9C%AF/"> 学术 </a>
+            <a href="https://blog.yuanbin.me/categories/%E5%AD%A6%E6%9C%AF/"> 学术 </a>
             
           </div>
-        <span class="more-meta"> 约 3491 字 </span>
-        <span class="more-meta"> 预计阅读 7 分钟 </span>
-        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+        
+
+        
+        
+          <span id="busuanzi_container_page_pv">
+            | 阅读 <span id="busuanzi_value_page_pv"></span>
+          </span>
+        
+
+        
+        
       </div>
     </header>
 
@@ -165,125 +410,96 @@
     
 <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
-  
-  <div class="post-toc-content always-active">
+  <div class="post-toc-content">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#毕设之前期准备">毕设之前期准备</a></li>
-<li><a href="#毕设之论文思路">毕设之论文思路</a></li>
-<li><a href="#何为串行rapidio">何为串行RapidIO</a>
-<ul>
-<li><a href="#rapidio架构规范了解">RapidIO架构规范了解</a></li>
-</ul></li>
-<li><a href="#dsp和fpga中rapidio的使用">DSP和FPGA中RapidIO的使用</a>
-<ul>
-<li><a href="#dsp中rapidio操作">DSP中RapidIO操作</a></li>
-<li><a href="#fpga中的rapidio操作">FPGA中的RapidIO操作</a></li>
-</ul></li>
-<li><a href="#期刊论文等资料">期刊论文等资料</a></li>
-<li><a href="#end">end</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#heading">毕设之前期准备</a></li>
+        <li><a href="#heading-1">毕设之论文思路</a></li>
+        <li><a href="#rapidio">何为串行RapidIO</a></li>
+        <li><a href="#dspfpgarapidio">DSP和FPGA中RapidIO的使用</a></li>
+        <li><a href="#heading-2">期刊论文等资料</a></li>
+        <li><a href="#end">end</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
 
     
-    
-
-    
     <div class="post-content">
-      
-
-<p>本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，又算作是对后来者研究使用RapidIO技术的一个指引。嗯，一举两得，何乐而不为？</p>
-
+      <p>本科毕设一晃就已然过去两个多月了，再过上一个多星期就要正式开始研究生的生活了，在此之前把本科毕设做个总结，算是对自己的知识框架再打包压缩罢，又算作是对后来者研究使用RapidIO技术的一个指引。嗯，一举两得，何乐而不为？</p>
 <p>毕设是在去年12月份开始选题，那时倒也挺贪心，一心想做一个软硬结合的课题，最先开始选的课题现在都差不多忘光了，只记得选了之后将指导老师的姓名用站内搜索在好网上搜了下。这一看不知道，二看吓一跳呀！鸡皮疙瘩都快出来了。立马到教务处上删掉了，万幸那个指导老师没及时确认，由此逃过一劫&hellip;  再找了下其他的软硬结合的课题，看来看去感觉RapidIO还不错，对自己来说是全新的领域。RapidIO相关的课题共有两个，一个是B档难度的，只需在FPGA上实现，而另一个老师的是A档难度，需要使用串行RapidIO协议在DSP和FPGA之间完成通信。当时选题的时候还是患了老毛病，求新求刺激！RapidIO DSP FPGA这三者当时没有一个是很熟悉的，真是初生牛犊不怕虎！</p>
-
 <p>选题之后自然是没法马上开工，毕竟还有1月份的考研初试咧。就这样拖到了来年的1月考完初试才开始了解这个课题——基于TMS320C6455的串行RapidIO技术及其实现。到Google Scholar上搜了下，发现包含TMS320C6455 和RapidIO两个关键词的论文还真不多，随便看了几篇，结果自然是云里雾里0.o 过年在家论文方面几乎也没什么动静，等到开学回学校也差不多要复试了，于是乎又拖了两个月才正式开始——也就是从4月3号左右开始全心准备毕设的。</p>
-
-<h3 id="毕设之前期准备">毕设之前期准备</h3>
-
+<h3 id="heading">毕设之前期准备</h3>
 <p>现在看来在前期最好先大概了解下课题，并进一步分解为小课题。这个可以让指导老师和师兄给个引导，一般在毕设的任务书和工作计划书中有详细说明，每条任务都可以认为是一个小课题，也许还要进一步细分。自己在这方面开始也没有经验，首先瞎摸索了一个星期也没啥收获，到实验室请教老师和师兄时才发现任务书和工作计划的好处。接下来就是根据任务书和工作计划自己拟定小课题和研究计划了。根据自己对课题的了解，我大概把毕设分为了如下几大块：</p>
-
 <ol>
-<li>串行RapidIO协议的了解<br /></li>
-<li>TMS320C6455芯片的编程使用<br /></li>
-<li>TMS320C6455中有关串行RapidIO部分的初始化及使用<br /></li>
-<li>Altera FPGA的烧写使用<br /></li>
-<li>Altera FPGA中串行RapidIO IP核的了解和使用<br /></li>
-<li>FPGA 和 DSP 进行串行RapidIO传输测试<br /></li>
-<li>论文写作——学习使用LaTeX对论文进行排版<br />
-可以看出要在短短的两个月里全部完成难度还是稍微有点大的，更坑爹的是后期实验室包含Altera FPGA的板子一直没画出来，于是乎便换到实验室现有的Xilinx平台，关键时刻还是得自己看着形势走呀，说多了都是泪&hellip;<br /></li>
+<li>串行RapidIO协议的了解</li>
+<li>TMS320C6455芯片的编程使用</li>
+<li>TMS320C6455中有关串行RapidIO部分的初始化及使用</li>
+<li>Altera FPGA的烧写使用</li>
+<li>Altera FPGA中串行RapidIO IP核的了解和使用</li>
+<li>FPGA 和 DSP 进行串行RapidIO传输测试</li>
+<li>论文写作——学习使用LaTeX对论文进行排版<br>
+可以看出要在短短的两个月里全部完成难度还是稍微有点大的，更坑爹的是后期实验室包含Altera FPGA的板子一直没画出来，于是乎便换到实验室现有的Xilinx平台，关键时刻还是得自己看着形势走呀，说多了都是泪&hellip;</li>
 </ol>
-
-<h3 id="毕设之论文思路">毕设之论文思路</h3>
-
+<h3 id="heading-1">毕设之论文思路</h3>
 <p>这个主体部分其实是参考了些硕士博士论文来的，当然也参考了RapidIO协会力荐的《RapidIO嵌入式系统互连》。首先简单描述了传统总线技术的不足，树个靶子，接下来自然就引申出了新型总线所需要的一些技术特性，满足这些技术特性的往往不止一个协议，所以对这些新型总线技术又有一个横向的比较，给些数据+曲线图，来点说服力，说明串行RapidIO在嵌入式互连领域的优势，接下来就是对RapidIO的大写特写了。写完RapidIO自然不是目的，毕竟论文标题中有个硕大的「实现」么。DSP和FPGA上的串行RapidIO实现自然也值得仔细地描述一番。OK，论文写到这差不多就快到尾声了，最后分析一下DSP和FPGA联调时使用串行RapidIO通信的一些实测数据画个图分析下原因差不多就完事了。KO! 大功告成。</p>
-
-<p>最后的成果就是这么一篇论文咯——<a href="/downloads/基于TMS320C6455的串行RapidIO技术及其实现-1.2.pdf">基于TMS320C6455的串行RapidIO技术及其实现</a>.<br />
-从中抽出一张高清大图献上&ndash;&gt;<br />
-<img src="/pictures/misc/interconnects-trends.png" alt="总线互连的发展趋势" /></p>
-
-<h3 id="何为串行rapidio">何为串行RapidIO</h3>
-
+<p>最后的成果就是这么一篇论文咯——<a href="/downloads/%E5%9F%BA%E4%BA%8ETMS320C6455%E7%9A%84%E4%B8%B2%E8%A1%8CRapidIO%E6%8A%80%E6%9C%AF%E5%8F%8A%E5%85%B6%E5%AE%9E%E7%8E%B0-1.2.pdf">基于TMS320C6455的串行RapidIO技术及其实现</a>. <br>
+从中抽出一张高清大图献上&ndash;&gt;<br>
+<img src="/pictures/misc/interconnects-trends.png" alt="总线互连的发展趋势"></p>
+<h3 id="rapidio">何为串行RapidIO</h3>
 <p>串行RapidIO(serial RapidIO, 又简称SRIO)技术是一种高性能、低引脚数、点对点的基于数据包交换的系统级互连架构。其高带宽、低延时、高效率及高可靠性的优点为高性能的嵌入式系统内部互连通信提供了良好的解决方案。嗯，差不多就是这么一回事，我就不在这儿凑字数了，有兴趣的看我前边的论文就好了。</p>
-
-<h4 id="rapidio架构规范了解">RapidIO架构规范了解</h4>
-
+<h4 id="rapidio-1">RapidIO架构规范了解</h4>
 <p>了解RapidIO最好的去处就是他们的<a href="http://www.rapidio.org/">官网</a>了。</p>
-
 <ul>
-<li><a href="http://www.rapidio.org/specs/current">协议规范</a>——加起来1000多页的样子，官网上是分开的，我把零碎的pdf合并在一起了，下载见<a href="http://db.tt/d041O2fG">我的Dropbox链接</a><br /></li>
-<li><a href="http://www.rapidio.org/zdata/techwhitepaper_rev3.pdf">RapidIO : The Interconnect Architecture for High Performance Embedded Systems</a>——RapidIO简明介绍，极具参考价值的一份文档。毕竟是技术白皮书嘛<br /></li>
-<li><a href="http://book.douban.com/subject/1835451/">RapidIO嵌入式系统互连</a>——可以说是了解RapidIO规范及在嵌入式系统中应用的必读读物，也是官网上推荐的唯一一本参考书目。同上，力荐<br /></li>
-<li><a href="http://www.rapidio.org/education/technology_overview/">RapidIO Technology Overview</a>——可以瞅瞅，其实个人感觉文档<a href="http://www.rapidio.org/education/documents/RapidIO_Overview-Apps_v07.pdf">RapidIO Technology Overview and Applications Presentation</a>更有价值。<br /></li>
-<li><a href="http://www.rapidio.org/education/technology_comparisons/">Technology Comparisons</a>——一系列（总线）技术的比较，PCI-e, Gigabyte-Ethernet<br /></li>
-<li><a href="http://en.wikipedia.org/wiki/RapidIO">RapidIO Wiki页面</a>——权当作参考吧，其中提到的链接基本都在上边写过了<br /></li>
+<li><a href="http://www.rapidio.org/specs/current">协议规范</a>——加起来1000多页的样子，官网上是分开的，我把零碎的pdf合并在一起了，下载见<a href="http://db.tt/d041O2fG">我的Dropbox链接</a></li>
+<li><a href="http://www.rapidio.org/zdata/techwhitepaper_rev3.pdf">RapidIO : The Interconnect Architecture for High Performance Embedded Systems</a>——RapidIO简明介绍，极具参考价值的一份文档。毕竟是技术白皮书嘛</li>
+<li><a href="http://book.douban.com/subject/1835451/">RapidIO嵌入式系统互连</a>——可以说是了解RapidIO规范及在嵌入式系统中应用的必读读物，也是官网上推荐的唯一一本参考书目。同上，力荐</li>
+<li><a href="http://www.rapidio.org/education/technology_overview/">RapidIO Technology Overview</a>——可以瞅瞅，其实个人感觉文档<a href="http://www.rapidio.org/education/documents/RapidIO_Overview-Apps_v07.pdf">RapidIO Technology Overview and Applications Presentation</a>更有价值。</li>
+<li><a href="http://www.rapidio.org/education/technology_comparisons/">Technology Comparisons</a>——一系列（总线）技术的比较，PCI-e, Gigabyte-Ethernet</li>
+<li><a href="http://en.wikipedia.org/wiki/RapidIO">RapidIO Wiki页面</a>——权当作参考吧，其中提到的链接基本都在上边写过了</li>
 </ul>
-
-<h3 id="dsp和fpga中rapidio的使用">DSP和FPGA中RapidIO的使用</h3>
-
+<h3 id="dspfpgarapidio">DSP和FPGA中RapidIO的使用</h3>
 <p>DSP和FPGA本身的使用及编程不必赘述，DSP使用C即可；FPGA嘛，verilog还是要方便些。找本书跟着敲敲代码烧点程序进去就差不多入门了。这方面我也算得上是半个门外汉，当时DSP入门用过的有<a href="http://book.douban.com/subject/6116205/">手把手教你学DSP</a>，了解下基本概念和实战操作用。FPGA之前选修课学得一知半解，等于没学，在做毕设的时候尝到自己种下的恶果了&hellip; 毕设时又翻了很多资料才算入了个门——同义词也就是过久了就差不多忘掉了。</p>
-
-<h4 id="dsp中rapidio操作">DSP中RapidIO操作</h4>
-
-<p>个人感觉DSP中使用RapidIO还是比FPGA要简单些的，毕竟是过程性语句，好控制些。不像FPGA并行，而且有很多信号都有时序约束的。DSP中RapidIO的应用可以参考下<a href="http://www.ti.com.cn/general/cn/docs/gencontent.tsp?contentId=50741">串行 RapidIO: 高性能嵌入式互连技术</a>，可以初步了解下RapidIO在DSP中的应用。更进一步的了解可以参考C64x的RapidIO视频部分——<a href="http://www.chinaaet.com/video/817.html">C64x+ 网络培训(九)——sRIO（串行RapidIO）</a><br />
-最重要的就是参考DSP芯片有关RapidIO部分的用户指南了，像C6455的<a href="http://www.ti.com/lit/ug/spru976e/spru976e.pdf">Serial RapidIO User&rsquo;s Guide</a>, 也是挺厚的一本，200多页来着，字都是很小的。</p>
-
-<h4 id="fpga中的rapidio操作">FPGA中的RapidIO操作</h4>
-
+<h4 id="dsprapidio">DSP中RapidIO操作</h4>
+<p>个人感觉DSP中使用RapidIO还是比FPGA要简单些的，毕竟是过程性语句，好控制些。不像FPGA并行，而且有很多信号都有时序约束的。DSP中RapidIO的应用可以参考下<a href="http://www.ti.com.cn/general/cn/docs/gencontent.tsp?contentId=50741">串行 RapidIO: 高性能嵌入式互连技术</a>，可以初步了解下RapidIO在DSP中的应用。更进一步的了解可以参考C64x的RapidIO视频部分——<a href="http://www.chinaaet.com/video/817.html">C64x+ 网络培训(九)——sRIO（串行RapidIO）</a><br>
+最重要的就是参考DSP芯片有关RapidIO部分的用户指南了，像C6455的<a href="http://www.ti.com/lit/ug/spru976e/spru976e.pdf">Serial RapidIO User's Guide</a>, 也是挺厚的一本，200多页来着，字都是很小的。</p>
+<h4 id="fpgarapidio">FPGA中的RapidIO操作</h4>
 <p>FPGA厂商一般都将RapidIO进行了封装，直接调用IP核即可，<strong>需要到Xilinx/Altera网站上申请评估版的IP</strong>，再自行设置些参数。否则有可能会在map或者translate时无法通过。当时自己在这一步偷了些懒，拿了实验板生成好的IP核直接用上了。本来准备对各个参数进行定制后做详细测评的，后来时间实在是太紧了就罢了(需要先申请评估版IP)。同DSP中的RapidIO用户手册，FPGA部分也有相应的IP核文档，500来页(Xilinx)&hellip;. 字同样也挺小，够看的了。</p>
-
 <p>DSP和FPGA部分的测试代码在我的Github中，有需要的可以前往<a href="https://github.com/billryan/srio_test">Serial RapidIO test with SEEDHPS6455</a>自取，DSP部分的代码用srio_a_fixed目录内的就好。</p>
-
-<h3 id="期刊论文等资料">期刊论文等资料</h3>
-
-<p>做学术研究，参考前人的成果是必不可少的啦，以下提供pdf和caj(知网专用的格式，少量硕博士论文)两种格式的论文和资料。所有资料都放在Dropbox里头了，需要的自取，尽量通过「Add to my Dropbox」同步下载，不然有可能因为流量耗费过多造成这些公开链接被暂时禁掉。<code>slides</code>目录下有我的答辩幻灯片，本来是想用beamer来做的，但是自己的图太多，还是用WPS省心些，字体主要使用文泉驿雅黑，如果觉得样式还不错的可以随便用，我的也是在秋叶PPT的答辩模板基础上稍微改动了下。封面大概就是下面这样子啦&ndash;&gt;：<br />
-<img src="/pictures/misc/slides-thesis.png" alt="答辩slides封面" /></p>
-
+<h3 id="heading-2">期刊论文等资料</h3>
+<p>做学术研究，参考前人的成果是必不可少的啦，以下提供pdf和caj(知网专用的格式，少量硕博士论文)两种格式的论文和资料。所有资料都放在Dropbox里头了，需要的自取，尽量通过「Add to my Dropbox」同步下载，不然有可能因为流量耗费过多造成这些公开链接被暂时禁掉。<code>slides</code>目录下有我的答辩幻灯片，本来是想用beamer来做的，但是自己的图太多，还是用WPS省心些，字体主要使用文泉驿雅黑，如果觉得样式还不错的可以随便用，我的也是在秋叶PPT的答辩模板基础上稍微改动了下。封面大概就是下面这样子啦&ndash;&gt;：<br>
+<img src="/pictures/misc/slides-thesis.png" alt="答辩slides封面"></p>
 <h3 id="end">end</h3>
-
-<p>做毕设的两个多月的时间里，中间有一个月左右是早出晚归的，早上7点多坐着校车去，晚上5点的校车回，车费差不多花了￥150，心痛&hellip; 没有保送本校的不能报销=_=  好在最后把其中一组频率的速率给详细地测出来了，结果自然是和理论值有一定差距。DSP <code>nwrite</code>能稍微好点，接近理论值的90%，已经很不错了。<br />
+<p>做毕设的两个多月的时间里，中间有一个月左右是早出晚归的，早上7点多坐着校车去，晚上5点的校车回，车费差不多花了￥150，心痛&hellip; 没有保送本校的不能报销=_=  好在最后把其中一组频率的速率给详细地测出来了，结果自然是和理论值有一定差距。DSP <code>nwrite</code>能稍微好点，接近理论值的90%，已经很不错了。<br>
 费了很大功夫整理了这么些东西，希望能对后头搞RapidIO的有点参考作用吧，也不枉我码这么多字了。如果Dropbox里边的东西对你有些帮助，请你一定一定要记得猛击我的<a href="http://db.tt/KS1HOz14">Dropbox推广链接</a> 哦～  大家的空间都涨500M，何乐而不为？同步下来也方便，告别没完没了的备份，没有理由不用是不？</p>
-
 <p>我敲一敲Enter，给海量的互联网空间里又代谢了10000+ bytes的数据&hellip;&hellip;</p>
 
     </div>
 
     
-    <div class="post-copyright">
+    
+<div class="post-copyright">
   <p class="copyright-item">
     <span class="item-title">文章作者</span>
-    <span class="item-content">billryan</span>
+    <span class="item-content">东海一叶</span>
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2013-08-28</span>
+    <span class="item-content">
+      2020-02-02
+      
+        <a href="https://github.com/billryan/blog/commit/c006d89ffe4bba3b7e663698f582491ea68af5ac" title="fix urls">
+          (c006d89)
+        </a>
+        
+          <br>fix urls
+        
+      
+    </span>
   </p>
   
   <p class="copyright-item">
@@ -291,6 +507,7 @@
     <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
   </p>
 </div>
+
 
     
     
@@ -319,148 +536,281 @@
       <nav class="post-nav">
         
           <a class="prev" href="/posts/2013-09/2013-09-03_09-12-03/">
-            <i class="iconfont icon-left"></i>
+            
+            <i class="iconfont">
+              <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+            </i>
             <span class="prev-text nav-default">使用exiftool 和digikam 管理数码照片</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
           <a class="next" href="/posts/2013-08/2013-08-28_15-31-20/">
             <span class="next-text nav-default">MOOC之Coursera初体验</span>
-            <span class="next-text nav-mobile">下一篇</span>
-            <i class="iconfont icon-right"></i>
+            <span class="prev-text nav-mobile">下一篇</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
           </a>
       </nav>
     </footer>
   </article>
-        </div>
-        
+
+  
+  
+
+  
   
 
   
 
-  <div class="btn">Comments</div>
-  <div id="comment-thread"></div>
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "billryan/blog"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+  
 
-  <link rel="stylesheet" href="/lib/comment/comment.css">
   
+
   
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked@0.3.6/marked.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/spin.js@2.3.2/spin.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/highlight.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.12.0/build/styles/default.min.css" integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk=" crossorigin="anonymous">
+
+  <div class="disqus-comment">
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+    显示 Disqus 评论
+  </div>
+  <div id="disqus_thread"></div>
   <script type="text/javascript">
-    marked.setOptions({
-    highlight: function (code, lang) {
-       return hljs.highlightAuto(code).value;
-    }
-    });
-    function Highlighting(){
-      var markdowns = document.getElementsByClassName('markdown');
-      for(var i=0;i<markdowns.length;i++){
-         if(markdowns[i].innerHTML) markdowns[i].innerHTML =marked(markdowns[i].innerHTML);
-      }
-    }
-    window.addEventListener('DOMContentLoaded', Highlighting, false);
-    window.addEventListener('load', Highlighting, false);
-  </script>
-
-  
-  <script src="/lib/comment/comment.js"></script>
-
-  <div id="loading-spin"></div>
-  <script type="text/javascript">
-    var opt = {
-      type: "github",
-      user: 'billryan',
-      repo: 'blog',
-      no_comment: "暂时还没有留言呢，点击下面的按钮去留言吧！",
-      go_to_comment: "去留言",
-      issue_title: '本科毕设之RapidIO技术小结',
-      btn_class: "btn",
-      comments_target: "#comment-thread",
-      loading_target: "#loading-spin",
-      client_id: 'df994b73c7b5a106459b',
-      client_secret: '39483030fbd0809e26c6b84f4128a5049b9c2a1a'
+    var disqus_config = function () {
+      this.page.url = "https://blog.yuanbin.me/posts/2013-08/2013-08-28_21-30-43/";
     };
-    getComments(opt);
- </script>
+    function load_disqus() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
 
-  <noscript>Please enable JavaScript to view the <a href="https://github.com/wzpan/comment.js"> powered by wzpan.</a></noscript>
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'billryan_xd';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 
+      $('#load_disqus').remove();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+  
+  </div>
+
+    
+
+  
+
+        </div>
       </div>
     </main>
 
     <footer id="footer" class="footer">
-      <div class="social-links">
-      <a href="mailto:yuanbin2014@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://twitter.com/billryan_yb" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="https://www.linkedin.com/in/billryan8/" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="https://github.com/billryan" class="iconfont icon-github" title="github"></a>
-      <a href="http://www.douban.com/people/billryan/" class="iconfont icon-douban" title="douban"></a>
-      <a href="https://instagram.com/bin.yuan/" class="iconfont icon-instagram" title="instagram"></a>
-  <a href="https://blog.yuanbin.me/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+      <div class="icon-links">
+  
+  
+    <a href="mailto:yuanbin2014@gmail.com" rel="me noopener" class="iconfont"
+      title="email" >
+      <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://www.linkedin.com/in/billryan8/" rel="me noopener" class="iconfont"
+      title="linkedin"  target="_blank"
+      >
+      <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="33" height="33">
+  <path d="M872.405333 872.618667h-151.637333v-237.610667c0-56.661333-1.152-129.578667-79.018667-129.578667-79.061333 0-91.136 61.653333-91.136 125.397334v241.792H398.976V384h145.664v66.602667h1.962667c20.352-38.4 69.845333-78.933333 143.786666-78.933334 153.642667 0 182.058667 101.12 182.058667 232.746667v268.202667zM227.712 317.141333a87.978667 87.978667 0 0 1-88.021333-88.106666 88.064 88.064 0 1 1 88.021333 88.106666z m76.032 555.477334H151.68V384h152.064v488.618667zM948.266667 0H75.562667C33.792 0 0 33.024 0 73.770667v876.458666C0 991.018667 33.792 1024 75.562667 1024h872.576C989.866667 1024 1024 991.018667 1024 950.229333V73.770667C1024 33.024 989.866667 0 948.138667 0h0.128z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://github.com/billryan" rel="me noopener" class="iconfont"
+      title="github"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
+</svg>
+
+    </a>
+  
+    <a href="http://www.douban.com/people/billryan/" rel="me noopener" class="iconfont"
+      title="douban"  target="_blank"
+      >
+      <svg class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M926.917973 37.80608C959.65184 37.80608 986.19392 64.34816 986.19392 97.082027L986.19392 926.917973C986.19392 959.65184 959.65184 986.19392 926.917973 986.19392L97.082027 986.19392C64.34816 986.19392 37.80608 959.65184 37.80608 926.917973L37.80608 97.082027C37.80608 64.34816 64.34816 37.80608 97.082027 37.80608zM176.653653 176.19968 176.653653 252.678827 825.658027 252.678827 825.658027 176.19968zM217.719467 316.146347 217.719467 628.08064 273.524053 628.08064 341.292373 770.39616 157.259093 770.39616 157.259093 845.417813 842.949973 845.417813 842.949973 770.39616 654.226773 770.39616 722.899627 628.08064 783.67744 628.08064 783.67744 316.146347zM684.885333 392.891733 684.885333 553.987413 312.576 553.987413 312.576 392.891733zM570.770773 770.39616 426.653013 770.39616 359.621973 628.08064 639.443627 628.08064z"></path>
+</svg>
+
+    </a>
+  
+    <a href="https://instagram.com/bin.yuan/" rel="me noopener" class="iconfont"
+      title="instagram"  target="_blank"
+      >
+      <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="36" height="36">
+  <path d="M853.333333 277.333333C853.333333 289.28 843.946667 298.666667 832 298.666667L746.666667 298.666667C734.72 298.666667 725.333333 289.28 725.333333 277.333333L725.333333 192C725.333333 180.053333 734.72 170.666667 746.666667 170.666667L832 170.666667C843.946667 170.666667 853.333333 180.053333 853.333333 192M192 853.333333C180.053333 853.333333 170.666667 843.946667 170.666667 832L170.666667 469.333333 259.84 469.333333C257.28 482.986667 256 497.493333 256 512 256 653.226667 370.773333 768 512 768 653.226667 768 768 653.226667 768 512 768 497.493333 766.293333 482.986667 764.16 469.333333L853.333333 469.333333 853.333333 832C853.333333 843.946667 843.946667 853.333333 832 853.333333M512 341.333333C606.293333 341.333333 682.666667 417.706667 682.666667 512 682.666667 606.293333 606.293333 682.666667 512 682.666667 417.706667 682.666667 341.333333 606.293333 341.333333 512 341.333333 417.706667 417.706667 341.333333 512 341.333333M853.333333 85.333333 170.666667 85.333333C123.306667 85.333333 85.333333 123.306667 85.333333 170.666667L85.333333 853.333333C85.333333 900.266667 123.733333 938.666667 170.666667 938.666667L853.333333 938.666667C900.266667 938.666667 938.666667 900.266667 938.666667 853.333333L938.666667 170.666667C938.666667 123.306667 900.266667 85.333333 853.333333 85.333333Z"></path>
+</svg>
+
+    </a>
+
+
+<a href="https://blog.yuanbin.me/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+    class="iconfont" title="rss" target="_blank">
+    <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="30" height="30">
+  <path d="M819.157333 1024C819.157333 574.592 449.408 204.8 0 204.8V0c561.706667 0 1024 462.293333 1024 1024h-204.842667zM140.416 743.04a140.8 140.8 0 0 1 140.501333 140.586667A140.928 140.928 0 0 1 140.074667 1024C62.72 1024 0 961.109333 0 883.626667s62.933333-140.544 140.416-140.586667zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667V345.173333c372.352 0 678.784 306.517333 678.784 678.826667z"></path>
+</svg>
+
+  </a>
+   
 </div>
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
-    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
   </span>
-
-  <div class="busuanzi-footer">
-    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
-    <span class="division">|</span>
-    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
-  </div>
 
   <span class="copyright-year">
-    &copy; 
+    &copy;
     
-      2010 - 
+      2010 -
     2020
     <span class="heart">
-      <i class="iconfont icon-heart"></i>
+      
+      <i class="iconfont">
+        <svg class="icon" viewBox="0 0 1025 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="14" height="14">
+  <path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7 0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1 0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2 0.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2 0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3 0.1-42.5-8-83.6-24-122.2z"
+   fill="#8a8a8a"></path>
+</svg>
+
+      </i>
+    </span><span class="author">
+        东海一叶
+        
+      </span></span>
+
+  
+  
+    <span id="busuanzi_container">
+      访客数/访问量：<span id="busuanzi_value_site_uv"></span>/<span id="busuanzi_value_site_pv"></span>
     </span>
-    <span class="author">billryan</span>
-  </span>
+  
+
+  
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
+      <i class="iconfont">
+        
+        <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="35" height="35">
+  <path d="M510.866688 227.694839 95.449397 629.218702l235.761562 0-2.057869 328.796468 362.40389 0L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777l894.052392 0 0 131.813095L63.840492 195.775872 63.840492 63.962777 63.840492 63.962777zM63.840492 63.962777"></path>
+</svg>
+
+      </i>
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
 
 
-<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
 
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-32317667-4', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script type="text/javascript" src="/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js" integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin="anonymous"></script>
 
 
 
 
 
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/js/load-photoswipe.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+  <script>
+    $("#openSearch, #openSearchMobile").click(function(){
+      $(".modal-dialog").addClass("visible");
+    });
+
+    $("#closeSearch").click(function(){
+      $(".modal-dialog").removeClass("visible");
+    });
+
+    $(document).click(function(event) {
+    
+      if (!$(event.target).closest(".modal-content, #openSearch, #openSearchMobile").length) {
+        $("body").find(".modal-dialog").removeClass("visible");
+      }
+    });
+  </script>
+
+
+
+
+  <script src="/js/custom.js"></script>
 
 
 </body>

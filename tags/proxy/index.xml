@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Proxy on 东海一叶</title>
@@ -26,8 +26,7 @@
       <pubDate>Sun, 10 Jul 2016 10:19:55 +0800</pubDate>
       
       <guid>https://blog.yuanbin.me/posts/2016-07/2016-07-10_10-19-55/</guid>
-      <description>Since this post is sensitive in China, I will roll it with English instead.
-ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with ChinaDNS and can resolv the external websites correctly. You can see a file including China IP in /etc/chnroute.txt. This file is very important for ss-rules. In Access Points for home server, we have built a AP and can assign the clients with DHCP and Unbound DNS Server backend.</description>
+      <description>Since this post is sensitive in China, I will roll it with English instead. ChinaDNS and WiFi(AP) From DNS Server for home server, we have set up with ChinaDNS and can resolv the external websites correctly. You can see a file including China IP in /etc/chnroute.txt. This file is very important for ss-rules. In Access Points for home server, we have built a AP and can assign the clients with</description>
     </item>
     
     <item>
