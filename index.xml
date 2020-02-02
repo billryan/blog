@@ -35,6 +35,28 @@
     </item>
     
     <item>
+      <title>关于 东海一叶</title>
+      <link>https://blog.yuanbin.me/about/</link>
+      <pubDate>Sun, 02 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.yuanbin.me/about/</guid>
+      
+        <description>&lt;p&gt;网络上我的常用 id 为 billryan, 这是我的博客，基于 Hugo 和 jane 主题，一段时间内都不再想浪费时间折腾主题，博客引擎等与知识加工无关的因素。新的 blog 将专注于知识沉淀，以技术为主，偶尔也会有一些非技术的杂谈。&lt;/p&gt;
+&lt;p&gt;本科就读于西安电子科技大学通信工程专业，2013 年考研进入上海交通大学电子工程系(EE)无线所，研究生期间主要从事无线通信网络方面的研究，2016 年 3 月硕士毕业，毕业后果断弃坑通信转向计算机软件工程师。目前在一家大型创业公司工作，个人兴趣目前主要集中在垂直领域的搜索方向，会涉及一些实时数据流 CDC 的处理，曾经从 0 到 1 负责过某互联网金融 APP 推荐系统建设。&lt;/p&gt;
+&lt;p&gt;你可以通过以下方式联系/了解我&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; &lt;strong&gt;me(at)yuanbin.me&lt;/strong&gt; OR &lt;strong&gt;yuanbin2014(at)gmail.com&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; &lt;a href=&#34;https://github.com/billryan&#34;&gt;GitHub&lt;/a&gt; - 码代码的地方&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; 博客主页 &lt;a href=&#34;https://blog.yuanbin.me&#34;&gt;https://blog.yuanbin.me&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; 摄影 &lt;a href=&#34;https://instagram.com/bin.yuan/&#34;&gt;Instagram&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.yuque.com/billryan&#34;&gt;羽雀&lt;/a&gt; - 知识管理及沉淀平台&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://music.douban.com/people/billryan/&#34;&gt;豆瓣&lt;/a&gt; - 书影音&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>2019 年度总结</title>
       <link>https://blog.yuanbin.me/posts/2020-01/2020-01-29_23-25-37/</link>
       <pubDate>Wed, 29 Jan 2020 23:25:38 +0800</pubDate>
@@ -641,73 +663,6 @@ metastore/src/gen/thrift/gen-javabean/org/apache/hadoop/hive/metastore/api/Table
 &lt;p&gt;接下来说说身份证号前六位的变化情况，身份证号前六位即籍贯地行政区划，随着各种撤县改市等拆分合并，较老的行政区划或多或少会有变化，民政局上的数据一般以年为单位进行更新，构建自己的数据库时可以加上这一列。需要注意的是官方数据最新版是不包含那些老的废弃的行政区划的，所以在查询时需要注意数据源是否覆盖完整。如果还是遇到为空的情况，简单粗暴的方法是取前两位省份编码。&lt;/p&gt;
 &lt;p&gt;P.S. 我在整理民政局的 &lt;a href=&#34;https://github.com/cn/GB2260/pull/46&#34;&gt;行政区划数据&lt;/a&gt; 时发现 1987 年的数据是有问题的，安徽省竟然是 339007! 大家使用时可以考虑移除这一年的数据。&lt;/p&gt;
 </description>
-      
-    </item>
-    
-    <item>
-      <title>Spark 开发之环境准备</title>
-      <link>https://blog.yuanbin.me/posts/2018-03/2018-03-19_11-17-37/</link>
-      <pubDate>Mon, 19 Mar 2018 11:17:37 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-19_11-17-37/</guid>
-      
-        <description>&lt;p&gt;JVM 是必须的，所以需要 Java(JDK 1.8+), 想写 Python 的还需要 Python(2.7.x/3.x).&lt;/p&gt;
-&lt;p&gt;快速试用或简单尝试的，可以考虑 databrick cloud 或者本地安装 &lt;a href=&#34;https://github.com/spark-notebook/spark-notebook&#34;&gt;spark-notebook/spark-notebook&lt;/a&gt; 可以在浏览器中写 Scala 代码体验一些 Spark 和 Scala 的特性。&lt;/p&gt;
-&lt;p&gt;对于 Spark 的安装，去官方页面下载选中的编译好压缩包即可，解压即用。其中 1.x(1.6.3) 在一些老的集群中还在大量使用，但基本不再有新的功能加入。2.x(2018 年 2 月底 2.3.0 引入了大量新的 feature) 开发非常活跃，API 的便利性和性能都有较大提升，推荐使用。基于 Spark 的开发模式往往比较重，如果使用 IDE 的话推荐使用 IntelliJ IDEA 进行开发，安装好 Scala 和 Python 插件。&lt;/p&gt;
-&lt;h2 id=&#34;windows&#34;&gt;Windows&lt;/h2&gt;
-&lt;p&gt;Windows 下使用 Spark 需要做的准备工作稍微多一点点，设置 Spark 环境 &lt;code&gt;SPARK_HOME&lt;/code&gt; 为 Spark 解压目录 &lt;code&gt;D:\spark\spark-1.6.3-bin-hadoop2.6&lt;/code&gt;. 尽管 Spark 在本地运行并不需要完整的 Hadoop 环境，但还是间接依赖了一些 Hadoop 提供的文件操作工具，故在 Windows 下需要一些 POSIX 的文件权限操作，因此我们需要 &lt;code&gt;winutils.exe&lt;/code&gt;. 作者在 &lt;a href=&#34;https://github.com/steveloughran/winutils&#34;&gt;steveloughran/winutils&lt;/a&gt; 上放出了预编译好的二进制版本，按需选择即可。需要注意的是 &lt;code&gt;winutils.exe&lt;/code&gt; 需要置于 &lt;code&gt;HADOOP_HOME&lt;/code&gt; 的 &lt;code&gt;bin&lt;/code&gt; 目录下，我们可以新建 &lt;code&gt;D:\hadoop&lt;/code&gt; 作为 &lt;code&gt;HADOOP_HOME&lt;/code&gt; 变量。变量设置好后需要判断这两个环境变量是否生效。&lt;/p&gt;
-&lt;h2 id=&#34;pyspark&#34;&gt;PySpark&lt;/h2&gt;
-&lt;p&gt;使用 PySpark 时最重要的环境变量是 &lt;code&gt;PYTHONPATH&lt;/code&gt; 和 &lt;code&gt;spark-submit&lt;/code&gt; 提交时 &lt;code&gt;--py-files&lt;/code&gt; Python 及其依赖的打包注意事项。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/env bash
-
-set -e
-
-export SPARK_HOME=${SPARK_HOME:=&amp;quot;/usr/hdp/2.6.1.0-129&amp;quot;}
-export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.9-src.zip:$SPARK_HOME/python/lib/pyspark.zip:$PYTHONPATH
-export SPARK_MASTER=${SPARK_MASTER:=&amp;quot;local[*]&amp;quot;}
-
-
-spark-submit \
-    --master \
-    ${SPARK_MASTER} \
-    --deploy-mode \
-    client \
-    --name \
-    PySpark \
-    --verbose \
-    main.py $@
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;scala&#34;&gt;Scala&lt;/h2&gt;
-&lt;p&gt;使用 Scala 来开发 Spark 程序是最为 native 的方式，也没有性能惩罚，是我个人最喜欢的方式。考虑到我们通常并不将 Spark 的核心包打包至最终的 jar 包提交，我们可以在 &lt;code&gt;build.sbt&lt;/code&gt; 中指定 Spark 相关依赖为 &lt;code&gt;provided&lt;/code&gt;, 完整的 &lt;code&gt;build.sbt&lt;/code&gt; 见下文。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;name := &amp;quot;scala-ml-text&amp;quot;
-
-organization := &amp;quot;com.yintech&amp;quot;
-
-version := &amp;quot;1.0&amp;quot;
-
-scalaVersion := &amp;quot;2.10.7&amp;quot;
-
-val sparkVersion = &amp;quot;1.6.3&amp;quot;
-
-lazy val sparkDependencies = Seq(
-  &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-core&amp;quot; % sparkVersion,
-  &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-mllib&amp;quot; % sparkVersion,
-  &amp;quot;org.apache.spark&amp;quot; %% &amp;quot;spark-hive&amp;quot; % sparkVersion
-)
-
-libraryDependencies ++= Seq(
-  &amp;quot;log4j&amp;quot; % &amp;quot;log4j&amp;quot; % &amp;quot;1.2.17&amp;quot;,
-  &amp;quot;org.slf4j&amp;quot; % &amp;quot;slf4j-log4j12&amp;quot; % &amp;quot;1.7.10&amp;quot;,
-  &amp;quot;com.typesafe&amp;quot; % &amp;quot;config&amp;quot; % &amp;quot;1.2.1&amp;quot;,
-  &amp;quot;com.databricks&amp;quot; % &amp;quot;spark-csv_2.10&amp;quot; % &amp;quot;1.5.0&amp;quot;
-)
-
-libraryDependencies ++= sparkDependencies.map(_ % &amp;quot;provided&amp;quot;)
-
-assemblyMergeStrategy in assembly := {
-  case PathList(&amp;quot;META-INF&amp;quot;, xs @ _*) =&amp;gt; MergeStrategy.discard
-  case x =&amp;gt; MergeStrategy.first
-}
-&lt;/code&gt;&lt;/pre&gt;</description>
       
     </item>
     
