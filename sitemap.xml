@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.yuanbin.me/posts/2020-02/2020-02-02_08-43-55/</loc>
+    <lastmod>2020-02-02T08:43:56+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.yuanbin.me/posts/2020-01/2020-01-29_23-25-37/</loc>
     <lastmod>2020-01-29T23:25:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -779,6 +786,13 @@
   </url>
   
   <url>
+    <loc>https://blog.yuanbin.me/tags/go/</loc>
+    <lastmod>2020-02-02T08:43:56+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.yuanbin.me/tags/haproxy/</loc>
     <lastmod>2018-06-30T21:26:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -871,7 +885,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/post/</loc>
-    <lastmod>2020-01-29T23:25:38+08:00</lastmod>
+    <lastmod>2020-02-02T08:43:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -962,7 +976,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/</loc>
-    <lastmod>2020-01-29T23:25:38+08:00</lastmod>
+    <lastmod>2020-02-02T08:43:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -983,7 +997,7 @@
   
   <url>
     <loc>https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2019-03-25T20:59:21+08:00</lastmod>
+    <lastmod>2020-02-02T08:43:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 29 Jan 2020 23:25:38 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 02 Feb 2020 08:43:56 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang set 实现</title>
+      <link>https://blog.yuanbin.me/posts/2020-02/2020-02-02_08-43-55/</link>
+      <pubDate>Sun, 02 Feb 2020 08:43:56 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-02/2020-02-02_08-43-55/</guid>
+      <description>熟悉 Java 的看到这种标题，下意识会觉得这篇文章可能是分析 Go 中 set 的实现细节，但我要告诉你的是，Go 官方并没有 set 这种东西，需要的话自己去实现吧&amp;he</description>
+    </item>
     
     <item>
       <title>2019 年度总结</title>
