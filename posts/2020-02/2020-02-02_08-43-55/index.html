@@ -66,12 +66,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.yuanbin.me/posts/2020-02/2020-02-02_08-43-55/" />
 <meta property="article:published_time" content="2020-02-02T08:43:56+08:00" />
-<meta property="article:modified_time" content="2020-02-02T12:44:46+08:00" />
+<meta property="article:modified_time" content="2020-02-09T18:33:17+08:00" />
 <meta itemprop="name" content="Golang set 实现">
 <meta itemprop="description" content="熟悉 Java 的看到这种标题，下意识会觉得这篇文章可能是分析 Go 中 set 的实现细节，但我要告诉你的是，Go 官方并没有 set 这种东西，需要的话自己去实现吧&he">
 <meta itemprop="datePublished" content="2020-02-02T08:43:56&#43;08:00" />
-<meta itemprop="dateModified" content="2020-02-02T12:44:46&#43;08:00" />
-<meta itemprop="wordCount" content="561">
+<meta itemprop="dateModified" content="2020-02-09T18:33:17&#43;08:00" />
+<meta itemprop="wordCount" content="684">
 
 
 
@@ -413,8 +413,11 @@ if (!doNotTrack) {
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#go-collections">Go collections</a></li>
-    <li><a href="#todo">TODO</a></li>
+    <li><a href="#go-collections">Go collections</a>
+      <ul>
+        <li><a href="#-set---concurrentset">并发 Set - ConcurrentSet</a></li>
+      </ul>
+    </li>
     <li><a href="#reference">Reference</a></li>
   </ul>
 </nav>
@@ -432,8 +435,8 @@ if (!doNotTrack) {
 <h2 id="go-collections">Go collections</h2>
 <p>Go set 的轮子其实已经不少了，八仙过海各显神通，为什么我还要重新发明轮子呢？一是为 Go 生态添砖加瓦；二是想在 set 中夹带私货，一些自己需要的 feature 可以自己按需实现；三是 set 实现也确实不难，练练手也是极好的。</p>
 <p>综上，我就 fork 了一个 <a href="https://github.com/billryan/collections" title="Go collections">go-collections</a>, 逐步完善 set, queue 等一系列基础数据结构。目前 set 的实现，加了 <code>Foreach</code>, <code>Map</code> 和 <code>UnmarshalText</code>(toml 解析用) 这些有意思的实现，其他移植了部分 Java 和 Python 中常用的一些方法。</p>
-<h2 id="todo">TODO</h2>
-<p>ConcurrentHashSet</p>
+<h3 id="-set---concurrentset">并发 Set - ConcurrentSet</h3>
+<p>为了尽可能减少锁的使用，并发 Set 的实现内部的 Map 借助了官方的 <code>sync.Map</code>, 这个 Map 采用空间换时间的思路优化读多写少的场景，但遗憾的是考虑到 Map size 并不是典型应用场景及性能的 tradeoff, 官方并未加入 Len 方法，综合考虑，我决定使用 atomic 来记录增删过程中的 Map 长度。这也是 ConcurrentSet 的实现背景。</p>
 <h2 id="reference">Reference</h2>
 
     </div>
@@ -448,13 +451,13 @@ if (!doNotTrack) {
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2020-02-02
+      2020-02-09
       
-        <a href="https://github.com/billryan/blog/commit/c006d89ffe4bba3b7e663698f582491ea68af5ac" title="fix urls">
-          (c006d89)
+        <a href="https://github.com/billryan/blog/commit/e178b70c2ca266f2f87aef157b4902f1e062bef5" title="update concurrent set note">
+          (e178b70)
         </a>
         
-          <br>fix urls
+          <br>update concurrent set note
         
       
     </span>
