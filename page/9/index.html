@@ -64,7 +64,7 @@
 <meta property="og:description" content="blog of billryan" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.yuanbin.me/" />
-<meta property="og:updated_time" content="2020-02-02T08:43:56+08:00" />
+<meta property="og:updated_time" content="2020-02-13T22:19:02+08:00" />
 <meta itemprop="name" content="东海一叶">
 <meta itemprop="description" content="blog of billryan"><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="东海一叶"/>
@@ -382,6 +382,40 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/posts/2018-02/2018-02-23_23-19-29/">博客写作工作流</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2018-02-23" class="post-time">
+        2018-02-23
+      </time>
+      <div class="post-category">
+          <a href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      平台/工具折腾血泪史 博客陆陆续续也写了有七八年了，早年在51空间、QQ 空间、人人网、点点网上写过一些矫情的文字，后来接触了比较 geek 的 GitHub Pages 方式，
+    </div>
+    <div class="read-more">
+      <a href="/posts/2018-02/2018-02-23_23-19-29/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/posts/2018-02/2018-02-23_20-44-30/">如何做一场好的技术分享</a>
     </h1>
     
@@ -440,48 +474,6 @@ if (!doNotTrack) {
     </div>
     <div class="read-more">
       <a href="/posts/2016-11/2016-11-07_10-48-42/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/posts/2016-10/2016-10-09_21-48-24/">使用 GitBook 制作高质量电子书</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2016-10-09" class="post-time">
-        2016-10-09
-      </time>
-      <div class="post-category">
-          <a href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      <p>作为知识型工作者，时常会遇到的一个问题是如何将自己所做的工作精心汇总并便利地展示给广大读者。从阅读、传播和互动的角度来看，制作一个专业的网站可能是较为理想的方案，但实际操作起来可能会因为各种各样的技术问题而让人望而却步。<a href="https://www.gitbook.com">GitBook</a> 的出现算是解决了用户的绝大部分痛点。与 GitHub Pages 仅作为静态页面展示平台不同，GitBook 在文本编辑、多人协作、互动和电子书最终输出形式等方面的支持非常完善，基本上涵盖了现代出版物的整个生命周期，接下来的篇幅将详述这几个环节并介绍一些自己的实践经验。GitBook 的官方文档见 <a href="https://toolchain.gitbook.com/">GitBook Toolchain Documentation</a></p>
-<p><img src="/pictures/misc/gitbook-part1-site.png" alt="GitBook website"></p>
-<h3 id="-web">客户端或 Web</h3>
-<p><img src="/pictures/misc/gitbook-part1-editor.png" alt="GitBook editor"></p>
-<p>相比于 GitHub Pages 高门槛的写作方式，GitBook 在这方面则显得亲民的多（和 Word Office 之类的软件易用程度相当），由于是基于 Node.js 的应用，其不仅提供跨平台的图形化写作软件，同时也提供了 Web 版在线编辑，两者在功能上无异。虽然 GitBook 同时支持 Markdown 和 AsciiDoc, 但可以明显感受到其对 Markdown 格式的偏爱，不熟悉 Markdown 的朋友们也不用担心，GitBook 的工具栏中提供了各种常用格式的快捷方式。Markdown 相比 LaTeX 来说要简单地多，需要记的格式最多也只有十来种，基本上是那种一看就会用的极简格式，详细的格式支持和使用见 <a href="https://toolchain.gitbook.com/syntax/markdown.html">Markdown</a></p>
-<p><img src="/pictures/misc/gitbook-part1-template.png" alt="GitBook template"></p>
-<p>在 GitBook 网站新建电子书时可从默认的三种模板 (书籍或手册/API 文档/知识库 FAQ) 选择一个，官方虽然只提供了三种模板，但由于 GitBook 的可定制性极强，已经有不少第三方的模板可选了。除新建外你也可以从已有的 docs/odt/html/GitHub 等地方导入，从第三方导入的格式往往和 GitBook 家的稍微有那么点不一样，可能需要微调。</p>
-<h3 id="-github-repo">绑定 GitHub repo</h3>
-<p>除了使用客户端和 Web 编辑文本这种简易模式外，你也可以挑战一下 Hard 模式如通过绑定 GitHub repo 推送更新，需要注意的是绑定到 GitHub repo 后当前电子书不可再从客户端或者 Web 上更新，这大概是 git 的锅了吧 :( 使用 GitHub 绑定的电子书在添加新文件时容易忘记更新目录文件 <code>SUMMARY.md</code>，在此特意提醒下。</p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2016-10/2016-10-09_21-48-24/" class="read-more-link">阅读全文</a>
     </div>
     
   </div>

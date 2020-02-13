@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>技术 · 东海一叶</title>
+  <title>Mosh&#43;tmux = SSH 好帮手 - 东海一叶</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="东海一叶" />
-  <meta name="description" content="blog of billryan" />
+  <meta name="description" content="今天写的是一篇工具类文章，专治各种 SSH 水土不服。在平时的科研或者后端开发过程中，我们总免不了要使用远端服务器来完成我们的工作，这里面会经常遇到" />
+
   <meta name="keywords" content="Hugo, billryan, 博客, 东海一叶" />
 
 
@@ -34,8 +35,8 @@
 <meta name="generator" content="Hugo 0.62.0" />
 
 
-<link rel="canonical" href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/" />
-<link href="/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="alternate" type="application/rss+xml" title="东海一叶" />
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2020-02/2020-02-13_22-19-02/" />
+
 
 
 
@@ -60,15 +61,23 @@
 <link rel="stylesheet" href="/css/custom.css">
 
 
-<meta property="og:title" content="技术" />
-<meta property="og:description" content="blog of billryan" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/" />
-<meta property="og:updated_time" content="2020-02-13T22:19:02+08:00" />
-<meta itemprop="name" content="技术">
-<meta itemprop="description" content="blog of billryan"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="技术"/>
-<meta name="twitter:description" content="blog of billryan"/>
+<meta property="og:title" content="Mosh&#43;tmux = SSH 好帮手" />
+<meta property="og:description" content="今天写的是一篇工具类文章，专治各种 SSH 水土不服。在平时的科研或者后端开发过程中，我们总免不了要使用远端服务器来完成我们的工作，这里面会经常遇到" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2020-02/2020-02-13_22-19-02/" />
+<meta property="article:published_time" content="2020-02-13T22:19:02+08:00" />
+<meta property="article:modified_time" content="2020-02-13T22:59:07+08:00" />
+<meta itemprop="name" content="Mosh&#43;tmux = SSH 好帮手">
+<meta itemprop="description" content="今天写的是一篇工具类文章，专治各种 SSH 水土不服。在平时的科研或者后端开发过程中，我们总免不了要使用远端服务器来完成我们的工作，这里面会经常遇到">
+<meta itemprop="datePublished" content="2020-02-13T22:19:02&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-13T22:59:07&#43;08:00" />
+<meta itemprop="wordCount" content="584">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mosh&#43;tmux = SSH 好帮手"/>
+<meta name="twitter:description" content="今天写的是一篇工具类文章，专治各种 SSH 水土不服。在平时的科研或者后端开发过程中，我们总免不了要使用远端服务器来完成我们的工作，这里面会经常遇到"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -370,158 +379,197 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-
-<section id="archive" class="archive">
-  
-
-  
-    <div class="archive-post">
-      <time datetime="2014-05-16" class="archive-post-time">
-        2014-05-16
-      </time>
-      <span class="archive-post-title">
-        <a href="/posts/2014-05/2014-05-16_20-47-22/" class="archive-post-link">
-          deepin-screenshot把玩小记
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2014-05-16" class="archive-post-time">
-        2014-05-16
-      </time>
-      <span class="archive-post-title">
-        <a href="/posts/2014-05/2014-05-16_17-24-43/" class="archive-post-link">
-          英文Locale下使用Fcitx中文输入法
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2014-05-02" class="archive-post-time">
-        2014-05-02
-      </time>
-      <span class="archive-post-title">
-        <a href="/posts/2014-05/2014-05-02_11-24-57/" class="archive-post-link">
-          Hexo多Repo部署——使用Github和GitCafe同时托管博客
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2014-02-09" class="archive-post-time">
-        2014-02-09
-      </time>
-      <span class="archive-post-title">
-        <a href="/posts/2014-02/2014-02-09_15-38-35/" class="archive-post-link">
-          树莓派把玩之OS和硬件选型
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2014-02-09" class="archive-post-time">
-        2014-02-09
-      </time>
-      <span class="archive-post-title">
-        <a href="/posts/2014-02/2014-02-09_13-52-08/" class="archive-post-link">
-          Compile r8101 driver modules for Linux-3.10
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2013-08-19" class="archive-post-time">
-        2013-08-19
-      </time>
-      <span class="archive-post-title">
-        <a href="/posts/2013-08/2013-08-19_10-56-30/" class="archive-post-link">
-          上海交大校外代理初体验
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2013-07-13" class="archive-post-time">
-        2013-07-13
-      </time>
-      <span class="archive-post-title">
-        <a href="/posts/2013-07/2013-07-13_23-50-20/" class="archive-post-link">
-          3G无线上网卡分享网络之 Arch Linux与Win7篇
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2013-02-03" class="archive-post-time">
-        2013-02-03
-      </time>
-      <span class="archive-post-title">
-        <a href="/posts/2013-02/2013-02-03_18-54-00/" class="archive-post-link">
-          Use kmail with a proxy-给kmail加上代理
-        </a>
-      </span>
-    </div>
-  
-</section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
+          <article class="post bg-white">
+    
+    <header class="post-header">
+      <h1 class="post-title">Mosh&#43;tmux = SSH 好帮手</h1>
       
-      <li >
-        <a href="/categories/%E6%8A%80%E6%9C%AF/">1</a>
-      </li>
+      <div class="post-meta">
+        <time datetime="2020-02-13" class="post-time">
+          2020-02-13
+        </time>
+        <div class="post-category">
+            <a href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        
+
+        
+        
+          <span id="busuanzi_container_page_pv">
+            | 阅读 <span id="busuanzi_value_page_pv"></span>
+          </span>
+        
+
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-sshconfig">善用 ~/.ssh/config</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>今天写的是一篇工具类文章，专治各种 SSH 水土不服。在平时的科研或者后端开发过程中，我们总免不了要使用远端服务器来完成我们的工作，这里面会经常遇到的一个问题是当网络断开或重连时，需要反复 SSH 重连，这点重复工作大部分人倒是不会在乎的，真正让人烦恼的是重连后，你之前运行的程序有可能被 kill 掉了，有兴趣的读者可以进一步了解操作系统进程及信号之间的细节，<a href="https://serverfault.com/questions/463366/does-getting-disconnected-from-an-ssh-session-kill-your-programs" title="StackExchang">StackExchange</a> 上有一篇不错的文章对这一行为进行了解释并提供了一些解决方案，但这些方案都不是本文想介绍的。</p>
+<p>本着以人为本的原则，本文介绍的是 Mosh + tmux 这一组合拳，当然根据你的个人习惯，tmux 换为 screen 也未尝不可。下面快速介绍为什么同时需要这两个东西一起配合。</p>
+<ol>
+<li>Mosh: 可以网络漫游，切换网络等会自动重连，就像是你的 SSH 连接从未抛弃过你</li>
+<li>tmux: 可以自由定制你的命令行工作台，你的进程在 tmux 中运行，即使网络断掉，SSH 重连后 attach 之前的工作区，又可以无缝切到之前的工作状态，之前是啥样现在还是啥样，进程也不会被杀掉</li>
+</ol>
+<p>当然这两个东西能提供的远不止以上两大好处，尤其是 tmux, 你可以加入一些自己喜欢的配置文件玩出花来。如果这两个东西只能要一样，那我会选择保留 tmux.</p>
+<h3 id="-sshconfig">善用 ~/.ssh/config</h3>
+<p>除了 SSH 连接优化类工具外，我常用的还有充分利用 <code>~/.ssh/config</code>, 比如对一些常用的服务器，可以将主机名、用户、端口等写在配置文件中，使用时输入 <code>ssh dev</code> 或者 <code>mosh dev</code> 就行了，更不用说结合其它如 <code>rsync</code> 可以大幅减少 SSH 相关指令。</p>
+<pre><code>Host dev
+    HostName master.local.dev
+    User master
+    Port 5678
+</code></pre>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">东海一叶</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+      2020-02-13
       
-      <li >
-        <a href="/categories/%E6%8A%80%E6%9C%AF/page/2/">2</a>
-      </li>
+        <a href="https://github.com/billryan/blog/commit/6b57ad78dd90c9f67c45d4f35cf3f4e13378b13d" title="add ssh info blog">
+          (6b57ad7)
+        </a>
+        
+          <br>add ssh info blog
+        
       
-      <li >
-        <a href="/categories/%E6%8A%80%E6%9C%AF/page/3/">3</a>
-      </li>
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+    <footer class="post-footer">
       
-      <li >
-        <a href="/categories/%E6%8A%80%E6%9C%AF/page/4/">4</a>
-      </li>
+
       
-      <li >
-        <a href="/categories/%E6%8A%80%E6%9C%AF/page/5/">5</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/categories/%E6%8A%80%E6%9C%AF/page/6/">6</a>
-      </li>
-      
-    </ul>
-  </nav>
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/posts/2020-02/2020-02-02_08-43-55/">
+            <span class="next-text nav-default">Golang set 实现</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
 
   
   
 
+  
+  
 
+  
 
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "billryan/blog"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+  
 
+  
+
+  
+
+  <div class="disqus-comment">
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+    显示 Disqus 评论
+  </div>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = "https://blog.yuanbin.me/posts/2020-02/2020-02-13_22-19-02/";
+    };
+    function load_disqus() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'billryan';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      $('#load_disqus').remove();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+  
+  </div>
+
+    
+
+  
 
         </div>
       </div>

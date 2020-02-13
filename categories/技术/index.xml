@@ -6,10 +6,19 @@
     <description>Recent content in 技术 on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 02 Feb 2020 08:43:56 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Feb 2020 22:19:02 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mosh&#43;tmux = SSH 好帮手</title>
+      <link>https://blog.yuanbin.me/posts/2020-02/2020-02-13_22-19-02/</link>
+      <pubDate>Thu, 13 Feb 2020 22:19:02 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-02/2020-02-13_22-19-02/</guid>
+      <description>今天写的是一篇工具类文章，专治各种 SSH 水土不服。在平时的科研或者后端开发过程中，我们总免不了要使用远端服务器来完成我们的工作，这里面会经常遇到</description>
+    </item>
     
     <item>
       <title>Golang set 实现</title>
@@ -188,15 +197,6 @@
       
       <guid>https://blog.yuanbin.me/posts/2016-09/2016-09-18_22-55-14/</guid>
       <description>最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下班后的周末抽空</description>
-    </item>
-    
-    <item>
-      <title>GitBook 网页版中文字型优化</title>
-      <link>https://blog.yuanbin.me/posts/2016-08/2016-08-19_07-30-10/</link>
-      <pubDate>Fri, 19 Aug 2016 07:30:10 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-08/2016-08-19_07-30-10/</guid>
-      <description>Gitbook 用于写大型文档尤其是有层次关系的书籍类电子书还是挺合适的，但其默认的 CSS 对中文并不太友好首先匹配英文字体族，fallback 至sans-se</description>
     </item>
     
   </channel>

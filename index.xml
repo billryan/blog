@@ -6,10 +6,34 @@
     <description>Recent content on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 02 Feb 2020 08:43:56 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 13 Feb 2020 22:19:02 +0800</lastBuildDate>
     
         <atom:link href="https://blog.yuanbin.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mosh&#43;tmux = SSH 好帮手</title>
+      <link>https://blog.yuanbin.me/posts/2020-02/2020-02-13_22-19-02/</link>
+      <pubDate>Thu, 13 Feb 2020 22:19:02 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-02/2020-02-13_22-19-02/</guid>
+      
+        <description>&lt;p&gt;今天写的是一篇工具类文章，专治各种 SSH 水土不服。在平时的科研或者后端开发过程中，我们总免不了要使用远端服务器来完成我们的工作，这里面会经常遇到的一个问题是当网络断开或重连时，需要反复 SSH 重连，这点重复工作大部分人倒是不会在乎的，真正让人烦恼的是重连后，你之前运行的程序有可能被 kill 掉了，有兴趣的读者可以进一步了解操作系统进程及信号之间的细节，&lt;a href=&#34;https://serverfault.com/questions/463366/does-getting-disconnected-from-an-ssh-session-kill-your-programs&#34; title=&#34;StackExchang&#34;&gt;StackExchange&lt;/a&gt; 上有一篇不错的文章对这一行为进行了解释并提供了一些解决方案，但这些方案都不是本文想介绍的。&lt;/p&gt;
+&lt;p&gt;本着以人为本的原则，本文介绍的是 Mosh + tmux 这一组合拳，当然根据你的个人习惯，tmux 换为 screen 也未尝不可。下面快速介绍为什么同时需要这两个东西一起配合。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Mosh: 可以网络漫游，切换网络等会自动重连，就像是你的 SSH 连接从未抛弃过你&lt;/li&gt;
+&lt;li&gt;tmux: 可以自由定制你的命令行工作台，你的进程在 tmux 中运行，即使网络断掉，SSH 重连后 attach 之前的工作区，又可以无缝切到之前的工作状态，之前是啥样现在还是啥样，进程也不会被杀掉&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当然这两个东西能提供的远不止以上两大好处，尤其是 tmux, 你可以加入一些自己喜欢的配置文件玩出花来。如果这两个东西只能要一样，那我会选择保留 tmux.&lt;/p&gt;
+&lt;h3 id=&#34;-sshconfig&#34;&gt;善用 ~/.ssh/config&lt;/h3&gt;
+&lt;p&gt;除了 SSH 连接优化类工具外，我常用的还有充分利用 &lt;code&gt;~/.ssh/config&lt;/code&gt;, 比如对一些常用的服务器，可以将主机名、用户、端口等写在配置文件中，使用时输入 &lt;code&gt;ssh dev&lt;/code&gt; 或者 &lt;code&gt;mosh dev&lt;/code&gt; 就行了，更不用说结合其它如 &lt;code&gt;rsync&lt;/code&gt; 可以大幅减少 SSH 相关指令。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Host dev
+    HostName master.local.dev
+    User master
+    Port 5678
+&lt;/code&gt;&lt;/pre&gt;</description>
+      
+    </item>
     
     <item>
       <title>Golang set 实现</title>
@@ -646,22 +670,6 @@ metastore/src/gen/thrift/gen-javabean/org/apache/hadoop/hive/metastore/api/Table
         outStream.writeBytes(createTab_stmt.toString());
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;简单粗暴的方法是在这里对输出的 &lt;code&gt;\t&lt;/code&gt; 替换，这也是 Hive-4659 采取的方法。而从 Eric 的博客中可以发现 CDH 是在创建 DDL 存储至 Metastore 前去掉 &lt;code&gt;\t&lt;/code&gt; 这种空白字符的。尽管这两种方法均可解决问题 2, 但这仍然并未从根本上解释问题的来源。从 &lt;code&gt;tbl.getViewExpandedText()&lt;/code&gt; 继续跟下去可以发现这个方法是在 &lt;code&gt;Table.java&lt;/code&gt; 中调用的，然后在这里面也没发现有对 &lt;code&gt;\t&lt;/code&gt; 等特殊字符做特殊处理的步骤&amp;hellip; 卒，这个问题后面再分析一下 Hive Metastore 源码才能给出根本原因了。&lt;/p&gt;
 &lt;p&gt;对于中文乱码的问题，我们可以在 toString 后加入 UTF-8 编解码即可。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>身份证解析的那些小事</title>
-      <link>https://blog.yuanbin.me/posts/2018-03/2018-03-28_23-50-56/</link>
-      <pubDate>Wed, 28 Mar 2018 23:50:56 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-28_23-50-56/</guid>
-      
-        <description>&lt;p&gt;说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。除籍贯外其它信息都可以自己解析生成，籍贯这个，我们又不可以连到公安局内网查，自然需要求助官方发布的数据。&lt;/p&gt;
-&lt;p&gt;身份证相关的行政数据目前已由民政部管理，部分已经整理好的数据可参考 &lt;a href=&#34;https://github.com/cn/GB2260&#34;&gt;cn/GB2260: 中华人民共和国国家标准 GB/T 2260 行政区划代码&lt;/a&gt; mca 目录下保存有原始信息。在使用 cn 下不同语言的实现时，发现引用的数据还是有点滞后，这会造成部分老的行政身份证号无法解析。因此在自己项目中使用时，&lt;strong&gt;建议基于这些数据构建自己的数据库。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;除了官方整理的数据之外，还有一作者在 &lt;a href=&#34;http://www.zxinc.org/gb2260.htm&#34;&gt;自己网站&lt;/a&gt; 也整理了一份，并标注有『民政部自己以1984年版为基础向1980年倒推了编码，可惜很多倒推是错误的。本表不使用倒推编码』，想偷懒的可以直接用这个网页的数据。&lt;/p&gt;
-&lt;p&gt;接下来说说身份证号前六位的变化情况，身份证号前六位即籍贯地行政区划，随着各种撤县改市等拆分合并，较老的行政区划或多或少会有变化，民政局上的数据一般以年为单位进行更新，构建自己的数据库时可以加上这一列。需要注意的是官方数据最新版是不包含那些老的废弃的行政区划的，所以在查询时需要注意数据源是否覆盖完整。如果还是遇到为空的情况，简单粗暴的方法是取前两位省份编码。&lt;/p&gt;
-&lt;p&gt;P.S. 我在整理民政局的 &lt;a href=&#34;https://github.com/cn/GB2260/pull/46&#34;&gt;行政区划数据&lt;/a&gt; 时发现 1987 年的数据是有问题的，安徽省竟然是 339007! 大家使用时可以考虑移除这一年的数据。&lt;/p&gt;
 </description>
       
     </item>
