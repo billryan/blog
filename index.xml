@@ -6,10 +6,31 @@
     <description>Recent content on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 13 Feb 2020 22:19:02 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2020 18:16:45 +0800</lastBuildDate>
     
         <atom:link href="https://blog.yuanbin.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>字节跳动校招/社招内推，长期有效</title>
+      <link>https://blog.yuanbin.me/posts/2020-02/2020-02-25_18-16-44/</link>
+      <pubDate>Tue, 25 Feb 2020 18:16:45 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-02/2020-02-25_18-16-44/</guid>
+      
+        <description>&lt;p&gt;很显然这是一篇广告，该文章长期有效，各种岗位都可以试试。先说大家关心的，海量HC！校招/实习/社招都要！全世界各地大城市基本都有，机会多多！&lt;a href=&#34;https://job.bytedance.com/&#34; title=&#34;字节职位 JD 链接&#34;&gt;字节职位 JD 链接&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;字节跳动校招内推码: &lt;strong&gt;QYVDPPA&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从求职者的角度考虑，对于研发我能提供的辅助资源：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;简历反馈与指导，目前尽量保证3天内提供反馈&lt;/li&gt;
+&lt;li&gt;可以先看我之前的校招准备及简历书写总结 &lt;a href=&#34;https://algorithm.yuanbin.me/zh-hans/appendix_i_interview_and_resume/&#34; title=&#34;面试准备及简历要点&#34;&gt;面试准备及简历要点&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/billryan/resume&#34; title=&#34;LaTex 简历模板&#34;&gt;LaTex 简历模板&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://algorithm.yuanbin.me/zh-hans/&#34; title=&#34;算法基础知识总结&#34;&gt;算法基础知识总结&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如需简历反馈和指导的，请发至 &lt;a href=&#34;mailto:yuanbin.me@bytedance.com&#34;&gt;yuanbin.me@bytedance.com&lt;/a&gt; 提高成功率&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Mosh&#43;tmux = SSH 好帮手</title>
@@ -642,34 +663,6 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;从以上两段代码来看，Overview 中 Created 的显示时间比 Details 中的北京时间晚8小时才对，但实际却比北京时间提前了6小时!&lt;/p&gt;
 &lt;p&gt;百思不得其解，后面才发现，这是 JavaScript 对时区处理的坑！！！&lt;/p&gt;
 &lt;p&gt;Details 中 CreateTime 为 &lt;code&gt;Wed Apr 04 15:41:58 CST 2018&lt;/code&gt;, 其中的 CST 可以是『Central Standard Time 美国中部时间』和『中国标准时间』，而美国中部时间是西六区&amp;hellip; JS 将 CST 作为美国中部时间处理了&amp;hellip;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Hive show create table 显示空白行的问题</title>
-      <link>https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/</link>
-      <pubDate>Mon, 02 Apr 2018 16:35:55 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/</guid>
-      
-        <description>&lt;p&gt;对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细节的。好在 Hive 0.10 &lt;a href=&#34;https://issues.apache.org/jira/browse/HIVE-967&#34;&gt;HIVE-967&lt;/a&gt; 起就对表/视图的 DDL 予以支持了，这部分 DDL 自然是存储在 Hive Metastore 中的。但实际使用 &lt;code&gt;show create table&lt;/code&gt; 进行查询时(Hive 1.2.x)，会发现以下两个比较讨厌的小问题：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;无法显示中文注释(comment)&lt;/li&gt;
-&lt;li&gt;偶尔会出现中间的一些行为空白&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;以上这两个问题，第二个是非常影响用户对视图的理解的。通过一番搜索和本地测试可以发现引起这一现象的罪魁祸首竟然是 &lt;code&gt;\t&lt;/code&gt; 特殊字符引起的！！！见 &lt;a href=&#34;https://issues.apache.org/jira/browse/HIVE-4659&#34;&gt;HIVE-4659&lt;/a&gt; 和 &lt;a href=&#34;http://www.ericlin.me/2017/12/show-create-table-output-truncated-for-view-in-hive/&#34;&gt;Eric&#39;s Blog&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;从 Hive Metastore 对应的库表 &lt;code&gt;hive.TBLS&lt;/code&gt; 中与视图 DDL 显示直接相关的字段我们可以发现有 &lt;code&gt;VIEW_ORIGINAL_TEXT&lt;/code&gt; 和 &lt;code&gt;VIEW_EXPANDED_TEXT&lt;/code&gt;. 直接查表可以发现 &lt;code&gt;\t&lt;/code&gt; 均存储其中，所以从这可以推断在存储至 Metastore 时 Hive 并未做处理，最终显示为空白行是在查询输出的过程中产生的。&lt;/p&gt;
-&lt;p&gt;既然找到问题了，我们再想想怎么从源头上解决，从代码上可以跟到以下三个相关文件：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ql/src/java/org/apache/hadoop/hive/ql/exec/DDLTask.java
-ql/src/java/org/apache/hadoop/hive/ql/metadata/formatting/MetaDataFormatUtils.java
-metastore/src/gen/thrift/gen-javabean/org/apache/hadoop/hive/metastore/api/Table.java
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中 &lt;a href=&#34;https://github.com/apache/hive/blob/release-1.2.1/ql/src/java/org/apache/hadoop/hive/ql/exec/DDLTask.java#L1923&#34;&gt;DDLTask.java#L1923&lt;/a&gt;`` 和 &lt;code&gt;MetaDataFormatUtils.java&lt;/code&gt; 均含有调用视图创建文本的逻辑。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;      if (tbl.isView()) {
-        String createTab_stmt = &amp;quot;CREATE VIEW `&amp;quot; + tableName + &amp;quot;` AS &amp;quot; + tbl.getViewExpandedText();
-        outStream.writeBytes(createTab_stmt.toString());
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;简单粗暴的方法是在这里对输出的 &lt;code&gt;\t&lt;/code&gt; 替换，这也是 Hive-4659 采取的方法。而从 Eric 的博客中可以发现 CDH 是在创建 DDL 存储至 Metastore 前去掉 &lt;code&gt;\t&lt;/code&gt; 这种空白字符的。尽管这两种方法均可解决问题 2, 但这仍然并未从根本上解释问题的来源。从 &lt;code&gt;tbl.getViewExpandedText()&lt;/code&gt; 继续跟下去可以发现这个方法是在 &lt;code&gt;Table.java&lt;/code&gt; 中调用的，然后在这里面也没发现有对 &lt;code&gt;\t&lt;/code&gt; 等特殊字符做特殊处理的步骤&amp;hellip; 卒，这个问题后面再分析一下 Hive Metastore 源码才能给出根本原因了。&lt;/p&gt;
-&lt;p&gt;对于中文乱码的问题，我们可以在 toString 后加入 UTF-8 编解码即可。&lt;/p&gt;
 </description>
       
     </item>

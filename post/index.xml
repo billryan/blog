@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 13 Feb 2020 22:19:02 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2020 18:16:45 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>字节跳动校招/社招内推，长期有效</title>
+      <link>https://blog.yuanbin.me/posts/2020-02/2020-02-25_18-16-44/</link>
+      <pubDate>Tue, 25 Feb 2020 18:16:45 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-02/2020-02-25_18-16-44/</guid>
+      <description>很显然这是一篇广告，该文章长期有效，各种岗位都可以试试。先说大家关心的，海量HC！校招/实习/社招都要！全世界各地大城市基本都有，机会多多！</description>
+    </item>
     
     <item>
       <title>Mosh&#43;tmux = SSH 好帮手</title>
@@ -180,15 +189,6 @@
       
       <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/</guid>
       <description>对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细</description>
-    </item>
-    
-    <item>
-      <title>身份证解析的那些小事</title>
-      <link>https://blog.yuanbin.me/posts/2018-03/2018-03-28_23-50-56/</link>
-      <pubDate>Wed, 28 Mar 2018 23:50:56 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-03/2018-03-28_23-50-56/</guid>
-      <description>说起身份证这个东西，可以吐槽的点实在是太多了，曾经开发 X 项目时需要充分利用身份证信息，如籍贯、年龄、性别、生肖和星座等。除籍贯外其它信息都可</description>
     </item>
     
   </channel>
