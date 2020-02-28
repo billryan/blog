@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 25 Feb 2020 18:16:45 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 12:20:42 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>谈谈校招/社招技术简历/面试这件事</title>
+      <link>https://blog.yuanbin.me/posts/2020-02/2020-02-28_12-20-41/</link>
+      <pubDate>Fri, 28 Feb 2020 12:20:42 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-02/2020-02-28_12-20-41/</guid>
+      <description>传统上，每年的金三银四是社招跳槽的好时节，大部分公司年终奖此时都已经发了，流动性比较好，招聘人头数 (HC) 放出来的往往也较多。对于大部分普通人来说</description>
+    </item>
     
     <item>
       <title>字节跳动校招/社招内推，长期有效</title>
@@ -180,15 +189,6 @@
       
       <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/</guid>
       <description>Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。 从</description>
-    </item>
-    
-    <item>
-      <title>Hive show create table 显示空白行的问题</title>
-      <link>https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/</link>
-      <pubDate>Mon, 02 Apr 2018 16:35:55 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-02_16-35-55/</guid>
-      <description>对于分析人员来说，由于业务复杂，免不了会需要创建一些视图进行查询，然鹅，有时为了搞清楚视图牵涉到的表及业务关系，总免不了要去查看视图的创建细</description>
     </item>
     
   </channel>

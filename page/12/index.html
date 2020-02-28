@@ -64,7 +64,7 @@
 <meta property="og:description" content="blog of billryan" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://blog.yuanbin.me/" />
-<meta property="og:updated_time" content="2020-02-25T18:16:45+08:00" />
+<meta property="og:updated_time" content="2020-02-28T12:20:42+08:00" />
 <meta itemprop="name" content="东海一叶">
 <meta itemprop="description" content="blog of billryan"><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="东海一叶"/>
@@ -382,6 +382,40 @@ if (!doNotTrack) {
   <header class="post-header">
     <h1 class="post-title">
       
+      <a class="post-link" href="/posts/2016-07/2016-07-10_16-38-19/">家用服务器之 Squid 分流</a>
+    </h1>
+    
+    <div class="post-meta">
+      <time datetime="2016-07-10" class="post-time">
+        2016-07-10
+      </time>
+      <div class="post-category">
+          <a href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+          
+        </div>
+      
+      
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    
+    <div class="post-summary">
+      直接使用 v2xxx 的分流规则即可，比 squid 这种更简单 由于大家都知道的原因，大多数 ISP 的国外带宽往往不太理想，据说这个可以用 kcp 突破，我暂时没有国外带宽的困扰
+    </div>
+    <div class="read-more">
+      <a href="/posts/2016-07/2016-07-10_16-38-19/" class="read-more-link">阅读全文</a>
+    </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post bg-white">
+  <header class="post-header">
+    <h1 class="post-title">
+      
       <a class="post-link" href="/posts/2016-07/2016-07-10_10-19-55/">Transparent routing for home server in China</a>
     </h1>
     
@@ -440,56 +474,6 @@ if (!doNotTrack) {
     </div>
     <div class="read-more">
       <a href="/posts/2016-07/2016-07-09_15-08-41/" class="read-more-link">阅读全文</a>
-    </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/posts/2016-07/2016-07-08_22-25-28/">家用服务器之 DDNS</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2016-07-08" class="post-time">
-        2016-07-08
-      </time>
-      <div class="post-category">
-          <a href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    
-    <div class="post-summary">
-      <p>自交大毕业之后便无比怀念交大的静态 IP，拿来作为服务器自然是再合适不过。
-来浦东这边租房后用的是房东免费给的联通宽带，虽然只有 10 Mb 带宽，但网页浏览和一路 1080p YouTube 视频还是比较流畅的。ISP 默认分配的是运营商内网地址，想把家里的服务器作为公网访问的服务器就非常麻烦了。</p>
-<h2 id="-ip">人工投诉索要公网 IP</h2>
-<p>某个周末的下午试着给联通打了个投诉电话说转人工宽带服务，说明要公网地址，客服问了下账户信息就答复说24小时内处理好并回电，约摸两个小时后有个工程师就来电说已经处理好，请重启路由器。重启路由器后发现联通诚不欺我，全程下来十分顺畅，原以为要说一堆理由并且还有可能不给开通公网地址，没想到联通这么爽快，赞！</p>
-<h3 id="heading">光猫用户</h3>
-<p>需要注意的是使用了光猫的客户，即使申请获得公网地址，这个地址也只存在于光猫的 WAN 口，内网服务器还是无法发挥作用，所以还需要先破解光猫获得超级用户权限以设置 DMZ 和端口映射等。以中兴的 F607 联通版为例，浏览器中输入 <a href="http://192.168.1.1/cu.html">http://192.168.1.1/cu.html</a>, 用户名密码可能为如下组合：</p>
-<ul>
-<li>CUAdmin/CUAdmin</li>
-<li>admin/admin</li>
-<li>unicomadmin/adminunicom</li>
-</ul>
-<h3 id="heading-1">网络拓扑</h3>
-<p>一般情况下服务器网络入口使用防火墙还是很有必要的，获取光猫超级用户权限后虽然可以设置端口映射，但是受制于光猫的有线网口数和硬件布局，使用起来多少有些不便。考虑到连接光猫的至少有一台无线路由器，所以可以在光猫中固定这台无线路由器 WAN 口的 IP，并对其 DMZ, 这样你的路由器就相当于外接广域网了，后面对路由器下的服务器做端口映射就比较方便了。端口映射在有些路由器固件中也称为虚拟服务器，不同路由器的称呼不太一样。</p>
-<h2 id="ddns">DDNS</h2>
-<p>有了公网 IP 还只是对外服务的第一步，ISP 给你分配公网 IP，并不代表你每次重新拨号获得的 IP 不变，所以你还需要 DDNS 来动态获知这一 IP，典型的 DDNS 服务提供商有花生壳，但是这货并不太稳定，某些固件在路由器界面开启 DDNS 后还会引发路由器工作异常。</p>
-<h3 id="dnspod-ddns">DNSPod DDNS</h3>
-<p>有自己域名的基本都知道这家 DNSPod，提供的 API 十分丰富，服务也是比较稳定的。下面是我参考了 <a href="https://github.com/leeyiw/dnspod_ddns/blob/master/dnspod_ddns.py">leeyiw/dnspod_ddns</a> 和 <a href="https://gist.github.com/chuangbo/833369">Python dynamic DNSPod DNS Script</a> 改进的 <a href="https://gist.github.com/billryan/239778f0821937939c8c140bdddd6840">DNSPod DDNS Python Script</a></p>
-    </div>
-    <div class="read-more">
-      <a href="/posts/2016-07/2016-07-08_22-25-28/" class="read-more-link">阅读全文</a>
     </div>
     
   </div>
@@ -1395,6 +1379,27 @@ if (!doNotTrack) {
 
       
 
+        
+
+        
+        
+
+          
+          
+          
+
+            
+
+          
+
+        
+        
+
+        
+        
+
+      
+
       
       
       <li><a href="/page/13/">»</a></li>
@@ -1402,7 +1407,7 @@ if (!doNotTrack) {
 
       
       
-      <li><a href="/page/36/">»»</a></li>
+      <li><a href="/page/37/">»»</a></li>
       
 
       </ul>

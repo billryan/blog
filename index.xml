@@ -6,10 +6,87 @@
     <description>Recent content on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 25 Feb 2020 18:16:45 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 12:20:42 +0800</lastBuildDate>
     
         <atom:link href="https://blog.yuanbin.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>谈谈校招/社招技术简历/面试这件事</title>
+      <link>https://blog.yuanbin.me/posts/2020-02/2020-02-28_12-20-41/</link>
+      <pubDate>Fri, 28 Feb 2020 12:20:42 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-02/2020-02-28_12-20-41/</guid>
+      
+        <description>&lt;p&gt;传统上，每年的金三银四是社招跳槽的好时节，大部分公司年终奖此时都已经发了，流动性比较好，招聘人头数 (HC) 放出来的往往也较多。对于大部分普通人来说，准备好简历和面试是第一步，面试结果的好坏与你前期的积累息息相关。而要想拿到大厂的面试资格，简历自然是第一道关，一封好的简历有利于你从 HR 眼中脱颖而出，也有利于面试的顺利展开。下面聊聊自己从毕业到工作近四年来的找工作感悟。&lt;/p&gt;
+&lt;p&gt;自己从 2016 年 3 月毕业到现在已近四年，前后经历了四家公司，IBM(2016) ==&amp;gt; 银科控股(2017~2019) ==&amp;gt; 饿了么(2019) ==&amp;gt; 字节跳动(2019)，可以看到这四年的经历可以说是非常「丰富」了。当然如果从另一个角度解读，你也可以理解为这是职业生涯中一段比较失败的经历，不断在赶路似乎又没找到出路。&lt;/p&gt;
+&lt;h2 id=&#34;heading&#34;&gt;校招简历/面试准备&lt;/h2&gt;
+&lt;p&gt;回想自己 2016 年那会硕士毕业，简历真是一片空白，研究生阶段在实验室里研究的都是无线网络协议和仿真，选修课选修了一些统计学习和机器学习类的课程，算是对机器学习有了一些皮毛的理解。可想而知，这样的经历去找计算机类的工作简历上可以说是一片空白。当年实习投给七牛、爱奇艺等公司的简历都直接被当垃圾忽略掉了&amp;hellip; 如果觉得自己对计算机工程领域还算有兴趣，根据我自己找工作的血泪史来看，可以做一些如下准备：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;找工作过两三年或以上的学长/朋友了解下市场，看看公司到底需要什么样的人，以及对应岗位所需要的知识储备。&lt;/li&gt;
+&lt;li&gt;在深入调研和多方了解后明确一个方向，多积累相关上下游知识点，不要广撒网，以大多数人，尤其是跨专业找工作的人来说，精力是十分有限的。&lt;/li&gt;
+&lt;li&gt;简历中着重体现自己的贡献和工作，以及和相关岗位的匹配度，对于技术简历照片一般是不需要的。&lt;/li&gt;
+&lt;li&gt;没有计算机相关项目经历的可以去抱抱大腿混点项目比赛经历，也可以扩大自己的知识面&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;形而下一点的实际操作建议就是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;复习下计算机基础知识，数据结构与算法、操作系统、网络和数据库，常见的系统设计，组件选型的优缺点分析。字节跳动面试几乎必问基础算法题，其实也可以认为是常见的代码题，一般不难。&lt;/li&gt;
+&lt;li&gt;熟悉你用的主力语言，不要摇摆不定，选定一种走下去，比如 C++/Java, 基础的语言特性要十分熟悉，比如阿里几乎必问 Java 语言细节和 JVM，腾讯相对喜欢问 C++ 多一些。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果你实在没有什么突出的项目经历，那就把基本功练好，可以是语言，算法，常见系统设计，常用中间件原理和源码分析。面试中能有两三个亮点就能惊艳到面试官了。&lt;/p&gt;
+&lt;p&gt;对于一些知名公司如 Google/Facebook 等校招宣讲会，建议一定要去现场感受下这些公司的工作氛围，公司文化，面试流程等。有些学长/学姐还会带来一些对找工作有帮助的干货。现在让我还印象深刻的是一名来自 Facebook 的小哥对写简历的分享，下面总结浓缩一下。&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;怎样写好简历&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;简历应该包含什么&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;个人信息
+&lt;ol&gt;
+&lt;li&gt;学校/学位/毕业时间(方便 HR 知道你何时毕业筛选简历)，GPA 最好能附上权重和高排名，不同的学校 GPA 总分不一样&lt;/li&gt;
+&lt;li&gt;联系电话/邮箱&lt;/li&gt;
+&lt;li&gt;GitHub/blog/linkedin&lt;/li&gt;
+&lt;li&gt;不需要照片&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;项目经历
+&lt;ol&gt;
+&lt;li&gt;有一定含金量的工业界经历（实习/全职/比赛）&lt;/li&gt;
+&lt;li&gt;一些有趣的项目，你能聊开的那种&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;自我简介
+&lt;ol&gt;
+&lt;li&gt;简要说明自己的优点&lt;/li&gt;
+&lt;li&gt;技能点&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面讲讲什么样的简历才是好简历，坦白说，简历上再多的文字修饰都比不上你真实的经历，你的思考和你的成长。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;关注你做了什么，而不是罗列是什么&lt;/li&gt;
+&lt;li&gt;关注产出和价值，最好是能有数字和量化指标衡量，给人感觉踏实靠谱&lt;/li&gt;
+&lt;li&gt;提供客观数据，具体且简短，多使用动词如『优化』、『提高』等&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;关于如何才能写出更好的技术简历，左耳朵耗子的专栏文章就写的非常好，精炼。具体可参考 &lt;a href=&#34;https://time.geekbang.org/column/article/13067&#34; title=&#34;程序员面试攻略：面试前的准备&#34;&gt;程序员面试攻略：面试前的准备&lt;/a&gt; 由于是付费专栏，你可以自行付费，也可以选择关注公众号在后台留言，我可以从极客专栏中分享给你免费阅读。如果觉得左耳朵耗子的过于简短，也可以去读读 Gayle 的大作《金领简历》 提到 Gayle, 不得不说她的另外一本神作《程序员面试金典》，国外已经第六版了。&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;如何面试&lt;/h2&gt;
+&lt;p&gt;如果你面试机会非常少，不妨多投投简历找些小公司练练手，或者做一些模拟面试。我之前给一位学弟做过长达几小时的模拟面试，在一些细节上稍微给了一些建议，他最后如愿拿到了字节跳动的好工作机会。总的来说，你需要在代码面试（字节跳动和国外公司面试中常有）中体现如下几点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;和面试官沟通确认问题，达成一致，有没有哪方面的限制&lt;/li&gt;
+&lt;li&gt;如何思考并解决技术问题的，如果可能，也可以画图辅助分析&lt;/li&gt;
+&lt;li&gt;如何做工程上的权衡（时间/空间/效率），和面试官沟通复杂度分析&lt;/li&gt;
+&lt;li&gt;先让代码跑起来，并同时考虑边界条件，再逐步迭代 Done is better than perfect&lt;/li&gt;
+&lt;li&gt;如果实在没有思路，可以先说说自己见解，然后让面试官给点提示&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;heading-3&#34;&gt;如何在面试中讨论项目&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;context: 简要描述项目背景，为什么要做，意义和影响何在。让面试官快速了解。&lt;/li&gt;
+&lt;li&gt;action: 你在这个项目中做了什么，贡献是什么。&lt;/li&gt;
+&lt;li&gt;result: 项目的结果，失败的项目也可以讲，在这个项目中学到了什么，得到了什么样的成长。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;简历中提到的技术一定要熟悉，站在面试官的角度问自己会问自己什么问题。&lt;/p&gt;
+&lt;h2 id=&#34;heading-4&#34;&gt;广告&lt;/h2&gt;
+&lt;p&gt;有需要内推字节跳动的社招/校招都可以找我，校招内推码: &lt;strong&gt;QYVDPPA&lt;/strong&gt; 全球都可以，只要招聘网站 &lt;a href=&#34;https://job.bytedance.com/&#34; title=&#34;字节跳动职位 JD 链接&#34;&gt;字节跳动职位 JD 链接&lt;/a&gt; 上有，简历可以发我邮箱 &lt;a href=&#34;mailto:yuanbin.me@bytedance.com&#34;&gt;yuanbin.me@bytedance.com&lt;/a&gt;. 有需要的话，我可以对简历给出反馈更改意见，提高成功率。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>字节跳动校招/社招内推，长期有效</title>
@@ -651,25 +728,6 @@
 &lt;h2 id=&#34;load-balance&#34;&gt;Load Balance&lt;/h2&gt;
 &lt;p&gt;细心的小伙伴可能会发现上述 Health Check 的配置中 balance 使用了 source.&lt;/p&gt;
 &lt;p&gt;待续&amp;hellip;&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Hue hive metastore 显示时间差的问题</title>
-      <link>https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/</link>
-      <pubDate>Fri, 20 Apr 2018 17:24:14 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/</guid>
-      
-        <description>&lt;p&gt;Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。&lt;/p&gt;
-&lt;p&gt;从 Overview 中分析 Properties 中的时间 Created 的源码可以发现其使用的是&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;data-bind=&amp;quot;text: localeFormat(details.properties.create_time)&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;从 &lt;code&gt;localeFormat&lt;/code&gt; 的函数继续跟踪可以发现使用的其实是 moment 库中的 utc 方法，&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;return moment.utc(mTime).format(&amp;quot;L LT&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;从以上两段代码来看，Overview 中 Created 的显示时间比 Details 中的北京时间晚8小时才对，但实际却比北京时间提前了6小时!&lt;/p&gt;
-&lt;p&gt;百思不得其解，后面才发现，这是 JavaScript 对时区处理的坑！！！&lt;/p&gt;
-&lt;p&gt;Details 中 CreateTime 为 &lt;code&gt;Wed Apr 04 15:41:58 CST 2018&lt;/code&gt;, 其中的 CST 可以是『Central Standard Time 美国中部时间』和『中国标准时间』，而美国中部时间是西六区&amp;hellip; JS 将 CST 作为美国中部时间处理了&amp;hellip;&lt;/p&gt;
 </description>
       
     </item>
