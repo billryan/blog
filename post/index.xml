@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>搜索/推荐工程之实时 CDC 数据流</title>
+      <link>https://blog.yuanbin.me/posts/2020-02/2020-02-28_00-19-24/</link>
+      <pubDate>Fri, 28 Feb 2020 00:19:25 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-02/2020-02-28_00-19-24/</guid>
+      <description>本篇是『搜索/推荐工程』系列文章的第一篇，整个系列大致会围绕搜索和推荐工程中数据的产生、处理、迁移同步和应用展开，本篇主要阐述数据产生和迁移</description>
+    </item>
+    
+    <item>
       <title>字节跳动校招/社招内推，长期有效</title>
       <link>https://blog.yuanbin.me/posts/2020-02/2020-02-25_18-16-44/</link>
       <pubDate>Tue, 25 Feb 2020 18:16:45 +0800</pubDate>
@@ -180,15 +189,6 @@
       
       <guid>https://blog.yuanbin.me/posts/2018-06/2018-06-30_21-26-14/</guid>
       <description>本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中的使用细节。 Health</description>
-    </item>
-    
-    <item>
-      <title>Hue hive metastore 显示时间差的问题</title>
-      <link>https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/</link>
-      <pubDate>Fri, 20 Apr 2018 17:24:14 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-04/2018-04-20_17-24-14/</guid>
-      <description>Hue 中通过 Hive metastore 查看表创建信息时，我们发现其中 Overview 和 Details 的时间差总是6个小时，按理北京时间东八区相差8个小时才合理啊，接下来我们跟一下 Hue 中的代码。 从</description>
     </item>
     
   </channel>

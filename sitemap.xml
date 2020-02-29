@@ -3,14 +3,14 @@
   
   <url>
     <loc>https://blog.yuanbin.me/post/</loc>
-    <lastmod>2020-02-28T23:15:50+08:00</lastmod>
+    <lastmod>2020-02-29T22:09:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://blog.yuanbin.me/</loc>
-    <lastmod>2020-02-28T23:15:50+08:00</lastmod>
+    <lastmod>2020-02-29T22:09:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -23,6 +23,27 @@
   </url>
   
   <url>
+    <loc>https://blog.yuanbin.me/categories/</loc>
+    <lastmod>2020-02-29T22:09:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2020-02-29T22:09:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.yuanbin.me/posts/2020-02/2020-02-28_00-19-24/</loc>
+    <lastmod>2020-02-29T22:09:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.yuanbin.me/posts/2020-02/2020-02-25_18-16-44/</loc>
     <lastmod>2020-02-25T18:46:32+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -30,21 +51,7 @@
   </url>
   
   <url>
-    <loc>https://blog.yuanbin.me/categories/</loc>
-    <lastmod>2020-02-13T22:59:07+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.yuanbin.me/posts/2020-02/2020-02-13_22-19-02/</loc>
-    <lastmod>2020-02-13T22:59:07+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2020-02-13T22:59:07+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

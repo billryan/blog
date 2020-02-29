@@ -6,10 +6,19 @@
     <description>Recent content in 技术 on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 13 Feb 2020 22:19:02 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 00:19:25 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>搜索/推荐工程之实时 CDC 数据流</title>
+      <link>https://blog.yuanbin.me/posts/2020-02/2020-02-28_00-19-24/</link>
+      <pubDate>Fri, 28 Feb 2020 00:19:25 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-02/2020-02-28_00-19-24/</guid>
+      <description>本篇是『搜索/推荐工程』系列文章的第一篇，整个系列大致会围绕搜索和推荐工程中数据的产生、处理、迁移同步和应用展开，本篇主要阐述数据产生和迁移</description>
+    </item>
     
     <item>
       <title>Mosh&#43;tmux = SSH 好帮手</title>
@@ -188,15 +197,6 @@
 &lt;p&gt;在 GitBook 网站新建电子书时可从默认的三种模板 (书籍或手册/API 文档/知识库 FAQ) 选择一个，官方虽然只提供了三种模板，但由于 GitBook 的可定制性极强，已经有不少第三方的模板可选了。除新建外你也可以从已有的 docs/odt/html/GitHub 等地方导入，从第三方导入的格式往往和 GitBook 家的稍微有那么点不一样，可能需要微调。&lt;/p&gt;
 &lt;h3 id=&#34;-github-repo&#34;&gt;绑定 GitHub repo&lt;/h3&gt;
 &lt;p&gt;除了使用客户端和 Web 编辑文本这种简易模式外，你也可以挑战一下 Hard 模式如通过绑定 GitHub repo 推送更新，需要注意的是绑定到 GitHub repo 后当前电子书不可再从客户端或者 Web 上更新，这大概是 git 的锅了吧 :( 使用 GitHub 绑定的电子书在添加新文件时容易忘记更新目录文件 &lt;code&gt;SUMMARY.md&lt;/code&gt;，在此特意提醒下。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>自制 GitBook 插件之 gitbook-plugin-tags</title>
-      <link>https://blog.yuanbin.me/posts/2016-09/2016-09-18_22-55-14/</link>
-      <pubDate>Sun, 18 Sep 2016 22:55:14 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-09/2016-09-18_22-55-14/</guid>
-      <description>最开始使用 GitBook 撰写电子书是从去年开始维护的 billryan/algorithm-exercise 算法文档开始的，因为这个项目我已经造了不少轮子，给 GitBook 添加类似博客中的 category/tag 功能的插件在下班后的周末抽空</description>
     </item>
     
   </channel>
