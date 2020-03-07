@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 28 Feb 2020 12:20:42 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Mar 2020 10:29:31 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>业务搜索之 Elasticsearch 使用实践</title>
+      <link>https://blog.yuanbin.me/posts/2020-03/2020-03-07_10-29-31/</link>
+      <pubDate>Sat, 07 Mar 2020 10:29:31 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-03/2020-03-07_10-29-31/</guid>
+      <description>得益于 Elasticsearch 对 Lucene 恰到好处的功能增强和丰富的文档，业务搜索/检索场景使用 Elasticsearch(ES) 越来越普遍。本文主要对自己在业务搜索场景中对 ES 的使用实践做一些总结，ES</description>
+    </item>
     
     <item>
       <title>谈谈校招/社招技术简历/面试这件事</title>
@@ -180,15 +189,6 @@
       
       <guid>https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/</guid>
       <description>客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推</description>
-    </item>
-    
-    <item>
-      <title>HAProxy 进阶使用技巧</title>
-      <link>https://blog.yuanbin.me/posts/2018-06/2018-06-30_21-26-14/</link>
-      <pubDate>Sat, 30 Jun 2018 21:26:14 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-06/2018-06-30_21-26-14/</guid>
-      <description>本文主要记录了一些在特殊网络下使用 HAProxy 的一些进阶使用技巧，如网络上层应用 Health Check 的精准检测(HA)和负载均衡。本期主要介绍 Health Check 在 proxy 中的使用细节。 Health</description>
     </item>
     
   </channel>

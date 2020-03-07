@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>东海一叶</title>
+  <title>业务搜索之 Elasticsearch 使用实践 - 东海一叶</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="东海一叶" />
-  <meta name="description" content="blog of billryan" />
+  <meta name="description" content="得益于 Elasticsearch 对 Lucene 恰到好处的功能增强和丰富的文档，业务搜索/检索场景使用 Elasticsearch(ES) 越来越普遍。本文主要对自己在业务搜索场景中对 ES 的使用实践做一些总结，ES" />
+
   <meta name="keywords" content="Hugo, billryan, 博客, 东海一叶" />
 
 
@@ -34,8 +35,8 @@
 <meta name="generator" content="Hugo 0.62.0" />
 
 
-<link rel="canonical" href="https://blog.yuanbin.me/" />
-<link href="/index.xml" rel="alternate" type="application/rss+xml" title="东海一叶" />
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2020-03/2020-03-07_10-29-31/" />
+
 
 
 
@@ -60,15 +61,23 @@
 <link rel="stylesheet" href="/css/custom.css">
 
 
-<meta property="og:title" content="东海一叶" />
-<meta property="og:description" content="blog of billryan" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.yuanbin.me/" />
-<meta property="og:updated_time" content="2020-03-07T10:29:31+08:00" />
-<meta itemprop="name" content="东海一叶">
-<meta itemprop="description" content="blog of billryan"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="东海一叶"/>
-<meta name="twitter:description" content="blog of billryan"/>
+<meta property="og:title" content="业务搜索之 Elasticsearch 使用实践" />
+<meta property="og:description" content="得益于 Elasticsearch 对 Lucene 恰到好处的功能增强和丰富的文档，业务搜索/检索场景使用 Elasticsearch(ES) 越来越普遍。本文主要对自己在业务搜索场景中对 ES 的使用实践做一些总结，ES" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2020-03/2020-03-07_10-29-31/" />
+<meta property="article:published_time" content="2020-03-07T10:29:31+08:00" />
+<meta property="article:modified_time" content="2020-03-07T14:30:36+08:00" />
+<meta itemprop="name" content="业务搜索之 Elasticsearch 使用实践">
+<meta itemprop="description" content="得益于 Elasticsearch 对 Lucene 恰到好处的功能增强和丰富的文档，业务搜索/检索场景使用 Elasticsearch(ES) 越来越普遍。本文主要对自己在业务搜索场景中对 ES 的使用实践做一些总结，ES">
+<meta itemprop="datePublished" content="2020-03-07T10:29:31&#43;08:00" />
+<meta itemprop="dateModified" content="2020-03-07T14:30:36&#43;08:00" />
+<meta itemprop="wordCount" content="1500">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="业务搜索之 Elasticsearch 使用实践"/>
+<meta name="twitter:description" content="得益于 Elasticsearch 对 Lucene 恰到好处的功能增强和丰富的文档，业务搜索/检索场景使用 Elasticsearch(ES) 越来越普遍。本文主要对自己在业务搜索场景中对 ES 的使用实践做一些总结，ES"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -276,7 +285,7 @@ if (!doNotTrack) {
   <ul id="menu" class="menu">
     
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -370,1053 +379,218 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-<section id="posts" class="posts">
-  
-  
+          <article class="post bg-white">
     
-  
-  
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
+    <header class="post-header">
+      <h1 class="post-title">业务搜索之 Elasticsearch 使用实践</h1>
       
-      <a class="post-link" href="/posts/2016-07/2016-07-03_22-10-13/">Play with 新创云 X32-N2808</a>
-    </h1>
+      <div class="post-meta">
+        <time datetime="2020-03-07" class="post-time">
+          2020-03-07
+        </time>
+        <div class="post-category">
+            <a href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        
+
+        
+        
+          <span id="busuanzi_container_page_pv">
+            | 阅读 <span id="busuanzi_value_page_pv"></span>
+          </span>
+        
+
+        
+        
+      </div>
+    </header>
+
     
-    <div class="post-meta">
-      <time datetime="2016-07-03" class="post-time">
-        2016-07-03
-      </time>
-      <div class="post-category">
-          <a href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
     
-    <div class="post-summary">
-      之前在学校用的都是类似树莓派这种 ARM 结构的低功耗 Linux box，比如树莓派一代，Cubieboard 2 双卡版等，Cubieboard 双卡版的性能还是
-    </div>
-    <div class="read-more">
-      <a href="/posts/2016-07/2016-07-03_22-10-13/" class="read-more-link">阅读全文</a>
-    </div>
-    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#index-alias-">index alias 使用优化</a></li>
+    <li><a href="#heading">分片数</a></li>
+    <li><a href="#heading-1">分片自动均衡</a></li>
+    <li><a href="#mapping-schema-">mapping schema 优化</a></li>
+    <li><a href="#nested-query-">nested query 优化</a></li>
+    <li><a href="#heading-2">其他</a></li>
+  </ul>
+</nav>
   </div>
-</article>
+</div>
 
+    
+    <div class="post-content">
+      <p>得益于 Elasticsearch 对 Lucene 恰到好处的功能增强和丰富的文档，业务搜索/检索场景使用 Elasticsearch(ES) 越来越普遍。本文主要对自己在业务搜索场景中对 ES 的使用实践做一些总结，ES 一些基础如倒排索引、index 基础概念和 kibana dev tools 工具等不在本文讨论范围内。</p>
+<h2 id="index-alias-">index alias 使用优化</h2>
+<p>ES 原生提供了 index 这种和 MySQL 中 table 对等的概念，随着业务和需求的变化，对原 index 部分字段类型的增改在所难免。得益于 ES 的列式存储特性，新增字段是非常容易的，但是要修改则不可以，除非新建索引。那么问题来了，由于需求等多方因素影响，确实需要新建索引达到修改原索引字段类型的目的，这时业务就需要将读写流量切换到新索引了。</p>
+<p>我们顺藤摸瓜再进一步分析可以知道，在这个流量切换过程中，如何在保证数据一致性的前提下避免线上业务故障呢？为了解决这类问题，ES 官方提供了最佳实践之 <a href="https://www.elastic.co/cn/blog/changing-mapping-with-zero-downtime" title="零宕机修改 mapping">&ldquo;零宕机修改 mapping&rdquo;</a>, 核心是 ES 提供了一种和视图类似的「alias(别名)」机制，并且在切换 alias 指向实际的索引时可以保证原子性。<a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.1/indices-aliases.html" title="indices aliases">indices aliases</a> 阐述了如何具体操作。这里需要注意的一个细节是如果使用 ES 提供的 reindex 方法，在超大索引重建时，新数据仍然在继续写入，那么这个时候盲目切换索引是会丢数据的，比较精确的方式是在写入 ES 时双写，全部重建后再切换 alias, 这种双写场景需要良好的工具支持，后续我再专文说明。</p>
+<ol>
+<li>新建索引时，同时建立对应的 alias, 索引名可以在 alias 后面加入 <code>-v1</code> 标记。对业务使用 index 时可以对外仅暴露不变的 alias, 避免业务代码改动，屏蔽底层索引优化切换细节。</li>
+<li>日志类数据考虑按天建立索引，使用 <a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index-templates.html" title="索引模板">索引模板</a>/<a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.1/indices-templates.html" title="indices templates">indices templates</a> 可以让日志类数据按天自动创建索引，减轻人工维护负担。</li>
+<li>多个物理索引并且需要通过 alias 写入的场景，可以考虑使用 Write Alias 在多个索引中指定一个为 <code>write_alias</code>, alias type 的需求细节可以参考 <a href="https://github.com/elastic/elasticsearch/issues/30061" title="Alias types issue">&ldquo;Alias types issue&rdquo;</a></li>
+</ol>
+<h2 id="heading">分片数</h2>
+<p>对于小的业务，一个主分片一个副本分片就够了，然后根据节点数提高副本分片从而提升读性能。对于大的业务量，一般来说总的分片数和集群所有节点数保持一致或者整数倍为佳，压力均摊。关于分片数设置，ES 官方博客的 <a href="https://www.elastic.co/cn/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster" title="分片数设置">&ldquo;分片数设置&rdquo;</a> 也有说明，根据你节点的磁盘特点，机械/SSD, 业务特点，业务检索/日志类 略有不同，业务检索类可以适当控制分片体积，过大过小都不好，最佳的方案是自己做业务压测，满足要求为止。</p>
+<h2 id="heading-1">分片自动均衡</h2>
+<p>对于变动不大的业务场景，可以考虑关闭分片自动均衡，防止在节点增删时触发分片自适应调整，占用集群资源进而影响线上业务。可以参考 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/shards-allocation.html" title="shards allocation">&ldquo;shards allocation&rdquo;</a> 了解更多细节。</p>
+<h2 id="mapping-schema-">mapping schema 优化</h2>
+<p>设置 mapping 时，选择合适的类型是十分重要的，好马配好鞍，好的算法配合适当的数据结构才能绽放出最耀眼的光芒。</p>
+<ol>
+<li>线上业务明确类型，mapping 字段类型自己维护，设置 <code>&quot;dynamic&quot;: &quot;false&quot;</code>. 不要图方便让 ES 自动建类型，后期性能啥的是个大坑。</li>
+<li>不要再自作聪明搞 <code>type</code> 了，属于滥用，已经明确被抛弃了</li>
+<li>对于明确不需要倒排索引的就禁用好了，<code>&quot;enabled&quot;: false</code>, 细节参考 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.1/enabled.html#enabled" title="ES enabled">ES enabled</a></li>
+<li>枚举类型字段使用 <code>keyword</code>, 哪怕本身是 integer, 量大的时候对 term query 能有好几倍的延时优化. 最近的 ES 采用了 Lucene 新版本中对 Number 的底层优化，使用了更适合排序而不是原始的倒排索引。更极致的优化是根据不同的枚举值建立不同的索引，这个要看业务场景。</li>
+<li>需要同时支持好几种不同应用场景的，如排序和倒排场景，考虑使用 subfields</li>
+</ol>
+<h2 id="nested-query-">nested query 优化</h2>
+<p>能避免就避免，是性能杀手。如果一定要用，其实可以考虑对部分场景如某个字段枚举值不多，那么直接以值作为字段名的一部分，进而化解原本 nested query 才能满足的查询场景。</p>
+<h2 id="heading-2">其他</h2>
+<ol>
+<li>慢查询监控，对部分延时较大的语句针对性优化</li>
+<li>上线预热，部分索引切换场景时考虑先预热再进行线上服务，减少线上超时</li>
+<li>能用 filter 就用 filter, 可以充分利用缓存</li>
+<li>尽量少用 script 这些</li>
+<li>预处理生成索引代替实时计算</li>
+</ol>
+<p>其他的想到再补吧，index, mapping 常用的差不多就这些了</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">东海一叶</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+      2020-03-07
+      
+        <a href="https://github.com/billryan/blog/commit/af16aac5b69e9e2f001db7d65d68cc6eb1dafff3" title="add es index mapping info">
+          (af16aac)
+        </a>
+        
+          <br>add es index mapping info
+        
+      
+    </span>
+  </p>
   
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/posts/2016-01/2016-01-15_15-10-28/">Ubuntu 下编译支持解析 IPv6 域名的 HAProxy 1.6.x</a>
-    </h1>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
     
-    <div class="post-meta">
-      <time datetime="2016-01-15" class="post-time">
-        2016-01-15
-      </time>
-      <div class="post-category">
-          <a href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
     
-    <div class="post-summary">
-      缘由 之前一直在 Archlinux 下部署整套 黑魔法服务，各种工具安装起来很方便，即使源里头没有，AUR 中一般也有其他人提供的 PKGBUILD, 根据此脚本构建适用于自己系统的包
-    </div>
-    <div class="read-more">
-      <a href="/posts/2016-01/2016-01-15_15-10-28/" class="read-more-link">阅读全文</a>
-    </div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
     
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
   </div>
-</article>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/posts/2020-02/2020-02-28_12-20-41/">
+            <span class="next-text nav-default">谈谈校招/社招技术简历/面试这件事</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
 
   
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/posts/2015-11/2015-11-26_20-10-26/">在 Linux/OS X 下优雅地写论文(TeX)</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2015-11-26" class="post-time">
-        2015-11-26
-      </time>
-      <div class="post-category">
-          <a href="https://blog.yuanbin.me/categories/%E5%AD%A6%E6%9C%AF/"> 学术 </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
   
-  <div class="post-content">
-    
-    <div class="post-summary">
-      <p>本科毕业设计就是用 LaTeX 写的，那时还只是第一次接触 TeX 这么强大的排版引擎。几年过去了自己对 LaTeX 也算是轻车熟路，最近遇到比较集中的问题自然是 <a href="https://github.com/weijianwen/SJTUThesis">硕士论文模板</a> 啦。GitHub 上作者对一些细节并没有做详细的描述，这对于 TeX 新手来说造成了不少的困扰，比如这种东西怎么这么难用云云&hellip;</p>
+
+  
+  
+
+  
+
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "billryan/blog"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
     </div>
-    <div class="read-more">
-      <a href="/posts/2015-11/2015-11-26_20-10-26/" class="read-more-link">阅读全文</a>
-    </div>
-    
+  
+
+  
+
+  
+
+  <div class="disqus-comment">
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+    显示 Disqus 评论
   </div>
-</article>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = "https://blog.yuanbin.me/posts/2020-03/2020-03-07_10-29-31/";
+    };
+    function load_disqus() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'billryan';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      $('#load_disqus').remove();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+  
+  </div>
+
+    
 
   
-</section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-    <nav class="pagination">
-      <ul>
-
-      
-      
-      <li><a href="/">««</a></li>
-      
-
-      
-      
-      <li><a href="/page/13/">«</a></li>
-      
-
-      
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/8/">
-              8
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/9/">
-              9
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/10/">
-              10
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/11/">
-              11
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/12/">
-              12
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/13/">
-              13
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="active">
-            <a href="/page/14/">
-              14
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/15/">
-              15
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/16/">
-              16
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/17/">
-              17
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/18/">
-              18
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/19/">
-              19
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-              
-            
-
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/20/">
-              20
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-
-          
-
-        
-        
-
-        
-        
-
-      
-
-      
-      
-      <li><a href="/page/15/">»</a></li>
-      
-
-      
-      
-      <li><a href="/page/37/">»»</a></li>
-      
-
-      </ul>
-    </nav>
-  
-
-
-
-
 
         </div>
       </div>

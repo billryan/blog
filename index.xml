@@ -6,10 +6,54 @@
     <description>Recent content on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 28 Feb 2020 12:20:42 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Mar 2020 10:29:31 +0800</lastBuildDate>
     
         <atom:link href="https://blog.yuanbin.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>业务搜索之 Elasticsearch 使用实践</title>
+      <link>https://blog.yuanbin.me/posts/2020-03/2020-03-07_10-29-31/</link>
+      <pubDate>Sat, 07 Mar 2020 10:29:31 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-03/2020-03-07_10-29-31/</guid>
+      
+        <description>&lt;p&gt;得益于 Elasticsearch 对 Lucene 恰到好处的功能增强和丰富的文档，业务搜索/检索场景使用 Elasticsearch(ES) 越来越普遍。本文主要对自己在业务搜索场景中对 ES 的使用实践做一些总结，ES 一些基础如倒排索引、index 基础概念和 kibana dev tools 工具等不在本文讨论范围内。&lt;/p&gt;
+&lt;h2 id=&#34;index-alias-&#34;&gt;index alias 使用优化&lt;/h2&gt;
+&lt;p&gt;ES 原生提供了 index 这种和 MySQL 中 table 对等的概念，随着业务和需求的变化，对原 index 部分字段类型的增改在所难免。得益于 ES 的列式存储特性，新增字段是非常容易的，但是要修改则不可以，除非新建索引。那么问题来了，由于需求等多方因素影响，确实需要新建索引达到修改原索引字段类型的目的，这时业务就需要将读写流量切换到新索引了。&lt;/p&gt;
+&lt;p&gt;我们顺藤摸瓜再进一步分析可以知道，在这个流量切换过程中，如何在保证数据一致性的前提下避免线上业务故障呢？为了解决这类问题，ES 官方提供了最佳实践之 &lt;a href=&#34;https://www.elastic.co/cn/blog/changing-mapping-with-zero-downtime&#34; title=&#34;零宕机修改 mapping&#34;&gt;&amp;ldquo;零宕机修改 mapping&amp;rdquo;&lt;/a&gt;, 核心是 ES 提供了一种和视图类似的「alias(别名)」机制，并且在切换 alias 指向实际的索引时可以保证原子性。&lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/7.1/indices-aliases.html&#34; title=&#34;indices aliases&#34;&gt;indices aliases&lt;/a&gt; 阐述了如何具体操作。这里需要注意的一个细节是如果使用 ES 提供的 reindex 方法，在超大索引重建时，新数据仍然在继续写入，那么这个时候盲目切换索引是会丢数据的，比较精确的方式是在写入 ES 时双写，全部重建后再切换 alias, 这种双写场景需要良好的工具支持，后续我再专文说明。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;新建索引时，同时建立对应的 alias, 索引名可以在 alias 后面加入 &lt;code&gt;-v1&lt;/code&gt; 标记。对业务使用 index 时可以对外仅暴露不变的 alias, 避免业务代码改动，屏蔽底层索引优化切换细节。&lt;/li&gt;
+&lt;li&gt;日志类数据考虑按天建立索引，使用 &lt;a href=&#34;https://www.elastic.co/guide/cn/elasticsearch/guide/current/index-templates.html&#34; title=&#34;索引模板&#34;&gt;索引模板&lt;/a&gt;/&lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/7.1/indices-templates.html&#34; title=&#34;indices templates&#34;&gt;indices templates&lt;/a&gt; 可以让日志类数据按天自动创建索引，减轻人工维护负担。&lt;/li&gt;
+&lt;li&gt;多个物理索引并且需要通过 alias 写入的场景，可以考虑使用 Write Alias 在多个索引中指定一个为 &lt;code&gt;write_alias&lt;/code&gt;, alias type 的需求细节可以参考 &lt;a href=&#34;https://github.com/elastic/elasticsearch/issues/30061&#34; title=&#34;Alias types issue&#34;&gt;&amp;ldquo;Alias types issue&amp;rdquo;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;heading&#34;&gt;分片数&lt;/h2&gt;
+&lt;p&gt;对于小的业务，一个主分片一个副本分片就够了，然后根据节点数提高副本分片从而提升读性能。对于大的业务量，一般来说总的分片数和集群所有节点数保持一致或者整数倍为佳，压力均摊。关于分片数设置，ES 官方博客的 &lt;a href=&#34;https://www.elastic.co/cn/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster&#34; title=&#34;分片数设置&#34;&gt;&amp;ldquo;分片数设置&amp;rdquo;&lt;/a&gt; 也有说明，根据你节点的磁盘特点，机械/SSD, 业务特点，业务检索/日志类 略有不同，业务检索类可以适当控制分片体积，过大过小都不好，最佳的方案是自己做业务压测，满足要求为止。&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;分片自动均衡&lt;/h2&gt;
+&lt;p&gt;对于变动不大的业务场景，可以考虑关闭分片自动均衡，防止在节点增删时触发分片自适应调整，占用集群资源进而影响线上业务。可以参考 &lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/current/shards-allocation.html&#34; title=&#34;shards allocation&#34;&gt;&amp;ldquo;shards allocation&amp;rdquo;&lt;/a&gt; 了解更多细节。&lt;/p&gt;
+&lt;h2 id=&#34;mapping-schema-&#34;&gt;mapping schema 优化&lt;/h2&gt;
+&lt;p&gt;设置 mapping 时，选择合适的类型是十分重要的，好马配好鞍，好的算法配合适当的数据结构才能绽放出最耀眼的光芒。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;线上业务明确类型，mapping 字段类型自己维护，设置 &lt;code&gt;&amp;quot;dynamic&amp;quot;: &amp;quot;false&amp;quot;&lt;/code&gt;. 不要图方便让 ES 自动建类型，后期性能啥的是个大坑。&lt;/li&gt;
+&lt;li&gt;不要再自作聪明搞 &lt;code&gt;type&lt;/code&gt; 了，属于滥用，已经明确被抛弃了&lt;/li&gt;
+&lt;li&gt;对于明确不需要倒排索引的就禁用好了，&lt;code&gt;&amp;quot;enabled&amp;quot;: false&lt;/code&gt;, 细节参考 &lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/7.1/enabled.html#enabled&#34; title=&#34;ES enabled&#34;&gt;ES enabled&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;枚举类型字段使用 &lt;code&gt;keyword&lt;/code&gt;, 哪怕本身是 integer, 量大的时候对 term query 能有好几倍的延时优化. 最近的 ES 采用了 Lucene 新版本中对 Number 的底层优化，使用了更适合排序而不是原始的倒排索引。更极致的优化是根据不同的枚举值建立不同的索引，这个要看业务场景。&lt;/li&gt;
+&lt;li&gt;需要同时支持好几种不同应用场景的，如排序和倒排场景，考虑使用 subfields&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;nested-query-&#34;&gt;nested query 优化&lt;/h2&gt;
+&lt;p&gt;能避免就避免，是性能杀手。如果一定要用，其实可以考虑对部分场景如某个字段枚举值不多，那么直接以值作为字段名的一部分，进而化解原本 nested query 才能满足的查询场景。&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;其他&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;慢查询监控，对部分延时较大的语句针对性优化&lt;/li&gt;
+&lt;li&gt;上线预热，部分索引切换场景时考虑先预热再进行线上服务，减少线上超时&lt;/li&gt;
+&lt;li&gt;能用 filter 就用 filter, 可以充分利用缓存&lt;/li&gt;
+&lt;li&gt;尽量少用 script 这些&lt;/li&gt;
+&lt;li&gt;预处理生成索引代替实时计算&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;其他的想到再补吧，index, mapping 常用的差不多就这些了&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>谈谈校招/社招技术简历/面试这件事</title>
@@ -682,70 +726,6 @@
     owner = &amp;quot;billryan&amp;quot;              # Your GitHub ID
     repo = &amp;quot;blog&amp;quot;               # The repo to store comments
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;看完 comment.js 的文档后移植起来其实是非常简单的，在这个过程中我还参考了 &lt;a href=&#34;https://github.com/olOwOlo/hugo-theme-even/pull/51&#34;&gt;feat: add gitalk&lt;/a&gt;, 加入了一些公开的 CDN 资源，在 comment.js 的基础上增加了 &lt;code&gt;.btn&lt;/code&gt; 的样式，这个样式参考了 GitHub issue. 另外我默认开启了 highlight 和 spin 这两个特性。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>基于大数据平台的客户像系统设计</title>
-      <link>https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/</link>
-      <pubDate>Thu, 02 Aug 2018 23:59:46 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/</guid>
-      
-        <description>&lt;p&gt;客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推荐或者营销。基础的客户画像系统有如下几种需求：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;输入用户 id, 输出用户相应的画像标签&lt;/li&gt;
-&lt;li&gt;输入用户 id，相应标签和指定时间区间，输出对应标签值在这段时间内的变化情况&lt;/li&gt;
-&lt;li&gt;输入多个标签值，输出满足指定标签值的一组用户(精准推荐或营销用)&lt;/li&gt;
-&lt;li&gt;输出的标签最好能和业务数据进行关联&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;这四个需求虽然都可以通过 HBase 实现，但是对于需求3这种搜索的场景，用 HBase 来实现则往往需要 scan 全表，而且范围查询也不易实现。我们可以选用 ES(ElasticSearch) 来作为搜索过滤。对于需求4，常用的数据仓库有 Hive, 我们可以通过外表的形式关联 HBase, 也可以定期从 HBase 导入至 Hive.&lt;/p&gt;
-&lt;h2 id=&#34;heading&#34;&gt;系统架构及数据流&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;源数据层：数据源可以是关系型数据库，实时行为日志，Hive 仓库或者从 HBase 加工过的标签数据。&lt;/li&gt;
-&lt;li&gt;计算引擎层：使用 Spark 作为中间的计算引擎和不同的数据源接口可以省掉繁琐的数据驱动整合工作，同时借助 dataframe API 可以高效的进行异构数据源关联分析和处理。&lt;/li&gt;
-&lt;li&gt;数据分发层：使用 HBase 作为主存储，ES 通过 HBase 的 coprocessor 机制同步更新，往 ES 写可以通过批量写减少网络 IO。Hive 通过外表则不必做专门的数据同步操作，但是这种方法效率往往不高。&lt;/li&gt;
-&lt;li&gt;数据对外使用层：通过 REST API 查询 HBase 和 ES 获取所需标签/用户 id&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;                                                  +------------+
-                                                  |            |
-                              +-----------------&amp;gt; |  REST API  |
-                              |                   |            |
-                              |                   +------+-----+
-                              |                          ^
-                              |                          |
-                              |                          |
-+--------+               +----+----+                +----+----+
-|        |    external   |         |  coprocessor   |         |
-|  Hive  | &amp;lt;-------------+  HBase  +--------------&amp;gt; |    ES   |
-|        |               |         |                |         |
-+--------+               +----+----+                +---------+
-                              ^
-                              |
-                +-------------+-------------+
-                |                           |
-                |  Spark / Spark Streaming  |
-                |                           |
-                +-------------+-------------+
-                              ^
-                              |
-         +--------------------+------------------+
-         |                                       |
-         |  Hive, SQLServer, MySQL, HBase, HDFS  |
-         |                                       |
-         +---------------------------------------+
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Spark 写 HBase 可以用 &lt;a href=&#34;https://github.com/hortonworks-spark/shc&#34;&gt;hortonworks-spark/shc&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;其中 HBase 写 ES 和 Hive 建外表的细节另外写两篇博文做深度一点的解析，这里不再赘述。&lt;/p&gt;
-&lt;h2 id=&#34;heading-1&#34;&gt;数据模型映射&lt;/h2&gt;
-&lt;h3 id=&#34;spark-dataframe--hbase&#34;&gt;Spark dataframe &amp;lt;==&amp;gt; HBase&lt;/h3&gt;
-&lt;p&gt;我们知道 HBase 主要是通过 rowkey 来实现快速查询，对于典型的用户画像场景，用户 id 往往必不可少。但 rowkey 在 HBase 中的存储为字节数组，且为了更好发挥 HBase 分布式存储的效率，我们需要防止用户 id 过于集中造成热点，这里我们可以尝试将 int 型数据映射到 00000000~FFFFFFFF 内，然后反转字符串即可完美适配 HBase 对 rowkey 设计的要求。&lt;/p&gt;
-&lt;p&gt;对于 HBase 往 ES 的数据同步，我们主要利用了 HBase coprocessor 绑定更新/删除事件进而对 ES 同步。这里一个比较棘手的问题是 HBase 的内容都是以字节数组存储的，比较理想的方案是同步到 ES 时保留类型信息以便范围查询。这里我采取的方案是通过 Spark dataframe 取出类型信息，在写入 HBase 时列的最后一个字节用于类型标记，如 &lt;code&gt;i -&amp;gt; integer&lt;/code&gt;, &lt;code&gt;d -&amp;gt; double&lt;/code&gt;, &lt;code&gt;s -&amp;gt; string&lt;/code&gt;. 这样就完美的解决了类型的转化问题了，还能自适应匹配。&lt;/p&gt;
-&lt;p&gt;HBase 中的 rowkey 可以映射为 ES 中的 docid, 列名 &lt;code&gt;cf:tag_namespace.tag_name&lt;/code&gt; 可以映射为 ES 中的 JSON 嵌套结构。&lt;/p&gt;
-&lt;h3 id=&#34;hbase--elasticsearch&#34;&gt;HBase &amp;lt;==&amp;gt; ElasticSearch&lt;/h3&gt;
-&lt;p&gt;TODO&lt;/p&gt;
-&lt;h3 id=&#34;hbase--hive&#34;&gt;HBase &amp;lt;==&amp;gt; Hive&lt;/h3&gt;
-&lt;p&gt;TODO&lt;/p&gt;
 </description>
       
     </item>

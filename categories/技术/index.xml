@@ -6,10 +6,19 @@
     <description>Recent content in 技术 on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 28 Feb 2020 00:19:25 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Mar 2020 10:29:31 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>业务搜索之 Elasticsearch 使用实践</title>
+      <link>https://blog.yuanbin.me/posts/2020-03/2020-03-07_10-29-31/</link>
+      <pubDate>Sat, 07 Mar 2020 10:29:31 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-03/2020-03-07_10-29-31/</guid>
+      <description>得益于 Elasticsearch 对 Lucene 恰到好处的功能增强和丰富的文档，业务搜索/检索场景使用 Elasticsearch(ES) 越来越普遍。本文主要对自己在业务搜索场景中对 ES 的使用实践做一些总结，ES</description>
+    </item>
     
     <item>
       <title>搜索/推荐工程之实时 CDC 数据流</title>
@@ -180,23 +189,6 @@
       
       <guid>https://blog.yuanbin.me/posts/2016-11/2016-11-07_10-48-42/</guid>
       <description>在 使用 GitBook 制作高质量电子书 一文中我简要描述了 GitBook 的基本功能和使用，适用于 GitBook 的所有插件均可以从 Plugins for GitBook 中找到，下文将介绍一些适用于 GitBook 的实用插件及定制</description>
-    </item>
-    
-    <item>
-      <title>使用 GitBook 制作高质量电子书</title>
-      <link>https://blog.yuanbin.me/posts/2016-10/2016-10-09_21-48-24/</link>
-      <pubDate>Sun, 09 Oct 2016 21:48:24 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-10/2016-10-09_21-48-24/</guid>
-      <description>&lt;p&gt;作为知识型工作者，时常会遇到的一个问题是如何将自己所做的工作精心汇总并便利地展示给广大读者。从阅读、传播和互动的角度来看，制作一个专业的网站可能是较为理想的方案，但实际操作起来可能会因为各种各样的技术问题而让人望而却步。&lt;a href=&#34;https://www.gitbook.com&#34;&gt;GitBook&lt;/a&gt; 的出现算是解决了用户的绝大部分痛点。与 GitHub Pages 仅作为静态页面展示平台不同，GitBook 在文本编辑、多人协作、互动和电子书最终输出形式等方面的支持非常完善，基本上涵盖了现代出版物的整个生命周期，接下来的篇幅将详述这几个环节并介绍一些自己的实践经验。GitBook 的官方文档见 &lt;a href=&#34;https://toolchain.gitbook.com/&#34;&gt;GitBook Toolchain Documentation&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/misc/gitbook-part1-site.png&#34; alt=&#34;GitBook website&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;-web&#34;&gt;客户端或 Web&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/misc/gitbook-part1-editor.png&#34; alt=&#34;GitBook editor&#34;&gt;&lt;/p&gt;
-&lt;p&gt;相比于 GitHub Pages 高门槛的写作方式，GitBook 在这方面则显得亲民的多（和 Word Office 之类的软件易用程度相当），由于是基于 Node.js 的应用，其不仅提供跨平台的图形化写作软件，同时也提供了 Web 版在线编辑，两者在功能上无异。虽然 GitBook 同时支持 Markdown 和 AsciiDoc, 但可以明显感受到其对 Markdown 格式的偏爱，不熟悉 Markdown 的朋友们也不用担心，GitBook 的工具栏中提供了各种常用格式的快捷方式。Markdown 相比 LaTeX 来说要简单地多，需要记的格式最多也只有十来种，基本上是那种一看就会用的极简格式，详细的格式支持和使用见 &lt;a href=&#34;https://toolchain.gitbook.com/syntax/markdown.html&#34;&gt;Markdown&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/misc/gitbook-part1-template.png&#34; alt=&#34;GitBook template&#34;&gt;&lt;/p&gt;
-&lt;p&gt;在 GitBook 网站新建电子书时可从默认的三种模板 (书籍或手册/API 文档/知识库 FAQ) 选择一个，官方虽然只提供了三种模板，但由于 GitBook 的可定制性极强，已经有不少第三方的模板可选了。除新建外你也可以从已有的 docs/odt/html/GitHub 等地方导入，从第三方导入的格式往往和 GitBook 家的稍微有那么点不一样，可能需要微调。&lt;/p&gt;
-&lt;h3 id=&#34;-github-repo&#34;&gt;绑定 GitHub repo&lt;/h3&gt;
-&lt;p&gt;除了使用客户端和 Web 编辑文本这种简易模式外，你也可以挑战一下 Hard 模式如通过绑定 GitHub repo 推送更新，需要注意的是绑定到 GitHub repo 后当前电子书不可再从客户端或者 Web 上更新，这大概是 git 的锅了吧 :( 使用 GitHub 绑定的电子书在添加新文件时容易忘记更新目录文件 &lt;code&gt;SUMMARY.md&lt;/code&gt;，在此特意提醒下。&lt;/p&gt;</description>
     </item>
     
   </channel>
