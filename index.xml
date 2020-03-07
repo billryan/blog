@@ -21,16 +21,16 @@
         <description>&lt;p&gt;得益于 Elasticsearch 对 Lucene 恰到好处的功能增强和丰富的文档，业务搜索/检索场景使用 Elasticsearch(ES) 越来越普遍。本文主要对自己在业务搜索场景中对 ES 的使用实践做一些总结，ES 一些基础如倒排索引、index 基础概念和 kibana dev tools 工具等不在本文讨论范围内。&lt;/p&gt;
 &lt;h2 id=&#34;index-alias-&#34;&gt;index alias 使用优化&lt;/h2&gt;
 &lt;p&gt;ES 原生提供了 index 这种和 MySQL 中 table 对等的概念，随着业务和需求的变化，对原 index 部分字段类型的增改在所难免。得益于 ES 的列式存储特性，新增字段是非常容易的，但是要修改则不可以，除非新建索引。那么问题来了，由于需求等多方因素影响，确实需要新建索引达到修改原索引字段类型的目的，这时业务就需要将读写流量切换到新索引了。&lt;/p&gt;
-&lt;p&gt;我们顺藤摸瓜再进一步分析可以知道，在这个流量切换过程中，如何在保证数据一致性的前提下避免线上业务故障呢？为了解决这类问题，ES 官方提供了最佳实践之 &lt;a href=&#34;https://www.elastic.co/cn/blog/changing-mapping-with-zero-downtime&#34; title=&#34;零宕机修改 mapping&#34;&gt;&amp;ldquo;零宕机修改 mapping&amp;rdquo;&lt;/a&gt;, 核心是 ES 提供了一种和视图类似的「alias(别名)」机制，并且在切换 alias 指向实际的索引时可以保证原子性。&lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/7.1/indices-aliases.html&#34; title=&#34;indices aliases&#34;&gt;indices aliases&lt;/a&gt; 阐述了如何具体操作。这里需要注意的一个细节是如果使用 ES 提供的 reindex 方法，在超大索引重建时，新数据仍然在继续写入，那么这个时候盲目切换索引是会丢数据的，比较精确的方式是在写入 ES 时双写，全部重建后再切换 alias, 这种双写场景需要良好的工具支持，后续我再专文说明。&lt;/p&gt;
+&lt;p&gt;我们顺藤摸瓜再进一步分析可以知道，在这个流量切换过程中，如何在保证数据一致性的前提下避免线上业务故障呢？为了解决这类问题，ES 官方提供了最佳实践之 &lt;a href=&#34;https://www.elastic.co/cn/blog/changing-mapping-with-zero-downtime&#34; title=&#34;零宕机修改 mapping&#34;&gt;零宕机修改 mapping&lt;/a&gt;, 核心是 ES 提供了一种和视图类似的「alias(别名)」机制，并且在切换 alias 指向实际的索引时可以保证原子性。&lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/7.1/indices-aliases.html&#34; title=&#34;indices aliases&#34;&gt;indices aliases&lt;/a&gt; 阐述了如何具体操作。这里需要注意的一个细节是如果使用 ES 提供的 reindex 方法，在超大索引重建时，新数据仍然在继续写入，那么这个时候盲目切换索引是会丢数据的，比较精确的方式是在写入 ES 时双写，全部重建后再切换 alias, 这种双写场景需要良好的工具支持，后续我再专文说明。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;新建索引时，同时建立对应的 alias, 索引名可以在 alias 后面加入 &lt;code&gt;-v1&lt;/code&gt; 标记。对业务使用 index 时可以对外仅暴露不变的 alias, 避免业务代码改动，屏蔽底层索引优化切换细节。&lt;/li&gt;
 &lt;li&gt;日志类数据考虑按天建立索引，使用 &lt;a href=&#34;https://www.elastic.co/guide/cn/elasticsearch/guide/current/index-templates.html&#34; title=&#34;索引模板&#34;&gt;索引模板&lt;/a&gt;/&lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/7.1/indices-templates.html&#34; title=&#34;indices templates&#34;&gt;indices templates&lt;/a&gt; 可以让日志类数据按天自动创建索引，减轻人工维护负担。&lt;/li&gt;
-&lt;li&gt;多个物理索引并且需要通过 alias 写入的场景，可以考虑使用 Write Alias 在多个索引中指定一个为 &lt;code&gt;write_alias&lt;/code&gt;, alias type 的需求细节可以参考 &lt;a href=&#34;https://github.com/elastic/elasticsearch/issues/30061&#34; title=&#34;Alias types issue&#34;&gt;&amp;ldquo;Alias types issue&amp;rdquo;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;多个物理索引并且需要通过 alias 写入的场景，可以考虑使用 Write Alias 在多个索引中指定一个为 &lt;code&gt;write_alias&lt;/code&gt;, alias type 的需求细节可以参考 &lt;a href=&#34;https://github.com/elastic/elasticsearch/issues/30061&#34; title=&#34;Alias types issue&#34;&gt;Alias types issue&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;heading&#34;&gt;分片数&lt;/h2&gt;
-&lt;p&gt;对于小的业务，一个主分片一个副本分片就够了，然后根据节点数提高副本分片从而提升读性能。对于大的业务量，一般来说总的分片数和集群所有节点数保持一致或者整数倍为佳，压力均摊。关于分片数设置，ES 官方博客的 &lt;a href=&#34;https://www.elastic.co/cn/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster&#34; title=&#34;分片数设置&#34;&gt;&amp;ldquo;分片数设置&amp;rdquo;&lt;/a&gt; 也有说明，根据你节点的磁盘特点，机械/SSD, 业务特点，业务检索/日志类 略有不同，业务检索类可以适当控制分片体积，过大过小都不好，最佳的方案是自己做业务压测，满足要求为止。&lt;/p&gt;
+&lt;p&gt;对于小的业务，一个主分片一个副本分片就够了，然后根据节点数提高副本分片从而提升读性能。对于大的业务量，一般来说总的分片数和集群所有节点数保持一致或者整数倍为佳，压力均摊。关于分片数设置，ES 官方博客的 &lt;a href=&#34;https://www.elastic.co/cn/blog/how-many-shards-should-i-have-in-my-elasticsearch-cluster&#34; title=&#34;分片数设置&#34;&gt;分片数设置&lt;/a&gt; 也有说明，根据你节点的磁盘特点，机械/SSD, 业务特点，业务检索/日志类 略有不同，业务检索类可以适当控制分片体积，过大过小都不好，最佳的方案是自己做业务压测，满足要求为止。&lt;/p&gt;
 &lt;h2 id=&#34;heading-1&#34;&gt;分片自动均衡&lt;/h2&gt;
-&lt;p&gt;对于变动不大的业务场景，可以考虑关闭分片自动均衡，防止在节点增删时触发分片自适应调整，占用集群资源进而影响线上业务。可以参考 &lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/current/shards-allocation.html&#34; title=&#34;shards allocation&#34;&gt;&amp;ldquo;shards allocation&amp;rdquo;&lt;/a&gt; 了解更多细节。&lt;/p&gt;
+&lt;p&gt;对于变动不大的业务场景，可以考虑关闭分片自动均衡，防止在节点增删时触发分片自适应调整，占用集群资源进而影响线上业务。可以参考 &lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/current/shards-allocation.html&#34; title=&#34;shards allocation&#34;&gt;shards allocation&lt;/a&gt; 了解更多细节。&lt;/p&gt;
 &lt;h2 id=&#34;mapping-schema-&#34;&gt;mapping schema 优化&lt;/h2&gt;
 &lt;p&gt;设置 mapping 时，选择合适的类型是十分重要的，好马配好鞍，好的算法配合适当的数据结构才能绽放出最耀眼的光芒。&lt;/p&gt;
 &lt;ol&gt;
@@ -48,7 +48,7 @@
 &lt;li&gt;上线预热，部分索引切换场景时考虑先预热再进行线上服务，减少线上超时&lt;/li&gt;
 &lt;li&gt;能用 filter 就用 filter, 可以充分利用缓存&lt;/li&gt;
 &lt;li&gt;尽量少用 script 这些&lt;/li&gt;
-&lt;li&gt;预处理生成索引代替实时计算&lt;/li&gt;
+&lt;li&gt;预处理生成索引代替实时计算&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;其他的想到再补吧，index, mapping 常用的差不多就这些了&lt;/p&gt;
 </description>
