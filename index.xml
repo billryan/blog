@@ -37,7 +37,7 @@
 &lt;li&gt;线上业务明确类型，mapping 字段类型自己维护，设置 &lt;code&gt;&amp;quot;dynamic&amp;quot;: &amp;quot;false&amp;quot;&lt;/code&gt;. 不要图方便让 ES 自动建类型，后期性能啥的是个大坑。&lt;/li&gt;
 &lt;li&gt;不要再自作聪明搞 &lt;code&gt;type&lt;/code&gt; 了，属于滥用，已经明确被抛弃了&lt;/li&gt;
 &lt;li&gt;对于明确不需要倒排索引的就禁用好了，&lt;code&gt;&amp;quot;enabled&amp;quot;: false&lt;/code&gt;, 细节参考 &lt;a href=&#34;https://www.elastic.co/guide/en/elasticsearch/reference/7.1/enabled.html#enabled&#34; title=&#34;ES enabled&#34;&gt;ES enabled&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;枚举类型字段使用 &lt;code&gt;keyword&lt;/code&gt;, 哪怕本身是 integer, 量大的时候对 term query 能有好几倍的延时优化. 最近的 ES 采用了 Lucene 新版本中对 Number 的底层优化，使用了更适合排序而不是原始的倒排索引。更极致的优化是根据不同的枚举值建立不同的索引，这个要看业务场景。&lt;/li&gt;
+&lt;li&gt;枚举类型字段使用 &lt;code&gt;keyword&lt;/code&gt;, 哪怕本身是 integer, 量大的时候对 term query 能有好几倍的延时优化. 最近的 ES 采用了 Lucene 新版本中对 Number 的底层优化，使用了更适合排序而不是原始的倒排索引。更极致的优化是根据不同的枚举值建立不同的索引，这个要看业务场景。想了解 keyword 优化细节的同学可以参考 &lt;a href=&#34;https://elasticsearch.cn/article/446&#34; title=&#34;ES keyword 优化&#34;&gt;ES keyword 优化&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;需要同时支持好几种不同应用场景的，如排序和倒排场景，考虑使用 subfields&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;nested-query-&#34;&gt;nested query 优化&lt;/h2&gt;
@@ -49,6 +49,7 @@
 &lt;li&gt;能用 filter 就用 filter, 可以充分利用缓存&lt;/li&gt;
 &lt;li&gt;尽量少用 script 这些&lt;/li&gt;
 &lt;li&gt;预处理生成索引代替实时计算&lt;/li&gt;
+&lt;li&gt;遇到性能问题时可以到 profile 看看每一个过程的耗时&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;其他的想到再补吧，index, mapping 常用的差不多就这些了&lt;/p&gt;
 </description>
