@@ -6,10 +6,19 @@
     <description>Recent content in 技术 on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 07 Mar 2020 10:29:31 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2020 22:26:26 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>octopusflow-router 设计与实现</title>
+      <link>https://blog.yuanbin.me/posts/2020-03/2020-03-22_22-26-25/</link>
+      <pubDate>Sun, 22 Mar 2020 22:26:26 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-03/2020-03-22_22-26-25/</guid>
+      <description>背景 在 CDC 数据流中，部分 topic 的消息较多较杂，而我们所需的消息很可能只是其中很少很少的一部分，这个时候让只需要这一小部分消息的服务都去重复过滤大部</description>
+    </item>
     
     <item>
       <title>业务搜索之 Elasticsearch 使用实践</title>
@@ -180,15 +189,6 @@
       
       <guid>https://blog.yuanbin.me/posts/2018-02/2018-02-23_23-19-29/</guid>
       <description>平台/工具折腾血泪史 博客陆陆续续也写了有七八年了，早年在51空间、QQ 空间、人人网、点点网上写过一些矫情的文字，后来接触了比较 geek 的 GitHub Pages 方式，</description>
-    </item>
-    
-    <item>
-      <title>GitBook 插件介绍及定制</title>
-      <link>https://blog.yuanbin.me/posts/2016-11/2016-11-07_10-48-42/</link>
-      <pubDate>Mon, 07 Nov 2016 10:48:42 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2016-11/2016-11-07_10-48-42/</guid>
-      <description>在 使用 GitBook 制作高质量电子书 一文中我简要描述了 GitBook 的基本功能和使用，适用于 GitBook 的所有插件均可以从 Plugins for GitBook 中找到，下文将介绍一些适用于 GitBook 的实用插件及定制</description>
     </item>
     
   </channel>

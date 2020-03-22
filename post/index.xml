@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 07 Mar 2020 10:29:31 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2020 22:26:26 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.yuanbin.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>octopusflow-router 设计与实现</title>
+      <link>https://blog.yuanbin.me/posts/2020-03/2020-03-22_22-26-25/</link>
+      <pubDate>Sun, 22 Mar 2020 22:26:26 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-03/2020-03-22_22-26-25/</guid>
+      <description>背景 在 CDC 数据流中，部分 topic 的消息较多较杂，而我们所需的消息很可能只是其中很少很少的一部分，这个时候让只需要这一小部分消息的服务都去重复过滤大部</description>
+    </item>
     
     <item>
       <title>业务搜索之 Elasticsearch 使用实践</title>
@@ -180,15 +189,6 @@
       
       <guid>https://blog.yuanbin.me/posts/2018-08/2018-08-19_16-59-31/</guid>
       <description>在前文 博客写作工作流 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment</description>
-    </item>
-    
-    <item>
-      <title>基于大数据平台的客户像系统设计</title>
-      <link>https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/</link>
-      <pubDate>Thu, 02 Aug 2018 23:59:46 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-08/2018-08-02_23-59-46/</guid>
-      <description>客户画像系统在不同公司有不同的业务场景需求，但总的目标基本都是由于客户越来越多，我们需要对海量的客户信息进行降维，进而更好的理解客户和精准推</description>
     </item>
     
   </channel>

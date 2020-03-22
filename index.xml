@@ -6,10 +6,71 @@
     <description>Recent content on 东海一叶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 07 Mar 2020 10:29:31 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2020 22:26:26 +0800</lastBuildDate>
     
         <atom:link href="https://blog.yuanbin.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>octopusflow-router 设计与实现</title>
+      <link>https://blog.yuanbin.me/posts/2020-03/2020-03-22_22-26-25/</link>
+      <pubDate>Sun, 22 Mar 2020 22:26:26 +0800</pubDate>
+      
+      <guid>https://blog.yuanbin.me/posts/2020-03/2020-03-22_22-26-25/</guid>
+      
+        <description>&lt;h2 id=&#34;heading&#34;&gt;背景&lt;/h2&gt;
+&lt;p&gt;在 CDC 数据流中，部分 topic 的消息较多较杂，而我们所需的消息很可能只是其中很少很少的一部分，这个时候让只需要这一小部分消息的服务都去重复过滤大部分无用的消息，一来浪费机器资源，二来则是消息不够『干净』导致下游服务重复的各种 case 处理。octopusflow-router 的设计初衷有以下几个：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;动态过滤与路由消息至不同的 topic&lt;/li&gt;
+&lt;li&gt;从源头统一 DB binlog 增量和存量(select)数据模型，并解决 select 和 binlog 同时使用带来的时序乱序问题&lt;/li&gt;
+&lt;li&gt;尽量不改动 maxwell 配置，让 maxwell CDC 数据流管道尽可能稳定实时。使用 octopusflow-router 来动态控制&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在 MQ 中引入这种过滤路由层，坏处则是会冗余消息，原来一个 topic 就搞定的逻辑现在拆散为多处了。好的轮子不嫌多，本着学习实践 Vert.x 和 Kafka Stream 的态度，octopusflow-router 值得拥有。&lt;/p&gt;
+&lt;h2 id=&#34;heading-1&#34;&gt;架构设计&lt;/h2&gt;
+&lt;p&gt;从背景及需求上来看，这个需求其实是不难，统一 binlog 和 select 的地方需要费一些心思。为了追求优雅的使用方式，octopusflow-router 考虑了热加载配置及 kafka 流处理任务。为了充分体验 Java 和 Kafka 生态优秀的轮子，这里选用了 Vert.x, Kafka Stream 作为核心依赖库，使用 Vert.x 的 eventbus 解耦各组件。&lt;/p&gt;
+&lt;p&gt;从需求概览来看，可以分为 Kafka Stream filter 和 DB dump 两大模块，如下图所示&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2020/202003/octopusflow-router-2.png&#34; alt=&#34;octopusflow-router-detail&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Filter 和路由利用了 Kafka Stream 提供的 Predicate 和 Stream filter. Dump Mock 暂定支持全表、根据部分行 ID 和自定义 SQL 三种导数能力。&lt;/p&gt;
+&lt;p&gt;从具体实现分解上来看，如下图所示&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.yuanbin.me/pictures/2020/202003/octopusflow-router-3.png&#34; alt=&#34;octopusflow-router-impl&#34;&gt;&lt;/p&gt;
+&lt;p&gt;借助 Vert.x 极其优秀的扩展能力和 eventbus 的解耦能力，这里主要构建了配置中心热加载模块，支持 HTTP 方式获取及更新配置，其他配置方式可以自行增加 Config Store 接入。配置有变更后，通过 eventbus 发布，实例 StreamsTask Verticle 捕获事件并根据最新的配置热加载 Kafka Stream 流处理任务。&lt;/p&gt;
+&lt;p&gt;虽然是第一次体验 Vert.x, 但还是被它的轻量级和扩展性震惊到了，非常典型的事件驱动编程方式，通过 Verticle 水平扩展和隔离，架构也变得优雅了起来。相比于 Spring 之类的重量级武器，Vert.x 让你感觉你不是在用框架而只是在用一个库而已，而且这个库的众多能力可以自己掌控，可以说是非常轻量级了。对于 Kafka Stream, 想必知道的人就更少了，很多人做流处理眼中基本只有 Flink, Spark, 实际上对于轻量级流处理，尤其是使用 Kafka 作为 MQ 的，Kafka Stream 可以说是非常轻量和优秀了。这两个库可以让你忘记一切框架，你的代码你做主。&lt;/p&gt;
+&lt;h2 id=&#34;heading-2&#34;&gt;如何使用&lt;/h2&gt;
+&lt;p&gt;对于用户来说，最关心的莫过于如何使用了，这里最关键的其实是配置文件，从配置文件基本就能知道 octopusflow-router 具体在做什么了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;http.port&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;8080&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;kafka&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;servers&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;192.168.16.177:9094&amp;#34;&lt;/span&gt;
+  },
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;task&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;maxwell_key_router&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;task_type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MaxwellKeyTask&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;source_topics&amp;#34;&lt;/span&gt;: [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;maxwell&amp;#34;&lt;/span&gt;],
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;sink_routers&amp;#34;&lt;/span&gt;: {
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;octopusflow-user&amp;#34;&lt;/span&gt;: {
+          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;whitelist&amp;#34;&lt;/span&gt;: [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;user.account&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;user.info&amp;#34;&lt;/span&gt;]
+        },
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;octopusflow-nlp&amp;#34;&lt;/span&gt;: {
+          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;whitelist&amp;#34;&lt;/span&gt;: [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;nlp.ogeek-dataset&amp;#34;&lt;/span&gt;]
+        }
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;http.port&lt;/code&gt; 顾名思义，是用来通过 HTTP 获取和更新配置的。&lt;code&gt;/config&lt;/code&gt; 即为配置入口，GET 为获取，POST 为更新。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kafka&lt;/code&gt; 为全局配置，也可以嵌入到 &lt;code&gt;task&lt;/code&gt; 内层中局部覆盖。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;task&lt;/code&gt; 为 octopusflow-router 核心配置，默认 key(比如任务名 maxwell_key_router) 即为 kafka consumer group 的组名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;task_type&lt;/code&gt; 为任务类型，目前就一个 &lt;code&gt;MaxwellKeyTask&lt;/code&gt;, 工厂方法将根据不同的任务类型绑定不同的任务实例。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;source_topics&lt;/code&gt; 为监听的 topic 列表&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;octopusflow-user&lt;/code&gt; 或者 &lt;code&gt;octopusflow-nlp&lt;/code&gt; 为写入的 topic 名，同时这个 key 下绑定白名单 whitelist&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;whitelist&lt;/code&gt; 过滤用的白名单，可以使用 &lt;code&gt;r&#39;&#39;&lt;/code&gt; 启用正则模式，匹配上了就通过并写入 sink topic，未匹配则 block&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;虽然有这篇简单的设计和实现文档，估计还是会有人不知道这个项目到底在干啥的，对 Vert.x, Kafka Stream 和 maxwell 感兴趣的可以参考本项目源码地址 &lt;a href=&#34;https://github.com/octopusflow/octopusflow-router&#34; title=&#34;octopusflow-router&#34;&gt;octopusflow-router&lt;/a&gt;, 纯 Java 打造。&lt;/p&gt;
+&lt;p&gt;本篇文章的大背景其实是前文 &lt;a href=&#34;https://blog.yuanbin.me/posts/2020-02/2020-02-28_00-19-24/&#34; title=&#34;搜索/推荐工程之实时 CDC 数据流&#34;&gt;搜索/推荐工程之实时 CDC 数据流&lt;/a&gt; 的一部分，有兴趣的可以前往阅读。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>业务搜索之 Elasticsearch 使用实践</title>
@@ -709,24 +770,6 @@
 &lt;/ol&gt;
 &lt;p&gt;第一个问题，在新版 Kafka, 如 1.0 之后的版本中，我们可以实现 &lt;code&gt;kafka-mirror-maker&lt;/code&gt; 的接口进行加载定制，无需对原有 Kafka 源码进行变动。但是在 0.8.2 这个老版本还是做不到，故需要对源码中有关 &lt;code&gt;kafka-mirror-maker&lt;/code&gt; 进行改造。第二个问题，Kafka 只能保证分区内有序，无法做到全局有序的，但是我们如果能将神策行为事件中的用户 ID 提取作为 key, 属于同一用户的行为事件自然就在同一 partition 中了。&lt;/p&gt;
 &lt;p&gt;改动过的源码见 &lt;a href=&#34;https://github.com/billryan/kafka-mirror-maker/commit/85b2dabc7fa2050aaaf1afea64a1e64ccd79be8e&#34;&gt;MirrorMaker&lt;/a&gt;, 相关的 Makefile 及 Dockerfile 也一并提供了。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>为 Hugo even 主题移植 comment.js 评论插件</title>
-      <link>https://blog.yuanbin.me/posts/2018-08/2018-08-19_16-59-31/</link>
-      <pubDate>Sun, 19 Aug 2018 16:59:31 +0800</pubDate>
-      
-      <guid>https://blog.yuanbin.me/posts/2018-08/2018-08-19_16-59-31/</guid>
-      
-        <description>&lt;p&gt;在前文 &lt;a href=&#34;http://blog.yuanbin.me/posts/2018-02/2018-02-23_23-19-29/&#34;&gt;博客写作工作流&lt;/a&gt; 中我提到过一些关于博客评论系统的选择，简单来说就是弃用了 disqus, 选择了基于 GitHub issue 的评论方案，而由于 GitHub 之前 OAuth 鉴权粒度不够细，基于 gitalk/gitcoment 的方案会导致在博客当前页面评论登陆 GitHub 时提示的权限有点多，比如读写权限。新的基于 GitHub App 的方案如 &lt;a href=&#34;https://github.com/utterance/utterances/pull/25&#34;&gt;utterances 1.0&lt;/a&gt; 就会好很多了。但这种方式对于非知名公司/个人博主来讲，我是不敢随便去让这种 app 接入的。基于同样的理念，我找到了 wzpan 的 &lt;a href=&#34;https://github.com/wzpan/comment.js&#34;&gt;wzpan/comment.js&lt;/a&gt; &lt;a href=&#34;http://www.hahack.com/codes/comment-js/&#34;&gt;中文文档&lt;/a&gt;, 这种方案将鉴权完全转移至 GitHub 上控制，安全感会好很多。稍显麻烦的是会有一个跳转而不是直接在本页评论。下面我详细介绍一下 Hugo even 下的如何使用 comment.js&lt;/p&gt;
-&lt;p&gt;由于目前还未向 even 发起 PR, 所以现在想使用的话可以直接使用我 fork 改过的 ==&amp;gt; &lt;a href=&#34;https://github.com/billryan/hugo-theme-even&#34;&gt;billryan/hugo-theme-even&lt;/a&gt;, 具体配置同 comment.js 要求，你可以参考我的 &lt;a href=&#34;https://github.com/billryan/blog/blob/master/config.toml&#34;&gt;blog/config.toml&lt;/a&gt;, 主要是一些如 owner, repo, token 的设置。对 comment.js 有需求的可以留言，我可以尝试向 even 发起一个 PR 合并到官方去。&lt;/p&gt;
-&lt;p&gt;核心配置如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;  [params.comment]           # comment is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
-    owner = &amp;quot;billryan&amp;quot;              # Your GitHub ID
-    repo = &amp;quot;blog&amp;quot;               # The repo to store comments
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;看完 comment.js 的文档后移植起来其实是非常简单的，在这个过程中我还参考了 &lt;a href=&#34;https://github.com/olOwOlo/hugo-theme-even/pull/51&#34;&gt;feat: add gitalk&lt;/a&gt;, 加入了一些公开的 CDN 资源，在 comment.js 的基础上增加了 &lt;code&gt;.btn&lt;/code&gt; 的样式，这个样式参考了 GitHub issue. 另外我默认开启了 highlight 和 spin 这两个特性。&lt;/p&gt;
 </description>
       
     </item>

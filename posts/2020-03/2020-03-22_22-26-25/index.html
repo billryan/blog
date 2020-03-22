@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>东海一叶</title>
+  <title>octopusflow-router 设计与实现 - 东海一叶</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="东海一叶" />
-  <meta name="description" content="blog of billryan" />
+  <meta name="description" content="背景 在 CDC 数据流中，部分 topic 的消息较多较杂，而我们所需的消息很可能只是其中很少很少的一部分，这个时候让只需要这一小部分消息的服务都去重复过滤大部" />
+
   <meta name="keywords" content="Hugo, billryan, 博客, 东海一叶" />
 
 
@@ -34,8 +35,8 @@
 <meta name="generator" content="Hugo 0.62.0" />
 
 
-<link rel="canonical" href="https://blog.yuanbin.me/" />
-<link href="/index.xml" rel="alternate" type="application/rss+xml" title="东海一叶" />
+<link rel="canonical" href="https://blog.yuanbin.me/posts/2020-03/2020-03-22_22-26-25/" />
+
 
 
 
@@ -60,15 +61,23 @@
 <link rel="stylesheet" href="/css/custom.css">
 
 
-<meta property="og:title" content="东海一叶" />
-<meta property="og:description" content="blog of billryan" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.yuanbin.me/" />
-<meta property="og:updated_time" content="2020-03-22T22:26:26+08:00" />
-<meta itemprop="name" content="东海一叶">
-<meta itemprop="description" content="blog of billryan"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="东海一叶"/>
-<meta name="twitter:description" content="blog of billryan"/>
+<meta property="og:title" content="octopusflow-router 设计与实现" />
+<meta property="og:description" content="背景 在 CDC 数据流中，部分 topic 的消息较多较杂，而我们所需的消息很可能只是其中很少很少的一部分，这个时候让只需要这一小部分消息的服务都去重复过滤大部" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.yuanbin.me/posts/2020-03/2020-03-22_22-26-25/" />
+<meta property="article:published_time" content="2020-03-22T22:26:26+08:00" />
+<meta property="article:modified_time" content="2020-03-22T23:57:30+08:00" />
+<meta itemprop="name" content="octopusflow-router 设计与实现">
+<meta itemprop="description" content="背景 在 CDC 数据流中，部分 topic 的消息较多较杂，而我们所需的消息很可能只是其中很少很少的一部分，这个时候让只需要这一小部分消息的服务都去重复过滤大部">
+<meta itemprop="datePublished" content="2020-03-22T22:26:26&#43;08:00" />
+<meta itemprop="dateModified" content="2020-03-22T23:57:30&#43;08:00" />
+<meta itemprop="wordCount" content="1281">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="octopusflow-router 设计与实现"/>
+<meta name="twitter:description" content="背景 在 CDC 数据流中，部分 topic 的消息较多较杂，而我们所需的消息很可能只是其中很少很少的一部分，这个时候让只需要这一小部分消息的服务都去重复过滤大部"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -276,7 +285,7 @@ if (!doNotTrack) {
   <ul id="menu" class="menu">
     
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -370,1150 +379,232 @@ if (!doNotTrack) {
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-<section id="posts" class="posts">
-  
-  
+          <article class="post bg-white">
     
-  
-  
-  
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
+    <header class="post-header">
+      <h1 class="post-title">octopusflow-router 设计与实现</h1>
       
-      <a class="post-link" href="/posts/2013-04/2013-04-06_16-46-13/">819-FAQ</a>
-    </h1>
+      <div class="post-meta">
+        <time datetime="2020-03-22" class="post-time">
+          2020-03-22
+        </time>
+        <div class="post-category">
+            <a href="https://blog.yuanbin.me/categories/%E6%8A%80%E6%9C%AF/"> 技术 </a>
+            
+          </div>
+        
+
+        
+        
+          <span id="busuanzi_container_page_pv">
+            | 阅读 <span id="busuanzi_value_page_pv"></span>
+          </span>
+        
+
+        
+        
+      </div>
+    </header>
+
     
-    <div class="post-meta">
-      <time datetime="2013-04-06" class="post-time">
-        2013-04-06
-      </time>
-      <div class="post-category">
-          <a href="https://blog.yuanbin.me/categories/%E6%9D%82%E8%B0%88/"> 杂谈 </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
     
-    <div class="post-summary">
-      FAQ - Frequently Asked Questions 其它FAQ 招生名额和报录比什么的 到交大研招办网站上去查吧，但是招生名额这东西不好说，其实是浮动的 要不要报班？ 因人而异，我没报过任何
-    </div>
-    <div class="read-more">
-      <a href="/posts/2013-04/2013-04-06_16-46-13/" class="read-more-link">阅读全文</a>
-    </div>
-    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#heading">背景</a></li>
+    <li><a href="#heading-1">架构设计</a></li>
+    <li><a href="#heading-2">如何使用</a></li>
+  </ul>
+</nav>
   </div>
-</article>
+</div>
 
+    
+    <div class="post-content">
+      <h2 id="heading">背景</h2>
+<p>在 CDC 数据流中，部分 topic 的消息较多较杂，而我们所需的消息很可能只是其中很少很少的一部分，这个时候让只需要这一小部分消息的服务都去重复过滤大部分无用的消息，一来浪费机器资源，二来则是消息不够『干净』导致下游服务重复的各种 case 处理。octopusflow-router 的设计初衷有以下几个：</p>
+<ol>
+<li>动态过滤与路由消息至不同的 topic</li>
+<li>从源头统一 DB binlog 增量和存量(select)数据模型，并解决 select 和 binlog 同时使用带来的时序乱序问题</li>
+<li>尽量不改动 maxwell 配置，让 maxwell CDC 数据流管道尽可能稳定实时。使用 octopusflow-router 来动态控制</li>
+</ol>
+<p>在 MQ 中引入这种过滤路由层，坏处则是会冗余消息，原来一个 topic 就搞定的逻辑现在拆散为多处了。好的轮子不嫌多，本着学习实践 Vert.x 和 Kafka Stream 的态度，octopusflow-router 值得拥有。</p>
+<h2 id="heading-1">架构设计</h2>
+<p>从背景及需求上来看，这个需求其实是不难，统一 binlog 和 select 的地方需要费一些心思。为了追求优雅的使用方式，octopusflow-router 考虑了热加载配置及 kafka 流处理任务。为了充分体验 Java 和 Kafka 生态优秀的轮子，这里选用了 Vert.x, Kafka Stream 作为核心依赖库，使用 Vert.x 的 eventbus 解耦各组件。</p>
+<p>从需求概览来看，可以分为 Kafka Stream filter 和 DB dump 两大模块，如下图所示</p>
+<p><img src="/pictures/2020/202003/octopusflow-router-2.png" alt="octopusflow-router-detail"></p>
+<p>Filter 和路由利用了 Kafka Stream 提供的 Predicate 和 Stream filter. Dump Mock 暂定支持全表、根据部分行 ID 和自定义 SQL 三种导数能力。</p>
+<p>从具体实现分解上来看，如下图所示</p>
+<p><img src="/pictures/2020/202003/octopusflow-router-3.png" alt="octopusflow-router-impl"></p>
+<p>借助 Vert.x 极其优秀的扩展能力和 eventbus 的解耦能力，这里主要构建了配置中心热加载模块，支持 HTTP 方式获取及更新配置，其他配置方式可以自行增加 Config Store 接入。配置有变更后，通过 eventbus 发布，实例 StreamsTask Verticle 捕获事件并根据最新的配置热加载 Kafka Stream 流处理任务。</p>
+<p>虽然是第一次体验 Vert.x, 但还是被它的轻量级和扩展性震惊到了，非常典型的事件驱动编程方式，通过 Verticle 水平扩展和隔离，架构也变得优雅了起来。相比于 Spring 之类的重量级武器，Vert.x 让你感觉你不是在用框架而只是在用一个库而已，而且这个库的众多能力可以自己掌控，可以说是非常轻量级了。对于 Kafka Stream, 想必知道的人就更少了，很多人做流处理眼中基本只有 Flink, Spark, 实际上对于轻量级流处理，尤其是使用 Kafka 作为 MQ 的，Kafka Stream 可以说是非常轻量和优秀了。这两个库可以让你忘记一切框架，你的代码你做主。</p>
+<h2 id="heading-2">如何使用</h2>
+<p>对于用户来说，最关心的莫过于如何使用了，这里最关键的其实是配置文件，从配置文件基本就能知道 octopusflow-router 具体在做什么了。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;http.port&#34;</span>: <span style="color:#ae81ff">8080</span>,
+  <span style="color:#f92672">&#34;kafka&#34;</span>: {
+    <span style="color:#f92672">&#34;servers&#34;</span>: <span style="color:#e6db74">&#34;192.168.16.177:9094&#34;</span>
+  },
+  <span style="color:#f92672">&#34;task&#34;</span>: {
+    <span style="color:#f92672">&#34;maxwell_key_router&#34;</span>: {
+      <span style="color:#f92672">&#34;task_type&#34;</span>: <span style="color:#e6db74">&#34;MaxwellKeyTask&#34;</span>,
+      <span style="color:#f92672">&#34;source_topics&#34;</span>: [<span style="color:#e6db74">&#34;maxwell&#34;</span>],
+      <span style="color:#f92672">&#34;sink_routers&#34;</span>: {
+        <span style="color:#f92672">&#34;octopusflow-user&#34;</span>: {
+          <span style="color:#f92672">&#34;whitelist&#34;</span>: [<span style="color:#e6db74">&#34;user.account&#34;</span>, <span style="color:#e6db74">&#34;user.info&#34;</span>]
+        },
+        <span style="color:#f92672">&#34;octopusflow-nlp&#34;</span>: {
+          <span style="color:#f92672">&#34;whitelist&#34;</span>: [<span style="color:#e6db74">&#34;nlp.ogeek-dataset&#34;</span>]
+        }
+      }
+    }
+  }
+}
+</code></pre></div><ul>
+<li><code>http.port</code> 顾名思义，是用来通过 HTTP 获取和更新配置的。<code>/config</code> 即为配置入口，GET 为获取，POST 为更新。</li>
+<li><code>kafka</code> 为全局配置，也可以嵌入到 <code>task</code> 内层中局部覆盖。</li>
+<li><code>task</code> 为 octopusflow-router 核心配置，默认 key(比如任务名 maxwell_key_router) 即为 kafka consumer group 的组名</li>
+<li><code>task_type</code> 为任务类型，目前就一个 <code>MaxwellKeyTask</code>, 工厂方法将根据不同的任务类型绑定不同的任务实例。</li>
+<li><code>source_topics</code> 为监听的 topic 列表</li>
+<li><code>octopusflow-user</code> 或者 <code>octopusflow-nlp</code> 为写入的 topic 名，同时这个 key 下绑定白名单 whitelist</li>
+<li><code>whitelist</code> 过滤用的白名单，可以使用 <code>r''</code> 启用正则模式，匹配上了就通过并写入 sink topic，未匹配则 block</li>
+</ul>
+<p>虽然有这篇简单的设计和实现文档，估计还是会有人不知道这个项目到底在干啥的，对 Vert.x, Kafka Stream 和 maxwell 感兴趣的可以参考本项目源码地址 <a href="https://github.com/octopusflow/octopusflow-router" title="octopusflow-router">octopusflow-router</a>, 纯 Java 打造。</p>
+<p>本篇文章的大背景其实是前文 <a href="https://blog.yuanbin.me/posts/2020-02/2020-02-28_00-19-24/" title="搜索/推荐工程之实时 CDC 数据流">搜索/推荐工程之实时 CDC 数据流</a> 的一部分，有兴趣的可以前往阅读。</p>
+
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">东海一叶</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+      2020-03-22
+      
+        <a href="https://github.com/billryan/blog/commit/d21135c18124be862cb7b80b205e5eff54cab933" title="add post octopusflow-router 设计与实现">
+          (d21135c)
+        </a>
+        
+          <br>add post octopusflow-router 设计与实现
+        
+      
+    </span>
+  </p>
   
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/posts/2013-04/2013-04-06_16-44-00/">个人考研复习小结——踏实筑梦，水到渠成</a>
-    </h1>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
     
-    <div class="post-meta">
-      <time datetime="2013-04-06" class="post-time">
-        2013-04-06
-      </time>
-      <div class="post-category">
-          <a href="https://blog.yuanbin.me/categories/%E6%9D%82%E8%B0%88/"> 杂谈 </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
     
-    <div class="post-summary">
-      概览 2012年1月决定考研，5月份参加了上海交大在西安举行的自主招生面试，7月6日拿到B档优惠邮件通知并同时开始全心复习考研，2013年1月
-    </div>
-    <div class="read-more">
-      <a href="/posts/2013-04/2013-04-06_16-44-00/" class="read-more-link">阅读全文</a>
-    </div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
     
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/wechat.jpg">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/images/alipay.jpg">
+        <span>支付宝打赏</span>
+      </label>
   </div>
-</article>
+</div>
+
+    <footer class="post-footer">
+      
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/posts/2020-03/2020-03-07_10-29-31/">
+            <span class="next-text nav-default">业务搜索之 Elasticsearch 使用实践</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
 
   
-    <article class="post bg-white">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/posts/2013-04/2013-04-06_16-41-32/">819-outline</a>
-    </h1>
-    
-    <div class="post-meta">
-      <time datetime="2013-04-06" class="post-time">
-        2013-04-06
-      </time>
-      <div class="post-category">
-          <a href="https://blog.yuanbin.me/categories/%E6%9D%82%E8%B0%88/"> 杂谈 </a>
-          
-        </div>
-      
-      
-      
-    </div>
-  </header>
   
-  <div class="post-content">
-    
-    <div class="post-summary">
-      专业课复习大纲 这个官方没明确指定，可以看到的像： 连续时间信号和离散时间信号 连续时间系统和离散时间系统的时域分析 连续时间信号的傅立叶分析 连续时
+
+  
+  
+
+  
+
+  
+  
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "billryan/blog"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
     </div>
-    <div class="read-more">
-      <a href="/posts/2013-04/2013-04-06_16-41-32/" class="read-more-link">阅读全文</a>
-    </div>
-    
+  
+
+  
+
+  
+
+  <div class="disqus-comment">
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+    显示 Disqus 评论
   </div>
-</article>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = "https://blog.yuanbin.me/posts/2020-03/2020-03-22_22-26-25/";
+    };
+    function load_disqus() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'billryan';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      $('#load_disqus').remove();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+  
+  </div>
+
+    
 
   
-</section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-    <nav class="pagination">
-      <ul>
-
-      
-      
-      <li><a href="/">««</a></li>
-      
-
-      
-      
-      <li><a href="/page/32/">«</a></li>
-      
-
-      
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-
-          
-          
-
-        
-        
-
-        
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/26/">
-              26
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/27/">
-              27
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/28/">
-              28
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/29/">
-              29
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/30/">
-              30
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/31/">
-              31
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/32/">
-              32
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="active">
-            <a href="/page/33/">
-              33
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/34/">
-              34
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/35/">
-              35
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/36/">
-              36
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/37/">
-              37
-            </a>
-          </li>
-        
-
-      
-
-        
-
-        
-        
-
-          
-          
-          
-
-            
-            
-              
-            
-
-          
-          
-
-        
-        
-
-        
-        
-          <li class="">
-            <a href="/page/38/">
-              38
-            </a>
-          </li>
-        
-
-      
-
-      
-      
-      <li><a href="/page/34/">»</a></li>
-      
-
-      
-      
-      <li><a href="/page/38/">»»</a></li>
-      
-
-      </ul>
-    </nav>
-  
-
-
-
-
 
         </div>
       </div>
